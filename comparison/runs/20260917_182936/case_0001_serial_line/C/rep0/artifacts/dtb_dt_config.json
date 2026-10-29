@@ -1,0 +1,209 @@
+{
+  "components": {
+    "data_collection_modules": [
+      {
+        "name": "sensor_data_collector",
+        "type": "IoT Gateway",
+        "description": "Collects real-time sensor data from machines M1-M5",
+        "protocol": "MQTT",
+        "frequency": "continuous"
+      },
+      {
+        "name": "event_logger",
+        "type": "Event Recorder",
+        "description": "Logs each part processing event with timestamps",
+        "protocol": "REST",
+        "frequency": "per part processed"
+      },
+      {
+        "name": "energy_monitor",
+        "type": "Power Meter Interface",
+        "description": "Monitors and records energy consumption per machine",
+        "protocol": "OPC-UA",
+        "frequency": "continuous"
+      }
+    ],
+    "analytics_engines": [
+      {
+        "name": "realtime_analytics_engine",
+        "type": "Stream Processing Engine",
+        "description": "Processes continuous streams of data for real-time insights",
+        "protocol": "WebSocket",
+        "frequency": "continuous"
+      },
+      {
+        "name": "historical_analytics_engine",
+        "type": "Batch Analytics Engine",
+        "description": "Analyzes historical data for trends and optimization",
+        "protocol": "REST",
+        "frequency": "hourly"
+      }
+    ],
+    "ml_models": [
+      {
+        "name": "machine_health_predictor",
+        "type": "Predictive Maintenance Model",
+        "description": "Predicts potential failures based on MTTR and availability",
+        "protocol": "REST",
+        "frequency": "daily"
+      },
+      {
+        "name": "efficiency_optimizer",
+        "type": "Optimization Algorithm",
+        "description": "Optimizes throughput and WIP by adjusting buffer levels",
+        "protocol": "WebSocket",
+        "frequency": "continuous"
+      }
+    ],
+    "visualization_dashboards": [
+      {
+        "name": "line_performance_dashboard",
+        "type": "Interactive Dashboard",
+        "description": "Displays real-time line performance metrics and alerts",
+        "protocol": "WebSocket",
+        "frequency": "real-time"
+      }
+    ]
+  },
+  "data_flows": {
+    "sensor_to_collector": {
+      "source": "sensor_data_collector",
+      "destination": "realtime_analytics_engine",
+      "protocol": "MQTT",
+      "frequency": "continuous"
+    },
+    "events_to_analytics": {
+      "source": "event_logger",
+      "destination": "realtime_analytics_engine",
+      "protocol": "REST",
+      "frequency": "per part processed"
+    },
+    "energy_to_analytics": {
+      "source": "energy_monitor",
+      "destination": "realtime_analytics_engine",
+      "protocol": "OPC-UA",
+      "frequency": "continuous"
+    },
+    "analytics_to_ml": {
+      "source": "realtime_analytics_engine",
+      "destination": "machine_health_predictor",
+      "protocol": "REST",
+      "frequency": "daily"
+    },
+    "ml_to_visualization": {
+      "source": "machine_health_predictor",
+      "destination": "line_performance_dashboard",
+      "protocol": "WebSocket",
+      "frequency": "real-time"
+    }
+  },
+  "visualization": {
+    "dashboard_layout": {
+      "title": "Industrial Line Performance Dashboard",
+      "widgets": [
+        {
+          "type": "KPI Widget",
+          "title": "Throughput",
+          "value": "current_throughput",
+          "target": "target_throughput",
+          "unit": "parts/hour",
+          "color_scheme": "green"
+        },
+        {
+          "type": "KPI Widget",
+          "title": "WIP",
+          "value": "current_wip",
+          "target": "target_wip",
+          "unit": "parts",
+          "color_scheme": "blue"
+        },
+        {
+          "type": "KPI Widget",
+          "title": "Energy per Part",
+          "value": "current_energy_per_part",
+          "target": "target_energy_per_part",
+          "unit": "kWh/part",
+          "color_scheme": "orange"
+        },
+        {
+          "type": "Bar Chart",
+          "title": "Machine Availability",
+          "data_source": "machine_availability",
+          "unit": "%",
+          "color_scheme": "purple"
+        },
+        {
+          "type": "Timeline Chart",
+          "title": "Processing Time Distribution",
+          "data_source": "processing_times",
+          "unit": "seconds",
+          "color_scheme": "red"
+        },
+        {
+          "type": "Heatmap",
+          "title": "Buffer Levels",
+          "data_source": "buffer_levels",
+          "unit": "parts",
+          "color_scheme": "teal"
+        }
+      ],
+      "refresh_rate": "real-time"
+    }
+  },
+  "alerts": [
+    {
+      "name": "high_wip_alert",
+      "severity": "warning",
+      "threshold": 20,
+      "trigger_condition": "current_wip > threshold",
+      "message": "High WIP detected - consider reducing buffer levels or increasing throughput."
+    },
+    {
+      "name": "low_machine_availability_alert",
+      "severity": "critical",
+      "threshold": 90,
+      "trigger_condition": "machine_availability < threshold",
+      "message": "Low machine availability detected - investigate potential issues."
+    },
+    {
+      "name": "high_energy_consumption_alert",
+      "severity": "emergency",
+      "threshold": 10,
+      "trigger_condition": "current_energy_per_part > threshold",
+      "message": "Unusually high energy consumption per part - review efficiency."
+    },
+    {
+      "name": "throughput_degradation_alert",
+      "severity": "warning",
+      "threshold": 0.8,
+      "trigger_condition": "current_throughput < threshold * target_throughput",
+      "message": "Degradation in throughput - check for bottlenecks."
+    }
+  ],
+  "kpis": [
+    {
+      "name": "throughput",
+      "target_value": 180,
+      "measurement_method": "count of parts processed per hour",
+      "unit": "parts/hour"
+    },
+    {
+      "name": "wip",
+      "target_value": 15,
+      "measurement_method": "total parts in buffers B0-B4",
+      "unit": "parts"
+    },
+    {
+      "name": "energy_per_part",
+      "target_value": 5,
+      "measurement_method": "total energy consumed / number of parts processed",
+      "unit": "kWh/part"
+    },
+    {
+      "name": "machine_availability",
+      "target_value": 97,
+      "measurement_method": "sum of uptime / total time",
+      "unit": "%"
+    }
+  ]
+}

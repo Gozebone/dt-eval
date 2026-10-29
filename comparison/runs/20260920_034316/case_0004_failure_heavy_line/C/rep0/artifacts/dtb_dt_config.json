@@ -1,0 +1,236 @@
+{
+  "components": {
+    "data_collection": {
+      "modules": [
+        {
+          "name": "OPC-UA Collector",
+          "type": "data_collector",
+          "description": "Collects real-time data from industrial equipment via OPC-UA protocol",
+          "config": {
+            "protocol": "OPC-UA",
+            "update_frequency_s": 5
+          }
+        },
+        {
+          "name": "MQTT Gateway",
+          "type": "data_collector",
+          "description": "Ingests data from IoT sensors and devices over MQTT protocol",
+          "config": {
+            "protocol": "MQTT",
+            "update_frequency_s": 10
+          }
+        }
+      ]
+    },
+    "analytics_engine": {
+      "name": "Analytics Engine",
+      "type": "analytics",
+      "description": "Processes and analyzes data to generate insights, forecasts, and KPIs",
+      "config": {
+        "update_frequency_s": 30
+      }
+    },
+    "ml_models": {
+      "models": [
+        {
+          "name": "Predictive Maintenance Model",
+          "type": "ml_model",
+          "description": "Predicts machine failures based on historical data and sensor readings",
+          "config": {
+            "training_data_source": "historical_events",
+            "model_type": "Random Forest",
+            "update_frequency_s": 3600
+          }
+        },
+        {
+          "name": "Energy Consumption Forecast Model",
+          "type": "ml_model",
+          "description": "Forecasts energy consumption based on production schedules and historical data",
+          "config": {
+            "training_data_source": "historical_samples",
+            "model_type": "LSTM",
+            "update_frequency_s": 7200
+          }
+        }
+      ]
+    },
+    "visualization": {
+      "name": "Visualization Dashboard",
+      "type": "visualization",
+      "description": "Provides real-time visualizations and dashboards for production monitoring",
+      "config": {
+        "layout": {
+          "widgets": [
+            {
+              "type": "line_chart",
+              "title": "Production Line Performance",
+              "position": {
+                "x": 0,
+                "y": 0,
+                "width": 8,
+                "height": 4
+              },
+              "refresh_rate_s": 10
+            },
+            {
+              "type": "gauge",
+              "title": "Overall Equipment Effectiveness",
+              "position": {
+                "x": 8,
+                "y": 0,
+                "width": 4,
+                "height": 2
+              },
+              "refresh_rate_s": 10
+            },
+            {
+              "type": "table",
+              "title": "Machine Status",
+              "position": {
+                "x": 8,
+                "y": 2,
+                "width": 4,
+                "height": 2
+              },
+              "refresh_rate_s": 10
+            },
+            {
+              "type": "heatmap",
+              "title": "Energy Consumption",
+              "position": {
+                "x": 0,
+                "y": 4,
+                "width": 8,
+                "height": 4
+              },
+              "refresh_rate_s": 10
+            }
+          ]
+        },
+        "color_scheme": {
+          "normal": "#4CAF50",
+          "warning": "#FF9800",
+          "error": "#F44336",
+          "critical": "#D32F2F"
+        }
+      }
+    }
+  },
+  "data_flows": {
+    "flows": [
+      {
+        "source": "OPC-UA Collector",
+        "destination": "Analytics Engine",
+        "protocol": "REST",
+        "update_frequency_s": 5
+      },
+      {
+        "source": "MQTT Gateway",
+        "destination": "Analytics Engine",
+        "protocol": "WebSocket",
+        "update_frequency_s": 10
+      },
+      {
+        "source": "Analytics Engine",
+        "destination": "ML Models",
+        "protocol": "REST",
+        "update_frequency_s": 30
+      },
+      {
+        "source": "Analytics Engine",
+        "destination": "Visualization Dashboard",
+        "protocol": "WebSocket",
+        "update_frequency_s": 10
+      },
+      {
+        "source": "ML Models",
+        "destination": "Visualization Dashboard",
+        "protocol": "REST",
+        "update_frequency_s": 30
+      }
+    ]
+  },
+  "alerts": {
+    "alert_rules": [
+      {
+        "name": "High Machine Downtime",
+        "condition": "availability < 90%",
+        "severity": "warning",
+        "message": "Machine availability below 90% threshold",
+        "actions": [
+          "send_notification",
+          "log_event"
+        ]
+      },
+      {
+        "name": "Critical Power Consumption",
+        "condition": "work_power_kw > 6.0",
+        "severity": "critical",
+        "message": "Machine power consumption above 6.0 kW threshold",
+        "actions": [
+          "send_notification",
+          "log_event"
+        ]
+      },
+      {
+        "name": "Process Time Exceeded",
+        "condition": "process_time_s > 120",
+        "severity": "emergency",
+        "message": "Process time exceeded 120 seconds threshold",
+        "actions": [
+          "send_notification",
+          "log_event"
+        ]
+      },
+      {
+        "name": "MTTR Too High",
+        "condition": "mttr_s > 3000",
+        "severity": "warning",
+        "message": "Mean Time to Repair exceeds 3000 seconds",
+        "actions": [
+          "send_notification",
+          "log_event"
+        ]
+      }
+    ]
+  },
+  "kpis": {
+    "kpis_list": [
+      {
+        "name": "Overall Equipment Effectiveness",
+        "description": "Combined measure of availability, performance, and quality",
+        "target_value": 85.0,
+        "measurement_method": "calculated from availability, performance, and quality",
+        "unit": "%"
+      },
+      {
+        "name": "Production Throughput",
+        "description": "Number of units produced per hour",
+        "target_value": 200,
+        "measurement_method": "count of units produced over time",
+        "unit": "units/hour"
+      },
+      {
+        "name": "Energy Efficiency",
+        "description": "Energy consumed per unit produced",
+        "target_value": 0.5,
+        "measurement_method": "total energy consumption divided by units produced",
+        "unit": "kWh/unit"
+      },
+      {
+        "name": "Machine Availability",
+        "description": "Percentage of time machines are operational",
+        "target_value": 95.0,
+        "measurement_method": "total uptime divided by total time",
+        "unit": "%"
+      },
+      {
+        "name": "Predictive Maintenance Score",
+        "description": "Likelihood of machine failure based on model predictions",
+        "target_value": 0.1,
+        "measurement_method": "model confidence score",
+        "unit": "score"
+      }
+    ]
+  }
+}

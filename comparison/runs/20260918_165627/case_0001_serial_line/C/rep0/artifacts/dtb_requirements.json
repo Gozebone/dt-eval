@@ -1,0 +1,43 @@
+{
+  "production_type": "series production line",
+  "processes": [
+    "station M1 \u2192 M2 \u2192 M3 \u2192 M4 \u2192 M5"
+  ],
+  "equipment": [
+    "machine M1",
+    "machine M2",
+    "machine M3",
+    "machine M4",
+    "machine M5",
+    "buffer B0 (20)",
+    "buffer B1\u2013B4 (8 each)"
+  ],
+  "sensors": [
+    "event detection per processed part (arrival/exit)",
+    "machine state (working/idle/failed)",
+    "energy consumption (active/idle)",
+    "average processing time per station",
+    "station availability",
+    "MTTR",
+    "buffer fill level"
+  ],
+  "goals": [
+    "assess production capacity/speed",
+    "monitor WIP (buffer fill levels)",
+    "evaluate energy efficiency per unit",
+    "monitor machine availability"
+  ],
+  "data_sources": "real-time monitoring from factory + predefined parameters (130s arrival interval, machine & buffer sizes)",
+  "update_frequency": "real-time",
+  "critical_parameters": {
+    "production_capacity": "speed of production line",
+    "wip": "buffer fill level",
+    "energy_per_unit": "energy consumption per processed part",
+    "machine_availability": "availability of machines M1\u2013M5",
+    "processing_time": "time taken per station",
+    "mttr": "mean time to repair",
+    "arrival_interval": "130 seconds"
+  },
+  "additional_info": "model uses Simpy.Environment, single source, 5 sequential machines with specified processing times, MTTR, and buffer sizes; simulation duration \u2265432,000 seconds in one module",
+  "message": "Production line digital twin requirements met with 5 sequential machines, 5 buffers, real-time monitoring, and defined performance metrics (capacity, WIP, energy, MTTR). Simpy Environment setup for 432,000s simulation duration."
+}

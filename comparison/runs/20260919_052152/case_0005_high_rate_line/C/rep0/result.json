@@ -1,0 +1,139 @@
+{
+  "method": "C",
+  "case": "case_0005_high_rate_line",
+  "rep": 0,
+  "status": "ok",
+  "error": null,
+  "elapsed_generation_s": 294.713,
+  "elapsed_simulation_s": 0.066,
+  "llm_calls": 5,
+  "llm_tokens_estimate": null,
+  "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260919_052152/case_0005_high_rate_line/C/rep0/model.json",
+  "kpis": {
+    "throughput_per_hour": null,
+    "utilization": null,
+    "wip_parts": null,
+    "energy_per_part_kwh": null,
+    "native": {
+      "machine_stats": {
+        "M1": {
+          "mentioned": true,
+          "process_time_found": false,
+          "availability_found": false
+        }
+      },
+      "machines_mentioned": 1,
+      "machines_truth": 4,
+      "buffers": {
+        "B0": true,
+        "B1": false,
+        "B2": false,
+        "B3": false
+      },
+      "arrival_found": false,
+      "equipment_count": 3,
+      "artifact_chars": {
+        "config": 3745,
+        "sim": 12820
+      },
+      "machine_ids_in_dt_output": {
+        "M1": true,
+        "M2": false,
+        "M3": false,
+        "M4": false
+      },
+      "machines_mentioned_in_dt": 1,
+      "pychrono_referenced": true,
+      "stage_shapes": {
+        "db_answer": {
+          "chars": 2442,
+          "ids_present": 2,
+          "ids_truth": 8,
+          "ddl_phrases": [
+            "create table",
+            "insert into",
+            "not null",
+            "primary key"
+          ],
+          "sql_types": [
+            "double precision",
+            "jsonb",
+            "timestamptz"
+          ],
+          "looks_like_ddl": true
+        },
+        "db_recorded": {
+          "chars": 2539,
+          "ids_present": 2,
+          "ids_truth": 8,
+          "ddl_phrases": [
+            "create table",
+            "not null",
+            "primary key"
+          ],
+          "sql_types": [
+            "double precision",
+            "jsonb",
+            "timestamptz"
+          ],
+          "looks_like_ddl": true
+        },
+        "dt_config": {
+          "chars": 3745,
+          "ids_present": 0,
+          "ids_truth": 8,
+          "looks_like_json": true
+        },
+        "dt_sim": {
+          "chars": 12820,
+          "ids_present": 2,
+          "ids_truth": 8
+        },
+        "dt_des": {
+          "chars": 7910,
+          "ids_present": 2,
+          "ids_truth": 8
+        }
+      },
+      "interview_turns": 1,
+      "agent_tasks": 5,
+      "agent_tasks_attempted": 5,
+      "responder_calls": 0,
+      "llm_calls_split": {
+        "ui_agent": 1,
+        "db_agent": 1,
+        "dt_agent": 3,
+        "harness_responder": 0
+      },
+      "responder_model": "openai/gpt-5-mini",
+      "api_url": "http://176.119.159.227:8000",
+      "agent_status": {
+        "agent0": "active",
+        "agent1": "active",
+        "agent2": "active"
+      },
+      "db_stage": "unavailable",
+      "db_note": "DB agent (agent 1) output was not JSON; raw text kept in artifacts/dtb_schema.json",
+      "dt_stage": "ok",
+      "dt_note": null,
+      "dt_slots_ok": 3,
+      "dt_slots_total": 3,
+      "des_stage": "simulation_error",
+      "des_exec_status": "simulation_error",
+      "des_exec_error": "DES model exited 1: Traceback (most recent call last):\n  File \"/ssd/projects/dt-eval/comparison/runs/20260919_052152/case_0005_high_rate_line/C/rep0/run_des_model.py\", line 127, in generate_parts\n    yield self.env.timeout(self.inter_arrival_time_s)\n          ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/ssd/projects/dt-eval/comparison/.venv-des/lib64/python3.14/site-packages/simpy/events.py\", line 236, in __init__\n    if delay < 0:\n       ^^^^^^^^^\nTypeError: '<' not supported between instances of 'NoneType' and 'int'\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/ssd/projects/dt-eval/comparison/runs/20260919_052152/case_0005_high_rate_line/C/rep0/run_des_model.py\", line 230, in <module>\n    throughput, wip, energy_per_part = run_simulation(seed)\n                                       ~~~~~~~~~~~~~~^^^^^^\n  File \"/ssd/projects/dt-eval/comparison/runs/20260919_052152/case_0005_high_rate_line/C/rep0/run_des_model.py\", line 180, in run_simulation\n    env.run(until=WARMUP_S + WINDOW_S)\n    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/ssd/projects/dt-eval/comparison/.venv-des/lib64/python3.14/site-packages/simpy/core.py\", line 254, in run\n    self.step()\n    ~~~~~~~~~^^\n  File \"/ssd/projects/dt-eval/comparison/.venv-des/lib64/python3.14/site-packages/simpy/core.py\", line 212, in step\n    raise exc\nTypeError: '<' not supported between instances of 'NoneType' and 'int'\n",
+      "des_parse_error": null,
+      "des_kpis": null,
+      "kpi_source": null,
+      "des_python": "/ssd/projects/dt-eval/comparison/.venv-des/bin/python",
+      "dt_schema_input": "ok",
+      "capability": "Method C emits a requirements document + PostgreSQL schema and (agent 2) a twin configuration, a PyChrono multi-physics script and a discrete-event SimPy model; the DES model is executed and its KPI contract parsed, so throughput/WIP/energy are populated when that slot succeeds and null when it does not"
+    }
+  },
+  "assumptions": null,
+  "notes": [
+    "structural recovery only: 1/4 machines mentioned in C's requirements",
+    "requirements document names the measured quantities but carries no parameter values (C's requirements stage records sensor kinds only)",
+    "DB stage (agent 1) not recovered \u2014 DB agent (agent 1) output was not JSON; raw text kept in artifacts/dtb_schema.json",
+    "DT stage (agent 2) ran: 3745 chars of twin config, 12820 chars of PyChrono script; 1/4 machine ids appear in that output. The script is not executed (PyChrono is not installed on the harness host and models rigid bodies, not the case's discrete-event semantics), so no KPI is derived from it"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "method": "B",
+  "case": "case_0001_serial_line",
+  "rep": 1,
+  "status": "ok",
+  "error": null,
+  "elapsed_generation_s": 47.51,
+  "elapsed_simulation_s": 16.005,
+  "llm_calls": 2,
+  "llm_tokens_estimate": null,
+  "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260918_163803/case_0001_serial_line/B/rep1/model.py",
+  "kpis": {
+    "throughput_per_hour": 15.88,
+    "utilization": null,
+    "wip_parts": 7.6,
+    "energy_per_part_kwh": 0.6307,
+    "native": {
+      "stdout_head": "\n=== Mean Overall KPIs over 10 runs ===\nThroughput = 15.88 parts/hour\nWIP = 7.60 parts\nMean Energy Consumption per Part = 0.6307 kWh/part\n\n=== Bottleneck Frequency over runs ===\nM1: 10 times\nM5: 10 times\nM3: 10 times\n"
+    }
+  },
+  "assumptions": null,
+  "notes": []
+}

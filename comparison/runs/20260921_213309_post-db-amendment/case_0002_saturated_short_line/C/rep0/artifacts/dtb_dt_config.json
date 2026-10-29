@@ -1,0 +1,229 @@
+{
+  "components": {
+    "data_collection": {
+      "modules": [
+        {
+          "name": "sensor_gateway",
+          "type": "OPC-UA client",
+          "description": "Collects real-time sensor data from machines via OPC-UA protocol"
+        },
+        {
+          "name": "mqtt_collector",
+          "type": "MQTT subscriber",
+          "description": "Listens for machine events and status updates via MQTT"
+        },
+        {
+          "name": "historian_bridge",
+          "type": "REST API",
+          "description": "Retrieves historical data from the database via REST API"
+        }
+      ]
+    },
+    "analytics_engine": {
+      "modules": [
+        {
+          "name": "simulation_engine",
+          "type": "Discrete Event Simulation",
+          "description": "Simulates the production line with serial topology, including failures and buffer constraints"
+        },
+        {
+          "name": "predictive_maintenance",
+          "type": "ML Model",
+          "description": "Predicts machine failures based on sensor data and historical trends"
+        },
+        {
+          "name": "performance_analyzer",
+          "type": "Analytics Engine",
+          "description": "Analyzes KPIs and performance metrics in real time"
+        }
+      ]
+    },
+    "visualization": {
+      "modules": [
+        {
+          "name": "dashboard_ui",
+          "type": "Web Dashboard",
+          "description": "Real-time visualization of production line status, KPIs, and alerts"
+        }
+      ]
+    }
+  },
+  "data_flows": {
+    "connections": [
+      {
+        "from": "sensor_gateway",
+        "to": "historian_bridge",
+        "protocol": "OPC-UA",
+        "frequency": "real-time"
+      },
+      {
+        "from": "mqtt_collector",
+        "to": "historian_bridge",
+        "protocol": "MQTT",
+        "frequency": "real-time"
+      },
+      {
+        "from": "historian_bridge",
+        "to": "simulation_engine",
+        "protocol": "REST",
+        "frequency": "real-time"
+      },
+      {
+        "from": "simulation_engine",
+        "to": "dashboard_ui",
+        "protocol": "WebSocket",
+        "frequency": "real-time"
+      },
+      {
+        "from": "predictive_maintenance",
+        "to": "dashboard_ui",
+        "protocol": "WebSocket",
+        "frequency": "real-time"
+      },
+      {
+        "from": "performance_analyzer",
+        "to": "dashboard_ui",
+        "protocol": "WebSocket",
+        "frequency": "real-time"
+      }
+    ]
+  },
+  "visualization_layout": {
+    "dashboard": {
+      "widgets": [
+        {
+          "type": "machine_status",
+          "title": "Machine Status Overview",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 6,
+            "height": 4
+          },
+          "refresh_rate": "5s",
+          "color_scheme": "status_colors"
+        },
+        {
+          "type": "buffer_levels",
+          "title": "Buffer Capacity Levels",
+          "position": {
+            "x": 6,
+            "y": 0,
+            "width": 6,
+            "height": 4
+          },
+          "refresh_rate": "5s",
+          "color_scheme": "capacity_colors"
+        },
+        {
+          "type": "production_line_timeline",
+          "title": "Production Line Timeline",
+          "position": {
+            "x": 0,
+            "y": 4,
+            "width": 12,
+            "height": 4
+          },
+          "refresh_rate": "5s",
+          "color_scheme": "timeline_colors"
+        },
+        {
+          "type": "kpi_metrics",
+          "title": "Key Performance Indicators",
+          "position": {
+            "x": 0,
+            "y": 8,
+            "width": 12,
+            "height": 4
+          },
+          "refresh_rate": "5s",
+          "color_scheme": "metric_colors"
+        }
+      ],
+      "layout": "grid",
+      "theme": "dark"
+    }
+  },
+  "alerts": {
+    "thresholds": [
+      {
+        "name": "machine_failure",
+        "severity": "critical",
+        "condition": "machine_status == 'down'",
+        "message": "Machine has failed and requires maintenance",
+        "actions": [
+          "email",
+          "SMS"
+        ]
+      },
+      {
+        "name": "high_buffer_level",
+        "severity": "warning",
+        "condition": "buffer_level > 0.8 * capacity",
+        "message": "Buffer level is high, consider reducing input rate",
+        "actions": [
+          "email"
+        ]
+      },
+      {
+        "name": "low_buffer_level",
+        "severity": "warning",
+        "condition": "buffer_level < 0.2 * capacity",
+        "message": "Buffer level is low, consider increasing input rate",
+        "actions": [
+          "email"
+        ]
+      },
+      {
+        "name": "high_temperature",
+        "severity": "emergency",
+        "condition": "temperature > 80",
+        "message": "Machine temperature is too high, immediate attention required",
+        "actions": [
+          "email",
+          "SMS",
+          "shutdown"
+        ]
+      }
+    ]
+  },
+  "kpis": {
+    "metrics": [
+      {
+        "name": "throughput",
+        "description": "Number of parts produced per second",
+        "target_value": 1.0,
+        "unit": "parts/s",
+        "calculation_method": "count(parts) / total_simulation_time"
+      },
+      {
+        "name": "utilization",
+        "description": "Percentage of time machines are actively working",
+        "target_value": 90,
+        "unit": "%",
+        "calculation_method": "sum(process_time_s) / sum(total_time_s)"
+      },
+      {
+        "name": "availability",
+        "description": "Percentage of time machines are available for operation",
+        "target_value": 98,
+        "unit": "%",
+        "calculation_method": "sum(available_time_s) / sum(total_time_s)"
+      },
+      {
+        "name": "energy_consumption",
+        "description": "Total energy consumed by the production line",
+        "target_value": 500,
+        "unit": "kWh",
+        "calculation_method": "sum(power_kw * time_s) / 3600"
+      },
+      {
+        "name": "cycle_time",
+        "description": "Average time taken to produce one part",
+        "target_value": 100,
+        "unit": "seconds",
+        "calculation_method": "sum(process_time_s) / count(parts)"
+      }
+    ]
+  }
+}

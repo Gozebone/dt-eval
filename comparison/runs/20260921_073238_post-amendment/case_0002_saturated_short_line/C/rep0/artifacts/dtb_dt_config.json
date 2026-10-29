@@ -1,0 +1,200 @@
+{
+  "components": {
+    "data_collection": {
+      "modules": [
+        {
+          "name": "OPC-UA Gateway",
+          "type": "data_collector",
+          "description": "Collects real-time data from machines via OPC-UA protocol",
+          "protocol": "OPC-UA",
+          "update_frequency_s": 5
+        },
+        {
+          "name": "MQTT Ingestor",
+          "type": "data_collector",
+          "description": "Ingests sensor data from IoT devices via MQTT",
+          "protocol": "MQTT",
+          "update_frequency_s": 10
+        }
+      ]
+    },
+    "analytics_engine": {
+      "modules": [
+        {
+          "name": "Real-time Analytics Engine",
+          "type": "analytics",
+          "description": "Processes live data to compute KPIs and detect anomalies",
+          "protocol": "REST",
+          "update_frequency_s": 30
+        },
+        {
+          "name": "Historical Data Analyzer",
+          "type": "analytics",
+          "description": "Analyzes historical data for trend and performance analysis",
+          "protocol": "REST",
+          "update_frequency_s": 3600
+        }
+      ]
+    },
+    "ml_models": {
+      "modules": [
+        {
+          "name": "Predictive Maintenance Model",
+          "type": "ml_model",
+          "description": "Predicts machine failures using historical and real-time data",
+          "protocol": "REST",
+          "update_frequency_s": 60
+        },
+        {
+          "name": "Optimization Recommendation Engine",
+          "type": "ml_model",
+          "description": "Provides optimization recommendations for production efficiency",
+          "protocol": "REST",
+          "update_frequency_s": 120
+        }
+      ]
+    },
+    "visualization": {
+      "modules": [
+        {
+          "name": "Production Dashboard",
+          "type": "dashboard",
+          "description": "Real-time visualization of production line status, KPIs, and alerts",
+          "protocol": "WebSocket",
+          "update_frequency_s": 5
+        }
+      ]
+    }
+  },
+  "data_flows": {
+    "source_to_collectors": {
+      "from": "machines",
+      "to": [
+        "OPC-UA Gateway",
+        "MQTT Ingestor"
+      ],
+      "protocol": "OPC-UA, MQTT",
+      "frequency_s": 5
+    },
+    "collectors_to_analytics": {
+      "from": [
+        "OPC-UA Gateway",
+        "MQTT Ingestor"
+      ],
+      "to": [
+        "Real-time Analytics Engine",
+        "Historical Data Analyzer"
+      ],
+      "protocol": "REST",
+      "frequency_s": 30
+    },
+    "analytics_to_ml": {
+      "from": [
+        "Real-time Analytics Engine"
+      ],
+      "to": [
+        "Predictive Maintenance Model",
+        "Optimization Recommendation Engine"
+      ],
+      "protocol": "REST",
+      "frequency_s": 60
+    },
+    "analytics_to_dashboard": {
+      "from": [
+        "Real-time Analytics Engine"
+      ],
+      "to": [
+        "Production Dashboard"
+      ],
+      "protocol": "WebSocket",
+      "frequency_s": 5
+    }
+  },
+  "visualization": {
+    "layout": {
+      "widgets": [
+        {
+          "type": "gauge",
+          "title": "Line Utilization",
+          "data_source": "Real-time Analytics Engine",
+          "refresh_rate_s": 5,
+          "color": "#007bff"
+        },
+        {
+          "type": "line_chart",
+          "title": "Processing Time Over Time",
+          "data_source": "Real-time Analytics Engine",
+          "refresh_rate_s": 10,
+          "color": "#28a745"
+        },
+        {
+          "type": "bar_chart",
+          "title": "Machine Availability",
+          "data_source": "Real-time Analytics Engine",
+          "refresh_rate_s": 10,
+          "color": "#ffc107"
+        },
+        {
+          "type": "alert_panel",
+          "title": "Active Alerts",
+          "data_source": "Alert Engine",
+          "refresh_rate_s": 5,
+          "color": "#dc3545"
+        }
+      ]
+    }
+  },
+  "alerts": {
+    "thresholds": [
+      {
+        "name": "High Processing Time",
+        "description": "Processing time exceeds 110% of average",
+        "severity": "warning",
+        "value": 99,
+        "unit": "seconds",
+        "trigger": "above"
+      },
+      {
+        "name": "Low Availability",
+        "description": "Availability drops below 95%",
+        "severity": "critical",
+        "value": 95,
+        "unit": "%",
+        "trigger": "below"
+      },
+      {
+        "name": "High MTTR",
+        "description": "Mean Time to Repair exceeds 1000 seconds",
+        "severity": "emergency",
+        "value": 1000,
+        "unit": "seconds",
+        "trigger": "above"
+      }
+    ]
+  },
+  "kpis": {
+    "kpis_list": [
+      {
+        "name": "Overall Equipment Effectiveness",
+        "target": 85,
+        "unit": "%",
+        "source": "Real-time Analytics Engine",
+        "calculation": "availability * performance * quality"
+      },
+      {
+        "name": "Production Rate",
+        "target": 60,
+        "unit": "parts/hour",
+        "source": "Real-time Analytics Engine",
+        "calculation": "parts_per_hour"
+      },
+      {
+        "name": "Energy Consumption",
+        "target": 10,
+        "unit": "kWh/hour",
+        "source": "Real-time Analytics Engine",
+        "calculation": "total_energy_kwh / total_time_hours"
+      }
+    ]
+  }
+}

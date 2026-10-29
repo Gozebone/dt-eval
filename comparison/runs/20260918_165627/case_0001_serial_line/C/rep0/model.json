@@ -1,0 +1,261 @@
+{
+  "requirements": {
+    "production_type": "series production line",
+    "processes": [
+      "station M1 \u2192 M2 \u2192 M3 \u2192 M4 \u2192 M5"
+    ],
+    "equipment": [
+      "machine M1",
+      "machine M2",
+      "machine M3",
+      "machine M4",
+      "machine M5",
+      "buffer B0 (20)",
+      "buffer B1\u2013B4 (8 each)"
+    ],
+    "sensors": [
+      "event detection per processed part (arrival/exit)",
+      "machine state (working/idle/failed)",
+      "energy consumption (active/idle)",
+      "average processing time per station",
+      "station availability",
+      "MTTR",
+      "buffer fill level"
+    ],
+    "goals": [
+      "assess production capacity/speed",
+      "monitor WIP (buffer fill levels)",
+      "evaluate energy efficiency per unit",
+      "monitor machine availability"
+    ],
+    "data_sources": "real-time monitoring from factory + predefined parameters (130s arrival interval, machine & buffer sizes)",
+    "update_frequency": "real-time",
+    "critical_parameters": {
+      "production_capacity": "speed of production line",
+      "wip": "buffer fill level",
+      "energy_per_unit": "energy consumption per processed part",
+      "machine_availability": "availability of machines M1\u2013M5",
+      "processing_time": "time taken per station",
+      "mttr": "mean time to repair",
+      "arrival_interval": "130 seconds"
+    },
+    "additional_info": "model uses Simpy.Environment, single source, 5 sequential machines with specified processing times, MTTR, and buffer sizes; simulation duration \u2265432,000 seconds in one module",
+    "message": "Production line digital twin requirements met with 5 sequential machines, 5 buffers, real-time monitoring, and defined performance metrics (capacity, WIP, energy, MTTR). Simpy Environment setup for 432,000s simulation duration."
+  },
+  "schema": {
+    "raw": ""
+  },
+  "dt_config": {
+    "components": {
+      "data_collection": {
+        "modules": [
+          {
+            "name": "SensorDataCollector",
+            "type": "data_collector",
+            "description": "Collects real-time sensor data from machines and buffers",
+            "protocol": "MQTT",
+            "frequency": "real-time"
+          },
+          {
+            "name": "SimulationEngine",
+            "type": "simulation_engine",
+            "description": "Simulates the production line using SimPy environment",
+            "protocol": "REST",
+            "frequency": "real-time"
+          }
+        ]
+      },
+      "analytics": {
+        "engines": [
+          {
+            "name": "PerformanceAnalyzer",
+            "type": "analytics_engine",
+            "description": "Analyzes performance metrics like capacity, WIP, and energy efficiency",
+            "protocol": "WebSocket",
+            "frequency": "real-time"
+          },
+          {
+            "name": "AvailabilityTracker",
+            "type": "analytics_engine",
+            "description": "Tracks machine availability and MTTR",
+            "protocol": "REST",
+            "frequency": "real-time"
+          }
+        ]
+      },
+      "ml_models": [
+        {
+          "name": "PredictiveMaintenanceModel",
+          "type": "ml_model",
+          "description": "Predicts potential machine failures based on historical and real-time data",
+          "protocol": "REST",
+          "frequency": "real-time"
+        }
+      ],
+      "visualization": {
+        "dashboard": {
+          "name": "ProductionLineDashboard",
+          "type": "visualization_dashboard",
+          "widgets": [
+            {
+              "name": "ProductionCapacityWidget",
+              "type": "gauge",
+              "description": "Displays current production capacity",
+              "refresh_rate": "1s",
+              "color_scheme": "green_to_red"
+            },
+            {
+              "name": "BufferLevelWidget",
+              "type": "bar_chart",
+              "description": "Shows buffer fill levels across all buffers",
+              "refresh_rate": "1s",
+              "color_scheme": "blue_to_orange"
+            },
+            {
+              "name": "MachineStatusWidget",
+              "type": "status_indicator",
+              "description": "Indicates status of each machine (working/idle/failed)",
+              "refresh_rate": "1s",
+              "color_scheme": "green_yellow_red"
+            },
+            {
+              "name": "EnergyEfficiencyWidget",
+              "type": "line_chart",
+              "description": "Tracks energy consumption per unit processed",
+              "refresh_rate": "1s",
+              "color_scheme": "purple_to_pink"
+            },
+            {
+              "name": "MTTRWidget",
+              "type": "timeline",
+              "description": "Visualizes mean time to repair for machines",
+              "refresh_rate": "1s",
+              "color_scheme": "gray_to_blue"
+            }
+          ]
+        }
+      }
+    },
+    "data_flows": {
+      "connections": [
+        {
+          "source": "SensorDataCollector",
+          "destination": "PerformanceAnalyzer",
+          "protocol": "MQTT",
+          "frequency": "real-time"
+        },
+        {
+          "source": "SensorDataCollector",
+          "destination": "AvailabilityTracker",
+          "protocol": "MQTT",
+          "frequency": "real-time"
+        },
+        {
+          "source": "SimulationEngine",
+          "destination": "PerformanceAnalyzer",
+          "protocol": "REST",
+          "frequency": "real-time"
+        },
+        {
+          "source": "PerformanceAnalyzer",
+          "destination": "ProductionLineDashboard",
+          "protocol": "WebSocket",
+          "frequency": "real-time"
+        },
+        {
+          "source": "AvailabilityTracker",
+          "destination": "ProductionLineDashboard",
+          "protocol": "WebSocket",
+          "frequency": "real-time"
+        },
+        {
+          "source": "PredictiveMaintenanceModel",
+          "destination": "ProductionLineDashboard",
+          "protocol": "REST",
+          "frequency": "real-time"
+        }
+      ]
+    },
+    "alerts": {
+      "thresholds": [
+        {
+          "parameter": "production_capacity",
+          "threshold": "90%",
+          "severity": "warning",
+          "message": "Production capacity is below 90%"
+        },
+        {
+          "parameter": "wip",
+          "threshold": "80%",
+          "severity": "warning",
+          "message": "Buffer fill level exceeds 80%"
+        },
+        {
+          "parameter": "energy_per_unit",
+          "threshold": "1.5kWh/unit",
+          "severity": "critical",
+          "message": "Energy consumption per unit exceeds threshold"
+        },
+        {
+          "parameter": "machine_availability",
+          "threshold": "85%",
+          "severity": "warning",
+          "message": "Machine availability drops below 85%"
+        },
+        {
+          "parameter": "mttr",
+          "threshold": "300s",
+          "severity": "emergency",
+          "message": "Mean time to repair exceeds 300 seconds"
+        }
+      ]
+    },
+    "kpis": {
+      "metrics": [
+        {
+          "name": "production_capacity",
+          "description": "Speed of production line",
+          "target_value": "100%",
+          "measurement_method": "Real-time calculation based on part throughput",
+          "unit": "%"
+        },
+        {
+          "name": "wip",
+          "description": "Buffer fill level",
+          "target_value": "< 70%",
+          "measurement_method": "Continuous monitoring of buffer levels",
+          "unit": "%"
+        },
+        {
+          "name": "energy_per_unit",
+          "description": "Energy consumption per processed part",
+          "target_value": "< 1.2kWh/unit",
+          "measurement_method": "Aggregate energy usage divided by parts processed",
+          "unit": "kWh/unit"
+        },
+        {
+          "name": "machine_availability",
+          "description": "Availability of machines M1\u2013M5",
+          "target_value": "> 95%",
+          "measurement_method": "Time spent in working state vs total time",
+          "unit": "%"
+        },
+        {
+          "name": "processing_time",
+          "description": "Time taken per station",
+          "target_value": "< 120s",
+          "measurement_method": "Average processing time at each station",
+          "unit": "seconds"
+        },
+        {
+          "name": "mttr",
+          "description": "Mean time to repair",
+          "target_value": "< 200s",
+          "measurement_method": "Average downtime between failure and repair",
+          "unit": "seconds"
+        }
+      ]
+    }
+  },
+  "dt_simulation": "```python\nimport pychrono as chrono\nimport pychrono.irrlicht as irr\nimport math\nimport numpy as np\nimport time\nimport csv\nfrom datetime import datetime\n\n# Initialize PyChrono system\nchrono.SetChronoDataPath('path/to/chronodata')  # Update path as needed\nsys = chrono.ChSystemNSC()\nsys.SetGravitationalAcceleration(chrono.ChVectorD(0, -9.81, 0))\n\n# Create materials\nmat_steel = chrono.ChMaterialSurfaceNSC()\nmat_steel.SetFriction(0.4)\nmat_steel.SetRestitution(0.1)\n\nmat_refractory = chrono.ChMaterialSurfaceNSC()\nmat_refractory.SetFriction(0.3)\nmat_refractory.SetRestitution(0.05)\n\n# Create ground plane\nground = chrono.ChBodyEasyBox(20, 1, 20, 1000, True, True, mat_steel)\nground.SetPos(chrono.ChVectorD(0, -0.5, 0))\nground.SetFixed(True)\nsys.Add(ground)\n\n# Machine parameters\nmachine_length = 2.0\nmachine_width = 1.0\nmachine_height = 1.5\n\n# Buffer parameters\nbuffer_length = 2.0\nbuffer_width = 1.0\nbuffer_height = 1.0\n\n# Create machines M1-M5\nmachines = []\nfor i in range(5):\n    machine = chrono.ChBodyEasyBox(machine_length, machine_height, machine_width, 1000, True, True, mat_steel)\n    machine.SetPos(chrono.ChVectorD(i * 3.0, 0.5, 0))\n    machine.SetFixed(False)\n    sys.Add(machine)\n    machines.append(machine)\n\n# Create buffers B0-B4\nbuffers = []\nfor i in range(5):\n    buffer = chrono.ChBodyEasyBox(buffer_length, buffer_height, buffer_width, 1000, True, True, mat_refractory)\n    buffer.SetPos(chrono.ChVectorD(i * 3.0 + 1.5, 0.5, 0))\n    buffer.SetFixed(False)\n    sys.Add(buffer)\n    buffers.append(buffer)\n\n# Create part (product) to simulate production flow\npart_mass = 10.0\npart_radius = 0.1\npart = chrono.ChBodyEasySphere(part_radius, part_mass, True, True, mat_steel)\npart.SetPos(chrono.ChVectorD(-1.0, 1.0, 0))\nsys.Add(part)\n\n# Simulation parameters\nsimulation_duration = 432000  # seconds\ntime_step = 0.01  # seconds\ncurrent_time = 0.0\n\n# Sensor data storage\nsensor_data = []\n\n# Define event logging function\ndef log_sensor_data(time, machine_states, buffer_levels, energy_consumption):\n    entry = {\n        'timestamp': time,\n        'machine_states': machine_states,\n        'buffer_levels': buffer_levels,\n        'energy_consumption': energy_consumption\n    }\n    sensor_data.append(entry)\n\n# Define machine processing times and MTTR\nmachine_processing_times = [30, 40, 35, 45, 50]  # seconds per part\nmachine_mttr = [10, 15, 12, 18, 20]  # seconds for repair\nmachine_fail_prob = [0.01, 0.015, 0.012, 0.018, 0.02]  # probability of failure per second\n\n# Track machine states: 0=idle, 1=working, 2=failed\nmachine_states = [0] * 5\nmachine_failures = [False] * 5\nmachine_repair_times = [0.0] * 5\nmachine_processing_start_times = [0.0] * 5\n\n# Buffer capacities\nbuffer_capacities = [20, 8, 8, 8, 8]\nbuffer_fill_levels = [0] * 5  # B0-B4\n\n# Energy consumption tracking (Watts)\nmachine_energy_idle = 100  # Watts when idle\nmachine_energy_active = 500  # Watts when active\ntotal_energy_consumption = 0.0\n\n# Part arrival mechanism\npart_arrival_interval = 130  # seconds\nlast_part_arrival = 0.0\n\n# Main simulation loop\nwhile current_time < simulation_duration:\n    # Check if new part arrives\n    if current_time - last_part_arrival >= part_arrival_interval:\n        part.SetPos(chrono.ChVectorD(-1.0, 1.0, 0))  # Reset part position\n        last_part_arrival = current_time\n        # Update buffer level for B0\n        buffer_fill_levels[0] += 1\n        if buffer_fill_levels[0] > buffer_capacities[0]:\n            buffer_fill_levels[0] = buffer_capacities[0]\n\n    # Process machines\n    for i in range(5):\n        if machine_states[i] == 0:  # Idle\n            if buffer_fill_levels[i] > 0:\n                machine_states[i] = 1  # Start working\n                machine_processing_start_times[i] = current_time\n                buffer_fill_levels[i] -= 1  # Remove part from buffer\n        elif machine_states[i] == 1:  # Working\n            if current_time - machine_processing_start_times[i] >= machine_processing_times[i]:\n                machine_states[i] = 0  # Finished processing\n                # Move part to next station or finish\n                if i < 4:\n                    buffer_fill_levels[i+1] += 1\n                    if buffer_fill_levels[i+1] > buffer_capacities[i+1]:\n                        buffer_fill_levels[i+1] = buffer_capacities[i+1]\n        elif machine_states[i] == 2:  # Failed\n            if current_time - machine_repair_times[i] >= machine_mttr[i]:\n                machine_states[i] = 0  # Repair completed\n        else:\n            # Randomly fail machines\n            if not machine_failures[i] and np.random.rand() < machine_fail_prob[i]:\n                machine_failures[i] = True\n                machine_states[i] = 2  # Mark as failed\n                machine_repair_times[i] = current_time\n\n    # Calculate energy consumption\n    energy_active = sum([1 if s == 1 else 0 for s in machine_states]) * machine_energy_active\n    energy_idle = sum([1 if s == 0 else 0 for s in machine_states]) * machine_energy_idle\n    total_energy_consumption += (energy_active + energy_idle) * time_step\n\n    # Log sensor data every 10 seconds\n    if int(current_time) % 10 == 0:\n        log_sensor_data(\n            current_time,\n            machine_states.copy(),\n            buffer_fill_levels.copy(),\n            total_energy_consumption\n        )\n\n    # Step simulation\n    sys.DoStepDynamics(time_step)\n    current_time += time_step\n\n# Export sensor data to CSV\nwith open('sensor_data.csv', 'w', newline='') as csvfile:\n    fieldnames = ['timestamp', 'machine_states', 'buffer_levels', 'energy_consumption']\n    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)\n    writer.writeheader()\n    for entry in sensor_data:\n        writer.writerow(entry)\n\nprint(f\"Simulation completed. Total runtime: {simulation_duration} seconds.\")\nprint(f\"Total energy consumption: {total_energy_consumption:.2f} Joules\")\n\n# Print summary statistics\nprint(\"\\nSummary Statistics:\")\nprint(f\"Average buffer fill levels: {[sum(levels)/len(sensor_data) for levels in zip(*[entry['buffer_levels'] for entry in sensor_data])] if sensor_data else []}\")\nprint(f\"Machine availability: {[sum([1 if state == 1 else 0 for state in entry['machine_states']]) / len(entry['machine_states']) for entry in sensor_data]}\")\n```"
+}

@@ -1,0 +1,221 @@
+{
+  "components": {
+    "data_collection": {
+      "modules": [
+        {
+          "name": "OPC-UA Collector",
+          "type": "data_collector",
+          "description": "Collects real-time data from machines via OPC-UA protocol",
+          "protocol": "OPC-UA",
+          "frequency": "10s"
+        },
+        {
+          "name": "MQTT Bridge",
+          "type": "data_collector",
+          "description": "Handles data ingestion from IoT sensors and devices via MQTT",
+          "protocol": "MQTT",
+          "frequency": "5s"
+        }
+      ]
+    },
+    "analytics_engine": {
+      "name": "Production Analytics Engine",
+      "type": "analytics",
+      "description": "Analyzes production data for KPIs, performance trends, and predictive insights",
+      "modules": [
+        {
+          "name": "KPI Calculator",
+          "type": "processor",
+          "description": "Calculates key performance indicators such as OEE, throughput, and energy consumption"
+        },
+        {
+          "name": "Predictive Maintenance Engine",
+          "type": "processor",
+          "description": "Predicts potential equipment failures based on historical and real-time data"
+        }
+      ]
+    },
+    "ml_models": {
+      "models": [
+        {
+          "name": "Failure Prediction Model",
+          "type": "ML",
+          "description": "Predicts machine failures using historical data and sensor inputs"
+        },
+        {
+          "name": "Efficiency Optimization Model",
+          "type": "ML",
+          "description": "Optimizes production line performance by adjusting parameters in real time"
+        }
+      ]
+    },
+    "visualization": {
+      "dashboard": {
+        "name": "Production Line Dashboard",
+        "type": "visualization",
+        "description": "Real-time visualization of production line performance",
+        "widgets": [
+          {
+            "type": "line_chart",
+            "title": "Throughput Over Time",
+            "refresh_rate": "10s",
+            "color_scheme": "blue"
+          },
+          {
+            "type": "gauge",
+            "title": "Line Efficiency",
+            "refresh_rate": "10s",
+            "color_scheme": "green"
+          },
+          {
+            "type": "bar_chart",
+            "title": "Energy Consumption by Machine",
+            "refresh_rate": "30s",
+            "color_scheme": "orange"
+          },
+          {
+            "type": "map",
+            "title": "Machine Status Map",
+            "refresh_rate": "15s",
+            "color_scheme": "red"
+          }
+        ]
+      }
+    }
+  },
+  "data_flows": {
+    "source_to_collector": {
+      "protocol": "OPC-UA",
+      "frequency": "10s",
+      "description": "Real-time data flow from machines to data collectors"
+    },
+    "collector_to_analytics": {
+      "protocol": "REST",
+      "frequency": "5s",
+      "description": "Data flow from collectors to analytics engine"
+    },
+    "analytics_to_visualization": {
+      "protocol": "WebSocket",
+      "frequency": "10s",
+      "description": "Live data feed from analytics engine to visualization dashboard"
+    },
+    "ml_to_analytics": {
+      "protocol": "MQTT",
+      "frequency": "15s",
+      "description": "Model predictions and insights from ML models to analytics engine"
+    },
+    "alerts_to_monitoring": {
+      "protocol": "WebSocket",
+      "frequency": "1s",
+      "description": "Real-time alerts from analytics engine to monitoring systems"
+    }
+  },
+  "visualization_layout": {
+    "dashboard_structure": {
+      "rows": 3,
+      "columns": 2
+    },
+    "widgets": [
+      {
+        "position": "row1,col1",
+        "widget_type": "line_chart",
+        "title": "Production Rate Over Time",
+        "refresh_rate": "10s",
+        "color_scheme": "blue"
+      },
+      {
+        "position": "row1,col2",
+        "widget_type": "gauge",
+        "title": "Overall Equipment Effectiveness",
+        "refresh_rate": "10s",
+        "color_scheme": "green"
+      },
+      {
+        "position": "row2,col1",
+        "widget_type": "bar_chart",
+        "title": "Energy Consumption",
+        "refresh_rate": "30s",
+        "color_scheme": "orange"
+      },
+      {
+        "position": "row2,col2",
+        "widget_type": "map",
+        "title": "Machine Status",
+        "refresh_rate": "15s",
+        "color_scheme": "red"
+      },
+      {
+        "position": "row3,col1",
+        "widget_type": "table",
+        "title": "Alerts Summary",
+        "refresh_rate": "1s",
+        "color_scheme": "gray"
+      },
+      {
+        "position": "row3,col2",
+        "widget_type": "timeline",
+        "title": "Production Timeline",
+        "refresh_rate": "10s",
+        "color_scheme": "purple"
+      }
+    ]
+  },
+  "alerts": {
+    "thresholds": [
+      {
+        "parameter": "machine_status",
+        "condition": "is_down",
+        "severity": "critical",
+        "description": "Machine is down for more than 5 minutes"
+      },
+      {
+        "parameter": "production_rate",
+        "condition": "< 80%",
+        "severity": "warning",
+        "description": "Production rate drops below 80% of target"
+      },
+      {
+        "parameter": "temperature",
+        "condition": "> 80 C",
+        "severity": "emergency",
+        "description": "Machine temperature exceeds 80\u00b0C"
+      },
+      {
+        "parameter": "vibration",
+        "condition": "> 5 mm/s",
+        "severity": "warning",
+        "description": "Vibration level exceeds 5 mm/s"
+      }
+    ]
+  },
+  "kpis": {
+    "oee": {
+      "target": 85,
+      "metric": "Overall Equipment Effectiveness",
+      "unit": "%",
+      "method": "Calculated as Availability * Performance * Quality",
+      "description": "Measures the efficiency of the production line"
+    },
+    "throughput": {
+      "target": 1000,
+      "metric": "Units Produced per Hour",
+      "unit": "units/hour",
+      "method": "Number of units produced over a time period",
+      "description": "Measures the output rate of the production line"
+    },
+    "energy_consumption": {
+      "target": 150,
+      "metric": "Total Energy Consumption",
+      "unit": "kWh",
+      "method": "Sum of energy consumption from all machines",
+      "description": "Measures the total energy used by the production line"
+    },
+    "availability": {
+      "target": 95,
+      "metric": "Machine Availability",
+      "unit": "%",
+      "method": "Time the machine is operational divided by total time",
+      "description": "Measures the uptime of individual machines"
+    }
+  }
+}

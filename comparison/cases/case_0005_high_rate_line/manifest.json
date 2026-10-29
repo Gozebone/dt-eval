@@ -1,0 +1,67 @@
+{
+  "case_id": "case_0005_high_rate_line",
+  "title": "4-machine fast line, arrival rate above the bottleneck, large entry buffer",
+  "time_units": "s",
+  "reference": {
+    "log_rep": 0,
+    "replications": 10,
+    "warmup_s": 21600,
+    "window_s": 432000,
+    "seed": 20260912
+  },
+  "arrival": {
+    "inter_arrival_s": 45
+  },
+  "machines": [
+    {
+      "id": "M1",
+      "process_time_s": 60,
+      "availability": 0.995,
+      "mttr_s": 300,
+      "work_power_kw": 3.0,
+      "idle_power_kw": 0.3
+    },
+    {
+      "id": "M2",
+      "process_time_s": 80,
+      "availability": 0.99,
+      "mttr_s": 600,
+      "work_power_kw": 5.0,
+      "idle_power_kw": 0.5
+    },
+    {
+      "id": "M3",
+      "process_time_s": 70,
+      "availability": 0.99,
+      "mttr_s": 600,
+      "work_power_kw": 4.5,
+      "idle_power_kw": 0.45
+    },
+    {
+      "id": "M4",
+      "process_time_s": 75,
+      "availability": 0.995,
+      "mttr_s": 300,
+      "work_power_kw": 4.0,
+      "idle_power_kw": 0.4
+    }
+  ],
+  "buffers": [
+    {
+      "id": "B0",
+      "capacity": 25
+    },
+    {
+      "id": "B1",
+      "capacity": 10
+    },
+    {
+      "id": "B2",
+      "capacity": 10
+    },
+    {
+      "id": "B3",
+      "capacity": 10
+    }
+  ]
+}

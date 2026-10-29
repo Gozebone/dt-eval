@@ -1,0 +1,88 @@
+[
+  {
+    "method": "A",
+    "case": "case_0001_serial_line",
+    "rep": 0,
+    "status": "ok",
+    "error": null,
+    "elapsed_generation_s": 80.111,
+    "elapsed_simulation_s": 0.972,
+    "llm_calls": 2,
+    "llm_tokens_estimate": null,
+    "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260908_223442/case_0001_serial_line/A/rep0/model.py",
+    "kpis": {
+      "throughput_per_hour": 19.9083,
+      "utilization": {
+        "M1": 0.8356,
+        "M2": 0.6692,
+        "M3": 0.9991,
+        "M4": 0.6682,
+        "M5": 0.8287
+      },
+      "wip_parts": null,
+      "energy_per_part_kwh": null,
+      "native": {
+        "machine_stats": {
+          "M1": {
+            "processed": 2407,
+            "horizon": 432000.0,
+            "utilization": 0.8355537037037405,
+            "throughput_per_unit": 0.005571759259259259
+          },
+          "M2": {
+            "processed": 2398,
+            "horizon": 432000.0,
+            "utilization": 0.6691655092592592,
+            "throughput_per_unit": 0.005550925925925926
+          },
+          "M3": {
+            "processed": 2389,
+            "horizon": 432000.0,
+            "utilization": 0.9990731481481481,
+            "throughput_per_unit": 0.0055300925925925925
+          },
+          "M4": {
+            "processed": 2389,
+            "horizon": 432000.0,
+            "utilization": 0.6682010879629795,
+            "throughput_per_unit": 0.0055300925925925925
+          },
+          "M5": {
+            "processed": 2388,
+            "horizon": 432000.0,
+            "utilization": 0.8286726388888963,
+            "throughput_per_unit": 0.005527777777777778
+          }
+        },
+        "model_horizon_s": 432000.0
+      }
+    },
+    "assumptions": "1. Node names and Types are chosen according to users description.\n2. Assumed names for the Source and Sink nodes as they were not explicitly named in the description.\n3. Used a single buffer where ever number of buffers not specified.\n4. Assumed the provided buffers B0 through B4 sequentially connect the Source to M1, and the subsequent machines in series (M1 to M2, M2 to M3, M3 to M4, M4 to M5).\n5. Assumed an additional buffer is required to connect the final machine M5 to the Sink using default capacity, as only 5 buffers were specified for the 6 logical connections in the sequence.\n6. Used default values for all missing parameters for all components.",
+    "notes": [],
+    "adapter_elapsed_s": 81.45
+  },
+  {
+    "method": "B",
+    "case": "case_0001_serial_line",
+    "rep": 0,
+    "status": "ok",
+    "error": null,
+    "elapsed_generation_s": 47.521,
+    "elapsed_simulation_s": 27.822,
+    "llm_calls": 2,
+    "llm_tokens_estimate": null,
+    "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260908_223442/case_0001_serial_line/B/rep0/model.py",
+    "kpis": {
+      "throughput_per_hour": 18.05,
+      "utilization": null,
+      "wip_parts": 34.58,
+      "energy_per_part_kwh": 0.8052,
+      "native": {
+        "stdout_head": "\n=== Mean Overall KPIs over 10 runs ===\nThroughput = 18.05 parts/hour\nWIP = 34.58 parts\nMean Energy Consumption per Part = 0.8052 kWh/part\n\n=== Bottleneck Frequency over runs ===\nM5: 10 times\nM1: 10 times\nM2: 10 times\n"
+      }
+    },
+    "assumptions": null,
+    "notes": [],
+    "adapter_elapsed_s": 76.54
+  }
+]

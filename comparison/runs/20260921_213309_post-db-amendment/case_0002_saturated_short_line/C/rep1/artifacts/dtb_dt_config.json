@@ -1,0 +1,242 @@
+{
+  "components": {
+    "data_collection": {
+      "modules": [
+        {
+          "id": "opcua_collector",
+          "type": "OPC-UA",
+          "description": "Collects real-time data from industrial equipment via OPC-UA protocol",
+          "frequency": "10s"
+        },
+        {
+          "id": "mqtt_collector",
+          "type": "MQTT",
+          "description": "Collects data from sensors and devices over MQTT protocol",
+          "frequency": "5s"
+        }
+      ]
+    },
+    "analytics": {
+      "engines": [
+        {
+          "id": "production_analytics",
+          "type": "Analytics Engine",
+          "description": "Analyzes production data to detect anomalies and inefficiencies",
+          "frequency": "real-time"
+        }
+      ]
+    },
+    "ml_models": {
+      "models": [
+        {
+          "id": "predictive_maintenance",
+          "type": "ML Model",
+          "description": "Predicts equipment failures using historical and real-time data",
+          "frequency": "15s"
+        },
+        {
+          "id": "energy_optimization",
+          "type": "ML Model",
+          "description": "Optimizes energy consumption based on production schedules",
+          "frequency": "30s"
+        }
+      ]
+    },
+    "visualization": {
+      "dashboards": [
+        {
+          "id": "production_dashboard",
+          "type": "Dashboard",
+          "description": "Real-time visualization of production line performance",
+          "widgets": [
+            {
+              "type": "Gauge",
+              "title": "Production Efficiency",
+              "metric": "Availability_%",
+              "target": 99
+            },
+            {
+              "type": "Chart",
+              "title": "Energy Consumption",
+              "metric": "EnergyWorking",
+              "unit": "kW"
+            },
+            {
+              "type": "Table",
+              "title": "Machine Status",
+              "metric": "machine_status"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "data_flows": {
+    "connections": [
+      {
+        "source": "opcua_collector",
+        "destination": "production_analytics",
+        "protocol": "OPC-UA",
+        "frequency": "10s"
+      },
+      {
+        "source": "mqtt_collector",
+        "destination": "production_analytics",
+        "protocol": "MQTT",
+        "frequency": "5s"
+      },
+      {
+        "source": "production_analytics",
+        "destination": "predictive_maintenance",
+        "protocol": "REST",
+        "frequency": "15s"
+      },
+      {
+        "source": "production_analytics",
+        "destination": "energy_optimization",
+        "protocol": "REST",
+        "frequency": "30s"
+      },
+      {
+        "source": "production_analytics",
+        "destination": "production_dashboard",
+        "protocol": "WebSocket",
+        "frequency": "real-time"
+      }
+    ]
+  },
+  "visualization": {
+    "layout": {
+      "dashboard": {
+        "title": "Production Line Digital Twin Dashboard",
+        "widgets": [
+          {
+            "id": "efficiency_gauge",
+            "position": {
+              "x": 0,
+              "y": 0,
+              "width": 2,
+              "height": 2
+            },
+            "type": "Gauge",
+            "title": "Production Efficiency",
+            "metric": "Availability_%",
+            "thresholds": [
+              {
+                "level": "warning",
+                "value": 95
+              },
+              {
+                "level": "critical",
+                "value": 90
+              }
+            ],
+            "color_scheme": {
+              "warning": "#FFA500",
+              "critical": "#FF0000"
+            }
+          },
+          {
+            "id": "energy_chart",
+            "position": {
+              "x": 2,
+              "y": 0,
+              "width": 4,
+              "height": 2
+            },
+            "type": "Chart",
+            "title": "Energy Consumption",
+            "metrics": [
+              "EnergyIdling",
+              "EnergyWorking"
+            ],
+            "unit": "kW",
+            "refresh_rate": "10s"
+          },
+          {
+            "id": "machine_status_table",
+            "position": {
+              "x": 0,
+              "y": 2,
+              "width": 6,
+              "height": 2
+            },
+            "type": "Table",
+            "title": "Machine Status",
+            "metrics": [
+              "machine_id",
+              "status",
+              "processing_time_s",
+              "availability_pct"
+            ],
+            "refresh_rate": "5s"
+          }
+        ]
+      }
+    }
+  },
+  "alerts": {
+    "thresholds": [
+      {
+        "metric": "Availability_%",
+        "threshold": 95,
+        "severity": "warning",
+        "description": "Production efficiency below 95%"
+      },
+      {
+        "metric": "Availability_%",
+        "threshold": 90,
+        "severity": "critical",
+        "description": "Production efficiency below 90%"
+      },
+      {
+        "metric": "EnergyWorking",
+        "threshold": 5.0,
+        "severity": "warning",
+        "description": "Energy consumption above 5.0 kW"
+      },
+      {
+        "metric": "MTTR_s",
+        "threshold": 900,
+        "severity": "critical",
+        "description": "Mean time to repair exceeds 900 seconds"
+      }
+    ]
+  },
+  "kpis": {
+    "indicators": [
+      {
+        "id": "production_efficiency",
+        "name": "Production Efficiency",
+        "metric": "Availability_%",
+        "target": 99,
+        "unit": "%",
+        "calculation": "sum(available_time)/sum(total_time)*100"
+      },
+      {
+        "id": "energy_consumption",
+        "name": "Energy Consumption",
+        "metric": "EnergyWorking",
+        "target": 3.0,
+        "unit": "kW",
+        "calculation": "sum(energy_working_kw) * time_interval"
+      },
+      {
+        "id": "machine_downtime",
+        "name": "Machine Downtime",
+        "metric": "MTTR_s",
+        "target": 600,
+        "unit": "s",
+        "calculation": "sum(downtime_seconds)/count(machines)"
+      },
+      {
+        "id": "throughput",
+        "name": "Throughput",
+        "metric": "Avg_Time_per_part_s",
+        "target": 90,
+        "unit": "s",
+        "calculation": "count(parts)/total_time"
+      }
+    ]
+  }
+}

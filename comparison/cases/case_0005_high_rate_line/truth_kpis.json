@@ -1,0 +1,122 @@
+{
+  "throughput_per_hour": {
+    "mean": 44.990833,
+    "std": 0.035015
+  },
+  "wip_parts": {
+    "mean": 38.88238,
+    "std": 0.094204
+  },
+  "energy_per_part_kwh": {
+    "mean": 0.335373,
+    "std": 9.9e-05
+  },
+  "utilization": {
+    "M1": {
+      "mean": 0.74979,
+      "std": 0.000412
+    },
+    "M2": {
+      "mean": 0.99971,
+      "std": 0.000586
+    },
+    "M3": {
+      "mean": 0.87476,
+      "std": 0.000467
+    },
+    "M4": {
+      "mean": 0.93723,
+      "std": 0.000729
+    }
+  },
+  "per_machine": {
+    "M1": {
+      "working_s": {
+        "mean": 323896.3077,
+        "std": 167.983285
+      },
+      "idle_s": {
+        "mean": 107728.1099,
+        "std": 248.806722
+      },
+      "stopped_s": {
+        "mean": 375.5824,
+        "std": 321.390662
+      },
+      "availability": {
+        "mean": 0.99912,
+        "std": 0.000748
+      },
+      "processed": {
+        "mean": 5398.6,
+        "std": 2.796824
+      }
+    },
+    "M2": {
+      "working_s": {
+        "mean": 431860.3077,
+        "std": 245.29959
+      },
+      "idle_s": {
+        "mean": 139.6923,
+        "std": 245.29959
+      },
+      "stopped_s": {
+        "mean": 0.0,
+        "std": 0.0
+      },
+      "availability": {
+        "mean": 1.0,
+        "std": 0.0
+      },
+      "processed": {
+        "mean": 5398.5,
+        "std": 3.064129
+      }
+    },
+    "M3": {
+      "working_s": {
+        "mean": 377882.3077,
+        "std": 195.951131
+      },
+      "idle_s": {
+        "mean": 53637.404,
+        "std": 397.285642
+      },
+      "stopped_s": {
+        "mean": 480.2883,
+        "std": 561.695691
+      },
+      "availability": {
+        "mean": 0.99889,
+        "std": 0.001291
+      },
+      "processed": {
+        "mean": 5398.6,
+        "std": 2.796824
+      }
+    },
+    "M4": {
+      "working_s": {
+        "mean": 404890.6877,
+        "std": 318.785142
+      },
+      "idle_s": {
+        "mean": 26951.4225,
+        "std": 342.955872
+      },
+      "stopped_s": {
+        "mean": 157.8898,
+        "std": 308.594459
+      },
+      "availability": {
+        "mean": 0.99964,
+        "std": 0.000696
+      },
+      "processed": {
+        "mean": 5398.9,
+        "std": 4.201851
+      }
+    }
+  }
+}

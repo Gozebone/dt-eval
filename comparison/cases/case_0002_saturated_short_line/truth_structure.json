@@ -1,0 +1,47 @@
+{
+  "arrival": {
+    "inter_arrival_s": 60
+  },
+  "machines": [
+    {
+      "id": "M1",
+      "process_time_s": 90,
+      "availability": 0.99,
+      "mttr_s": 600,
+      "work_power_kw": 3.0,
+      "idle_power_kw": 0.3
+    },
+    {
+      "id": "M2",
+      "process_time_s": 70,
+      "availability": 0.98,
+      "mttr_s": 900,
+      "work_power_kw": 4.5,
+      "idle_power_kw": 0.45
+    },
+    {
+      "id": "M3",
+      "process_time_s": 110,
+      "availability": 0.99,
+      "mttr_s": 1200,
+      "work_power_kw": 6.0,
+      "idle_power_kw": 0.6
+    }
+  ],
+  "buffers": [
+    {
+      "id": "B0",
+      "capacity": 15
+    },
+    {
+      "id": "B1",
+      "capacity": 5
+    },
+    {
+      "id": "B2",
+      "capacity": 5
+    }
+  ],
+  "flow": "serial",
+  "n_machines": 3
+}

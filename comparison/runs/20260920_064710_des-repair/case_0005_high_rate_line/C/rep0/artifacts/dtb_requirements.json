@@ -1,0 +1,137 @@
+{
+  "production_type": "serial production line",
+  "processes": [
+    "M1",
+    "M2",
+    "M3",
+    "M4"
+  ],
+  "equipment": [
+    {
+      "id": "M1",
+      "process_time_s": 60,
+      "availability": 0.995,
+      "mttr_s": 300,
+      "work_power_kw": 3.0,
+      "idle_power_kw": 0.3
+    },
+    {
+      "id": "M2",
+      "process_time_s": 80,
+      "availability": 0.99,
+      "mttr_s": 600,
+      "work_power_kw": 5.0,
+      "idle_power_kw": 0.5
+    },
+    {
+      "id": "M3",
+      "process_time_s": 70,
+      "availability": 0.99,
+      "mttr_s": 600,
+      "work_power_kw": 4.5,
+      "idle_power_kw": 0.45
+    },
+    {
+      "id": "M4",
+      "process_time_s": 75,
+      "availability": 0.995,
+      "mttr_s": 300,
+      "work_power_kw": 4.0,
+      "idle_power_kw": 0.4
+    }
+  ],
+  "sensors": [
+    "Avg_Time_per_part_s",
+    "Availability_%",
+    "MTTR_s",
+    "EnergyIdling",
+    "EnergyWorking"
+  ],
+  "goals": "simulate the production line for at least 432000 seconds",
+  "data_sources": "measured facts from a monitoring period",
+  "update_frequency": "static data",
+  "critical_parameters": {
+    "Avg_Time_per_part_s": "60",
+    "Availability_%": "0.995",
+    "MTTR_s": "300",
+    "EnergyIdling": "0.3",
+    "EnergyWorking": "3.0"
+  },
+  "line": {
+    "topology": "serial",
+    "source": {
+      "inter_arrival_time_s": 45
+    },
+    "stations": [
+      {
+        "id": "M1",
+        "processing_time_s": 60,
+        "availability_pct": 0.995,
+        "mttr_s": 300,
+        "power_working_kw": 3.0,
+        "power_idle_kw": 0.3
+      },
+      {
+        "id": "M2",
+        "processing_time_s": 80,
+        "availability_pct": 0.99,
+        "mttr_s": 600,
+        "power_working_kw": 5.0,
+        "power_idle_kw": 0.5
+      },
+      {
+        "id": "M3",
+        "processing_time_s": 70,
+        "availability_pct": 0.99,
+        "mttr_s": 600,
+        "power_working_kw": 4.5,
+        "power_idle_kw": 0.45
+      },
+      {
+        "id": "M4",
+        "processing_time_s": 75,
+        "availability_pct": 0.995,
+        "mttr_s": 300,
+        "power_working_kw": 4.0,
+        "power_idle_kw": 0.4
+      }
+    ],
+    "buffers": [
+      {
+        "id": "B0",
+        "capacity": 25,
+        "before": "source",
+        "after": "M1"
+      },
+      {
+        "id": "B1",
+        "capacity": 10,
+        "before": "M1",
+        "after": "M2"
+      },
+      {
+        "id": "B2",
+        "capacity": 10,
+        "before": "M2",
+        "after": "M3"
+      },
+      {
+        "id": "B3",
+        "capacity": 10,
+        "before": "M3",
+        "after": "M4"
+      }
+    ]
+  },
+  "des_horizon": {
+    "warmup_s": 0,
+    "window_s": 432000,
+    "replications": 1
+  },
+  "units": {
+    "time": "s",
+    "power": "kW",
+    "energy": "kWh"
+  },
+  "additional_info": "use a single source, 4 machines in series, and a single sink"
+}

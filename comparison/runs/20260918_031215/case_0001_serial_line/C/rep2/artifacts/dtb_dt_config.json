@@ -1,0 +1,308 @@
+{
+  "components": {
+    "data_collection_modules": [
+      {
+        "name": "sensor_data_collector_M1",
+        "type": "sensor",
+        "description": "Collects data from machine M1 sensors",
+        "protocol": "MQTT",
+        "update_frequency": "real-time"
+      },
+      {
+        "name": "sensor_data_collector_M2",
+        "type": "sensor",
+        "description": "Collects data from machine M2 sensors",
+        "protocol": "MQTT",
+        "update_frequency": "real-time"
+      },
+      {
+        "name": "sensor_data_collector_M3",
+        "type": "sensor",
+        "description": "Collects data from machine M3 sensors",
+        "protocol": "MQTT",
+        "update_frequency": "real-time"
+      },
+      {
+        "name": "sensor_data_collector_M4",
+        "type": "sensor",
+        "description": "Collects data from machine M4 sensors",
+        "protocol": "MQTT",
+        "update_frequency": "real-time"
+      },
+      {
+        "name": "sensor_data_collector_M5",
+        "type": "sensor",
+        "description": "Collects data from machine M5 sensors",
+        "protocol": "MQTT",
+        "update_frequency": "real-time"
+      },
+      {
+        "name": "buffer_sensor_collector_B0",
+        "type": "sensor",
+        "description": "Collects data from buffer B0 sensors",
+        "protocol": "MQTT",
+        "update_frequency": "real-time"
+      },
+      {
+        "name": "buffer_sensor_collector_B1",
+        "type": "sensor",
+        "description": "Collects data from buffer B1 sensors",
+        "protocol": "MQTT",
+        "update_frequency": "real-time"
+      },
+      {
+        "name": "buffer_sensor_collector_B2",
+        "type": "sensor",
+        "description": "Collects data from buffer B2 sensors",
+        "protocol": "MQTT",
+        "update_frequency": "real-time"
+      },
+      {
+        "name": "buffer_sensor_collector_B3",
+        "type": "sensor",
+        "description": "Collects data from buffer B3 sensors",
+        "protocol": "MQTT",
+        "update_frequency": "real-time"
+      },
+      {
+        "name": "buffer_sensor_collector_B4",
+        "type": "sensor",
+        "description": "Collects data from buffer B4 sensors",
+        "protocol": "MQTT",
+        "update_frequency": "real-time"
+      }
+    ],
+    "analytics_engines": [
+      {
+        "name": "line_performance_analyzer",
+        "type": "analytics_engine",
+        "description": "Analyzes production line performance including capacity, WIP, energy consumption, and machine availability",
+        "protocol": "REST",
+        "update_frequency": "real-time"
+      }
+    ],
+    "ml_models": [
+      {
+        "name": "predictive_maintenance_model",
+        "type": "ml_model",
+        "description": "Predicts machine failures based on historical data and real-time sensor readings",
+        "protocol": "WebSocket",
+        "update_frequency": "real-time"
+      },
+      {
+        "name": "energy_consumption_optimizer",
+        "type": "ml_model",
+        "description": "Optimizes energy consumption by predicting and adjusting usage patterns",
+        "protocol": "WebSocket",
+        "update_frequency": "real-time"
+      }
+    ],
+    "visualization_dashboards": [
+      {
+        "name": "production_line_dashboard",
+        "type": "dashboard",
+        "description": "Main dashboard for monitoring the entire production line",
+        "protocol": "WebSocket",
+        "update_frequency": "real-time"
+      }
+    ]
+  },
+  "data_flows": {
+    "connections": [
+      {
+        "source": "sensor_data_collector_M1",
+        "target": "line_performance_analyzer",
+        "protocol": "MQTT",
+        "update_frequency": "real-time"
+      },
+      {
+        "source": "sensor_data_collector_M2",
+        "target": "line_performance_analyzer",
+        "protocol": "MQTT",
+        "update_frequency": "real-time"
+      },
+      {
+        "source": "sensor_data_collector_M3",
+        "target": "line_performance_analyzer",
+        "protocol": "MQTT",
+        "update_frequency": "real-time"
+      },
+      {
+        "source": "sensor_data_collector_M4",
+        "target": "line_performance_analyzer",
+        "protocol": "MQTT",
+        "update_frequency": "real-time"
+      },
+      {
+        "source": "sensor_data_collector_M5",
+        "target": "line_performance_analyzer",
+        "protocol": "MQTT",
+        "update_frequency": "real-time"
+      },
+      {
+        "source": "buffer_sensor_collector_B0",
+        "target": "line_performance_analyzer",
+        "protocol": "MQTT",
+        "update_frequency": "real-time"
+      },
+      {
+        "source": "buffer_sensor_collector_B1",
+        "target": "line_performance_analyzer",
+        "protocol": "MQTT",
+        "update_frequency": "real-time"
+      },
+      {
+        "source": "buffer_sensor_collector_B2",
+        "target": "line_performance_analyzer",
+        "protocol": "MQTT",
+        "update_frequency": "real-time"
+      },
+      {
+        "source": "buffer_sensor_collector_B3",
+        "target": "line_performance_analyzer",
+        "protocol": "MQTT",
+        "update_frequency": "real-time"
+      },
+      {
+        "source": "buffer_sensor_collector_B4",
+        "target": "line_performance_analyzer",
+        "protocol": "MQTT",
+        "update_frequency": "real-time"
+      },
+      {
+        "source": "line_performance_analyzer",
+        "target": "predictive_maintenance_model",
+        "protocol": "REST",
+        "update_frequency": "real-time"
+      },
+      {
+        "source": "line_performance_analyzer",
+        "target": "energy_consumption_optimizer",
+        "protocol": "REST",
+        "update_frequency": "real-time"
+      },
+      {
+        "source": "line_performance_analyzer",
+        "target": "production_line_dashboard",
+        "protocol": "WebSocket",
+        "update_frequency": "real-time"
+      }
+    ]
+  },
+  "visualization": {
+    "layout": {
+      "main_dashboard": {
+        "widgets": [
+          {
+            "type": "gauge",
+            "title": "Line Capacity Utilization",
+            "position": "top-left",
+            "refresh_rate": "5s",
+            "color_scheme": "green-to-red"
+          },
+          {
+            "type": "bar_chart",
+            "title": "WIP by Buffer",
+            "position": "top-right",
+            "refresh_rate": "10s",
+            "color_scheme": "blue"
+          },
+          {
+            "type": "line_chart",
+            "title": "Energy Consumption Over Time",
+            "position": "middle-left",
+            "refresh_rate": "30s",
+            "color_scheme": "orange"
+          },
+          {
+            "type": "pie_chart",
+            "title": "Machine Availability Distribution",
+            "position": "middle-right",
+            "refresh_rate": "15s",
+            "color_scheme": "purple"
+          },
+          {
+            "type": "table",
+            "title": "Real-Time Machine Status",
+            "position": "bottom-left",
+            "refresh_rate": "10s",
+            "color_scheme": "gray"
+          },
+          {
+            "type": "map",
+            "title": "Production Line Layout",
+            "position": "bottom-right",
+            "refresh_rate": "60s",
+            "color_scheme": "default"
+          }
+        ]
+      }
+    }
+  },
+  "alerts": {
+    "thresholds": [
+      {
+        "name": "machine_failure_prediction",
+        "severity": "emergency",
+        "threshold": "probability > 0.95",
+        "message": "High probability of machine failure detected",
+        "action": "Immediate maintenance required"
+      },
+      {
+        "name": "high_energy_consumption",
+        "severity": "warning",
+        "threshold": "consumption > 120% of average",
+        "message": "Energy consumption exceeds normal range",
+        "action": "Investigate and optimize usage"
+      },
+      {
+        "name": "wip_overflow",
+        "severity": "critical",
+        "threshold": "buffer_level > 90%",
+        "message": "Buffer overflow detected",
+        "action": "Adjust production rate or clear buffers"
+      },
+      {
+        "name": "low_machine_availability",
+        "severity": "warning",
+        "threshold": "availability < 80%",
+        "message": "Machine availability below threshold",
+        "action": "Check for maintenance needs"
+      }
+    ]
+  },
+  "kpis": {
+    "metrics": [
+      {
+        "name": "line_capacity_utilization",
+        "description": "Percentage of maximum possible capacity being utilized",
+        "target_value": "90%",
+        "measurement_method": "calculated from process times and available time"
+      },
+      {
+        "name": "work_in_progress",
+        "description": "Number of items currently in the production line",
+        "target_value": "< 50 units",
+        "measurement_method": "count of items in buffers B0-B4"
+      },
+      {
+        "name": "total_energy_consumption",
+        "description": "Total energy consumed by all machines in the line",
+        "target_value": "< 500 kWh/day",
+        "measurement_method": "sum of power consumption over time"
+      },
+      {
+        "name": "machine_availability",
+        "description": "Percentage of time machines are operational",
+        "target_value": "> 95%",
+        "measurement_method": "operational_time / total_time"
+      },
+      {
+        "name": "production_efficiency",
+        "description": "Ratio of actual output to theoretical maximum output",
+        "target_value": "> 85%",
+        "measurement_method": "actual_output / theoretical_max_output"
+      }
+    ]
+  }
+}

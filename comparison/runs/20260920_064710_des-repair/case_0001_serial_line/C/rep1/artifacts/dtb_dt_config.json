@@ -1,0 +1,248 @@
+{
+  "components": {
+    "data_collection": {
+      "modules": [
+        {
+          "name": "opcua_collector",
+          "type": "data_collector",
+          "description": "Collects real-time data from OPC-UA enabled devices",
+          "protocol": "OPC-UA",
+          "frequency": "every 5 seconds"
+        },
+        {
+          "name": "mqtt_collector",
+          "type": "data_collector",
+          "description": "Consumes sensor data via MQTT protocol",
+          "protocol": "MQTT",
+          "frequency": "asynchronous"
+        }
+      ]
+    },
+    "analytics_engine": {
+      "engine": {
+        "name": "analyzer",
+        "type": "analytics_processor",
+        "description": "Processes collected data for KPIs and predictive modeling",
+        "algorithm": "statistical_analysis"
+      }
+    },
+    "ml_models": {
+      "models": [
+        {
+          "name": "predictive_maintenance_model",
+          "type": "machine_learning",
+          "description": "Predicts equipment failures based on historical data",
+          "algorithm": "random_forest"
+        },
+        {
+          "name": "production_efficiency_model",
+          "type": "machine_learning",
+          "description": "Optimizes production line efficiency by analyzing bottlenecks",
+          "algorithm": "neural_network"
+        }
+      ]
+    },
+    "visualization": {
+      "dashboard": {
+        "name": "production_dashboard",
+        "type": "visualization_interface",
+        "widgets": [
+          {
+            "type": "gauge",
+            "title": "Overall Equipment Effectiveness",
+            "metric": "OEE"
+          },
+          {
+            "type": "line_chart",
+            "title": "Processing Time Trends",
+            "metric": "processing_time_s"
+          },
+          {
+            "type": "bar_chart",
+            "title": "Buffer Utilization",
+            "metric": "buffer_utilization"
+          },
+          {
+            "type": "heatmap",
+            "title": "Equipment Availability",
+            "metric": "availability_pct"
+          }
+        ]
+      }
+    }
+  },
+  "data_flows": {
+    "flows": [
+      {
+        "source": "opcua_collector",
+        "destination": "analytics_engine",
+        "protocol": "REST",
+        "frequency": "every 5 seconds"
+      },
+      {
+        "source": "mqtt_collector",
+        "destination": "analytics_engine",
+        "protocol": "WebSocket",
+        "frequency": "asynchronous"
+      },
+      {
+        "source": "analytics_engine",
+        "destination": "ml_models",
+        "protocol": "REST",
+        "frequency": "real-time"
+      },
+      {
+        "source": "ml_models",
+        "destination": "visualization",
+        "protocol": "REST",
+        "frequency": "every 10 seconds"
+      }
+    ]
+  },
+  "visualization_layout": {
+    "dashboard": {
+      "layout": {
+        "rows": 3,
+        "columns": 3,
+        "widgets": [
+          {
+            "position": [
+              0,
+              0
+            ],
+            "widget": "gauge"
+          },
+          {
+            "position": [
+              0,
+              1
+            ],
+            "widget": "line_chart"
+          },
+          {
+            "position": [
+              0,
+              2
+            ],
+            "widget": "bar_chart"
+          },
+          {
+            "position": [
+              1,
+              0
+            ],
+            "widget": "heatmap"
+          },
+          {
+            "position": [
+              1,
+              1
+            ],
+            "widget": "gauge"
+          },
+          {
+            "position": [
+              1,
+              2
+            ],
+            "widget": "line_chart"
+          },
+          {
+            "position": [
+              2,
+              0
+            ],
+            "widget": "bar_chart"
+          },
+          {
+            "position": [
+              2,
+              1
+            ],
+            "widget": "heatmap"
+          },
+          {
+            "position": [
+              2,
+              2
+            ],
+            "widget": "gauge"
+          }
+        ]
+      },
+      "refresh_rate": "every 10 seconds",
+      "color_scheme": {
+        "normal": "#00FF00",
+        "warning": "#FFFF00",
+        "critical": "#FF0000",
+        "emergency": "#8B0000"
+      }
+    }
+  },
+  "alerts": {
+    "thresholds": [
+      {
+        "metric": "buffer_utilization",
+        "condition": ">",
+        "value": 0.9,
+        "severity": "warning",
+        "message": "Buffer utilization exceeds 90%"
+      },
+      {
+        "metric": "availability_pct",
+        "condition": "<",
+        "value": 0.95,
+        "severity": "critical",
+        "message": "Equipment availability below 95%"
+      },
+      {
+        "metric": "processing_time_s",
+        "condition": ">",
+        "value": 200,
+        "severity": "emergency",
+        "message": "Processing time exceeds 200 seconds"
+      },
+      {
+        "metric": "power_working_kw",
+        "condition": ">",
+        "value": 10,
+        "severity": "info",
+        "message": "Power consumption exceeds normal range"
+      }
+    ]
+  },
+  "kpis": {
+    "metrics": [
+      {
+        "name": "OEE",
+        "description": "Overall Equipment Effectiveness",
+        "target_value": 0.85,
+        "measurement_method": "calculated from availability, performance, and quality"
+      },
+      {
+        "name": "Throughput",
+        "description": "Number of parts produced per hour",
+        "target_value": 1000,
+        "measurement_method": "count of parts processed in last hour"
+      },
+      {
+        "name": "Utilization",
+        "description": "Percentage of time equipment is actively working",
+        "target_value": 0.9,
+        "measurement_method": "total active time / total time"
+      },
+      {
+        "name": "Downtime",
+        "description": "Total time equipment is not operational",
+        "target_value": 300,
+        "measurement_method": "sum of all downtime durations"
+      },
+      {
+        "name": "Energy Consumption",
+        "description": "Total energy consumed by the production line",
+        "target_value": 5000,
+        "measurement_method": "sum of energy_kwh from events"
+      }
+    ]
+  }
+}

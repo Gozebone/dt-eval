@@ -1,0 +1,20 @@
+{
+  "mode": "real",
+  "methods": [
+    "C"
+  ],
+  "repetitions": 3,
+  "cases": [
+    "case_0001_serial_line",
+    "case_0002_saturated_short_line",
+    "case_0003_starved_six_line",
+    "case_0004_failure_heavy_line",
+    "case_0005_high_rate_line"
+  ],
+  "timestamp": "20260920_064710_des-repair",
+  "label": "des-repair",
+  "models": {
+    "A": "FactoryFlow (google/gemini-3.1-pro-preview via OpenRouter)",
+    "B": "LLM-DES-Modeling (gpt-5.1 builder/inspector via OpenRouter)"
+  }
+}

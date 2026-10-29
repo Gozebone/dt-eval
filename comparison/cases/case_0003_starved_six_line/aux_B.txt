@@ -1,0 +1,3 @@
+Buffer list with their capacity and processtime:
+B0(Capacity = 10), B1(Capacity = 10), B2(Capacity = 10), B3(Capacity = 10), B4(Capacity = 10), B5(Capacity = 10)
+Defect rate = 0.0, no defect sink

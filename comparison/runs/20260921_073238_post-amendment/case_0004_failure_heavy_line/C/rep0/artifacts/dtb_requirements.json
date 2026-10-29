@@ -1,0 +1,150 @@
+{
+  "production_type": "serial production line",
+  "processes": [
+    "machine processing (M1-M5)"
+  ],
+  "equipment": [
+    "5 machines (M1-M5) with specified processing times, availability, MTTR, power usage",
+    "5 buffers (B0-B4) with capacities"
+  ],
+  "sensors": [
+    "machine processing time, availability, MTTR",
+    "buffer capacities"
+  ],
+  "goals": "simulate production line behavior, identify bottlenecks, optimize operations, validate system performance over 5 days",
+  "data_sources": "provided in JSON structure",
+  "update_frequency": "real-time monitoring data",
+  "critical_parameters": {
+    "M1": {
+      "processing_time_s": 100,
+      "availability": 0.9,
+      "mttr_s": 2400
+    },
+    "M2": {
+      "processing_time_s": 130,
+      "availability": 0.92,
+      "mttr_s": 3000
+    },
+    "M3": {
+      "processing_time_s": 90,
+      "availability": 0.88,
+      "mttr_s": 3600
+    },
+    "M4": {
+      "processing_time_s": 140,
+      "availability": 0.91,
+      "mttr_s": 4800
+    },
+    "M5": {
+      "processing_time_s": 110,
+      "availability": 0.93,
+      "mttr_s": 2400
+    },
+    "B0": {
+      "capacity": 6
+    },
+    "B1": {
+      "capacity": 3
+    },
+    "B2": {
+      "capacity": 3
+    },
+    "B3": {
+      "capacity": 3
+    },
+    "B4": {
+      "capacity": 3
+    }
+  },
+  "line": {
+    "topology": "serial",
+    "source": {
+      "inter_arrival_time_s": 150
+    },
+    "stations": [
+      {
+        "id": "M1",
+        "processing_time_s": 100,
+        "availability_pct": 92.58,
+        "mttr_s": 3206.25,
+        "power_working_kw": 4.0,
+        "power_idle_kw": 0.4
+      },
+      {
+        "id": "M2",
+        "processing_time_s": 130,
+        "availability_pct": 97.36,
+        "mttr_s": 2859.26,
+        "power_working_kw": 5.0,
+        "power_idle_kw": 0.5
+      },
+      {
+        "id": "M3",
+        "processing_time_s": 90,
+        "availability_pct": 94.69,
+        "mttr_s": 2882.82,
+        "power_working_kw": 4.5,
+        "power_idle_kw": 0.45
+      },
+      {
+        "id": "M4",
+        "processing_time_s": 140,
+        "availability_pct": 100.0,
+        "mttr_s": 1.0,
+        "power_working_kw": 7.0,
+        "power_idle_kw": 0.7
+      },
+      {
+        "id": "M5",
+        "processing_time_s": 110,
+        "availability_pct": 98.23,
+        "mttr_s": 1099.8,
+        "power_working_kw": 5.5,
+        "power_idle_kw": 0.55
+      }
+    ],
+    "buffers": [
+      {
+        "id": "B0",
+        "capacity": 6,
+        "before": "source",
+        "after": "M1"
+      },
+      {
+        "id": "B1",
+        "capacity": 3,
+        "before": "M1",
+        "after": "M2"
+      },
+      {
+        "id": "B2",
+        "capacity": 3,
+        "before": "M2",
+        "after": "M3"
+      },
+      {
+        "id": "B3",
+        "capacity": 3,
+        "before": "M3",
+        "after": "M4"
+      },
+      {
+        "id": "B4",
+        "capacity": 3,
+        "before": "M4",
+        "after": "M5"
+      }
+    ]
+  },
+  "des_horizon": {
+    "warmup_s": 0,
+    "window_s": 432000,
+    "replications": 1
+  },
+  "units": {
+    "time": "s",
+    "power": "kW",
+    "energy": "kWh"
+  },
+  "additional_info": "SimPy environment set up with serial production line, 5 machines, 5 buffers, constant inter-arrival rate, and 5-day simulation duration"
+}

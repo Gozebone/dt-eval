@@ -1,0 +1,114 @@
+{
+  "production_type": "serial production line",
+  "processes": [
+    "M1",
+    "M2",
+    "M3"
+  ],
+  "equipment": [
+    {
+      "id": "M1",
+      "process_time_s": 90,
+      "availability": 0.99,
+      "mttr_s": 600,
+      "work_power_kw": 3.0,
+      "idle_power_kw": 0.3
+    },
+    {
+      "id": "M2",
+      "process_time_s": 70,
+      "availability": 0.98,
+      "mttr_s": 900,
+      "work_power_kw": 4.5,
+      "idle_power_kw": 0.45
+    },
+    {
+      "id": "M3",
+      "process_time_s": 110,
+      "availability": 0.99,
+      "mttr_s": 1200,
+      "work_power_kw": 6.0,
+      "idle_power_kw": 0.6
+    }
+  ],
+  "sensors": [
+    "Average processing time (M1: 89.98 s, M2: 69.98 s, M3: 110.28 s)",
+    "Availability (%) (M1: 100.00 %, M2: 99.55 %, M3: 100.00 %)",
+    "MTTR (M1: 1.0 s, M2: 392.5 s, M3: 1.0 s)",
+    "Idle power (M1: 0.3 kW, M2: 0.44 kW, M3: 0.6 kW)"
+  ],
+  "goals": "Simulate the line for 5 days (432,000 seconds) with the given parameters and buffers.",
+  "data_sources": "Provided JSON data with machine, buffer, and arrival parameters.",
+  "update_frequency": "Real-time data from monitoring period.",
+  "critical_parameters": {
+    "M1": "90 s, 0.99, 600 s, 0.3 kW",
+    "M2": "70 s, 0.98, 900 s, 0.45 kW",
+    "M3": "110 s, 0.99, 1200 s, 0.6 kW"
+  },
+  "line": {
+    "topology": "serial",
+    "source": {
+      "inter_arrival_time_s": 60
+    },
+    "stations": [
+      {
+        "id": "M1",
+        "processing_time_s": 90,
+        "availability_pct": 100.0,
+        "mttr_s": 600,
+        "power_working_kw": 3.0,
+        "power_idle_kw": 0.3
+      },
+      {
+        "id": "M2",
+        "processing_time_s": 70,
+        "availability_pct": 99.55,
+        "mttr_s": 900,
+        "power_working_kw": 4.5,
+        "power_idle_kw": 0.45
+      },
+      {
+        "id": "M3",
+        "processing_time_s": 110,
+        "availability_pct": 100.0,
+        "mttr_s": 1200,
+        "power_working_kw": 6.0,
+        "power_idle_kw": 0.6
+      }
+    ],
+    "buffers": [
+      {
+        "id": "B0",
+        "capacity": 15,
+        "before": "source",
+        "after": "M1"
+      },
+      {
+        "id": "B1",
+        "capacity": 5,
+        "before": "M1",
+        "after": "M2"
+      },
+      {
+        "id": "B2",
+        "capacity": 5,
+        "before": "M2",
+        "after": "M3"
+      }
+    ],
+    "defects": {
+      "rate": 0
+    }
+  },
+  "des_horizon": {
+    "warmup_s": 0,
+    "window_s": 432000,
+    "replications": 0
+  },
+  "units": {
+    "time": "s",
+    "power": "kW",
+    "energy": "kWh"
+  },
+  "additional_info": "Source: one part every 60 seconds; Sink: single output; Buffers: 15, 5, 5. Simulate 5 days (432k s)."
+}

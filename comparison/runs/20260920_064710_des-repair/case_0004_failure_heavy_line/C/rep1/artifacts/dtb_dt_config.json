@@ -1,0 +1,213 @@
+{
+  "components": {
+    "data_collection": {
+      "modules": [
+        {
+          "name": "SensorDataCollector",
+          "type": "IoT Gateway",
+          "description": "Collects real-time sensor data from machines via OPC-UA",
+          "protocol": "OPC-UA",
+          "frequency": "10s"
+        },
+        {
+          "name": "EventLogger",
+          "type": "Event Handler",
+          "description": "Logs machine events and downtime incidents",
+          "protocol": "MQTT",
+          "frequency": "real-time"
+        }
+      ]
+    },
+    "analytics": {
+      "engines": [
+        {
+          "name": "PerformanceAnalyzer",
+          "type": "Stream Processing Engine",
+          "description": "Analyzes real-time performance metrics and predicts bottlenecks",
+          "algorithm": "Time Series Forecasting"
+        },
+        {
+          "name": "MaintenancePredictor",
+          "type": "ML Model",
+          "description": "Predictive maintenance using historical data",
+          "algorithm": "Random Forest Classifier"
+        }
+      ]
+    },
+    "visualization": {
+      "dashboards": [
+        {
+          "name": "ProductionLineDashboard",
+          "widgets": [
+            {
+              "type": "Gauge",
+              "title": "Overall Equipment Effectiveness",
+              "metric": "OEE",
+              "unit": "%",
+              "color": "#4CAF50"
+            },
+            {
+              "type": "BarChart",
+              "title": "Machine Utilization",
+              "metrics": [
+                "M1",
+                "M2",
+                "M3",
+                "M4",
+                "M5"
+              ],
+              "unit": "%",
+              "color": "#2196F3"
+            },
+            {
+              "type": "LineChart",
+              "title": "Energy Consumption Over Time",
+              "metrics": [
+                "M1",
+                "M2",
+                "M3",
+                "M4",
+                "M5"
+              ],
+              "unit": "kWh",
+              "color": "#FF9800"
+            }
+          ],
+          "refresh_rate": "30s"
+        }
+      ]
+    }
+  },
+  "data_flows": {
+    "connections": [
+      {
+        "source": "SensorDataCollector",
+        "destination": "samples_view",
+        "protocol": "REST",
+        "frequency": "10s"
+      },
+      {
+        "source": "EventLogger",
+        "destination": "events_view",
+        "protocol": "WebSocket",
+        "frequency": "real-time"
+      },
+      {
+        "source": "samples_view",
+        "destination": "PerformanceAnalyzer",
+        "protocol": "MQTT",
+        "frequency": "10s"
+      },
+      {
+        "source": "events_view",
+        "destination": "MaintenancePredictor",
+        "protocol": "REST",
+        "frequency": "real-time"
+      }
+    ]
+  },
+  "visualization_layout": {
+    "dashboard": {
+      "layout": "grid",
+      "columns": 3,
+      "rows": 2
+    },
+    "widgets": [
+      {
+        "id": "gauge-oee",
+        "position": [
+          0,
+          0
+        ],
+        "size": [
+          1,
+          1
+        ]
+      },
+      {
+        "id": "bar-machine-utilization",
+        "position": [
+          1,
+          0
+        ],
+        "size": [
+          1,
+          1
+        ]
+      },
+      {
+        "id": "line-energy-consumption",
+        "position": [
+          2,
+          0
+        ],
+        "size": [
+          1,
+          1
+        ]
+      }
+    ],
+    "color_scheme": {
+      "primary": "#2196F3",
+      "secondary": "#4CAF50",
+      "accent": "#FF9800",
+      "background": "#FFFFFF"
+    }
+  },
+  "alerts": {
+    "thresholds": [
+      {
+        "name": "HighDowntimeAlert",
+        "metric": "downtime_duration_s",
+        "condition": ">",
+        "value": 3600,
+        "severity": "critical",
+        "message": "Machine has been down for more than 1 hour"
+      },
+      {
+        "name": "LowAvailabilityAlert",
+        "metric": "availability",
+        "condition": "<",
+        "value": 0.85,
+        "severity": "warning",
+        "message": "Machine availability is below threshold"
+      },
+      {
+        "name": "HighEnergyConsumptionAlert",
+        "metric": "energy_kwh",
+        "condition": ">",
+        "value": 100,
+        "severity": "emergency",
+        "message": "Unexpected high energy consumption detected"
+      }
+    ]
+  },
+  "kpis": {
+    "metrics": [
+      {
+        "name": "Overall Equipment Effectiveness",
+        "target": 85,
+        "method": "calculated from OEE formula",
+        "unit": "%"
+      },
+      {
+        "name": "Production Rate",
+        "target": 1000,
+        "method": "count of completed units per hour",
+        "unit": "units/hour"
+      },
+      {
+        "name": "Mean Time Between Failures",
+        "target": 4000,
+        "method": "average time between equipment failures",
+        "unit": "s"
+      },
+      {
+        "name": "Energy Efficiency",
+        "target": 90,
+        "method": "ratio of useful energy output to input",
+        "unit": "%"
+      }
+    ]
+  }
+}

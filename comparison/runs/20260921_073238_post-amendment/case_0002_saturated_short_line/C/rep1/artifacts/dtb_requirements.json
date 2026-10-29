@@ -1,0 +1,98 @@
+{
+  "production_type": "serial",
+  "processes": [
+    "M1",
+    "M2",
+    "M3"
+  ],
+  "equipment": [
+    "M1",
+    "M2",
+    "M3",
+    "B0",
+    "B1",
+    "B2"
+  ],
+  "sensors": [
+    "M1",
+    "M2",
+    "M3",
+    "B0",
+    "B1",
+    "B2"
+  ],
+  "goals": "simulate the production line for at least 432000 seconds",
+  "data_sources": "data provided in the JSON",
+  "update_frequency": "real-time data from sensors",
+  "critical_parameters": {
+    "M1": "89.98",
+    "M2": "69.98",
+    "M3": "110.28",
+    "B0": 15,
+    "B1": 5,
+    "B2": 5
+  },
+  "line": {
+    "topology": "serial",
+    "source": {
+      "inter_arrival_time_s": 60
+    },
+    "stations": [
+      {
+        "id": "M1",
+        "processing_time_s": 90,
+        "availability_pct": 99.55,
+        "mttr_s": 392.5,
+        "power_working_kw": 3.0,
+        "power_idle_kw": 0.3
+      },
+      {
+        "id": "M2",
+        "processing_time_s": 70,
+        "availability_pct": 100.0,
+        "mttr_s": 1.0,
+        "power_working_kw": 4.5,
+        "power_idle_kw": 0.45
+      },
+      {
+        "id": "M3",
+        "processing_time_s": 110,
+        "availability_pct": 100.0,
+        "mttr_s": 1.0,
+        "power_working_kw": 6.0,
+        "power_idle_kw": 0.6
+      }
+    ],
+    "buffers": [
+      {
+        "id": "B0",
+        "capacity": 15,
+        "before": "source",
+        "after": "M1"
+      },
+      {
+        "id": "B1",
+        "capacity": 5,
+        "before": "M1",
+        "after": "M2"
+      },
+      {
+        "id": "B2",
+        "capacity": 5,
+        "before": "M2",
+        "after": "M3"
+      }
+    ]
+  },
+  "des_horizon": {
+    "warmup_s": 0,
+    "window_s": 432000,
+    "replications": 1
+  },
+  "units": {
+    "time": "s",
+    "power": "kW",
+    "energy": "kWh"
+  },
+  "additional_info": "no additional information"
+}

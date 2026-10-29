@@ -1,0 +1,259 @@
+{
+  "components": {
+    "data_collection": {
+      "modules": [
+        {
+          "name": "SensorDataCollector",
+          "type": "data_collector",
+          "description": "Collects real-time sensor data from equipment",
+          "protocol": "MQTT",
+          "frequency": "continuous"
+        },
+        {
+          "name": "EventLogger",
+          "type": "data_collector",
+          "description": "Logs events for each processed part",
+          "protocol": "REST",
+          "frequency": "event-driven"
+        }
+      ]
+    },
+    "analytics_engine": {
+      "modules": [
+        {
+          "name": "ProcessAnalyticsEngine",
+          "type": "analytics",
+          "description": "Analyzes process parameters and calculates KPIs",
+          "protocol": "WebSocket",
+          "frequency": "real-time"
+        }
+      ]
+    },
+    "ml_models": {
+      "modules": [
+        {
+          "name": "PredictiveMaintenanceModel",
+          "type": "ml_model",
+          "description": "Predicts maintenance needs based on MTTR and availability",
+          "protocol": "REST",
+          "frequency": "periodic"
+        },
+        {
+          "name": "EnergyConsumptionOptimizer",
+          "type": "ml_model",
+          "description": "Optimizes energy consumption based on power data",
+          "protocol": "REST",
+          "frequency": "periodic"
+        }
+      ]
+    },
+    "visualization": {
+      "modules": [
+        {
+          "name": "DashboardController",
+          "type": "dashboard",
+          "description": "Manages dashboard layout and widgets",
+          "protocol": "WebSocket",
+          "frequency": "refresh_rate"
+        }
+      ]
+    }
+  },
+  "data_flows": {
+    "flows": [
+      {
+        "source": "SensorDataCollector",
+        "destination": "ProcessAnalyticsEngine",
+        "protocol": "MQTT",
+        "frequency": "continuous"
+      },
+      {
+        "source": "EventLogger",
+        "destination": "ProcessAnalyticsEngine",
+        "protocol": "REST",
+        "frequency": "event-driven"
+      },
+      {
+        "source": "ProcessAnalyticsEngine",
+        "destination": "DashboardController",
+        "protocol": "WebSocket",
+        "frequency": "real-time"
+      },
+      {
+        "source": "ProcessAnalyticsEngine",
+        "destination": "PredictiveMaintenanceModel",
+        "protocol": "REST",
+        "frequency": "periodic"
+      },
+      {
+        "source": "ProcessAnalyticsEngine",
+        "destination": "EnergyConsumptionOptimizer",
+        "protocol": "REST",
+        "frequency": "periodic"
+      }
+    ]
+  },
+  "visualization": {
+    "layout": {
+      "widgets": [
+        {
+          "type": "KPIWidget",
+          "title": "Line Capacity",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 2,
+            "height": 1
+          },
+          "refresh_rate": "real-time"
+        },
+        {
+          "type": "KPIWidget",
+          "title": "WIP Count",
+          "position": {
+            "x": 2,
+            "y": 0,
+            "width": 2,
+            "height": 1
+          },
+          "refresh_rate": "real-time"
+        },
+        {
+          "type": "KPIWidget",
+          "title": "Specific Energy Consumption",
+          "position": {
+            "x": 4,
+            "y": 0,
+            "width": 2,
+            "height": 1
+          },
+          "refresh_rate": "real-time"
+        },
+        {
+          "type": "AvailabilityChart",
+          "title": "Machine Availability (M1-M5)",
+          "position": {
+            "x": 0,
+            "y": 1,
+            "width": 4,
+            "height": 2
+          },
+          "refresh_rate": "real-time"
+        },
+        {
+          "type": "ProcessTimeChart",
+          "title": "Average Process Time per Part",
+          "position": {
+            "x": 4,
+            "y": 1,
+            "width": 2,
+            "height": 2
+          },
+          "refresh_rate": "real-time"
+        },
+        {
+          "type": "PowerConsumptionChart",
+          "title": "Energy Consumption",
+          "position": {
+            "x": 0,
+            "y": 3,
+            "width": 6,
+            "height": 2
+          },
+          "refresh_rate": "real-time"
+        }
+      ],
+      "color_scheme": {
+        "primary": "#007BFF",
+        "secondary": "#6C757D",
+        "success": "#28A745",
+        "warning": "#FFC107",
+        "danger": "#DC3545"
+      }
+    }
+  },
+  "alerts": {
+    "thresholds": [
+      {
+        "parameter": "\u0441\u0440\u0435\u0434\u043d\u0435\u0435 \u0432\u0440\u0435\u043c\u044f \u043d\u0430 \u0434\u0435\u0442\u0430\u043b\u044c",
+        "severity": "warning",
+        "value": null,
+        "description": "Threshold not defined"
+      },
+      {
+        "parameter": "\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u044c",
+        "severity": "warning",
+        "value": null,
+        "description": "Threshold not defined"
+      },
+      {
+        "parameter": "MTTR",
+        "severity": "warning",
+        "value": null,
+        "description": "Threshold not defined"
+      },
+      {
+        "parameter": "\u044d\u043d\u0435\u0440\u0433\u043e\u043f\u043e\u0442\u0440\u0435\u0431\u043b\u0435\u043d\u0438\u0435 \u0432 \u0440\u0430\u0431\u043e\u0442\u0435 (work_power_kw)",
+        "severity": "warning",
+        "value": null,
+        "description": "Threshold not defined"
+      },
+      {
+        "parameter": "\u044d\u043d\u0435\u0440\u0433\u043e\u043f\u043e\u0442\u0440\u0435\u0431\u043b\u0435\u043d\u0438\u0435 \u0432 \u043f\u0440\u043e\u0441\u0442\u043e\u0435 (idle_power_kw)",
+        "severity": "warning",
+        "value": null,
+        "description": "Threshold not defined"
+      }
+    ],
+    "alert_types": [
+      {
+        "type": "Info",
+        "level": "info",
+        "description": "Informational alerts"
+      },
+      {
+        "type": "Warning",
+        "level": "warning",
+        "description": "Warning level alerts"
+      },
+      {
+        "type": "Critical",
+        "level": "critical",
+        "description": "Critical level alerts"
+      },
+      {
+        "type": "Emergency",
+        "level": "emergency",
+        "description": "Emergency level alerts"
+      }
+    ]
+  },
+  "kpis": {
+    "indicators": [
+      {
+        "name": "Line Capacity",
+        "target_value": "defined by production goals",
+        "measurement_method": "throughput rate of the entire line",
+        "unit": "parts/hour"
+      },
+      {
+        "name": "WIP Count",
+        "target_value": "minimize while maintaining flow",
+        "measurement_method": "inventory count at each station",
+        "unit": "parts"
+      },
+      {
+        "name": "Specific Energy Consumption",
+        "target_value": "optimized energy usage per part",
+        "measurement_method": "total energy divided by number of parts produced",
+        "unit": "kWh/part"
+      },
+      {
+        "name": "Machine Availability (M1-M5)",
+        "target_value": "high availability",
+        "measurement_method": "uptime percentage over time period",
+        "unit": "%"
+      }
+    ]
+  }
+}

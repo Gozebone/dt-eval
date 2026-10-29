@@ -1,0 +1,218 @@
+{
+  "components": {
+    "data_collection": {
+      "modules": [
+        {
+          "name": "opcua_collector",
+          "type": "data_collector",
+          "description": "Collects real-time data from OPC-UA servers",
+          "protocol": "OPC-UA",
+          "update_frequency_s": 10
+        },
+        {
+          "name": "mqtt_collector",
+          "type": "data_collector",
+          "description": "Collects data via MQTT protocol",
+          "protocol": "MQTT",
+          "update_frequency_s": 5
+        }
+      ]
+    },
+    "analytics_engine": {
+      "engine": {
+        "name": "simulation_engine",
+        "type": "analytics",
+        "description": "Runs simulation of production line based on parameters",
+        "algorithm": "discrete_event_simulation",
+        "update_frequency_s": 300
+      }
+    },
+    "ml_models": {
+      "models": [
+        {
+          "name": "predictive_maintenance",
+          "type": "ml_model",
+          "description": "Predicts equipment failures based on historical data",
+          "algorithm": "random_forest",
+          "input_features": [
+            "process_time_s",
+            "availability",
+            "mttr_s"
+          ],
+          "output": "failure_probability"
+        }
+      ]
+    },
+    "visualization": {
+      "dashboard": {
+        "name": "production_line_dashboard",
+        "type": "visualization",
+        "widgets": [
+          {
+            "type": "gauge",
+            "title": "Line Utilization",
+            "metric": "utilization_pct",
+            "unit": "pct",
+            "color_scheme": "green_to_red"
+          },
+          {
+            "type": "line_chart",
+            "title": "Production Rate Over Time",
+            "metric": "items_per_hour",
+            "unit": "items/hour",
+            "refresh_rate_s": 60
+          },
+          {
+            "type": "bar_chart",
+            "title": "Equipment Downtime",
+            "metric": "downtime_s",
+            "unit": "s",
+            "color_scheme": "blue_to_orange"
+          }
+        ]
+      }
+    }
+  },
+  "data_flows": {
+    "connections": [
+      {
+        "from": "opcua_collector",
+        "to": "raw_ingest",
+        "protocol": "REST",
+        "frequency_s": 10
+      },
+      {
+        "from": "mqtt_collector",
+        "to": "raw_ingest",
+        "protocol": "WebSocket",
+        "frequency_s": 5
+      },
+      {
+        "from": "raw_ingest",
+        "to": "samples",
+        "protocol": "REST",
+        "frequency_s": 1
+      },
+      {
+        "from": "samples",
+        "to": "simulation_engine",
+        "protocol": "REST",
+        "frequency_s": 300
+      },
+      {
+        "from": "simulation_engine",
+        "to": "events",
+        "protocol": "REST",
+        "frequency_s": 300
+      },
+      {
+        "from": "events",
+        "to": "predictive_maintenance",
+        "protocol": "REST",
+        "frequency_s": 3600
+      }
+    ]
+  },
+  "visualization_layout": {
+    "dashboard_structure": {
+      "rows": [
+        {
+          "height": "40%",
+          "widgets": [
+            {
+              "position": "top-left",
+              "widget_type": "gauge",
+              "metric": "utilization_pct"
+            },
+            {
+              "position": "top-right",
+              "widget_type": "line_chart",
+              "metric": "items_per_hour"
+            }
+          ]
+        },
+        {
+          "height": "60%",
+          "widgets": [
+            {
+              "position": "bottom-left",
+              "widget_type": "bar_chart",
+              "metric": "downtime_s"
+            },
+            {
+              "position": "bottom-right",
+              "widget_type": "table",
+              "metric": "equipment_status"
+            }
+          ]
+        }
+      ],
+      "refresh_rate_s": 60,
+      "color_scheme": {
+        "normal": "#00FF00",
+        "warning": "#FFFF00",
+        "critical": "#FF0000"
+      }
+    }
+  },
+  "alerts": {
+    "thresholds": [
+      {
+        "name": "high_downtime",
+        "severity": "warning",
+        "condition": "downtime_s > 300",
+        "message": "High downtime detected",
+        "actions": [
+          "email_notification"
+        ]
+      },
+      {
+        "name": "low_utilization",
+        "severity": "info",
+        "condition": "utilization_pct < 80",
+        "message": "Low line utilization",
+        "actions": [
+          "log_event"
+        ]
+      },
+      {
+        "name": "critical_failure",
+        "severity": "emergency",
+        "condition": "failure_probability > 0.9",
+        "message": "Critical equipment failure predicted",
+        "actions": [
+          "sms_alert",
+          "shutdown_protocol"
+        ]
+      }
+    ]
+  },
+  "kpis": {
+    "metrics": [
+      {
+        "name": "throughput_items_per_hour",
+        "target_value": 1000,
+        "measurement_method": "count_items_in_sink_over_time_window",
+        "unit": "items/hour"
+      },
+      {
+        "name": "line_utilization_pct",
+        "target_value": 90,
+        "measurement_method": "total_active_time / total_simulated_time * 100",
+        "unit": "pct"
+      },
+      {
+        "name": "equipment_availability_pct",
+        "target_value": 99,
+        "measurement_method": "sum(available_time) / sum(total_time) * 100",
+        "unit": "pct"
+      },
+      {
+        "name": "energy_consumption_kwh",
+        "target_value": 500,
+        "measurement_method": "sum(power_kw * time_s) / 3600",
+        "unit": "kWh"
+      }
+    ]
+  }
+}

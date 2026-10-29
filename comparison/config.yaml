@@ -1,0 +1,108 @@
+# Comparison harness configuration
+# path values are host-specific; edit once per machine.
+mode: mock            # mock | real (real reads OPENROUTER_API_KEY from .env)
+repetitions: 1        # LLM generations per case x method
+methods: [A, B, C]    # C = DigitalTwinBuilder (remote multi-agent service)
+
+paths:
+  output_root: runs
+  cases_root: cases
+
+interpreters:
+  A: /ssd/projects/dt-eval/FactoryFlow/.venv/bin/python
+  B: /ssd/projects/dt-eval/LLM-DES-Modeling/.venv/bin/python
+  # C talks to a remote service over HTTP; its adapter is stdlib-only.
+  C: /bin/python3
+
+cwd:
+  A: /ssd/projects/dt-eval/FactoryFlow/FactoryFlow_v2/app
+  B: /ssd/projects/dt-eval/LLM-DES-Modeling
+  C: /ssd/projects/DigitalTwinBuilder
+
+factorysimpy_src: /ssd/projects/dt-eval/FactoryFlow/FactoryFlow_v2/app/src
+blueprint_model: /ssd/projects/dt-eval/LLM-DES-Modeling/blueprint/blueprint_util.py
+llmdes_repo: /ssd/projects/dt-eval/LLM-DES-Modeling
+
+A:
+  model_time_unit_s: 1     # generated models are instructed to use seconds
+  exec_timeout_s: 900
+B:
+  exec_timeout_s: 900
+  sim_time_s: 691200       # 8*24*3600, matches ModelBuilder default
+  warmup_s: 86400
+  replications: 10
+C:
+  exec_timeout_s: 900
+  # DigitalTwinBuilder lives at `dtb_repo`; the live API_URL is read from its
+  # .env (currently 176.119.159.227:8000 — the .env.example host is stale).
+  # Agent indices. The repo's own .env, config.py, agents_starter.py and
+  # tests/agents/llm-responder.py all use UI=0, DB=1, DT=2; override here if the
+  # deployment you point at numbers its agents differently.
+  ui_agent_index: 0
+  db_agent_index: 1
+  dt_agent_index: 2
+  poll_timeout_s: 600        # per agent task (reasoning preambles are slow)
+  max_interview_turns: 8
+  max_task_retries: 3        # re-submit when the agent replies with unparseable text
+  ui_max_tokens: 4000        # agent default 1000 truncates the reply mid-JSON
+  db_max_tokens: 10000       # the method's own DB test uses 10000 for the DDL
+  # agent 2 (DT): streamlit-app.py submits both of its conversation slots with
+  # max_tokens 3000; the PyChrono script is long, so the 1000-token default
+  # cannot hold it.
+  dt_max_tokens: 3000
+  dt_poll_timeout_s: 900     # local 30B model with thinking enabled
+  # agent 2 (DT), conversation slot 2 (GenDES): the SimPy model plus the three
+  # KPI lines needs more room than the PyChrono slot; ~2x dt_max_tokens.
+  des_max_tokens: 8000
+  # The generated DES is executed by the harness; window is warmup+window from
+  # the manifest (same horizon B is given), not the config's sim_time_s.
+  des_exec_timeout_s: 900
+  des_replications: 10       # replications injected as des_horizon.replications
+  # Execute-and-repair for the DES slot, mirroring C's own DES stage
+  # (DigitalTwinBuilder des_runner.generate_with_repair, driven from
+  # streamlit-app.py :: dt_generate_des). After each program is returned it is
+  # run; if it does not run, or runs without printing the KPI contract, the
+  # execution output is appended to the same conversation and the agent is asked
+  # for a corrected program. Counts *repairs*, so 3 allows 4 programs. 0
+  # reproduces the pre-amendment behaviour (one program, executed once).
+  des_repair_attempts: 3
+  # Validate-and-repair for the DB slot, mirroring C's own DB stage
+  # (DigitalTwinBuilder sql_runner.generate_with_repair, driven from
+  # streamlit-app.py :: db_generate_schema). Each reply is read as SQL with the
+  # method's own checks (parse-only: statements, literals and parentheses
+  # complete, at least one CREATE TABLE, no relation created twice or used
+  # without being created) and a rejected one is appended to the same
+  # conversation with the validation report so the agent can fix it. Counts
+  # *repairs*, so 3 allows 4 replies. 0 reproduces the pre-amendment behaviour
+  # (one reply, taken as final).
+  db_repair_attempts: 3
+  # Treat a program that runs and prints three zeros as a failure when the
+  # requirements declare a positive source arrival rate — the model ran but
+  # nothing was counted (case_0003 printed 0/0/0 and passed as `ok`). Set false
+  # to accept any complete contract.
+  des_reject_all_zero: true
+  # Interpreter the generated DES model is run with. It must be able to
+  # `import simpy`; interpreters.C cannot (it is the stdlib-only HTTP client
+  # for the remote service), so this is a second, purpose-built venv:
+  #   python3 -m venv comparison/.venv-des && .venv-des/bin/pip install simpy
+  # Executing the model is the same operation B's adapter performs, so C's
+  # model runs under a runtime that satisfies its stated imports.
+  des_python: /ssd/projects/dt-eval/comparison/.venv-des/bin/python
+  # LLM that plays the plant engineer answering C's interview (harness side).
+  responder_model: openai/gpt-5-mini
+  http_timeout_s: 30
+  # The remote host intermittently drops connections (`urlopen error timed out`,
+  # `Network is unreachable`). The reachability probe, read/poll calls and
+  # session/conversation creation are retried this many times with this delay;
+  # task submission is never retried (a repeat would bill the model twice). If
+  # the host is still unreachable the rep is recorded as `service_unavailable`,
+  # not as C's generation_error — see protocol.md. A responder_model outage (the
+  # harness's own OpenRouter call) is recorded the same way, naming that
+  # dependency in the note rather than blaming C's endpoint.
+  net_retries: 4
+  net_retry_delay_s: 5.0
+
+dtb_repo: /ssd/projects/DigitalTwinBuilder   # Method C source repo (prompts + .env API_URL)
+
+scoring:
+  ks_bins: 20

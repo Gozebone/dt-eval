@@ -1,0 +1,61 @@
+case_id: case_0003_starved_six_line
+title: 6-machine long line, arrival rate below the bottleneck (line starved)
+time_units: s
+reference:
+  log_rep: 0
+  replications: 10
+  warmup_s: 21600
+  window_s: 432000
+  seed: 20260910
+arrival:
+  inter_arrival_s: 300
+machines:
+  - id: M1
+    process_time_s: 200
+    availability: 0.97
+    mttr_s: 900
+    work_power_kw: 5.0
+    idle_power_kw: 0.5
+  - id: M2
+    process_time_s: 220
+    availability: 0.97
+    mttr_s: 1000
+    work_power_kw: 5.5
+    idle_power_kw: 0.55
+  - id: M3
+    process_time_s: 240
+    availability: 0.96
+    mttr_s: 1200
+    work_power_kw: 6.0
+    idle_power_kw: 0.6
+  - id: M4
+    process_time_s: 260
+    availability: 0.96
+    mttr_s: 1400
+    work_power_kw: 7.0
+    idle_power_kw: 0.7
+  - id: M5
+    process_time_s: 230
+    availability: 0.97
+    mttr_s: 1100
+    work_power_kw: 6.5
+    idle_power_kw: 0.65
+  - id: M6
+    process_time_s: 210
+    availability: 0.97
+    mttr_s: 1000
+    work_power_kw: 6.0
+    idle_power_kw: 0.6
+buffers:
+  - id: B0
+    capacity: 10
+  - id: B1
+    capacity: 10
+  - id: B2
+    capacity: 10
+  - id: B3
+    capacity: 10
+  - id: B4
+    capacity: 10
+  - id: B5
+    capacity: 10

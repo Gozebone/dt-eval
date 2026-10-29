@@ -1,0 +1,117 @@
+{
+  "production_type": "serial production line",
+  "processes": [
+    "M1",
+    "M2",
+    "M3",
+    "M4"
+  ],
+  "equipment": [
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "B0",
+    "B1",
+    "B2",
+    "B3"
+  ],
+  "sensors": [
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "B0",
+    "B1",
+    "B2",
+    "B3"
+  ],
+  "goals": "\u0441\u043e\u0437\u0434\u0430\u0442\u044c \u0441\u0438\u043c\u0443\u043b\u044f\u0446\u0438\u044e \u043f\u0440\u043e\u0438\u0437\u0432\u043e\u0434\u0441\u0442\u0432\u0435\u043d\u043d\u043e\u0439 \u043b\u0438\u043d\u0438\u0438 \u0441 \u0437\u0430\u0434\u0430\u043d\u043d\u044b\u043c\u0438 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u043c\u0438 \u043e\u0431\u043e\u0440\u0443\u0434\u043e\u0432\u0430\u043d\u0438\u044f, \u0430\u043d\u0430\u043b\u0438\u0437\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u043f\u0440\u043e\u0438\u0437\u0432\u043e\u0434\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u044c \u0438 \u0432\u044b\u044f\u0432\u043b\u044f\u0442\u044c \u043f\u043e\u0442\u0435\u043d\u0446\u0438\u0430\u043b\u044c\u043d\u044b\u0435 \u043f\u0440\u043e\u0431\u043b\u0435\u043c\u044b",
+  "data_sources": "\u0434\u0430\u043d\u043d\u044b\u0435 \u0438\u0437 \u043c\u043e\u043d\u0438\u0442\u043e\u0440\u0438\u043d\u0433\u0430 \u0438 \u0437\u0430\u0434\u0430\u043d\u043d\u044b\u0445 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u043e\u0432 \u043e\u0431\u043e\u0440\u0443\u0434\u043e\u0432\u0430\u043d\u0438\u044f",
+  "update_frequency": "static",
+  "critical_parameters": {
+    "process_time_s": 75.03,
+    "availability_pct": 100.0,
+    "mttr_s": 1.0,
+    "energy_idle_kw": 0.34,
+    "energy_working_kw": 4.0,
+    "capacity": 10
+  },
+  "line": {
+    "topology": "serial",
+    "source": {
+      "inter_arrival_time_s": 45
+    },
+    "stations": [
+      {
+        "id": "M1",
+        "processing_time_s": 60,
+        "availability_pct": 99.99,
+        "mttr_s": 300,
+        "power_working_kw": 3.0,
+        "power_idle_kw": 0.3
+      },
+      {
+        "id": "M2",
+        "processing_time_s": 80,
+        "availability_pct": 100.0,
+        "mttr_s": 600,
+        "power_working_kw": 5.0,
+        "power_idle_kw": 0.5
+      },
+      {
+        "id": "M3",
+        "processing_time_s": 70,
+        "availability_pct": 99.88,
+        "mttr_s": 600,
+        "power_working_kw": 4.5,
+        "power_idle_kw": 0.45
+      },
+      {
+        "id": "M4",
+        "processing_time_s": 75,
+        "availability_pct": 99.995,
+        "mttr_s": 300,
+        "power_working_kw": 4.0,
+        "power_idle_kw": 0.4
+      }
+    ],
+    "buffers": [
+      {
+        "id": "B0",
+        "capacity": 25,
+        "before": "source",
+        "after": "M1"
+      },
+      {
+        "id": "B1",
+        "capacity": 10,
+        "before": "M1",
+        "after": "M2"
+      },
+      {
+        "id": "B2",
+        "capacity": 10,
+        "before": "M2",
+        "after": "M3"
+      },
+      {
+        "id": "B3",
+        "capacity": 10,
+        "before": "M3",
+        "after": "M4"
+      }
+    ]
+  },
+  "des_horizon": {
+    "warmup_s": 3600,
+    "window_s": 432000,
+    "replications": 1
+  },
+  "units": {
+    "time": "s",
+    "power": "kW",
+    "energy": "kWh"
+  },
+  "additional_info": "\u043a\u0430\u0436\u0434\u044b\u0439 \u0431\u0443\u0444\u0435\u0440 \u0438\u043c\u0435\u0435\u0442 \u0437\u0430\u0434\u0430\u043d\u043d\u0443\u044e \u0435\u043c\u043a\u043e\u0441\u0442\u044c, \u0432\u0440\u0435\u043c\u044f \u043c\u0435\u0436\u0434\u0443 \u043f\u0440\u0438\u0448\u0435\u0434\u0448\u0438\u043c\u0438 \u0447\u0430\u0441\u0442\u044f\u043c\u0438 - 45 \u0441\u0435\u043a\u0443\u043d\u0434\u044b"
+}

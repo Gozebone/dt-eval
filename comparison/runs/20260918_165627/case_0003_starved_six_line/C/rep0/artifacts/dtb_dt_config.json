@@ -1,0 +1,180 @@
+{
+  "components": {
+    "data_collection": {
+      "modules": [
+        {
+          "name": "SensorDataCollector",
+          "type": "IoT Gateway",
+          "description": "Collects real-time sensor data from equipment",
+          "protocols": [
+            "MQTT",
+            "OPC-UA"
+          ],
+          "update_frequency": "every 5 seconds"
+        }
+      ]
+    },
+    "analytics_engine": {
+      "engines": [
+        {
+          "name": "ProcessAnalyticsEngine",
+          "type": "Stream Processing",
+          "description": "Processes incoming data streams for real-time analysis",
+          "update_frequency": "real-time"
+        }
+      ]
+    },
+    "ml_models": {
+      "models": [
+        {
+          "name": "EquipmentEfficiencyModel",
+          "type": "Predictive Analytics",
+          "description": "Predicts machine efficiency and downtime based on historical data",
+          "input_features": [
+            "idle_power_kw",
+            "availability",
+            "mttr_s"
+          ],
+          "output": "predicted_downtime_hours"
+        },
+        {
+          "name": "EnergyConsumptionModel",
+          "type": "Regression Analysis",
+          "description": "Calculates energy consumption per unit product",
+          "input_features": [
+            "work_power_kw",
+            "process_time_s",
+            "availability"
+          ],
+          "output": "energy_per_unit_kwh"
+        }
+      ]
+    },
+    "visualization": {
+      "dashboards": [
+        {
+          "name": "ProductionLineDashboard",
+          "widgets": [
+            {
+              "type": "Gauge",
+              "title": "Overall Line Efficiency",
+              "metric": "line_efficiency_percentage"
+            },
+            {
+              "type": "BarChart",
+              "title": "Machine Availability by Process",
+              "metrics": [
+                "M1_availability",
+                "M2_availability",
+                "M3_availability",
+                "M4_availability",
+                "M5_availability",
+                "M6_availability"
+              ]
+            },
+            {
+              "type": "LineChart",
+              "title": "Real-Time Energy Consumption",
+              "metrics": [
+                "total_energy_kwh"
+              ]
+            },
+            {
+              "type": "Table",
+              "title": "Work-in-Progress Details",
+              "columns": [
+                "process_step",
+                "wip_count",
+                "estimated_completion_time"
+              ]
+            }
+          ],
+          "refresh_rate": "every 10 seconds",
+          "color_scheme": {
+            "primary": "#007BFF",
+            "secondary": "#6C757D",
+            "success": "#28A745",
+            "warning": "#FFC107",
+            "danger": "#DC3545"
+          }
+        }
+      ]
+    }
+  },
+  "data_flows": {
+    "from_sensors_to_collector": {
+      "source": "Sensors",
+      "destination": "SensorDataCollector",
+      "protocol": "MQTT",
+      "frequency": "every 5 seconds"
+    },
+    "from_collector_to_analytics": {
+      "source": "SensorDataCollector",
+      "destination": "ProcessAnalyticsEngine",
+      "protocol": "WebSocket",
+      "frequency": "real-time"
+    },
+    "from_analytics_to_ml": {
+      "source": "ProcessAnalyticsEngine",
+      "destination": "EquipmentEfficiencyModel",
+      "protocol": "REST",
+      "frequency": "hourly"
+    },
+    "from_ml_to_visualization": {
+      "source": "EquipmentEfficiencyModel",
+      "destination": "ProductionLineDashboard",
+      "protocol": "WebSocket",
+      "frequency": "every 10 seconds"
+    }
+  },
+  "alerts": {
+    "thresholds": [
+      {
+        "parameter": "idle_power_kw",
+        "severity": "warning",
+        "condition": "> 0.7",
+        "message": "High idle power detected on machine"
+      },
+      {
+        "parameter": "availability",
+        "severity": "critical",
+        "condition": "< 0.95",
+        "message": "Machine availability below threshold"
+      },
+      {
+        "parameter": "mttr_s",
+        "severity": "emergency",
+        "condition": "> 1500",
+        "message": "Mean time to repair exceeds limit"
+      }
+    ]
+  },
+  "kpis": {
+    "metrics": [
+      {
+        "name": "line_efficiency_percentage",
+        "description": "Percentage of time the production line is operational",
+        "target_value": "95%",
+        "calculation_method": "sum(available_time) / sum(total_time)"
+      },
+      {
+        "name": "wip_count",
+        "description": "Number of work-in-progress items at any given moment",
+        "target_value": "10 units",
+        "calculation_method": "count(items_in_queue)"
+      },
+      {
+        "name": "energy_per_unit_kwh",
+        "description": "Average energy consumed per unit produced",
+        "target_value": "5 kwh/unit",
+        "calculation_method": "sum(total_energy_consumed) / count(units_produced)"
+      },
+      {
+        "name": "machine_utilization_percentage",
+        "description": "Percentage of time machines are actively processing",
+        "target_value": "90%",
+        "calculation_method": "sum(active_time) / sum(total_time)"
+      }
+    ]
+  }
+}

@@ -1,0 +1,220 @@
+{
+  "components": {
+    "data_collection": {
+      "modules": [
+        {
+          "id": "opc_ua_collector",
+          "type": "Data Collector",
+          "description": "Collects real-time sensor data using OPC-UA protocol",
+          "protocol": "OPC-UA",
+          "update_frequency_s": 5
+        },
+        {
+          "id": "mqtt_collector",
+          "type": "Data Collector",
+          "description": "Collects data from IoT devices using MQTT protocol",
+          "protocol": "MQTT",
+          "update_frequency_s": 10
+        }
+      ]
+    },
+    "analytics_engine": {
+      "id": "analytics_engine",
+      "type": "Analytics Engine",
+      "description": "Processes and analyzes real-time data",
+      "update_frequency_s": 1
+    },
+    "ml_models": {
+      "models": [
+        {
+          "id": "predictive_maintenance",
+          "type": "ML Model",
+          "description": "Predicts machine failures based on sensor data",
+          "input_tags": [
+            "MTTR_s",
+            "Availability_%"
+          ],
+          "output_tag": "predicted_failure"
+        },
+        {
+          "id": "energy_optimization",
+          "type": "ML Model",
+          "description": "Optimizes energy consumption based on processing demands",
+          "input_tags": [
+            "EnergyWorking",
+            "EnergyIdling"
+          ],
+          "output_tag": "energy_optimization_suggestion"
+        }
+      ]
+    },
+    "visualization": {
+      "dashboard": {
+        "id": "production_dashboard",
+        "type": "Dashboard",
+        "description": "Real-time visualization of production line",
+        "widgets": [
+          {
+            "id": "line_performance",
+            "type": "Gauge",
+            "title": "Line Performance",
+            "description": "Overall line efficiency",
+            "unit": "%"
+          },
+          {
+            "id": "machine_status",
+            "type": "Status Grid",
+            "title": "Machine Status",
+            "description": "Current status of all machines"
+          },
+          {
+            "id": "energy_consumption",
+            "type": "Time Series Chart",
+            "title": "Energy Consumption",
+            "description": "Real-time energy usage by machines",
+            "unit": "kWh"
+          }
+        ]
+      }
+    }
+  },
+  "data_flows": {
+    "flows": [
+      {
+        "source": "opc_ua_collector",
+        "destination": "analytics_engine",
+        "protocol": "OPC-UA",
+        "update_frequency_s": 5
+      },
+      {
+        "source": "mqtt_collector",
+        "destination": "analytics_engine",
+        "protocol": "MQTT",
+        "update_frequency_s": 10
+      },
+      {
+        "source": "analytics_engine",
+        "destination": "ml_models",
+        "protocol": "REST",
+        "update_frequency_s": 1
+      },
+      {
+        "source": "analytics_engine",
+        "destination": "visualization",
+        "protocol": "WebSocket",
+        "update_frequency_s": 1
+      }
+    ]
+  },
+  "visualization": {
+    "dashboard_layout": {
+      "rows": 3,
+      "columns": 3,
+      "widgets": [
+        {
+          "id": "line_performance",
+          "position": {
+            "row": 1,
+            "column": 1,
+            "width": 1,
+            "height": 1
+          },
+          "refresh_rate_s": 1
+        },
+        {
+          "id": "machine_status",
+          "position": {
+            "row": 1,
+            "column": 2,
+            "width": 2,
+            "height": 1
+          },
+          "refresh_rate_s": 1
+        },
+        {
+          "id": "energy_consumption",
+          "position": {
+            "row": 2,
+            "column": 1,
+            "width": 3,
+            "height": 2
+          },
+          "refresh_rate_s": 1
+        }
+      ],
+      "color_scheme": {
+        "good": "#00FF00",
+        "warning": "#FFFF00",
+        "critical": "#FF0000"
+      }
+    }
+  },
+  "alerts": {
+    "thresholds": [
+      {
+        "tag": "Availability_%",
+        "severity": "warning",
+        "threshold": 95,
+        "action": "send_notification"
+      },
+      {
+        "tag": "Availability_%",
+        "severity": "critical",
+        "threshold": 90,
+        "action": "trigger_maintenance"
+      },
+      {
+        "tag": "MTTR_s",
+        "severity": "warning",
+        "threshold": 500,
+        "action": "send_notification"
+      },
+      {
+        "tag": "MTTR_s",
+        "severity": "critical",
+        "threshold": 1000,
+        "action": "trigger_maintenance"
+      },
+      {
+        "tag": "EnergyWorking",
+        "severity": "warning",
+        "threshold": 5.0,
+        "action": "send_notification"
+      },
+      {
+        "tag": "EnergyWorking",
+        "severity": "critical",
+        "threshold": 6.0,
+        "action": "optimize_energy"
+      }
+    ]
+  },
+  "kpis": {
+    "kpis": [
+      {
+        "id": "production_efficiency",
+        "description": "Percentage of time the production line is actively producing",
+        "target_value": 99.45,
+        "measurement_method": "Calculate from Availability_%"
+      },
+      {
+        "id": "throughput_rate",
+        "description": "Number of parts produced per second",
+        "target_value": 1.0,
+        "measurement_method": "Calculate from Avg_Time_per_part_s"
+      },
+      {
+        "id": "energy_consumption",
+        "description": "Total energy consumption of the production line",
+        "target_value": 20.0,
+        "measurement_method": "Sum of EnergyWorking across all machines"
+      },
+      {
+        "id": "machine_utilization",
+        "description": "Percentage of time machines are in operation",
+        "target_value": 99.0,
+        "measurement_method": "Calculate from MTTR_s and availability"
+      }
+    ]
+  }
+}

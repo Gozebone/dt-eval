@@ -1,0 +1,246 @@
+{
+  "components": {
+    "data_collection": {
+      "modules": [
+        {
+          "name": "OPC-UA Agent",
+          "type": "data_collector",
+          "description": "Collects real-time data from industrial equipment via OPC-UA protocol",
+          "protocol": "OPC-UA",
+          "update_frequency": "100ms"
+        },
+        {
+          "name": "MQTT Broker",
+          "type": "data_collector",
+          "description": "Handles IoT sensor data through MQTT protocol",
+          "protocol": "MQTT",
+          "update_frequency": "500ms"
+        }
+      ]
+    },
+    "analytics": {
+      "engines": [
+        {
+          "name": "Production Analytics Engine",
+          "type": "analytics",
+          "description": "Processes and analyzes production data to calculate KPIs",
+          "algorithm": "statistical_analysis",
+          "update_frequency": "1s"
+        },
+        {
+          "name": "Failure Prediction Engine",
+          "type": "analytics",
+          "description": "Uses ML models to predict equipment failures",
+          "algorithm": "machine_learning",
+          "update_frequency": "5s"
+        }
+      ]
+    },
+    "ml_models": {
+      "models": [
+        {
+          "name": "Predictive Maintenance Model",
+          "type": "ml_model",
+          "description": "Predicts machine failure based on historical and real-time data",
+          "technology": "Random Forest",
+          "input_features": [
+            "availability",
+            "mttr_s",
+            "work_power_kw"
+          ],
+          "output": "failure_probability"
+        },
+        {
+          "name": "Energy Consumption Model",
+          "type": "ml_model",
+          "description": "Predicts energy consumption of machines based on workload",
+          "technology": "Linear Regression",
+          "input_features": [
+            "work_power_kw",
+            "idle_power_kw",
+            "process_time_s"
+          ],
+          "output": "energy_kwh"
+        }
+      ]
+    },
+    "visualization": {
+      "dashboards": [
+        {
+          "name": "Production Overview Dashboard",
+          "type": "dashboard",
+          "description": "Real-time view of production line performance",
+          "widgets": [
+            {
+              "type": "gauge",
+              "title": "Line Utilization",
+              "metric": "line_utilization",
+              "unit": "%",
+              "color_scheme": "green_to_red"
+            },
+            {
+              "type": "chart",
+              "title": "Throughput Over Time",
+              "metric": "throughput",
+              "unit": "units/hour",
+              "refresh_rate": "5s"
+            },
+            {
+              "type": "table",
+              "title": "Machine Status",
+              "metric": "machine_status",
+              "unit": "",
+              "refresh_rate": "10s"
+            }
+          ],
+          "refresh_rate": "5s"
+        }
+      ]
+    }
+  },
+  "data_flows": {
+    "connections": [
+      {
+        "source": "OPC-UA Agent",
+        "destination": "Production Analytics Engine",
+        "protocol": "REST",
+        "update_frequency": "100ms"
+      },
+      {
+        "source": "MQTT Broker",
+        "destination": "Production Analytics Engine",
+        "protocol": "MQTT",
+        "update_frequency": "500ms"
+      },
+      {
+        "source": "Production Analytics Engine",
+        "destination": "Predictive Maintenance Model",
+        "protocol": "WebSocket",
+        "update_frequency": "5s"
+      },
+      {
+        "source": "Production Analytics Engine",
+        "destination": "Energy Consumption Model",
+        "protocol": "REST",
+        "update_frequency": "1s"
+      },
+      {
+        "source": "Production Analytics Engine",
+        "destination": "Production Overview Dashboard",
+        "protocol": "WebSocket",
+        "update_frequency": "5s"
+      }
+    ]
+  },
+  "visualization_layout": {
+    "dashboard": {
+      "name": "Production Overview Dashboard",
+      "layout": {
+        "rows": 3,
+        "columns": 3,
+        "widgets": [
+          {
+            "id": "gauge_utilization",
+            "position": {
+              "row": 1,
+              "col": 1
+            },
+            "size": {
+              "width": 1,
+              "height": 1
+            }
+          },
+          {
+            "id": "chart_throughput",
+            "position": {
+              "row": 1,
+              "col": 2
+            },
+            "size": {
+              "width": 2,
+              "height": 1
+            }
+          },
+          {
+            "id": "table_status",
+            "position": {
+              "row": 2,
+              "col": 1
+            },
+            "size": {
+              "width": 3,
+              "height": 2
+            }
+          }
+        ]
+      },
+      "color_scheme": {
+        "primary": "#007BFF",
+        "secondary": "#6C757D",
+        "success": "#28A745",
+        "warning": "#FFC107",
+        "danger": "#DC3545"
+      }
+    }
+  },
+  "alerts": {
+    "thresholds": [
+      {
+        "name": "High Utilization Alert",
+        "metric": "line_utilization",
+        "threshold": 90,
+        "unit": "%",
+        "severity": "warning",
+        "triggered_by": "above"
+      },
+      {
+        "name": "Machine Down Alert",
+        "metric": "machine_status",
+        "threshold": 0,
+        "unit": "",
+        "severity": "critical",
+        "triggered_by": "equal"
+      },
+      {
+        "name": "Energy Spike Alert",
+        "metric": "energy_kwh",
+        "threshold": 100,
+        "unit": "kWh",
+        "severity": "emergency",
+        "triggered_by": "above"
+      }
+    ]
+  },
+  "kpis": {
+    "indicators": [
+      {
+        "name": "Line Utilization",
+        "metric": "line_utilization",
+        "target_value": 90,
+        "unit": "%",
+        "measurement_method": "duration_worked / total_time"
+      },
+      {
+        "name": "Throughput",
+        "metric": "throughput",
+        "target_value": 100,
+        "unit": "units/hour",
+        "measurement_method": "count_of_units / time"
+      },
+      {
+        "name": "Equipment Availability",
+        "metric": "equipment_availability",
+        "target_value": 95,
+        "unit": "%",
+        "measurement_method": "uptime / (uptime + downtime)"
+      },
+      {
+        "name": "Energy Consumption",
+        "metric": "energy_consumption",
+        "target_value": 5000,
+        "unit": "kWh",
+        "measurement_method": "sum_of_energy_kwh"
+      }
+    ]
+  }
+}

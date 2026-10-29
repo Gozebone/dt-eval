@@ -1,0 +1,185 @@
+{
+  "components": {
+    "data_collection": {
+      "modules": [
+        {
+          "name": "SensorDataCollector",
+          "type": "Data Collection Module",
+          "description": "Collects real-time sensor data from machines and buffers",
+          "protocol": "OPC-UA",
+          "update_frequency": "150 seconds"
+        },
+        {
+          "name": "EventLogger",
+          "type": "Data Collection Module",
+          "description": "Logs processing events of each part",
+          "protocol": "MQTT",
+          "update_frequency": "150 seconds"
+        }
+      ]
+    },
+    "analytics": {
+      "engines": [
+        {
+          "name": "ProductionAnalyticsEngine",
+          "type": "Analytics Engine",
+          "description": "Analyzes production data to calculate KPIs and performance metrics",
+          "algorithm": "Statistical Analysis",
+          "data_sources": [
+            "SensorDataCollector",
+            "EventLogger"
+          ]
+        }
+      ]
+    },
+    "ml_models": [
+      {
+        "name": "AvailabilityPredictionModel",
+        "type": "ML Model",
+        "description": "Predicts machine availability based on historical data",
+        "algorithm": "Time Series Forecasting",
+        "training_data_source": "Historical machine data"
+      },
+      {
+        "name": "EnergyConsumptionModel",
+        "type": "ML Model",
+        "description": "Predicts energy consumption per part",
+        "algorithm": "Regression Analysis",
+        "training_data_source": "Historical energy usage data"
+      }
+    ],
+    "visualization": {
+      "dashboard": {
+        "name": "ProductionLineDashboard",
+        "type": "Visualization Dashboard",
+        "description": "Real-time monitoring and visualization of the production line",
+        "widgets": [
+          {
+            "type": "Gauge",
+            "name": "OverallLineEfficiency",
+            "description": "Overall efficiency of the production line"
+          },
+          {
+            "type": "BarChart",
+            "name": "MachineAvailability",
+            "description": "Availability of each machine M1-M5"
+          },
+          {
+            "type": "LineChart",
+            "name": "EnergyConsumption",
+            "description": "Real-time energy consumption per machine"
+          },
+          {
+            "type": "HeatMap",
+            "name": "BufferStatus",
+            "description": "Current status of buffers B0-B4"
+          },
+          {
+            "type": "KpiCard",
+            "name": "WIP",
+            "description": "Work-in-progress count"
+          }
+        ],
+        "refresh_rate": "150 seconds",
+        "color_scheme": {
+          "success": "#4CAF50",
+          "warning": "#FFC107",
+          "error": "#F44336",
+          "info": "#2196F3"
+        }
+      }
+    }
+  },
+  "data_flows": {
+    "sensor_data_flow": {
+      "source": "SensorDataCollector",
+      "destination": "ProductionAnalyticsEngine",
+      "protocol": "OPC-UA",
+      "update_frequency": "150 seconds"
+    },
+    "event_data_flow": {
+      "source": "EventLogger",
+      "destination": "ProductionAnalyticsEngine",
+      "protocol": "MQTT",
+      "update_frequency": "150 seconds"
+    },
+    "analytics_to_ml_flow": {
+      "source": "ProductionAnalyticsEngine",
+      "destination": "AvailabilityPredictionModel",
+      "protocol": "REST",
+      "update_frequency": "150 seconds"
+    },
+    "ml_to_visualization_flow": {
+      "source": "AvailabilityPredictionModel",
+      "destination": "ProductionLineDashboard",
+      "protocol": "WebSocket",
+      "update_frequency": "150 seconds"
+    },
+    "ml_to_analytics_flow": {
+      "source": "EnergyConsumptionModel",
+      "destination": "ProductionAnalyticsEngine",
+      "protocol": "REST",
+      "update_frequency": "150 seconds"
+    }
+  },
+  "alerts": [
+    {
+      "name": "MachineAvailabilityAlert",
+      "description": "Alert when machine availability drops below threshold",
+      "severity": "warning",
+      "threshold": 0.85,
+      "source": "ProductionAnalyticsEngine",
+      "trigger_condition": "availability < threshold"
+    },
+    {
+      "name": "EnergyConsumptionAlert",
+      "description": "Alert when energy consumption exceeds normal range",
+      "severity": "critical",
+      "threshold": 1000,
+      "source": "ProductionAnalyticsEngine",
+      "trigger_condition": "energy_consumption > threshold"
+    },
+    {
+      "name": "BufferOverflowAlert",
+      "description": "Alert when buffer capacity exceeds maximum",
+      "severity": "emergency",
+      "threshold": 100,
+      "source": "ProductionAnalyticsEngine",
+      "trigger_condition": "buffer_count > threshold"
+    },
+    {
+      "name": "ProcessingTimeAlert",
+      "description": "Alert when processing time exceeds expected duration",
+      "severity": "warning",
+      "threshold": 150,
+      "source": "ProductionAnalyticsEngine",
+      "trigger_condition": "processing_time > threshold"
+    }
+  ],
+  "kpis": [
+    {
+      "name": "ProductionThroughput",
+      "description": "Number of parts produced per hour",
+      "target_value": 240,
+      "measurement_method": "Count of processed parts per hour"
+    },
+    {
+      "name": "WorkInProcess",
+      "description": "Number of parts currently in the production line",
+      "target_value": 50,
+      "measurement_method": "Sum of parts in buffers B0-B4"
+    },
+    {
+      "name": "EnergyConsumptionPerPart",
+      "description": "Average energy consumption per part",
+      "target_value": 50,
+      "measurement_method": "Total energy consumed / Number of processed parts"
+    },
+    {
+      "name": "MachineAvailability",
+      "description": "Average availability of machines M1-M5",
+      "target_value": 0.9,
+      "measurement_method": "Sum of operational time / Total time"
+    }
+  ]
+}

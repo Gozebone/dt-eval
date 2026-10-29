@@ -1,0 +1,229 @@
+{
+  "components": {
+    "data_collection": {
+      "modules": [
+        {
+          "name": "Sensor Data Collector",
+          "type": "Data Collection Module",
+          "description": "Collects real-time sensor data from manufacturing equipment",
+          "protocol": "OPC-UA",
+          "update_frequency": "continuous"
+        },
+        {
+          "name": "Input Stream Reader",
+          "type": "Data Collection Module",
+          "description": "Reads input stream data for part arrival intervals",
+          "protocol": "MQTT",
+          "update_frequency": "continuous"
+        }
+      ]
+    },
+    "analytics_engine": {
+      "name": "Analytics Engine",
+      "type": "Analytics Engine",
+      "description": "Processes and analyzes collected data to generate KPIs and insights",
+      "protocol": "REST",
+      "update_frequency": "continuous"
+    },
+    "ml_models": {
+      "models": [
+        {
+          "name": "Predictive Maintenance Model",
+          "type": "ML Model",
+          "description": "Predicts equipment failures based on machine availability and downtime data"
+        },
+        {
+          "name": "Energy Consumption Optimizer",
+          "type": "ML Model",
+          "description": "Optimizes energy consumption per part based on work and idle power data"
+        }
+      ]
+    },
+    "visualization": {
+      "dashboard": {
+        "name": "Digital Twin Dashboard",
+        "type": "Visualization Dashboard",
+        "description": "Real-time visualization of factory operations with KPIs and alerts",
+        "widgets": [
+          {
+            "name": "Throughput Monitor",
+            "type": "Gauge",
+            "description": "Displays current throughput of the production line"
+          },
+          {
+            "name": "Buffer Level Indicator",
+            "type": "Bar Chart",
+            "description": "Shows real-time buffer levels across all buffers"
+          },
+          {
+            "name": "Machine Availability",
+            "type": "Line Chart",
+            "description": "Tracks machine availability over time"
+          },
+          {
+            "name": "Energy Consumption",
+            "type": "Heatmap",
+            "description": "Visualizes energy consumption per part"
+          },
+          {
+            "name": "Downtime Tracker",
+            "type": "Timeline",
+            "description": "Displays downtime events and duration"
+          }
+        ]
+      }
+    }
+  },
+  "data_flows": {
+    "connections": [
+      {
+        "source": "Sensor Data Collector",
+        "destination": "Analytics Engine",
+        "protocol": "OPC-UA",
+        "update_frequency": "continuous"
+      },
+      {
+        "source": "Input Stream Reader",
+        "destination": "Analytics Engine",
+        "protocol": "MQTT",
+        "update_frequency": "continuous"
+      },
+      {
+        "source": "Analytics Engine",
+        "destination": "Visualization Dashboard",
+        "protocol": "REST",
+        "update_frequency": "continuous"
+      },
+      {
+        "source": "Analytics Engine",
+        "destination": "Predictive Maintenance Model",
+        "protocol": "WebSocket",
+        "update_frequency": "continuous"
+      },
+      {
+        "source": "Analytics Engine",
+        "destination": "Energy Consumption Optimizer",
+        "protocol": "WebSocket",
+        "update_frequency": "continuous"
+      }
+    ]
+  },
+  "visualization_layout": {
+    "dashboard": {
+      "layout": [
+        {
+          "widget": "Throughput Monitor",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 1
+          }
+        },
+        {
+          "widget": "Buffer Level Indicator",
+          "position": {
+            "x": 1,
+            "y": 0,
+            "width": 2,
+            "height": 1
+          }
+        },
+        {
+          "widget": "Machine Availability",
+          "position": {
+            "x": 0,
+            "y": 1,
+            "width": 2,
+            "height": 1
+          }
+        },
+        {
+          "widget": "Energy Consumption",
+          "position": {
+            "x": 2,
+            "y": 1,
+            "width": 1,
+            "height": 1
+          }
+        },
+        {
+          "widget": "Downtime Tracker",
+          "position": {
+            "x": 0,
+            "y": 2,
+            "width": 3,
+            "height": 1
+          }
+        }
+      ],
+      "refresh_rate": "1s",
+      "color_scheme": {
+        "primary": "#007BFF",
+        "secondary": "#28A745",
+        "warning": "#FFC107",
+        "danger": "#DC3545"
+      }
+    }
+  },
+  "alerts": {
+    "thresholds": [
+      {
+        "parameter": "buffer_levels",
+        "threshold": 90,
+        "severity": "warning",
+        "description": "Buffer levels above 90% indicate potential bottleneck"
+      },
+      {
+        "parameter": "buffer_levels",
+        "threshold": 95,
+        "severity": "critical",
+        "description": "Buffer levels above 95% indicate severe bottleneck"
+      },
+      {
+        "parameter": "machine_availability",
+        "threshold": 80,
+        "severity": "warning",
+        "description": "Machine availability below 80% indicates potential issues"
+      },
+      {
+        "parameter": "machine_availability",
+        "threshold": 70,
+        "severity": "critical",
+        "description": "Machine availability below 70% indicates significant downtime"
+      },
+      {
+        "parameter": "energy_consumption",
+        "threshold": 15,
+        "severity": "warning",
+        "description": "Energy consumption per part above 15 kWh indicates inefficiency"
+      }
+    ]
+  },
+  "kpis": {
+    "throughput": {
+      "name": "Throughput",
+      "target": "1 part every 45s",
+      "measurement_method": "Count of parts processed per unit time",
+      "unit": "parts/hour"
+    },
+    "wip": {
+      "name": "Work in Progress",
+      "target": "Buffer levels between 0-100%",
+      "measurement_method": "Current buffer levels across all buffers",
+      "unit": "%"
+    },
+    "energy_consumption": {
+      "name": "Energy Consumption per Part",
+      "target": "< 10 kWh",
+      "measurement_method": "Total energy consumed divided by number of parts produced",
+      "unit": "kWh/part"
+    },
+    "machine_availability": {
+      "name": "Machine Availability",
+      "target": "95%",
+      "measurement_method": "Percentage of time machines are operational",
+      "unit": "%"
+    }
+  }
+}

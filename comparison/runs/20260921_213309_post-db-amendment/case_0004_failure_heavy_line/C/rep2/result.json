@@ -1,0 +1,201 @@
+{
+  "method": "C",
+  "case": "case_0004_failure_heavy_line",
+  "rep": 2,
+  "status": "ok",
+  "error": null,
+  "elapsed_generation_s": 229.143,
+  "elapsed_simulation_s": 0.957,
+  "llm_calls": 3,
+  "llm_tokens_estimate": null,
+  "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260921_213309_post-db-amendment/case_0004_failure_heavy_line/C/rep2/model.json",
+  "kpis": {
+    "throughput_per_hour": 17.91583333333333,
+    "utilization": null,
+    "wip_parts": 12.306703652365623,
+    "energy_per_part_kwh": 0.8911240201791706,
+    "native": {
+      "machine_stats": {
+        "M1": {
+          "mentioned": true,
+          "process_time_found": true,
+          "process_time_claimed": 100.0,
+          "availability_found": true,
+          "availability_claimed": 0.9
+        },
+        "M2": {
+          "mentioned": true,
+          "process_time_found": true,
+          "process_time_claimed": 130.0,
+          "availability_found": true,
+          "availability_claimed": 0.92
+        },
+        "M3": {
+          "mentioned": true,
+          "process_time_found": true,
+          "process_time_claimed": 90.0,
+          "availability_found": true,
+          "availability_claimed": 0.88
+        },
+        "M4": {
+          "mentioned": true,
+          "process_time_found": true,
+          "process_time_claimed": 140.0,
+          "availability_found": true,
+          "availability_claimed": 0.91
+        },
+        "M5": {
+          "mentioned": true,
+          "process_time_found": true,
+          "process_time_claimed": 110.0,
+          "availability_found": true,
+          "availability_claimed": 0.93
+        }
+      },
+      "machines_mentioned": 5,
+      "machines_truth": 5,
+      "buffers": {
+        "B0": true,
+        "B1": true,
+        "B2": true,
+        "B3": true,
+        "B4": true
+      },
+      "arrival_found": true,
+      "arrival_claimed": 150.0,
+      "equipment_count": 12,
+      "artifact_chars": {
+        "config": 0,
+        "sim": 0
+      },
+      "machine_ids_in_dt_output": {
+        "M1": false,
+        "M2": false,
+        "M3": false,
+        "M4": false,
+        "M5": false
+      },
+      "machines_mentioned_in_dt": 0,
+      "pychrono_referenced": false,
+      "stage_shapes": {
+        "db_answer": {
+          "chars": 2765,
+          "ids_present": 10,
+          "ids_truth": 10,
+          "ddl_phrases": [
+            "create index",
+            "create table",
+            "insert into",
+            "not null",
+            "primary key"
+          ],
+          "sql_types": [
+            "double precision",
+            "jsonb",
+            "timestamptz"
+          ],
+          "looks_like_ddl": true
+        },
+        "db_recorded": {
+          "chars": 2765,
+          "ids_present": 10,
+          "ids_truth": 10,
+          "ddl_phrases": [
+            "create index",
+            "create table",
+            "insert into",
+            "not null",
+            "primary key"
+          ],
+          "sql_types": [
+            "double precision",
+            "jsonb",
+            "timestamptz"
+          ],
+          "looks_like_ddl": true
+        },
+        "dt_config": {
+          "chars": 0,
+          "ids_present": 0,
+          "ids_truth": 10,
+          "looks_like_json": false
+        },
+        "dt_sim": {
+          "chars": 0,
+          "ids_present": 0,
+          "ids_truth": 10
+        },
+        "dt_des": {
+          "chars": 8095,
+          "ids_present": 5,
+          "ids_truth": 10
+        }
+      },
+      "interview_turns": 1,
+      "agent_tasks": 3,
+      "agent_tasks_attempted": 5,
+      "responder_calls": 0,
+      "llm_calls_split": {
+        "ui_agent": 1,
+        "db_agent": 1,
+        "dt_agent": 1,
+        "harness_responder": 0
+      },
+      "responder_model": "openai/gpt-5-mini",
+      "api_url": "http://176.119.159.227:8000",
+      "agent_status": {
+        "agent0": "active",
+        "agent1": "active",
+        "agent2": "active"
+      },
+      "db_stage": "ok",
+      "db_note": null,
+      "db_programs": 1,
+      "db_repairs_used": 0,
+      "db_repair_attempts_allowed": 3,
+      "db_gave_up_reason": null,
+      "db_sql_summary": {
+        "statements": 16,
+        "tables": 7,
+        "views": 2,
+        "indexes": 4,
+        "inserts": 3
+      },
+      "dt_stage": "partial",
+      "dt_note": "DT agent (agent 2) partial: config: agent task failed: Processing error: OpenRouter request failed: HTTP 403: { \"success\": false, \"error\": \"Access denied by security policy.\" }; sim: agent task failed: Processing error: OpenRouter request failed: HTTP 403: { \"success\": false, \"error\": \"Access denied by security policy.\" }",
+      "dt_slots_ok": 1,
+      "dt_slot_errors": {
+        "config": "agent task failed: Processing error: OpenRouter request failed: HTTP 403: { \"success\": false, \"error\": \"Access denied by security policy.\" }",
+        "sim": "agent task failed: Processing error: OpenRouter request failed: HTTP 403: { \"success\": false, \"error\": \"Access denied by security policy.\" }",
+        "des": null
+      },
+      "dt_slots_total": 3,
+      "des_stage": "ok",
+      "des_exec_status": "ok",
+      "des_exec_error": null,
+      "des_parse_error": null,
+      "des_kpis": {
+        "throughput_per_hour": 17.91583333333333,
+        "wip_parts": 12.306703652365623,
+        "energy_per_part_kwh": 0.8911240201791706
+      },
+      "des_repair_attempts_allowed": 3,
+      "des_reject_all_zero": true,
+      "des_programs": 1,
+      "des_repairs_used": 0,
+      "des_exec_elapsed_total_s": 0.957,
+      "des_gave_up_reason": null,
+      "status_basis": "KPIs produced from the DES model's stdout",
+      "kpi_source": "des_model_stdout",
+      "des_python": "/ssd/projects/dt-eval/comparison/.venv-des/bin/python",
+      "dt_schema_input": "ok",
+      "capability": "Method C emits a requirements document + PostgreSQL schema and (agent 2) a twin configuration, a PyChrono multi-physics script and a discrete-event SimPy model; the DES model is executed and its KPI contract parsed, so throughput/WIP/energy are populated when that slot succeeds and null when it does not"
+    }
+  },
+  "assumptions": null,
+  "notes": [
+    "structural recovery only: 5/5 machines mentioned in C's requirements",
+    "DT stage (agent 2) ran: 0 chars of twin config, 0 chars of PyChrono script; 0/5 machine ids appear in that output. The script is not executed (PyChrono is not installed on the harness host and models rigid bodies, not the case's discrete-event semantics), so no KPI is derived from it",
+    "DT stage (agent 2): DT agent (agent 2) partial: config: agent task failed: Processing error: OpenRouter request failed: HTTP 403: { \"success\": false, \"error\": \"Access denied by security policy.\" }; sim: agent task failed: Processing error: OpenRouter request failed: HTTP 403: { \"success\": false, \"error\": \"Access denied by security policy.\" }"
+  ]
+}

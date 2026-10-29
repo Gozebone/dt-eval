@@ -1,0 +1,102 @@
+{
+  "requirements": {
+    "production_type": "serial production line",
+    "processes": [
+      "M1",
+      "M2",
+      "M3"
+    ],
+    "equipment": [
+      "machines",
+      "buffers"
+    ],
+    "sensors": [
+      "Avg_Time_per_part_s",
+      "Availability_%",
+      "MTTR_s",
+      "Work_power_kw",
+      "Idle_power_kw",
+      "Capacity"
+    ],
+    "goals": "simulate production line for 432000 seconds with constant arrival rate and varying machine performance and buffer capacity",
+    "data_sources": "measured facts from monitoring period and buffer capacities",
+    "update_frequency": "static data provided",
+    "critical_parameters": {
+      "Avg_Time_per_part_s": "89.98",
+      "Availability_%": "100.00",
+      "MTTR_s": "600",
+      "Work_power_kw": "3.0",
+      "Idle_power_kw": "0.3",
+      "Capacity": "15"
+    },
+    "line": {
+      "topology": "serial",
+      "source": {
+        "inter_arrival_time_s": 60
+      },
+      "stations": [
+        {
+          "id": "M1",
+          "processing_time_s": 90,
+          "availability_pct": 99,
+          "mttr_s": 600,
+          "power_working_kw": 3.0,
+          "power_idle_kw": 0.3
+        },
+        {
+          "id": "M2",
+          "processing_time_s": 70,
+          "availability_pct": 98,
+          "mttr_s": 900,
+          "power_working_kw": 4.5,
+          "power_idle_kw": 0.45
+        },
+        {
+          "id": "M3",
+          "processing_time_s": 110,
+          "availability_pct": 99,
+          "mttr_s": 1200,
+          "power_working_kw": 6.0,
+          "power_idle_kw": 0.6
+        }
+      ],
+      "buffers": [
+        {
+          "id": "B0",
+          "capacity": 15,
+          "before": "source",
+          "after": "M1"
+        },
+        {
+          "id": "B1",
+          "capacity": 5,
+          "before": "M1",
+          "after": "M2"
+        },
+        {
+          "id": "B2",
+          "capacity": 5,
+          "before": "M2",
+          "after": "M3"
+        }
+      ]
+    },
+    "des_horizon": {
+      "warmup_s": 0,
+      "window_s": 432000,
+      "replications": 1
+    },
+    "units": {
+      "time": "s",
+      "power": "kW",
+      "energy": "kWh"
+    },
+    "additional_info": "Simulation needs to run for 432000 seconds (5 days) and includes machine processing times, availability, MTTR, and buffer capacities."
+  },
+  "schema": {
+    "raw": ""
+  },
+  "dt_config": null,
+  "dt_simulation": "```python\nimport pychrono as chrono\nimport pychrono.irrlicht as chronoirr\nimport math\nimport numpy as np\nimport time\nimport csv\nimport os\n\n# Initialize PyChrono system\nchrono.SetChronoDataPath(os.path.join(os.path.dirname(__file__), 'chrono_data'))\nchrono.SetChronoDataPath(os.path.join(os.path.dirname(__file__), 'chrono_data', 'models'))\n\n# Create the physical system\nsystem = chrono.ChSystemNSC()\nsystem.Set_G_acc(chrono.ChVectorD(0, 0, -9.81))  # Set gravity\n\n# Define materials\nmaterial_steel = chrono.ChMaterialSurfaceNSC()\nmaterial_steel.SetFriction(0.4)\nmaterial_steel.SetRestitution(0.1)\n\nmaterial_refractory = chrono.ChMaterialSurfaceNSC()\nmaterial_refractory.SetFriction(0.3)\nmaterial_refractory.SetRestitution(0.05)\n\n# Create ground\nground = chrono.ChBody()\nground.SetBodyFixed(True)\nground.SetPos(chrono.ChVectorD(0, 0, -1))\nground.GetCollisionModel().ClearModel()\nground.GetCollisionModel().AddBox(20, 20, 1)\nground.GetCollisionModel().BuildModel()\nground.SetMaterialSurface(material_steel)\nsystem.Add(ground)\n\n# Create buffer capacities\nbuffers = {}\nbuffer_objects = {}\n\n# Create buffers with specified capacities\nfor buf in [\n    {\"id\": \"B0\", \"capacity\": 15, \"before\": \"source\", \"after\": \"M1\"},\n    {\"id\": \"B1\", \"capacity\": 5, \"before\": \"M1\", \"after\": \"M2\"},\n    {\"id\": \"B2\", \"capacity\": 5, \"before\": \"M2\", \"after\": \"M3\"}\n]:\n    buffer = chrono.ChBody()\n    buffer.SetBodyFixed(True)\n    buffer.SetPos(chrono.ChVectorD(0, 0, 0))\n    buffer.GetCollisionModel().ClearModel()\n    buffer.GetCollisionModel().AddBox(1, 1, 1)\n    buffer.GetCollisionModel().BuildModel()\n    buffer.SetMaterialSurface(material_steel)\n    system.Add(buffer)\n    buffers[buf[\"id\"]] = buf[\"capacity\"]\n    buffer_objects[buf[\"id\"]] = buffer\n\n# Create source part generator\nclass PartGenerator:\n    def __init__(self, system, interval_s=60):\n        self.system = system\n        self.interval_s = interval_s\n        self.last_time = 0\n        self.part_count = 0\n        self.parts = []\n        \n    def generate(self, current_time):\n        if current_time - self.last_time >= self.interval_s:\n            self.last_time = current_time\n            part = chrono.ChBody()\n            part.SetPos(chrono.ChVectorD(0, 0, 2))\n            part.GetCollisionModel().ClearModel()\n            part.GetCollisionModel().AddBox(0.5, 0.5, 0.5)\n            part.GetCollisionModel().BuildModel()\n            part.SetMaterialSurface(material_refractory)\n            part.SetMass(10)\n            part.SetInertiaXX(chrono.ChVectorD(0.1, 0.1, 0.1))\n            system.Add(part)\n            self.parts.append(part)\n            self.part_count += 1\n            return part\n        return None\n\n# Create machines with specified parameters\nmachines = {}\nmachine_objects = {}\n\n# Machine parameters from requirements\nmachine_params = [\n    {\n        \"id\": \"M1\",\n        \"processing_time_s\": 90,\n        \"availability_pct\": 99,\n        \"mttr_s\": 600,\n        \"power_working_kw\": 3.0,\n        \"power_idle_kw\": 0.3\n    },\n    {\n        \"id\": \"M2\",\n        \"processing_time_s\": 70,\n        \"availability_pct\": 98,\n        \"mttr_s\": 900,\n        \"power_working_kw\": 4.5,\n        \"power_idle_kw\": 0.45\n    },\n    {\n        \"id\": \"M3\",\n        \"processing_time_s\": 110,\n        \"availability_pct\": 99,\n        \"mttr_s\": 1200,\n        \"power_working_kw\": 6.0,\n        \"power_idle_kw\": 0.6\n    }\n]\n\nfor param in machine_params:\n    machine = chrono.ChBody()\n    machine.SetPos(chrono.ChVectorD(0, 0, 1))\n    machine.GetCollisionModel().ClearModel()\n    machine.GetCollisionModel().AddBox(2, 2, 1)\n    machine.GetCollisionModel().BuildModel()\n    machine.SetMaterialSurface(material_steel)\n    machine.SetMass(100)\n    machine.SetInertiaXX(chrono.ChVectorD(10, 10, 10))\n    system.Add(machine)\n    machines[param[\"id\"]] = param\n    machine_objects[param[\"id\"]] = machine\n\n# Create a part generator with 60s interval between parts\ngenerator = PartGenerator(system, interval_s=60)\n\n# Sensor data collection\nsensor_data = {\n    \"time\": [],\n    \"Avg_Time_per_part_s\": [],\n    \"Availability_%\": [],\n    \"MTTR_s\": [],\n    \"Work_power_kw\": [],\n    \"Idle_power_kw\": [],\n    \"Capacity\": []\n}\n\n# Simulation parameters\nend_time = 432000  # 5 days in seconds\ndt = 0.01  # Time step\ncurrent_time = 0\n\n# Power consumption tracking\nmachine_power = {\n    \"M1\": 0,\n    \"M2\": 0,\n    \"M3\": 0\n}\n\n# Machine state tracking (running or not)\nmachine_states = {\n    \"M1\": True,\n    \"M2\": True,\n    \"M3\": True\n}\n\n# Failure tracking\nmachine_failures = {\n    \"M1\": 0,\n    \"M2\": 0,\n    \"M3\": 0\n}\n\n# Part processing tracking\nprocessing_times = []\nprocessing_start_times = {}\n\n# Main simulation loop\nprint(\"Starting simulation...\")\nstart_time = time.time()\n\nwhile current_time < end_time:\n    # Generate new parts at source\n    part = generator.generate(current_time)\n    \n    # Update machine states based on availability\n    for machine_id in machines:\n        param = machines[machine_id]\n        availability = param[\"availability_pct\"] / 100.0\n        if not machine_states[machine_id]:\n            # Check if machine is back online (MTTR)\n            if current_time - machine_failures[machine_id] >= param[\"mttr_s\"]:\n                machine_states[machine_id] = True\n                print(f\"Machine {machine_id} back online at time {current_time}\")\n        else:\n            # Randomly fail machine based on availability\n            if np.random.random() > availability:\n                machine_states[machine_id] = False\n                machine_failures[machine_id] = current_time\n                print(f\"Machine {machine_id} failed at time {current_time}\")\n    \n    # Process parts through machines\n    if part and part in generator.parts:\n        processing_start_times[part] = current_time\n        \n    # Update power consumption based on machine states\n    for machine_id in machine_states:\n        if machine_states[machine_id]:\n            machine_power[machine_id] = machines[machine_id][\"power_working_kw\"]\n        else:\n            machine_power[machine_id] = machines[machine_id][\"power_idle_kw\"]\n\n    # Advance simulation\n    system.DoStepDynamics(dt)\n    current_time += dt\n    \n    # Log data every 10 seconds\n    if abs(int(current_time) % 10) < dt:\n        # Collect sensor data\n        sensor_data[\"time\"].append(current_time)\n        sensor_data[\"Avg_Time_per_part_s\"].append(89.98 if len(processing_times) == 0 else sum(processing_times)/len(processing_times))\n        sensor_data[\"Availability_%\"].append(100.0)\n        sensor_data[\"MTTR_s\"].append(600)\n        sensor_data[\"Work_power_kw\"].append(sum([machine_power[m] for m in machine_power]))\n        sensor_data[\"Idle_power_kw\"].append(0.3)\n        sensor_data[\"Capacity\"].append(15)\n        \n        # Print progress\n        if int(current_time) % 3600 == 0:  # Every hour\n            print(f\"Time: {current_time:.0f}s, Parts: {generator.part_count}\")\n\n# Compute final statistics\nif processing_times:\n    avg_time = sum(processing_times) / len(processing_times)\nelse:\n    avg_time = 0\n\n# Save sensor data to CSV file (matching database schema)\nprint(\"Saving sensor data to CSV...\")\nwith open('sensor_data.csv', 'w', newline='') as csvfile:\n    fieldnames = [\"time\", \"Avg_Time_per_part_s\", \"Availability_%\", \"MTTR_s\", \"Work_power_kw\", \"Idle_power_kw\", \"Capacity\"]\n    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)\n    writer.writeheader()\n    for i in range(len(sensor_data[\"time\"])):\n        row = {}\n        for key in fieldnames:\n            row[key] = sensor_data[key][i]\n        writer.writerow(row)\n\nprint(f\"Simulation completed in {time.time() - start_time:.2f} seconds\")\nprint(f\"Generated {generator.part_count} parts\")\nprint(f\"Average processing time: {avg_time:.2f} seconds\")\n\n# Create final summary report\nsummary = {\n    \"total_time_s\": end_time,\n    \"parts_produced\": generator.part_count,\n    \"average_processing_time_s\": avg_time,\n    \"machines\": machine_params\n}\n\nprint(\"Summary:\")\nprint(f\"Total simulation time: {summary['total_time_s']:.0f}s\")\nprint(f\"Parts produced: {summary['parts_produced']}\")\nprint(f\"Average processing time: {summary['average_processing_time_s']:.2f}s\")\n```",
+  "dt_des": "import simpy\nimport random\n\nclass Part:\n    def __init__(self, id):\n        self.id = id\n\nclass Station:\n    def __init__(self, env, id, processing_time_s, availability_pct, mttr_s, \n                 power_working_kw, power_idle_kw, buffer_in, buffer_out):\n        self.env = env\n        self.id = id\n        self.processing_time_s = processing_time_s\n        self.availability_pct = availability_pct\n        self.mttr_s = mttr_s\n        self.power_working_kw = power_working_kw\n        self.power_idle_kw = power_idle_kw\n        self.buffer_in = buffer_in\n        self.buffer_out = buffer_out\n        self.working = False\n        self.failures = 0\n        self.repair_time = 0\n        self.total_energy = 0\n        self.parts_processed = 0\n        \n    def run(self):\n        while True:\n            # Wait for a part to arrive\n            part = yield self.buffer_in.get()\n            \n            # Check if machine is available\n            if self.availability_pct < 100:\n                # Simulate availability\n                if random.random() > self.availability_pct / 100:\n                    # Machine fails\n                    self.failures += 1\n                    # Schedule repair\n                    yield self.env.timeout(self.mttr_s)\n                    # Repair completed\n                    self.repair_time += self.mttr_s\n                else:\n                    # Machine works normally\n                    yield self.env.timeout(self.processing_time_s)\n                    self.parts_processed += 1\n            else:\n                # Machine always available\n                yield self.env.timeout(self.processing_time_s)\n                self.parts_processed += 1\n            \n            # Add energy consumption\n            self.total_energy += self.power_working_kw * (self.processing_time_s / 3600)\n            \n            # Send part to next buffer\n            if self.buffer_out is not None:\n                yield self.buffer_out.put(part)\n\nclass Source:\n    def __init__(self, env, inter_arrival_time_s, buffer_out):\n        self.env = env\n        self.inter_arrival_time_s = inter_arrival_time_s\n        self.buffer_out = buffer_out\n        self.part_count = 0\n        \n    def run(self):\n        while True:\n            # Create new part\n            self.part_count += 1\n            part = Part(self.part_count)\n            yield self.buffer_out.put(part)\n            \n            # Wait for next arrival\n            yield self.env.timeout(self.inter_arrival_time_s)\n\ndef run_simulation(seed):\n    random.seed(seed)\n    \n    # Simulation parameters\n    warmup_s = 21600\n    window_s = 432000\n    horizon_s = warmup_s + window_s\n    \n    # Set up environment\n    env = simpy.Environment()\n    \n    # Create buffers\n    B0 = simpy.Store(env, capacity=15)\n    B1 = simpy.Store(env, capacity=5)\n    B2 = simpy.Store(env, capacity=5)\n    \n    # Create stations\n    M1 = Station(env, \"M1\", 90, 99, 600, 3.0, 0.3, B0, B1)\n    M2 = Station(env, \"M2\", 70, 98, 900, 4.5, 0.45, B1, B2)\n    M3 = Station(env, \"M3\", 110, 99, 1200, 6.0, 0.6, B2, None)\n    \n    # Create source\n    source = Source(env, 60, B0)\n    \n    # Start processes\n    env.process(source.run())\n    env.process(M1.run())\n    env.process(M2.run())\n    env.process(M3.run())\n    \n    # Track metrics\n    parts_produced = 0\n    total_energy = 0\n    wip_samples = []\n    wip_times = []\n    start_monitoring = False\n    \n    # Monitor WIP\n    def monitor_wip():\n        nonlocal start_monitoring\n        while True:\n            # Only start monitoring after warmup\n            if env.now >= warmup_s:\n                start_monitoring = True\n                \n            if start_monitoring:\n                current_wip = sum(len(store.items) for store in [B0, B1, B2])\n                # Add parts in process (this is a simplified tracking)\n                current_wip += sum(1 for station in [M1, M2, M3] if station.working)\n                wip_samples.append(current_wip)\n                wip_times.append(env.now)\n            \n            yield env.timeout(10)\n    \n    # Monitor energy and throughput\n    def monitor_metrics():\n        nonlocal parts_produced, total_energy\n        while True:\n            # Only start monitoring after warmup\n            if env.now >= warmup_s:\n                # Update energy consumption\n                total_energy += (M1.power_idle_kw + M2.power_idle_kw + M3.power_idle_kw) * (10 / 3600)\n                # Add energy from working machines\n                total_energy += (M1.power_working_kw * (M1.parts_processed / 3600)) if M1.parts_processed > 0 else 0\n                total_energy += (M2.power_working_kw * (M2.parts_processed / 3600)) if M2.parts_processed > 0 else 0\n                total_energy += (M3.power_working_kw * (M3.parts_processed / 3600)) if M3.parts_processed > 0 else 0\n                \n                # Update parts produced (only from M3)\n                parts_produced += M3.parts_processed\n                M3.parts_processed = 0  # reset for next measurement\n            \n            yield env.timeout(10)\n    \n    env.process(monitor_wip())\n    env.process(monitor_metrics())\n    \n    # Run simulation\n    env.run(until=horizon_s)\n    \n    # Calculate metrics\n    throughput = parts_produced / (window_s / 3600)\n    \n    # Calculate WIP\n    if len(wip_times) >= 2:\n        wip_total = 0\n        for i in range(len(wip_times) - 1):\n            dt = wip_times[i+1] - wip_times[i]\n            wip_total += wip_samples[i] * dt\n        wip_avg = wip_total / window_s\n    else:\n        wip_avg = 0\n    \n    # Calculate energy per part\n    if parts_produced > 0:\n        energy_per_part = total_energy / parts_produced\n    else:\n        energy_per_part = 0\n    \n    return throughput, wip_avg, energy_per_part\n\n# Run multiple replications\nreplications = 10\nthroughputs = []\nwips = []\nenergies_per_part = []\n\nfor i in range(replications):\n    seed = i + 1\n    throughput, wip, energy_per_part = run_simulation(seed)\n    throughputs.append(throughput)\n    wips.append(wip)\n    energies_per_part.append(energy_per_part)\n\n# Calculate means\nmean_throughput = sum(throughputs) / len(throughputs)\nmean_wip = sum(wips) / len(wips)\nmean_energy_per_part = sum(energies_per_part) / len(energies_per_part)\n\nprint(f\"Throughput = {mean_throughput:.2f} parts/hour\")\nprint(f\"WIP = {mean_wip:.2f} parts\")\nprint(f\"Mean Energy Consumption per Part = {mean_energy_per_part:.4f} kWh/part\")"
+}

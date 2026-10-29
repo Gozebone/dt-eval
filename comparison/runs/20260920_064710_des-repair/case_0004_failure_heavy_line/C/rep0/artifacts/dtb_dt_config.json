@@ -1,0 +1,200 @@
+{
+  "components": {
+    "data_collection": {
+      "modules": [
+        {
+          "name": "OPC-UA Collector",
+          "type": "data_collector",
+          "description": "Collects real-time data from machines via OPC-UA protocol",
+          "protocol": "OPC-UA",
+          "update_frequency_s": 10
+        },
+        {
+          "name": "MQTT Bridge",
+          "type": "data_collector",
+          "description": "Bridge data from IoT sensors using MQTT protocol",
+          "protocol": "MQTT",
+          "update_frequency_s": 5
+        },
+        {
+          "name": "REST API Gateway",
+          "type": "data_collector",
+          "description": "Handles REST API calls for external integration",
+          "protocol": "REST",
+          "update_frequency_s": 30
+        }
+      ]
+    },
+    "analytics_engine": {
+      "modules": [
+        {
+          "name": "Performance Analyzer",
+          "type": "analytics_engine",
+          "description": "Analyzes machine performance and efficiency metrics",
+          "algorithm": "statistical_analysis"
+        },
+        {
+          "name": "Maintenance Predictor",
+          "type": "analytics_engine",
+          "description": "Predicts maintenance needs based on historical data",
+          "algorithm": "machine_learning"
+        },
+        {
+          "name": "Resource Optimizer",
+          "type": "analytics_engine",
+          "description": "Optimizes resource allocation across the production line",
+          "algorithm": "optimization"
+        }
+      ]
+    },
+    "ml_models": {
+      "models": [
+        {
+          "name": "Failure Prediction Model",
+          "type": "predictive_maintenance",
+          "description": "Predicts potential machine failures",
+          "input_features": [
+            "processing_time_s",
+            "availability%",
+            "mttr_s"
+          ],
+          "output": "failure_probability"
+        },
+        {
+          "name": "Efficiency Forecast Model",
+          "type": "performance_forecast",
+          "description": "Forecasts production line efficiency",
+          "input_features": [
+            "availability%",
+            "power_working_kw",
+            "buffer_capacity"
+          ],
+          "output": "efficiency_score"
+        }
+      ]
+    },
+    "visualization": {
+      "dashboard": {
+        "name": "Production Line Dashboard",
+        "widgets": [
+          {
+            "type": "gauge",
+            "title": "Line Efficiency",
+            "metric": "efficiency_score",
+            "unit": "%",
+            "color_scheme": "green_to_red"
+          },
+          {
+            "type": "chart",
+            "title": "Machine Availability Over Time",
+            "metric": "availability%",
+            "unit": "%",
+            "refresh_rate_s": 60
+          },
+          {
+            "type": "table",
+            "title": "Buffer Status",
+            "metric": "buffer_capacity",
+            "unit": "units"
+          },
+          {
+            "type": "map",
+            "title": "Production Line Layout",
+            "metric": "machine_status",
+            "unit": "status"
+          }
+        ]
+      }
+    }
+  },
+  "data_flows": {
+    "connections": [
+      {
+        "from": "OPC-UA Collector",
+        "to": "Analytics Engine",
+        "protocol": "WebSocket",
+        "update_frequency_s": 10
+      },
+      {
+        "from": "MQTT Bridge",
+        "to": "Analytics Engine",
+        "protocol": "MQTT",
+        "update_frequency_s": 5
+      },
+      {
+        "from": "REST API Gateway",
+        "to": "Analytics Engine",
+        "protocol": "REST",
+        "update_frequency_s": 30
+      },
+      {
+        "from": "Analytics Engine",
+        "to": "ML Models",
+        "protocol": "REST",
+        "update_frequency_s": 60
+      },
+      {
+        "from": "ML Models",
+        "to": "Visualization Dashboard",
+        "protocol": "WebSocket",
+        "update_frequency_s": 10
+      }
+    ]
+  },
+  "alerts": {
+    "thresholds": [
+      {
+        "metric": "availability%",
+        "condition": "<",
+        "value": 85,
+        "severity": "warning",
+        "message": "Machine availability below threshold"
+      },
+      {
+        "metric": "mttr_s",
+        "condition": ">",
+        "value": 3600,
+        "severity": "critical",
+        "message": "Mean time to repair exceeds threshold"
+      },
+      {
+        "metric": "buffer_capacity",
+        "condition": "<",
+        "value": 1,
+        "severity": "emergency",
+        "message": "Buffer capacity critically low"
+      },
+      {
+        "metric": "power_working_kw",
+        "condition": ">",
+        "value": 10,
+        "severity": "info",
+        "message": "High power consumption detected"
+      }
+    ]
+  },
+  "kpis": {
+    "metrics": [
+      {
+        "name": "Overall Equipment Effectiveness (OEE)",
+        "target_value": 85,
+        "measurement_method": "calculated from availability%, performance%, and quality%"
+      },
+      {
+        "name": "Production Throughput",
+        "target_value": 1000,
+        "measurement_method": "parts produced per hour"
+      },
+      {
+        "name": "Energy Consumption",
+        "target_value": 5000,
+        "measurement_method": "kWh per day"
+      },
+      {
+        "name": "Machine Uptime",
+        "target_value": 95,
+        "measurement_method": "percentage of time machines are operational"
+      }
+    ]
+  }
+}

@@ -1,0 +1,383 @@
+{
+  "production_type": "serial",
+  "processes": [
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "M5",
+    "M6"
+  ],
+  "equipment": {
+    "machines": [
+      {
+        "id": "M1",
+        "processing_time_s": 200,
+        "availability": 0.97,
+        "mttr_s": 900,
+        "work_power_kw": 5.0,
+        "idle_power_kw": 0.5
+      },
+      {
+        "id": "M2",
+        "processing_time_s": 220,
+        "availability": 0.97,
+        "mttr_s": 1000,
+        "work_power_kw": 5.5,
+        "idle_power_kw": 0.55
+      },
+      {
+        "id": "M3",
+        "processing_time_s": 240,
+        "availability": 0.96,
+        "mttr_s": 1200,
+        "work_power_kw": 6.0,
+        "idle_power_kw": 0.6
+      },
+      {
+        "id": "M4",
+        "processing_time_s": 260,
+        "availability": 0.96,
+        "mttr_s": 1400,
+        "work_power_kw": 7.0,
+        "idle_power_kw": 0.7
+      },
+      {
+        "id": "M5",
+        "processing_time_s": 230,
+        "availability": 0.97,
+        "mttr_s": 1100,
+        "work_power_kw": 6.5,
+        "idle_power_kw": 0.65
+      },
+      {
+        "id": "M6",
+        "processing_time_s": 210,
+        "availability": 0.97,
+        "mttr_s": 1000,
+        "work_power_kw": 6.0,
+        "idle_power_kw": 0.6
+      }
+    ]
+  },
+  "sensors": [
+    {
+      "machine_id": "M1",
+      "parameter": "processing_time_s",
+      "value": 200
+    },
+    {
+      "machine_id": "M2",
+      "parameter": "processing_time_s",
+      "value": 220
+    },
+    {
+      "machine_id": "M3",
+      "parameter": "processing_time_s",
+      "value": 240
+    },
+    {
+      "machine_id": "M4",
+      "parameter": "processing_time_s",
+      "value": 260
+    },
+    {
+      "machine_id": "M5",
+      "parameter": "processing_time_s",
+      "value": 230
+    },
+    {
+      "machine_id": "M6",
+      "parameter": "processing_time_s",
+      "value": 210
+    },
+    {
+      "machine_id": "M1",
+      "parameter": "availability",
+      "value": 0.97
+    },
+    {
+      "machine_id": "M2",
+      "parameter": "availability",
+      "value": 0.97
+    },
+    {
+      "machine_id": "M3",
+      "parameter": "availability",
+      "value": 0.96
+    },
+    {
+      "machine_id": "M4",
+      "parameter": "availability",
+      "value": 0.96
+    },
+    {
+      "machine_id": "M5",
+      "parameter": "availability",
+      "value": 0.97
+    },
+    {
+      "machine_id": "M6",
+      "parameter": "availability",
+      "value": 0.97
+    },
+    {
+      "machine_id": "M1",
+      "parameter": "mttr_s",
+      "value": 900
+    },
+    {
+      "machine_id": "M2",
+      "parameter": "mttr_s",
+      "value": 1000
+    },
+    {
+      "machine_id": "M3",
+      "parameter": "mttr_s",
+      "value": 1200
+    },
+    {
+      "machine_id": "M4",
+      "parameter": "mttr_s",
+      "value": 1400
+    },
+    {
+      "machine_id": "M5",
+      "parameter": "mttr_s",
+      "value": 1100
+    },
+    {
+      "machine_id": "M6",
+      "parameter": "mttr_s",
+      "value": 1000
+    },
+    {
+      "machine_id": "M1",
+      "parameter": "work_power_kw",
+      "value": 5.0
+    },
+    {
+      "machine_id": "M2",
+      "parameter": "work_power_kw",
+      "value": 5.5
+    },
+    {
+      "machine_id": "M3",
+      "parameter": "work_power_kw",
+      "value": 6.0
+    },
+    {
+      "machine_id": "M4",
+      "parameter": "work_power_kw",
+      "value": 7.0
+    },
+    {
+      "machine_id": "M5",
+      "parameter": "work_power_kw",
+      "value": 6.5
+    },
+    {
+      "machine_id": "M6",
+      "parameter": "work_power_kw",
+      "value": 6.0
+    },
+    {
+      "machine_id": "M1",
+      "parameter": "idle_power_kw",
+      "value": 0.5
+    },
+    {
+      "machine_id": "M2",
+      "parameter": "idle_power_kw",
+      "value": 0.55
+    },
+    {
+      "machine_id": "M3",
+      "parameter": "idle_power_kw",
+      "value": 0.6
+    },
+    {
+      "machine_id": "M4",
+      "parameter": "idle_power_kw",
+      "value": 0.7
+    },
+    {
+      "machine_id": "M5",
+      "parameter": "idle_power_kw",
+      "value": 0.65
+    },
+    {
+      "machine_id": "M6",
+      "parameter": "idle_power_kw",
+      "value": 0.6
+    },
+    {
+      "machine_id": "M1",
+      "parameter": "energy_idling",
+      "value": 0.5
+    },
+    {
+      "machine_id": "M2",
+      "parameter": "energy_idling",
+      "value": 0.55
+    },
+    {
+      "machine_id": "M3",
+      "parameter": "energy_idling",
+      "value": 0.59
+    },
+    {
+      "machine_id": "M4",
+      "parameter": "energy_idling",
+      "value": 0.69
+    },
+    {
+      "machine_id": "M5",
+      "parameter": "energy_idling",
+      "value": 0.64
+    },
+    {
+      "machine_id": "M6",
+      "parameter": "energy_idling",
+      "value": 0.6
+    },
+    {
+      "machine_id": "M1",
+      "parameter": "energy_working",
+      "value": 5.0
+    },
+    {
+      "machine_id": "M2",
+      "parameter": "energy_working",
+      "value": 5.49
+    },
+    {
+      "machine_id": "M3",
+      "parameter": "energy_working",
+      "value": 5.99
+    },
+    {
+      "machine_id": "M4",
+      "parameter": "energy_working",
+      "value": 6.99
+    },
+    {
+      "machine_id": "M5",
+      "parameter": "energy_working",
+      "value": 6.49
+    },
+    {
+      "machine_id": "M6",
+      "parameter": "energy_working",
+      "value": 6.0
+    }
+  ],
+  "goals": "Simulate production line performance, track machine performance, and optimize resource utilization.",
+  "data_sources": "JSON data provided in the user's input.",
+  "update_frequency": "Real-time monitoring data from the production line.",
+  "critical_parameters": {
+    "processing_time_s": 200,
+    "availability": 0.97,
+    "mttr_s": 900,
+    "work_power_kw": 5.0,
+    "idle_power_kw": 0.5,
+    "energy_idling": 0.5,
+    "energy_working": 5.0
+  },
+  "line": {
+    "topology": "serial",
+    "source": {
+      "inter_arrival_time_s": 300
+    },
+    "stations": [
+      {
+        "id": "M1",
+        "processing_time_s": 200,
+        "availability": 0.97,
+        "mttr_s": 900,
+        "work_power_kw": 5.0,
+        "idle_power_kw": 0.5
+      },
+      {
+        "id": "M2",
+        "processing_time_s": 220,
+        "availability": 0.97,
+        "mttr_s": 1000,
+        "work_power_kw": 5.5,
+        "idle_power_kw": 0.55
+      },
+      {
+        "id": "M3",
+        "processing_time_s": 240,
+        "availability": 0.96,
+        "mttr_s": 1200,
+        "work_power_kw": 6.0,
+        "idle_power_kw": 0.6
+      },
+      {
+        "id": "M4",
+        "processing_time_s": 260,
+        "availability": 0.96,
+        "mttr_s": 1400,
+        "work_power_kw": 7.0,
+        "idle_power_kw": 0.7
+      },
+      {
+        "id": "M5",
+        "processing_time_s": 230,
+        "availability": 0.97,
+        "mttr_s": 1100,
+        "work_power_kw": 6.5,
+        "idle_power_kw": 0.65
+      },
+      {
+        "id": "M6",
+        "processing_time_s": 210,
+        "availability": 0.97,
+        "mttr_s": 1000,
+        "work_power_kw": 6.0,
+        "idle_power_kw": 0.6
+      }
+    ],
+    "buffers": [
+      {
+        "id": "B0",
+        "capacity": 10
+      },
+      {
+        "id": "B1",
+        "capacity": 10
+      },
+      {
+        "id": "B2",
+        "capacity": 10
+      },
+      {
+        "id": "B3",
+        "capacity": 10
+      },
+      {
+        "id": "B4",
+        "capacity": 10
+      },
+      {
+        "id": "B5",
+        "capacity": 10
+      }
+    ],
+    "defects": {
+      "rate": 0.0
+    }
+  },
+  "des_horizon": {
+    "warmup_s": 0,
+    "window_s": 432000,
+    "replications": 1
+  },
+  "units": {
+    "time": "s",
+    "power": "kW",
+    "energy": "kWh"
+  },
+  "additional_info": "JSON data provided in the user's input."
+}

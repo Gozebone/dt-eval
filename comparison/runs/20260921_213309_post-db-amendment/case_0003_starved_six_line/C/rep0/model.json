@@ -1,0 +1,477 @@
+{
+  "requirements": {
+    "production_type": "serial production line",
+    "processes": [
+      "M1",
+      "M2",
+      "M3",
+      "M4",
+      "M5",
+      "M6"
+    ],
+    "equipment": [
+      {
+        "id": "M1",
+        "process_time_s": 200,
+        "availability": 0.97,
+        "mttr_s": 900,
+        "work_power_kw": 5.0,
+        "idle_power_kw": 0.5
+      },
+      {
+        "id": "M2",
+        "process_time_s": 220,
+        "availability": 0.97,
+        "mttr_s": 1000,
+        "work_power_kw": 5.5,
+        "idle_power_kw": 0.55
+      },
+      {
+        "id": "M3",
+        "process_time_s": 240,
+        "availability": 0.96,
+        "mttr_s": 1200,
+        "work_power_kw": 6.0,
+        "idle_power_kw": 0.6
+      },
+      {
+        "id": "M4",
+        "process_time_s": 260,
+        "availability": 0.96,
+        "mttr_s": 1400,
+        "work_power_kw": 7.0,
+        "idle_power_kw": 0.7
+      },
+      {
+        "id": "M5",
+        "process_time_s": 230,
+        "availability": 0.97,
+        "mttr_s": 1100,
+        "work_power_kw": 6.5,
+        "idle_power_kw": 0.65
+      },
+      {
+        "id": "M6",
+        "process_time_s": 210,
+        "availability": 0.97,
+        "mttr_s": 1000,
+        "work_power_kw": 6.0,
+        "idle_power_kw": 0.6
+      }
+    ],
+    "sensors": [
+      {
+        "id": "M1",
+        "sensor_type": "machine_performance",
+        "parameters": [
+          "process_time_s",
+          "availability",
+          "mttr_s",
+          "work_power_kw",
+          "idle_power_kw"
+        ]
+      },
+      {
+        "id": "M2",
+        "sensor_type": "machine_performance",
+        "parameters": [
+          "process_time_s",
+          "availability",
+          "mttr_s",
+          "work_power_kw",
+          "idle_power_kw"
+        ]
+      },
+      {
+        "id": "M3",
+        "sensor_type": "machine_performance",
+        "parameters": [
+          "process_time_s",
+          "availability",
+          "mttr_s",
+          "work_power_kw",
+          "idle_power_kw"
+        ]
+      },
+      {
+        "id": "M4",
+        "sensor_type": "machine_performance",
+        "parameters": [
+          "process_time_s",
+          "availability",
+          "mttr_s",
+          "work_power_kw",
+          "idle_power_kw"
+        ]
+      },
+      {
+        "id": "M5",
+        "sensor_type": "machine_performance",
+        "parameters": [
+          "process_time_s",
+          "availability",
+          "mttr_s",
+          "work_power_kw",
+          "idle_power_kw"
+        ]
+      },
+      {
+        "id": "M6",
+        "sensor_type": "machine_performance",
+        "parameters": [
+          "process_time_s",
+          "availability",
+          "mttr_s",
+          "work_power_kw",
+          "idle_power_kw"
+        ]
+      },
+      {
+        "id": "B0",
+        "sensor_type": "buffer_level",
+        "parameters": [
+          "capacity"
+        ]
+      },
+      {
+        "id": "B1",
+        "sensor_type": "buffer_level",
+        "parameters": [
+          "capacity"
+        ]
+      },
+      {
+        "id": "B2",
+        "sensor_type": "buffer_level",
+        "parameters": [
+          "capacity"
+        ]
+      },
+      {
+        "id": "B3",
+        "sensor_type": "buffer_level",
+        "parameters": [
+          "capacity"
+        ]
+      },
+      {
+        "id": "B4",
+        "sensor_type": "buffer_level",
+        "parameters": [
+          "capacity"
+        ]
+      },
+      {
+        "id": "B5",
+        "sensor_type": "buffer_level",
+        "parameters": [
+          "capacity"
+        ]
+      }
+    ],
+    "goals": "Simulate the production line for 432,000 seconds (5 days) to analyze machine performance, buffer utilization, and part arrival patterns.",
+    "data_sources": "Machine performance data (process_time_s, availability, mttr_s, work_power_kw, idle_power_kw) and buffer capacities.",
+    "update_frequency": "Real-time or scheduled updates based on monitored data.",
+    "critical_parameters": {
+      "M1": "process_time_s: 200 s, availability: 0.97, mttr_s: 900 s",
+      "M2": "process_time_s: 220 s, availability: 0.97, mttr_s: 1000 s",
+      "M3": "process_time_s: 240 s, availability: 0.96, mttr_s: 1200 s",
+      "M4": "process_time_s: 260 s, availability: 0.96, mttr_s: 1400 s",
+      "M5": "process_time_s: 230 s, availability: 0.97, mttr_s: 1100 s",
+      "M6": "process_time_s: 210 s, availability: 0.97, mttr_s: 1000 s",
+      "B0": "capacity: 10 units",
+      "B1": "capacity: 10 units",
+      "B2": "capacity: 10 units",
+      "B3": "capacity: 10 units",
+      "B4": "capacity: 10 units",
+      "B5": "capacity: 10 units"
+    },
+    "line": {
+      "topology": "serial",
+      "source": {
+        "inter_arrival_time_s": 300
+      },
+      "stations": [
+        {
+          "id": "M1",
+          "processing_time_s": 200,
+          "availability_pct": 0.97,
+          "mttr_s": 900,
+          "power_working_kw": 5.0,
+          "power_idle_kw": 0.5
+        },
+        {
+          "id": "M2",
+          "processing_time_s": 220,
+          "availability_pct": 0.97,
+          "mttr_s": 1000,
+          "power_working_kw": 5.5,
+          "power_idle_kw": 0.55
+        },
+        {
+          "id": "M3",
+          "processing_time_s": 240,
+          "availability_pct": 0.96,
+          "mttr_s": 1200,
+          "power_working_kw": 6.0,
+          "power_idle_kw": 0.6
+        },
+        {
+          "id": "M4",
+          "processing_time_s": 260,
+          "availability_pct": 0.96,
+          "mttr_s": 1400,
+          "power_working_kw": 7.0,
+          "power_idle_kw": 0.7
+        },
+        {
+          "id": "M5",
+          "processing_time_s": 230,
+          "availability_pct": 0.97,
+          "mttr_s": 1100,
+          "power_working_kw": 6.5,
+          "power_idle_kw": 0.65
+        },
+        {
+          "id": "M6",
+          "processing_time_s": 210,
+          "availability_pct": 0.97,
+          "mttr_s": 1000,
+          "power_working_kw": 6.0,
+          "power_idle_kw": 0.6
+        }
+      ],
+      "buffers": [
+        {
+          "id": "B0",
+          "capacity": 10,
+          "before": "source",
+          "after": "M1"
+        },
+        {
+          "id": "B1",
+          "capacity": 10,
+          "before": "M1",
+          "after": "M2"
+        },
+        {
+          "id": "B2",
+          "capacity": 10,
+          "before": "M2",
+          "after": "M3"
+        },
+        {
+          "id": "B3",
+          "capacity": 10,
+          "before": "M3",
+          "after": "M4"
+        },
+        {
+          "id": "B4",
+          "capacity": 10,
+          "before": "M4",
+          "after": "M5"
+        },
+        {
+          "id": "B5",
+          "capacity": 10,
+          "before": "M5",
+          "after": "M6"
+        }
+      ],
+      "defects": {
+        "rate": 0.0
+      }
+    },
+    "des_horizon": {
+      "warmup_s": 3600,
+      "window_s": 432000,
+      "replications": 1
+    },
+    "units": {
+      "time": "s",
+      "power": "kW",
+      "energy": "kWh"
+    },
+    "additional_info": "SimPy Environment initialized with serial line structure, sensors tracking machine performance and buffer levels, goals include 5-day simulation and performance analysis."
+  },
+  "schema": {
+    "raw": "CREATE TABLE machines (\n    id TEXT PRIMARY KEY,\n    process_time_s INTEGER,\n    availability DOUBLE PRECISION,\n    mttr_s INTEGER,\n    work_power_kw DOUBLE PRECISION,\n    idle_power_kw DOUBLE PRECISION\n);\n\nINSERT INTO machines (id, process_time_s, availability, mttr_s, work_power_kw, idle_power_kw) VALUES\n('M1', 200, 0.97, 900, 5.0, 0.5),\n('M2', 220, 0.97, 1000, 5.5, 0.55),\n('M3', 240, 0.96, 1200, 6.0, 0.6),\n('M4', 260, 0.96, 1400, 7.0, 0.7),\n('M5', 230, 0.97, 1100, 6.5, 0.65),\n('M6', 210, 0.97, 1000, 6.0, 0.6);\n\nCREATE TABLE buffers (\n    id TEXT PRIMARY KEY,\n    capacity INTEGER\n);\n\nINSERT INTO buffers (id, capacity) VALUES\n('B0', 10),\n('B1', 10),\n('B2', 10),\n('B3', 10),\n('B4', 10),\n('B5', 10);\n\nCREATE TABLE tag_map (\n    tag_id TEXT PRIMARY KEY,\n    machine_id TEXT,\n    signal TEXT,\n    unit TEXT,\n    register TEXT,\n    scale DOUBLE PRECISION\n);\n\nINSERT INTO tag_map (tag_id, machine_id, signal, unit, register, scale) VALUES\n('M1_proc_time', 'M1', 'process_time_s', 's', 'process_time_s', 1.0),\n('M1_avail', 'M1', 'availability', 'ratio', 'availability', 1.0),\n('M1_mttr', 'M1', 'mttr_s', 's', 'mttr_s', 1.0),\n('M1_work_power', 'M1', 'work_power_kw', 'kW', 'work_power_kw', 1.0),\n('M1_idle_power', 'M1', 'idle_power_kw', 'kW', 'idle_power_kw', 1.0),\n('M2_proc_time', 'M2', 'process_time_s', 's', 'process_time_s', 1.0),\n('M2_avail', 'M2', 'availability', 'ratio', 'availability', 1.0),\n('M2_mttr', 'M2', 'mttr_s', 's', 'mttr_s', 1.0),\n('M2_work_power', 'M2', 'work_power_kw', 'kW', 'work_power_kw', 1.0),\n('M2_idle_power', 'M2', 'idle_power_kw', 'kW', 'idle_power_kw', 1.0),\n('M3_proc_time', 'M3', 'process_time_s', 's', 'process_time_s', 1.0),\n('M3_avail', 'M3', 'availability', 'ratio', 'availability', 1.0),\n('M3_mttr', 'M3', 'mttr_s', 's', 'mttr_s', 1.0),\n('M3_work_power', 'M3', 'work_power_kw', 'kW', 'work_power_kw', 1.0),\n('M3_idle_power', 'M3', 'idle_power_kw', 'kW', 'idle_power_kw', 1.0),\n('M4_proc_time', 'M4', 'process_time_s', 's', 'process_time_s', 1.0),\n('M4_avail', 'M4', 'availability', 'ratio', 'availability', 1.0),\n('M4_mttr', 'M4', 'mttr_s', 's', 'mttr_s', 1.0),\n('M4_work_power', 'M4', 'work_power_kw', 'kW', 'work_power_kw', 1.0),\n('M4_idle_power', 'M4', 'idle_power_kw', 'kW', 'idle_power_kw', 1.0),\n('M5_proc_time', 'M5', 'process_time_s', 's', 'process_time_s', 1.0),\n('M5_avail', 'M5', 'availability', 'ratio', 'availability', 1.0),\n('M5_mttr', 'M5', 'mttr_s', 's', 'mttr_s', 1.0),\n('M5_work_power', 'M5', 'work_power_kw', 'kW', 'work_power_kw', 1.0),\n('M5_idle_power', 'M5', 'idle_power_kw', 'kW', 'idle_power_kw', 1.0),\n('M6_proc_time', 'M6', 'process_time_s', 's', 'process_time_s', 1.0),\n('M6_avail', 'M6', 'availability', 'ratio', 'availability', 1.0),\n('M6_mttr', 'M6', 'mttr_s', 's', 'mttr_s', 1.0),\n('M6_work_power', 'M6', 'work_power_kw', 'kW', 'work_power_kw', 1.0),\n('M6_idle_power', 'M6', 'idle_power_kw', 'kW', 'idle_power_kw', 1.0),\n('B0_capacity', 'B0', 'capacity', 'units', 'capacity', 1.0),\n('B1_capacity', 'B1', 'capacity', 'units', 'capacity', 1.0),\n('B2_capacity', 'B2', 'capacity', 'units', 'capacity', 1.0),\n('B3_capacity', 'B3', 'capacity', 'units', 'capacity', 1.0),\n('B4_capacity', 'B4', 'capacity', 'units', 'capacity', 1.0),\n('B5_capacity', 'B5', 'capacity', 'units', 'capacity', 1.0);\n\nCREATE TABLE raw_ingest (\n    ingested_at TIMESTAMPTZ PRIMARY KEY,\n    source TEXT,\n    payload JSONB\n);\n\nCREATE TABLE events (\n    ts TIMESTAMPTZ,\n    machine_id TEXT,\n    reason_code TEXT,\n    duration_s DOUBLE PRECISION,\n    energy_kwh DOUBLE PRECISION,\n    PRIMARY KEY (ts, machine_id)\n);\n\nCREATE INDEX idx_events_machine_time ON events (machine_id, ts);\n\nCREATE TABLE samples (\n    ts TIMESTAMPTZ,\n    machine_id TEXT,\n    tag TEXT,\n    value DOUBLE PRECISION,\n    PRIMARY KEY (ts, machine_id, tag)\n);\n\nCREATE INDEX idx_samples_machine_time ON samples (machine_id, ts);\n\nCREATE TABLE ingest_watermark (\n    source TEXT PRIMARY KEY,\n    max_event_ts TIMESTAMPTZ\n);"
+  },
+  "dt_config": {
+    "components": {
+      "data_collection": {
+        "modules": [
+          {
+            "name": "OPC-UA Server",
+            "type": "data_collector",
+            "description": "Collects real-time data from machines and sensors",
+            "protocol": "OPC-UA",
+            "update_frequency": "10s"
+          },
+          {
+            "name": "MQTT Bridge",
+            "type": "data_collector",
+            "description": "Handles MQTT-based data from edge devices",
+            "protocol": "MQTT",
+            "update_frequency": "5s"
+          }
+        ]
+      },
+      "analytics": {
+        "engines": [
+          {
+            "name": "Simulation Engine",
+            "type": "analytics_engine",
+            "description": "Runs simulations for production line analysis",
+            "target": "SimPy Environment",
+            "update_frequency": "real-time"
+          },
+          {
+            "name": "Performance Analyzer",
+            "type": "analytics_engine",
+            "description": "Analyzes machine and buffer performance",
+            "target": "PostgreSQL",
+            "update_frequency": "scheduled"
+          }
+        ]
+      },
+      "ml_models": [
+        {
+          "name": "Predictive Maintenance Model",
+          "type": "ml_model",
+          "description": "Predicts machine failures based on performance data",
+          "target": "TensorFlow/Scikit-learn",
+          "update_frequency": "daily"
+        }
+      ],
+      "visualization": {
+        "dashboards": [
+          {
+            "name": "Production Line Dashboard",
+            "widgets": [
+              {
+                "type": "gauge",
+                "title": "Line Utilization",
+                "parameter": "line_utilization",
+                "unit": "%",
+                "color": "green"
+              },
+              {
+                "type": "chart",
+                "title": "Buffer Level Over Time",
+                "parameter": "buffer_level",
+                "unit": "units",
+                "color": "blue"
+              },
+              {
+                "type": "chart",
+                "title": "Machine Performance",
+                "parameter": "machine_performance",
+                "unit": "s",
+                "color": "orange"
+              },
+              {
+                "type": "table",
+                "title": "Machine Status",
+                "parameter": "machine_status",
+                "unit": "status",
+                "color": "gray"
+              }
+            ],
+            "refresh_rate": "10s",
+            "color_scheme": {
+              "primary": "#3498db",
+              "secondary": "#2ecc71",
+              "accent": "#e74c3c"
+            }
+          }
+        ]
+      }
+    },
+    "data_flows": {
+      "connections": [
+        {
+          "source": "OPC-UA Server",
+          "destination": "Analytics Engine",
+          "protocol": "REST",
+          "update_frequency": "10s"
+        },
+        {
+          "source": "MQTT Bridge",
+          "destination": "Analytics Engine",
+          "protocol": "WebSocket",
+          "update_frequency": "5s"
+        },
+        {
+          "source": "Analytics Engine",
+          "destination": "Visualization Dashboard",
+          "protocol": "REST",
+          "update_frequency": "10s"
+        },
+        {
+          "source": "ML Model",
+          "destination": "Alerts System",
+          "protocol": "REST",
+          "update_frequency": "daily"
+        }
+      ]
+    },
+    "alerts": {
+      "thresholds": [
+        {
+          "parameter": "buffer_level",
+          "threshold": 2,
+          "severity": "warning",
+          "description": "Buffer level drops below 20% capacity"
+        },
+        {
+          "parameter": "machine_availability",
+          "threshold": 0.9,
+          "severity": "critical",
+          "description": "Machine availability drops below 90%"
+        },
+        {
+          "parameter": "machine_mttr",
+          "threshold": 1800,
+          "severity": "emergency",
+          "description": "MTTR exceeds 30 minutes"
+        }
+      ]
+    },
+    "kpis": {
+      "metrics": [
+        {
+          "name": "Line Utilization",
+          "target": 95,
+          "unit": "%",
+          "measurement": "average machine utilization over time",
+          "description": "Percentage of time the production line is actively producing"
+        },
+        {
+          "name": "Buffer Utilization",
+          "target": 80,
+          "unit": "%",
+          "measurement": "average buffer capacity usage",
+          "description": "Percentage of buffer capacity used at any given time"
+        },
+        {
+          "name": "Machine Availability",
+          "target": 97,
+          "unit": "%",
+          "measurement": "percentage of time machines are operational",
+          "description": "Percentage of time machines are running and not in maintenance"
+        },
+        {
+          "name": "Overall Equipment Effectiveness",
+          "target": 85,
+          "unit": "%",
+          "measurement": "calculated from availability, performance, and quality",
+          "description": "Comprehensive measure of equipment efficiency"
+        }
+      ]
+    }
+  },
+  "dt_simulation": "```python\nimport pychrono as chrono\nimport pychrono.irrlicht as irr\nimport math\nimport numpy as np\nimport json\nimport time\nfrom datetime import datetime, timedelta\n\n# Initialize PyChrono system\nchrono.Initialize()\n\n# Create a physical system\nsys = chrono.ChSystemNSC()\nsys.SetGravitationalAcceleration(chrono.ChVectorD(0, 0, 0))\n\n# Create a visualization system\nvis = irr.ChVisualSystemIrrlicht()\nvis.SetWindowSize(1024, 768)\nvis.SetWindowTitle('Production Line Digital Twin')\nvis.Initialize()\nvis.AddLogo()\nvis.AddSkyBox()\nvis.AddCamera(chrono.ChVectorD(0, 5, 10), chrono.ChVectorD(0, 0, 0))\nvis.AddTypicalLights()\n\n# Define materials\nmat_steel = chrono.ChMaterialSurfaceNSC()\nmat_steel.SetFriction(0.4)\nmat_steel.SetRestitution(0.2)\nsys.SetMaterialSurface(chrono.ChMaterialSurfaceNSC())\n\n# Machine parameters\nmachine_params = [\n    {\n        \"id\": \"M1\",\n        \"process_time_s\": 200,\n        \"availability\": 0.97,\n        \"mttr_s\": 900,\n        \"work_power_kw\": 5.0,\n        \"idle_power_kw\": 0.5\n    },\n    {\n        \"id\": \"M2\",\n        \"process_time_s\": 220,\n        \"availability\": 0.97,\n        \"mttr_s\": 1000,\n        \"work_power_kw\": 5.5,\n        \"idle_power_kw\": 0.55\n    },\n    {\n        \"id\": \"M3\",\n        \"process_time_s\": 240,\n        \"availability\": 0.96,\n        \"mttr_s\": 1200,\n        \"work_power_kw\": 6.0,\n        \"idle_power_kw\": 0.6\n    },\n    {\n        \"id\": \"M4\",\n        \"process_time_s\": 260,\n        \"availability\": 0.96,\n        \"mttr_s\": 1400,\n        \"work_power_kw\": 7.0,\n        \"idle_power_kw\": 0.7\n    },\n    {\n        \"id\": \"M5\",\n        \"process_time_s\": 230,\n        \"availability\": 0.97,\n        \"mttr_s\": 1100,\n        \"work_power_kw\": 6.5,\n        \"idle_power_kw\": 0.65\n    },\n    {\n        \"id\": \"M6\",\n        \"process_time_s\": 210,\n        \"availability\": 0.97,\n        \"mttr_s\": 1000,\n        \"work_power_kw\": 6.0,\n        \"idle_power_kw\": 0.6\n    }\n]\n\n# Buffer parameters\nbuffer_params = [\n    {\"id\": \"B0\", \"capacity\": 10},\n    {\"id\": \"B1\", \"capacity\": 10},\n    {\"id\": \"B2\", \"capacity\": 10},\n    {\"id\": \"B3\", \"capacity\": 10},\n    {\"id\": \"B4\", \"capacity\": 10},\n    {\"id\": \"B5\", \"capacity\": 10}\n]\n\n# Create machines\nmachines = {}\nfor param in machine_params:\n    # Create machine body\n    machine_body = chrono.ChBody()\n    machine_body.SetPos(chrono.ChVectorD(0, 0, 0))\n    machine_body.SetRot(chrono.Q_from_AngAxis(0, chrono.ChVectorD(0, 0, 1)))\n    machine_body.SetMass(1000)\n    machine_body.SetInertiaXX(chrono.ChVectorD(100, 100, 100))\n    sys.AddBody(machine_body)\n    \n    # Add collision shape\n    collision_shape = chrono.ChCollisionModel()\n    collision_shape.AddBox(1, 1, 1)\n    machine_body.SetCollide(True)\n    machine_body.SetCollisionModel(collision_shape)\n    \n    # Store machine data\n    machines[param[\"id\"]] = {\n        \"body\": machine_body,\n        \"process_time\": param[\"process_time_s\"],\n        \"availability\": param[\"availability\"],\n        \"mttr\": param[\"mttr_s\"],\n        \"work_power\": param[\"work_power_kw\"],\n        \"idle_power\": param[\"idle_power_kw\"],\n        \"status\": \"available\",\n        \"processing_time_remaining\": 0,\n        \"last_updated\": 0,\n        \"power_consumed\": 0\n    }\n\n# Create buffers\nbuffers = {}\nfor param in buffer_params:\n    buffer_body = chrono.ChBody()\n    buffer_body.SetPos(chrono.ChVectorD(0, 0, 0))\n    buffer_body.SetRot(chrono.Q_from_AngAxis(0, chrono.ChVectorD(0, 0, 1)))\n    buffer_body.SetMass(100)\n    buffer_body.SetInertiaXX(chrono.ChVectorD(10, 10, 10))\n    sys.AddBody(buffer_body)\n    \n    # Add collision shape\n    collision_shape = chrono.ChCollisionModel()\n    collision_shape.AddBox(1, 1, 1)\n    buffer_body.SetCollide(True)\n    buffer_body.SetCollisionModel(collision_shape)\n    \n    # Store buffer data\n    buffers[param[\"id\"]] = {\n        \"body\": buffer_body,\n        \"capacity\": param[\"capacity\"],\n        \"parts\": 0,\n        \"last_updated\": 0\n    }\n\n# Create source part generator\nsource_part = chrono.ChBody()\nsource_part.SetPos(chrono.ChVectorD(0, 0, 0))\nsource_part.SetRot(chrono.Q_from_AngAxis(0, chrono.ChVectorD(0, 0, 1)))\nsource_part.SetMass(10)\nsource_part.SetInertiaXX(chrono.ChVectorD(1, 1, 1))\nsys.AddBody(source_part)\nsource_part.SetCollide(True)\n\n# Add collision shape for source part\ncollision_shape = chrono.ChCollisionModel()\ncollision_shape.AddBox(0.5, 0.5, 0.5)\nsource_part.SetCollisionModel(collision_shape)\n\n# Create part generation system\ninter_arrival_time = 300\nlast_part_time = 0\n\n# Simulation parameters\nsimulation_duration = 432000  # 5 days in seconds\ntime_step = 0.1\ncurrent_time = 0\n\n# Data logging system\nmachine_logs = []\nbuffer_logs = []\nevent_logs = []\n\n# Main simulation loop\nprint(\"Starting simulation...\")\nstart_time = time.time()\n\nwhile current_time < simulation_duration:\n    # Generate new parts at source\n    if current_time - last_part_time >= inter_arrival_time:\n        # Create a new part body with some randomness\n        part = chrono.ChBody()\n        part.SetPos(chrono.ChVectorD(0, 0, 0))\n        part.SetRot(chrono.Q_from_AngAxis(0, chrono.ChVectorD(0, 0, 1)))\n        part.SetMass(5)\n        part.SetInertiaXX(chrono.ChVectorD(0.5, 0.5, 0.5))\n        sys.AddBody(part)\n        part.SetCollide(True)\n        \n        # Add collision shape\n        collision_shape = chrono.ChCollisionModel()\n        collision_shape.AddBox(0.5, 0.5, 0.5)\n        part.SetCollisionModel(collision_shape)\n        \n        # Reset the time for next part\n        last_part_time = current_time\n        \n    # Update each machine\n    for machine_id, machine in machines.items():\n        # Check if machine is currently processing\n        if machine[\"processing_time_remaining\"] > 0:\n            machine[\"processing_time_remaining\"] -= time_step\n            # Simulate power consumption during processing\n            machine[\"power_consumed\"] += machine[\"work_power\"] * time_step / 3600.0\n            # Check if processing is complete\n            if machine[\"processing_time_remaining\"] <= 0:\n                # Mark machine as available\n                machine[\"status\"] = \"available\"\n                # Log event\n                event_logs.append({\n                    \"ts\": datetime.fromtimestamp(current_time + start_time),\n                    \"machine_id\": machine_id,\n                    \"reason_code\": \"processing_complete\",\n                    \"duration_s\": machine[\"process_time\"],\n                    \"energy_kwh\": machine[\"power_consumed\"]\n                })\n                machine[\"power_consumed\"] = 0\n        else:\n            # Check if machine is available and can process a part\n            if machine[\"status\"] == \"available\":\n                # Simulate availability check\n                if np.random.rand() < (1 - machine[\"availability\"]):\n                    # Machine failure\n                    machine[\"status\"] = \"failed\"\n                    machine[\"processing_time_remaining\"] = machine[\"mttr\"]\n                    # Log failure event\n                    event_logs.append({\n                        \"ts\": datetime.fromtimestamp(current_time + start_time),\n                        \"machine_id\": machine_id,\n                        \"reason_code\": \"machine_failure\",\n                        \"duration_s\": machine[\"mttr\"],\n                        \"energy_kwh\": 0\n                    })\n                else:\n                    # Machine available for processing\n                    machine[\"status\"] = \"available\"\n        \n        # Log machine data\n        machine_logs.append({\n            \"ts\": datetime.fromtimestamp(current_time + start_time),\n            \"machine_id\": machine_id,\n            \"tag\": \"process_time_s\",\n            \"value\": machine[\"process_time\"]\n        })\n        machine_logs.append({\n            \"ts\": datetime.fromtimestamp(current_time + start_time),\n            \"machine_id\": machine_id,\n            \"tag\": \"availability\",\n            \"value\": machine[\"availability\"]\n        })\n        machine_logs.append({\n            \"ts\": datetime.fromtimestamp(current_time + start_time),\n            \"machine_id\": machine_id,\n            \"tag\": \"mttr_s\",\n            \"value\": machine[\"mttr\"]\n        })\n        machine_logs.append({\n            \"ts\": datetime.fromtimestamp(current_time + start_time),\n            \"machine_id\": machine_id,\n            \"tag\": \"work_power_kw\",\n            \"value\": machine[\"work_power\"]\n        })\n        machine_logs.append({\n            \"ts\": datetime.fromtimestamp(current_time + start_time),\n            \"machine_id\": machine_id,\n            \"tag\": \"idle_power_kw\",\n            \"value\": machine[\"idle_power\"]\n        })\n    \n    # Update buffers\n    for buffer_id, buffer in buffers.items():\n        # Log buffer data\n        buffer_logs.append({\n            \"ts\": datetime.fromtimestamp(current_time + start_time),\n            \"machine_id\": buffer_id,\n            \"tag\": \"capacity\",\n            \"value\": buffer[\"capacity\"]\n        })\n    \n    # Advance simulation\n    sys.DoStepDynamics(time_step)\n    current_time += time_step\n    \n    # Update visualization\n    if vis.Run():\n        vis.BeginScene()\n        vis.Render()\n        vis.EndScene()\n    else:\n        break\n\n# Save data logs to simulate database inserts\nprint(\"Saving data logs...\")\n\n# Simulate inserting into machines table\nfor param in machine_params:\n    print(f\"Machine {param['id']} inserted into machines table\")\n\n# Simulate inserting into buffers table\nfor param in buffer_params:\n    print(f\"Buffer {param['id']} inserted into buffers table\")\n\n# Simulate inserting into events table\nfor event in event_logs:\n    print(f\"Event {event['machine_id']} inserted into events table\")\n\n# Simulate inserting into samples table\nfor log in machine_logs:\n    print(f\"Sample for {log['machine_id']}.{log['tag']} inserted into samples table\")\n    \nfor log in buffer_logs:\n    print(f\"Sample for {log['machine_id']}.{log['tag']} inserted into samples table\")\n\nprint(\"Simulation completed successfully.\")\nprint(f\"Total simulation time: {simulation_duration} seconds\")\nprint(f\"Elapsed real time: {time.time() - start_time:.2f} seconds\")\n\n# Cleanup\nvis.GetSystem().Clear()\nchrono.Finalize()\n```",
+  "dt_des": "import random\n\nimport simpy\n\n# --- BEGIN PARAMETERS ---\n# Adapt ONLY this block to the production line in the requirements. The code\n# below the block is the model, and it already computes the KPIs correctly.\n#\n# STATIONS: one entry per station in requirements.line.stations, in flow order.\n#   processing_time_s   the station's processing time, in seconds\n#   availability_pct    availability in percent (100 = never fails)\n#   mttr_s              mean time to repair, in seconds\n#   power_working_kw    power drawn while processing a part\n#   power_idle_kw       power drawn while waiting for a part\n# BUFFERS: one entry per buffer in requirements.line.buffers. BUFFERS[i] is the\n#   buffer that FEEDS STATIONS[i]: BUFFERS[0] receives from the source and\n#   BUFFERS[i] (i > 0) receives from STATIONS[i-1]. The last station discharges\n#   into the sink.\nSTATIONS = [\n    {\"id\": \"M1\", \"processing_time_s\": 200.0, \"availability_pct\": 97.0,\n     \"mttr_s\": 900.0, \"power_working_kw\": 5.0, \"power_idle_kw\": 0.5},\n    {\"id\": \"M2\", \"processing_time_s\": 220.0, \"availability_pct\": 97.0,\n     \"mttr_s\": 1000.0, \"power_working_kw\": 5.5, \"power_idle_kw\": 0.55},\n    {\"id\": \"M3\", \"processing_time_s\": 240.0, \"availability_pct\": 96.0,\n     \"mttr_s\": 1200.0, \"power_working_kw\": 6.0, \"power_idle_kw\": 0.6},\n    {\"id\": \"M4\", \"processing_time_s\": 260.0, \"availability_pct\": 96.0,\n     \"mttr_s\": 1400.0, \"power_working_kw\": 7.0, \"power_idle_kw\": 0.7},\n    {\"id\": \"M5\", \"processing_time_s\": 230.0, \"availability_pct\": 97.0,\n     \"mttr_s\": 1100.0, \"power_working_kw\": 6.5, \"power_idle_kw\": 0.65},\n    {\"id\": \"M6\", \"processing_time_s\": 210.0, \"availability_pct\": 97.0,\n     \"mttr_s\": 1000.0, \"power_working_kw\": 6.0, \"power_idle_kw\": 0.6},\n]\nBUFFERS = [10, 10, 10, 10, 10, 10]\nINTER_ARRIVAL_S = 300.0   # one part every INTER_ARRIVAL_S seconds\nWARMUP_S = 21600.0       # requirements.des_horizon.warmup_s\nWINDOW_S = 432000.0      # requirements.des_horizon.window_s\nREPLICATIONS = 10        # requirements.des_horizon.replications\n# --- END PARAMETERS ---\n\n\nclass Sink:\n    \"\"\"Collects finished parts. A list, not a store: the sink never blocks.\"\"\"\n\n    def __init__(self):\n        self.left_at = []\n\n    def take(self, now):\n        self.left_at.append(now)\n\n\nclass Ledger:\n    \"\"\"Integrates the whole-system WIP and power draw over the measurement window.\n\n    WIP and power are piecewise constant and change only at events, so every\n    event that moves a part or changes a station's state calls `sync` *before*\n    the change: the span since the previous sync is credited to the state that\n    actually held during it. Nothing is sampled, so a state shorter than any\n    sampling interval still contributes exactly its own duration. Spans before\n    the warm-up boundary are discarded, which is what makes warm-up free.\n    \"\"\"\n\n    def __init__(self, buffers):\n        self.buffers = buffers\n        self.stations = []\n        self.wip_area = 0.0        # part-seconds\n        self.energy_area = 0.0     # kWh\n        self._t = 0.0\n\n    def wip(self):\n        return (sum(len(b.items) for b in self.buffers)\n                + sum(s.in_process for s in self.stations))\n\n    def power(self):\n        return sum(s.power() for s in self.stations)\n\n    def sync(self, now):\n        lo = max(self._t, WARMUP_S)\n        if now > lo:\n            span = now - lo\n            self.wip_area += self.wip() * span\n            self.energy_area += self.power() * span / 3600.0\n        self._t = now\n\n\nclass Station:\n    \"\"\"One machine: pull a part from its input buffer, process it, push it on.\n\n    `state` is what the station is doing; `operational` is whether it is up at\n    all, so a breakdown that starts mid-part still cuts the power draw.\n    \"\"\"\n\n    def __init__(self, env, spec, input_buffer, output, ledger):\n        self.env = env\n        self.id = spec[\"id\"]\n        self.processing_time_s = float(spec[\"processing_time_s\"])\n        self.mttr_s = spec.get(\"mttr_s\")\n        self.power_working_kw = spec.get(\"power_working_kw\") or 0.0\n        self.power_idle_kw = spec.get(\"power_idle_kw\") or 0.0\n        self.input_buffer = input_buffer\n        self.output = output\n        self.is_sink = isinstance(output, Sink)\n        self.ledger = ledger\n\n        pct = spec.get(\"availability_pct\")\n        self.failure_scale = None\n        if pct is not None and self.mttr_s and 0.0 < float(pct) < 100.0:\n            # availability = mttf / (mttf + mttr)\n            self.failure_scale = float(self.mttr_s) * float(pct) / (\n                100.0 - float(pct))\n\n        self.operational = True\n        self.state = \"idle\"        # idle | working\n        self.in_process = 0        # parts currently held by this station\n        self.down_until = 0.0      # clock time at which the current repair ends\n\n    def power(self):\n        if not self.operational:\n            return 0.0\n        return (self.power_working_kw if self.state == \"working\"\n                else self.power_idle_kw)\n\n    def sync(self):\n        self.ledger.sync(self.env.now)\n\n    def breakdowns(self):\n        \"\"\"Fail and repair, repeatedly, drawn from availability and MTTR.\n\n        A renewal process: the time to the next failure is exponential with\n        mean mttf = mttr * p / (1 - p), so the long-run availability is the\n        declared `availability_pct`, and the repair then takes exactly the\n        declared `mttr_s`. A failure never interrupts a part already in process\n        \u2014 it delays the next one.\n        \"\"\"\n        while True:\n            yield self.env.timeout(random.expovariate(1.0 / self.failure_scale))\n            if not self.operational:\n                continue\n            self.sync()\n            self.operational = False\n            self.down_until = self.env.now + float(self.mttr_s)\n            yield self.env.timeout(float(self.mttr_s))\n            self.sync()\n            self.operational = True\n\n    def run(self):\n        while True:\n            part = yield self.input_buffer.get()\n            self.sync()\n            self.in_process += 1\n            self.state = \"idle\"\n            if not self.operational:\n                # A repair is under way; wait for the current one to finish.\n                yield self.env.timeout(max(0.0, self.down_until - self.env.now))\n            self.sync()\n            self.state = \"working\"\n            yield self.env.timeout(self.processing_time_s)\n            self.sync()\n            self.state = \"idle\"\n            self.in_process -= 1\n            if self.is_sink:\n                self.output.take(self.env.now)\n            else:\n                yield self.output.put(part)\n\n\ndef source(env, entry_buffer, inter_arrival_s, ledger):\n    part_id = 0\n    while True:\n        part_id += 1\n        ledger.sync(env.now)          # the part joins the system here\n        yield entry_buffer.put(part_id)\n        yield env.timeout(inter_arrival_s)\n\n\ndef run_replication(seed):\n    random.seed(seed)\n    env = simpy.Environment()\n    buffers = [simpy.Store(env, capacity=int(c)) for c in BUFFERS]\n    sink = Sink()\n    ledger = Ledger(buffers)\n    for i, spec in enumerate(STATIONS):\n        output = sink if i == len(STATIONS) - 1 else buffers[i + 1]\n        ledger.stations.append(Station(env, spec, buffers[i], output, ledger))\n    for st in ledger.stations:\n        env.process(st.run())\n        if st.failure_scale:\n            env.process(st.breakdowns())\n    env.process(source(env, buffers[0], INTER_ARRIVAL_S, ledger))\n\n    env.run(until=WARMUP_S + WINDOW_S)\n    ledger.sync(env.now)\n\n    parts = sum(1 for t in sink.left_at if t >= WARMUP_S)\n    throughput = parts / (WINDOW_S / 3600.0)\n    wip_avg = ledger.wip_area / WINDOW_S\n    # Energy per part divides the energy consumed inside the window by the\n    # parts produced inside the same window, so warm-up cannot bias the ratio.\n    energy_per_part = ledger.energy_area / parts if parts else 0.0\n    return throughput, wip_avg, energy_per_part\n\n\ndef main():\n    runs = [run_replication(seed) for seed in range(REPLICATIONS)]\n    mean = [sum(col) / len(runs) for col in zip(*runs)]\n    print(f\"Throughput = {mean[0]} parts/hour\")\n    print(f\"WIP = {mean[1]} parts\")\n    print(f\"Mean Energy Consumption per Part = {mean[2]} kWh/part\")\n\n\nif __name__ == \"__main__\":\n    main()"
+}

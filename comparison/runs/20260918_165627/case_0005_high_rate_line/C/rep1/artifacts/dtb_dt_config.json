@@ -1,0 +1,204 @@
+{
+  "components": {
+    "data_collection_modules": {
+      "opcua_server": {
+        "type": "OPC-UA Server",
+        "description": "Collects real-time data from industrial equipment",
+        "protocol": "OPC-UA",
+        "frequency": "continuous"
+      },
+      "mqtt_collector": {
+        "type": "MQTT Client",
+        "description": "Collects sensor data via MQTT protocol",
+        "protocol": "MQTT",
+        "frequency": "real-time"
+      },
+      "historical_data_loader": {
+        "type": "Historical Data Loader",
+        "description": "Loads historical data for analysis",
+        "protocol": "REST",
+        "frequency": "periodic"
+      }
+    },
+    "analytics_engines": {
+      "kpi_calculator": {
+        "type": "KPI Calculator",
+        "description": "Calculates key performance indicators",
+        "protocol": "WebSocket",
+        "frequency": "real-time"
+      },
+      "wip_analyzer": {
+        "type": "WIP Analyzer",
+        "description": "Analyzes work-in-progress metrics",
+        "protocol": "WebSocket",
+        "frequency": "real-time"
+      },
+      "energy_analyzer": {
+        "type": "Energy Analyzer",
+        "description": "Analyzes energy consumption per part",
+        "protocol": "WebSocket",
+        "frequency": "real-time"
+      }
+    },
+    "ml_models": {
+      "machine_failure_predictor": {
+        "type": "Predictive Maintenance Model",
+        "description": "Predicts machine failures based on historical data",
+        "protocol": "REST",
+        "frequency": "periodic"
+      },
+      "throughput_forecaster": {
+        "type": "Throughput Forecasting Model",
+        "description": "Forecasts throughput using time-series analysis",
+        "protocol": "REST",
+        "frequency": "periodic"
+      }
+    },
+    "visualization_dashboards": {
+      "production_dashboard": {
+        "type": "Production Dashboard",
+        "description": "Main dashboard for monitoring production status",
+        "protocol": "WebSocket",
+        "frequency": "real-time"
+      },
+      "maintenance_dashboard": {
+        "type": "Maintenance Dashboard",
+        "description": "Dashboard for maintenance and availability tracking",
+        "protocol": "WebSocket",
+        "frequency": "real-time"
+      }
+    }
+  },
+  "data_flows": {
+    "opcua_to_kpi_calculator": {
+      "source": "opcua_server",
+      "target": "kpi_calculator",
+      "protocol": "OPC-UA",
+      "frequency": "real-time"
+    },
+    "mqtt_to_kpi_calculator": {
+      "source": "mqtt_collector",
+      "target": "kpi_calculator",
+      "protocol": "MQTT",
+      "frequency": "real-time"
+    },
+    "historical_data_to_ml_models": {
+      "source": "historical_data_loader",
+      "target": "machine_failure_predictor",
+      "protocol": "REST",
+      "frequency": "daily"
+    },
+    "kpi_calculator_to_visualization": {
+      "source": "kpi_calculator",
+      "target": "production_dashboard",
+      "protocol": "WebSocket",
+      "frequency": "real-time"
+    },
+    "wip_analyzer_to_visualization": {
+      "source": "wip_analyzer",
+      "target": "production_dashboard",
+      "protocol": "WebSocket",
+      "frequency": "real-time"
+    },
+    "energy_analyzer_to_visualization": {
+      "source": "energy_analyzer",
+      "target": "production_dashboard",
+      "protocol": "WebSocket",
+      "frequency": "real-time"
+    }
+  },
+  "visualization_layout": {
+    "dashboard": {
+      "widgets": [
+        {
+          "type": "gauge",
+          "title": "Throughput",
+          "value_field": "throughput",
+          "unit": "parts/hour",
+          "min_value": 0,
+          "max_value": 100,
+          "color_scheme": "green-to-red"
+        },
+        {
+          "type": "bar_chart",
+          "title": "Work-in-Progress by Buffer",
+          "value_field": "wip_by_buffer",
+          "unit": "parts",
+          "color_scheme": "blue-to-orange"
+        },
+        {
+          "type": "line_chart",
+          "title": "Energy Consumption Over Time",
+          "value_field": "energy_consumption",
+          "unit": "kWh/part",
+          "color_scheme": "purple-to-yellow"
+        },
+        {
+          "type": "status_indicator",
+          "title": "Machine Availability",
+          "value_field": "machine_availability",
+          "unit": "%",
+          "color_scheme": "red-to-green"
+        }
+      ],
+      "refresh_rate": "1 second",
+      "theme": "dark"
+    }
+  },
+  "alerts": [
+    {
+      "name": "High WIP Alert",
+      "condition": "wip > 30",
+      "severity": "warning",
+      "message": "Work-in-progress exceeds threshold of 30 parts",
+      "triggered_by": "wip_analyzer"
+    },
+    {
+      "name": "Low Throughput Alert",
+      "condition": "throughput < 60",
+      "severity": "critical",
+      "message": "Throughput below target of 60 parts/hour",
+      "triggered_by": "kpi_calculator"
+    },
+    {
+      "name": "High Energy Consumption",
+      "condition": "specific_energy_per_part > 2.5",
+      "severity": "emergency",
+      "message": "Specific energy consumption exceeds 2.5 kWh/part",
+      "triggered_by": "energy_analyzer"
+    },
+    {
+      "name": "Machine Down Alert",
+      "condition": "machine_availability < 80",
+      "severity": "critical",
+      "message": "Machine availability below 80%",
+      "triggered_by": "kpi_calculator"
+    }
+  ],
+  "kpis": [
+    {
+      "name": "Throughput",
+      "target_value": 80,
+      "measurement_method": "count of parts processed per hour",
+      "unit": "parts/hour"
+    },
+    {
+      "name": "Work-in-Progress (WIP)",
+      "target_value": 20,
+      "measurement_method": "average number of parts in buffers",
+      "unit": "parts"
+    },
+    {
+      "name": "Specific Energy Per Part",
+      "target_value": 2.0,
+      "measurement_method": "total energy consumed divided by number of parts",
+      "unit": "kWh/part"
+    },
+    {
+      "name": "Machine Availability",
+      "target_value": 95,
+      "measurement_method": "time available for operation divided by total time",
+      "unit": "%"
+    }
+  ]
+}

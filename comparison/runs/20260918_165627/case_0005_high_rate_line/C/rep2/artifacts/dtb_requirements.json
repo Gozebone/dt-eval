@@ -1,0 +1,55 @@
+{
+  "production_type": "continuous",
+  "processes": [
+    "M1",
+    "M2",
+    "M3",
+    "M4"
+  ],
+  "equipment": [
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "B0",
+    "B1",
+    "B2",
+    "B3"
+  ],
+  "sensors": [
+    "buffer_levels",
+    "processing_time_s",
+    "availability",
+    "mttr_s",
+    "work_power_kw",
+    "idle_power_kw"
+  ],
+  "goals": [
+    "Evaluate line capacity (throughput)",
+    "Monitor WIP (buffer levels)",
+    "Optimize energy consumption per part",
+    "Monitor machine availability and downtime"
+  ],
+  "data_sources": [
+    "Input stream (1 part every 45s)",
+    "Real-time measurements from the manufacturing period"
+  ],
+  "update_frequency": "continuous",
+  "critical_parameters": {
+    "buffer_levels": "0-100%",
+    "machine_availability": "0-100%"
+  },
+  "additional_info": {
+    "SimPy_environment": "SimPy 4.0 or later",
+    "simulation_requirements": "Run for at least 432000 s (60 hours)",
+    "input_stream_frequency": "1 part every 45s",
+    "monitored_parameters": [
+      "inter_arrival_s=45",
+      "process_time_s (for M1-M4)",
+      "availability (0-100%)",
+      "mttr_s (downtime duration)",
+      "work_power_kw",
+      "idle_power_kw"
+    ]
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "production_type": "serial production line with 3 machines in series",
+  "processes": [
+    "M1",
+    "M2",
+    "M3"
+  ],
+  "equipment": [
+    "M1",
+    "M2",
+    "M3",
+    "B0",
+    "B1",
+    "B2"
+  ],
+  "sensors": [
+    "process_time_s",
+    "availability",
+    "mttr_s",
+    "work_power_kw",
+    "idle_power_kw",
+    "capacity"
+  ],
+  "goals": "simulate production line behavior over 432000s, track machine availability, buffer usage, and part throughput",
+  "data_sources": "provided JSON data",
+  "update_frequency": "static for simulation (no real-time updates)",
+  "critical_parameters": {
+    "M1": "90 s",
+    "M2": "70 s",
+    "M3": "110 s",
+    "B0": "15",
+    "B1": "5",
+    "B2": "5"
+  },
+  "line": {
+    "topology": "serial",
+    "source": {
+      "inter_arrival_time_s": 60
+    },
+    "stations": [
+      {
+        "id": "M1",
+        "processing_time_s": 90,
+        "availability_pct": 0.99,
+        "mttr_s": 600,
+        "power_working_kw": 3.0,
+        "power_idle_kw": 0.3
+      },
+      {
+        "id": "M2",
+        "processing_time_s": 70,
+        "availability_pct": 0.98,
+        "mttr_s": 900,
+        "power_working_kw": 4.5,
+        "power_idle_kw": 0.45
+      },
+      {
+        "id": "M3",
+        "processing_time_s": 110,
+        "availability_pct": 0.99,
+        "mttr_s": 1200,
+        "power_working_kw": 6.0,
+        "power_idle_kw": 0.6
+      }
+    ],
+    "buffers": [
+      {
+        "id": "B0",
+        "capacity": 15,
+        "before": "source",
+        "after": "M1"
+      },
+      {
+        "id": "B1",
+        "capacity": 5,
+        "before": "M1",
+        "after": "M2"
+      },
+      {
+        "id": "B2",
+        "capacity": 5,
+        "before": "M2",
+        "after": "M3"
+      }
+    ],
+    "defects": {
+      "rate": null
+    }
+  },
+  "des_horizon": {
+    "warmup_s": null,
+    "window_s": null,
+    "replications": null
+  },
+  "units": {
+    "time": "s",
+    "power": "kW",
+    "energy": "kWh"
+  },
+  "additional_info": "simulation requires 432000s runtime; no real-time data updates"
+}

@@ -1,0 +1,174 @@
+{
+  "components": {
+    "data_collection": {
+      "modules": [
+        {
+          "name": "OPC-UA Server",
+          "type": "data_collector",
+          "description": "Collects real-time data from machines and sensors",
+          "protocol": "OPC-UA",
+          "update_frequency": "10s"
+        },
+        {
+          "name": "MQTT Bridge",
+          "type": "data_collector",
+          "description": "Handles MQTT-based data from edge devices",
+          "protocol": "MQTT",
+          "update_frequency": "5s"
+        }
+      ]
+    },
+    "analytics": {
+      "engines": [
+        {
+          "name": "Simulation Engine",
+          "type": "analytics_engine",
+          "description": "Runs simulations for production line analysis",
+          "target": "SimPy Environment",
+          "update_frequency": "real-time"
+        },
+        {
+          "name": "Performance Analyzer",
+          "type": "analytics_engine",
+          "description": "Analyzes machine and buffer performance",
+          "target": "PostgreSQL",
+          "update_frequency": "scheduled"
+        }
+      ]
+    },
+    "ml_models": [
+      {
+        "name": "Predictive Maintenance Model",
+        "type": "ml_model",
+        "description": "Predicts machine failures based on performance data",
+        "target": "TensorFlow/Scikit-learn",
+        "update_frequency": "daily"
+      }
+    ],
+    "visualization": {
+      "dashboards": [
+        {
+          "name": "Production Line Dashboard",
+          "widgets": [
+            {
+              "type": "gauge",
+              "title": "Line Utilization",
+              "parameter": "line_utilization",
+              "unit": "%",
+              "color": "green"
+            },
+            {
+              "type": "chart",
+              "title": "Buffer Level Over Time",
+              "parameter": "buffer_level",
+              "unit": "units",
+              "color": "blue"
+            },
+            {
+              "type": "chart",
+              "title": "Machine Performance",
+              "parameter": "machine_performance",
+              "unit": "s",
+              "color": "orange"
+            },
+            {
+              "type": "table",
+              "title": "Machine Status",
+              "parameter": "machine_status",
+              "unit": "status",
+              "color": "gray"
+            }
+          ],
+          "refresh_rate": "10s",
+          "color_scheme": {
+            "primary": "#3498db",
+            "secondary": "#2ecc71",
+            "accent": "#e74c3c"
+          }
+        }
+      ]
+    }
+  },
+  "data_flows": {
+    "connections": [
+      {
+        "source": "OPC-UA Server",
+        "destination": "Analytics Engine",
+        "protocol": "REST",
+        "update_frequency": "10s"
+      },
+      {
+        "source": "MQTT Bridge",
+        "destination": "Analytics Engine",
+        "protocol": "WebSocket",
+        "update_frequency": "5s"
+      },
+      {
+        "source": "Analytics Engine",
+        "destination": "Visualization Dashboard",
+        "protocol": "REST",
+        "update_frequency": "10s"
+      },
+      {
+        "source": "ML Model",
+        "destination": "Alerts System",
+        "protocol": "REST",
+        "update_frequency": "daily"
+      }
+    ]
+  },
+  "alerts": {
+    "thresholds": [
+      {
+        "parameter": "buffer_level",
+        "threshold": 2,
+        "severity": "warning",
+        "description": "Buffer level drops below 20% capacity"
+      },
+      {
+        "parameter": "machine_availability",
+        "threshold": 0.9,
+        "severity": "critical",
+        "description": "Machine availability drops below 90%"
+      },
+      {
+        "parameter": "machine_mttr",
+        "threshold": 1800,
+        "severity": "emergency",
+        "description": "MTTR exceeds 30 minutes"
+      }
+    ]
+  },
+  "kpis": {
+    "metrics": [
+      {
+        "name": "Line Utilization",
+        "target": 95,
+        "unit": "%",
+        "measurement": "average machine utilization over time",
+        "description": "Percentage of time the production line is actively producing"
+      },
+      {
+        "name": "Buffer Utilization",
+        "target": 80,
+        "unit": "%",
+        "measurement": "average buffer capacity usage",
+        "description": "Percentage of buffer capacity used at any given time"
+      },
+      {
+        "name": "Machine Availability",
+        "target": 97,
+        "unit": "%",
+        "measurement": "percentage of time machines are operational",
+        "description": "Percentage of time machines are running and not in maintenance"
+      },
+      {
+        "name": "Overall Equipment Effectiveness",
+        "target": 85,
+        "unit": "%",
+        "measurement": "calculated from availability, performance, and quality",
+        "description": "Comprehensive measure of equipment efficiency"
+      }
+    ]
+  }
+}

@@ -1,0 +1,180 @@
+{
+  "components": {
+    "data_collection": {
+      "modules": [
+        {
+          "name": "OPC-UA Collector",
+          "type": "data_collector",
+          "description": "Collects data from industrial equipment via OPC-UA protocol",
+          "protocol": "OPC-UA",
+          "frequency": "10s"
+        },
+        {
+          "name": "MQTT Ingestor",
+          "type": "data_collector",
+          "description": "Ingests real-time sensor data via MQTT protocol",
+          "protocol": "MQTT",
+          "frequency": "5s"
+        }
+      ]
+    },
+    "analytics": {
+      "engines": [
+        {
+          "name": "Production Analytics Engine",
+          "type": "analytics_engine",
+          "description": "Processes and analyzes production data",
+          "frequency": "10s"
+        },
+        {
+          "name": "Predictive Maintenance Engine",
+          "type": "analytics_engine",
+          "description": "Predicts equipment failures and maintenance needs",
+          "frequency": "30s"
+        }
+      ]
+    },
+    "ml_models": [
+      {
+        "name": "Production Efficiency Predictor",
+        "type": "ml_model",
+        "description": "Predicts production efficiency and bottlenecks",
+        "input_features": [
+          "Avg_Time_per_part_s",
+          "Availability_%",
+          "MTTR_s"
+        ],
+        "output": "efficiency_score"
+      }
+    ],
+    "visualization": {
+      "dashboard": {
+        "name": "Production Line Dashboard",
+        "type": "visualization_dashboard",
+        "widgets": [
+          {
+            "type": "gauge",
+            "title": "Line Utilization",
+            "metric": "availability",
+            "unit": "%",
+            "color": "#4CAF50"
+          },
+          {
+            "type": "line_chart",
+            "title": "Energy Consumption Over Time",
+            "metrics": [
+              "EnergyWorking",
+              "EnergyIdling"
+            ],
+            "unit": "kWh"
+          },
+          {
+            "type": "bar_chart",
+            "title": "Processing Time per Machine",
+            "metrics": [
+              "Avg_Time_per_part_s"
+            ],
+            "unit": "s"
+          },
+          {
+            "type": "status_indicator",
+            "title": "Machine Status",
+            "metrics": [
+              "M1_status",
+              "M2_status",
+              "M3_status",
+              "M4_status"
+            ]
+          }
+        ],
+        "refresh_rate": "10s",
+        "color_scheme": {
+          "primary": "#1976D2",
+          "secondary": "#4CAF50",
+          "warning": "#FF9800",
+          "danger": "#F44336"
+        }
+      }
+    }
+  },
+  "data_flows": {
+    "source_to_collector": {
+      "protocol": "OPC-UA",
+      "frequency": "10s",
+      "description": "Data flow from industrial equipment to data collectors"
+    },
+    "collector_to_analytics": {
+      "protocol": "REST",
+      "frequency": "10s",
+      "description": "Flow of processed data to analytics engines"
+    },
+    "analytics_to_ml": {
+      "protocol": "WebSocket",
+      "frequency": "30s",
+      "description": "Data flow to ML models for predictive analysis"
+    },
+    "analytics_to_visualization": {
+      "protocol": "REST",
+      "frequency": "10s",
+      "description": "Visualization data feed from analytics engine"
+    },
+    "visualization_to_users": {
+      "protocol": "WebSocket",
+      "frequency": "10s",
+      "description": "Live dashboard updates to users"
+    }
+  },
+  "alerts": [
+    {
+      "name": "Machine Downtime Alert",
+      "condition": "availability < 0.95",
+      "severity": "warning",
+      "message": "Machine availability below threshold",
+      "threshold": 0.95
+    },
+    {
+      "name": "Energy Consumption Spike",
+      "condition": "EnergyWorking > 3.5",
+      "severity": "critical",
+      "message": "Energy consumption exceeds normal range",
+      "threshold": 3.5
+    },
+    {
+      "name": "Processing Time Exceeds Limit",
+      "condition": "Avg_Time_per_part_s > 70",
+      "severity": "emergency",
+      "message": "Processing time exceeds normal threshold",
+      "threshold": 70
+    }
+  ],
+  "kpis": {
+    "line_efficiency": {
+      "name": "Line Efficiency",
+      "description": "Percentage of time the production line is productive",
+      "target": 0.98,
+      "method": "availability * 100",
+      "unit": "%"
+    },
+    "energy_consumption": {
+      "name": "Total Energy Consumption",
+      "description": "Total kWh consumed by the production line",
+      "target": "2500",
+      "method": "sum(EnergyWorking + EnergyIdling)",
+      "unit": "kWh"
+    },
+    "production_rate": {
+      "name": "Production Rate",
+      "description": "Number of parts produced per hour",
+      "target": 1200,
+      "method": "count(parts) / (window_duration / 3600)",
+      "unit": "parts/hour"
+    },
+    "mttr": {
+      "name": "Mean Time to Repair",
+      "description": "Average time to repair equipment",
+      "target": 300,
+      "method": "avg(MTTR_s)",
+      "unit": "seconds"
+    }
+  }
+}

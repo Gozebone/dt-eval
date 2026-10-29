@@ -1,0 +1,200 @@
+{
+  "components": {
+    "data_collection": {
+      "modules": [
+        {
+          "name": "OPC-UA Collector",
+          "type": "collector",
+          "description": "Collects real-time data from industrial equipment via OPC-UA protocol",
+          "protocol": "OPC-UA",
+          "update_frequency": "10s"
+        },
+        {
+          "name": "MQTT Bridge",
+          "type": "collector",
+          "description": "Bridge data from MQTT sources to central data lake",
+          "protocol": "MQTT",
+          "update_frequency": "5s"
+        },
+        {
+          "name": "REST API Gateway",
+          "type": "collector",
+          "description": "Receives data from external systems via REST API",
+          "protocol": "REST",
+          "update_frequency": "15s"
+        }
+      ]
+    },
+    "analytics_engine": {
+      "modules": [
+        {
+          "name": "Real-time Analytics",
+          "type": "analytics",
+          "description": "Performs real-time analysis on production data",
+          "algorithm": "streaming",
+          "update_frequency": "5s"
+        },
+        {
+          "name": "Historical Analysis",
+          "type": "analytics",
+          "description": "Processes historical data for trend analysis",
+          "algorithm": "batch",
+          "update_frequency": "hourly"
+        }
+      ]
+    },
+    "ml_models": {
+      "modules": [
+        {
+          "name": "Predictive Maintenance",
+          "type": "ml_model",
+          "description": "Predicts equipment failures based on sensor data",
+          "algorithm": "random_forest",
+          "update_frequency": "10s"
+        },
+        {
+          "name": "Energy Optimization",
+          "type": "ml_model",
+          "description": "Optimizes energy consumption based on production demands",
+          "algorithm": "neural_network",
+          "update_frequency": "10s"
+        }
+      ]
+    },
+    "visualization": {
+      "modules": [
+        {
+          "name": "Dashboard",
+          "type": "visualization",
+          "description": "Interactive dashboard for monitoring production line",
+          "widgets": [
+            {
+              "type": "gauge",
+              "title": "Line Efficiency",
+              "data_source": "analytics_engine",
+              "metric": "efficiency"
+            },
+            {
+              "type": "chart",
+              "title": "Energy Consumption",
+              "data_source": "data_collection",
+              "metric": "energy_kwh"
+            },
+            {
+              "type": "table",
+              "title": "Equipment Status",
+              "data_source": "data_collection",
+              "metric": "status"
+            }
+          ],
+          "refresh_rate": "5s",
+          "color_scheme": {
+            "primary": "#1f77b4",
+            "secondary": "#ff7f0e",
+            "accent": "#2ca02c"
+          }
+        }
+      ]
+    }
+  },
+  "data_flows": {
+    "connections": [
+      {
+        "from": "OPC-UA Collector",
+        "to": "data_collection",
+        "protocol": "OPC-UA",
+        "update_frequency": "10s"
+      },
+      {
+        "from": "MQTT Bridge",
+        "to": "data_collection",
+        "protocol": "MQTT",
+        "update_frequency": "5s"
+      },
+      {
+        "from": "REST API Gateway",
+        "to": "data_collection",
+        "protocol": "REST",
+        "update_frequency": "15s"
+      },
+      {
+        "from": "data_collection",
+        "to": "analytics_engine",
+        "protocol": "WebSocket",
+        "update_frequency": "5s"
+      },
+      {
+        "from": "analytics_engine",
+        "to": "ml_models",
+        "protocol": "REST",
+        "update_frequency": "10s"
+      },
+      {
+        "from": "ml_models",
+        "to": "visualization",
+        "protocol": "WebSocket",
+        "update_frequency": "5s"
+      }
+    ]
+  },
+  "alerts": {
+    "thresholds": [
+      {
+        "name": "Machine Efficiency Below Threshold",
+        "description": "Alert when machine efficiency drops below 90%",
+        "metric": "efficiency",
+        "threshold": 90,
+        "severity": "warning",
+        "trigger": "<"
+      },
+      {
+        "name": "High Energy Consumption",
+        "description": "Alert when energy consumption exceeds 500 kWh",
+        "metric": "energy_kwh",
+        "threshold": 500,
+        "severity": "critical",
+        "trigger": ">"
+      },
+      {
+        "name": "Machine Down Time",
+        "description": "Alert when machine is down for more than 10 minutes",
+        "metric": "down_time",
+        "threshold": 600,
+        "severity": "emergency",
+        "trigger": ">"
+      }
+    ]
+  },
+  "kpis": {
+    "metrics": [
+      {
+        "name": "Line Efficiency",
+        "description": "Percentage of time the production line is producing",
+        "target": 95,
+        "method": "sum(processing_time) / sum(total_time)",
+        "unit": "%"
+      },
+      {
+        "name": "Energy Consumption",
+        "description": "Total energy used by the production line",
+        "target": 1000,
+        "method": "sum(power_working_kw * processing_time)",
+        "unit": "kWh"
+      },
+      {
+        "name": "Machine Availability",
+        "description": "Percentage of time machines are available for production",
+        "target": 99,
+        "method": "sum(available_time) / sum(total_time)",
+        "unit": "%"
+      },
+      {
+        "name": "Predictive Maintenance",
+        "description": "Number of predictive maintenance alerts",
+        "target": 5,
+        "method": "count(alerts)",
+        "unit": "alerts"
+      }
+    ]
+  }
+}

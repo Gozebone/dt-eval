@@ -1,0 +1,305 @@
+{
+  "components": {
+    "data_collection": {
+      "modules": [
+        {
+          "name": "OPC-UA Gateway",
+          "type": "gateway",
+          "description": "Collects real-time data from PLCs and sensors using OPC-UA protocol",
+          "protocol": "OPC-UA",
+          "update_frequency": "100ms"
+        },
+        {
+          "name": "MQTT Bridge",
+          "type": "bridge",
+          "description": "Handles MQTT data ingestion from edge devices",
+          "protocol": "MQTT",
+          "update_frequency": "500ms"
+        },
+        {
+          "name": "REST API Collector",
+          "type": "collector",
+          "description": "Fetches historical data via REST API endpoints",
+          "protocol": "REST",
+          "update_frequency": "1s"
+        }
+      ]
+    },
+    "analytics": {
+      "engines": [
+        {
+          "name": "Real-time Analytics Engine",
+          "type": "engine",
+          "description": "Processes and analyzes real-time data streams",
+          "protocol": "WebSocket",
+          "update_frequency": "100ms"
+        },
+        {
+          "name": "Historical Data Analyzer",
+          "type": "engine",
+          "description": "Analyzes historical machine data for trends",
+          "protocol": "REST",
+          "update_frequency": "1h"
+        }
+      ]
+    },
+    "ml_models": [
+      {
+        "name": "Predictive Maintenance Model",
+        "type": "model",
+        "description": "Predicts machine failures based on sensor data",
+        "input_data": [
+          "availability",
+          "mttr_s",
+          "energy_idling",
+          "energy_working"
+        ],
+        "output": "failure_probability"
+      },
+      {
+        "name": "Production Efficiency Model",
+        "type": "model",
+        "description": "Optimizes production line efficiency",
+        "input_data": [
+          "processing_time_s",
+          "availability",
+          "work_power_kw",
+          "idle_power_kw"
+        ],
+        "output": "efficiency_score"
+      }
+    ],
+    "visualization": {
+      "dashboards": [
+        {
+          "name": "Production Line Dashboard",
+          "layout": {
+            "grid": {
+              "columns": 4,
+              "rows": 3
+            },
+            "widgets": [
+              {
+                "id": "widget_1",
+                "type": "gauge",
+                "title": "Line Utilization",
+                "position": [
+                  0,
+                  0
+                ],
+                "size": [
+                  1,
+                  1
+                ]
+              },
+              {
+                "id": "widget_2",
+                "type": "graph",
+                "title": "Energy Consumption",
+                "position": [
+                  1,
+                  0
+                ],
+                "size": [
+                  2,
+                  1
+                ]
+              },
+              {
+                "id": "widget_3",
+                "type": "table",
+                "title": "Machine Status",
+                "position": [
+                  0,
+                  1
+                ],
+                "size": [
+                  1,
+                  1
+                ]
+              },
+              {
+                "id": "widget_4",
+                "type": "map",
+                "title": "Production Line Map",
+                "position": [
+                  1,
+                  1
+                ],
+                "size": [
+                  2,
+                  1
+                ]
+              },
+              {
+                "id": "widget_5",
+                "type": "alert",
+                "title": "System Alerts",
+                "position": [
+                  0,
+                  2
+                ],
+                "size": [
+                  2,
+                  1
+                ]
+              },
+              {
+                "id": "widget_6",
+                "type": "kpi",
+                "title": "Overall Equipment Effectiveness",
+                "position": [
+                  2,
+                  2
+                ],
+                "size": [
+                  1,
+                  1
+                ]
+              }
+            ]
+          },
+          "refresh_rate": "5s",
+          "color_scheme": {
+            "primary": "#007bff",
+            "secondary": "#6c757d",
+            "success": "#28a745",
+            "warning": "#ffc107",
+            "danger": "#dc3545"
+          }
+        }
+      ]
+    }
+  },
+  "data_flows": {
+    "connections": [
+      {
+        "from": "OPC-UA Gateway",
+        "to": "Real-time Analytics Engine",
+        "protocol": "WebSocket",
+        "update_frequency": "100ms",
+        "data_type": "sensor_data"
+      },
+      {
+        "from": "MQTT Bridge",
+        "to": "Real-time Analytics Engine",
+        "protocol": "WebSocket",
+        "update_frequency": "500ms",
+        "data_type": "telemetry_data"
+      },
+      {
+        "from": "REST API Collector",
+        "to": "Historical Data Analyzer",
+        "protocol": "REST",
+        "update_frequency": "1h",
+        "data_type": "historical_data"
+      },
+      {
+        "from": "Real-time Analytics Engine",
+        "to": "Predictive Maintenance Model",
+        "protocol": "REST",
+        "update_frequency": "100ms",
+        "data_type": "real_time_metrics"
+      },
+      {
+        "from": "Real-time Analytics Engine",
+        "to": "Production Efficiency Model",
+        "protocol": "REST",
+        "update_frequency": "100ms",
+        "data_type": "real_time_metrics"
+      },
+      {
+        "from": "Predictive Maintenance Model",
+        "to": "Production Line Dashboard",
+        "protocol": "WebSocket",
+        "update_frequency": "100ms",
+        "data_type": "prediction_output"
+      },
+      {
+        "from": "Production Efficiency Model",
+        "to": "Production Line Dashboard",
+        "protocol": "WebSocket",
+        "update_frequency": "100ms",
+        "data_type": "efficiency_metrics"
+      }
+    ]
+  },
+  "alerts": {
+    "thresholds": [
+      {
+        "parameter": "availability",
+        "machine_id": "M1",
+        "threshold": 0.95,
+        "severity": "warning",
+        "message": "M1 availability below threshold"
+      },
+      {
+        "parameter": "mttr_s",
+        "machine_id": "M2",
+        "threshold": 1000,
+        "severity": "critical",
+        "message": "M2 MTTR exceeds threshold"
+      },
+      {
+        "parameter": "processing_time_s",
+        "machine_id": "M3",
+        "threshold": 250,
+        "severity": "emergency",
+        "message": "M3 processing time significantly increased"
+      },
+      {
+        "parameter": "energy_working",
+        "machine_id": "M4",
+        "threshold": 7.5,
+        "severity": "warning",
+        "message": "M4 energy consumption above normal"
+      },
+      {
+        "parameter": "idle_power_kw",
+        "machine_id": "M5",
+        "threshold": 0.7,
+        "severity": "warning",
+        "message": "M5 idle power consumption above normal"
+      }
+    ]
+  },
+  "kpis": {
+    "metrics": [
+      {
+        "name": "Overall Equipment Effectiveness",
+        "description": "Combined measure of availability, performance, and quality",
+        "target_value": 0.85,
+        "measurement_method": "calculated from availability, performance, and quality",
+        "unit": "unitless"
+      },
+      {
+        "name": "Production Efficiency",
+        "description": "Efficiency of the production line in terms of output vs input",
+        "target_value": 0.9,
+        "measurement_method": "calculated from processing times and availability",
+        "unit": "unitless"
+      },
+      {
+        "name": "Energy Consumption",
+        "description": "Total energy consumed during production cycle",
+        "target_value": 500,
+        "measurement_method": "sum of energy_idling and energy_working",
+        "unit": "kWh"
+      },
+      {
+        "name": "Machine Uptime",
+        "description": "Percentage of time machines are operational",
+        "target_value": 0.97,
+        "measurement_method": "sum of processing time divided by total time",
+        "unit": "unitless"
+      },
+      {
+        "name": "Predictive Maintenance Score",
+        "description": "Probability of machine failure based on current metrics",
+        "target_value": 0.1,
+        "measurement_method": "probability from ML model",
+        "unit": "unitless"
+      }
+    ]
+  }
+}

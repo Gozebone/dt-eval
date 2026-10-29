@@ -1,0 +1,227 @@
+{
+  "components": {
+    "data_collection": {
+      "modules": [
+        {
+          "name": "OPC-UA Gateway",
+          "type": "data_ingestion",
+          "description": "Collects real-time data from industrial equipment using OPC-UA protocol"
+        },
+        {
+          "name": "MQTT Bridge",
+          "type": "data_ingestion",
+          "description": "Ingests sensor data from edge devices via MQTT"
+        },
+        {
+          "name": "REST API Client",
+          "type": "data_ingestion",
+          "description": "Fetches historical data from external systems via REST API"
+        }
+      ]
+    },
+    "analytics": {
+      "engines": [
+        {
+          "name": "Simulation Engine",
+          "type": "analytics",
+          "description": "Simulates production line behavior over 432000s based on provided parameters"
+        },
+        {
+          "name": "Performance Analytics",
+          "type": "analytics",
+          "description": "Calculates KPIs such as availability, throughput, and energy consumption"
+        }
+      ]
+    },
+    "ml_models": {
+      "models": [
+        {
+          "name": "Failure Prediction",
+          "type": "predictive_maintenance",
+          "description": "Predicts machine failures using historical data and sensor readings"
+        },
+        {
+          "name": "Throughput Optimization",
+          "type": "optimization",
+          "description": "Optimizes production line throughput by analyzing bottlenecks"
+        }
+      ]
+    },
+    "visualization": {
+      "dashboards": [
+        {
+          "name": "Production Line Dashboard",
+          "type": "overview",
+          "description": "Real-time visualization of production line status"
+        }
+      ]
+    }
+  },
+  "data_flows": {
+    "connections": [
+      {
+        "source": "OPC-UA Gateway",
+        "destination": "PostgreSQL",
+        "protocol": "OPC-UA",
+        "frequency": "10 seconds"
+      },
+      {
+        "source": "MQTT Bridge",
+        "destination": "PostgreSQL",
+        "protocol": "MQTT",
+        "frequency": "5 seconds"
+      },
+      {
+        "source": "REST API Client",
+        "destination": "PostgreSQL",
+        "protocol": "REST",
+        "frequency": "1 hour"
+      },
+      {
+        "source": "PostgreSQL",
+        "destination": "Simulation Engine",
+        "protocol": "Database",
+        "frequency": "static for simulation"
+      },
+      {
+        "source": "Simulation Engine",
+        "destination": "Visualization Dashboard",
+        "protocol": "WebSocket",
+        "frequency": "10 seconds"
+      }
+    ]
+  },
+  "visualization": {
+    "layout": {
+      "dashboard": {
+        "title": "Production Line Dashboard",
+        "widgets": [
+          {
+            "type": "gauge",
+            "title": "Machine Availability",
+            "machine": "M1",
+            "value_field": "availability",
+            "unit": "%",
+            "color": "#4CAF50"
+          },
+          {
+            "type": "gauge",
+            "title": "Machine Availability",
+            "machine": "M2",
+            "value_field": "availability",
+            "unit": "%",
+            "color": "#4CAF50"
+          },
+          {
+            "type": "gauge",
+            "title": "Machine Availability",
+            "machine": "M3",
+            "value_field": "availability",
+            "unit": "%",
+            "color": "#4CAF50"
+          },
+          {
+            "type": "bar_chart",
+            "title": "Buffer Usage",
+            "buffer": "B0",
+            "value_field": "capacity",
+            "unit": "units",
+            "color": "#2196F3"
+          },
+          {
+            "type": "bar_chart",
+            "title": "Buffer Usage",
+            "buffer": "B1",
+            "value_field": "capacity",
+            "unit": "units",
+            "color": "#2196F3"
+          },
+          {
+            "type": "bar_chart",
+            "title": "Buffer Usage",
+            "buffer": "B2",
+            "value_field": "capacity",
+            "unit": "units",
+            "color": "#2196F3"
+          },
+          {
+            "type": "line_chart",
+            "title": "Part Throughput Over Time",
+            "value_field": "part_count",
+            "unit": "units",
+            "color": "#FF9800"
+          }
+        ],
+        "refresh_rate_s": 10
+      }
+    }
+  },
+  "alerts": {
+    "thresholds": [
+      {
+        "name": "Machine M1 Availability Below Threshold",
+        "severity": "warning",
+        "condition": "availability < 95",
+        "machine": "M1"
+      },
+      {
+        "name": "Machine M2 Availability Below Threshold",
+        "severity": "warning",
+        "condition": "availability < 95",
+        "machine": "M2"
+      },
+      {
+        "name": "Machine M3 Availability Below Threshold",
+        "severity": "warning",
+        "condition": "availability < 95",
+        "machine": "M3"
+      },
+      {
+        "name": "Buffer B0 Full",
+        "severity": "critical",
+        "condition": "capacity >= 15",
+        "buffer": "B0"
+      },
+      {
+        "name": "Buffer B1 Full",
+        "severity": "critical",
+        "condition": "capacity >= 5",
+        "buffer": "B1"
+      },
+      {
+        "name": "Buffer B2 Full",
+        "severity": "critical",
+        "condition": "capacity >= 5",
+        "buffer": "B2"
+      }
+    ]
+  },
+  "kpis": {
+    "metrics": [
+      {
+        "name": "Overall Equipment Effectiveness (OEE)",
+        "target_value": 85,
+        "unit": "%",
+        "calculation_method": "Availability * Performance * Quality"
+      },
+      {
+        "name": "Part Throughput",
+        "target_value": 432000,
+        "unit": "units",
+        "calculation_method": "Total parts produced over simulation period"
+      },
+      {
+        "name": "Machine Availability",
+        "target_value": 98,
+        "unit": "%",
+        "calculation_method": "Uptime / (Uptime + Downtime) * 100"
+      },
+      {
+        "name": "Energy Consumption",
+        "target_value": 1000,
+        "unit": "kWh",
+        "calculation_method": "Sum of work power consumption over simulation period"
+      }
+    ]
+  }
+}

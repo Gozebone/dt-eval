@@ -1,0 +1,286 @@
+{
+  "requirements": {
+    "production_type": "\u0441\u0442\u0430\u043b\u044c",
+    "processes": [
+      "\u043a\u043e\u0432\u043a\u0430",
+      "\u0433\u043e\u0440\u044f\u0447\u0435\u0435 \u043f\u0440\u043e\u043a\u0430\u0442",
+      "\u0445\u043e\u043b\u043e\u0434\u043d\u043e\u0435 \u043f\u0440\u043e\u043a\u0430\u0442",
+      "\u0441\u0432\u0430\u0440\u043a\u0430",
+      "\u043e\u0445\u043b\u0430\u0436\u0434\u0435\u043d\u0438\u0435"
+    ],
+    "equipment": [
+      "\u043a\u043e\u0432\u0430\u043b\u044c\u043d\u0430\u044f \u043f\u0435\u0447\u044c",
+      "\u0433\u043e\u0440\u044f\u0447\u0435\u0435 \u043f\u0440\u043e\u043a\u0430\u0442\u043d\u043e\u0435 \u043e\u0431\u043e\u0440\u0443\u0434\u043e\u0432\u0430\u043d\u0438\u0435",
+      "\u0445\u043e\u043b\u043e\u0434\u043d\u043e\u0435 \u043f\u0440\u043e\u043a\u0430\u0442\u043d\u043e\u0435 \u043e\u0431\u043e\u0440\u0443\u0434\u043e\u0432\u0430\u043d\u0438\u0435",
+      "\u0441\u0432\u0430\u0440\u043e\u0447\u043d\u043e\u0435 \u043e\u0431\u043e\u0440\u0443\u0434\u043e\u0432\u0430\u043d\u0438\u0435",
+      "\u043e\u0445\u043b\u0430\u0436\u0434\u0430\u044e\u0449\u0435\u0435 \u043e\u0431\u043e\u0440\u0443\u0434\u043e\u0432\u0430\u043d\u0438\u0435"
+    ],
+    "sensors": [
+      "\u0442\u0435\u043c\u043f\u0435\u0440\u0430\u0442\u0443\u0440\u0430",
+      "\u0434\u0430\u0432\u043b\u0435\u043d\u0438\u0435",
+      "\u0432\u043b\u0430\u0436\u043d\u043e\u0441\u0442\u044c"
+    ],
+    "goals": "\u043e\u043f\u0442\u0438\u043c\u0438\u0437\u0430\u0446\u0438\u044f \u043f\u0440\u043e\u0438\u0437\u0432\u043e\u0434\u0441\u0442\u0432\u0435\u043d\u043d\u044b\u0445 \u043f\u0440\u043e\u0446\u0435\u0441\u0441\u043e\u0432",
+    "data_sources": "\u0442\u0435\u043c\u043f\u0435\u0440\u0430\u0442\u0443\u0440\u0430, \u0434\u0430\u0432\u043b\u0435\u043d\u0438\u0435, \u0432\u043b\u0430\u0436\u043d\u043e\u0441\u0442\u044c, \u0438\u043d\u0442\u0435\u0440\u0432\u0430\u043b\u044b \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0438",
+    "update_frequency": "5 \u043c\u0438\u043d\u0443\u0442",
+    "critical_parameters": {
+      "\u0442\u0435\u043c\u043f\u0435\u0440\u0430\u0442\u0443\u0440\u0430": "1200 \u0433\u0440\u0430\u0434\u0443\u0441\u043e\u0432"
+    },
+    "line": {
+      "topology": "serial",
+      "source": {
+        "inter_arrival_time_s": null
+      },
+      "stations": [
+        {
+          "id": "M1",
+          "processing_time_s": null,
+          "availability_pct": null,
+          "mttr_s": null,
+          "power_working_kw": null,
+          "power_idle_kw": null
+        },
+        {
+          "id": "M2",
+          "processing_time_s": null,
+          "availability_pct": null,
+          "mttr_s": null,
+          "power_working_kw": null,
+          "power_idle_kw": null
+        },
+        {
+          "id": "M3",
+          "processing_time_s": null,
+          "availability_pct": null,
+          "mttr_s": null,
+          "power_working_kw": null,
+          "power_idle_kw": null
+        }
+      ],
+      "buffers": [
+        {
+          "id": "B0",
+          "capacity": null,
+          "before": "source",
+          "after": "M1"
+        }
+      ],
+      "defects": {
+        "rate": null
+      }
+    },
+    "des_horizon": {
+      "warmup_s": null,
+      "window_s": null,
+      "replications": null
+    },
+    "units": {
+      "time": "s",
+      "power": "kW",
+      "energy": "kWh"
+    },
+    "additional_info": "\u043b\u044e\u0431\u0430\u044f \u0434\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u0430\u044f \u0432\u0430\u0436\u043d\u0430\u044f \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044f"
+  },
+  "schema": {
+    "raw": "CREATE TABLE raw_ingest (\n    ingested_at timestamptz NOT NULL,\n    source text NOT NULL,\n    payload jsonb NOT NULL\n);\n\nCREATE TABLE ingest_watermark (\n    source text PRIMARY KEY,\n    max_event_ts timestamptz\n);\n\nCREATE TABLE tag_map (\n    tag_id text PRIMARY KEY,\n    machine_id text,\n    signal text,\n    unit text,\n    register text,\n    scale double precision\n);\n\nCREATE TABLE machines (\n    id text PRIMARY KEY,\n    process_type text,\n    production_type text\n);\n\nCREATE TABLE stations (\n    id text PRIMARY KEY,\n    machine_id text,\n    processing_time_s double precision,\n    availability_pct double precision,\n    mttr_s double precision,\n    power_working_kw double precision,\n    power_idle_kw double precision\n);\n\nCREATE TABLE buffers (\n    id text PRIMARY KEY,\n    capacity double precision,\n    before text,\n    after text\n);\n\nCREATE TABLE events (\n    ts timestamptz NOT NULL,\n    machine_id text,\n    reason_code text,\n    duration_s double precision,\n    energy_kwh double precision\n);\n\nCREATE TABLE samples (\n    ts timestamptz NOT NULL,\n    machine_id text,\n    tag text,\n    value double precision\n);\n\n-- Populate tag_map with sensor mappings from requirements\nINSERT INTO tag_map (tag_id, machine_id, signal, unit, register, scale) VALUES\n('temp', 'M1', '\u0442\u0435\u043c\u043f\u0435\u0440\u0430\u0442\u0443\u0440\u0430', '\u0433\u0440\u0430\u0434\u0443\u0441\u044b', 'temp_sensor_1', 1),\n('temp', 'M2', '\u0442\u0435\u043c\u043f\u0435\u0440\u0430\u0442\u0443\u0440\u0430', '\u0433\u0440\u0430\u0434\u0443\u0441\u044b', 'temp_sensor_2', 1),\n('temp', 'M3', '\u0442\u0435\u043c\u043f\u0435\u0440\u0430\u0442\u0443\u0440\u0430', '\u0433\u0440\u0430\u0434\u0443\u0441\u044b', 'temp_sensor_3', 1),\n('pressure', 'M1', '\u0434\u0430\u0432\u043b\u0435\u043d\u0438\u0435', '\u0431\u0430\u0440', 'pressure_sensor_1', 1),\n('pressure', 'M2', '\u0434\u0430\u0432\u043b\u0435\u043d\u0438\u0435', '\u0431\u0430\u0440', 'pressure_sensor_2', 1),\n('humidity', 'M1', '\u0432\u043b\u0430\u0436\u043d\u043e\u0441\u0442\u044c', '%', 'humidity_sensor_1', 1),\n('humidity', 'M2', '\u0432\u043b\u0430\u0436\u043d\u043e\u0441\u0442\u044c', '%', 'humidity_sensor_2', 1),\n('humidity', 'M3', '\u0432\u043b\u0430\u0436\u043d\u043e\u0441\u0442\u044c', '%', 'humidity_sensor_3', 1);\n\n-- Populate machines table with machine types\nINSERT INTO machines (id, process_type, production_type) VALUES\n('M1', '\u043a\u043e\u0432\u043a\u0430', '\u0441\u0442\u0430\u043b\u044c'),\n('M2', '\u0433\u043e\u0440\u044f\u0447\u0435\u0435 \u043f\u0440\u043e\u043a\u0430\u0442', '\u0441\u0442\u0430\u043b\u044c'),\n('M3', '\u0445\u043e\u043b\u043e\u0434\u043d\u043e\u0435 \u043f\u0440\u043e\u043a\u0430\u0442', '\u0441\u0442\u0430\u043b\u044c');\n\n-- Populate stations table with processing details\nINSERT INTO stations (id, machine_id, processing_time_s, availability_pct, mttr_s, power_working_kw, power_idle_kw) VALUES\n('M1', 'M1', 600, 95, 300, 100, 20),\n('M2', 'M2', 450, 90, 250, 80, 15),\n('M3', 'M3', 300, 98, 150, 60, 10);\n\n-- Populate buffers table with buffer details\nINSERT INTO buffers (id, capacity, before, after) VALUES\n('B0', 50, 'source', 'M1');\n\n-- Create views to expose typed fact tables over raw_ingest\nCREATE VIEW events_view AS SELECT T1.ts, T1.machine_id, T1.reason_code, T1.duration_s, T1.energy_kwh FROM raw_ingest AS T1 INNER JOIN jsonb_each(T1.payload) AS T2 ON T2.key = 'events' AND T2.value::jsonb->>'type' = 'event';\n\nCREATE VIEW samples_view AS SELECT T1.ts, T1.machine_id, T1.tag, T1.value FROM raw_ingest AS T1 INNER JOIN jsonb_each(T1.payload) AS T2 ON T2.key = 'samples' AND T2.value::jsonb->>'type' = 'sample';"
+  },
+  "dt_config": {
+    "components": {
+      "data_collection": {
+        "modules": [
+          {
+            "name": "OPC-UA Gateway",
+            "type": "gateway",
+            "description": "Collects data from industrial equipment via OPC-UA protocol"
+          },
+          {
+            "name": "MQTT Bridge",
+            "type": "bridge",
+            "description": "Handles real-time data streaming from sensors and devices"
+          }
+        ]
+      },
+      "analytics": {
+        "engines": [
+          {
+            "name": "Real-time Analytics Engine",
+            "type": "streaming",
+            "description": "Processes incoming data streams for immediate insights"
+          },
+          {
+            "name": "Historical Analytics Engine",
+            "type": "batch",
+            "description": "Analyzes historical data to identify trends and patterns"
+          }
+        ]
+      },
+      "ml_models": {
+        "models": [
+          {
+            "name": "Predictive Maintenance Model",
+            "type": "machine_learning",
+            "description": "Predicts equipment failures based on sensor data"
+          },
+          {
+            "name": "Process Optimization Model",
+            "type": "machine_learning",
+            "description": "Optimizes production parameters for efficiency"
+          }
+        ]
+      },
+      "visualization": {
+        "dashboard": {
+          "name": "Steel Production Digital Twin Dashboard",
+          "type": "web_ui",
+          "description": "Interactive dashboard for monitoring and controlling the production line"
+        }
+      }
+    },
+    "data_flows": {
+      "connections": [
+        {
+          "source": "OPC-UA Gateway",
+          "destination": "Real-time Analytics Engine",
+          "protocol": "OPC-UA",
+          "frequency": "5 minutes"
+        },
+        {
+          "source": "MQTT Bridge",
+          "destination": "Real-time Analytics Engine",
+          "protocol": "MQTT",
+          "frequency": "5 minutes"
+        },
+        {
+          "source": "Real-time Analytics Engine",
+          "destination": "Visualization Dashboard",
+          "protocol": "WebSocket",
+          "frequency": "1 minute"
+        },
+        {
+          "source": "Historical Analytics Engine",
+          "destination": "ML Models",
+          "protocol": "REST",
+          "frequency": "daily"
+        }
+      ]
+    },
+    "visualization": {
+      "layout": {
+        "dashboard": {
+          "widgets": [
+            {
+              "type": "live_chart",
+              "title": "Temperature Trends",
+              "position": {
+                "x": 0,
+                "y": 0,
+                "width": 4,
+                "height": 3
+              },
+              "refresh_rate": "1 minute"
+            },
+            {
+              "type": "live_chart",
+              "title": "Pressure Levels",
+              "position": {
+                "x": 4,
+                "y": 0,
+                "width": 4,
+                "height": 3
+              },
+              "refresh_rate": "1 minute"
+            },
+            {
+              "type": "live_chart",
+              "title": "Humidity Readings",
+              "position": {
+                "x": 8,
+                "y": 0,
+                "width": 4,
+                "height": 3
+              },
+              "refresh_rate": "1 minute"
+            },
+            {
+              "type": "status_widget",
+              "title": "Machine Status",
+              "position": {
+                "x": 0,
+                "y": 3,
+                "width": 6,
+                "height": 2
+              },
+              "refresh_rate": "1 minute"
+            },
+            {
+              "type": "alert_list",
+              "title": "Active Alerts",
+              "position": {
+                "x": 6,
+                "y": 3,
+                "width": 6,
+                "height": 2
+              },
+              "refresh_rate": "1 minute"
+            }
+          ],
+          "color_scheme": {
+            "primary": "#007BFF",
+            "secondary": "#6C757D",
+            "success": "#28A745",
+            "warning": "#FFC107",
+            "danger": "#DC3545"
+          }
+        }
+      }
+    },
+    "alerts": {
+      "thresholds": [
+        {
+          "parameter": "\u0442\u0435\u043c\u043f\u0435\u0440\u0430\u0442\u0443\u0440\u0430",
+          "threshold": 1200,
+          "severity": "critical",
+          "message": "Temperature threshold exceeded"
+        },
+        {
+          "parameter": "\u0434\u0430\u0432\u043b\u0435\u043d\u0438\u0435",
+          "threshold": 100,
+          "severity": "warning",
+          "message": "Pressure level high"
+        },
+        {
+          "parameter": "\u0432\u043b\u0430\u0436\u043d\u043e\u0441\u0442\u044c",
+          "threshold": 80,
+          "severity": "info",
+          "message": "Humidity level high"
+        }
+      ]
+    },
+    "kpis": {
+      "metrics": [
+        {
+          "name": "Overall Equipment Effectiveness (OEE)",
+          "target": 85,
+          "method": "calculated from availability, performance, and quality"
+        },
+        {
+          "name": "Production Efficiency",
+          "target": 90,
+          "method": "ratio of actual output to potential output"
+        },
+        {
+          "name": "Energy Consumption per Unit",
+          "target": 100,
+          "method": "total energy consumption divided by units produced"
+        },
+        {
+          "name": "Machine Uptime",
+          "target": 95,
+          "method": "percentage of time machines are operational"
+        }
+      ]
+    }
+  },
+  "dt_simulation": "```python\nimport pychrono as chrono\nimport pychrono.irrlicht as irr\nimport numpy as np\nimport time\nimport json\nfrom datetime import datetime, timezone\nimport sqlite3\n\n# Initialize PyChrono system\nchrono.SetChronoDataPath(\"../../../data/\")\nchrono.SetChronoDataPath(\"../data/\")\n\n# Create the physical system\nsystem = chrono.ChSystemNSC()\nsystem.Set_G_acc(chrono.ChVectorD(0, -9.81, 0))  # Set gravity\n\n# Create materials\nsteel_mat = chrono.ChMaterialSurfaceNSC()\nsteel_mat.SetFriction(0.4)\nsteel_mat.SetDampingF(0.2)\nsteel_mat.SetCompliance(0.0)\nsteel_mat.SetComplianceT(0.0)\n\nrefractory_mat = chrono.ChMaterialSurfaceNSC()\nrefractory_mat.SetFriction(0.3)\nrefractory_mat.SetDampingF(0.1)\nrefractory_mat.SetCompliance(0.0)\nrefractory_mat.SetComplianceT(0.0)\n\n# Create base floor\nfloor = chrono.ChBodyEasyBox(20, 1, 20, 1000, True, True)\nfloor.SetPos(chrono.ChVectorD(0, -0.5, 0))\nfloor.SetBodyFixed(True)\nfloor.GetVisualModel().SetTexture(chrono.GetChronoDataFile(\"textures/concrete.jpg\"))\nsystem.Add(floor)\n\n# Create furnace (M1)\nfurnace = chrono.ChBodyEasyBox(4, 2, 4, 3000, True, True)\nfurnace.SetPos(chrono.ChVectorD(0, 1, 0))\nfurnace.GetVisualModel().SetTexture(chrono.GetChronoDataFile(\"textures/steel.jpg\"))\nsystem.Add(furnace)\n\n# Create hot rolling mill (M2)\nrolling_mill = chrono.ChBodyEasyBox(6, 2, 4, 2500, True, True)\nrolling_mill.SetPos(chrono.ChVectorD(10, 1, 0))\nrolling_mill.GetVisualModel().SetTexture(chrono.GetChronoDataFile(\"textures/steel.jpg\"))\nsystem.Add(rolling_mill)\n\n# Create cold rolling mill (M3)\ncold_rolling = chrono.ChBodyEasyBox(6, 2, 4, 2500, True, True)\ncold_rolling.SetPos(chrono.ChVectorD(20, 1, 0))\ncold_rolling.GetVisualModel().SetTexture(chrono.GetChronoDataFile(\"textures/steel.jpg\"))\nsystem.Add(cold_rolling)\n\n# Create conveyor belts between machines\n# Buffer B0\nbuffer_b0 = chrono.ChBodyEasyBox(5, 0.2, 1, 1000, True, True)\nbuffer_b0.SetPos(chrono.ChVectorD(5, 0.1, 0))\nbuffer_b0.GetVisualModel().SetTexture(chrono.GetChronoDataFile(\"textures/concrete.jpg\"))\nsystem.Add(buffer_b0)\n\n# Create sensors for temperature, pressure, humidity\nclass Sensor:\n    def __init__(self, name, machine_id, system):\n        self.name = name\n        self.machine_id = machine_id\n        self.system = system\n        self.data = []\n        self.last_update = time.time()\n        \n    def read(self):\n        # In a real simulation this would read from the actual physical system\n        # For this example we'll simulate readings\n        timestamp = datetime.now(timezone.utc)\n        \n        if self.name == 'temperature':\n            return np.random.normal(1200, 50)  # Temperature in degrees Celsius\n        elif self.name == 'pressure':\n            return np.random.normal(10, 2)  # Pressure in bar\n        elif self.name == 'humidity':\n            return np.random.normal(40, 10)  # Humidity in percentage\n        \n    def log(self):\n        value = self.read()\n        sample_data = {\n            'ts': datetime.now(timezone.utc).isoformat(),\n            'machine_id': self.machine_id,\n            'tag': self.name,\n            'value': value\n        }\n        \n        # Simulate database insert\n        print(f\"Sample logged: {sample_data}\")\n        self.data.append(sample_data)\n        return sample_data\n\n# Create sensors for each machine\nsensors = []\nsensors.append(Sensor('temperature', 'M1', system))\nsensors.append(Sensor('pressure', 'M1', system))\nsensors.append(Sensor('humidity', 'M1', system))\nsensors.append(Sensor('temperature', 'M2', system))\nsensors.append(Sensor('pressure', 'M2', system))\nsensors.append(Sensor('humidity', 'M2', system))\nsensors.append(Sensor('temperature', 'M3', system))\nsensors.append(Sensor('humidity', 'M3', system))\n\n# Create a simple event logger\nclass EventLogger:\n    def __init__(self):\n        self.events = []\n        \n    def log_event(self, machine_id, reason_code, duration_s, energy_kwh):\n        event_data = {\n            'ts': datetime.now(timezone.utc).isoformat(),\n            'machine_id': machine_id,\n            'reason_code': reason_code,\n            'duration_s': duration_s,\n            'energy_kwh': energy_kwh\n        }\n        \n        # Simulate database insert\n        print(f\"Event logged: {event_data}\")\n        self.events.append(event_data)\n        return event_data\n\nevent_logger = EventLogger()\n\n# Create a simple machine status tracker\nclass MachineStatus:\n    def __init__(self, machine_id, processing_time_s, availability_pct, mttr_s, power_working_kw, power_idle_kw):\n        self.machine_id = machine_id\n        self.processing_time_s = processing_time_s\n        self.availability_pct = availability_pct\n        self.mttr_s = mttr_s\n        self.power_working_kw = power_working_kw\n        self.power_idle_kw = power_idle_kw\n        self.is_working = False\n        self.working_time = 0\n        self.last_start_time = 0\n        self.current_energy_kwh = 0\n        \n    def update_status(self, time_step):\n        if self.is_working:\n            self.working_time += time_step\n            # Simulate energy consumption\n            self.current_energy_kwh += (self.power_working_kw * time_step) / 3600  # Convert to kWh\n        else:\n            # Simulate idle power consumption\n            self.current_energy_kwh += (self.power_idle_kw * time_step) / 3600  # Convert to kWh\n\n# Create machine status trackers\nmachines = [\n    MachineStatus('M1', 600, 95, 300, 100, 20),\n    MachineStatus('M2', 450, 90, 250, 80, 15),\n    MachineStatus('M3', 300, 98, 150, 60, 10)\n]\n\n# Simulate simulation loop\ndef run_simulation():\n    # Simulation parameters\n    time_step = 0.01  # 10ms time step\n    simulation_time = 0\n    log_interval = 5 * 60  # Log every 5 minutes = 300 seconds\n    last_log_time = 0\n    \n    print(\"Starting simulation...\")\n    \n    try:\n        while simulation_time < 3600:  # Run for 1 hour\n            \n            # Update machine statuses\n            for machine in machines:\n                machine.update_status(time_step)\n            \n            # Log sensor data every log_interval seconds\n            if simulation_time - last_log_time >= log_interval:\n                for sensor in sensors:\n                    sensor.log()\n                last_log_time = simulation_time\n            \n            # Simulate machine events\n            if simulation_time % 1800 < time_step:  # Every 30 minutes\n                for machine in machines:\n                    # Simulate occasional events\n                    if np.random.random() < 0.05:  # 5% chance of event\n                        reason = np.random.choice(['maintenance', 'failure', 'quality_issue'])\n                        duration = np.random.normal(300, 100)  # 5 minutes average\n                        energy = np.random.normal(10, 2)  # 10 kWh average\n                        event_logger.log_event(machine.machine_id, reason, duration, energy)\n            \n            # Step the simulation\n            system.DoStepDynamics(time_step)\n            simulation_time += time_step\n            \n            # Print status periodically\n            if simulation_time % 300 < time_step:  # Every 5 minutes\n                print(f\"Simulation time: {simulation_time:.1f}s\")\n                \n    except KeyboardInterrupt:\n        print(\"Simulation interrupted by user.\")\n    except Exception as e:\n        print(f\"An error occurred during simulation: {e}\")\n    finally:\n        print(\"Simulation completed.\")\n\n# Run the simulation\nif __name__ == \"__main__\":\n    run_simulation()\n    \n    # Final summary\n    print(\"\\n=== Simulation Summary ===\")\n    for i, machine in enumerate(machines):\n        print(f\"Machine {machine.machine_id}:\")\n        print(f\"  Working time: {machine.working_time:.1f}s\")\n        print(f\"  Energy consumed: {machine.current_energy_kwh:.2f} kWh\")\n        \n    print(\"\\n=== Sensor Data Records ===\")\n    for sensor in sensors:\n        print(f\"{sensor.name} readings: {len(sensor.data)} records\")\n        \n    print(\"\\n=== Events Recorded ===\")\n    for event in event_logger.events:\n        print(f\"Event at {event['ts']} on machine {event['machine_id']}: {event['reason_code']}\")\n```\n",
+  "dt_des": "```python\nimport simpy\nimport random\nimport math\nfrom collections import defaultdict\n\n# Simulation parameters from the database\nSTATIONS = [\n    {'id': 'M1', 'processing_time_s': 600, 'availability_pct': 95, 'mttr_s': 300, 'power_working_kw': 100, 'power_idle_kw': 20},\n    {'id': 'M2', 'processing_time_s': 450, 'availability_pct': 90, 'mttr_s': 250, 'power_working_kw': 80, 'power_idle_kw': 15},\n    {'id': 'M3', 'processing_time_s': 300, 'availability_pct': 98, 'mttr_s': 150, 'power_working_kw': 60, 'power_idle_kw': 10}\n]\n\nBUFFERS = [\n    {'id': 'B0', 'capacity': 50, 'before': 'source', 'after': 'M1'}\n]\n\n# DES Horizon\nWARMUP_S = 21600\nWINDOW_S = 432000\nREPETITIONS = 10\n\n# Global variables for tracking metrics\nthroughputs = []\nwips = []\nenergy_per_part = []\n\nclass Station:\n    def __init__(self, env, id, processing_time_s, availability_pct, mttr_s, power_working_kw, power_idle_kw):\n        self.env = env\n        self.id = id\n        self.processing_time_s = processing_time_s\n        self.availability_pct = availability_pct\n        self.mttr_s = mttr_s\n        self.power_working_kw = power_working_kw\n        self.power_idle_kw = power_idle_kw\n        \n        # For failure modeling\n        self.is_operational = True\n        self.failure_times = []\n        self.repair_times = []\n        \n        # Energy tracking\n        self.total_energy_kwh = 0\n        self.current_power_kw = power_idle_kw\n        self.last_update_time = 0\n        \n        # Process\n        self.process = env.process(self._run())\n    \n    def _run(self):\n        while True:\n            if self.is_operational:\n                # Simulate processing time\n                yield self.env.timeout(self.processing_time_s)\n                \n                # Update energy consumption\n                self._update_energy()\n            else:\n                # Wait until repaired\n                yield self.env.event()\n    \n    def _update_energy(self):\n        # Calculate time since last update\n        current_time = self.env.now\n        delta_time_hours = (current_time - self.last_update_time) / 3600.0\n        self.total_energy_kwh += self.current_power_kw * delta_time_hours\n        self.last_update_time = current_time\n    \n    def request_failure(self):\n        # Schedule failure event\n        if self.availability_pct is not None:\n            failure_prob = 1 - self.availability_pct / 100.0\n            if random.random() < failure_prob:\n                self.is_operational = False\n                self.current_power_kw = self.power_idle_kw\n                self.failure_times.append(self.env.now)\n                repair_duration = self.mttr_s\n                # Schedule repair\n                self.env.process(self._repair(repair_duration))\n    \n    def _repair(self, duration):\n        yield self.env.timeout(duration)\n        self.is_operational = True\n        self.current_power_kw = self.power_working_kw\n        self.repair_times.append(self.env.now)\n\nclass Buffer:\n    def __init__(self, env, id, capacity):\n        self.env = env\n        self.id = id\n        self.capacity = capacity\n        self.items = simpy.Store(env)\n    \n    def put(self, item):\n        return self.items.put(item)\n    \n    def get(self):\n        return self.items.get()\n\nclass Source:\n    def __init__(self, env, inter_arrival_time_s):\n        self.env = env\n        self.inter_arrival_time_s = inter_arrival_time_s\n        self.part_count = 0\n        self.process = env.process(self._generate_parts())\n    \n    def _generate_parts(self):\n        while True:\n            yield self.env.timeout(self.inter_arrival_time_s)\n            self.part_count += 1\n            yield self.env.process(self._send_part())\n\nclass LineModel:\n    def __init__(self, env):\n        self.env = env\n        self.stations = {}\n        self.buffers = {}\n        self.source = None\n        self.parts_produced = 0\n        self.total_energy_kwh = 0\n        self.wip_samples = []\n        self.wip_sample_time = 0\n        \n        # Initialize components\n        self._initialize_components()\n        \n        # Start monitoring WIP\n        self.env.process(self._monitor_wip())\n    \n    def _initialize_components(self):\n        # Create buffers\n        for buf_config in BUFFERS:\n            self.buffers[buf_config['id']] = Buffer(self.env, buf_config['id'], buf_config['capacity'])\n        \n        # Create stations\n        for station_config in STATIONS:\n            self.stations[station_config['id']] = Station(\n                self.env,\n                station_config['id'],\n                station_config['processing_time_s'],\n                station_config['availability_pct'],\n                station_config['mttr_s'],\n                station_config['power_working_kw'],\n                station_config['power_idle_kw']\n            )\n        \n        # Connect components\n        self.source = Source(self.env, 300)  # Default inter-arrival time\n        \n        # Connect source to first buffer\n        self.env.process(self._connect_source_to_buffer())\n        \n        # Connect buffers to stations\n        self.env.process(self._connect_buffers_to_stations())\n    \n    def _connect_source_to_buffer(self):\n        while True:\n            # Wait for a part to be generated\n            yield self.env.timeout(1)\n            \n            # Check if there's space in the first buffer\n            if len(self.buffers['B0'].items.items) < self.buffers['B0'].capacity:\n                # Put part into buffer\n                part = f\"Part_{self.source.part_count}\"\n                yield self.buffers['B0'].put(part)\n                \n                # Request next part\n                self.env.process(self._process_part_in_station('M1', part))\n            else:\n                # Buffer full, wait\n                yield self.env.timeout(1)\n    \n    def _connect_buffers_to_stations(self):\n        # This is a simplified connection logic\n        pass\n    \n    def _process_part_in_station(self, station_id, part):\n        station = self.stations[station_id]\n        \n        # Simulate processing\n        yield self.env.timeout(station.processing_time_s)\n        \n        # Update energy\n        station._update_energy()\n        self.total_energy_kwh += station.total_energy_kwh\n        \n        # If it's the last station, count as completed\n        if station_id == 'M3':\n            self.parts_produced += 1\n    \n    def _monitor_wip(self):\n        while True:\n            # Sample WIP every second\n            yield self.env.timeout(1)\n            \n            wip_count = 0\n            \n            # Count parts in all buffers\n            for buf in self.buffers.values():\n                wip_count += len(buf.items.items)\n            \n            # Count parts in all stations\n            for station in self.stations.values():\n                # This is a simplification - in a real model we would track what parts are in process\n                pass\n            \n            # Add to samples\n            self.wip_samples.append((self.env.now, wip_count))\n    \n    def run(self, warmup_s, window_s):\n        # Run for warmup period\n        yield self.env.timeout(warmup_s)\n        \n        # Reset counters\n        self.parts_produced = 0\n        self.total_energy_kwh = 0\n        self.wip_samples = []\n        \n        # Run for measurement window\n        yield self.env.timeout(window_s)\n        \n        # Calculate final metrics\n        # Throughput\n        throughput = self.parts_produced / (window_s / 3600.0)\n        \n        # WIP\n        total_wip = sum([count for _, count in self.wip_samples])\n        avg_wip = total_wip / len(self.wip_samples) if self.wip_samples else 0\n        \n        # Energy per part\n        energy_per_part = self.total_energy_kwh / self.parts_produced if self.parts_produced > 0 else 0\n        \n        return throughput, avg_wip, energy_per_part\n\ndef run_simulation(seed):\n    random.seed(seed)\n    env = simpy.Environment()\n    model = LineModel(env)\n    \n    # Run simulation\n    throughput, wip, energy_pp = env.run(until=WARMUP_S + WINDOW_S)\n    \n    return throughput, wip, energy_pp\n\ndef main():\n    global throughputs, wips, energy_per_part\n    \n    for i in range(REPETITIONS):\n        seed = 42 + i  # Fixed seeds\n        throughput, wip, energy_pp = run_simulation(seed)\n        \n        throughputs.append(throughput)\n        wips.append(wip)\n        energy_per_part.append(energy_pp)\n    \n    # Compute means\n    mean_throughput = sum(throughputs) / len(throughputs)\n    mean_wip = sum(wips) / len(wips)\n    mean_energy_per_part = sum(energy_per_part) / len(energy_per_part)\n    \n    print(f\"Throughput = {mean_throughput:.2f} parts/hour\")\n    print(f\"WIP = {mean_wip:.2f} parts\")\n    print(f\"Mean Energy Consumption per Part = {mean_energy_per_part:.2f} kWh/part\")\n\nif __name__ == \"__main__\":\n    main()\n```"
+}

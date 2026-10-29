@@ -1,0 +1,360 @@
+[
+  {
+    "method": "B",
+    "case": "case_0001_serial_line",
+    "rep": 0,
+    "status": "ok",
+    "error": null,
+    "elapsed_generation_s": 58.383,
+    "elapsed_simulation_s": 14.991,
+    "llm_calls": 2,
+    "llm_tokens_estimate": null,
+    "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260918_163803/case_0001_serial_line/B/rep0/model.py",
+    "kpis": {
+      "throughput_per_hour": 15.77,
+      "utilization": null,
+      "wip_parts": 31.62,
+      "energy_per_part_kwh": 0.6326,
+      "native": {
+        "stdout_head": "\n=== Mean Overall KPIs over 10 runs ===\nThroughput = 15.77 parts/hour\nWIP = 31.62 parts\nMean Energy Consumption per Part = 0.6326 kWh/part\n\n=== Bottleneck Frequency over runs ===\nM1: 10 times\nM5: 10 times\nM3: 10 times\n"
+      }
+    },
+    "assumptions": null,
+    "notes": [],
+    "adapter_elapsed_s": 74.52
+  },
+  {
+    "method": "B",
+    "case": "case_0001_serial_line",
+    "rep": 1,
+    "status": "ok",
+    "error": null,
+    "elapsed_generation_s": 47.51,
+    "elapsed_simulation_s": 16.005,
+    "llm_calls": 2,
+    "llm_tokens_estimate": null,
+    "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260918_163803/case_0001_serial_line/B/rep1/model.py",
+    "kpis": {
+      "throughput_per_hour": 15.88,
+      "utilization": null,
+      "wip_parts": 7.6,
+      "energy_per_part_kwh": 0.6307,
+      "native": {
+        "stdout_head": "\n=== Mean Overall KPIs over 10 runs ===\nThroughput = 15.88 parts/hour\nWIP = 7.60 parts\nMean Energy Consumption per Part = 0.6307 kWh/part\n\n=== Bottleneck Frequency over runs ===\nM1: 10 times\nM5: 10 times\nM3: 10 times\n"
+      }
+    },
+    "assumptions": null,
+    "notes": [],
+    "adapter_elapsed_s": 64.66
+  },
+  {
+    "method": "B",
+    "case": "case_0001_serial_line",
+    "rep": 2,
+    "status": "ok",
+    "error": null,
+    "elapsed_generation_s": 59.499,
+    "elapsed_simulation_s": 22.68,
+    "llm_calls": 2,
+    "llm_tokens_estimate": null,
+    "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260918_163803/case_0001_serial_line/B/rep2/model.py",
+    "kpis": {
+      "throughput_per_hour": 15.96,
+      "utilization": null,
+      "wip_parts": 24.51,
+      "energy_per_part_kwh": 0.6349,
+      "native": {
+        "stdout_head": "\n=== Mean Overall KPIs over 10 runs ===\nThroughput = 15.96 parts/hour\nWIP = 24.51 parts\nMean Energy Consumption per Part = 0.6349 kWh/part\n\n=== Bottleneck Frequency over runs ===\nM1: 10 times\nM4: 10 times\nM3: 10 times\n"
+      }
+    },
+    "assumptions": null,
+    "notes": [],
+    "adapter_elapsed_s": 83.35
+  },
+  {
+    "method": "B",
+    "case": "case_0002_saturated_short_line",
+    "rep": 0,
+    "status": "ok",
+    "error": null,
+    "elapsed_generation_s": 46.193,
+    "elapsed_simulation_s": 15.345,
+    "llm_calls": 2,
+    "llm_tokens_estimate": null,
+    "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260918_163803/case_0002_saturated_short_line/B/rep0/model.py",
+    "kpis": {
+      "throughput_per_hour": 32.43,
+      "utilization": null,
+      "wip_parts": 28.98,
+      "energy_per_part_kwh": 0.3672,
+      "native": {
+        "stdout_head": "\n=== Mean Overall KPIs over 10 runs ===\nThroughput = 32.43 parts/hour\nWIP = 28.98 parts\nMean Energy Consumption per Part = 0.3672 kWh/part\n\n=== Bottleneck Frequency over runs ===\nM3: 10 times\nM1: 10 times\nM2a: 1 times\nM2b: 9 times\n"
+      }
+    },
+    "assumptions": null,
+    "notes": [],
+    "adapter_elapsed_s": 62.72
+  },
+  {
+    "method": "B",
+    "case": "case_0002_saturated_short_line",
+    "rep": 1,
+    "status": "ok",
+    "error": null,
+    "elapsed_generation_s": 57.229,
+    "elapsed_simulation_s": 16.166,
+    "llm_calls": 2,
+    "llm_tokens_estimate": null,
+    "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260918_163803/case_0002_saturated_short_line/B/rep1/model.py",
+    "kpis": {
+      "throughput_per_hour": 40.28,
+      "utilization": null,
+      "wip_parts": 17.0,
+      "energy_per_part_kwh": 0.2237,
+      "native": {
+        "stdout_head": "\n=== Mean Overall KPIs over 10 runs ===\nThroughput = 40.28 parts/hour\nWIP = 17.00 parts\nMean Energy Consumption per Part = 0.2237 kWh/part\n\n=== Bottleneck Frequency over runs ===\nM1: 10 times\nM3: 10 times\nM2: 10 times\n"
+      }
+    },
+    "assumptions": null,
+    "notes": [],
+    "adapter_elapsed_s": 74.57
+  },
+  {
+    "method": "B",
+    "case": "case_0002_saturated_short_line",
+    "rep": 2,
+    "status": "simulation_error",
+    "error": "model exited 1: Traceback (most recent call last):\n  File \"/ssd/projects/dt-eval/comparison/runs/20260918_163803/case_0002_saturated_short_line/B/rep2/run_model.py\", line 391, in <module>\n    res = run_simulation(seed)\n          ^^^^^^^^^^^^^^^^^^^^\n  File \"/ssd/projects/dt-eval/comparison/runs/20260918_163803/case_0002_saturated_short_line/B/rep2/run_model.py\", line 261, in run_simulation\n    sink = simpy.Store(env, capacity=None)  # final sink; no capacity limit (true sink)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/ssd/projects/dt-eval/LLM-DES-Modeling/.venv/lib64/python3.11/site-packages/simpy/resources/store.py\", line 80, in __init__\n    if capacity <= 0:\n       ^^^^^^^^^^^^^\nTypeError: '<=' not supported between instances of 'NoneType' and 'int'\n",
+    "elapsed_generation_s": 54.658,
+    "elapsed_simulation_s": 0.065,
+    "llm_calls": 2,
+    "llm_tokens_estimate": null,
+    "generated_model_file": null,
+    "kpis": {
+      "throughput_per_hour": null,
+      "utilization": null,
+      "wip_parts": null,
+      "energy_per_part_kwh": null,
+      "native": {}
+    },
+    "assumptions": null,
+    "notes": [],
+    "adapter_elapsed_s": 55.9
+  },
+  {
+    "method": "B",
+    "case": "case_0003_starved_six_line",
+    "rep": 0,
+    "status": "ok",
+    "error": null,
+    "elapsed_generation_s": 53.722,
+    "elapsed_simulation_s": 27.841,
+    "llm_calls": 2,
+    "llm_tokens_estimate": null,
+    "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260918_163803/case_0003_starved_six_line/B/rep0/model.py",
+    "kpis": {
+      "throughput_per_hour": 0.0,
+      "utilization": null,
+      "wip_parts": 31.0,
+      "energy_per_part_kwh": 0.0,
+      "native": {
+        "stdout_head": "\n=== Mean Overall KPIs over 10 runs ===\nThroughput = 0.00 parts/hour\nWIP = 31.00 parts\nMean Energy Consumption per Part = 0.0000 kWh/part\n\n=== Bottleneck Frequency over runs ===\nM1: 10 times\nM2: 10 times\nM3: 10 times\n"
+      }
+    },
+    "assumptions": null,
+    "notes": [],
+    "adapter_elapsed_s": 82.75
+  },
+  {
+    "method": "B",
+    "case": "case_0003_starved_six_line",
+    "rep": 1,
+    "status": "ok",
+    "error": null,
+    "elapsed_generation_s": 54.888,
+    "elapsed_simulation_s": 1.096,
+    "llm_calls": 2,
+    "llm_tokens_estimate": null,
+    "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260918_163803/case_0003_starved_six_line/B/rep1/model.py",
+    "kpis": {
+      "throughput_per_hour": 0.0,
+      "utilization": null,
+      "wip_parts": 66.0,
+      "energy_per_part_kwh": 0.0,
+      "native": {
+        "stdout_head": "\n=== Mean Overall KPIs over 10 runs ===\nThroughput = 0.00 parts/hour\nWIP = 66.00 parts\nMean Energy Consumption per Part = 0.0000 kWh/part\n\n=== Bottleneck Frequency over runs ===\nM1: 10 times\nM2: 10 times\nM3: 10 times\n"
+      }
+    },
+    "assumptions": null,
+    "notes": [],
+    "adapter_elapsed_s": 57.16
+  },
+  {
+    "method": "B",
+    "case": "case_0003_starved_six_line",
+    "rep": 2,
+    "status": "ok",
+    "error": null,
+    "elapsed_generation_s": 59.122,
+    "elapsed_simulation_s": 37.497,
+    "llm_calls": 2,
+    "llm_tokens_estimate": null,
+    "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260918_163803/case_0003_starved_six_line/B/rep2/model.py",
+    "kpis": {
+      "throughput_per_hour": 10.23,
+      "utilization": null,
+      "wip_parts": 36.33,
+      "energy_per_part_kwh": 2.0311,
+      "native": {
+        "stdout_head": "\n=== Mean Overall KPIs over 10 runs ===\nThroughput = 10.23 parts/hour\nWIP = 36.33 parts\nMean Energy Consumption per Part = 2.0311 kWh/part\n\n=== Bottleneck Frequency over runs ===\nM5: 10 times\nM2: 10 times\nM6: 9 times\nM1: 1 times\n"
+      }
+    },
+    "assumptions": null,
+    "notes": [],
+    "adapter_elapsed_s": 97.75
+  },
+  {
+    "method": "B",
+    "case": "case_0004_failure_heavy_line",
+    "rep": 0,
+    "status": "ok",
+    "error": null,
+    "elapsed_generation_s": 56.492,
+    "elapsed_simulation_s": 25.017,
+    "llm_calls": 2,
+    "llm_tokens_estimate": null,
+    "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260918_163803/case_0004_failure_heavy_line/B/rep0/model.py",
+    "kpis": {
+      "throughput_per_hour": 16.8,
+      "utilization": null,
+      "wip_parts": 12.78,
+      "energy_per_part_kwh": 0.7468,
+      "native": {
+        "stdout_head": "\n=== Mean Overall KPIs over 10 runs ===\nThroughput = 16.80 parts/hour\nWIP = 12.78 parts\nMean Energy Consumption per Part = 0.7468 kWh/part\n\n=== Bottleneck Frequency over runs ===\nM2: 10 times\nM5: 10 times\nM1: 10 times\n"
+      }
+    },
+    "assumptions": null,
+    "notes": [],
+    "adapter_elapsed_s": 82.68
+  },
+  {
+    "method": "B",
+    "case": "case_0004_failure_heavy_line",
+    "rep": 1,
+    "status": "ok",
+    "error": null,
+    "elapsed_generation_s": 56.722,
+    "elapsed_simulation_s": 12.636,
+    "llm_calls": 2,
+    "llm_tokens_estimate": null,
+    "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260918_163803/case_0004_failure_heavy_line/B/rep1/model.py",
+    "kpis": {
+      "throughput_per_hour": 20.1,
+      "utilization": null,
+      "wip_parts": 7.66,
+      "energy_per_part_kwh": 0.5316,
+      "native": {
+        "stdout_head": "\n=== Mean Overall KPIs over 10 runs ===\nThroughput = 20.10 parts/hour\nWIP = 7.66 parts\nMean Energy Consumption per Part = 0.5316 kWh/part\n\n=== Bottleneck Frequency over runs ===\nM5: 10 times\nM1: 10 times\nM4: 10 times\n"
+      }
+    },
+    "assumptions": null,
+    "notes": [],
+    "adapter_elapsed_s": 70.53
+  },
+  {
+    "method": "B",
+    "case": "case_0004_failure_heavy_line",
+    "rep": 2,
+    "status": "ok",
+    "error": null,
+    "elapsed_generation_s": 48.079,
+    "elapsed_simulation_s": 18.174,
+    "llm_calls": 2,
+    "llm_tokens_estimate": null,
+    "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260918_163803/case_0004_failure_heavy_line/B/rep2/model.py",
+    "kpis": {
+      "throughput_per_hour": 16.87,
+      "utilization": null,
+      "wip_parts": 12.87,
+      "energy_per_part_kwh": 0.7476,
+      "native": {
+        "stdout_head": "\n=== Mean Overall KPIs over 10 runs ===\nThroughput = 16.87 parts/hour\nWIP = 12.87 parts\nMean Energy Consumption per Part = 0.7476 kWh/part\n\n=== Bottleneck Frequency over runs ===\nM2: 10 times\nM5: 10 times\nM1: 10 times\n"
+      }
+    },
+    "assumptions": null,
+    "notes": [],
+    "adapter_elapsed_s": 67.42
+  },
+  {
+    "method": "B",
+    "case": "case_0005_high_rate_line",
+    "rep": 0,
+    "status": "ok",
+    "error": null,
+    "elapsed_generation_s": 51.658,
+    "elapsed_simulation_s": 16.315,
+    "llm_calls": 2,
+    "llm_tokens_estimate": null,
+    "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260918_163803/case_0005_high_rate_line/B/rep0/model.py",
+    "kpis": {
+      "throughput_per_hour": 31.59,
+      "utilization": null,
+      "wip_parts": 34.46,
+      "energy_per_part_kwh": 0.3665,
+      "native": {
+        "stdout_head": "\n=== Mean Overall KPIs over 10 runs ===\nThroughput = 31.59 parts/hour\nWIP = 34.46 parts\nMean Energy Consumption per Part = 0.3665 kWh/part\n\n=== Bottleneck Frequency over runs ===\nM4: 10 times\nM3: 10 times\nM1: 10 times\n"
+      }
+    },
+    "assumptions": null,
+    "notes": [],
+    "adapter_elapsed_s": 69.17
+  },
+  {
+    "method": "B",
+    "case": "case_0005_high_rate_line",
+    "rep": 1,
+    "status": "ok",
+    "error": null,
+    "elapsed_generation_s": 59.053,
+    "elapsed_simulation_s": 0.358,
+    "llm_calls": 2,
+    "llm_tokens_estimate": null,
+    "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260918_163803/case_0005_high_rate_line/B/rep1/model.py",
+    "kpis": {
+      "throughput_per_hour": 0.0,
+      "utilization": null,
+      "wip_parts": 24.0,
+      "energy_per_part_kwh": 0.0,
+      "native": {
+        "stdout_head": "\n=== Mean Overall KPIs over 10 runs ===\nThroughput = 0.00 parts/hour\nWIP = 24.00 parts\nMean Energy Consumption per Part = 0.0000 kWh/part\n\n=== Bottleneck Frequency over runs ===\nM1: 10 times\nM2: 10 times\nM3: 10 times\n"
+      }
+    },
+    "assumptions": null,
+    "notes": [],
+    "adapter_elapsed_s": 60.6
+  },
+  {
+    "method": "B",
+    "case": "case_0005_high_rate_line",
+    "rep": 2,
+    "status": "ok",
+    "error": null,
+    "elapsed_generation_s": 56.458,
+    "elapsed_simulation_s": 22.198,
+    "llm_calls": 2,
+    "llm_tokens_estimate": null,
+    "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260918_163803/case_0005_high_rate_line/B/rep2/model.py",
+    "kpis": {
+      "throughput_per_hour": 44.44,
+      "utilization": null,
+      "wip_parts": 12.93,
+      "energy_per_part_kwh": 0.2597,
+      "native": {
+        "stdout_head": "\n=== Mean Overall KPIs over 10 runs ===\nThroughput = 44.44 parts/hour\nWIP = 12.93 parts\nMean Energy Consumption per Part = 0.2597 kWh/part\n\n=== Bottleneck Frequency over runs ===\nM2: 10 times\nM1: 10 times\nM4: 10 times\n"
+      }
+    },
+    "assumptions": null,
+    "notes": [],
+    "adapter_elapsed_s": 79.82
+  }
+]

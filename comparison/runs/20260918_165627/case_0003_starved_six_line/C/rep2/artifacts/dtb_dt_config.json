@@ -1,0 +1,258 @@
+{
+  "components": {
+    "data_collection_modules": [
+      {
+        "name": "sensor_data_collector",
+        "type": "IoT Gateway",
+        "description": "Collects real-time sensor data from machines and buffers",
+        "protocols": [
+          "MQTT",
+          "OPC-UA"
+        ],
+        "frequency": "continuous"
+      },
+      {
+        "name": "event_logger",
+        "type": "Event Processor",
+        "description": "Logs detailed events for each processed part",
+        "protocols": [
+          "REST"
+        ],
+        "frequency": "continuous"
+      }
+    ],
+    "analytics_engines": [
+      {
+        "name": "real_time_analytics_engine",
+        "type": "Stream Processing Engine",
+        "description": "Processes continuous streams of data for real-time KPI calculation",
+        "protocols": [
+          "WebSocket"
+        ],
+        "frequency": "continuous"
+      },
+      {
+        "name": "historical_analytics_engine",
+        "type": "Batch Processing Engine",
+        "description": "Analyzes historical data for trend analysis and optimization",
+        "protocols": [
+          "REST"
+        ],
+        "frequency": "hourly"
+      }
+    ],
+    "ml_models": [
+      {
+        "name": "availability_prediction_model",
+        "type": "Machine Learning Model",
+        "description": "Predicts machine availability based on historical data",
+        "protocols": [
+          "REST"
+        ],
+        "frequency": "daily"
+      },
+      {
+        "name": "energy_consumption_model",
+        "type": "Machine Learning Model",
+        "description": "Estimates energy consumption per part",
+        "protocols": [
+          "REST"
+        ],
+        "frequency": "daily"
+      }
+    ],
+    "visualization_dashboards": [
+      {
+        "name": "production_dashboard",
+        "type": "Web Dashboard",
+        "description": "Main dashboard showing line status, KPIs, and alerts",
+        "protocols": [
+          "WebSocket"
+        ],
+        "frequency": "real-time"
+      },
+      {
+        "name": "machine_health_dashboard",
+        "type": "Web Dashboard",
+        "description": "Detailed view of machine health and maintenance schedules",
+        "protocols": [
+          "WebSocket"
+        ],
+        "frequency": "real-time"
+      }
+    ]
+  },
+  "data_flows": [
+    {
+      "source": "sensor_data_collector",
+      "destination": "real_time_analytics_engine",
+      "protocol": "MQTT",
+      "frequency": "continuous",
+      "description": "Continuous stream of sensor data for real-time processing"
+    },
+    {
+      "source": "event_logger",
+      "destination": "real_time_analytics_engine",
+      "protocol": "REST",
+      "frequency": "continuous",
+      "description": "Event logs for detailed part tracking"
+    },
+    {
+      "source": "real_time_analytics_engine",
+      "destination": "production_dashboard",
+      "protocol": "WebSocket",
+      "frequency": "real-time",
+      "description": "Live KPI updates for production dashboard"
+    },
+    {
+      "source": "historical_analytics_engine",
+      "destination": "production_dashboard",
+      "protocol": "REST",
+      "frequency": "hourly",
+      "description": "Historical trends and reports"
+    },
+    {
+      "source": "real_time_analytics_engine",
+      "destination": "availability_prediction_model",
+      "protocol": "REST",
+      "frequency": "daily",
+      "description": "Data input for predictive models"
+    },
+    {
+      "source": "real_time_analytics_engine",
+      "destination": "energy_consumption_model",
+      "protocol": "REST",
+      "frequency": "daily",
+      "description": "Data input for energy prediction models"
+    }
+  ],
+  "visualization": {
+    "dashboard_layout": {
+      "main_dashboard": {
+        "widgets": [
+          {
+            "type": "gauge",
+            "title": "Line Throughput",
+            "metric": "throughput",
+            "target_value": "18 parts/hour",
+            "color_scheme": "green"
+          },
+          {
+            "type": "chart",
+            "title": "WIP Over Time",
+            "metric": "wip",
+            "color_scheme": "blue"
+          },
+          {
+            "type": "table",
+            "title": "Machine Availability",
+            "metric": "availability",
+            "color_scheme": "yellow"
+          },
+          {
+            "type": "map",
+            "title": "Buffer Status",
+            "metric": "buffer_levels",
+            "color_scheme": "red"
+          }
+        ],
+        "refresh_rate": "1 second"
+      },
+      "machine_health_dashboard": {
+        "widgets": [
+          {
+            "type": "gauge",
+            "title": "MTTR",
+            "metric": "mttr",
+            "target_value": "1000 seconds",
+            "color_scheme": "green"
+          },
+          {
+            "type": "chart",
+            "title": "Energy Consumption",
+            "metric": "energy_consumption",
+            "color_scheme": "orange"
+          },
+          {
+            "type": "status_indicator",
+            "title": "Machine Status",
+            "metric": "machine_status",
+            "color_scheme": "red"
+          }
+        ],
+        "refresh_rate": "5 seconds"
+      }
+    }
+  },
+  "alerts": [
+    {
+      "name": "low_availability_alert",
+      "severity": "warning",
+      "threshold": 0.95,
+      "metric": "availability",
+      "description": "Alert when machine availability drops below threshold",
+      "action": "notify_operator"
+    },
+    {
+      "name": "high_energy_consumption_alert",
+      "severity": "critical",
+      "threshold": 10.0,
+      "metric": "energy_consumption_per_part",
+      "description": "Alert when energy consumption exceeds normal range",
+      "action": "log_event"
+    },
+    {
+      "name": "buffer_overflow_alert",
+      "severity": "emergency",
+      "threshold": 10,
+      "metric": "buffer_level",
+      "description": "Alert when buffer level reaches maximum capacity",
+      "action": "pause_production"
+    },
+    {
+      "name": "machine_failure_alert",
+      "severity": "emergency",
+      "threshold": 0.0,
+      "metric": "machine_status",
+      "description": "Alert when machine status indicates failure",
+      "action": "trigger_maintenance"
+    }
+  ],
+  "kpis": [
+    {
+      "name": "line_throughput",
+      "description": "Number of parts produced per hour",
+      "target_value": "18 parts/hour",
+      "measurement_method": "count of completed parts over time window",
+      "unit": "parts/hour"
+    },
+    {
+      "name": "work_in_progress",
+      "description": "Number of parts currently in process or waiting",
+      "target_value": "10 parts",
+      "measurement_method": "sum of parts in all buffers",
+      "unit": "parts"
+    },
+    {
+      "name": "energy_per_part",
+      "description": "Average energy consumed per part",
+      "target_value": "5.5 kWh/part",
+      "measurement_method": "total energy / number of parts",
+      "unit": "kWh/part"
+    },
+    {
+      "name": "machine_availability",
+      "description": "Percentage of time machines are operational",
+      "target_value": "97%",
+      "measurement_method": "operational_time / total_time",
+      "unit": "%"
+    },
+    {
+      "name": "mttr",
+      "description": "Mean Time To Repair",
+      "target_value": "1000 seconds",
+      "measurement_method": "average repair time",
+      "unit": "seconds"
+    }
+  ]
+}

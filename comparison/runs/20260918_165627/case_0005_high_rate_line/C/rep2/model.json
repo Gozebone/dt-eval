@@ -1,0 +1,290 @@
+{
+  "requirements": {
+    "production_type": "continuous",
+    "processes": [
+      "M1",
+      "M2",
+      "M3",
+      "M4"
+    ],
+    "equipment": [
+      "M1",
+      "M2",
+      "M3",
+      "M4",
+      "B0",
+      "B1",
+      "B2",
+      "B3"
+    ],
+    "sensors": [
+      "buffer_levels",
+      "processing_time_s",
+      "availability",
+      "mttr_s",
+      "work_power_kw",
+      "idle_power_kw"
+    ],
+    "goals": [
+      "Evaluate line capacity (throughput)",
+      "Monitor WIP (buffer levels)",
+      "Optimize energy consumption per part",
+      "Monitor machine availability and downtime"
+    ],
+    "data_sources": [
+      "Input stream (1 part every 45s)",
+      "Real-time measurements from the manufacturing period"
+    ],
+    "update_frequency": "continuous",
+    "critical_parameters": {
+      "buffer_levels": "0-100%",
+      "machine_availability": "0-100%"
+    },
+    "additional_info": {
+      "SimPy_environment": "SimPy 4.0 or later",
+      "simulation_requirements": "Run for at least 432000 s (60 hours)",
+      "input_stream_frequency": "1 part every 45s",
+      "monitored_parameters": [
+        "inter_arrival_s=45",
+        "process_time_s (for M1-M4)",
+        "availability (0-100%)",
+        "mttr_s (downtime duration)",
+        "work_power_kw",
+        "idle_power_kw"
+      ]
+    }
+  },
+  "schema": {
+    "raw": "CREATE TABLE processes (\n    process_id VARCHAR(10) PRIMARY KEY,\n    process_name VARCHAR(50) NOT NULL\n);\n\nINSERT INTO processes (process_id, process_name) VALUES ('M1', 'Process M1'), ('M2', 'Process M2'), ('M3', 'Process M3'), ('M4', 'Process M4');\n\nCREATE TABLE equipment (\n    equipment_id VARCHAR(10) PRIMARY KEY,\n    equipment_name VARCHAR(50) NOT NULL\n);\n\nINSERT INTO equipment (equipment_id, equipment_name) VALUES ('M1', 'Equipment M1'), ('M2', 'Equipment M2'), ('M3', 'Equipment M3'), ('M4', 'Equipment M4'), ('B0', 'Buffer B0'), ('B1', 'Buffer B1'), ('B2', 'Buffer B2'), ('B3', 'Buffer B3');\n\nCREATE TABLE sensors (\n    sensor_id VARCHAR(50) PRIMARY KEY,\n    sensor_type VARCHAR(50) NOT NULL,\n    equipment_id VARCHAR(10),\n    FOREIGN KEY (equipment_id) REFERENCES equipment(equipment_id)\n);\n\nINSERT INTO sensors (sensor_id, sensor_type, equipment_id) VALUES ('buffer_levels', 'Buffer Level', 'B0'), ('buffer_levels', 'Buffer Level', 'B1'), ('buffer_levels', 'Buffer Level', 'B2'), ('buffer_levels', 'Buffer Level', 'B3'), ('processing_time_s', 'Processing Time', 'M1'), ('processing_time_s', 'Processing Time', 'M2'), ('processing_time_s', 'Processing Time', 'M3'), ('processing_time_s', 'Processing Time', 'M4'), ('availability', 'Availability', 'M1'), ('availability', 'Availability', 'M2'), ('availability', 'Availability', 'M3'), ('availability', 'Availability', 'M4'), ('mttr_s', 'Mean Time to Repair', 'M1'), ('mttr_s', 'Mean Time to Repair', 'M2'), ('mttr_s', 'Mean Time to Repair', 'M3'), ('mttr_s', 'Mean Time to Repair', 'M4'), ('work_power_kw', 'Work Power', 'M1'), ('work_power_kw', 'Work Power', 'M2'), ('work_power_kw', 'Work Power', 'M3'), ('work_power_kw', 'Work Power', 'M4'), ('idle_power_kw', 'Idle Power', 'M1'), ('idle_power_kw', 'Idle Power', 'M2'), ('idle_power_kw', 'Idle Power', 'M3'), ('idle_power_kw', 'Idle Power', 'M4');\n\nCREATE TABLE data_sources (\n    source_id SERIAL PRIMARY KEY,\n    source_type VARCHAR(50) NOT NULL,\n    description TEXT\n);\n\nINSERT INTO data_sources (source_type, description) VALUES ('Input Stream', '1 part every 45 seconds'), ('Real-time Measurements', 'Manufacturing period measurements');\n\nCREATE TABLE goals (\n    goal_id SERIAL PRIMARY KEY,\n    goal_description TEXT NOT NULL\n);\n\nINSERT INTO goals (goal_description) VALUES ('Evaluate line capacity (throughput)'), ('Monitor WIP (buffer levels)'), ('Optimize energy consumption per part'), ('Monitor machine availability and downtime');\n\nCREATE TABLE monitoring_data (\n    data_id SERIAL PRIMARY KEY,\n    sensor_id VARCHAR(50),\n    timestamp TIMESTAMP NOT NULL,\n    value NUMERIC,\n    FOREIGN KEY (sensor_id) REFERENCES sensors(sensor_id)\n);\n\nCREATE TABLE simulation_parameters (\n    param_id SERIAL PRIMARY KEY,\n    parameter_name VARCHAR(50) NOT NULL,\n    value NUMERIC,\n    description TEXT\n);\n\nINSERT INTO simulation_parameters (parameter_name, value, description) VALUES ('inter_arrival_s', 45, 'Time between parts arrival'), ('process_time_s', 30, 'Processing time for each machine'), ('availability', 95, 'Machine availability percentage'), ('mttr_s', 600, 'Mean Time to Repair in seconds'), ('work_power_kw', 10, 'Work power in kilowatts'), ('idle_power_kw', 2, 'Idle power in kilowatts');\n"
+  },
+  "dt_config": {
+    "components": {
+      "data_collection": {
+        "modules": [
+          {
+            "name": "Sensor Data Collector",
+            "type": "Data Collection Module",
+            "description": "Collects real-time sensor data from manufacturing equipment",
+            "protocol": "OPC-UA",
+            "update_frequency": "continuous"
+          },
+          {
+            "name": "Input Stream Reader",
+            "type": "Data Collection Module",
+            "description": "Reads input stream data for part arrival intervals",
+            "protocol": "MQTT",
+            "update_frequency": "continuous"
+          }
+        ]
+      },
+      "analytics_engine": {
+        "name": "Analytics Engine",
+        "type": "Analytics Engine",
+        "description": "Processes and analyzes collected data to generate KPIs and insights",
+        "protocol": "REST",
+        "update_frequency": "continuous"
+      },
+      "ml_models": {
+        "models": [
+          {
+            "name": "Predictive Maintenance Model",
+            "type": "ML Model",
+            "description": "Predicts equipment failures based on machine availability and downtime data"
+          },
+          {
+            "name": "Energy Consumption Optimizer",
+            "type": "ML Model",
+            "description": "Optimizes energy consumption per part based on work and idle power data"
+          }
+        ]
+      },
+      "visualization": {
+        "dashboard": {
+          "name": "Digital Twin Dashboard",
+          "type": "Visualization Dashboard",
+          "description": "Real-time visualization of factory operations with KPIs and alerts",
+          "widgets": [
+            {
+              "name": "Throughput Monitor",
+              "type": "Gauge",
+              "description": "Displays current throughput of the production line"
+            },
+            {
+              "name": "Buffer Level Indicator",
+              "type": "Bar Chart",
+              "description": "Shows real-time buffer levels across all buffers"
+            },
+            {
+              "name": "Machine Availability",
+              "type": "Line Chart",
+              "description": "Tracks machine availability over time"
+            },
+            {
+              "name": "Energy Consumption",
+              "type": "Heatmap",
+              "description": "Visualizes energy consumption per part"
+            },
+            {
+              "name": "Downtime Tracker",
+              "type": "Timeline",
+              "description": "Displays downtime events and duration"
+            }
+          ]
+        }
+      }
+    },
+    "data_flows": {
+      "connections": [
+        {
+          "source": "Sensor Data Collector",
+          "destination": "Analytics Engine",
+          "protocol": "OPC-UA",
+          "update_frequency": "continuous"
+        },
+        {
+          "source": "Input Stream Reader",
+          "destination": "Analytics Engine",
+          "protocol": "MQTT",
+          "update_frequency": "continuous"
+        },
+        {
+          "source": "Analytics Engine",
+          "destination": "Visualization Dashboard",
+          "protocol": "REST",
+          "update_frequency": "continuous"
+        },
+        {
+          "source": "Analytics Engine",
+          "destination": "Predictive Maintenance Model",
+          "protocol": "WebSocket",
+          "update_frequency": "continuous"
+        },
+        {
+          "source": "Analytics Engine",
+          "destination": "Energy Consumption Optimizer",
+          "protocol": "WebSocket",
+          "update_frequency": "continuous"
+        }
+      ]
+    },
+    "visualization_layout": {
+      "dashboard": {
+        "layout": [
+          {
+            "widget": "Throughput Monitor",
+            "position": {
+              "x": 0,
+              "y": 0,
+              "width": 1,
+              "height": 1
+            }
+          },
+          {
+            "widget": "Buffer Level Indicator",
+            "position": {
+              "x": 1,
+              "y": 0,
+              "width": 2,
+              "height": 1
+            }
+          },
+          {
+            "widget": "Machine Availability",
+            "position": {
+              "x": 0,
+              "y": 1,
+              "width": 2,
+              "height": 1
+            }
+          },
+          {
+            "widget": "Energy Consumption",
+            "position": {
+              "x": 2,
+              "y": 1,
+              "width": 1,
+              "height": 1
+            }
+          },
+          {
+            "widget": "Downtime Tracker",
+            "position": {
+              "x": 0,
+              "y": 2,
+              "width": 3,
+              "height": 1
+            }
+          }
+        ],
+        "refresh_rate": "1s",
+        "color_scheme": {
+          "primary": "#007BFF",
+          "secondary": "#28A745",
+          "warning": "#FFC107",
+          "danger": "#DC3545"
+        }
+      }
+    },
+    "alerts": {
+      "thresholds": [
+        {
+          "parameter": "buffer_levels",
+          "threshold": 90,
+          "severity": "warning",
+          "description": "Buffer levels above 90% indicate potential bottleneck"
+        },
+        {
+          "parameter": "buffer_levels",
+          "threshold": 95,
+          "severity": "critical",
+          "description": "Buffer levels above 95% indicate severe bottleneck"
+        },
+        {
+          "parameter": "machine_availability",
+          "threshold": 80,
+          "severity": "warning",
+          "description": "Machine availability below 80% indicates potential issues"
+        },
+        {
+          "parameter": "machine_availability",
+          "threshold": 70,
+          "severity": "critical",
+          "description": "Machine availability below 70% indicates significant downtime"
+        },
+        {
+          "parameter": "energy_consumption",
+          "threshold": 15,
+          "severity": "warning",
+          "description": "Energy consumption per part above 15 kWh indicates inefficiency"
+        }
+      ]
+    },
+    "kpis": {
+      "throughput": {
+        "name": "Throughput",
+        "target": "1 part every 45s",
+        "measurement_method": "Count of parts processed per unit time",
+        "unit": "parts/hour"
+      },
+      "wip": {
+        "name": "Work in Progress",
+        "target": "Buffer levels between 0-100%",
+        "measurement_method": "Current buffer levels across all buffers",
+        "unit": "%"
+      },
+      "energy_consumption": {
+        "name": "Energy Consumption per Part",
+        "target": "< 10 kWh",
+        "measurement_method": "Total energy consumed divided by number of parts produced",
+        "unit": "kWh/part"
+      },
+      "machine_availability": {
+        "name": "Machine Availability",
+        "target": "95%",
+        "measurement_method": "Percentage of time machines are operational",
+        "unit": "%"
+      }
+    }
+  },
+  "dt_simulation": null
+}

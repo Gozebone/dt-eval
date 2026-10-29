@@ -1,0 +1,170 @@
+{
+  "components": {
+    "data_collection": {
+      "modules": [
+        {
+          "name": "OPC-UA Collector",
+          "type": "data_collector",
+          "description": "Collects real-time data from industrial equipment using OPC-UA protocol",
+          "frequency": "10s"
+        },
+        {
+          "name": "MQTT Bridge",
+          "type": "data_collector",
+          "description": "Receives sensor data from MQTT brokers",
+          "frequency": "5s"
+        }
+      ]
+    },
+    "analytics": {
+      "engines": [
+        {
+          "name": "Performance Analyzer",
+          "type": "analytics_engine",
+          "description": "Analyzes production line performance and calculates KPIs",
+          "frequency": "10s"
+        },
+        {
+          "name": "Predictive Maintenance Engine",
+          "type": "analytics_engine",
+          "description": "Predicts equipment failures based on historical data",
+          "frequency": "30s"
+        }
+      ]
+    },
+    "ml_models": [
+      {
+        "name": "Failure Prediction Model",
+        "type": "ml_model",
+        "description": "ML model for predicting machine failures",
+        "input_features": [
+          "temperature",
+          "pressure",
+          "processing_time_s"
+        ],
+        "output": "failure_probability"
+      }
+    ],
+    "visualization": {
+      "dashboard": {
+        "name": "Production Line Dashboard",
+        "description": "Real-time visualization of the production line",
+        "refresh_rate": "5s",
+        "widgets": [
+          {
+            "type": "gauge",
+            "title": "Overall Equipment Effectiveness",
+            "metric": "oee",
+            "unit": "%",
+            "color_scheme": "green_to_red"
+          },
+          {
+            "type": "chart",
+            "title": "Throughput Over Time",
+            "metric": "throughput",
+            "unit": "units/hour",
+            "color_scheme": "blue"
+          },
+          {
+            "type": "table",
+            "title": "Machine Status",
+            "metric": "machine_status",
+            "unit": "status"
+          }
+        ]
+      }
+    }
+  },
+  "data_flows": {
+    "connections": [
+      {
+        "source": "OPC-UA Collector",
+        "destination": "Performance Analyzer",
+        "protocol": "REST",
+        "frequency": "10s"
+      },
+      {
+        "source": "MQTT Bridge",
+        "destination": "Performance Analyzer",
+        "protocol": "WebSocket",
+        "frequency": "5s"
+      },
+      {
+        "source": "Performance Analyzer",
+        "destination": "Visualization Dashboard",
+        "protocol": "REST",
+        "frequency": "5s"
+      },
+      {
+        "source": "Performance Analyzer",
+        "destination": "Predictive Maintenance Engine",
+        "protocol": "REST",
+        "frequency": "30s"
+      }
+    ]
+  },
+  "alerts": {
+    "thresholds": [
+      {
+        "metric": "temperature",
+        "machine_id": "M1",
+        "threshold": 85,
+        "unit": "\u00b0C",
+        "severity": "warning",
+        "description": "High temperature on M1"
+      },
+      {
+        "metric": "pressure",
+        "machine_id": "M2",
+        "threshold": 10,
+        "unit": "bar",
+        "severity": "critical",
+        "description": "High pressure on M2"
+      },
+      {
+        "metric": "throughput",
+        "machine_id": "M3",
+        "threshold": 8,
+        "unit": "units/hour",
+        "severity": "emergency",
+        "description": "Low throughput on M3"
+      }
+    ]
+  },
+  "kpis": {
+    "metrics": [
+      {
+        "name": "Overall Equipment Effectiveness",
+        "metric": "oee",
+        "unit": "%",
+        "target": 85,
+        "calculation": "availability * performance * quality",
+        "description": "Combined measure of equipment performance"
+      },
+      {
+        "name": "Production Throughput",
+        "metric": "throughput",
+        "unit": "units/hour",
+        "target": 10,
+        "calculation": "count of completed units / time window",
+        "description": "Number of units produced per hour"
+      },
+      {
+        "name": "Machine Availability",
+        "metric": "availability",
+        "unit": "%",
+        "target": 99.99,
+        "calculation": "uptime / (uptime + downtime) * 100",
+        "description": "Percentage of time machines are operational"
+      },
+      {
+        "name": "Energy Consumption",
+        "metric": "energy_consumption",
+        "unit": "kWh",
+        "target": 400,
+        "calculation": "sum of power consumption over time",
+        "description": "Total energy consumed by the production line"
+      }
+    ]
+  }
+}

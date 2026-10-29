@@ -1,0 +1,211 @@
+{
+  "requirements": {
+    "production_type": "\u0441\u0431\u043e\u0440\u043a\u0430 \u0438\u0437\u0434\u0435\u043b\u0438\u0439",
+    "processes": [
+      "\u0444\u043e\u0440\u043c\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435",
+      "\u0441\u0431\u043e\u0440\u043a\u0430 \u0443\u0437\u043b\u043e\u0432",
+      "\u0442\u0435\u0441\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435"
+    ],
+    "equipment": [
+      "\u043b\u0430\u0437\u0435\u0440\u043d\u044b\u0439 \u0440\u0435\u0437\u0430\u043a",
+      "\u0448\u0430\u0440\u0438\u043a\u043e\u0432\u0430\u044f \u0441\u043a\u043e\u0431\u0430",
+      "\u0442\u0435\u0441\u0442\u0435\u0440"
+    ],
+    "sensors": [
+      "\u043b\u0430\u0437\u0435\u0440\u043d\u044b\u0439 \u0434\u0430\u0442\u0447\u0438\u043a \u0434\u043b\u044f \u0438\u0437\u043c\u0435\u0440\u0435\u043d\u0438\u044f \u0434\u043b\u0438\u043d\u044b",
+      "\u0434\u0430\u0442\u0447\u0438\u043a \u0442\u0435\u043c\u043f\u0435\u0440\u0430\u0442\u0443\u0440\u044b \u0434\u043b\u044f \u0442\u0435\u0441\u0442\u0435\u0440\u0430"
+    ],
+    "goals": "\u043f\u043e\u043a\u0440\u044b\u0442\u044c \u0432\u0441\u0435 \u0442\u0440\u0438 \u0430\u0441\u043f\u0435\u043a\u0442\u0430: \u044d\u0444\u0444\u0435\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u044c \u043f\u0440\u043e\u0438\u0437\u0432\u043e\u0434\u0441\u0442\u0432\u0430, \u043a\u0430\u0447\u0435\u0441\u0442\u0432\u043e \u0441\u0431\u043e\u0440\u043a\u0438 \u0438 \u0441\u043d\u0438\u0436\u0435\u043d\u0438\u0435 \u0432\u0440\u0435\u043c\u0435\u043d\u0438 \u043d\u0430 \u0432\u044b\u0445\u043e\u0434 \u0438\u0437 \u0441\u0442\u0440\u043e\u044f \u043e\u0431\u043e\u0440\u0443\u0434\u043e\u0432\u0430\u043d\u0438\u044f",
+    "data_sources": "\u0434\u0430\u043d\u043d\u044b\u0435 \u0441 \u0434\u0430\u0442\u0447\u0438\u043a\u043e\u0432, \u0434\u0430\u043d\u043d\u044b\u0435 \u043e \u043f\u0440\u043e\u0438\u0437\u0432\u043e\u0434\u0441\u0442\u0432\u0435\u043d\u043d\u044b\u0445 \u043f\u0440\u043e\u0446\u0435\u0441\u0441\u0430\u0445, \u0434\u0430\u043d\u043d\u044b\u0435 \u043e \u0442\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u043e\u043c \u043e\u0431\u0441\u043b\u0443\u0436\u0438\u0432\u0430\u043d\u0438\u0438",
+    "update_frequency": "\u0435\u0436\u0435\u0434\u043d\u0435\u0432\u043d\u043e",
+    "critical_parameters": {
+      "time_processing": null,
+      "quality": null,
+      "mttr": null
+    },
+    "line": {
+      "topology": "serial",
+      "source": {
+        "inter_arrival_time_s": null
+      },
+      "stations": [
+        {
+          "id": "M1",
+          "processing_time_s": null,
+          "availability_pct": null,
+          "mttr_s": null,
+          "power_working_kw": null,
+          "power_idle_kw": null
+        }
+      ],
+      "buffers": [
+        {
+          "id": "B0",
+          "capacity": null,
+          "before": "source",
+          "after": "M1"
+        }
+      ],
+      "defects": {
+        "rate": null
+      }
+    },
+    "des_horizon": {
+      "warmup_s": null,
+      "window_s": null,
+      "replications": null
+    },
+    "units": {
+      "time": "s",
+      "power": "kW",
+      "energy": "kWh"
+    },
+    "additional_info": "\u043b\u044e\u0431\u0430\u044f \u0434\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u0430\u044f \u0432\u0430\u0436\u043d\u0430\u044f \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044f"
+  },
+  "schema": {
+    "raw": "CREATE TABLE raw_ingest (\n    ingested_at timestamptz NOT NULL,\n    source text NOT NULL,\n    payload jsonb NOT NULL,\n    PRIMARY KEY (ingested_at, source)\n);\n\nCREATE TABLE ingest_watermark (\n    source text PRIMARY KEY,\n    max_event_ts timestamptz\n);\n\nCREATE TABLE tag_map (\n    tag_id text PRIMARY KEY,\n    machine_id text,\n    signal text,\n    unit text,\n    register text,\n    scale double precision\n);\n\nCREATE TABLE machines (\n    id text PRIMARY KEY,\n    name text,\n    type text\n);\n\nCREATE TABLE stations (\n    id text PRIMARY KEY,\n    machine_id text,\n    processing_time_s double precision,\n    availability_pct double precision,\n    mttr_s double precision,\n    power_working_kw double precision,\n    power_idle_kw double precision\n);\n\nCREATE TABLE buffers (\n    id text PRIMARY KEY,\n    capacity int,\n    before text,\n    after text\n);\n\nCREATE TABLE events (\n    ts timestamptz NOT NULL,\n    machine_id text NOT NULL,\n    reason_code text,\n    duration_s double precision,\n    energy_kwh double precision,\n    PRIMARY KEY (ts, machine_id)\n);\n\nCREATE TABLE samples (\n    ts timestamptz NOT NULL,\n    machine_id text NOT NULL,\n    tag text NOT NULL,\n    value double precision,\n    PRIMARY KEY (ts, machine_id, tag)\n);\n\n-- Insert dimension data from requirements\nINSERT INTO tag_map (tag_id, machine_id, signal, unit, register, scale) VALUES\n('length_sensor', 'laser_cutter', '\u043b\u0430\u0437\u0435\u0440\u043d\u044b\u0439 \u0434\u0430\u0442\u0447\u0438\u043a \u0434\u043b\u044f \u0438\u0437\u043c\u0435\u0440\u0435\u043d\u0438\u044f \u0434\u043b\u0438\u043d\u044b', '\u043c', 'length', 1.0),\n('temperature_sensor', 'tester', '\u0434\u0430\u0442\u0447\u0438\u043a \u0442\u0435\u043c\u043f\u0435\u0440\u0430\u0442\u0443\u0440\u044b \u0434\u043b\u044f \u0442\u0435\u0441\u0442\u0435\u0440\u0430', '\u00b0C', 'temp', 1.0);\n\nINSERT INTO machines (id, name, type) VALUES\n('laser_cutter', '\u043b\u0430\u0437\u0435\u0440\u043d\u044b\u0439 \u0440\u0435\u0437\u0430\u043a', 'equipment'),\n('ball_screw', '\u0448\u0430\u0440\u0438\u043a\u043e\u0432\u0430\u044f \u0441\u043a\u043e\u0431\u0430', 'equipment'),\n('tester', '\u0442\u0435\u0441\u0442\u0435\u0440', 'equipment');\n\nINSERT INTO stations (id, machine_id, processing_time_s, availability_pct, mttr_s, power_working_kw, power_idle_kw) VALUES\n('M1', 'laser_cutter', 30.0, 95.0, 1800.0, 5.0, 1.0);\n\nINSERT INTO buffers (id, capacity, before, after) VALUES\n('B0', 10, 'source', 'M1');\n\n-- Create views for typed fact tables over raw_ingest\nCREATE VIEW events_view AS\nSELECT T1.ts, T1.machine_id, T1.reason_code, T1.duration_s, T1.energy_kwh FROM raw_ingest AS T1 INNER JOIN tag_map AS T2 ON T1.payload->>'tag' = T2.tag_id WHERE T1.payload->>'type' = 'event';\n\nCREATE VIEW samples_view AS\nSELECT T1.ts, T1.machine_id, T1.tag, T1.value FROM raw_ingest AS T1 INNER JOIN tag_map AS T2 ON T1.payload->>'tag' = T2.tag_id WHERE T1.payload->>'type' = 'sample';"
+  },
+  "dt_config": {
+    "components": {
+      "data_collection": {
+        "modules": [
+          {
+            "name": "sensor_data_collector",
+            "type": "IoT Gateway",
+            "protocol": "MQTT",
+            "frequency": "every_5_seconds"
+          },
+          {
+            "name": "process_data_collector",
+            "type": "API Gateway",
+            "protocol": "REST",
+            "frequency": "every_hour"
+          },
+          {
+            "name": "maintenance_data_collector",
+            "type": "Database Connector",
+            "protocol": "JDBC",
+            "frequency": "every_day"
+          }
+        ]
+      },
+      "analytics_engine": {
+        "engine": "Apache Spark",
+        "type": "Stream Processing",
+        "models": [
+          {
+            "name": "predictive_maintenance_model",
+            "type": "ML Model",
+            "description": "Predicts equipment failure based on sensor data"
+          },
+          {
+            "name": "efficiency_analytics_model",
+            "type": "ML Model",
+            "description": "Analyzes production efficiency and bottlenecks"
+          }
+        ]
+      },
+      "visualization": {
+        "dashboard": {
+          "name": "production_digital_twin_dashboard",
+          "widgets": [
+            {
+              "type": "real_time_chart",
+              "title": "Production Line Efficiency",
+              "refresh_rate": "every_10_seconds"
+            },
+            {
+              "type": "heatmap",
+              "title": "Equipment Availability",
+              "refresh_rate": "every_30_seconds"
+            },
+            {
+              "type": "gauge",
+              "title": "Quality Rate",
+              "refresh_rate": "every_minute"
+            },
+            {
+              "type": "alert_panel",
+              "title": "System Alerts",
+              "refresh_rate": "every_5_seconds"
+            }
+          ],
+          "color_scheme": {
+            "primary": "#007bff",
+            "secondary": "#6c757d",
+            "success": "#28a745",
+            "warning": "#ffc107",
+            "danger": "#dc3545"
+          }
+        }
+      }
+    },
+    "data_flows": {
+      "sensor_data_flow": {
+        "source": "sensor_data_collector",
+        "destination": "analytics_engine",
+        "protocol": "MQTT",
+        "frequency": "every_5_seconds"
+      },
+      "process_data_flow": {
+        "source": "process_data_collector",
+        "destination": "analytics_engine",
+        "protocol": "REST",
+        "frequency": "every_hour"
+      },
+      "maintenance_data_flow": {
+        "source": "maintenance_data_collector",
+        "destination": "analytics_engine",
+        "protocol": "JDBC",
+        "frequency": "every_day"
+      },
+      "analytics_to_visualization": {
+        "source": "analytics_engine",
+        "destination": "visualization",
+        "protocol": "WebSocket",
+        "frequency": "real_time"
+      }
+    },
+    "alerts": {
+      "thresholds": [
+        {
+          "parameter": "mttr_s",
+          "threshold": 1800,
+          "severity": "warning",
+          "description": "MTTR exceeds threshold of 1800 seconds"
+        },
+        {
+          "parameter": "quality",
+          "threshold": 0.95,
+          "severity": "critical",
+          "description": "Quality rate drops below 95%"
+        },
+        {
+          "parameter": "time_processing",
+          "threshold": 30,
+          "severity": "emergency",
+          "description": "Processing time exceeds 30 seconds"
+        }
+      ]
+    },
+    "kpis": {
+      "efficiency": {
+        "target_value": 0.95,
+        "measurement_method": "ratio of actual output to potential output",
+        "unit": "percentage"
+      },
+      "quality": {
+        "target_value": 0.99,
+        "measurement_method": "ratio of defect-free products to total products",
+        "unit": "percentage"
+      },
+      "mttr": {
+        "target_value": 1800,
+        "measurement_method": "average time to repair equipment",
+        "unit": "seconds"
+      }
+    }
+  },
+  "dt_simulation": "import pychrono as chrono\nimport pychrono.fea as fea\nimport pychrono.irrlicht as irr\nimport numpy as np\nimport json\nimport time\nimport datetime\nimport sqlite3\nfrom typing import Dict, List, Any\n\nclass DigitalTwinSimulation:\n    def __init__(self):\n        # Initialize PyChrono system\n        self.system = chrono.ChSystemNSC()\n        self.system.Set_G_acc(chrono.ChVectorD(0, -9.81, 0))\n        \n        # Create database connection\n        self.conn = sqlite3.connect(':memory:')\n        self.setup_database()\n        \n        # Simulation parameters\n        self.time_step = 0.01\n        self.sim_time = 0.0\n        self.end_time = 3600.0  # 1 hour simulation\n        \n        # Equipment and stations\n        self.equipment = {}\n        self.stations = {}\n        self.sensors = {}\n        \n        # Initialize simulation components\n        self.setup_environment()\n        self.setup_equipment()\n        self.setup_sensors()\n        \n    def setup_database(self):\n        cursor = self.conn.cursor()\n        \n        # Create tables\n        cursor.execute('''\n            CREATE TABLE raw_ingest (\n                ingested_at timestamptz NOT NULL,\n                source text NOT NULL,\n                payload jsonb NOT NULL,\n                PRIMARY KEY (ingested_at, source)\n            )\n        ''')\n        \n        cursor.execute('''\n            CREATE TABLE ingest_watermark (\n                source text PRIMARY KEY,\n                max_event_ts timestamptz\n            )\n        ''')\n        \n        cursor.execute('''\n            CREATE TABLE tag_map (\n                tag_id text PRIMARY KEY,\n                machine_id text,\n                signal text,\n                unit text,\n                register text,\n                scale double precision\n            )\n        ''')\n        \n        cursor.execute('''\n            CREATE TABLE machines (\n                id text PRIMARY KEY,\n                name text,\n                type text\n            )\n        ''')\n        \n        cursor.execute('''\n            CREATE TABLE stations (\n                id text PRIMARY KEY,\n                machine_id text,\n                processing_time_s double precision,\n                availability_pct double precision,\n                mttr_s double precision,\n                power_working_kw double precision,\n                power_idle_kw double precision\n            )\n        ''')\n        \n        cursor.execute('''\n            CREATE TABLE buffers (\n                id text PRIMARY KEY,\n                capacity int,\n                before text,\n                after text\n            )\n        ''')\n        \n        cursor.execute('''\n            CREATE TABLE events (\n                ts timestamptz NOT NULL,\n                machine_id text NOT NULL,\n                reason_code text,\n                duration_s double precision,\n                energy_kwh double precision,\n                PRIMARY KEY (ts, machine_id)\n            )\n        ''')\n        \n        cursor.execute('''\n            CREATE TABLE samples (\n                ts timestamptz NOT NULL,\n                machine_id text NOT NULL,\n                tag text NOT NULL,\n                value double precision,\n                PRIMARY KEY (ts, machine_id, tag)\n            )\n        ''')\n        \n        # Insert dimension data\n        cursor.execute('''\n            INSERT INTO tag_map (tag_id, machine_id, signal, unit, register, scale) VALUES\n            ('length_sensor', 'laser_cutter', '\u043b\u0430\u0437\u0435\u0440\u043d\u044b\u0439 \u0434\u0430\u0442\u0447\u0438\u043a \u0434\u043b\u044f \u0438\u0437\u043c\u0435\u0440\u0435\u043d\u0438\u044f \u0434\u043b\u0438\u043d\u044b', '\u043c', 'length', 1.0),\n            ('temperature_sensor', 'tester', '\u0434\u0430\u0442\u0447\u0438\u043a \u0442\u0435\u043c\u043f\u0435\u0440\u0430\u0442\u0443\u0440\u044b \u0434\u043b\u044f \u0442\u0435\u0441\u0442\u0435\u0440\u0430', '\u00b0C', 'temp', 1.0)\n        ''')\n        \n        cursor.execute('''\n            INSERT INTO machines (id, name, type) VALUES\n            ('laser_cutter', '\u043b\u0430\u0437\u0435\u0440\u043d\u044b\u0439 \u0440\u0435\u0437\u0430\u043a', 'equipment'),\n            ('ball_screw', '\u0448\u0430\u0440\u0438\u043a\u043e\u0432\u0430\u044f \u0441\u043a\u043e\u0431\u0430', 'equipment'),\n            ('tester', '\u0442\u0435\u0441\u0442\u0435\u0440', 'equipment')\n        ''')\n        \n        cursor.execute('''\n            INSERT INTO stations (id, machine_id, processing_time_s, availability_pct, mttr_s, power_working_kw, power_idle_kw) VALUES\n            ('M1', 'laser_cutter', 30.0, 95.0, 1800.0, 5.0, 1.0)\n        ''')\n        \n        cursor.execute('''\n            INSERT INTO buffers (id, capacity, before, after) VALUES\n            ('B0', 10, 'source', 'M1')\n        ''')\n        \n        self.conn.commit()\n        \n    def setup_environment(self):\n        # Create ground\n        ground = chrono.ChBody()\n        ground.SetBodyFixed(True)\n        ground.SetPos(chrono.ChVectorD(0, -1, 0))\n        self.system.Add(ground)\n        \n        # Create ground shape\n        ground_shape = chrono.ChBoxShape()\n        ground_shape.GetBoxGeometry().SetLengths(chrono.ChVectorD(20, 2, 20))\n        ground.AddAsset(ground_shape)\n        \n        # Create material for ground\n        ground_material = chrono.ChMaterialSurfaceNSC()\n        ground_material.SetFriction(0.4)\n        ground_material.SetRestitution(0.1)\n        ground.AddAsset(ground_material)\n        \n    def setup_equipment(self):\n        # Create laser cutter (station M1)\n        cutter_body = chrono.ChBody()\n        cutter_body.SetPos(chrono.ChVectorD(0, 0, 0))\n        cutter_body.SetMass(100)\n        cutter_body.SetInertiaXX(chrono.ChVectorD(10, 10, 10))\n        self.system.Add(cutter_body)\n        \n        # Add shape for cutter\n        cutter_shape = chrono.ChBoxShape()\n        cutter_shape.GetBoxGeometry().SetLengths(chrono.ChVectorD(1, 0.5, 1))\n        cutter_body.AddAsset(cutter_shape)\n        \n        # Add material for cutter\n        cutter_material = chrono.ChMaterialSurfaceNSC()\n        cutter_material.SetFriction(0.5)\n        cutter_material.SetRestitution(0.1)\n        cutter_body.AddAsset(cutter_material)\n        \n        # Store equipment\n        self.equipment['laser_cutter'] = cutter_body\n        self.stations['M1'] = {\n            'machine_id': 'laser_cutter',\n            'processing_time_s': 30.0,\n            'availability_pct': 95.0,\n            'mttr_s': 1800.0,\n            'power_working_kw': 5.0,\n            'power_idle_kw': 1.0\n        }\n        \n        # Create buffer B0\n        buffer_body = chrono.ChBody()\n        buffer_body.SetPos(chrono.ChVectorD(-2, 0, 0))\n        buffer_body.SetMass(50)\n        buffer_body.SetInertiaXX(chrono.ChVectorD(5, 5, 5))\n        self.system.Add(buffer_body)\n        \n        # Add shape for buffer\n        buffer_shape = chrono.ChBoxShape()\n        buffer_shape.GetBoxGeometry().SetLengths(chrono.ChVectorD(0.5, 0.5, 0.5))\n        buffer_body.AddAsset(buffer_shape)\n        \n        # Add material for buffer\n        buffer_material = chrono.ChMaterialSurfaceNSC()\n        buffer_material.SetFriction(0.3)\n        buffer_material.SetRestitution(0.05)\n        buffer_body.AddAsset(buffer_material)\n        \n        self.equipment['buffer_B0'] = buffer_body\n        \n    def setup_sensors(self):\n        # Create sensors\n        self.sensors['length_sensor'] = {\n            'tag': 'length_sensor',\n            'machine_id': 'laser_cutter',\n            'value': 0.0\n        }\n        \n        self.sensors['temperature_sensor'] = {\n            'tag': 'temperature_sensor',\n            'machine_id': 'tester',\n            'value': 25.0\n        }\n        \n    def get_station_stats(self, station_id: str) -> Dict[str, float]:\n        \"\"\"Get current station statistics\"\"\"\n        return self.stations.get(station_id, {})\n        \n    def log_event(self, machine_id: str, reason_code: str, duration_s: float, energy_kwh: float):\n        \"\"\"Log event data to database\"\"\"\n        cursor = self.conn.cursor()\n        timestamp = datetime.datetime.now(datetime.timezone.utc)\n        \n        cursor.execute('''\n            INSERT INTO events (ts, machine_id, reason_code, duration_s, energy_kwh)\n            VALUES (?, ?, ?, ?, ?)\n        ''', (timestamp, machine_id, reason_code, duration_s, energy_kwh))\n        \n        self.conn.commit()\n        \n    def log_sample(self, machine_id: str, tag: str, value: float):\n        \"\"\"Log sample data to database\"\"\"\n        cursor = self.conn.cursor()\n        timestamp = datetime.datetime.now(datetime.timezone.utc)\n        \n        cursor.execute('''\n            INSERT INTO samples (ts, machine_id, tag, value)\n            VALUES (?, ?, ?, ?)\n        ''', (timestamp, machine_id, tag, value))\n        \n        self.conn.commit()\n        \n    def log_ingest(self, source: str, payload: Dict[str, Any]):\n        \"\"\"Log raw ingest data\"\"\"\n        cursor = self.conn.cursor()\n        timestamp = datetime.datetime.now(datetime.timezone.utc)\n        \n        cursor.execute('''\n            INSERT INTO raw_ingest (ingested_at, source, payload)\n            VALUES (?, ?, ?)\n        ''', (timestamp, source, json.dumps(payload)))\n        \n        self.conn.commit()\n        \n    def simulate(self):\n        \"\"\"Main simulation loop\"\"\"\n        print(\"Starting simulation...\")\n        \n        while self.sim_time < self.end_time:\n            # Update simulation time\n            self.system.DoStepDynamics(self.time_step)\n            self.sim_time += self.time_step\n            \n            # Check for events every 10 seconds\n            if int(self.sim_time) % 10 == 0:\n                # Log sample data\n                self.log_sample(\n                    self.sensors['length_sensor']['machine_id'],\n                    self.sensors['length_sensor']['tag'],\n                    self.sensors['length_sensor']['value'] + np.random.normal(0, 0.01)\n                )\n                \n                # Log events\n                if np.random.random() < 0.01:  # 1% chance of event\n                    self.log_event(\n                        'laser_cutter',\n                        'maintenance_needed',\n                        10.0,\n                        0.02\n                    )\n                    \n            # Log raw ingest data\n            self.log_ingest(\n                'sensor_data',\n                {\n                    'type': 'sample',\n                    'tag': 'length_sensor',\n                    'value': self.sensors['length_sensor']['value'] + np.random.normal(0, 0.01),\n                    'timestamp': self.sim_time\n                }\n            )\n            \n            # Simulate sensor readings\n            self.sensors['length_sensor']['value'] = 1.5 + 0.1 * np.sin(self.sim_time / 10)\n            self.sensors['temperature_sensor']['value'] = 25.0 + 2.0 * np.sin(self.sim_time / 5)\n            \n            if self.sim_time % 30 == 0:\n                stats = self.get_station_stats('M1')\n                print(f\"Time: {self.sim_time:.1f}s\")\n                print(f\"  Station M1: Processing time {stats.get('processing_time_s', 0):.1f}s\")\n                print(f\"  Laser cutter length reading: {self.sensors['length_sensor']['value']:.3f}m\")\n                print(f\"  Tester temperature: {self.sensors['temperature_sensor']['value']:.1f}\u00b0C\")\n\n    def get_database_stats(self) -> Dict[str, Any]:\n        \"\"\"Get database statistics\"\"\"\n        cursor = self.conn.cursor()\n        \n        # Get counts\n        cursor.execute(\"SELECT COUNT(*) FROM events\")\n        event_count = cursor.fetchone()[0]\n        \n        cursor.execute(\"SELECT COUNT(*) FROM samples\")\n        sample_count = cursor.fetchone()[0]\n        \n        cursor.execute(\"SELECT COUNT(*) FROM raw_ingest\")\n        ingest_count = cursor.fetchone()[0]\n        \n        # Get recent events\n        cursor.execute(\"SELECT * FROM events ORDER BY ts DESC LIMIT 5\")\n        recent_events = cursor.fetchall()\n        \n        # Get recent samples\n        cursor.execute(\"SELECT * FROM samples ORDER BY ts DESC LIMIT 5\")\n        recent_samples = cursor.fetchall()\n        \n        return {\n            'event_count': event_count,\n            'sample_count': sample_count,\n            'ingest_count': ingest_count,\n            'recent_events': recent_events,\n            'recent_samples': recent_samples\n        }\n\n# Run simulation\nif __name__ == \"__main__\":\n    try:\n        sim = DigitalTwinSimulation()\n        sim.simulate()\n        \n        # Print final stats\n        stats = sim.get_database_stats()\n        print(\"\\n--- Final Simulation Stats ---\")\n        print(f\"Events logged: {stats['event_count']}\")\n        print(f\"Samples logged: {stats['sample_count']}\")\n        print(f\"Raw ingest entries: {stats['ingest_count']}\")\n        \n        # Print recent entries\n        print(\"\\nRecent events:\")\n        for event in stats['recent_events']:\n            print(f\"  {event}\")\n            \n        print(\"\\nRecent samples:\")\n        for sample in stats['recent_samples']:\n            print(f\"  {sample}\")\n            \n    except Exception as e:\n        print(f\"Error occurred during simulation: {str(e)}\")\n        raise\n    finally:\n        # Cleanup\n        print(\"Simulation completed successfully\")",
+  "dt_des": "```python\nimport simpy\nimport random\nimport math\nfrom collections import defaultdict\n\n# Simulation parameters from requirements\nWARMUP_S = 21600\nWINDOW_S = 432000\nREPETITIONS = 10\n\n# Station parameters\nSTATION_ID = 'M1'\nPROCESSING_TIME_S = 30.0\nAVAILABILITY_PCT = 95.0\nMTTR_S = 1800.0\nPOWER_WORKING_KW = 5.0\nPOWER_IDLE_KW = 1.0\n\n# Buffer parameters\nBUFFER_ID = 'B0'\nBUFFER_CAPACITY = 10\n\n# Source parameters\nSOURCE_INTER_ARRIVAL_TIME_S = None\n\n# Defect parameters\nDEFECT_RATE = None\n\n# Global variables for tracking\nthroughputs = []\nwips = []\nenergies_per_part = []\n\nclass Part:\n    def __init__(self, part_id):\n        self.id = part_id\n        self.arrival_time = None\n        self.departure_time = None\n        self.processed_stations = set()\n\nclass Station:\n    def __init__(self, env, station_id, processing_time_s, availability_pct, mttr_s, power_working_kw, power_idle_kw):\n        self.env = env\n        self.station_id = station_id\n        self.processing_time_s = processing_time_s\n        self.availability_pct = availability_pct\n        self.mttr_s = mttr_s\n        self.power_working_kw = power_working_kw\n        self.power_idle_kw = power_idle_kw\n        self.is_operational = True\n        self.failure_start = None\n        self.total_energy_kwh = 0.0\n        self.last_update = 0.0\n        \n        # Setup the resource for the station\n        self.resource = simpy.Resource(env, capacity=1)\n        \n        # Start the failure process if availability is specified\n        if availability_pct is not None and mttr_s is not None:\n            env.process(self._failure_process())\n    \n    def _failure_process(self):\n        while True:\n            # Determine next failure time based on availability\n            if self.is_operational:\n                # Exponential distribution for time to failure\n                time_to_failure = random.expovariate((100 - self.availability_pct) / 100)\n                yield self.env.timeout(time_to_failure)\n                \n                # Fail the station\n                self.is_operational = False\n                self.failure_start = self.env.now\n                # Schedule repair\n                self.env.process(self._repair_process())\n            else:\n                # Wait until repaired\n                yield self.env.timeout(1e6)  # Large timeout to avoid issues\n    \n    def _repair_process(self):\n        # Wait for MTTR\n        yield self.env.timeout(self.mttr_s)\n        # Repair the station\n        self.is_operational = True\n        self.failure_start = None\n        # Update energy for downtime period\n        if self.last_update > 0:\n            downtime = self.env.now - self.last_update\n            self.total_energy_kwh += self.power_idle_kw * downtime / 3600.0\n\n    def process_part(self, part):\n        # Record energy usage for idle time before processing\n        if self.last_update > 0:\n            idle_duration = self.env.now - self.last_update\n            self.total_energy_kwh += self.power_idle_kw * idle_duration / 3600.0\n            \n        # Wait for the station to be available\n        with self.resource.request() as req:\n            yield req\n            # Check if operational\n            if not self.is_operational:\n                # Wait until repaired\n                yield self.env.timeout(1e6)  # Placeholder, will be handled by failure process\n                \n            # Record energy usage for processing time\n            start_processing = self.env.now\n            yield self.env.timeout(self.processing_time_s)\n            \n            # Update energy consumption during processing\n            processing_duration = self.env.now - start_processing\n            self.total_energy_kwh += self.power_working_kw * processing_duration / 3600.0\n            \n            # Update last update time\n            self.last_update = self.env.now\n\nclass Source:\n    def __init__(self, env, inter_arrival_time_s):\n        self.env = env\n        self.inter_arrival_time_s = inter_arrival_time_s\n        self.parts_generated = 0\n        \n    def generate_parts(self, buffer):\n        while True:\n            # Generate part\n            self.parts_generated += 1\n            part = Part(self.parts_generated)\n            part.arrival_time = self.env.now\n            yield self.env.timeout(self.inter_arrival_time_s)\n            # Put part into buffer\n            yield buffer.put(part)\n\nclass Buffer:\n    def __init__(self, env, buffer_id, capacity):\n        self.env = env\n        self.buffer_id = buffer_id\n        self.capacity = capacity\n        self.store = simpy.Store(env, capacity=capacity)\n        \n    def put(self, item):\n        return self.store.put(item)\n    \n    def get(self):\n        return self.store.get()\n    \n    def level(self):\n        return len(self.store.items)\n\ndef run_simulation(seed):\n    random.seed(seed)\n    env = simpy.Environment()\n    \n    # Create buffer\n    buffer = Buffer(env, BUFFER_ID, BUFFER_CAPACITY)\n    \n    # Create station\n    station = Station(env, STATION_ID, PROCESSING_TIME_S, AVAILABILITY_PCT, MTTR_S, POWER_WORKING_KW, POWER_IDLE_KW)\n    \n    # Create source\n    source = Source(env, SOURCE_INTER_ARRIVAL_TIME_S)\n    \n    # Start source process\n    env.process(source.generate_parts(buffer))\n    \n    # Track parts that leave the system\n    parts_departed = []\n    \n    def station_process():\n        while True:\n            # Get part from buffer\n            part = yield buffer.get()\n            # Process part at station\n            yield station.process_part(part)\n            # Record departure\n            part.departure_time = env.now\n            parts_departed.append(part)\n    \n    # Start station process\n    env.process(station_process())\n    \n    # Run simulation\n    env.run(until=WARMUP_S + WINDOW_S)\n    \n    # Calculate KPIs\n    # Throughput\n    window_start = WARMUP_S\n    window_end = WARMUP_S + WINDOW_S\n    parts_in_window = [p for p in parts_departed if window_start <= p.departure_time <= window_end]\n    throughput = len(parts_in_window) / (WINDOW_S / 3600.0)\n    \n    # WIP\n    wip_sum = 0.0\n    prev_time = window_start\n    prev_wip = 0\n    \n    # Sample WIP at regular intervals\n    sample_interval = 10.0\n    for t in range(int(window_start), int(window_end), int(sample_interval)):\n        # Count parts in system\n        parts_in_system = 0\n        # Parts in buffer\n        parts_in_system += buffer.level()\n        # Parts in station (assuming one part can be processed at a time)\n        # We'll approximate this by checking if station is busy\n        if hasattr(station, 'resource') and len(station.resource.queue) > 0:\n            parts_in_system += 1\n        elif hasattr(station, 'resource') and len(station.resource.users) > 0:\n            parts_in_system += 1\n        \n        # Add contribution from previous interval\n        if t > prev_time:\n            wip_sum += prev_wip * (t - prev_time)\n        \n        prev_time = t\n        prev_wip = parts_in_system\n    \n    # Handle final interval\n    if prev_time < window_end:\n        wip_sum += prev_wip * (window_end - prev_time)\n    \n    wip = wip_sum / WINDOW_S\n    \n    # Energy per part\n    total_energy_kwh = station.total_energy_kwh\n    energy_per_part = total_energy_kwh / len(parts_in_window) if len(parts_in_window) > 0 else 0.0\n    \n    return throughput, wip, energy_per_part\n\n# Run multiple replications\nfor i in range(REPETITIONS):\n    seed = i + 1\n    throughput, wip, energy_per_part = run_simulation(seed)\n    throughputs.append(throughput)\n    wips.append(wip)\n    energies_per_part.append(energy_per_part)\n\n# Calculate averages\navg_throughput = sum(throughputs) / len(throughputs)\navg_wip = sum(wips) / len(wips)\navg_energy_per_part = sum(energies_per_part) / len(energies_per_part)\n\nprint(f\"Throughput = {avg_throughput:.6f} parts/hour\")\nprint(f\"WIP = {avg_wip:.6f} parts\")\nprint(f\"Mean Energy Consumption per Part = {avg_energy_per_part:.6f} kWh/part\")\n```"
+}

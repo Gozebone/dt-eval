@@ -1,0 +1,236 @@
+{
+  "components": {
+    "data_collection": {
+      "modules": [
+        {
+          "id": "opcua_collector",
+          "type": "Data Collector",
+          "description": "Collects real-time data from OPC-UA endpoints",
+          "protocol": "OPC-UA",
+          "update_frequency_s": 5
+        },
+        {
+          "id": "mqtt_collector",
+          "type": "Data Collector",
+          "description": "Collects data from MQTT brokers",
+          "protocol": "MQTT",
+          "update_frequency_s": 10
+        }
+      ]
+    },
+    "analytics_engine": {
+      "id": "analytics_engine",
+      "type": "Analytics Engine",
+      "description": "Processes and analyzes data for KPIs and alerts",
+      "components": [
+        "data_processor",
+        "anomaly_detector",
+        "predictive_model"
+      ]
+    },
+    "ml_models": {
+      "models": [
+        {
+          "id": "production_forecast_model",
+          "type": "ML Model",
+          "description": "Predicts production output and bottlenecks",
+          "algorithm": "Time Series Forecasting"
+        },
+        {
+          "id": "energy_consumption_model",
+          "type": "ML Model",
+          "description": "Predicts energy consumption based on machine activity",
+          "algorithm": "Regression Analysis"
+        }
+      ]
+    },
+    "visualization": {
+      "id": "dashboard",
+      "type": "Visualization Dashboard",
+      "description": "Real-time dashboard for monitoring production line",
+      "widgets": [
+        {
+          "type": "KPI",
+          "title": "Overall Equipment Effectiveness",
+          "metric": "OEE",
+          "unit": "%"
+        },
+        {
+          "type": "Gauge",
+          "title": "Line Utilization",
+          "metric": "Availability_%",
+          "unit": "%"
+        },
+        {
+          "type": "Bar Chart",
+          "title": "Energy Consumption by Station",
+          "metric": "EnergyConsumption",
+          "unit": "kWh"
+        },
+        {
+          "type": "Line Chart",
+          "title": "Processing Time Trend",
+          "metric": "Avg_Time_per_part_s",
+          "unit": "s"
+        }
+      ]
+    }
+  },
+  "data_flows": {
+    "connections": [
+      {
+        "source": "opcua_collector",
+        "destination": "analytics_engine",
+        "protocol": "REST",
+        "frequency_s": 5
+      },
+      {
+        "source": "mqtt_collector",
+        "destination": "analytics_engine",
+        "protocol": "WebSocket",
+        "frequency_s": 10
+      },
+      {
+        "source": "analytics_engine",
+        "destination": "dashboard",
+        "protocol": "REST",
+        "frequency_s": 1
+      },
+      {
+        "source": "analytics_engine",
+        "destination": "production_forecast_model",
+        "protocol": "REST",
+        "frequency_s": 300
+      },
+      {
+        "source": "analytics_engine",
+        "destination": "energy_consumption_model",
+        "protocol": "REST",
+        "frequency_s": 300
+      }
+    ]
+  },
+  "visualization": {
+    "layout": {
+      "grid": {
+        "rows": 4,
+        "columns": 4
+      },
+      "widgets": [
+        {
+          "id": "kpi_widget",
+          "position": {
+            "row": 0,
+            "column": 0
+          },
+          "size": {
+            "width": 2,
+            "height": 1
+          }
+        },
+        {
+          "id": "gauge_widget",
+          "position": {
+            "row": 0,
+            "column": 2
+          },
+          "size": {
+            "width": 1,
+            "height": 1
+          }
+        },
+        {
+          "id": "energy_chart",
+          "position": {
+            "row": 1,
+            "column": 0
+          },
+          "size": {
+            "width": 3,
+            "height": 1
+          }
+        },
+        {
+          "id": "processing_chart",
+          "position": {
+            "row": 2,
+            "column": 0
+          },
+          "size": {
+            "width": 3,
+            "height": 1
+          }
+        }
+      ]
+    },
+    "color_scheme": {
+      "background": "#ffffff",
+      "primary": "#007bff",
+      "secondary": "#6c757d",
+      "success": "#28a745",
+      "warning": "#ffc107",
+      "danger": "#dc3545"
+    },
+    "refresh_rate_s": 1
+  },
+  "alerts": {
+    "thresholds": [
+      {
+        "metric": "Availability_%",
+        "threshold": 95,
+        "severity": "warning",
+        "description": "Availability below 95%"
+      },
+      {
+        "metric": "Avg_Time_per_part_s",
+        "threshold": 250,
+        "severity": "warning",
+        "description": "Processing time exceeds 250s"
+      },
+      {
+        "metric": "EnergyWorking",
+        "threshold": 10,
+        "severity": "critical",
+        "description": "Energy consumption exceeds 10kWh"
+      },
+      {
+        "metric": "MTTR_s",
+        "threshold": 2000,
+        "severity": "emergency",
+        "description": "Mean Time to Repair exceeds 2000s"
+      }
+    ]
+  },
+  "kpis": {
+    "metrics": [
+      {
+        "id": "OEE",
+        "name": "Overall Equipment Effectiveness",
+        "target": 85,
+        "method": "Calculated from Availability, Performance, and Quality",
+        "unit": "%"
+      },
+      {
+        "id": "Production_Rate",
+        "name": "Parts per Hour",
+        "target": 1200,
+        "method": "Total parts produced / Total time in hours",
+        "unit": "parts/hour"
+      },
+      {
+        "id": "Energy_Efficiency",
+        "name": "Energy Efficiency",
+        "target": 90,
+        "method": "Total energy consumed / Total parts produced",
+        "unit": "kWh/part"
+      },
+      {
+        "id": "Uptime",
+        "name": "Machine Uptime",
+        "target": 98,
+        "method": "Total operational time / Total time",
+        "unit": "%"
+      }
+    ]
+  }
+}

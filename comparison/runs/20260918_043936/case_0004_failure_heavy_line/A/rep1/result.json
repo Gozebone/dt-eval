@@ -1,0 +1,61 @@
+{
+  "method": "A",
+  "case": "case_0004_failure_heavy_line",
+  "rep": 1,
+  "status": "ok",
+  "error": null,
+  "elapsed_generation_s": 59.357,
+  "elapsed_simulation_s": 1.08,
+  "llm_calls": 2,
+  "llm_tokens_estimate": null,
+  "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260918_043936/case_0004_failure_heavy_line/A/rep1/model.py",
+  "kpis": {
+    "throughput_per_hour": 23.975,
+    "utilization": {
+      "M1": 0.6662,
+      "M2": 0.8672,
+      "M3": 0.6005,
+      "M4": 0.9336,
+      "M5": 0.7311
+    },
+    "wip_parts": null,
+    "energy_per_part_kwh": null,
+    "native": {
+      "machine_stats": {
+        "M1": {
+          "processed": 2879,
+          "horizon": 432000.0,
+          "utilization": 0.6661686111111552,
+          "throughput_per_unit": 0.006664351851851852
+        },
+        "M2": {
+          "processed": 2878,
+          "horizon": 432000.0,
+          "utilization": 0.8672465740740192,
+          "throughput_per_unit": 0.006662037037037037
+        },
+        "M3": {
+          "processed": 2877,
+          "horizon": 432000.0,
+          "utilization": 0.6004691203704342,
+          "throughput_per_unit": 0.006659722222222222
+        },
+        "M4": {
+          "processed": 2876,
+          "horizon": 432000.0,
+          "utilization": 0.9336022685185326,
+          "throughput_per_unit": 0.006657407407407407
+        },
+        "M5": {
+          "processed": 2876,
+          "horizon": 432000.0,
+          "utilization": 0.7311164814815208,
+          "throughput_per_unit": 0.006657407407407407
+        }
+      },
+      "model_horizon_s": 432000.0
+    }
+  },
+  "assumptions": "1. Node names and Types are chosen according to users description.\n2. Assumed names for the Source and Sink nodes as they were not explicitly named in the description.\n3. Used default edge type Buffer for all connections as the edge type was not explicitly specified.\n4. Assumed exactly a single buffer between each connected node pair.\n5. Assumed an additional buffer connects the final machine (M5) to the Sink using default capacity, as only five buffers (B0 to B4) were specified for the six required connections in the sequence.\n6. Used default values for all missing parameters for all components.",
+  "notes": []
+}

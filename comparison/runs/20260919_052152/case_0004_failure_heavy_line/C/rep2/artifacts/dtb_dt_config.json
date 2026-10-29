@@ -1,0 +1,197 @@
+{
+  "components": {
+    "data_collection": {
+      "modules": [
+        {
+          "name": "OPC-UA Gateway",
+          "type": "gateway",
+          "description": "Collects data from industrial equipment via OPC-UA protocol"
+        },
+        {
+          "name": "MQTT Bridge",
+          "type": "bridge",
+          "description": "Handles real-time data streaming from sensors and devices"
+        }
+      ]
+    },
+    "analytics": {
+      "engines": [
+        {
+          "name": "Real-time Analytics Engine",
+          "type": "streaming",
+          "description": "Processes incoming data streams for immediate insights"
+        },
+        {
+          "name": "Historical Analytics Engine",
+          "type": "batch",
+          "description": "Analyzes historical data to identify trends and patterns"
+        }
+      ]
+    },
+    "ml_models": {
+      "models": [
+        {
+          "name": "Predictive Maintenance Model",
+          "type": "machine_learning",
+          "description": "Predicts equipment failures based on sensor data"
+        },
+        {
+          "name": "Process Optimization Model",
+          "type": "machine_learning",
+          "description": "Optimizes production parameters for efficiency"
+        }
+      ]
+    },
+    "visualization": {
+      "dashboard": {
+        "name": "Steel Production Digital Twin Dashboard",
+        "type": "web_ui",
+        "description": "Interactive dashboard for monitoring and controlling the production line"
+      }
+    }
+  },
+  "data_flows": {
+    "connections": [
+      {
+        "source": "OPC-UA Gateway",
+        "destination": "Real-time Analytics Engine",
+        "protocol": "OPC-UA",
+        "frequency": "5 minutes"
+      },
+      {
+        "source": "MQTT Bridge",
+        "destination": "Real-time Analytics Engine",
+        "protocol": "MQTT",
+        "frequency": "5 minutes"
+      },
+      {
+        "source": "Real-time Analytics Engine",
+        "destination": "Visualization Dashboard",
+        "protocol": "WebSocket",
+        "frequency": "1 minute"
+      },
+      {
+        "source": "Historical Analytics Engine",
+        "destination": "ML Models",
+        "protocol": "REST",
+        "frequency": "daily"
+      }
+    ]
+  },
+  "visualization": {
+    "layout": {
+      "dashboard": {
+        "widgets": [
+          {
+            "type": "live_chart",
+            "title": "Temperature Trends",
+            "position": {
+              "x": 0,
+              "y": 0,
+              "width": 4,
+              "height": 3
+            },
+            "refresh_rate": "1 minute"
+          },
+          {
+            "type": "live_chart",
+            "title": "Pressure Levels",
+            "position": {
+              "x": 4,
+              "y": 0,
+              "width": 4,
+              "height": 3
+            },
+            "refresh_rate": "1 minute"
+          },
+          {
+            "type": "live_chart",
+            "title": "Humidity Readings",
+            "position": {
+              "x": 8,
+              "y": 0,
+              "width": 4,
+              "height": 3
+            },
+            "refresh_rate": "1 minute"
+          },
+          {
+            "type": "status_widget",
+            "title": "Machine Status",
+            "position": {
+              "x": 0,
+              "y": 3,
+              "width": 6,
+              "height": 2
+            },
+            "refresh_rate": "1 minute"
+          },
+          {
+            "type": "alert_list",
+            "title": "Active Alerts",
+            "position": {
+              "x": 6,
+              "y": 3,
+              "width": 6,
+              "height": 2
+            },
+            "refresh_rate": "1 minute"
+          }
+        ],
+        "color_scheme": {
+          "primary": "#007BFF",
+          "secondary": "#6C757D",
+          "success": "#28A745",
+          "warning": "#FFC107",
+          "danger": "#DC3545"
+        }
+      }
+    }
+  },
+  "alerts": {
+    "thresholds": [
+      {
+        "parameter": "\u0442\u0435\u043c\u043f\u0435\u0440\u0430\u0442\u0443\u0440\u0430",
+        "threshold": 1200,
+        "severity": "critical",
+        "message": "Temperature threshold exceeded"
+      },
+      {
+        "parameter": "\u0434\u0430\u0432\u043b\u0435\u043d\u0438\u0435",
+        "threshold": 100,
+        "severity": "warning",
+        "message": "Pressure level high"
+      },
+      {
+        "parameter": "\u0432\u043b\u0430\u0436\u043d\u043e\u0441\u0442\u044c",
+        "threshold": 80,
+        "severity": "info",
+        "message": "Humidity level high"
+      }
+    ]
+  },
+  "kpis": {
+    "metrics": [
+      {
+        "name": "Overall Equipment Effectiveness (OEE)",
+        "target": 85,
+        "method": "calculated from availability, performance, and quality"
+      },
+      {
+        "name": "Production Efficiency",
+        "target": 90,
+        "method": "ratio of actual output to potential output"
+      },
+      {
+        "name": "Energy Consumption per Unit",
+        "target": 100,
+        "method": "total energy consumption divided by units produced"
+      },
+      {
+        "name": "Machine Uptime",
+        "target": 95,
+        "method": "percentage of time machines are operational"
+      }
+    ]
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "method": "C",
+  "case": "case_0001_serial_line",
+  "rep": 0,
+  "status": "ok",
+  "error": null,
+  "elapsed_generation_s": 803.876,
+  "elapsed_simulation_s": null,
+  "llm_calls": 9,
+  "llm_tokens_estimate": null,
+  "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260917_154052/case_0001_serial_line/C/rep0/model.json",
+  "kpis": {
+    "throughput_per_hour": null,
+    "utilization": null,
+    "wip_parts": null,
+    "energy_per_part_kwh": null,
+    "native": {
+      "machine_stats": {
+        "M1": {
+          "mentioned": true,
+          "process_time_found": false,
+          "availability_found": false
+        },
+        "M2": {
+          "mentioned": true,
+          "process_time_found": false,
+          "availability_found": false
+        },
+        "M3": {
+          "mentioned": true,
+          "process_time_found": false,
+          "availability_found": false
+        },
+        "M4": {
+          "mentioned": true,
+          "process_time_found": false,
+          "availability_found": false
+        },
+        "M5": {
+          "mentioned": true,
+          "process_time_found": false,
+          "availability_found": false
+        }
+      },
+      "machines_mentioned": 5,
+      "machines_truth": 5,
+      "buffers": {
+        "B0": true,
+        "B1": true,
+        "B2": true,
+        "B3": true,
+        "B4": true
+      },
+      "arrival_found": true,
+      "equipment_count": 2,
+      "artifact_chars": {
+        "config": 7296,
+        "sim": 11089
+      },
+      "machine_ids_in_dt_output": {
+        "M1": true,
+        "M2": true,
+        "M3": true,
+        "M4": true,
+        "M5": true
+      },
+      "machines_mentioned_in_dt": 5,
+      "pychrono_referenced": true,
+      "interview_turns": 4,
+      "agent_tasks": 6,
+      "agent_tasks_attempted": 7,
+      "responder_calls": 3,
+      "llm_calls_split": {
+        "ui_agent": 4,
+        "db_agent": 0,
+        "dt_agent": 2,
+        "harness_responder": 3
+      },
+      "responder_model": "openai/gpt-5-mini",
+      "api_url": "http://176.119.159.227:8000",
+      "agent_status": {
+        "agent0": "active",
+        "agent1": "busy",
+        "agent2": "active"
+      },
+      "db_stage": "unavailable",
+      "db_note": "DB agent (agent 1) failed: poll timeout after 600.0s \u2014 requirements recovered, schema stage unavailable",
+      "dt_stage": "ok",
+      "dt_note": null,
+      "dt_schema_input": "unavailable",
+      "capability": "Method C emits a requirements document + PostgreSQL schema and (agent 2) a twin configuration plus a PyChrono multi-physics script; it produces no discrete-event model, so KPI indicators are null by construction"
+    }
+  },
+  "assumptions": null,
+  "notes": [
+    "structural recovery only: 5/5 machines mentioned in C's requirements",
+    "requirements document names the measured quantities but carries no parameter values (C's requirements stage records sensor kinds only)",
+    "DB stage (agent 1) not recovered \u2014 DB agent (agent 1) failed: poll timeout after 600.0s \u2014 requirements recovered, schema stage unavailable",
+    "DT stage (agent 2) ran: 7296 chars of twin config, 11089 chars of PyChrono script; 5/5 machine ids appear in that output. The script is not executed (PyChrono is not installed on the harness host and models rigid bodies, not the case's discrete-event semantics), so no KPI is derived from it",
+    "DT stage ran with an unavailable DB schema: the DB stage is one of agent 2's two inputs, so its output here is conditioned on a degraded input (recorded, not substituted with a fabricated schema)"
+  ]
+}

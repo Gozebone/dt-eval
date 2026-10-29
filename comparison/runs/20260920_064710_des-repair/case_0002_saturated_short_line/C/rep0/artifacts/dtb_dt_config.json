@@ -1,0 +1,262 @@
+{
+  "components": {
+    "data_collection": {
+      "modules": [
+        {
+          "id": "opc_ua_collector",
+          "type": "OPC-UA Client",
+          "description": "Collects real-time data from industrial equipment via OPC-UA protocol",
+          "configuration": {
+            "endpoint_url": "opc.tcp://localhost:4840",
+            "scan_interval_s": 5
+          }
+        },
+        {
+          "id": "mqtt_collector",
+          "type": "MQTT Subscriber",
+          "description": "Subscribes to MQTT topics for event and sensor data updates",
+          "configuration": {
+            "broker_url": "mqtt://localhost:1883",
+            "topic": "factory/+/sensor",
+            "qos": 1,
+            "scan_interval_s": 10
+          }
+        }
+      ]
+    },
+    "analytics_engines": {
+      "engines": [
+        {
+          "id": "performance_analyzer",
+          "type": "Statistical Analysis Engine",
+          "description": "Analyzes system performance metrics such as throughput, availability, and buffer utilization",
+          "configuration": {
+            "update_interval_s": 300
+          }
+        },
+        {
+          "id": "predictive_maintenance",
+          "type": "Predictive Maintenance Engine",
+          "description": "Predicts machine failures based on historical data and sensor inputs",
+          "configuration": {
+            "update_interval_s": 60
+          }
+        }
+      ]
+    },
+    "ml_models": {
+      "models": [
+        {
+          "id": "availability_model",
+          "type": "Time Series Forecasting Model",
+          "description": "Forecasts machine availability using historical maintenance and operational data",
+          "configuration": {
+            "model_type": "LSTM",
+            "training_period_s": 86400,
+            "forecast_horizon_s": 3600
+          }
+        },
+        {
+          "id": "throughput_model",
+          "type": "Regression Model",
+          "description": "Predicts production throughput based on current operational parameters",
+          "configuration": {
+            "model_type": "Random Forest",
+            "training_period_s": 86400,
+            "forecast_horizon_s": 3600
+          }
+        }
+      ]
+    },
+    "visualization": {
+      "dashboards": [
+        {
+          "id": "production_dashboard",
+          "type": "Web Dashboard",
+          "description": "Real-time overview of production line status, KPIs, and alerts",
+          "configuration": {
+            "refresh_rate_s": 10,
+            "theme": "dark",
+            "widgets": [
+              {
+                "type": "gauge",
+                "title": "Line Availability",
+                "target_kpi": "availability",
+                "unit": "%",
+                "min": 0,
+                "max": 100,
+                "color_scheme": "green_to_red"
+              },
+              {
+                "type": "chart",
+                "title": "Throughput Over Time",
+                "target_kpi": "throughput",
+                "unit": "units/hour",
+                "time_window_s": 3600
+              },
+              {
+                "type": "bar_chart",
+                "title": "Buffer Utilization",
+                "target_kpi": "buffer_utilization",
+                "unit": "%",
+                "group_by": "buffer"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "data_flows": {
+    "connections": [
+      {
+        "source": "opc_ua_collector",
+        "destination": "performance_analyzer",
+        "protocol": "REST",
+        "update_frequency_s": 5
+      },
+      {
+        "source": "mqtt_collector",
+        "destination": "performance_analyzer",
+        "protocol": "WebSocket",
+        "update_frequency_s": 10
+      },
+      {
+        "source": "performance_analyzer",
+        "destination": "predictive_maintenance",
+        "protocol": "MQTT",
+        "update_frequency_s": 60
+      },
+      {
+        "source": "predictive_maintenance",
+        "destination": "production_dashboard",
+        "protocol": "REST",
+        "update_frequency_s": 60
+      }
+    ]
+  },
+  "visualization_layout": {
+    "dashboard": {
+      "title": "Production Line Digital Twin",
+      "widgets": [
+        {
+          "id": "availability_gauge",
+          "type": "gauge",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 300,
+            "height": 200
+          },
+          "config": {
+            "title": "Line Availability",
+            "unit": "%",
+            "color_scheme": "green_to_red"
+          }
+        },
+        {
+          "id": "throughput_chart",
+          "type": "chart",
+          "position": {
+            "x": 300,
+            "y": 0,
+            "width": 600,
+            "height": 200
+          },
+          "config": {
+            "title": "Throughput Over Time",
+            "unit": "units/hour",
+            "time_window_s": 3600
+          }
+        },
+        {
+          "id": "buffer_utilization_chart",
+          "type": "bar_chart",
+          "position": {
+            "x": 0,
+            "y": 200,
+            "width": 600,
+            "height": 200
+          },
+          "config": {
+            "title": "Buffer Utilization",
+            "unit": "%",
+            "group_by": "buffer"
+          }
+        },
+        {
+          "id": "machine_status_table",
+          "type": "table",
+          "position": {
+            "x": 600,
+            "y": 200,
+            "width": 300,
+            "height": 200
+          },
+          "config": {
+            "title": "Machine Status",
+            "columns": [
+              "machine_id",
+              "status",
+              "availability",
+              "last_maintenance"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "alerts": {
+    "thresholds": [
+      {
+        "id": "low_availability",
+        "description": "Line availability drops below 95%",
+        "severity": "warning",
+        "threshold": 95,
+        "operator": "<",
+        "trigger_on": "availability"
+      },
+      {
+        "id": "high_buffer_utilization",
+        "description": "Buffer utilization exceeds 90%",
+        "severity": "critical",
+        "threshold": 90,
+        "operator": ">",
+        "trigger_on": "buffer_utilization"
+      },
+      {
+        "id": "machine_failure",
+        "description": "Machine failure detected",
+        "severity": "emergency",
+        "threshold": 0,
+        "operator": "==",
+        "trigger_on": "machine_status"
+      }
+    ]
+  },
+  "kpis": {
+    "metrics": [
+      {
+        "id": "availability",
+        "description": "Percentage of time the production line is operational",
+        "target_value": 99.0,
+        "measurement_method": "availability = (operational_time / total_time) * 100",
+        "unit": "%"
+      },
+      {
+        "id": "throughput",
+        "description": "Number of units produced per hour",
+        "target_value": 1000,
+        "measurement_method": "throughput = (units_produced / simulation_time) * 3600",
+        "unit": "units/hour"
+      },
+      {
+        "id": "buffer_utilization",
+        "description": "Percentage of buffer capacity currently used",
+        "target_value": 70,
+        "measurement_method": "buffer_utilization = (current_items / capacity) * 100",
+        "unit": "%"
+      }
+    ]
+  }
+}

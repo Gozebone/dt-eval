@@ -1,0 +1,103 @@
+{
+  "production_type": "serial production line with 4 machines in series",
+  "processes": [
+    "M1",
+    "M2",
+    "M3",
+    "M4"
+  ],
+  "equipment": [
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "B0",
+    "B1",
+    "B2",
+    "B3"
+  ],
+  "sensors": [
+    "inter_arrival_s",
+    "arrival_time_s",
+    "process_time_s",
+    "availability",
+    "mttr_s",
+    "work_power_kw",
+    "idle_power_kw"
+  ],
+  "goals": "simulate 432000s production line with 4 machines in series, buffers, and source/sink",
+  "data_sources": "provided JSON parameters",
+  "update_frequency": "static (no real-time updates)",
+  "critical_parameters": {
+    "inter_arrival_s": 45
+  },
+  "line": {
+    "topology": "serial",
+    "source": {
+      "inter_arrival_time_s": 45
+    },
+    "stations": [
+      {
+        "id": "M1",
+        "processing_time_s": 60,
+        "availability_pct": 99.99,
+        "mttr_s": 300,
+        "power_working_kw": 3.0,
+        "power_idle_kw": 0.3
+      },
+      {
+        "id": "M2",
+        "processing_time_s": 80,
+        "availability_pct": 99.0,
+        "mttr_s": 600,
+        "power_working_kw": 5.0,
+        "power_idle_kw": 0.5
+      },
+      {
+        "id": "M3",
+        "processing_time_s": 70,
+        "availability_pct": 99.0,
+        "mttr_s": 600,
+        "power_working_kw": 4.5,
+        "power_idle_kw": 0.45
+      },
+      {
+        "id": "M4",
+        "processing_time_s": 75,
+        "availability_pct": 99.99,
+        "mttr_s": 300,
+        "power_working_kw": 4.0,
+        "power_idle_kw": 0.4
+      }
+    ],
+    "buffers": [
+      {
+        "id": "B0",
+        "capacity": 25
+      },
+      {
+        "id": "B1",
+        "capacity": 10
+      },
+      {
+        "id": "B2",
+        "capacity": 10
+      },
+      {
+        "id": "B3",
+        "capacity": 10
+      }
+    ]
+  },
+  "des_horizon": {
+    "warmup_s": null,
+    "window_s": null,
+    "replications": null
+  },
+  "units": {
+    "time": "s",
+    "power": "kW",
+    "energy": "kWh"
+  },
+  "additional_info": "simply run simulation for 432000s"
+}

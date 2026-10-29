@@ -1,0 +1,76 @@
+{
+  "method": "C",
+  "case": "case_0001_serial_line",
+  "rep": 0,
+  "status": "ok",
+  "error": null,
+  "elapsed_generation_s": 0.0,
+  "elapsed_simulation_s": null,
+  "llm_calls": 0,
+  "llm_tokens_estimate": null,
+  "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260917_143238/case_0001_serial_line/C/rep0/model.json",
+  "kpis": {
+    "throughput_per_hour": null,
+    "utilization": null,
+    "wip_parts": null,
+    "energy_per_part_kwh": null,
+    "native": {
+      "machine_stats": {
+        "M1": {
+          "mentioned": true,
+          "process_time_found": true,
+          "availability_found": true
+        },
+        "M2": {
+          "mentioned": true,
+          "process_time_found": true,
+          "availability_found": true
+        },
+        "M3": {
+          "mentioned": true,
+          "process_time_found": true,
+          "availability_found": true
+        },
+        "M4": {
+          "mentioned": true,
+          "process_time_found": true,
+          "availability_found": true
+        },
+        "M5": {
+          "mentioned": true,
+          "process_time_found": true,
+          "availability_found": true
+        }
+      },
+      "machines_mentioned": 5,
+      "machines_truth": 5,
+      "buffers": {
+        "B0": true,
+        "B1": true,
+        "B2": true,
+        "B3": true,
+        "B4": true
+      },
+      "arrival_found": true,
+      "equipment_count": 7,
+      "interview_turns": 0,
+      "agent_tasks": 0,
+      "responder_calls": 0,
+      "responder_model": null,
+      "api_url": null,
+      "agent_status": {
+        "agent0": "mock",
+        "agent1": "mock",
+        "agent2": "mock"
+      },
+      "db_stage": "ok",
+      "db_note": null,
+      "capability": "Method C emits a requirements document + PostgreSQL schema (PyChrono DT code via agent 2); it produces no discrete-event model, so KPI indicators are null by construction"
+    }
+  },
+  "assumptions": null,
+  "notes": [
+    "structural recovery only: 5/5 machines mentioned in C's requirements",
+    "DT agent (agent 2, PyChrono codegen) status=mock; not exercised"
+  ]
+}

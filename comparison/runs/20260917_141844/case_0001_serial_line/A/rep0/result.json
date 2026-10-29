@@ -1,0 +1,61 @@
+{
+  "method": "A",
+  "case": "case_0001_serial_line",
+  "rep": 0,
+  "status": "ok",
+  "error": null,
+  "elapsed_generation_s": 0.0,
+  "elapsed_simulation_s": 0.941,
+  "llm_calls": 0,
+  "llm_tokens_estimate": null,
+  "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260917_141844/case_0001_serial_line/A/rep0/model.py",
+  "kpis": {
+    "throughput_per_hour": 19.976,
+    "utilization": {
+      "M1": 0.8386,
+      "M2": 0.6685,
+      "M3": 0.9991,
+      "M4": 0.6659,
+      "M5": 0.832
+    },
+    "wip_parts": null,
+    "energy_per_part_kwh": null,
+    "native": {
+      "machine_stats": {
+        "M1": {
+          "processed": 2515,
+          "horizon": 450000.0,
+          "utilization": 0.8386444444444444,
+          "throughput_per_unit": 0.005588888888888889
+        },
+        "M2": {
+          "processed": 2506,
+          "horizon": 450000.0,
+          "utilization": 0.6685333333333333,
+          "throughput_per_unit": 0.005568888888888889
+        },
+        "M3": {
+          "processed": 2497,
+          "horizon": 450000.0,
+          "utilization": 0.9991111111111111,
+          "throughput_per_unit": 0.005548888888888889
+        },
+        "M4": {
+          "processed": 2497,
+          "horizon": 450000.0,
+          "utilization": 0.6658666666666667,
+          "throughput_per_unit": 0.005548888888888889
+        },
+        "M5": {
+          "processed": 2496,
+          "horizon": 450000.0,
+          "utilization": 0.8320444444444445,
+          "throughput_per_unit": 0.005546666666666667
+        }
+      },
+      "model_horizon_s": 450000.0
+    }
+  },
+  "assumptions": "(mock) 5-machine serial line with deterministic arrivals and availability losses",
+  "notes": []
+}

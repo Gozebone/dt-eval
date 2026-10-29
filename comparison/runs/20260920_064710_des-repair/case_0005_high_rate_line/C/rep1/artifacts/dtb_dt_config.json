@@ -1,0 +1,270 @@
+{
+  "components": {
+    "data_collection": {
+      "modules": [
+        {
+          "name": "OPC-UA Collector",
+          "type": "data_collector",
+          "description": "Collects data from industrial equipment via OPC-UA protocol",
+          "protocol": "OPC-UA",
+          "update_frequency": "every 5 seconds"
+        },
+        {
+          "name": "MQTT Gateway",
+          "type": "data_collector",
+          "description": "Receives sensor data from edge devices via MQTT",
+          "protocol": "MQTT",
+          "update_frequency": "real-time"
+        }
+      ]
+    },
+    "analytics": {
+      "engines": [
+        {
+          "name": "Production Efficiency Engine",
+          "type": "analytics_engine",
+          "description": "Analyzes production line efficiency and bottlenecks",
+          "algorithm": "machine_learning",
+          "input_data": [
+            "samples",
+            "events"
+          ],
+          "output_data": [
+            "kpi_metrics"
+          ]
+        },
+        {
+          "name": "Predictive Maintenance Engine",
+          "type": "analytics_engine",
+          "description": "Predicts equipment failures using historical data",
+          "algorithm": "machine_learning",
+          "input_data": [
+            "samples",
+            "events"
+          ],
+          "output_data": [
+            "maintenance_alerts"
+          ]
+        }
+      ]
+    },
+    "ml_models": [
+      {
+        "name": "Availability Prediction Model",
+        "type": "ml_model",
+        "description": "Predicts machine availability based on MTTR and MTBF",
+        "input_features": [
+          "mttr_s",
+          "availability_pct"
+        ],
+        "output": [
+          "predicted_availability"
+        ]
+      },
+      {
+        "name": "Energy Consumption Model",
+        "type": "ml_model",
+        "description": "Models energy consumption based on processing time and power parameters",
+        "input_features": [
+          "processing_time_s",
+          "power_working_kw",
+          "power_idle_kw"
+        ],
+        "output": [
+          "estimated_energy_kwh"
+        ]
+      }
+    ],
+    "visualization": {
+      "dashboard": {
+        "layout": {
+          "rows": 3,
+          "columns": 4,
+          "widgets": [
+            {
+              "id": "production_line_status",
+              "type": "gauge",
+              "position": {
+                "row": 0,
+                "col": 0
+              },
+              "title": "Overall Line Efficiency",
+              "color_scheme": "green_to_red"
+            },
+            {
+              "id": "machine_utilization",
+              "type": "bar_chart",
+              "position": {
+                "row": 0,
+                "col": 1
+              },
+              "title": "Machine Utilization",
+              "color_scheme": "blue_to_orange"
+            },
+            {
+              "id": "buffer_levels",
+              "type": "line_chart",
+              "position": {
+                "row": 0,
+                "col": 2
+              },
+              "title": "Buffer Capacity Levels",
+              "color_scheme": "purple_to_pink"
+            },
+            {
+              "id": "energy_consumption",
+              "type": "area_chart",
+              "position": {
+                "row": 0,
+                "col": 3
+              },
+              "title": "Energy Consumption Over Time",
+              "color_scheme": "teal_to_gold"
+            },
+            {
+              "id": "production_metrics",
+              "type": "table",
+              "position": {
+                "row": 1,
+                "col": 0
+              },
+              "title": "Production Metrics",
+              "color_scheme": "light_gray"
+            },
+            {
+              "id": "alerts_summary",
+              "type": "alert_summary",
+              "position": {
+                "row": 1,
+                "col": 1
+              },
+              "title": "Recent Alerts Summary",
+              "color_scheme": "red_to_green"
+            },
+            {
+              "id": "kpi_overview",
+              "type": "dashboard_kpi",
+              "position": {
+                "row": 1,
+                "col": 2
+              },
+              "title": "KPI Overview",
+              "color_scheme": "blue_to_green"
+            },
+            {
+              "id": "machine_status",
+              "type": "machine_status_grid",
+              "position": {
+                "row": 1,
+                "col": 3
+              },
+              "title": "Machine Status",
+              "color_scheme": "gray"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "data_flows": {
+    "connections": [
+      {
+        "source": "OPC-UA Collector",
+        "destination": "Data Ingest Layer",
+        "protocol": "OPC-UA",
+        "frequency": "every 5 seconds"
+      },
+      {
+        "source": "MQTT Gateway",
+        "destination": "Data Ingest Layer",
+        "protocol": "MQTT",
+        "frequency": "real-time"
+      },
+      {
+        "source": "Data Ingest Layer",
+        "destination": "Analytics Engines",
+        "protocol": "REST",
+        "frequency": "streaming"
+      },
+      {
+        "source": "Analytics Engines",
+        "destination": "ML Models",
+        "protocol": "REST",
+        "frequency": "batch"
+      },
+      {
+        "source": "ML Models",
+        "destination": "Visualization Layer",
+        "protocol": "WebSocket",
+        "frequency": "real-time"
+      }
+    ]
+  },
+  "alerts": {
+    "thresholds": [
+      {
+        "machine_id": "M1",
+        "signal": "availability_pct",
+        "threshold": 98.0,
+        "severity": "warning"
+      },
+      {
+        "machine_id": "M2",
+        "signal": "processing_time_s",
+        "threshold": 90.0,
+        "severity": "critical"
+      },
+      {
+        "machine_id": "B0",
+        "signal": "capacity",
+        "threshold": 80,
+        "severity": "warning"
+      },
+      {
+        "machine_id": "B1",
+        "signal": "capacity",
+        "threshold": 80,
+        "severity": "warning"
+      }
+    ]
+  },
+  "kpis": {
+    "metrics": [
+      {
+        "name": "Overall Line Efficiency",
+        "target_value": 95.0,
+        "measurement_method": "average of machine utilizations",
+        "unit": "%",
+        "frequency": "hourly"
+      },
+      {
+        "name": "Production Throughput",
+        "target_value": 1000,
+        "measurement_method": "count of units produced",
+        "unit": "units/hour",
+        "frequency": "hourly"
+      },
+      {
+        "name": "Energy Consumption",
+        "target_value": 500,
+        "measurement_method": "sum of energy_kwh from samples",
+        "unit": "kWh",
+        "frequency": "daily"
+      },
+      {
+        "name": "Machine Availability",
+        "target_value": 99.5,
+        "measurement_method": "average of machine availability percentages",
+        "unit": "%",
+        "frequency": "daily"
+      },
+      {
+        "name": "Buffer Utilization",
+        "target_value": 70,
+        "measurement_method": "average of buffer capacity percentages",
+        "unit": "%",
+        "frequency": "hourly"
+      }
+    ]
+  }
+}

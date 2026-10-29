@@ -1,0 +1,224 @@
+{
+  "components": {
+    "data_collection": {
+      "modules": [
+        {
+          "name": "OPC-UA Gateway",
+          "type": "gateway",
+          "description": "Connects to industrial machines via OPC-UA protocol",
+          "update_frequency": "real-time"
+        },
+        {
+          "name": "MQTT Bridge",
+          "type": "bridge",
+          "description": "Collects data from sensors and devices over MQTT",
+          "update_frequency": "5s"
+        },
+        {
+          "name": "REST API Collector",
+          "type": "collector",
+          "description": "Fetches data from external REST APIs",
+          "update_frequency": "10s"
+        }
+      ]
+    },
+    "analytics": {
+      "engines": [
+        {
+          "name": "Simulation Engine",
+          "type": "engine",
+          "description": "Runs simulations of the production line behavior",
+          "update_frequency": "static"
+        },
+        {
+          "name": "Predictive Analytics",
+          "type": "engine",
+          "description": "Performs predictive maintenance analysis",
+          "update_frequency": "real-time"
+        }
+      ]
+    },
+    "ml_models": [
+      {
+        "name": "Machine Failure Prediction",
+        "type": "model",
+        "description": "Predicts machine failures based on historical data",
+        "input_features": [
+          "processing_time_s",
+          "availability_pct",
+          "mttr_s",
+          "power_working_kw"
+        ],
+        "output": "failure_probability"
+      }
+    ],
+    "visualization": {
+      "dashboard": {
+        "name": "Production Line Dashboard",
+        "description": "Real-time monitoring and performance visualization",
+        "widgets": [
+          {
+            "type": "gauge",
+            "title": "Machine Utilization",
+            "target": "M1",
+            "metric": "availability_pct"
+          },
+          {
+            "type": "timeline",
+            "title": "Production Timeline",
+            "target": "M1",
+            "metric": "processing_time_s"
+          },
+          {
+            "type": "chart",
+            "title": "Energy Consumption",
+            "target": "M1",
+            "metric": "power_working_kw"
+          },
+          {
+            "type": "alert",
+            "title": "System Alerts",
+            "target": "all",
+            "metric": "alerts"
+          }
+        ]
+      }
+    }
+  },
+  "data_flows": {
+    "connections": [
+      {
+        "source": "OPC-UA Gateway",
+        "destination": "Simulation Engine",
+        "protocol": "OPC-UA",
+        "update_frequency": "real-time"
+      },
+      {
+        "source": "MQTT Bridge",
+        "destination": "Analytics Engine",
+        "protocol": "MQTT",
+        "update_frequency": "5s"
+      },
+      {
+        "source": "REST API Collector",
+        "destination": "Data Storage",
+        "protocol": "REST",
+        "update_frequency": "10s"
+      },
+      {
+        "source": "Simulation Engine",
+        "destination": "Visualization Dashboard",
+        "protocol": "WebSocket",
+        "update_frequency": "1s"
+      }
+    ]
+  },
+  "visualization_layout": {
+    "dashboard": {
+      "layout": "grid",
+      "columns": 3,
+      "widgets": [
+        {
+          "id": "gauge_utilization",
+          "position": {
+            "row": 1,
+            "col": 1
+          },
+          "type": "gauge",
+          "title": "M1 Utilization",
+          "color_scheme": "green"
+        },
+        {
+          "id": "timeline_production",
+          "position": {
+            "row": 1,
+            "col": 2
+          },
+          "type": "timeline",
+          "title": "Production Timeline",
+          "color_scheme": "blue"
+        },
+        {
+          "id": "chart_energy",
+          "position": {
+            "row": 1,
+            "col": 3
+          },
+          "type": "chart",
+          "title": "Energy Consumption",
+          "color_scheme": "orange"
+        },
+        {
+          "id": "alert_system",
+          "position": {
+            "row": 2,
+            "col": 1
+          },
+          "type": "alert",
+          "title": "System Alerts",
+          "color_scheme": "red"
+        }
+      ]
+    }
+  },
+  "alerts": {
+    "thresholds": [
+      {
+        "name": "Machine Failure",
+        "severity": "critical",
+        "threshold": 0.8,
+        "metric": "failure_probability",
+        "description": "Predicted machine failure probability exceeds threshold"
+      },
+      {
+        "name": "High Energy Consumption",
+        "severity": "warning",
+        "threshold": 5.0,
+        "metric": "power_working_kw",
+        "description": "Machine power consumption exceeds normal range"
+      },
+      {
+        "name": "Low Availability",
+        "severity": "warning",
+        "threshold": 95,
+        "metric": "availability_pct",
+        "description": "Machine availability drops below threshold"
+      },
+      {
+        "name": "Buffer Overflow",
+        "severity": "emergency",
+        "threshold": 90,
+        "metric": "buffer_utilization",
+        "description": "Buffer utilization exceeds 90%"
+      }
+    ]
+  },
+  "kpis": {
+    "metrics": [
+      {
+        "name": "Overall Equipment Effectiveness",
+        "target": 0.85,
+        "measurement": "calculated from availability, performance, and quality",
+        "unit": "dimensionless"
+      },
+      {
+        "name": "Production Rate",
+        "target": 100,
+        "measurement": "items per hour",
+        "unit": "items/hour"
+      },
+      {
+        "name": "Energy Consumption",
+        "target": 120,
+        "measurement": "kWh per day",
+        "unit": "kWh/day"
+      },
+      {
+        "name": "Machine Downtime",
+        "target": 10,
+        "measurement": "minutes per day",
+        "unit": "minutes/day"
+      }
+    ]
+  }
+}

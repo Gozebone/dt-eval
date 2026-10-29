@@ -1,0 +1,21 @@
+{
+  "method": "A",
+  "case": "case_0001_serial_line",
+  "rep": 2,
+  "status": "simulation_error",
+  "error": "model exited 1: Traceback (most recent call last):\n  File \"/ssd/projects/dt-eval/comparison/runs/20260918_043936/case_0001_serial_line/A/rep2/run_model.py\", line 73, in <module>\n    TOP = SystemModel(env, \"TOP\")\n  File \"/ssd/projects/dt-eval/comparison/runs/20260918_043936/case_0001_serial_line/A/rep2/run_model.py\", line 50, in __init__\n    m = Machine(env, id=data[\"name\"], processing_delay=data[\"delay\"], mtbf=mtbf, mttr=data[\"mttr\"])\nTypeError: Machine.__init__() got an unexpected keyword argument 'mtbf'\n",
+  "elapsed_generation_s": 52.271,
+  "elapsed_simulation_s": 0.094,
+  "llm_calls": 2,
+  "llm_tokens_estimate": null,
+  "generated_model_file": null,
+  "kpis": {
+    "throughput_per_hour": null,
+    "utilization": null,
+    "wip_parts": null,
+    "energy_per_part_kwh": null,
+    "native": {}
+  },
+  "assumptions": "1. Assumed IDs for the source and sink are \"src\" and \"sink\" respectively, as they were not specified in the description.\n2. Assumed the logical flow maps the 5 specified buffers (B0 to B4) to the connections between Source to M1, M1 to M2, M2 to M3, M3 to M4, and M4 to M5.\n3. Assumed an additional 6th buffer with default capacity is used to connect the final machine (M5) to the Sink, since 6 connections are needed for the serial line but only 5 buffers were provided in the description.\n4. Assumed the provided Availability percentage and MTTR values are used to calculate the Mean Time Between Failures (MTBF) required to model the failure behavior for each machine.\n5. Used default values for all missing parameters, node types, and edge types for all components.",
+  "notes": []
+}

@@ -1,0 +1,212 @@
+{
+  "components": {
+    "data_collection": {
+      "modules": [
+        {
+          "name": "SensorDataCollector",
+          "type": "data_collector",
+          "description": "Collects real-time sensor data from machines and buffers",
+          "protocol": "MQTT",
+          "frequency": "real-time"
+        },
+        {
+          "name": "SimulationEngine",
+          "type": "simulation_engine",
+          "description": "Simulates the production line using SimPy environment",
+          "protocol": "REST",
+          "frequency": "real-time"
+        }
+      ]
+    },
+    "analytics": {
+      "engines": [
+        {
+          "name": "PerformanceAnalyzer",
+          "type": "analytics_engine",
+          "description": "Analyzes performance metrics like capacity, WIP, and energy efficiency",
+          "protocol": "WebSocket",
+          "frequency": "real-time"
+        },
+        {
+          "name": "AvailabilityTracker",
+          "type": "analytics_engine",
+          "description": "Tracks machine availability and MTTR",
+          "protocol": "REST",
+          "frequency": "real-time"
+        }
+      ]
+    },
+    "ml_models": [
+      {
+        "name": "PredictiveMaintenanceModel",
+        "type": "ml_model",
+        "description": "Predicts potential machine failures based on historical and real-time data",
+        "protocol": "REST",
+        "frequency": "real-time"
+      }
+    ],
+    "visualization": {
+      "dashboard": {
+        "name": "ProductionLineDashboard",
+        "type": "visualization_dashboard",
+        "widgets": [
+          {
+            "name": "ProductionCapacityWidget",
+            "type": "gauge",
+            "description": "Displays current production capacity",
+            "refresh_rate": "1s",
+            "color_scheme": "green_to_red"
+          },
+          {
+            "name": "BufferLevelWidget",
+            "type": "bar_chart",
+            "description": "Shows buffer fill levels across all buffers",
+            "refresh_rate": "1s",
+            "color_scheme": "blue_to_orange"
+          },
+          {
+            "name": "MachineStatusWidget",
+            "type": "status_indicator",
+            "description": "Indicates status of each machine (working/idle/failed)",
+            "refresh_rate": "1s",
+            "color_scheme": "green_yellow_red"
+          },
+          {
+            "name": "EnergyEfficiencyWidget",
+            "type": "line_chart",
+            "description": "Tracks energy consumption per unit processed",
+            "refresh_rate": "1s",
+            "color_scheme": "purple_to_pink"
+          },
+          {
+            "name": "MTTRWidget",
+            "type": "timeline",
+            "description": "Visualizes mean time to repair for machines",
+            "refresh_rate": "1s",
+            "color_scheme": "gray_to_blue"
+          }
+        ]
+      }
+    }
+  },
+  "data_flows": {
+    "connections": [
+      {
+        "source": "SensorDataCollector",
+        "destination": "PerformanceAnalyzer",
+        "protocol": "MQTT",
+        "frequency": "real-time"
+      },
+      {
+        "source": "SensorDataCollector",
+        "destination": "AvailabilityTracker",
+        "protocol": "MQTT",
+        "frequency": "real-time"
+      },
+      {
+        "source": "SimulationEngine",
+        "destination": "PerformanceAnalyzer",
+        "protocol": "REST",
+        "frequency": "real-time"
+      },
+      {
+        "source": "PerformanceAnalyzer",
+        "destination": "ProductionLineDashboard",
+        "protocol": "WebSocket",
+        "frequency": "real-time"
+      },
+      {
+        "source": "AvailabilityTracker",
+        "destination": "ProductionLineDashboard",
+        "protocol": "WebSocket",
+        "frequency": "real-time"
+      },
+      {
+        "source": "PredictiveMaintenanceModel",
+        "destination": "ProductionLineDashboard",
+        "protocol": "REST",
+        "frequency": "real-time"
+      }
+    ]
+  },
+  "alerts": {
+    "thresholds": [
+      {
+        "parameter": "production_capacity",
+        "threshold": "90%",
+        "severity": "warning",
+        "message": "Production capacity is below 90%"
+      },
+      {
+        "parameter": "wip",
+        "threshold": "80%",
+        "severity": "warning",
+        "message": "Buffer fill level exceeds 80%"
+      },
+      {
+        "parameter": "energy_per_unit",
+        "threshold": "1.5kWh/unit",
+        "severity": "critical",
+        "message": "Energy consumption per unit exceeds threshold"
+      },
+      {
+        "parameter": "machine_availability",
+        "threshold": "85%",
+        "severity": "warning",
+        "message": "Machine availability drops below 85%"
+      },
+      {
+        "parameter": "mttr",
+        "threshold": "300s",
+        "severity": "emergency",
+        "message": "Mean time to repair exceeds 300 seconds"
+      }
+    ]
+  },
+  "kpis": {
+    "metrics": [
+      {
+        "name": "production_capacity",
+        "description": "Speed of production line",
+        "target_value": "100%",
+        "measurement_method": "Real-time calculation based on part throughput",
+        "unit": "%"
+      },
+      {
+        "name": "wip",
+        "description": "Buffer fill level",
+        "target_value": "< 70%",
+        "measurement_method": "Continuous monitoring of buffer levels",
+        "unit": "%"
+      },
+      {
+        "name": "energy_per_unit",
+        "description": "Energy consumption per processed part",
+        "target_value": "< 1.2kWh/unit",
+        "measurement_method": "Aggregate energy usage divided by parts processed",
+        "unit": "kWh/unit"
+      },
+      {
+        "name": "machine_availability",
+        "description": "Availability of machines M1\u2013M5",
+        "target_value": "> 95%",
+        "measurement_method": "Time spent in working state vs total time",
+        "unit": "%"
+      },
+      {
+        "name": "processing_time",
+        "description": "Time taken per station",
+        "target_value": "< 120s",
+        "measurement_method": "Average processing time at each station",
+        "unit": "seconds"
+      },
+      {
+        "name": "mttr",
+        "description": "Mean time to repair",
+        "target_value": "< 200s",
+        "measurement_method": "Average downtime between failure and repair",
+        "unit": "seconds"
+      }
+    ]
+  }
+}

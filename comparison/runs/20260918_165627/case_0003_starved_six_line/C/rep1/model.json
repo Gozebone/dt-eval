@@ -1,0 +1,302 @@
+{
+  "requirements": {
+    "production_type": "\u043f\u043e\u0441\u043b\u0435\u0434\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u043d\u0430\u044f \u043b\u0438\u043d\u0438\u044f",
+    "processes": [
+      "M1",
+      "M2",
+      "M3",
+      "M4",
+      "M5",
+      "M6"
+    ],
+    "equipment": [
+      "M1",
+      "M2",
+      "M3",
+      "M4",
+      "M5",
+      "M6"
+    ],
+    "sensors": [
+      "\u0441\u0440\u0435\u0434\u043d\u0435\u0435 \u0432\u0440\u0435\u043c\u044f \u043d\u0430 \u0434\u0435\u0442\u0430\u043b\u044c (process_time_s)",
+      "\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u044c (availability)",
+      "MTTR",
+      "\u044d\u043d\u0435\u0440\u0433\u043e\u043f\u043e\u0442\u0440\u0435\u0431\u043b\u0435\u043d\u0438\u0435 \u0432 \u0440\u0430\u0431\u043e\u0442\u0435 (work_power_kw)",
+      "\u044d\u043d\u0435\u0440\u0433\u043e\u043f\u043e\u0442\u0440\u0435\u0431\u043b\u0435\u043d\u0438\u0435 \u0432 \u043f\u0440\u043e\u0441\u0442\u043e\u0435 (idle_power_kw)"
+    ],
+    "goals": "\u043e\u0446\u0435\u043d\u0438\u0432\u0430\u0442\u044c \u043f\u0440\u043e\u043f\u0443\u0441\u043a\u043d\u0443\u044e \u0441\u043f\u043e\u0441\u043e\u0431\u043d\u043e\u0441\u0442\u044c \u043b\u0438\u043d\u0438\u0438, WIP, \u0443\u0434\u0435\u043b\u044c\u043d\u043e\u0435 \u044d\u043d\u0435\u0440\u0433\u043e\u043f\u043e\u0442\u0440\u0435\u0431\u043b\u0435\u043d\u0438\u0435 \u043d\u0430 \u0434\u0435\u0442\u0430\u043b\u044c, \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u044c \u043c\u0430\u0448\u0438\u043d M1\u2013M5",
+    "data_sources": "\u043d\u0435 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u044b",
+    "update_frequency": "\u0441\u043e\u0431\u044b\u0442\u0438\u044f \u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u0443\u044e\u0442\u0441\u044f \u043f\u043e \u043a\u0430\u0436\u0434\u043e\u0439 \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u0430\u043d\u043d\u043e\u0439 \u0434\u0435\u0442\u0430\u043b\u0438, \u0438\u043d\u0442\u0435\u0440\u0432\u0430\u043b\u044b \u0441\u043e\u0441\u0442\u043e\u044f\u043d\u0438\u0439 \u0438 \u044d\u043d\u0435\u0440\u0433\u043e\u043f\u043e\u0442\u0440\u0435\u0431\u043b\u0435\u043d\u0438\u0435 \u0437\u0430\u043f\u0438\u0441\u044b\u0432\u0430\u044e\u0442\u0441\u044f \u043d\u0435\u043f\u0440\u0435\u0440\u044b\u0432\u043d\u043e",
+    "critical_parameters": {
+      "\u0441\u0440\u0435\u0434\u043d\u0435\u0435 \u0432\u0440\u0435\u043c\u044f \u043d\u0430 \u0434\u0435\u0442\u0430\u043b\u044c": "\u043f\u043e\u0440\u043e\u0433\u043e\u0432\u043e\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u043d\u0435 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043e",
+      "\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u044c": "\u043f\u043e\u0440\u043e\u0433\u043e\u0432\u043e\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u043d\u0435 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043e",
+      "MTTR": "\u043f\u043e\u0440\u043e\u0433\u043e\u0432\u043e\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u043d\u0435 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043e",
+      "\u044d\u043d\u0435\u0440\u0433\u043e\u043f\u043e\u0442\u0440\u0435\u0431\u043b\u0435\u043d\u0438\u0435 \u0432 \u0440\u0430\u0431\u043e\u0442\u0435 (work_power_kw)": "\u043f\u043e\u0440\u043e\u0433\u043e\u0432\u043e\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u043d\u0435 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043e",
+      "\u044d\u043d\u0435\u0440\u0433\u043e\u043f\u043e\u0442\u0440\u0435\u0431\u043b\u0435\u043d\u0438\u0435 \u0432 \u043f\u0440\u043e\u0441\u0442\u043e\u0435 (idle_power_kw)": "\u043f\u043e\u0440\u043e\u0433\u043e\u0432\u043e\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u043d\u0435 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043e"
+    },
+    "additional_info": "\u043a\u0440\u0438\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u044b \u043d\u0435 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u044b, \u043d\u043e \u043c\u043e\u0434\u0435\u043b\u044c \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u043f\u043e\u0441\u0442\u0440\u043e\u0435\u043d\u0430 \u0441 \u0443\u043a\u0430\u0437\u0430\u043d\u043d\u044b\u043c\u0438 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u043c\u0438"
+  },
+  "schema": {
+    "raw": ""
+  },
+  "dt_config": {
+    "components": {
+      "data_collection": {
+        "modules": [
+          {
+            "name": "SensorDataCollector",
+            "type": "data_collector",
+            "description": "Collects real-time sensor data from equipment",
+            "protocol": "MQTT",
+            "frequency": "continuous"
+          },
+          {
+            "name": "EventLogger",
+            "type": "data_collector",
+            "description": "Logs events for each processed part",
+            "protocol": "REST",
+            "frequency": "event-driven"
+          }
+        ]
+      },
+      "analytics_engine": {
+        "modules": [
+          {
+            "name": "ProcessAnalyticsEngine",
+            "type": "analytics",
+            "description": "Analyzes process parameters and calculates KPIs",
+            "protocol": "WebSocket",
+            "frequency": "real-time"
+          }
+        ]
+      },
+      "ml_models": {
+        "modules": [
+          {
+            "name": "PredictiveMaintenanceModel",
+            "type": "ml_model",
+            "description": "Predicts maintenance needs based on MTTR and availability",
+            "protocol": "REST",
+            "frequency": "periodic"
+          },
+          {
+            "name": "EnergyConsumptionOptimizer",
+            "type": "ml_model",
+            "description": "Optimizes energy consumption based on power data",
+            "protocol": "REST",
+            "frequency": "periodic"
+          }
+        ]
+      },
+      "visualization": {
+        "modules": [
+          {
+            "name": "DashboardController",
+            "type": "dashboard",
+            "description": "Manages dashboard layout and widgets",
+            "protocol": "WebSocket",
+            "frequency": "refresh_rate"
+          }
+        ]
+      }
+    },
+    "data_flows": {
+      "flows": [
+        {
+          "source": "SensorDataCollector",
+          "destination": "ProcessAnalyticsEngine",
+          "protocol": "MQTT",
+          "frequency": "continuous"
+        },
+        {
+          "source": "EventLogger",
+          "destination": "ProcessAnalyticsEngine",
+          "protocol": "REST",
+          "frequency": "event-driven"
+        },
+        {
+          "source": "ProcessAnalyticsEngine",
+          "destination": "DashboardController",
+          "protocol": "WebSocket",
+          "frequency": "real-time"
+        },
+        {
+          "source": "ProcessAnalyticsEngine",
+          "destination": "PredictiveMaintenanceModel",
+          "protocol": "REST",
+          "frequency": "periodic"
+        },
+        {
+          "source": "ProcessAnalyticsEngine",
+          "destination": "EnergyConsumptionOptimizer",
+          "protocol": "REST",
+          "frequency": "periodic"
+        }
+      ]
+    },
+    "visualization": {
+      "layout": {
+        "widgets": [
+          {
+            "type": "KPIWidget",
+            "title": "Line Capacity",
+            "position": {
+              "x": 0,
+              "y": 0,
+              "width": 2,
+              "height": 1
+            },
+            "refresh_rate": "real-time"
+          },
+          {
+            "type": "KPIWidget",
+            "title": "WIP Count",
+            "position": {
+              "x": 2,
+              "y": 0,
+              "width": 2,
+              "height": 1
+            },
+            "refresh_rate": "real-time"
+          },
+          {
+            "type": "KPIWidget",
+            "title": "Specific Energy Consumption",
+            "position": {
+              "x": 4,
+              "y": 0,
+              "width": 2,
+              "height": 1
+            },
+            "refresh_rate": "real-time"
+          },
+          {
+            "type": "AvailabilityChart",
+            "title": "Machine Availability (M1-M5)",
+            "position": {
+              "x": 0,
+              "y": 1,
+              "width": 4,
+              "height": 2
+            },
+            "refresh_rate": "real-time"
+          },
+          {
+            "type": "ProcessTimeChart",
+            "title": "Average Process Time per Part",
+            "position": {
+              "x": 4,
+              "y": 1,
+              "width": 2,
+              "height": 2
+            },
+            "refresh_rate": "real-time"
+          },
+          {
+            "type": "PowerConsumptionChart",
+            "title": "Energy Consumption",
+            "position": {
+              "x": 0,
+              "y": 3,
+              "width": 6,
+              "height": 2
+            },
+            "refresh_rate": "real-time"
+          }
+        ],
+        "color_scheme": {
+          "primary": "#007BFF",
+          "secondary": "#6C757D",
+          "success": "#28A745",
+          "warning": "#FFC107",
+          "danger": "#DC3545"
+        }
+      }
+    },
+    "alerts": {
+      "thresholds": [
+        {
+          "parameter": "\u0441\u0440\u0435\u0434\u043d\u0435\u0435 \u0432\u0440\u0435\u043c\u044f \u043d\u0430 \u0434\u0435\u0442\u0430\u043b\u044c",
+          "severity": "warning",
+          "value": null,
+          "description": "Threshold not defined"
+        },
+        {
+          "parameter": "\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u044c",
+          "severity": "warning",
+          "value": null,
+          "description": "Threshold not defined"
+        },
+        {
+          "parameter": "MTTR",
+          "severity": "warning",
+          "value": null,
+          "description": "Threshold not defined"
+        },
+        {
+          "parameter": "\u044d\u043d\u0435\u0440\u0433\u043e\u043f\u043e\u0442\u0440\u0435\u0431\u043b\u0435\u043d\u0438\u0435 \u0432 \u0440\u0430\u0431\u043e\u0442\u0435 (work_power_kw)",
+          "severity": "warning",
+          "value": null,
+          "description": "Threshold not defined"
+        },
+        {
+          "parameter": "\u044d\u043d\u0435\u0440\u0433\u043e\u043f\u043e\u0442\u0440\u0435\u0431\u043b\u0435\u043d\u0438\u0435 \u0432 \u043f\u0440\u043e\u0441\u0442\u043e\u0435 (idle_power_kw)",
+          "severity": "warning",
+          "value": null,
+          "description": "Threshold not defined"
+        }
+      ],
+      "alert_types": [
+        {
+          "type": "Info",
+          "level": "info",
+          "description": "Informational alerts"
+        },
+        {
+          "type": "Warning",
+          "level": "warning",
+          "description": "Warning level alerts"
+        },
+        {
+          "type": "Critical",
+          "level": "critical",
+          "description": "Critical level alerts"
+        },
+        {
+          "type": "Emergency",
+          "level": "emergency",
+          "description": "Emergency level alerts"
+        }
+      ]
+    },
+    "kpis": {
+      "indicators": [
+        {
+          "name": "Line Capacity",
+          "target_value": "defined by production goals",
+          "measurement_method": "throughput rate of the entire line",
+          "unit": "parts/hour"
+        },
+        {
+          "name": "WIP Count",
+          "target_value": "minimize while maintaining flow",
+          "measurement_method": "inventory count at each station",
+          "unit": "parts"
+        },
+        {
+          "name": "Specific Energy Consumption",
+          "target_value": "optimized energy usage per part",
+          "measurement_method": "total energy divided by number of parts produced",
+          "unit": "kWh/part"
+        },
+        {
+          "name": "Machine Availability (M1-M5)",
+          "target_value": "high availability",
+          "measurement_method": "uptime percentage over time period",
+          "unit": "%"
+        }
+      ]
+    }
+  },
+  "dt_simulation": "import os\nimport numpy as np\nimport pandas as pd\nfrom datetime import datetime\nimport time\n\nimport pychrono as chrono\nimport pychrono.fea as fea\nimport pychrono.vehicle as vehicle\nimport pychrono.irrlicht as irr\n\nclass EquipmentSimulation:\n    def __init__(self):\n        # Initialize Chrono system\n        self.system = chrono.ChSystemNSC()\n        self.system.SetGravity(chrono.ChVectorD(0, -9.81, 0))\n        \n        # Create materials\n        self.material_steel = chrono.ChMaterialSurfaceNSC()\n        self.material_steel.SetFriction(0.4)\n        self.material_steel.SetRestitution(0.1)\n        \n        self.material_refractory = chrono.ChMaterialSurfaceNSC()\n        self.material_refractory.SetFriction(0.3)\n        self.material_refractory.SetRestitution(0.05)\n        \n        # Simulation parameters\n        self.time_step = 0.001\n        self.sim_time = 0.0\n        self.total_parts = 0\n        self.parts_processed = 0\n        \n        # Data storage\n        self.process_data = []\n        self.energy_data = []\n        self.availability_data = []\n        \n        # Equipment list\n        self.equipment = {}\n        self.sensors = {}\n        \n        # Create simulation environment\n        self.create_environment()\n        \n    def create_environment(self):\n        # Create ground\n        ground = chrono.ChBody()\n        ground.SetBodyFixed(True)\n        ground.SetPos(chrono.ChVectorD(0, -1, 0))\n        ground.GetCollisionModel().ClearModel()\n        ground.GetCollisionModel().AddBox(self.material_steel, 20, 1, 20)\n        ground.GetCollisionModel().BuildModel()\n        ground.SetCollide(True)\n        self.system.Add(ground)\n        \n        # Create equipment\n        self.create_equipment()\n        \n    def create_equipment(self):\n        # Create M1 to M6 equipment\n        positions = [\n            chrono.ChVectorD(-8, 0, 0),  # M1\n            chrono.ChVectorD(-6, 0, 0),  # M2\n            chrono.ChVectorD(-4, 0, 0),  # M3\n            chrono.ChVectorD(-2, 0, 0),  # M4\n            chrono.ChVectorD(0, 0, 0),   # M5\n            chrono.ChVectorD(2, 0, 0)    # M6\n        ]\n        \n        for i, pos in enumerate(positions):\n            equipment_name = f\"M{i+1}\"\n            self.create_machine(equipment_name, pos)\n            \n    def create_machine(self, name, pos):\n        # Create machine body\n        machine = chrono.ChBody()\n        machine.SetPos(pos)\n        machine.SetMass(1000)\n        machine.SetInertiaXX(chrono.ChVectorD(100, 100, 100))\n        machine.GetCollisionModel().ClearModel()\n        machine.GetCollisionModel().AddBox(self.material_steel, 2, 1, 1)\n        machine.GetCollisionModel().BuildModel()\n        machine.SetCollide(True)\n        machine.SetBodyFixed(False)\n        \n        # Add material properties\n        machine.SetMaterialSurface(self.material_steel)\n        \n        # Add to system\n        self.system.Add(machine)\n        \n        # Store reference\n        self.equipment[name] = {\n            'body': machine,\n            'active': True,\n            'process_time': 2.0 + np.random.uniform(-0.2, 0.2),  # Random process time\n            'work_power': 50.0 + np.random.uniform(-5, 5),       # Random power\n            'idle_power': 5.0 + np.random.uniform(-1, 1),        # Random idle power\n            'last_start_time': 0.0,\n            'total_active_time': 0.0,\n            'total_idle_time': 0.0,\n            'total_work_energy': 0.0,\n            'total_idle_energy': 0.0\n        }\n        \n        # Create sensors for this machine\n        self.create_sensors(name)\n        \n    def create_sensors(self, machine_name):\n        # Create sensors dictionary for each machine\n        self.sensors[machine_name] = {\n            'process_time_s': 0.0,\n            'availability': 1.0,\n            'MTTR': 0.0,\n            'work_power_kw': self.equipment[machine_name]['work_power'],\n            'idle_power_kw': self.equipment[machine_name]['idle_power'],\n            'last_processed': 0.0\n        }\n        \n    def start_process(self, machine_name):\n        \"\"\"Start processing a part on a machine\"\"\"\n        if machine_name in self.equipment:\n            self.equipment[machine_name]['active'] = True\n            self.equipment[machine_name]['last_start_time'] = self.sim_time\n            self.equipment[machine_name]['total_active_time'] += self.sim_time - self.equipment[machine_name]['last_start_time']\n            \n    def stop_process(self, machine_name):\n        \"\"\"Stop processing a part on a machine\"\"\"\n        if machine_name in self.equipment:\n            self.equipment[machine_name]['active'] = False\n            self.equipment[machine_name]['total_idle_time'] += self.sim_time - self.equipment[machine_name]['last_start_time']\n            self.parts_processed += 1\n            \n    def calculate_availability(self, machine_name):\n        \"\"\"Calculate availability of a machine\"\"\"\n        if machine_name in self.equipment:\n            total_time = self.sim_time\n            if total_time > 0:\n                active_time = self.equipment[machine_name]['total_active_time']\n                return active_time / total_time\n        return 1.0\n        \n    def calculate_energy_consumption(self, machine_name):\n        \"\"\"Calculate energy consumption for a machine\"\"\"\n        if machine_name in self.equipment:\n            # Calculate work energy\n            work_energy = self.equipment[machine_name]['total_active_time'] * self.equipment[machine_name]['work_power']\n            idle_energy = self.equipment[machine_name]['total_idle_time'] * self.equipment[machine_name]['idle_power']\n            \n            self.equipment[machine_name]['total_work_energy'] = work_energy\n            self.equipment[machine_name]['total_idle_energy'] = idle_energy\n            \n            return work_energy + idle_energy\n        return 0.0\n        \n    def log_process_data(self):\n        \"\"\"Log data for each machine\"\"\"\n        for machine_name in self.equipment:\n            # Update availability\n            availability = self.calculate_availability(machine_name)\n            \n            # Calculate energy consumption\n            total_energy = self.calculate_energy_consumption(machine_name)\n            \n            # Log process data\n            process_record = {\n                'timestamp': datetime.now(),\n                'machine_name': machine_name,\n                'process_time_s': self.equipment[machine_name]['process_time'],\n                'availability': availability,\n                'MTTR': 0.0,  # Not implemented but can be extended\n                'work_power_kw': self.equipment[machine_name]['work_power'],\n                'idle_power_kw': self.equipment[machine_name]['idle_power'],\n                'energy_consumption_kwh': total_energy,\n                'parts_processed': self.parts_processed\n            }\n            \n            self.process_data.append(process_record)\n            \n    def log_energy_data(self):\n        \"\"\"Log energy consumption data\"\"\"\n        energy_record = {\n            'timestamp': datetime.now(),\n            'sim_time': self.sim_time,\n            'total_work_power_kw': sum([self.equipment[m]['work_power'] for m in self.equipment]),\n            'total_idle_power_kw': sum([self.equipment[m]['idle_power'] for m in self.equipment]),\n            'total_energy_kwh': sum([self.equipment[m]['total_work_energy'] + self.equipment[m]['total_idle_energy'] \n                                   for m in self.equipment])\n        }\n        self.energy_data.append(energy_record)\n        \n    def update_sensors(self):\n        \"\"\"Update all sensor values\"\"\"\n        for machine_name in self.equipment:\n            # Update sensors for this machine\n            self.sensors[machine_name] = {\n                'process_time_s': self.equipment[machine_name]['process_time'],\n                'availability': self.calculate_availability(machine_name),\n                'MTTR': 0.0,\n                'work_power_kw': self.equipment[machine_name]['work_power'],\n                'idle_power_kw': self.equipment[machine_name]['idle_power'],\n                'last_processed': self.equipment[machine_name]['last_start_time']\n            }\n            \n    def simulate(self, duration=60.0):\n        \"\"\"Run simulation for given duration\"\"\"\n        print(\"Starting simulation...\")\n        \n        # Simulation loop\n        while self.sim_time < duration:\n            # Step the simulation\n            self.system.DoStepDynamics(self.time_step)\n            self.sim_time += self.time_step\n            \n            # Log data every 0.5 seconds\n            if int(self.sim_time * 2) % 1 == 0:  # Every 0.5 seconds\n                self.update_sensors()\n                self.log_energy_data()\n                \n            # Random part generation (simulating part flow)\n            if np.random.rand() < 0.05:  # 5% chance per time step to create part\n                self.total_parts += 1\n                # Assign part to first machine\n                self.start_process(\"M1\")\n                \n                # Simulate processing through line\n                for machine_num in range(1, 6):\n                    machine_name = f\"M{machine_num}\"\n                    # Simulate processing time\n                    process_time = self.equipment[machine_name]['process_time']\n                    time.sleep(process_time / 100)  # Simulate processing time\n                    self.stop_process(machine_name)\n                    \n                    # Move to next machine\n                    if machine_num < 6:\n                        next_machine = f\"M{machine_num + 1}\"\n                        self.start_process(next_machine)\n                        \n            # Log process data occasionally\n            if self.sim_time % 2.0 < self.time_step:\n                self.log_process_data()\n                \n        print(\"Simulation completed.\")\n        \n    def save_data(self, output_dir=\"output\"):\n        \"\"\"Save all data to CSV files\"\"\"\n        if not os.path.exists(output_dir):\n            os.makedirs(output_dir)\n            \n        # Save process data\n        if self.process_data:\n            df_process = pd.DataFrame(self.process_data)\n            df_process.to_csv(os.path.join(output_dir, \"process_data.csv\"), index=False)\n            \n        # Save energy data\n        if self.energy_data:\n            df_energy = pd.DataFrame(self.energy_data)\n            df_energy.to_csv(os.path.join(output_dir, \"energy_data.csv\"), index=False)\n            \n        print(f\"Data saved to {output_dir}\")\n        \n    def get_summary_metrics(self):\n        \"\"\"Calculate and return summary metrics\"\"\"\n        if not self.process_data:\n            return {}\n            \n        df = pd.DataFrame(self.process_data)\n        \n        # Calculate summary metrics\n        summary = {\n            'total_parts_processed': self.parts_processed,\n            'average_process_time': df['process_time_s'].mean(),\n            'average_availability': df['availability'].mean(),\n            'total_energy_consumption': df['energy_consumption_kwh'].sum(),\n            'average_work_power': df['work_power_kw'].mean(),\n            'average_idle_power': df['idle_power_kw'].mean()\n        }\n        \n        return summary\n\ndef main():\n    # Create simulation instance\n    simulation = EquipmentSimulation()\n    \n    # Run simulation for 60 seconds\n    simulation.simulate(duration=60.0)\n    \n    # Save data\n    simulation.save_data()\n    \n    # Print summary\n    summary = simulation.get_summary_metrics()\n    print(\"\\nSummary Metrics:\")\n    for key, value in summary.items():\n        print(f\"{key}: {value:.2f}\")\n        \n    # Clean up\n    del simulation\n\nif __name__ == \"__main__\":\n    main()"
+}

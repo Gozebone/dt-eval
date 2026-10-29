@@ -1,0 +1,220 @@
+{
+  "components": {
+    "data_collection": {
+      "modules": [
+        {
+          "name": "Sensor Data Collector",
+          "type": "IoT Gateway",
+          "description": "Collects real-time sensor data from machines",
+          "protocol": "MQTT",
+          "update_frequency": "continuous"
+        },
+        {
+          "name": "Production Event Logger",
+          "type": "Event Handler",
+          "description": "Logs production events for each machine",
+          "protocol": "REST",
+          "update_frequency": "per event"
+        }
+      ]
+    },
+    "analytics_engine": {
+      "engines": [
+        {
+          "name": "Process Analytics Engine",
+          "type": "Stream Processing",
+          "description": "Processes continuous data streams for real-time analytics",
+          "protocol": "WebSocket",
+          "update_frequency": "real-time"
+        },
+        {
+          "name": "Historical Data Analyzer",
+          "type": "Batch Processing",
+          "description": "Analyzes historical data for KPI calculations",
+          "protocol": "REST",
+          "update_frequency": "daily"
+        }
+      ]
+    },
+    "ml_models": {
+      "models": [
+        {
+          "name": "Availability Prediction Model",
+          "type": "Time Series Forecasting",
+          "description": "Predicts machine availability based on historical data",
+          "protocol": "REST",
+          "update_frequency": "hourly"
+        },
+        {
+          "name": "Energy Consumption Model",
+          "type": "Regression Analysis",
+          "description": "Estimates energy consumption per unit",
+          "protocol": "REST",
+          "update_frequency": "real-time"
+        }
+      ]
+    },
+    "visualization_dashboard": {
+      "dashboard": {
+        "name": "Production Line Dashboard",
+        "type": "Interactive Web Dashboard",
+        "description": "Visualizes real-time status, KPIs, and alerts",
+        "protocol": "WebSocket",
+        "refresh_rate": "5 seconds"
+      }
+    }
+  },
+  "data_flows": {
+    "from_sensors_to_collector": {
+      "source": "Sensors",
+      "destination": "Sensor Data Collector",
+      "protocol": "MQTT",
+      "update_frequency": "continuous"
+    },
+    "from_collector_to_analytics": {
+      "source": "Sensor Data Collector",
+      "destination": "Process Analytics Engine",
+      "protocol": "WebSocket",
+      "update_frequency": "real-time"
+    },
+    "from_events_to_analytics": {
+      "source": "Production Event Logger",
+      "destination": "Process Analytics Engine",
+      "protocol": "REST",
+      "update_frequency": "per event"
+    },
+    "from_analytics_to_dashboard": {
+      "source": "Process Analytics Engine",
+      "destination": "Production Line Dashboard",
+      "protocol": "WebSocket",
+      "update_frequency": "5 seconds"
+    },
+    "from_models_to_analytics": {
+      "source": "ML Models",
+      "destination": "Process Analytics Engine",
+      "protocol": "REST",
+      "update_frequency": "hourly"
+    }
+  },
+  "visualization": {
+    "dashboard_layout": {
+      "widgets": [
+        {
+          "type": "KPI Card",
+          "title": "Line Availability",
+          "value_field": "availability",
+          "unit": "%",
+          "color_scheme": "green",
+          "refresh_rate": "5 seconds"
+        },
+        {
+          "type": "Real-time Chart",
+          "title": "Energy Consumption",
+          "value_field": "energy_consumption",
+          "unit": "kWh",
+          "color_scheme": "blue",
+          "refresh_rate": "10 seconds"
+        },
+        {
+          "type": "Gantt Chart",
+          "title": "Production Timeline",
+          "value_field": "production_events",
+          "unit": "events",
+          "color_scheme": "orange",
+          "refresh_rate": "30 seconds"
+        },
+        {
+          "type": "Alert Panel",
+          "title": "System Alerts",
+          "value_field": "alerts",
+          "unit": "alerts",
+          "color_scheme": "red",
+          "refresh_rate": "5 seconds"
+        }
+      ],
+      "refresh_rate": "5 seconds"
+    }
+  },
+  "alerts": {
+    "thresholds": [
+      {
+        "parameter": "availability",
+        "machine": "M1",
+        "threshold": 0.9,
+        "severity": "warning",
+        "message": "Machine M1 availability below threshold"
+      },
+      {
+        "parameter": "availability",
+        "machine": "M2",
+        "threshold": 0.9,
+        "severity": "warning",
+        "message": "Machine M2 availability below threshold"
+      },
+      {
+        "parameter": "availability",
+        "machine": "M3",
+        "threshold": 0.9,
+        "severity": "warning",
+        "message": "Machine M3 availability below threshold"
+      },
+      {
+        "parameter": "availability",
+        "machine": "M4",
+        "threshold": 0.9,
+        "severity": "warning",
+        "message": "Machine M4 availability below threshold"
+      },
+      {
+        "parameter": "availability",
+        "machine": "M5",
+        "threshold": 0.9,
+        "severity": "warning",
+        "message": "Machine M5 availability below threshold"
+      },
+      {
+        "parameter": "availability",
+        "machine": "system",
+        "threshold": 0.9,
+        "severity": "critical",
+        "message": "System availability below threshold"
+      }
+    ]
+  },
+  "kpi": {
+    "indicators": [
+      {
+        "name": "Line Throughput",
+        "description": "Number of parts produced per hour",
+        "metric": "count",
+        "target_value": 1000,
+        "unit": "parts/hour",
+        "calculation_method": "count completed events in last hour"
+      },
+      {
+        "name": "Work In Progress (WIP)",
+        "description": "Number of parts currently in process",
+        "metric": "count",
+        "target_value": 50,
+        "unit": "parts",
+        "calculation_method": "count in-progress events"
+      },
+      {
+        "name": "Specific Energy Consumption",
+        "description": "Energy consumption per part",
+        "metric": "average",
+        "target_value": 0.5,
+        "unit": "kWh/part",
+        "calculation_method": "sum energy consumption / total parts produced"
+      },
+      {
+        "name": "Machine Availability",
+        "description": "Percentage of time machines are operational",
+        "metric": "average",
+        "target_value": 0.95,
+        "unit": "%",
+        "calculation_method": "available time / total time"
+      }
+    ]
+  }
+}

@@ -1,0 +1,292 @@
+{
+  "requirements": {
+    "production_type": "\u043f\u043e\u0441\u043b\u0435\u0434\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u043d\u0430\u044f (\u0441\u0435\u0440\u0438\u0439\u043d\u0430\u044f) \u043b\u0438\u043d\u0438\u044f",
+    "processes": [
+      "\u043e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u0434\u0435\u0442\u0430\u043b\u0435\u0439 \u0447\u0435\u0440\u0435\u0437 \u043c\u0430\u0448\u0438\u043d\u044b M1-M6",
+      "\u0432\u0445\u043e\u0434 \u0438\u0437 \u0438\u0441\u0442\u043e\u0447\u043d\u0438\u043a\u0430 \u0441 \u0438\u043d\u0442\u0435\u0440\u0432\u0430\u043b\u043e\u043c 300 \u0441",
+      "\u0431\u0443\u0444\u0435\u0440\u044b B0-B5 \u0441 \u0435\u043c\u043a\u043e\u0441\u0442\u044c\u044e 10 \u0441"
+    ],
+    "equipment": [
+      "\u043c\u0430\u0448\u0438\u043d\u044b M1-M6 \u0441 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u043c\u0438 (\u0432\u0440\u0435\u043c\u044f, \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u044c, MTTR, \u043c\u043e\u0449\u043d\u043e\u0441\u0442\u044c)"
+    ],
+    "sensors": [
+      "\u0441\u0440\u0435\u0434\u043d\u0435\u0435 \u0432\u0440\u0435\u043c\u044f \u043d\u0430 \u0434\u0435\u0442\u0430\u043b\u044c, \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u044c, MTTR, \u044d\u043d\u0435\u0440\u0433\u043e\u043f\u043e\u0442\u0440\u0435\u0431\u043b\u0435\u043d\u0438\u0435 (\u0440\u0430\u0431\u043e\u0447\u0435\u0435/\u0445\u043e\u043b\u043e\u0441\u0442\u043e\u0435), \u0441\u043e\u0431\u044b\u0442\u0438\u044f \u043f\u043e \u043a\u0430\u0436\u0434\u043e\u0439 \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u0430\u043d\u043d\u043e\u0439 \u0434\u0435\u0442\u0430\u043b\u0438, \u0438\u043d\u0442\u0435\u0440\u0432\u0430\u043b\u044b \u0441\u043e\u0441\u0442\u043e\u044f\u043d\u0438\u0439"
+    ],
+    "goals": "\u043e\u0446\u0435\u043d\u043a\u0430 \u043f\u0440\u043e\u043f\u0443\u0441\u043a\u043d\u043e\u0439 \u0441\u043f\u043e\u0441\u043e\u0431\u043d\u043e\u0441\u0442\u0438 \u043b\u0438\u043d\u0438\u0438, WIP, \u0443\u0434\u0435\u043b\u044c\u043d\u043e\u0433\u043e \u044d\u043d\u0435\u0440\u0433\u043e\u043f\u043e\u0442\u0440\u0435\u0431\u043b\u0435\u043d\u0438\u044f \u043d\u0430 \u0434\u0435\u0442\u0430\u043b\u044c, \u0438 \u043c\u043e\u043d\u0438\u0442\u043e\u0440\u0438\u043d\u0433 \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u0438 \u043c\u0430\u0448\u0438\u043d M1-M5",
+    "data_sources": "\u0441\u043e\u0431\u044b\u0442\u0438\u044f \u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u0443\u044e\u0442\u0441\u044f \u043f\u043e \u043a\u0430\u0436\u0434\u043e\u0439 \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u0430\u043d\u043d\u043e\u0439 \u0434\u0435\u0442\u0430\u043b\u0438, \u0438\u043d\u0442\u0435\u0440\u0432\u0430\u043b\u044b \u0441\u043e\u0441\u0442\u043e\u044f\u043d\u0438\u0439 \u0438 \u044d\u043d\u0435\u0440\u0433\u043e\u043f\u043e\u0442\u0440\u0435\u0431\u043b\u0435\u043d\u0438\u0435 \u0437\u0430\u043f\u0438\u0441\u044b\u0432\u0430\u044e\u0442\u0441\u044f \u043d\u0435\u043f\u0440\u0435\u0440\u044b\u0432\u043d\u043e",
+    "update_frequency": "\u0441\u043e\u0431\u044b\u0442\u0438\u044f \u0438 \u0438\u043d\u0442\u0435\u0440\u0432\u0430\u043b\u044b \u043e\u0431\u043d\u043e\u0432\u043b\u044f\u044e\u0442\u0441\u044f \u043d\u0435\u043f\u0440\u0435\u0440\u044b\u0432\u043d\u043e, \u044d\u043d\u0435\u0440\u0433\u043e\u043f\u043e\u0442\u0440\u0435\u0431\u043b\u0435\u043d\u0438\u0435 - \u043f\u0440\u0438 \u043a\u0430\u0436\u0434\u043e\u043c \u0438\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u0438",
+    "critical_parameters": {
+      "\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u044c \u043c\u0430\u0448\u0438\u043d": "0.97 \u0434\u043b\u044f M1-M5",
+      "MTTR": "900 \u0441 \u0434\u043b\u044f M1, 1000 \u0441 \u0434\u043b\u044f M2, 1200 \u0441 \u0434\u043b\u044f M3, 1400 \u0441 \u0434\u043b\u044f M4, 1100 \u0441 \u0434\u043b\u044f M5, 1000 \u0441 \u0434\u043b\u044f M6",
+      "\u0432\u0440\u0435\u043c\u044f \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0438 \u043d\u0430 \u0441\u0442\u0430\u043d\u0446\u0438\u044e": "200 \u0441 \u0434\u043b\u044f M1, 220 \u0441 \u0434\u043b\u044f M2, 240 \u0441 \u0434\u043b\u044f M3, 260 \u0441 \u0434\u043b\u044f M4, 230 \u0441 \u0434\u043b\u044f M5, 210 \u0441 \u0434\u043b\u044f M6",
+      "\u044d\u043d\u0435\u0440\u0433\u043e\u043f\u043e\u0442\u0440\u0435\u0431\u043b\u0435\u043d\u0438\u0435 (\u0440\u0430\u0431\u043e\u0447\u0435\u0435/\u0445\u043e\u043b\u043e\u0441\u0442\u043e\u0435)": "5.0/0.5 \u043a\u0412\u0442 \u0434\u043b\u044f M1, 5.5/0.55 \u043a\u0412\u0442 \u0434\u043b\u044f M2, 6.0/0.6 \u043a\u0412\u0442 \u0434\u043b\u044f M6, 6.5/0.65 \u043a\u0412\u0442 \u0434\u043b\u044f M5, 7.0/0.7 \u043a\u0412\u0442 \u0434\u043b\u044f M4, 6.0/0.6 \u043a\u0412\u0442 \u0434\u043b\u044f M3",
+      "\u0443\u0440\u043e\u0432\u043d\u0438 \u0437\u0430\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u044f \u0431\u0443\u0444\u0435\u0440\u043e\u0432": "10 \u0441",
+      "\u0438\u043d\u0442\u0435\u0440\u0432\u0430\u043b \u043f\u0440\u0438\u0445\u043e\u0434\u0430 \u0434\u0435\u0442\u0430\u043b\u0435\u0439": "300 \u0441",
+      "\u043f\u0440\u043e\u043f\u0443\u0441\u043a\u043d\u0430\u044f \u0441\u043f\u043e\u0441\u043e\u0431\u043d\u043e\u0441\u0442\u044c \u043b\u0438\u043d\u0438\u0438": "\u0437\u0430\u0432\u0438\u0441\u0438\u0442 \u043e\u0442 \u043f\u0440\u043e\u0446\u0435\u0441\u0441\u043d\u043e\u0433\u043e \u0432\u0440\u0435\u043c\u0435\u043d\u0438 \u0438 \u0431\u0443\u0444\u0435\u0440\u043e\u0432",
+      "WIP": "\u0437\u0430\u0432\u0438\u0441\u0438\u0442 \u043e\u0442 \u0437\u0430\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u044f \u0431\u0443\u0444\u0435\u0440\u043e\u0432 \u0438 \u0437\u0430\u0434\u0435\u0440\u0436\u0435\u043a \u0432 \u043f\u0440\u043e\u0446\u0435\u0441\u0441\u0435"
+    },
+    "additional_info": "\u043d\u0435\u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043e - \u0446\u0438\u0444\u0440\u043e\u0432\u043e\u0439 \u0434\u0432\u043e\u0439\u043d\u0438\u043a \u0431\u0443\u0434\u0435\u0442 \u043f\u043e\u0441\u0442\u0440\u043e\u0435\u043d \u043f\u043e \u043f\u0440\u0435\u0434\u043e\u0441\u0442\u0430\u0432\u043b\u0435\u043d\u043d\u044b\u043c \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u043c"
+  },
+  "schema": {
+    "raw": ""
+  },
+  "dt_config": {
+    "components": {
+      "data_collection_modules": [
+        {
+          "name": "sensor_data_collector",
+          "type": "IoT Gateway",
+          "description": "Collects real-time sensor data from machines and buffers",
+          "protocols": [
+            "MQTT",
+            "OPC-UA"
+          ],
+          "frequency": "continuous"
+        },
+        {
+          "name": "event_logger",
+          "type": "Event Processor",
+          "description": "Logs detailed events for each processed part",
+          "protocols": [
+            "REST"
+          ],
+          "frequency": "continuous"
+        }
+      ],
+      "analytics_engines": [
+        {
+          "name": "real_time_analytics_engine",
+          "type": "Stream Processing Engine",
+          "description": "Processes continuous streams of data for real-time KPI calculation",
+          "protocols": [
+            "WebSocket"
+          ],
+          "frequency": "continuous"
+        },
+        {
+          "name": "historical_analytics_engine",
+          "type": "Batch Processing Engine",
+          "description": "Analyzes historical data for trend analysis and optimization",
+          "protocols": [
+            "REST"
+          ],
+          "frequency": "hourly"
+        }
+      ],
+      "ml_models": [
+        {
+          "name": "availability_prediction_model",
+          "type": "Machine Learning Model",
+          "description": "Predicts machine availability based on historical data",
+          "protocols": [
+            "REST"
+          ],
+          "frequency": "daily"
+        },
+        {
+          "name": "energy_consumption_model",
+          "type": "Machine Learning Model",
+          "description": "Estimates energy consumption per part",
+          "protocols": [
+            "REST"
+          ],
+          "frequency": "daily"
+        }
+      ],
+      "visualization_dashboards": [
+        {
+          "name": "production_dashboard",
+          "type": "Web Dashboard",
+          "description": "Main dashboard showing line status, KPIs, and alerts",
+          "protocols": [
+            "WebSocket"
+          ],
+          "frequency": "real-time"
+        },
+        {
+          "name": "machine_health_dashboard",
+          "type": "Web Dashboard",
+          "description": "Detailed view of machine health and maintenance schedules",
+          "protocols": [
+            "WebSocket"
+          ],
+          "frequency": "real-time"
+        }
+      ]
+    },
+    "data_flows": [
+      {
+        "source": "sensor_data_collector",
+        "destination": "real_time_analytics_engine",
+        "protocol": "MQTT",
+        "frequency": "continuous",
+        "description": "Continuous stream of sensor data for real-time processing"
+      },
+      {
+        "source": "event_logger",
+        "destination": "real_time_analytics_engine",
+        "protocol": "REST",
+        "frequency": "continuous",
+        "description": "Event logs for detailed part tracking"
+      },
+      {
+        "source": "real_time_analytics_engine",
+        "destination": "production_dashboard",
+        "protocol": "WebSocket",
+        "frequency": "real-time",
+        "description": "Live KPI updates for production dashboard"
+      },
+      {
+        "source": "historical_analytics_engine",
+        "destination": "production_dashboard",
+        "protocol": "REST",
+        "frequency": "hourly",
+        "description": "Historical trends and reports"
+      },
+      {
+        "source": "real_time_analytics_engine",
+        "destination": "availability_prediction_model",
+        "protocol": "REST",
+        "frequency": "daily",
+        "description": "Data input for predictive models"
+      },
+      {
+        "source": "real_time_analytics_engine",
+        "destination": "energy_consumption_model",
+        "protocol": "REST",
+        "frequency": "daily",
+        "description": "Data input for energy prediction models"
+      }
+    ],
+    "visualization": {
+      "dashboard_layout": {
+        "main_dashboard": {
+          "widgets": [
+            {
+              "type": "gauge",
+              "title": "Line Throughput",
+              "metric": "throughput",
+              "target_value": "18 parts/hour",
+              "color_scheme": "green"
+            },
+            {
+              "type": "chart",
+              "title": "WIP Over Time",
+              "metric": "wip",
+              "color_scheme": "blue"
+            },
+            {
+              "type": "table",
+              "title": "Machine Availability",
+              "metric": "availability",
+              "color_scheme": "yellow"
+            },
+            {
+              "type": "map",
+              "title": "Buffer Status",
+              "metric": "buffer_levels",
+              "color_scheme": "red"
+            }
+          ],
+          "refresh_rate": "1 second"
+        },
+        "machine_health_dashboard": {
+          "widgets": [
+            {
+              "type": "gauge",
+              "title": "MTTR",
+              "metric": "mttr",
+              "target_value": "1000 seconds",
+              "color_scheme": "green"
+            },
+            {
+              "type": "chart",
+              "title": "Energy Consumption",
+              "metric": "energy_consumption",
+              "color_scheme": "orange"
+            },
+            {
+              "type": "status_indicator",
+              "title": "Machine Status",
+              "metric": "machine_status",
+              "color_scheme": "red"
+            }
+          ],
+          "refresh_rate": "5 seconds"
+        }
+      }
+    },
+    "alerts": [
+      {
+        "name": "low_availability_alert",
+        "severity": "warning",
+        "threshold": 0.95,
+        "metric": "availability",
+        "description": "Alert when machine availability drops below threshold",
+        "action": "notify_operator"
+      },
+      {
+        "name": "high_energy_consumption_alert",
+        "severity": "critical",
+        "threshold": 10.0,
+        "metric": "energy_consumption_per_part",
+        "description": "Alert when energy consumption exceeds normal range",
+        "action": "log_event"
+      },
+      {
+        "name": "buffer_overflow_alert",
+        "severity": "emergency",
+        "threshold": 10,
+        "metric": "buffer_level",
+        "description": "Alert when buffer level reaches maximum capacity",
+        "action": "pause_production"
+      },
+      {
+        "name": "machine_failure_alert",
+        "severity": "emergency",
+        "threshold": 0.0,
+        "metric": "machine_status",
+        "description": "Alert when machine status indicates failure",
+        "action": "trigger_maintenance"
+      }
+    ],
+    "kpis": [
+      {
+        "name": "line_throughput",
+        "description": "Number of parts produced per hour",
+        "target_value": "18 parts/hour",
+        "measurement_method": "count of completed parts over time window",
+        "unit": "parts/hour"
+      },
+      {
+        "name": "work_in_progress",
+        "description": "Number of parts currently in process or waiting",
+        "target_value": "10 parts",
+        "measurement_method": "sum of parts in all buffers",
+        "unit": "parts"
+      },
+      {
+        "name": "energy_per_part",
+        "description": "Average energy consumed per part",
+        "target_value": "5.5 kWh/part",
+        "measurement_method": "total energy / number of parts",
+        "unit": "kWh/part"
+      },
+      {
+        "name": "machine_availability",
+        "description": "Percentage of time machines are operational",
+        "target_value": "97%",
+        "measurement_method": "operational_time / total_time",
+        "unit": "%"
+      },
+      {
+        "name": "mttr",
+        "description": "Mean Time To Repair",
+        "target_value": "1000 seconds",
+        "measurement_method": "average repair time",
+        "unit": "seconds"
+      }
+    ]
+  },
+  "dt_simulation": "```python\nimport pychrono as chrono\nimport pychrono.irrlicht as chronoirr\nimport numpy as np\nimport time\nimport csv\nfrom datetime import datetime\nimport threading\nimport queue\n\n# Initialize PyChrono system\nchrono.SetChronoDataPath('path_to_chrono_data')  # Replace with actual path\nsystem = chrono.ChSystemNSC()\nsystem.SetGravitationalAcceleration(chrono.ChVectorD(0, 0, 0))\n\n# Constants\nTIME_STEP = 0.01\nSIMULATION_TIME = 36000  # 10 hours of simulation\n\n# Equipment parameters\nmachine_params = {\n    'M1': {'processing_time': 200, 'availability': 0.97, 'mttr': 900, 'power_working': 5.0, 'power_idle': 0.5},\n    'M2': {'processing_time': 220, 'availability': 0.97, 'mttr': 1000, 'power_working': 5.5, 'power_idle': 0.55},\n    'M3': {'processing_time': 240, 'availability': 0.97, 'mttr': 1200, 'power_working': 6.0, 'power_idle': 0.6},\n    'M4': {'processing_time': 260, 'availability': 0.97, 'mttr': 1400, 'power_working': 7.0, 'power_idle': 0.7},\n    'M5': {'processing_time': 230, 'availability': 0.97, 'mttr': 1100, 'power_working': 6.5, 'power_idle': 0.65},\n    'M6': {'processing_time': 210, 'availability': 0.97, 'mttr': 1000, 'power_working': 6.0, 'power_idle': 0.6}\n}\n\nbuffer_capacity = 10  # seconds worth of parts\n\n# Global data storage\nsensor_data = []\nmachine_states = {}\nmachine_power_data = {}\n\nclass Part:\n    def __init__(self, part_id):\n        self.id = part_id\n        self.processing_start_time = None\n        self.processing_end_time = None\n        self.current_machine = None\n        self.buffer_entry_time = None\n        self.wip_start_time = None\n\nclass Machine:\n    def __init__(self, name, processing_time, availability, mttr, power_working, power_idle):\n        self.name = name\n        self.processing_time = processing_time\n        self.availability = availability\n        self.mttr = mttr\n        self.power_working = power_working\n        self.power_idle = power_idle\n        self.is_operational = True\n        self.failure_time = 0\n        self.last_failure_start = 0\n        self.total_downtime = 0\n        self.state = 'IDLE'  # IDLE, PROCESSING, FAILED\n        self.parts_processed = 0\n        self.energy_consumed = 0.0\n        self.power_state = 'IDLE'\n        \n    def update_state(self, current_time):\n        if self.state == 'FAILED':\n            if current_time - self.failure_time >= self.mttr:\n                self.state = 'IDLE'\n                self.is_operational = True\n                self.total_downtime += current_time - self.failure_time\n        elif self.state == 'PROCESSING':\n            pass  # Processing continues until completion\n            \n    def simulate_failure(self, current_time):\n        if self.is_operational and np.random.rand() < (1 - self.availability) * TIME_STEP:\n            self.is_operational = False\n            self.state = 'FAILED'\n            self.failure_time = current_time\n            return True\n        return False\n        \n    def get_power_consumption(self):\n        if self.power_state == 'WORKING':\n            return self.power_working\n        else:\n            return self.power_idle\n\nclass Buffer:\n    def __init__(self, name, capacity):\n        self.name = name\n        self.capacity = capacity\n        self.parts = []\n        self.current_fill = 0\n        self.entry_times = []\n        \n    def add_part(self, part, entry_time):\n        if len(self.parts) < self.capacity:\n            self.parts.append(part)\n            self.current_fill += 1\n            self.entry_times.append(entry_time)\n            return True\n        return False\n        \n    def remove_part(self):\n        if self.parts:\n            part = self.parts.pop(0)\n            self.current_fill -= 1\n            return part\n        return None\n\nclass Source:\n    def __init__(self, interval):\n        self.interval = interval\n        self.last_spawn_time = 0\n        self.part_counter = 0\n        \n    def should_spawn(self, current_time):\n        return current_time - self.last_spawn_time >= self.interval\n\n# Create machines\nmachines = {}\nfor name, params in machine_params.items():\n    machines[name] = Machine(name, **params)\n\n# Create buffers\nbuffers = {}\nfor i in range(6):\n    buffers[f'B{i}'] = Buffer(f'B{i}', buffer_capacity)\n\n# Create source\nsource = Source(300)  # 300 seconds interval\n\n# Create parts list\nparts = []\n\n# Simulation data logging\ndef log_sensor_data(part, machine_name, event_type, timestamp):\n    \"\"\"Log sensor data according to database schema\"\"\"\n    data = {\n        'timestamp': timestamp,\n        'part_id': part.id,\n        'machine_name': machine_name,\n        'event_type': event_type,\n        'processing_time': part.processing_end_time - part.processing_start_time if part.processing_end_time else 0,\n        'wip': len(parts),\n        'buffer_fill': {name: buf.current_fill for name, buf in buffers.items()},\n        'energy_consumption': machines[machine_name].energy_consumed if machine_name in machines else 0,\n        'availability': machines[machine_name].availability if machine_name in machines else 0,\n        'mttr': machines[machine_name].mttr if machine_name in machines else 0,\n        'power_state': machines[machine_name].power_state if machine_name in machines else 'IDLE'\n    }\n    sensor_data.append(data)\n\n# Main simulation loop\ncurrent_time = 0\npart_counter = 0\n\n# Initialize parts list\nfor i in range(10):\n    parts.append(Part(i+1))\n\n# Start simulation\nprint(\"Starting simulation...\")\nstart_time = time.time()\n\nwhile current_time < SIMULATION_TIME:\n    # Spawn new parts from source\n    if source.should_spawn(current_time):\n        part_counter += 1\n        part = Part(part_counter)\n        part.wip_start_time = current_time\n        parts.append(part)\n        source.last_spawn_time = current_time\n        log_sensor_data(part, 'SOURCE', 'PART_SPAWNED', current_time)\n    \n    # Process each machine\n    for name, machine in machines.items():\n        machine.update_state(current_time)\n        \n        # Simulate machine failure\n        if machine.simulate_failure(current_time):\n            log_sensor_data(part, name, 'FAILURE', current_time)\n            \n        # If machine is operational and idle, try to process a part\n        if machine.is_operational and machine.state == 'IDLE':\n            # Find first available part in buffer\n            buffer_name = f'B{ord(name[1]) - ord(\"1\")}'\n            if buffer_name in buffers and buffers[buffer_name].parts:\n                part = buffers[buffer_name].remove_part()\n                if part:\n                    part.processing_start_time = current_time\n                    part.current_machine = name\n                    machine.state = 'PROCESSING'\n                    machine.parts_processed += 1\n                    machine.power_state = 'WORKING'\n                    log_sensor_data(part, name, 'PROCESSING_STARTED', current_time)\n                    \n        # Check if processing is done\n        elif machine.state == 'PROCESSING':\n            if current_time - part.processing_start_time >= machine.processing_time:\n                part.processing_end_time = current_time\n                machine.state = 'IDLE'\n                machine.power_state = 'IDLE'\n                machine.energy_consumed += machine.power_working * machine.processing_time\n                \n                # Move to next buffer\n                next_buffer = f'B{ord(name[1]) - ord(\"1\") + 1}'\n                if next_buffer in buffers:\n                    if not buffers[next_buffer].add_part(part, current_time):\n                        # If buffer full, put back in same buffer\n                        buffers[buffer_name].add_part(part, current_time)\n                        \n                log_sensor_data(part, name, 'PROCESSING_COMPLETED', current_time)\n    \n    # Update buffer states\n    for name, buffer in buffers.items():\n        buffer.current_fill = len(buffer.parts)\n    \n    # Update time\n    current_time += TIME_STEP\n    \n    # Log continuous data every second\n    if int(current_time) % 1 == 0:\n        timestamp = current_time\n        for name, machine in machines.items():\n            machine_data = {\n                'timestamp': timestamp,\n                'machine_name': name,\n                'state': machine.state,\n                'is_operational': machine.is_operational,\n                'total_downtime': machine.total_downtime,\n                'parts_processed': machine.parts_processed,\n                'energy_consumption': machine.energy_consumed,\n                'current_power': machine.get_power_consumption()\n            }\n            machine_power_data.setdefault(timestamp, []).append(machine_data)\n\n# Write data to CSV files\nwith open('sensor_data.csv', 'w', newline='') as csvfile:\n    fieldnames = ['timestamp', 'part_id', 'machine_name', 'event_type', 'processing_time', \n                  'wip', 'buffer_fill', 'energy_consumption', 'availability', 'mttr', 'power_state']\n    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)\n    writer.writeheader()\n    for row in sensor_data:\n        writer.writerow(row)\n\nwith open('machine_power_data.csv', 'w', newline='') as csvfile:\n    fieldnames = ['timestamp', 'machine_name', 'state', 'is_operational', 'total_downtime',\n                  'parts_processed', 'energy_consumption', 'current_power']\n    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)\n    writer.writeheader()\n    for timestamp, machine_list in machine_power_data.items():\n        for machine in machine_list:\n            writer.writerow(machine)\n\nprint(\"Simulation completed.\")\nprint(f\"Total runtime: {time.time() - start_time:.2f} seconds\")\nprint(f\"Total parts processed: {len(sensor_data)}\")\nprint(\"Data saved to sensor_data.csv and machine_power_data.csv\")\n\n# Print summary statistics\nprint(\"\\nSummary Statistics:\")\nfor name, machine in machines.items():\n    print(f\"{name}: Parts processed = {machine.parts_processed}, \"\n          f\"Energy consumed = {machine.energy_consumed:.2f} kWh, \"\n          f\"Total downtime = {machine.total_downtime:.2f} s\")\n```"
+}

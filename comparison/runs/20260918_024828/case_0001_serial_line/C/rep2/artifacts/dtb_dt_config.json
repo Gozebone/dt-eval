@@ -1,0 +1,294 @@
+{
+  "components": {
+    "data_collection_modules": {
+      "opcua_server_m1": {
+        "type": "OPC-UA Server",
+        "description": "Collects real-time data from M1",
+        "protocol": "OPC-UA",
+        "update_frequency": "real-time"
+      },
+      "opcua_server_m2": {
+        "type": "OPC-UA Server",
+        "description": "Collects real-time data from M2",
+        "protocol": "OPC-UA",
+        "update_frequency": "real-time"
+      },
+      "opcua_server_m3": {
+        "type": "OPC-UA Server",
+        "description": "Collects real-time data from M3",
+        "protocol": "OPC-UA",
+        "update_frequency": "real-time"
+      },
+      "opcua_server_m4": {
+        "type": "OPC-UA Server",
+        "description": "Collects real-time data from M4",
+        "protocol": "OPC-UA",
+        "update_frequency": "real-time"
+      },
+      "opcua_server_m5": {
+        "type": "OPC-UA Server",
+        "description": "Collects real-time data from M5",
+        "protocol": "OPC-UA",
+        "update_frequency": "real-time"
+      },
+      "mqtt_buffer_monitor": {
+        "type": "MQTT Client",
+        "description": "Monitors buffer levels B0-B4",
+        "protocol": "MQTT",
+        "update_frequency": "real-time"
+      },
+      "mqtt_energy_monitor": {
+        "type": "MQTT Client",
+        "description": "Monitors energy consumption per machine",
+        "protocol": "MQTT",
+        "update_frequency": "real-time"
+      }
+    },
+    "analytics_engines": {
+      "kpi_calculator": {
+        "type": "Analytics Engine",
+        "description": "Calculates key performance indicators",
+        "processing_method": "streaming"
+      },
+      "wip_analyzer": {
+        "type": "Analytics Engine",
+        "description": "Analyzes work-in-progress across buffers",
+        "processing_method": "streaming"
+      },
+      "energy_analyzer": {
+        "type": "Analytics Engine",
+        "description": "Analyzes energy consumption per part",
+        "processing_method": "streaming"
+      }
+    },
+    "ml_models": {
+      "availability_forecaster": {
+        "type": "ML Model",
+        "description": "Predicts future availability of machines",
+        "model_type": "Time Series Forecasting",
+        "input_data": [
+          "machine_status",
+          "mttr"
+        ]
+      },
+      "capacity_optimizer": {
+        "type": "ML Model",
+        "description": "Optimizes production line capacity",
+        "model_type": "Reinforcement Learning",
+        "input_data": [
+          "buffer_levels",
+          "machine_status",
+          "process_times"
+        ]
+      }
+    },
+    "visualization_dashboards": {
+      "production_dashboard": {
+        "type": "Dashboard",
+        "description": "Main dashboard showing production status",
+        "widgets": [
+          "line_chart",
+          "gauge",
+          "table"
+        ],
+        "refresh_rate": "1s"
+      },
+      "machine_health_dashboard": {
+        "type": "Dashboard",
+        "description": "Detailed view of machine health",
+        "widgets": [
+          "status_indicators",
+          "alerts_panel"
+        ],
+        "refresh_rate": "5s"
+      }
+    }
+  },
+  "data_flows": {
+    "m1_to_kpi_calculator": {
+      "source": "opcua_server_m1",
+      "destination": "kpi_calculator",
+      "protocol": "OPC-UA",
+      "update_frequency": "real-time"
+    },
+    "m2_to_kpi_calculator": {
+      "source": "opcua_server_m2",
+      "destination": "kpi_calculator",
+      "protocol": "OPC-UA",
+      "update_frequency": "real-time"
+    },
+    "m3_to_kpi_calculator": {
+      "source": "opcua_server_m3",
+      "destination": "kpi_calculator",
+      "protocol": "OPC-UA",
+      "update_frequency": "real-time"
+    },
+    "m4_to_kpi_calculator": {
+      "source": "opcua_server_m4",
+      "destination": "kpi_calculator",
+      "protocol": "OPC-UA",
+      "update_frequency": "real-time"
+    },
+    "m5_to_kpi_calculator": {
+      "source": "opcua_server_m5",
+      "destination": "kpi_calculator",
+      "protocol": "OPC-UA",
+      "update_frequency": "real-time"
+    },
+    "buffer_levels_to_wip_analyzer": {
+      "source": "mqtt_buffer_monitor",
+      "destination": "wip_analyzer",
+      "protocol": "MQTT",
+      "update_frequency": "real-time"
+    },
+    "energy_consumption_to_energy_analyzer": {
+      "source": "mqtt_energy_monitor",
+      "destination": "energy_analyzer",
+      "protocol": "MQTT",
+      "update_frequency": "real-time"
+    },
+    "kpi_calculator_to_production_dashboard": {
+      "source": "kpi_calculator",
+      "destination": "production_dashboard",
+      "protocol": "REST",
+      "update_frequency": "1s"
+    },
+    "wip_analyzer_to_production_dashboard": {
+      "source": "wip_analyzer",
+      "destination": "production_dashboard",
+      "protocol": "REST",
+      "update_frequency": "1s"
+    },
+    "energy_analyzer_to_production_dashboard": {
+      "source": "energy_analyzer",
+      "destination": "production_dashboard",
+      "protocol": "REST",
+      "update_frequency": "1s"
+    },
+    "availability_forecaster_to_machine_health_dashboard": {
+      "source": "availability_forecaster",
+      "destination": "machine_health_dashboard",
+      "protocol": "WebSocket",
+      "update_frequency": "5s"
+    }
+  },
+  "visualization": {
+    "dashboard_layout": {
+      "main_dashboard": {
+        "rows": [
+          {
+            "widgets": [
+              {
+                "type": "line_chart",
+                "title": "Production Rate Over Time",
+                "color_scheme": "#4CAF50"
+              },
+              {
+                "type": "gauge",
+                "title": "Overall Line Availability",
+                "color_scheme": "#FF9800"
+              }
+            ]
+          },
+          {
+            "widgets": [
+              {
+                "type": "table",
+                "title": "Buffer Levels",
+                "color_scheme": "#2196F3"
+              },
+              {
+                "type": "table",
+                "title": "Energy Consumption",
+                "color_scheme": "#9C27B0"
+              }
+            ]
+          }
+        ]
+      },
+      "machine_health_dashboard": {
+        "rows": [
+          {
+            "widgets": [
+              {
+                "type": "status_indicators",
+                "title": "Machine Status",
+                "color_scheme": "#E91E63"
+              }
+            ]
+          },
+          {
+            "widgets": [
+              {
+                "type": "alerts_panel",
+                "title": "Alerts Summary",
+                "color_scheme": "#F44336"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "alerts": {
+    "threshold_alerts": [
+      {
+        "component": "M1",
+        "parameter": "availability",
+        "threshold_value": 0.98,
+        "severity": "warning",
+        "message": "M1 availability below threshold"
+      },
+      {
+        "component": "M2",
+        "parameter": "availability",
+        "threshold_value": 0.97,
+        "severity": "warning",
+        "message": "M2 availability below threshold"
+      },
+      {
+        "component": "M3",
+        "parameter": "availability",
+        "threshold_value": 0.95,
+        "severity": "warning",
+        "message": "M3 availability below threshold"
+      },
+      {
+        "component": "M4",
+        "parameter": "availability",
+        "threshold_value": 0.97,
+        "severity": "warning",
+        "message": "M4 availability below threshold"
+      },
+      {
+        "component": "M5",
+        "parameter": "availability",
+        "threshold_value": 0.98,
+        "severity": "warning",
+        "message": "M5 availability below threshold"
+      }
+    ]
+  },
+  "kpis": {
+    "throughput": {
+      "target_value": "100 parts/hour",
+      "measurement_method": "count of processed parts over time window",
+      "unit": "parts/hour"
+    },
+    "wip": {
+      "target_value": "< 40 parts",
+      "measurement_method": "sum of parts in all buffers",
+      "unit": "parts"
+    },
+    "specific_energy_consumption": {
+      "target_value": "< 2.5 kWh/part",
+      "measurement_method": "total energy consumed / total parts processed",
+      "unit": "kWh/part"
+    },
+    "machine_availability": {
+      "target_value": "> 95%",
+      "measurement_method": "uptime / (uptime + downtime)",
+      "unit": "%"
+    }
+  }
+}

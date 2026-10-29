@@ -1,0 +1,96 @@
+{
+  "production_type": "serial production line",
+  "processes": [
+    "M1",
+    "M2",
+    "M3"
+  ],
+  "equipment": [
+    "M1",
+    "M2",
+    "M3",
+    "B0",
+    "B1",
+    "B2"
+  ],
+  "sensors": [
+    "Avg_Time_per_part_s",
+    "Availability_%",
+    "MTTR_s",
+    "EnergyIdling",
+    "EnergyWorking"
+  ],
+  "goals": "Simulate the production line for 432000 seconds with a single source, 3 machines in series, and a single sink.",
+  "data_sources": "The provided JSON data with machine, buffer, and source information.",
+  "update_frequency": "The data is static and provided in the JSON format.",
+  "critical_parameters": {
+    "Avg_Time_per_part_s": "90",
+    "Availability_%": "99",
+    "MTTR_s": "600",
+    "EnergyIdling": "0.3",
+    "EnergyWorking": "3.0"
+  },
+  "line": {
+    "topology": "serial",
+    "source": {
+      "inter_arrival_time_s": 60
+    },
+    "stations": [
+      {
+        "id": "M1",
+        "processing_time_s": 90,
+        "availability_pct": 100,
+        "mttr_s": 600,
+        "power_working_kw": 3.0,
+        "power_idle_kw": 0.3
+      },
+      {
+        "id": "M2",
+        "processing_time_s": 70,
+        "availability_pct": 99,
+        "mttr_s": 900,
+        "power_working_kw": 4.5,
+        "power_idle_kw": 0.45
+      },
+      {
+        "id": "M3",
+        "processing_time_s": 110,
+        "availability_pct": 100,
+        "mttr_s": 1200,
+        "power_working_kw": 6.0,
+        "power_idle_kw": 0.6
+      }
+    ],
+    "buffers": [
+      {
+        "id": "B0",
+        "capacity": 15,
+        "before": "source",
+        "after": "M1"
+      },
+      {
+        "id": "B1",
+        "capacity": 5,
+        "before": "M1",
+        "after": "M2"
+      },
+      {
+        "id": "B2",
+        "capacity": 5,
+        "before": "M2",
+        "after": "M3"
+      }
+    ]
+  },
+  "des_horizon": {
+    "warmup_s": 0,
+    "window_s": 432000,
+    "replications": 1
+  },
+  "units": {
+    "time": "s",
+    "power": "kW",
+    "energy": "kWh"
+  },
+  "additional_info": "The simulation should be run for at least 5 days (432000 seconds) at module level, with a single source, 3 machines in series, and a single sink."
+}

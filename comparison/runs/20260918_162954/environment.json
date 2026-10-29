@@ -1,0 +1,15 @@
+{
+  "mode": "real",
+  "methods": [
+    "A"
+  ],
+  "repetitions": 3,
+  "cases": [
+    "case_0005_high_rate_line"
+  ],
+  "timestamp": "20260918_162954",
+  "models": {
+    "A": "FactoryFlow (google/gemini-3.1-pro-preview via OpenRouter)",
+    "B": "LLM-DES-Modeling (gpt-5.1 builder/inspector via OpenRouter)"
+  }
+}

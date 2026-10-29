@@ -1,0 +1,306 @@
+{
+  "components": {
+    "data_collection": {
+      "modules": [
+        {
+          "name": "SensorDataCollector_M1",
+          "type": "data_collector",
+          "description": "Collects continuous sensor data from M1 station",
+          "protocol": "MQTT",
+          "frequency": "continuous"
+        },
+        {
+          "name": "SensorDataCollector_M2",
+          "type": "data_collector",
+          "description": "Collects continuous sensor data from M2 station",
+          "protocol": "MQTT",
+          "frequency": "continuous"
+        },
+        {
+          "name": "SensorDataCollector_M3",
+          "type": "data_collector",
+          "description": "Collects continuous sensor data from M3 station",
+          "protocol": "MQTT",
+          "frequency": "continuous"
+        },
+        {
+          "name": "EventLogger",
+          "type": "event_logger",
+          "description": "Logs events for each processed part",
+          "protocol": "REST",
+          "frequency": "per_part"
+        }
+      ]
+    },
+    "analytics_engine": {
+      "engines": [
+        {
+          "name": "ProcessAnalyticsEngine",
+          "type": "analytics_engine",
+          "description": "Analyzes process data to compute KPIs",
+          "protocol": "WebSocket",
+          "frequency": "real-time"
+        }
+      ]
+    },
+    "ml_models": {
+      "models": [
+        {
+          "name": "CapacityEstimator",
+          "type": "ml_model",
+          "description": "Predicts line capacity based on historical data",
+          "protocol": "REST",
+          "frequency": "periodic"
+        },
+        {
+          "name": "EnergyConsumptionModel",
+          "type": "ml_model",
+          "description": "Models energy consumption per part",
+          "protocol": "REST",
+          "frequency": "periodic"
+        }
+      ]
+    },
+    "visualization_dashboard": {
+      "dashboard": {
+        "name": "ProductionLineDashboard",
+        "type": "visualization",
+        "description": "Real-time dashboard for monitoring production line",
+        "widgets": [
+          {
+            "name": "KPIWidget",
+            "type": "kpi_card",
+            "description": "Displays key performance indicators"
+          },
+          {
+            "name": "AlertWidget",
+            "type": "alert_list",
+            "description": "Shows active alerts with severity levels"
+          },
+          {
+            "name": "SensorDataWidget",
+            "type": "time_series_chart",
+            "description": "Visualizes continuous sensor data"
+          },
+          {
+            "name": "EventLogWidget",
+            "type": "event_log",
+            "description": "Logs and displays part processing events"
+          }
+        ]
+      }
+    }
+  },
+  "data_flows": {
+    "flows": [
+      {
+        "source": "SensorDataCollector_M1",
+        "destination": "ProcessAnalyticsEngine",
+        "protocol": "MQTT",
+        "frequency": "continuous",
+        "description": "Continuous stream of sensor data from M1"
+      },
+      {
+        "source": "SensorDataCollector_M2",
+        "destination": "ProcessAnalyticsEngine",
+        "protocol": "MQTT",
+        "frequency": "continuous",
+        "description": "Continuous stream of sensor data from M2"
+      },
+      {
+        "source": "SensorDataCollector_M3",
+        "destination": "ProcessAnalyticsEngine",
+        "protocol": "MQTT",
+        "frequency": "continuous",
+        "description": "Continuous stream of sensor data from M3"
+      },
+      {
+        "source": "EventLogger",
+        "destination": "ProcessAnalyticsEngine",
+        "protocol": "REST",
+        "frequency": "per_part",
+        "description": "Events for each processed part"
+      },
+      {
+        "source": "ProcessAnalyticsEngine",
+        "destination": "VisualizationDashboard",
+        "protocol": "WebSocket",
+        "frequency": "real-time",
+        "description": "Real-time updates for dashboard"
+      },
+      {
+        "source": "CapacityEstimator",
+        "destination": "VisualizationDashboard",
+        "protocol": "REST",
+        "frequency": "periodic",
+        "description": "Periodic updates for capacity predictions"
+      },
+      {
+        "source": "EnergyConsumptionModel",
+        "destination": "VisualizationDashboard",
+        "protocol": "REST",
+        "frequency": "periodic",
+        "description": "Periodic updates for energy consumption models"
+      }
+    ]
+  },
+  "visualization": {
+    "layout": {
+      "grid": {
+        "rows": 4,
+        "columns": 4
+      },
+      "widgets": [
+        {
+          "id": "kpi_widget_1",
+          "position": {
+            "row": 0,
+            "column": 0,
+            "width": 2,
+            "height": 1
+          },
+          "widget_type": "kpi_card",
+          "title": "Throughput (parts/hour)"
+        },
+        {
+          "id": "kpi_widget_2",
+          "position": {
+            "row": 0,
+            "column": 2,
+            "width": 2,
+            "height": 1
+          },
+          "widget_type": "kpi_card",
+          "title": "WIP (Work-in-Progress)"
+        },
+        {
+          "id": "kpi_widget_3",
+          "position": {
+            "row": 1,
+            "column": 0,
+            "width": 2,
+            "height": 1
+          },
+          "widget_type": "kpi_card",
+          "title": "Energy Consumption (kWh/part)"
+        },
+        {
+          "id": "alert_widget",
+          "position": {
+            "row": 1,
+            "column": 2,
+            "width": 2,
+            "height": 1
+          },
+          "widget_type": "alert_list",
+          "title": "Active Alerts"
+        },
+        {
+          "id": "sensor_data_widget",
+          "position": {
+            "row": 2,
+            "column": 0,
+            "width": 4,
+            "height": 2
+          },
+          "widget_type": "time_series_chart",
+          "title": "Sensor Data Over Time"
+        },
+        {
+          "id": "event_log_widget",
+          "position": {
+            "row": 4,
+            "column": 0,
+            "width": 4,
+            "height": 2
+          },
+          "widget_type": "event_log",
+          "title": "Event Log"
+        }
+      ]
+    },
+    "color_scheme": {
+      "primary": "#007BFF",
+      "secondary": "#6C757D",
+      "success": "#28A745",
+      "warning": "#FFC107",
+      "danger": "#DC3545",
+      "info": "#17A2B8"
+    },
+    "refresh_rate": "1 second"
+  },
+  "alerts": {
+    "thresholds": [
+      {
+        "parameter": "inter_arrival_s",
+        "threshold": 60,
+        "operator": ">",
+        "severity": "warning",
+        "message": "Inter-arrival time exceeds threshold"
+      },
+      {
+        "parameter": "process_time_s",
+        "threshold": 120,
+        "operator": ">",
+        "severity": "warning",
+        "message": "Processing time exceeds threshold"
+      },
+      {
+        "parameter": "availability",
+        "threshold": 80,
+        "operator": "<",
+        "severity": "critical",
+        "message": "Availability below threshold"
+      },
+      {
+        "parameter": "mttr_s",
+        "threshold": 300,
+        "operator": ">",
+        "severity": "emergency",
+        "message": "MTTR exceeds threshold"
+      },
+      {
+        "parameter": "work_power_kw",
+        "threshold": 50,
+        "operator": ">",
+        "severity": "warning",
+        "message": "Work power exceeds threshold"
+      },
+      {
+        "parameter": "idle_power_kw",
+        "threshold": 10,
+        "operator": ">",
+        "severity": "info",
+        "message": "Idle power exceeds threshold"
+      }
+    ]
+  },
+  "kpis": {
+    "metrics": [
+      {
+        "name": "Throughput",
+        "description": "Number of parts processed per hour",
+        "target_value": 100,
+        "unit": "parts/hour",
+        "calculation_method": "count(processed_parts) / time_period",
+        "source": "EventLogger"
+      },
+      {
+        "name": "WIP",
+        "description": "Work-in-progress parts",
+        "target_value": 20,
+        "unit": "parts",
+        "calculation_method": "sum(parts_in_queue)",
+        "source": "ProcessAnalyticsEngine"
+      },
+      {
+        "name": "Specific Energy Consumption",
+        "description": "Energy consumption per part",
+        "target_value": 1.5,
+        "unit": "kWh/part",
+        "calculation_method": "sum(energy_consumption) / count(processed_parts)",
+        "source": "SensorDataCollector_M1"
+      }
+    ]
+  }
+}

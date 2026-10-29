@@ -1,0 +1,129 @@
+{
+  "production_type": "serial production line",
+  "processes": [
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "M5",
+    "M6"
+  ],
+  "equipment": [
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "M5",
+    "M6"
+  ],
+  "sensors": [
+    "process_time_s",
+    "availability_pct",
+    "mttr_s",
+    "power"
+  ],
+  "goals": "Simulate the system for 432000 seconds (about 5 days) in one go.",
+  "data_sources": "Machines, buffers, and arrival rate.",
+  "update_frequency": "Static (not applicable)",
+  "critical_parameters": {
+    "process_time_s": "Average processing time of each machine",
+    "availability_pct": "Availability percentage of each machine",
+    "mttr_s": "Mean Time To Repair in seconds",
+    "power": "Power consumption in kW"
+  },
+  "line": {
+    "topology": "serial",
+    "source": {
+      "inter_arrival_time_s": 300
+    },
+    "stations": [
+      {
+        "id": "M1",
+        "processing_time_s": 200,
+        "availability_pct": 97,
+        "mttr_s": 900,
+        "power_working_kw": 5.0,
+        "power_idle_kw": 0.5
+      },
+      {
+        "id": "M2",
+        "processing_time_s": 220,
+        "availability_pct": 97,
+        "mttr_s": 1000,
+        "power_working_kw": 5.5,
+        "power_idle_kw": 0.55
+      },
+      {
+        "id": "M3",
+        "processing_time_s": 240,
+        "availability_pct": 96,
+        "mttr_s": 1200,
+        "power_working_kw": 6.0,
+        "power_idle_kw": 0.6
+      },
+      {
+        "id": "M4",
+        "processing_time_s": 260,
+        "availability_pct": 96,
+        "mttr_s": 1400,
+        "power_working_kw": 7.0,
+        "power_idle_kw": 0.7
+      },
+      {
+        "id": "M5",
+        "processing_time_s": 230,
+        "availability_pct": 97,
+        "mttr_s": 1100,
+        "power_working_kw": 6.5,
+        "power_idle_kw": 0.65
+      },
+      {
+        "id": "M6",
+        "processing_time_s": 210,
+        "availability_pct": 97,
+        "mttr_s": 1000,
+        "power_working_kw": 6.0,
+        "power_idle_kw": 0.6
+      }
+    ],
+    "buffers": [
+      {
+        "id": "B0",
+        "capacity": 10
+      },
+      {
+        "id": "B1",
+        "capacity": 10
+      },
+      {
+        "id": "B2",
+        "capacity": 10
+      },
+      {
+        "id": "B3",
+        "capacity": 10
+      },
+      {
+        "id": "B4",
+        "capacity": 10
+      },
+      {
+        "id": "B5",
+        "capacity": 10
+      }
+    ],
+    "defects": {
+      "rate": null
+    }
+  },
+  "des_horizon": {
+    "warmup_s": null,
+    "window_s": null,
+    "replications": null
+  },
+  "units": {
+    "time": "s",
+    "power": "kW"
+  },
+  "additional_info": "The system is a serial production line with 6 machines, buffers, and a source/sink setup. The simulation runs for 432000 seconds (about 5 days)."
+}

@@ -1,0 +1,143 @@
+{
+  "production_type": "serial",
+  "processes": [
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "M5"
+  ],
+  "equipment": [
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "M5",
+    "B0",
+    "B1",
+    "B2",
+    "B3",
+    "B4"
+  ],
+  "sensors": [
+    "M1: process_time_s, availability, mttr_s, work_power_kw, idle_power_kw",
+    "M2: process_time_s, availability, mttr_s, work_power_kw, idle_power_kw",
+    "M3: process_time_s, availability, mttr_s, work_power_kw, idle_power_kw",
+    "M4: process_time_s, availability, mttr_s, work_power_kw, idle_power_kw",
+    "M5: process_time_s, availability, mttr_s, work_power_kw, idle_power_kw",
+    "B0: capacity",
+    "B1: capacity",
+    "B2: capacity",
+    "B3: capacity",
+    "B4: capacity"
+  ],
+  "goals": "simulate the production line for 5 days, track throughput, cycle time, availability, and MTTR",
+  "data_sources": "provided JSON data",
+  "update_frequency": "real-time data from sensors",
+  "critical_parameters": {
+    "M1": "process_time_s: 100, availability: 0.9, mttr_s: 2400",
+    "M2": "process_time_s: 130, availability: 0.92, mttr_s: 3000",
+    "M3": "process_time_s: 90, availability: 0.88, mttr_s: 3600",
+    "M4": "process_time_s: 140, availability: 0.91, mttr_s: 4800",
+    "M5": "process_time_s: 110, availability: 0.93, mttr_s: 2400",
+    "B0": "capacity: 6",
+    "B1": "capacity: 3",
+    "B2": "capacity: 3",
+    "B3": "capacity: 3",
+    "B4": "capacity: 3"
+  },
+  "line": {
+    "topology": "serial",
+    "source": {
+      "inter_arrival_s": 150
+    },
+    "stations": [
+      {
+        "id": "M1",
+        "processing_time_s": 100,
+        "availability_pct": 92.58,
+        "mttr_s": 3206.25,
+        "power_working_kw": 4.0,
+        "power_idle_kw": 0.4
+      },
+      {
+        "id": "M2",
+        "processing_time_s": 130,
+        "availability_pct": 97.36,
+        "mttr_s": 2859.26,
+        "power_working_kw": 5.0,
+        "power_idle_kw": 0.5
+      },
+      {
+        "id": "M3",
+        "processing_time_s": 90,
+        "availability_pct": 94.69,
+        "mttr_s": 2882.82,
+        "power_working_kw": 4.5,
+        "power_idle_kw": 0.45
+      },
+      {
+        "id": "M4",
+        "processing_time_s": 140,
+        "availability_pct": 100.0,
+        "mttr_s": 1099.8,
+        "power_working_kw": 7.0,
+        "power_idle_kw": 0.7
+      },
+      {
+        "id": "M5",
+        "processing_time_s": 110,
+        "availability_pct": 98.23,
+        "mttr_s": 1099.8,
+        "power_working_kw": 5.5,
+        "power_idle_kw": 0.55
+      }
+    ],
+    "buffers": [
+      {
+        "id": "B0",
+        "capacity": 6,
+        "before": "source",
+        "after": "M1"
+      },
+      {
+        "id": "B1",
+        "capacity": 3,
+        "before": "M1",
+        "after": "M2"
+      },
+      {
+        "id": "B2",
+        "capacity": 3,
+        "before": "M2",
+        "after": "M3"
+      },
+      {
+        "id": "B3",
+        "capacity": 3,
+        "before": "M3",
+        "after": "M4"
+      },
+      {
+        "id": "B4",
+        "capacity": 3,
+        "before": "M4",
+        "after": "M5"
+      }
+    ],
+    "defects": {
+      "rate": null
+    }
+  },
+  "des_horizon": {
+    "warmup_s": null,
+    "window_s": null,
+    "replications": null
+  },
+  "units": {
+    "time": "s",
+    "power": "kW",
+    "energy": "kWh"
+  },
+  "additional_info": "real-time data from sensors will be used for updates"
+}

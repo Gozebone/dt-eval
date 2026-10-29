@@ -1,0 +1,229 @@
+{
+  "components": {
+    "data_collection": {
+      "modules": [
+        {
+          "name": "OPC-UA Collector",
+          "type": "data_collector",
+          "description": "Collects real-time data from OPC-UA servers",
+          "protocol": "OPC-UA",
+          "update_frequency": "10s"
+        },
+        {
+          "name": "MQTT Bridge",
+          "type": "data_collector",
+          "description": "Handles data ingestion via MQTT protocol",
+          "protocol": "MQTT",
+          "update_frequency": "5s"
+        }
+      ]
+    },
+    "analytics_engine": {
+      "engine": {
+        "name": "Production Analytics Engine",
+        "type": "analytics",
+        "description": "Processes and analyzes production data in real time",
+        "algorithm": "simulation_based"
+      }
+    },
+    "ml_models": {
+      "models": [
+        {
+          "name": "Predictive Maintenance Model",
+          "type": "ml_model",
+          "description": "Predicts equipment failures based on historical data",
+          "input_features": [
+            "availability",
+            "mttr_s"
+          ],
+          "output": "failure_probability"
+        },
+        {
+          "name": "Energy Consumption Forecast",
+          "type": "ml_model",
+          "description": "Forecasts energy usage for each machine",
+          "input_features": [
+            "work_power_kw",
+            "idle_power_kw",
+            "process_time_s"
+          ],
+          "output": "predicted_energy_kwh"
+        }
+      ]
+    },
+    "visualization": {
+      "dashboard": {
+        "name": "Production Line Dashboard",
+        "type": "visualization",
+        "description": "Real-time monitoring of production line performance",
+        "widgets": [
+          {
+            "type": "gauge",
+            "title": "Line Utilization",
+            "metric": "utilization_percentage"
+          },
+          {
+            "type": "bar_chart",
+            "title": "Machine Uptime",
+            "metric": "machine_uptime"
+          },
+          {
+            "type": "line_chart",
+            "title": "Energy Consumption Over Time",
+            "metric": "energy_consumption_kwh"
+          },
+          {
+            "type": "table",
+            "title": "Buffer Status",
+            "metric": "buffer_status"
+          }
+        ]
+      }
+    }
+  },
+  "data_flows": {
+    "connections": [
+      {
+        "from": "OPC-UA Collector",
+        "to": "Analytics Engine",
+        "protocol": "REST",
+        "frequency": "10s"
+      },
+      {
+        "from": "MQTT Bridge",
+        "to": "Analytics Engine",
+        "protocol": "WebSocket",
+        "frequency": "5s"
+      },
+      {
+        "from": "Analytics Engine",
+        "to": "ML Models",
+        "protocol": "REST",
+        "frequency": "1min"
+      },
+      {
+        "from": "ML Models",
+        "to": "Visualization Dashboard",
+        "protocol": "WebSocket",
+        "frequency": "10s"
+      }
+    ]
+  },
+  "visualization_layout": {
+    "dashboard": {
+      "layout": "grid",
+      "columns": 4,
+      "rows": 3,
+      "widgets": [
+        {
+          "id": "gauge_utilization",
+          "position": [
+            0,
+            0
+          ],
+          "size": [
+            1,
+            1
+          ]
+        },
+        {
+          "id": "bar_uptime",
+          "position": [
+            1,
+            0
+          ],
+          "size": [
+            2,
+            1
+          ]
+        },
+        {
+          "id": "line_energy",
+          "position": [
+            0,
+            1
+          ],
+          "size": [
+            2,
+            1
+          ]
+        },
+        {
+          "id": "table_buffers",
+          "position": [
+            2,
+            1
+          ],
+          "size": [
+            2,
+            1
+          ]
+        }
+      ],
+      "refresh_rate": "10s",
+      "color_scheme": {
+        "primary": "#007bff",
+        "secondary": "#6c757d",
+        "success": "#28a745",
+        "warning": "#ffc107",
+        "danger": "#dc3545"
+      }
+    }
+  },
+  "alerts": {
+    "thresholds": [
+      {
+        "metric": "machine_uptime",
+        "condition": "< 90%",
+        "severity": "warning",
+        "message": "Machine uptime below threshold"
+      },
+      {
+        "metric": "energy_consumption_kwh",
+        "condition": "> 5000 kWh",
+        "severity": "critical",
+        "message": "Energy consumption exceeds limit"
+      },
+      {
+        "metric": "buffer_level",
+        "condition": "< 2 units",
+        "severity": "emergency",
+        "message": "Buffer level critically low"
+      },
+      {
+        "metric": "failure_probability",
+        "condition": "> 0.8",
+        "severity": "critical",
+        "message": "High probability of machine failure"
+      }
+    ]
+  },
+  "kpis": {
+    "metrics": [
+      {
+        "name": "Overall Equipment Effectiveness",
+        "target": "85%",
+        "method": "OEE = Availability * Performance * Quality",
+        "unit": "%"
+      },
+      {
+        "name": "Production Output",
+        "target": "1000 units/day",
+        "method": "Total units produced / Simulation time",
+        "unit": "units"
+      },
+      {
+        "name": "Energy Efficiency",
+        "target": "0.5 kWh/unit",
+        "method": "Total energy consumed / Total units produced",
+        "unit": "kWh/unit"
+      },
+      {
+        "name": "Line Utilization",
+        "target": "90%",
+        "method": "Time spent in production / Total simulation time",
+        "unit": "%"
+      }
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "mode": "mock",
+  "methods": [
+    "C"
+  ],
+  "repetitions": 1,
+  "cases": [
+    "case_0005_high_rate_line"
+  ],
+  "timestamp": "20260921_072535",
+  "label": null,
+  "models": {
+    "A": "FactoryFlow (google/gemini-3.1-pro-preview via OpenRouter)",
+    "B": "LLM-DES-Modeling (gpt-5.1 builder/inspector via OpenRouter)"
+  }
+}

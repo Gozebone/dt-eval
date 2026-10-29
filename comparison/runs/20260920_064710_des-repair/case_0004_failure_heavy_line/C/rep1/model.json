@@ -1,0 +1,385 @@
+{
+  "requirements": {
+    "production_type": "serial",
+    "processes": [
+      "M1",
+      "M2",
+      "M3",
+      "M4",
+      "M5"
+    ],
+    "equipment": [
+      "M1",
+      "M2",
+      "M3",
+      "M4",
+      "M5"
+    ],
+    "sensors": {
+      "machine_metrics": [
+        {
+          "machine": "M1",
+          "process_time_s": 100,
+          "availability": 0.9,
+          "mttr_s": 2400,
+          "work_power_kw": 4.0,
+          "idle_power_kw": 0.4
+        },
+        {
+          "machine": "M2",
+          "process_time_s": 130,
+          "availability": 0.92,
+          "mttr_s": 3000,
+          "work_power_kw": 5.0,
+          "idle_power_kw": 0.5
+        },
+        {
+          "machine": "M3",
+          "process_time_s": 90,
+          "availability": 0.88,
+          "mttr_s": 3600,
+          "work_power_kw": 4.5,
+          "idle_power_kw": 0.45
+        },
+        {
+          "machine": "M4",
+          "process_time_s": 140,
+          "availability": 0.91,
+          "mttr_s": 4800,
+          "work_power_kw": 7.0,
+          "idle_power_kw": 0.7
+        },
+        {
+          "machine": "M5",
+          "process_time_s": 110,
+          "availability": 0.93,
+          "mttr_s": 2400,
+          "work_power_kw": 5.5,
+          "idle_power_kw": 0.55
+        }
+      ]
+    },
+    "goals": "simulate production line behavior, predict performance, and optimize maintenance",
+    "data_sources": "sensor data from monitoring period (daily update)",
+    "update_frequency": "daily",
+    "critical_parameters": {
+      "M1": "process_time_s: 100 s",
+      "M2": "process_time_s: 130 s",
+      "M3": "process_time_s: 90 s",
+      "M4": "process_time_s: 140 s",
+      "M5": "process_time_s: 110 s"
+    },
+    "line": {
+      "topology": "serial",
+      "source": {
+        "inter_arrival_s": 150
+      },
+      "stations": [
+        {
+          "id": "M1",
+          "processing_time_s": 100,
+          "availability": 0.9,
+          "mttr_s": 2400,
+          "power_working_kw": 4.0,
+          "power_idle_kw": 0.4
+        },
+        {
+          "id": "M2",
+          "processing_time_s": 130,
+          "availability": 0.92,
+          "mttr_s": 3000,
+          "power_working_kw": 5.0,
+          "power_idle_kw": 0.5
+        },
+        {
+          "id": "M3",
+          "processing_time_s": 90,
+          "availability": 0.88,
+          "mttr_s": 3600,
+          "power_working_kw": 4.5,
+          "power_idle_kw": 0.45
+        },
+        {
+          "id": "M4",
+          "processing_time_s": 140,
+          "availability": 0.91,
+          "mttr_s": 4800,
+          "power_working_kw": 7.0,
+          "power_idle_kw": 0.7
+        },
+        {
+          "id": "M5",
+          "processing_time_s": 110,
+          "availability": 0.93,
+          "mttr_s": 2400,
+          "power_working_kw": 5.5,
+          "power_idle_kw": 0.55
+        }
+      ],
+      "buffers": [
+        {
+          "id": "B0",
+          "capacity": 6,
+          "before": "source",
+          "after": "M1"
+        },
+        {
+          "id": "B1",
+          "capacity": 3,
+          "before": "M1",
+          "after": "M2"
+        },
+        {
+          "id": "B2",
+          "capacity": 3,
+          "before": "M2",
+          "after": "M3"
+        },
+        {
+          "id": "B3",
+          "capacity": 3,
+          "before": "M3",
+          "after": "M4"
+        },
+        {
+          "id": "B4",
+          "capacity": 3,
+          "before": "M4",
+          "after": "M5"
+        }
+      ],
+      "des_horizon": {
+        "warmup_s": null,
+        "window_s": null,
+        "replications": null
+      },
+      "units": {
+        "time": "s",
+        "power": "kW"
+      },
+      "additional_info": "buffer capacities and inter_arrival_s (150 s)"
+    },
+    "units": {
+      "time": "s",
+      "power": "kW"
+    }
+  },
+  "schema": {
+    "raw": "CREATE TABLE raw_ingest (\n    ingested_at timestamptz NOT NULL,\n    source text NOT NULL,\n    payload jsonb NOT NULL\n);\n\nCREATE TABLE ingest_watermark (\n    source text PRIMARY KEY,\n    max_event_ts timestamptz\n);\n\nCREATE TABLE tag_map (\n    tag_id text PRIMARY KEY,\n    machine_id text NOT NULL,\n    signal text NOT NULL,\n    unit text NOT NULL,\n    register text NOT NULL,\n    scale double precision NOT NULL\n);\n\nCREATE TABLE machines (\n    id text PRIMARY KEY,\n    process_time_s integer NOT NULL,\n    availability double precision NOT NULL,\n    mttr_s integer NOT NULL,\n    work_power_kw double precision NOT NULL,\n    idle_power_kw double precision NOT NULL\n);\n\nCREATE TABLE stations (\n    id text PRIMARY KEY,\n    processing_time_s integer NOT NULL,\n    availability double precision NOT NULL,\n    mttr_s integer NOT NULL,\n    power_working_kw double precision NOT NULL,\n    power_idle_kw double precision NOT NULL\n);\n\nCREATE TABLE buffers (\n    id text PRIMARY KEY,\n    capacity integer NOT NULL,\n    before text NOT NULL,\n    after text NOT NULL\n);\n\nCREATE TABLE events (\n    ts timestamptz NOT NULL,\n    machine_id text NOT NULL,\n    reason_code text NOT NULL,\n    duration_s double precision NOT NULL,\n    energy_kwh double precision NOT NULL\n);\n\nCREATE TABLE samples (\n    ts timestamptz NOT NULL,\n    machine_id text NOT NULL,\n    tag text NOT NULL,\n    value double precision NOT NULL\n);\n\n-- Insert dimension data from requirements\nINSERT INTO machines (id, process_time_s, availability, mttr_s, work_power_kw, idle_power_kw) VALUES\n('M1', 100, 0.9, 2400, 4.0, 0.4),\n('M2', 130, 0.92, 3000, 5.0, 0.5),\n('M3', 90, 0.88, 3600, 4.5, 0.45),\n('M4', 140, 0.91, 4800, 7.0, 0.7),\n('M5', 110, 0.93, 2400, 5.5, 0.55);\n\nINSERT INTO stations (id, processing_time_s, availability, mttr_s, power_working_kw, power_idle_kw) VALUES\n('M1', 100, 0.9, 2400, 4.0, 0.4),\n('M2', 130, 0.92, 3000, 5.0, 0.5),\n('M3', 90, 0.88, 3600, 4.5, 0.45),\n('M4', 140, 0.91, 4800, 7.0, 0.7),\n('M5', 110, 0.93, 2400, 5.5, 0.55);\n\nINSERT INTO buffers (id, capacity, before, after) VALUES\n('B0', 6, 'source', 'M1'),\n('B1', 3, 'M1', 'M2'),\n('B2', 3, 'M2', 'M3'),\n('B3', 3, 'M3', 'M4'),\n('B4', 3, 'M4', 'M5');\n\n-- Create views for typed fact tables over raw_ingest\nCREATE VIEW events_view AS SELECT T1.ts, T1.machine_id, T1.reason_code, T1.duration_s, T1.energy_kwh FROM raw_ingest AS T1 INNER JOIN jsonb_each(T1.payload) AS T2 ON T1.source = 'events' AND T2.key = 'event' AND T2.value::jsonb->>'machine_id' = T1.machine_id;\n\nCREATE VIEW samples_view AS SELECT T1.ts, T1.machine_id, T1.tag, T1.value FROM raw_ingest AS T1 INNER JOIN jsonb_each(T1.payload) AS T2 ON T1.source = 'samples' AND T2.key = 'sample' AND T2.value::jsonb->>'machine_id' = T1.machine_id AND T2.value::jsonb->>'tag' = T1.tag;\n\n-- Add indexes for performance\nCREATE INDEX idx_events_machine_time ON events(machine_id, ts);\nCREATE INDEX idx_samples_machine_time ON samples(machine_id, ts);\nCREATE INDEX idx_raw_ingest_source ON raw_ingest(source);\nCREATE INDEX idx_ingest_watermark_source ON ingest_watermark(source);"
+  },
+  "dt_config": {
+    "components": {
+      "data_collection": {
+        "modules": [
+          {
+            "name": "SensorDataCollector",
+            "type": "IoT Gateway",
+            "description": "Collects real-time sensor data from machines via OPC-UA",
+            "protocol": "OPC-UA",
+            "frequency": "10s"
+          },
+          {
+            "name": "EventLogger",
+            "type": "Event Handler",
+            "description": "Logs machine events and downtime incidents",
+            "protocol": "MQTT",
+            "frequency": "real-time"
+          }
+        ]
+      },
+      "analytics": {
+        "engines": [
+          {
+            "name": "PerformanceAnalyzer",
+            "type": "Stream Processing Engine",
+            "description": "Analyzes real-time performance metrics and predicts bottlenecks",
+            "algorithm": "Time Series Forecasting"
+          },
+          {
+            "name": "MaintenancePredictor",
+            "type": "ML Model",
+            "description": "Predictive maintenance using historical data",
+            "algorithm": "Random Forest Classifier"
+          }
+        ]
+      },
+      "visualization": {
+        "dashboards": [
+          {
+            "name": "ProductionLineDashboard",
+            "widgets": [
+              {
+                "type": "Gauge",
+                "title": "Overall Equipment Effectiveness",
+                "metric": "OEE",
+                "unit": "%",
+                "color": "#4CAF50"
+              },
+              {
+                "type": "BarChart",
+                "title": "Machine Utilization",
+                "metrics": [
+                  "M1",
+                  "M2",
+                  "M3",
+                  "M4",
+                  "M5"
+                ],
+                "unit": "%",
+                "color": "#2196F3"
+              },
+              {
+                "type": "LineChart",
+                "title": "Energy Consumption Over Time",
+                "metrics": [
+                  "M1",
+                  "M2",
+                  "M3",
+                  "M4",
+                  "M5"
+                ],
+                "unit": "kWh",
+                "color": "#FF9800"
+              }
+            ],
+            "refresh_rate": "30s"
+          }
+        ]
+      }
+    },
+    "data_flows": {
+      "connections": [
+        {
+          "source": "SensorDataCollector",
+          "destination": "samples_view",
+          "protocol": "REST",
+          "frequency": "10s"
+        },
+        {
+          "source": "EventLogger",
+          "destination": "events_view",
+          "protocol": "WebSocket",
+          "frequency": "real-time"
+        },
+        {
+          "source": "samples_view",
+          "destination": "PerformanceAnalyzer",
+          "protocol": "MQTT",
+          "frequency": "10s"
+        },
+        {
+          "source": "events_view",
+          "destination": "MaintenancePredictor",
+          "protocol": "REST",
+          "frequency": "real-time"
+        }
+      ]
+    },
+    "visualization_layout": {
+      "dashboard": {
+        "layout": "grid",
+        "columns": 3,
+        "rows": 2
+      },
+      "widgets": [
+        {
+          "id": "gauge-oee",
+          "position": [
+            0,
+            0
+          ],
+          "size": [
+            1,
+            1
+          ]
+        },
+        {
+          "id": "bar-machine-utilization",
+          "position": [
+            1,
+            0
+          ],
+          "size": [
+            1,
+            1
+          ]
+        },
+        {
+          "id": "line-energy-consumption",
+          "position": [
+            2,
+            0
+          ],
+          "size": [
+            1,
+            1
+          ]
+        }
+      ],
+      "color_scheme": {
+        "primary": "#2196F3",
+        "secondary": "#4CAF50",
+        "accent": "#FF9800",
+        "background": "#FFFFFF"
+      }
+    },
+    "alerts": {
+      "thresholds": [
+        {
+          "name": "HighDowntimeAlert",
+          "metric": "downtime_duration_s",
+          "condition": ">",
+          "value": 3600,
+          "severity": "critical",
+          "message": "Machine has been down for more than 1 hour"
+        },
+        {
+          "name": "LowAvailabilityAlert",
+          "metric": "availability",
+          "condition": "<",
+          "value": 0.85,
+          "severity": "warning",
+          "message": "Machine availability is below threshold"
+        },
+        {
+          "name": "HighEnergyConsumptionAlert",
+          "metric": "energy_kwh",
+          "condition": ">",
+          "value": 100,
+          "severity": "emergency",
+          "message": "Unexpected high energy consumption detected"
+        }
+      ]
+    },
+    "kpis": {
+      "metrics": [
+        {
+          "name": "Overall Equipment Effectiveness",
+          "target": 85,
+          "method": "calculated from OEE formula",
+          "unit": "%"
+        },
+        {
+          "name": "Production Rate",
+          "target": 1000,
+          "method": "count of completed units per hour",
+          "unit": "units/hour"
+        },
+        {
+          "name": "Mean Time Between Failures",
+          "target": 4000,
+          "method": "average time between equipment failures",
+          "unit": "s"
+        },
+        {
+          "name": "Energy Efficiency",
+          "target": 90,
+          "method": "ratio of useful energy output to input",
+          "unit": "%"
+        }
+      ]
+    }
+  },
+  "dt_simulation": "```python\nimport pychrono as chrono\nimport numpy as np\nimport datetime\nimport json\nimport time\nfrom collections import defaultdict\n\n# Initialize PyChrono system\nchrono.Initialize()\n\n# Create the physical system\nsystem = chrono.ChSystemNSC()\nsystem.Set_G_acc(chrono.ChVectorD(0, -9.81, 0))  # Set gravity\n\n# Define materials\nsteel_mat = chrono.ChMaterialSurfaceNSC()\nsteel_mat.SetFriction(0.5)\nsteel_mat.SetRestitution(0.1)\n\nrefractory_mat = chrono.ChMaterialSurfaceNSC()\nrefractory_mat.SetFriction(0.3)\nrefractory_mat.SetRestitution(0.05)\n\n# Machine parameters from requirements\nmachines_data = {\n    'M1': {'process_time_s': 100, 'availability': 0.9, 'mttr_s': 2400, 'work_power_kw': 4.0, 'idle_power_kw': 0.4},\n    'M2': {'process_time_s': 130, 'availability': 0.92, 'mttr_s': 3000, 'work_power_kw': 5.0, 'idle_power_kw': 0.5},\n    'M3': {'process_time_s': 90, 'availability': 0.88, 'mttr_s': 3600, 'work_power_kw': 4.5, 'idle_power_kw': 0.45},\n    'M4': {'process_time_s': 140, 'availability': 0.91, 'mttr_s': 4800, 'work_power_kw': 7.0, 'idle_power_kw': 0.7},\n    'M5': {'process_time_s': 110, 'availability': 0.93, 'mttr_s': 2400, 'work_power_kw': 5.5, 'idle_power_kw': 0.55}\n}\n\n# Buffer parameters\nbuffers_data = {\n    'B0': {'capacity': 6, 'before': 'source', 'after': 'M1'},\n    'B1': {'capacity': 3, 'before': 'M1', 'after': 'M2'},\n    'B2': {'capacity': 3, 'before': 'M2', 'after': 'M3'},\n    'B3': {'capacity': 3, 'before': 'M3', 'after': 'M4'},\n    'B4': {'capacity': 3, 'before': 'M4', 'after': 'M5'}\n}\n\n# Create station bodies\nstation_bodies = {}\nfor machine_id in machines_data.keys():\n    body = chrono.ChBody()\n    body.SetIdentifier(int(machine_id[1:]))  # M1 -> 1, etc.\n    body.SetMass(1000)\n    body.SetInertiaXX(chrono.ChVectorD(100, 100, 100))\n    body.GetCollisionModel().ClearModel()\n    body.GetCollisionModel().AddBox(0.5, 0.5, 0.5)\n    body.GetCollisionModel().BuildModel()\n    body.SetCollide(True)\n    body.SetMaterialSurface(steel_mat)\n    \n    # Position machines in a line\n    x_pos = (int(machine_id[1:]) - 1) * 3.0\n    body.SetPos(chrono.ChVectorD(x_pos, 0, 0))\n    \n    system.Add(body)\n    station_bodies[machine_id] = body\n\n# Create buffer bodies\nbuffer_bodies = {}\nfor buffer_id, buffer_info in buffers_data.items():\n    body = chrono.ChBody()\n    body.SetIdentifier(ord(buffer_id[-1]))  # B0 -> 0, etc.\n    body.SetMass(500)\n    body.SetInertiaXX(chrono.ChVectorD(50, 50, 50))\n    body.GetCollisionModel().ClearModel()\n    body.GetCollisionModel().AddBox(0.3, 0.3, 0.3)\n    body.GetCollisionModel().BuildModel()\n    body.SetCollide(True)\n    body.SetMaterialSurface(refractory_mat)\n    \n    # Position buffers between machines\n    if buffer_info['before'] == 'source':\n        before_idx = 0\n    else:\n        before_idx = int(buffer_info['before'][1:]) - 1\n        \n    if buffer_info['after'] == 'M5':\n        after_idx = 5\n    else:\n        after_idx = int(buffer_info['after'][1:])\n        \n    x_pos = (before_idx + after_idx) / 2.0 * 3.0\n    body.SetPos(chrono.ChVectorD(x_pos, 0.5, 0))\n    \n    system.Add(body)\n    buffer_bodies[buffer_id] = body\n\n# Create source object\nsource_body = chrono.ChBody()\nsource_body.SetIdentifier(-1)\nsource_body.SetMass(100)\nsource_body.SetInertiaXX(chrono.ChVectorD(10, 10, 10))\nsource_body.GetCollisionModel().ClearModel()\nsource_body.GetCollisionModel().AddBox(0.2, 0.2, 0.2)\nsource_body.GetCollisionModel().BuildModel()\nsource_body.SetCollide(True)\nsource_body.SetMaterialSurface(refractory_mat)\nsource_body.SetPos(chrono.ChVectorD(-1.5, 0, 0))\nsystem.Add(source_body)\n\n# Create output area\noutput_body = chrono.ChBody()\noutput_body.SetIdentifier(10)\noutput_body.SetMass(100)\noutput_body.SetInertiaXX(chrono.ChVectorD(10, 10, 10))\noutput_body.GetCollisionModel().ClearModel()\noutput_body.GetCollisionModel().AddBox(0.2, 0.2, 0.2)\noutput_body.GetCollisionModel().BuildModel()\noutput_body.SetCollide(True)\noutput_body.SetMaterialSurface(refractory_mat)\noutput_body.SetPos(chrono.ChVectorD(13.5, 0, 0))\nsystem.Add(output_body)\n\n# Create sensors for tracking metrics\nclass MachineSensor:\n    def __init__(self, machine_id, process_time, availability, mttr_s, work_power_kw, idle_power_kw):\n        self.machine_id = machine_id\n        self.process_time = process_time\n        self.availability = availability\n        self.mttr_s = mttr_s\n        self.work_power_kw = work_power_kw\n        self.idle_power_kw = idle_power_kw\n        self.is_operational = True\n        self.last_start_time = 0\n        self.total_operational_time = 0\n        self.total_downtime = 0\n        self.current_state = \"IDLE\"  # IDLE or WORKING\n        self.working_start_time = 0\n        self.downtime_start_time = 0\n        self.power_consumption = 0\n        self.total_energy = 0\n        self.processed_items = 0\n\n    def update(self, current_time, is_processing=False):\n        # Simulate machine state changes based on availability\n        if self.is_operational:\n            if is_processing:\n                if self.current_state != \"WORKING\":\n                    self.current_state = \"WORKING\"\n                    self.working_start_time = current_time\n                # Simulate processing time\n                if current_time - self.working_start_time >= self.process_time:\n                    self.processed_items += 1\n                    self.current_state = \"IDLE\"\n                    self.working_start_time = 0\n                    self.total_operational_time += self.process_time\n                    self.power_consumption = self.work_power_kw\n                    self.total_energy += self.work_power_kw * self.process_time / 3600.0\n            else:\n                if self.current_state == \"WORKING\":\n                    self.current_state = \"IDLE\"\n                    self.total_operational_time += current_time - self.working_start_time\n                    self.working_start_time = 0\n                    self.power_consumption = self.idle_power_kw\n                    self.total_energy += self.idle_power_kw * (current_time - self.downtime_start_time) / 3600.0\n                elif self.current_state == \"IDLE\":\n                    self.power_consumption = self.idle_power_kw\n        else:\n            if self.current_state != \"DOWN\":\n                self.current_state = \"DOWN\"\n                self.downtime_start_time = current_time\n            self.total_downtime += current_time - self.downtime_start_time\n            self.power_consumption = 0\n\n    def get_metrics(self, current_time):\n        return {\n            'machine_id': self.machine_id,\n            'state': self.current_state,\n            'operational_time': self.total_operational_time,\n            'downtime': self.total_downtime,\n            'energy_consumption': self.total_energy,\n            'items_processed': self.processed_items,\n            'power_kw': self.power_consumption\n        }\n\n# Create sensors for each machine\nsensors = {}\nfor machine_id, params in machines_data.items():\n    sensors[machine_id] = MachineSensor(\n        machine_id,\n        params['process_time_s'],\n        params['availability'],\n        params['mttr_s'],\n        params['work_power_kw'],\n        params['idle_power_kw']\n    )\n\n# Simulation parameters\nsimulation_duration = 3600  # 1 hour of simulation\ndt = 0.01  # Time step\ncurrent_time = 0\n\n# Create logging mechanism\nlog_entries = []\nstart_time = datetime.datetime.now()\n\n# Main simulation loop\nprint(\"Starting simulation...\")\nwhile current_time < simulation_duration:\n    # Update source item generation\n    if current_time % 150 < dt:\n        # Generate new item at source\n        pass\n    \n    # Update machine states\n    for machine_id, sensor in sensors.items():\n        # Determine if this machine is currently processing\n        is_processing = False\n        if sensor.current_state == \"WORKING\":\n            is_processing = True\n        sensor.update(current_time, is_processing)\n    \n    # Step the simulation\n    system.DoStepDynamics(dt)\n    current_time += dt\n    \n    # Log sensor data every second\n    if int(current_time) % 1 == 0:\n        log_entry = {\n            'ts': datetime.datetime.utcnow(),\n            'machine_id': '',\n            'reason_code': '',\n            'duration_s': 0,\n            'energy_kwh': 0\n        }\n        \n        # Log sample data\n        sample_entry = {\n            'ts': datetime.datetime.utcnow(),\n            'machine_id': '',\n            'tag': '',\n            'value': 0\n        }\n        \n        for machine_id, sensor in sensors.items():\n            metrics = sensor.get_metrics(current_time)\n            \n            # Log event data\n            event_entry = {\n                'ts': datetime.datetime.utcnow(),\n                'machine_id': machine_id,\n                'reason_code': metrics['state'],\n                'duration_s': metrics['operational_time'] if metrics['state'] == 'WORKING' else metrics['downtime'],\n                'energy_kwh': metrics['energy_consumption']\n            }\n            log_entries.append(('events', event_entry))\n            \n            # Log sample data\n            sample_entry['machine_id'] = machine_id\n            sample_entry['tag'] = 'power_kw'\n            sample_entry['value'] = metrics['power_kw']\n            log_entries.append(('samples', sample_entry.copy()))\n            \n            sample_entry['tag'] = 'items_processed'\n            sample_entry['value'] = metrics['items_processed']\n            log_entries.append(('samples', sample_entry.copy()))\n\n# Finalize simulation\nprint(f\"Simulation completed at {datetime.datetime.now()}\")\nprint(f\"Total items processed: {[s.processed_items for s in sensors.values()]}\")\n\n# Output simulated data to match database schema\nprint(\"\\nSimulated Data for Database Tables:\")\nprint(\"=\" * 50)\n\n# Machines table\nprint(\"\\nMachines Table:\")\nfor machine_id, params in machines_data.items():\n    print(f\"('{machine_id}', {params['process_time_s']}, {params['availability']}, {params['mttr_s']}, {params['work_power_kw']}, {params['idle_power_kw']})\")\n\n# Stations table\nprint(\"\\nStations Table:\")\nfor machine_id, params in machines_data.items():\n    print(f\"('{machine_id}', {params['process_time_s']}, {params['availability']}, {params['mttr_s']}, {params['work_power_kw']}, {params['idle_power_kw']})\")\n\n# Buffers table\nprint(\"\\nBuffers Table:\")\nfor buffer_id, params in buffers_data.items():\n    print(f\"('{buffer_id}', {params['capacity']}, '{params['before']}', '{params['after']}')\")\n\n# Events view (simulated)\nprint(\"\\nEvents View (Sample):\")\nfor entry in log_entries[:5]:  # Show first 5 entries\n    if entry[0] == 'events':\n        e = entry[1]\n        print(f\"ts: {e['ts']}, machine_id: {e['machine_id']}, reason_code: {e['reason_code']}, duration_s: {e['duration_s']}, energy_kwh: {e['energy_kwh']}\")\n\n# Samples view (simulated)\nprint(\"\\nSamples View (Sample):\")\nfor entry in log_entries[:5]:  # Show first 5 entries\n    if entry[0] == 'samples':\n        s = entry[1]\n        print(f\"ts: {s['ts']}, machine_id: {s['machine_id']}, tag: {s['tag']}, value: {s['value']}\")\n\n# Cleanup\ndel system\nchrono.Terminate()\n```",
+  "dt_des": null
+}

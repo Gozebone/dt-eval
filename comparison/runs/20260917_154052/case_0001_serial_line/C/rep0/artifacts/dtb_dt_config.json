@@ -1,0 +1,274 @@
+{
+  "components": {
+    "data_collection": {
+      "modules": [
+        {
+          "name": "SensorDataCollector",
+          "type": "Data Collection Module",
+          "description": "Collects real-time data from sensors on machines M1-M5 and buffers B0-B4",
+          "protocol": "MQTT",
+          "update_frequency": "continuous"
+        },
+        {
+          "name": "BatchIngestor",
+          "type": "Data Collection Module",
+          "description": "Ingests batch data from production line",
+          "protocol": "REST",
+          "update_frequency": "per batch"
+        }
+      ]
+    },
+    "analytics": {
+      "engines": [
+        {
+          "name": "ProductionAnalyticsEngine",
+          "type": "Analytics Engine",
+          "description": "Processes event data to calculate KPIs like throughput, WIP, energy consumption",
+          "algorithm": "statistical analysis"
+        },
+        {
+          "name": "AvailabilityTracker",
+          "type": "Analytics Engine",
+          "description": "Tracks machine availability and MTTR",
+          "algorithm": "time-series analysis"
+        }
+      ]
+    },
+    "ml_models": {
+      "models": [
+        {
+          "name": "ThroughputPredictor",
+          "type": "ML Model",
+          "description": "Predicts future throughput based on historical data",
+          "algorithm": "time-series forecasting"
+        },
+        {
+          "name": "EnergyOptimizer",
+          "type": "ML Model",
+          "description": "Optimizes energy consumption by analyzing patterns",
+          "algorithm": "regression analysis"
+        }
+      ]
+    },
+    "visualization": {
+      "dashboards": [
+        {
+          "name": "ProductionDashboard",
+          "type": "Visualization Dashboard",
+          "widgets": [
+            {
+              "type": "Gauge",
+              "title": "Overall Equipment Effectiveness",
+              "metric": "OEE"
+            },
+            {
+              "type": "LineChart",
+              "title": "Throughput Over Time",
+              "metric": "units_per_hour"
+            },
+            {
+              "type": "Heatmap",
+              "title": "Machine Utilization",
+              "metric": "utilization_percentage"
+            }
+          ]
+        },
+        {
+          "name": "EnergyDashboard",
+          "type": "Visualization Dashboard",
+          "widgets": [
+            {
+              "type": "LineChart",
+              "title": "Energy Consumption",
+              "metric": "watts"
+            },
+            {
+              "type": "BarChart",
+              "title": "Energy per Unit",
+              "metric": "kWh_per_unit"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "data_flows": {
+    "connections": [
+      {
+        "source": "SensorDataCollector",
+        "destination": "ProductionAnalyticsEngine",
+        "protocol": "MQTT",
+        "update_frequency": "continuous"
+      },
+      {
+        "source": "SensorDataCollector",
+        "destination": "AvailabilityTracker",
+        "protocol": "MQTT",
+        "update_frequency": "continuous"
+      },
+      {
+        "source": "BatchIngestor",
+        "destination": "ProductionAnalyticsEngine",
+        "protocol": "REST",
+        "update_frequency": "per batch"
+      },
+      {
+        "source": "ProductionAnalyticsEngine",
+        "destination": "ProductionDashboard",
+        "protocol": "WebSocket",
+        "update_frequency": "real-time"
+      },
+      {
+        "source": "AvailabilityTracker",
+        "destination": "ProductionDashboard",
+        "protocol": "WebSocket",
+        "update_frequency": "real-time"
+      },
+      {
+        "source": "ThroughputPredictor",
+        "destination": "ProductionDashboard",
+        "protocol": "WebSocket",
+        "update_frequency": "hourly"
+      },
+      {
+        "source": "EnergyOptimizer",
+        "destination": "EnergyDashboard",
+        "protocol": "WebSocket",
+        "update_frequency": "hourly"
+      }
+    ]
+  },
+  "visualization": {
+    "dashboard_layout": {
+      "main_dashboard": {
+        "widgets": [
+          {
+            "type": "Gauge",
+            "position": {
+              "x": 0,
+              "y": 0,
+              "width": 2,
+              "height": 1
+            },
+            "title": "Overall Equipment Effectiveness",
+            "color_scheme": "green"
+          },
+          {
+            "type": "LineChart",
+            "position": {
+              "x": 2,
+              "y": 0,
+              "width": 4,
+              "height": 2
+            },
+            "title": "Throughput Over Time",
+            "color_scheme": "blue"
+          },
+          {
+            "type": "Heatmap",
+            "position": {
+              "x": 0,
+              "y": 1,
+              "width": 2,
+              "height": 2
+            },
+            "title": "Machine Utilization",
+            "color_scheme": "orange"
+          },
+          {
+            "type": "BarChart",
+            "position": {
+              "x": 2,
+              "y": 2,
+              "width": 4,
+              "height": 2
+            },
+            "title": "Energy Consumption",
+            "color_scheme": "red"
+          }
+        ],
+        "refresh_rate": "real-time"
+      },
+      "energy_dashboard": {
+        "widgets": [
+          {
+            "type": "LineChart",
+            "position": {
+              "x": 0,
+              "y": 0,
+              "width": 4,
+              "height": 2
+            },
+            "title": "Energy Consumption Over Time",
+            "color_scheme": "purple"
+          },
+          {
+            "type": "BarChart",
+            "position": {
+              "x": 4,
+              "y": 0,
+              "width": 2,
+              "height": 2
+            },
+            "title": "Energy per Unit",
+            "color_scheme": "yellow"
+          }
+        ],
+        "refresh_rate": "hourly"
+      }
+    }
+  },
+  "alerts": {
+    "thresholds": [
+      {
+        "name": "High_WIP_Alert",
+        "metric": "work_in_progress",
+        "threshold": 50,
+        "severity": "warning",
+        "description": "High Work-in-Progress detected"
+      },
+      {
+        "name": "Low_Throughput_Alert",
+        "metric": "throughput_units_per_hour",
+        "threshold": 80,
+        "severity": "critical",
+        "description": "Low throughput detected"
+      },
+      {
+        "name": "High_Energy_Alert",
+        "metric": "energy_consumption_kwh",
+        "threshold": 2000,
+        "severity": "emergency",
+        "description": "High energy consumption detected"
+      }
+    ]
+  },
+  "kpis": {
+    "indicators": [
+      {
+        "name": "Throughput",
+        "metric": "units_per_hour",
+        "target": 120,
+        "method": "count of parts processed per hour"
+      },
+      {
+        "name": "Work-in-Progress",
+        "metric": "wip_count",
+        "target": 30,
+        "method": "count of parts in buffers and machines"
+      },
+      {
+        "name": "Energy Consumption",
+        "metric": "kwh_per_unit",
+        "target": 1.5,
+        "method": "average energy consumption per unit"
+      },
+      {
+        "name": "Overall Equipment Effectiveness",
+        "metric": "oee_percentage",
+        "target": 85,
+        "method": "calculated using availability, performance, and quality factors"
+      }
+    ]
+  }
+}

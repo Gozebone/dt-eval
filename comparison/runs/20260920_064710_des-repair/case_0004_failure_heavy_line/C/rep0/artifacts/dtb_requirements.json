@@ -1,0 +1,170 @@
+{
+  "production_type": "serial production line",
+  "processes": [
+    "machine processing",
+    "buffering",
+    "finished part collection"
+  ],
+  "equipment": [
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "M5",
+    "buffers B0-B4"
+  ],
+  "sensors": [
+    "processing_time_s",
+    "availability%",
+    "mttr_s",
+    "power_working_kw",
+    "power_idle_kw",
+    "buffer_capacity"
+  ],
+  "goals": "simulate production line performance, predict maintenance needs, and optimize resource allocation",
+  "data_sources": "provided JSON data with machine, buffer, and arrival rate details",
+  "update_frequency": "static model; can be updated with real-time data if required",
+  "critical_parameters": {
+    "M1": {
+      "processing_time_s": 100,
+      "availability%": 92.58,
+      "mttr_s": 3206.25,
+      "power_working_kw": 4.0,
+      "power_idle_kw": 0.4
+    },
+    "M2": {
+      "processing_time_s": 130,
+      "availability%": 97.36,
+      "mttr_s": 2859.26,
+      "power_working_kw": 5.0,
+      "power_idle_kw": 0.5
+    },
+    "M3": {
+      "processing_time_s": 90,
+      "availability%": 94.69,
+      "mttr_s": 2882.82,
+      "power_working_kw": 4.5,
+      "power_idle_kw": 0.45
+    },
+    "M4": {
+      "processing_time_s": 140,
+      "availability%": 100.0,
+      "mttr_s": 4800,
+      "power_working_kw": 7.0,
+      "power_idle_kw": 0.7
+    },
+    "M5": {
+      "processing_time_s": 110,
+      "availability%": 98.23,
+      "mttr_s": 1099.8,
+      "power_working_kw": 5.5,
+      "power_idle_kw": 0.55
+    },
+    "B0": {
+      "buffer_capacity": 6
+    },
+    "B1": {
+      "buffer_capacity": 3
+    },
+    "B2": {
+      "buffer_capacity": 3
+    },
+    "B3": {
+      "buffer_capacity": 3
+    },
+    "B4": {
+      "buffer_capacity": 3
+    }
+  },
+  "line": {
+    "topology": "serial",
+    "source": {
+      "inter_arrival_time_s": 150
+    },
+    "stations": [
+      {
+        "id": "M1",
+        "processing_time_s": 100,
+        "availability": 0.9,
+        "mttr_s": 2400,
+        "work_power_kw": 4.0,
+        "idle_power_kw": 0.4
+      },
+      {
+        "id": "M2",
+        "processing_time_s": 130,
+        "availability": 0.92,
+        "mttr_s": 3000,
+        "work_power_kw": 5.0,
+        "idle_power_kw": 0.5
+      },
+      {
+        "id": "M3",
+        "processing_time_s": 90,
+        "availability": 0.88,
+        "mttr_s": 3600,
+        "work_power_kw": 4.5,
+        "idle_power_kw": 0.45
+      },
+      {
+        "id": "M4",
+        "processing_time_s": 140,
+        "availability": 0.91,
+        "mttr_s": 4800,
+        "work_power_kw": 7.0,
+        "idle_power_kw": 0.7
+      },
+      {
+        "id": "M5",
+        "processing_time_s": 110,
+        "availability": 0.93,
+        "mttr_s": 2400,
+        "work_power_kw": 5.5,
+        "idle_power_kw": 0.55
+      }
+    ],
+    "buffers": [
+      {
+        "id": "B0",
+        "capacity": 6,
+        "before": "source",
+        "after": "M1"
+      },
+      {
+        "id": "B1",
+        "capacity": 3,
+        "before": "M1",
+        "after": "M2"
+      },
+      {
+        "id": "B2",
+        "capacity": 3,
+        "before": "M2",
+        "after": "M3"
+      },
+      {
+        "id": "B3",
+        "capacity": 3,
+        "before": "M3",
+        "after": "M4"
+      },
+      {
+        "id": "B4",
+        "capacity": 3,
+        "before": "M4",
+        "after": "M5"
+      }
+    ]
+  },
+  "des_horizon": {
+    "warmup_s": 0,
+    "window_s": 432000,
+    "replications": 1
+  },
+  "units": {
+    "time": "s",
+    "power": "kW",
+    "energy": "kWh"
+  },
+  "additional_info": "serial production line with 5 machines and 5 buffers; arrival rate of 150s per part; simulation runs for 5 days"
+}

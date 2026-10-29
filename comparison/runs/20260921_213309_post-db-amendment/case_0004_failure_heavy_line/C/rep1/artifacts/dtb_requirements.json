@@ -1,0 +1,179 @@
+{
+  "production_type": "serial production line",
+  "processes": [
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "M5"
+  ],
+  "equipment": [
+    {
+      "id": "M1",
+      "process_time_s": 100,
+      "availability": 0.9,
+      "mttr_s": 2400,
+      "work_power_kw": 4.0,
+      "idle_power_kw": 0.4
+    },
+    {
+      "id": "M2",
+      "process_time_s": 130,
+      "availability": 0.92,
+      "mttr_s": 3000,
+      "work_power_kw": 5.0,
+      "idle_power_kw": 0.5
+    },
+    {
+      "id": "M3",
+      "process_time_s": 90,
+      "availability": 0.88,
+      "mttr_s": 3600,
+      "work_power_kw": 4.5,
+      "idle_power_kw": 0.45
+    },
+    {
+      "id": "M4",
+      "process_time_s": 140,
+      "availability": 0.91,
+      "mttr_s": 4800,
+      "work_power_kw": 7.0,
+      "idle_power_kw": 0.7
+    },
+    {
+      "id": "M5",
+      "process_time_s": 110,
+      "availability": 0.93,
+      "mttr_s": 2400,
+      "work_power_kw": 5.5,
+      "idle_power_kw": 0.55
+    }
+  ],
+  "sensors": [
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "M5"
+  ],
+  "goals": "Simulate a serial production line with 5 machines in series, including buffer capacities and inter-arrival time.",
+  "data_sources": "provided JSON data",
+  "update_frequency": 150,
+  "critical_parameters": {
+    "M1": {
+      "mttr_s": 2400,
+      "availability": 0.9,
+      "process_time_s": 100
+    },
+    "M2": {
+      "mttr_s": 3000,
+      "availability": 0.92,
+      "process_time_s": 130
+    },
+    "M3": {
+      "mttr_s": 3600,
+      "availability": 0.88,
+      "process_time_s": 90
+    },
+    "M4": {
+      "mttr_s": 4800,
+      "availability": 0.91,
+      "process_time_s": 140
+    },
+    "M5": {
+      "mttr_s": 2400,
+      "availability": 0.93,
+      "process_time_s": 110
+    }
+  },
+  "line": {
+    "topology": "serial",
+    "source": {
+      "inter_arrival_time_s": 150
+    },
+    "stations": [
+      {
+        "id": "M1",
+        "processing_time_s": 100,
+        "availability_pct": 0.9,
+        "mttr_s": 2400,
+        "power_working_kw": 4.0,
+        "power_idle_kw": 0.4
+      },
+      {
+        "id": "M2",
+        "processing_time_s": 130,
+        "availability_pct": 0.92,
+        "mttr_s": 3000,
+        "power_working_kw": 5.0,
+        "power_idle_kw": 0.5
+      },
+      {
+        "id": "M3",
+        "processing_time_s": 90,
+        "availability_pct": 0.88,
+        "mttr_s": 3600,
+        "power_working_kw": 4.5,
+        "power_idle_kw": 0.45
+      },
+      {
+        "id": "M4",
+        "processing_time_s": 140,
+        "availability_pct": 0.91,
+        "mttr_s": 4800,
+        "power_working_kw": 7.0,
+        "power_idle_kw": 0.7
+      },
+      {
+        "id": "M5",
+        "processing_time_s": 110,
+        "availability_pct": 0.93,
+        "mttr_s": 2400,
+        "power_working_kw": 5.5,
+        "power_idle_kw": 0.55
+      }
+    ],
+    "buffers": [
+      {
+        "id": "B0",
+        "capacity": 6,
+        "before": "source",
+        "after": "M1"
+      },
+      {
+        "id": "B1",
+        "capacity": 3,
+        "before": "M1",
+        "after": "M2"
+      },
+      {
+        "id": "B2",
+        "capacity": 3,
+        "before": "M2",
+        "after": "M3"
+      },
+      {
+        "id": "B3",
+        "capacity": 3,
+        "before": "M3",
+        "after": "M4"
+      },
+      {
+        "id": "B4",
+        "capacity": 3,
+        "before": "M4",
+        "after": "M5"
+      }
+    ]
+  },
+  "des_horizon": {
+    "warmup_s": 3600,
+    "window_s": 7200,
+    "replications": 2
+  },
+  "units": {
+    "time": "s",
+    "power": "kW"
+  },
+  "additional_info": "Simulation for 432000 seconds using provided data and buffers."
+}

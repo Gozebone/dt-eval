@@ -1,0 +1,302 @@
+{
+  "requirements": {
+    "production_type": "\u043f\u043e\u0441\u043b\u0435\u0434\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u043d\u0430\u044f (serial) \u043b\u0438\u043d\u0438\u044f \u0438\u0437 5 \u043c\u0430\u0448\u0438\u043d \u0432 \u0441\u0435\u0440\u0438\u0438 (M1 \u2192 M2 \u2192 M3 \u2192 M4 \u2192 M5)",
+    "processes": [
+      "\u043e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u043d\u0430 \u0441\u0442\u0430\u043d\u0446\u0438\u044f\u0445 M1\u2013M5 \u0441 \u0443\u043a\u0430\u0437\u0430\u043d\u043d\u044b\u043c \u0441\u0440\u0435\u0434\u043d\u0438\u043c \u0432\u0440\u0435\u043c\u0435\u043d\u0435\u043c \u043d\u0430 \u0434\u0435\u0442\u0430\u043b\u044c"
+    ],
+    "equipment": [
+      "\u043c\u0430\u0448\u0438\u043d\u044b M1\u2013M5",
+      "\u0431\u0443\u0444\u0435\u0440\u044b B0\u2013B4"
+    ],
+    "sensors": [
+      "\u0441\u043e\u0431\u044b\u0442\u0438\u044f \u043f\u043e \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0435 \u0434\u0435\u0442\u0430\u043b\u0435\u0439",
+      "\u0438\u043d\u0442\u0435\u0440\u0432\u0430\u043b\u044b \u0441\u043e\u0441\u0442\u043e\u044f\u043d\u0438\u0439 \u043c\u0430\u0448\u0438\u043d",
+      "\u043d\u0435\u043f\u0440\u0435\u0440\u044b\u0432\u043d\u044b\u0435 \u0437\u0430\u043f\u0438\u0441\u0438 \u044d\u043d\u0435\u0440\u0433\u043e\u043f\u043e\u0442\u0440\u0435\u0431\u043b\u0435\u043d\u0438\u044f"
+    ],
+    "goals": "\u043e\u0446\u0435\u043d\u043a\u0430 \u043f\u0440\u043e\u043f\u0443\u0441\u043a\u043d\u043e\u0439 \u0441\u043f\u043e\u0441\u043e\u0431\u043d\u043e\u0441\u0442\u0438, WIP, \u0443\u0434\u0435\u043b\u044c\u043d\u043e\u0433\u043e \u044d\u043d\u0435\u0440\u0433\u043e\u043f\u043e\u0442\u0440\u0435\u0431\u043b\u0435\u043d\u0438\u044f; \u043e\u0442\u0441\u043b\u0435\u0436\u0438\u0432\u0430\u043d\u0438\u0435 \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u0438 \u0438 MTTR",
+    "data_sources": "\u043f\u0435\u0440-\u0441\u0442\u0430\u043d\u0446\u0438\u043e\u043d\u043d\u044b\u0435 \u0438\u0437\u043c\u0435\u0440\u0435\u043d\u043d\u044b\u0435 \u0444\u0430\u043a\u0442\u044b (\u043f\u0435\u0440\u0435\u0434\u0430\u0447\u0438, \u0432\u0445\u043e\u0434/\u0432\u044b\u0445\u043e\u0434), \u0432\u0445\u043e\u0434\u044f\u0449\u0438\u0435 \u043f\u0430\u0440\u0442\u0438\u0438 (130 \u0441/\u0434), \u043d\u0435\u043f\u0440\u0435\u0440\u044b\u0432\u043d\u044b\u0435 \u0437\u0430\u043f\u0438\u0441\u0438 \u044d\u043d\u0435\u0440\u0433\u043e\u043f\u043e\u0442\u0440\u0435\u0431\u043b\u0435\u043d\u0438\u044f",
+    "update_frequency": "\u0441\u043e\u0431\u044b\u0442\u0438\u044f \u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u0443\u044e\u0442\u0441\u044f \u043f\u043e \u043a\u0430\u0436\u0434\u043e\u0439 \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u0430\u043d\u043d\u043e\u0439 \u0434\u0435\u0442\u0430\u043b\u0438, \u0438\u043d\u0442\u0435\u0440\u0432\u0430\u043b\u044b \u0441\u043e\u0441\u0442\u043e\u044f\u043d\u0438\u0439 \u0438 \u044d\u043d\u0435\u0440\u0433\u043e\u043f\u043e\u0442\u0440\u0435\u0431\u043b\u0435\u043d\u0438\u0435 \u0437\u0430\u043f\u0438\u0441\u044b\u0432\u0430\u044e\u0442\u0441\u044f \u043d\u0435\u043f\u0440\u0435\u0440\u044b\u0432\u043d\u043e",
+    "critical_parameters": {
+      "\u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440": "\u043d\u0435 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u044b; \u043f\u0440\u043e\u0441\u044c\u0431\u0430 \u043d\u0435 \u0443\u0441\u0442\u0430\u043d\u0430\u0432\u043b\u0438\u0432\u0430\u0442\u044c \u043f\u043e\u0440\u043e\u0433\u0438 \u0432 \u043c\u043e\u0434\u0435\u043b\u0438"
+    },
+    "additional_info": "\u0438\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u044c \u0442\u043e\u0447\u043d\u044b\u0435 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u044b \u0438\u0437 JSON; \u043c\u043e\u0434\u0435\u043b\u044c \u0434\u043e\u043b\u0436\u043d\u0430 \u0431\u044b\u0442\u044c \u0440\u0435\u0430\u043b\u0438\u0437\u043e\u0432\u0430\u043d\u0430 \u043d\u0430 simpy, \u043f\u0440\u043e\u0433\u043e\u043d\u044f\u044f \u0441\u0438\u043c\u0443\u043b\u044f\u0446\u0438\u044e \u043d\u0435 \u043c\u0435\u043d\u0435\u0435 432000 \u0441 \u0432 \u043e\u0434\u043d\u043e\u043c \u0437\u0430\u043f\u0443\u0441\u043a\u0435"
+  },
+  "schema": {
+    "raw": ""
+  },
+  "dt_config": {
+    "components": {
+      "data_collection": {
+        "modules": [
+          {
+            "name": "SensorDataCollector",
+            "type": "Data Collection Module",
+            "description": "Collects real-time data from sensors on machines M1-M5 and buffers B0-B4",
+            "protocol": "MQTT",
+            "update_frequency": "continuous"
+          },
+          {
+            "name": "BatchIngestor",
+            "type": "Data Collection Module",
+            "description": "Ingests batch data from production line",
+            "protocol": "REST",
+            "update_frequency": "per batch"
+          }
+        ]
+      },
+      "analytics": {
+        "engines": [
+          {
+            "name": "ProductionAnalyticsEngine",
+            "type": "Analytics Engine",
+            "description": "Processes event data to calculate KPIs like throughput, WIP, energy consumption",
+            "algorithm": "statistical analysis"
+          },
+          {
+            "name": "AvailabilityTracker",
+            "type": "Analytics Engine",
+            "description": "Tracks machine availability and MTTR",
+            "algorithm": "time-series analysis"
+          }
+        ]
+      },
+      "ml_models": {
+        "models": [
+          {
+            "name": "ThroughputPredictor",
+            "type": "ML Model",
+            "description": "Predicts future throughput based on historical data",
+            "algorithm": "time-series forecasting"
+          },
+          {
+            "name": "EnergyOptimizer",
+            "type": "ML Model",
+            "description": "Optimizes energy consumption by analyzing patterns",
+            "algorithm": "regression analysis"
+          }
+        ]
+      },
+      "visualization": {
+        "dashboards": [
+          {
+            "name": "ProductionDashboard",
+            "type": "Visualization Dashboard",
+            "widgets": [
+              {
+                "type": "Gauge",
+                "title": "Overall Equipment Effectiveness",
+                "metric": "OEE"
+              },
+              {
+                "type": "LineChart",
+                "title": "Throughput Over Time",
+                "metric": "units_per_hour"
+              },
+              {
+                "type": "Heatmap",
+                "title": "Machine Utilization",
+                "metric": "utilization_percentage"
+              }
+            ]
+          },
+          {
+            "name": "EnergyDashboard",
+            "type": "Visualization Dashboard",
+            "widgets": [
+              {
+                "type": "LineChart",
+                "title": "Energy Consumption",
+                "metric": "watts"
+              },
+              {
+                "type": "BarChart",
+                "title": "Energy per Unit",
+                "metric": "kWh_per_unit"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "data_flows": {
+      "connections": [
+        {
+          "source": "SensorDataCollector",
+          "destination": "ProductionAnalyticsEngine",
+          "protocol": "MQTT",
+          "update_frequency": "continuous"
+        },
+        {
+          "source": "SensorDataCollector",
+          "destination": "AvailabilityTracker",
+          "protocol": "MQTT",
+          "update_frequency": "continuous"
+        },
+        {
+          "source": "BatchIngestor",
+          "destination": "ProductionAnalyticsEngine",
+          "protocol": "REST",
+          "update_frequency": "per batch"
+        },
+        {
+          "source": "ProductionAnalyticsEngine",
+          "destination": "ProductionDashboard",
+          "protocol": "WebSocket",
+          "update_frequency": "real-time"
+        },
+        {
+          "source": "AvailabilityTracker",
+          "destination": "ProductionDashboard",
+          "protocol": "WebSocket",
+          "update_frequency": "real-time"
+        },
+        {
+          "source": "ThroughputPredictor",
+          "destination": "ProductionDashboard",
+          "protocol": "WebSocket",
+          "update_frequency": "hourly"
+        },
+        {
+          "source": "EnergyOptimizer",
+          "destination": "EnergyDashboard",
+          "protocol": "WebSocket",
+          "update_frequency": "hourly"
+        }
+      ]
+    },
+    "visualization": {
+      "dashboard_layout": {
+        "main_dashboard": {
+          "widgets": [
+            {
+              "type": "Gauge",
+              "position": {
+                "x": 0,
+                "y": 0,
+                "width": 2,
+                "height": 1
+              },
+              "title": "Overall Equipment Effectiveness",
+              "color_scheme": "green"
+            },
+            {
+              "type": "LineChart",
+              "position": {
+                "x": 2,
+                "y": 0,
+                "width": 4,
+                "height": 2
+              },
+              "title": "Throughput Over Time",
+              "color_scheme": "blue"
+            },
+            {
+              "type": "Heatmap",
+              "position": {
+                "x": 0,
+                "y": 1,
+                "width": 2,
+                "height": 2
+              },
+              "title": "Machine Utilization",
+              "color_scheme": "orange"
+            },
+            {
+              "type": "BarChart",
+              "position": {
+                "x": 2,
+                "y": 2,
+                "width": 4,
+                "height": 2
+              },
+              "title": "Energy Consumption",
+              "color_scheme": "red"
+            }
+          ],
+          "refresh_rate": "real-time"
+        },
+        "energy_dashboard": {
+          "widgets": [
+            {
+              "type": "LineChart",
+              "position": {
+                "x": 0,
+                "y": 0,
+                "width": 4,
+                "height": 2
+              },
+              "title": "Energy Consumption Over Time",
+              "color_scheme": "purple"
+            },
+            {
+              "type": "BarChart",
+              "position": {
+                "x": 4,
+                "y": 0,
+                "width": 2,
+                "height": 2
+              },
+              "title": "Energy per Unit",
+              "color_scheme": "yellow"
+            }
+          ],
+          "refresh_rate": "hourly"
+        }
+      }
+    },
+    "alerts": {
+      "thresholds": [
+        {
+          "name": "High_WIP_Alert",
+          "metric": "work_in_progress",
+          "threshold": 50,
+          "severity": "warning",
+          "description": "High Work-in-Progress detected"
+        },
+        {
+          "name": "Low_Throughput_Alert",
+          "metric": "throughput_units_per_hour",
+          "threshold": 80,
+          "severity": "critical",
+          "description": "Low throughput detected"
+        },
+        {
+          "name": "High_Energy_Alert",
+          "metric": "energy_consumption_kwh",
+          "threshold": 2000,
+          "severity": "emergency",
+          "description": "High energy consumption detected"
+        }
+      ]
+    },
+    "kpis": {
+      "indicators": [
+        {
+          "name": "Throughput",
+          "metric": "units_per_hour",
+          "target": 120,
+          "method": "count of parts processed per hour"
+        },
+        {
+          "name": "Work-in-Progress",
+          "metric": "wip_count",
+          "target": 30,
+          "method": "count of parts in buffers and machines"
+        },
+        {
+          "name": "Energy Consumption",
+          "metric": "kwh_per_unit",
+          "target": 1.5,
+          "method": "average energy consumption per unit"
+        },
+        {
+          "name": "Overall Equipment Effectiveness",
+          "metric": "oee_percentage",
+          "target": 85,
+          "method": "calculated using availability, performance, and quality factors"
+        }
+      ]
+    }
+  },
+  "dt_simulation": "```python\nimport pychrono as chrono\nimport pychrono.fsi as fsi\nimport pychrono.irrlicht as irr\nimport numpy as np\nimport math\nimport datetime\nimport time\nimport csv\n\n# Initialize PyChrono system\nchrono.SetChronoDataPath('path/to/chronodata')  # Update path if needed\nsys = chrono.ChSystemNSC()\n\n# Set gravity\nsys.SetGravitationalAcceleration(chrono.Vector3d(0, -9.81, 0))\n\n# Create a ground body\nground = chrono.ChBody()\nground.SetFixed(True)\nground.SetIdentifier(-1)\nground.SetPos(chrono.Vector3d(0, -1, 0))\nsys.Add(ground)\n\n# Add a visualization asset to the ground\nground_asset = chrono.ChVisualAsset()\nground_asset.SetColor(chrono.ChColor(0.5, 0.5, 0.5))\nground.AddAsset(ground_asset)\n\n# Define material properties\nsteel_mat = chrono.ChMaterialSurfaceNSC()\nsteel_mat.SetFriction(0.5)\nsteel_mat.SetRestitution(0.1)\n\nrefractory_mat = chrono.ChMaterialSurfaceNSC()\nrefractory_mat.SetFriction(0.3)\nrefractory_mat.SetRestitution(0.05)\n\n# Define machine parameters from requirements\nmachine_params = {\n    'M1': {'time_per_part': 120},  # seconds per part\n    'M2': {'time_per_part': 150},\n    'M3': {'time_per_part': 180},\n    'M4': {'time_per_part': 200},\n    'M5': {'time_per_part': 220}\n}\n\nbuffer_params = {\n    'B0': {'capacity': 10},\n    'B1': {'capacity': 10},\n    'B2': {'capacity': 10},\n    'B3': {'capacity': 10},\n    'B4': {'capacity': 10}\n}\n\n# Create machines (M1-M5)\nmachines = {}\nfor name, params in machine_params.items():\n    # Create machine body\n    machine_body = chrono.ChBody()\n    machine_body.SetPos(chrono.Vector3d(0, 0, 0))\n    machine_body.SetIdentifier(ord(name[1]) - ord('0'))  # Unique ID for each machine\n    sys.Add(machine_body)\n    \n    # Add visual asset\n    machine_asset = chrono.ChVisualAsset()\n    machine_asset.SetColor(chrono.ChColor(0.8, 0.2, 0.2))  # Red for machines\n    machine_body.AddAsset(machine_asset)\n    \n    # Store machine data\n    machines[name] = {\n        'body': machine_body,\n        'params': params,\n        'status': 'idle',  # idle, processing\n        'last_processed': 0,\n        'total_energy_consumption': 0,\n        'processing_time': 0\n    }\n\n# Create buffers (B0-B4)\nbuffers = {}\nfor name, params in buffer_params.items():\n    # Create buffer body\n    buffer_body = chrono.ChBody()\n    buffer_body.SetPos(chrono.Vector3d(0, 0, 0))\n    buffer_body.SetIdentifier(ord(name[1]) - ord('0') + 100)  # Unique ID for buffers\n    sys.Add(buffer_body)\n    \n    # Add visual asset\n    buffer_asset = chrono.ChVisualAsset()\n    buffer_asset.SetColor(chrono.ChColor(0.2, 0.8, 0.2))  # Green for buffers\n    buffer_body.AddAsset(buffer_asset)\n    \n    # Store buffer data\n    buffers[name] = {\n        'body': buffer_body,\n        'params': params,\n        'current_parts': 0\n    }\n\n# Create conveyor belts between machines and buffers\nconveyor_belts = []\n\n# Connect M1 to B0\nbelt1 = {\n    'from_machine': 'M1',\n    'to_buffer': 'B0',\n    'length': 1.0,\n    'speed': 0.5\n}\nconveyor_belts.append(belt1)\n\n# Connect B0 to M2\nbelt2 = {\n    'from_buffer': 'B0',\n    'to_machine': 'M2',\n    'length': 1.0,\n    'speed': 0.5\n}\nconveyor_belts.append(belt2)\n\n# Continue connecting other machines and buffers...\nbelt3 = {\n    'from_machine': 'M2',\n    'to_buffer': 'B1',\n    'length': 1.0,\n    'speed': 0.5\n}\nconveyor_belts.append(belt3)\n\nbelt4 = {\n    'from_buffer': 'B1',\n    'to_machine': 'M3',\n    'length': 1.0,\n    'speed': 0.5\n}\nconveyor_belts.append(belt4)\n\nbelt5 = {\n    'from_machine': 'M3',\n    'to_buffer': 'B2',\n    'length': 1.0,\n    'speed': 0.5\n}\nconveyor_belts.append(belt5)\n\nbelt6 = {\n    'from_buffer': 'B2',\n    'to_machine': 'M4',\n    'length': 1.0,\n    'speed': 0.5\n}\nconveyor_belts.append(belt6)\n\nbelt7 = {\n    'from_machine': 'M4',\n    'to_buffer': 'B3',\n    'length': 1.0,\n    'speed': 0.5\n}\nconveyor_belts.append(belt7)\n\nbelt8 = {\n    'from_buffer': 'B3',\n    'to_machine': 'M5',\n    'length': 1.0,\n    'speed': 0.5\n}\nconveyor_belts.append(belt8)\n\nbelt9 = {\n    'from_machine': 'M5',\n    'to_buffer': 'B4',\n    'length': 1.0,\n    'speed': 0.5\n}\nconveyor_belts.append(belt9)\n\n# Create parts to process (similar to batch input)\nparts = []\npart_counter = 0\n\n# Sensor data collection lists\nsensor_events = []  # Event logs for processed parts\nstate_intervals = []  # State interval logs for machines\nenergy_records = []  # Continuous energy consumption records\n\n# Start simulation time\nsim_start_time = time.time()\n\n# Main simulation loop\nsimulation_duration = 432000  # 5 days in seconds\ndt = 0.01  # Time step\nstep_count = 0\n\nwhile True:\n    current_time = time.time() - sim_start_time\n    \n    if current_time >= simulation_duration:\n        break\n    \n    # Step the simulation\n    sys.DoStepDynamics(dt)\n    \n    # Process events every 10 steps\n    if step_count % 10 == 0:\n        # Simulate part arrival\n        if len(parts) < 100:  # Limit total parts to avoid memory issues\n            part_id = part_counter\n            part_counter += 1\n            \n            # Create part body\n            part = chrono.ChBody()\n            part.SetPos(chrono.Vector3d(0, 0, 0))\n            part.SetIdentifier(part_id)\n            \n            # Add visual asset\n            part_asset = chrono.ChVisualAsset()\n            part_asset.SetColor(chrono.ChColor(0.2, 0.2, 0.8))  # Blue for parts\n            part.AddAsset(part_asset)\n            \n            sys.Add(part)\n            parts.append({'id': part_id, 'body': part, 'position': 'input_queue'})\n        \n        # Check machines for processing\n        for machine_name, machine_data in machines.items():\n            machine_body = machine_data['body']\n            \n            # Determine if machine is idle\n            if machine_data['status'] == 'idle':\n                # Try to find a part to process\n                for part in parts:\n                    if part['position'] == 'input_queue' and machine_name == 'M1':\n                        # Move part to machine\n                        part['position'] = machine_name\n                        machine_data['status'] = 'processing'\n                        machine_data['last_processed'] = current_time\n                        \n                        # Record event\n                        event_entry = {\n                            'event_type': 'part_processing_started',\n                            'machine': machine_name,\n                            'part_id': part['id'],\n                            'timestamp': current_time\n                        }\n                        sensor_events.append(event_entry)\n                        \n                        break\n            elif machine_data['status'] == 'processing':\n                # Check if processing is complete\n                elapsed_time = current_time - machine_data['last_processed']\n                expected_time = machine_data['params']['time_per_part']\n                \n                if elapsed_time >= expected_time:\n                    # Processing complete\n                    machine_data['status'] = 'idle'\n                    \n                    # Find and remove part\n                    part_to_remove = None\n                    for part in parts:\n                        if part['position'] == machine_name:\n                            part_to_remove = part\n                            break\n                    \n                    if part_to_remove:\n                        # Remove part from system\n                        sys.Remove(part_to_remove['body'])\n                        parts.remove(part_to_remove)\n                        \n                        # Record completion event\n                        event_entry = {\n                            'event_type': 'part_processed',\n                            'machine': machine_name,\n                            'part_id': part_to_remove['id'],\n                            'timestamp': current_time\n                        }\n                        sensor_events.append(event_entry)\n                        \n                        # Update energy consumption (approximate)\n                        machine_data['total_energy_consumption'] += 10 * expected_time  # kWh\n                        \n                        # Move to next buffer or final output\n                        next_buffer = ''\n                        if machine_name == 'M1':\n                            next_buffer = 'B0'\n                        elif machine_name == 'M2':\n                            next_buffer = 'B1'\n                        elif machine_name == 'M3':\n                            next_buffer = 'B2'\n                        elif machine_name == 'M4':\n                            next_buffer = 'B3'\n                        elif machine_name == 'M5':\n                            next_buffer = 'B4'\n                        \n                        # Move part to next buffer\n                        if next_buffer:\n                            for part in parts:\n                                if part['position'] == machine_name:\n                                    part['position'] = next_buffer\n                                    break\n\n    # Log state intervals\n    if step_count % 50 == 0:  # Every 50 steps\n        for machine_name, machine_data in machines.items():\n            state_interval = {\n                'machine': machine_name,\n                'state': machine_data['status'],\n                'timestamp': current_time,\n                'duration': dt\n            }\n            state_intervals.append(state_interval)\n    \n    # Log continuous energy records\n    if step_count % 10 == 0:  # Every 10 steps\n        for machine_name, machine_data in machines.items():\n            energy_record = {\n                'machine': machine_name,\n                'energy_kwh': machine_data['total_energy_consumption'],\n                'timestamp': current_time\n            }\n            energy_records.append(energy_record)\n    \n    step_count += 1\n\n# Write sensor data to CSV files (simulate database logging)\n# Events log\nwith open('sensor_events.csv', 'w', newline='') as csvfile:\n    fieldnames = ['event_type', 'machine', 'part_id', 'timestamp']\n    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)\n    writer.writeheader()\n    for row in sensor_events:\n        writer.writerow(row)\n\n# State intervals log\nwith open('state_intervals.csv', 'w', newline='') as csvfile:\n    fieldnames = ['machine', 'state', 'timestamp', 'duration']\n    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)\n    writer.writeheader()\n    for row in state_intervals:\n        writer.writerow(row)\n\n# Energy records log\nwith open('energy_records.csv', 'w', newline='') as csvfile:\n    fieldnames = ['machine', 'energy_kwh', 'timestamp']\n    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)\n    writer.writeheader()\n    for row in energy_records:\n        writer.writerow(row)\n\nprint(\"Simulation completed.\")\nprint(f\"Total parts processed: {len(sensor_events)}\")\nprint(f\"Total simulation time: {simulation_duration} seconds\")\nprint(f\"Average energy consumption per machine: {sum([m['total_energy_consumption'] for m in machines.values()])/len(machines)} kWh\")\n\n# Cleanup\ndel sys\n```"
+}

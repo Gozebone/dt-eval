@@ -1,0 +1,238 @@
+{
+  "components": {
+    "data_collection": {
+      "modules": [
+        {
+          "name": "SensorDataCollector",
+          "type": "data_collector",
+          "description": "Collects real-time sensor data from industrial equipment",
+          "protocols": [
+            "OPC-UA",
+            "MQTT"
+          ],
+          "update_frequency": "real-time"
+        },
+        {
+          "name": "EventLogger",
+          "type": "data_collector",
+          "description": "Logs events such as faults and maintenance activities",
+          "protocols": [
+            "REST",
+            "WebSocket"
+          ],
+          "update_frequency": "real-time"
+        }
+      ]
+    },
+    "analytics_engine": {
+      "modules": [
+        {
+          "name": "ProcessAnalytics",
+          "type": "analytics_engine",
+          "description": "Analyzes production data to identify trends and anomalies",
+          "algorithms": [
+            "time_series_analysis",
+            "anomaly_detection"
+          ],
+          "update_frequency": "real-time"
+        },
+        {
+          "name": "PerformanceOptimizer",
+          "type": "analytics_engine",
+          "description": "Optimizes production line performance based on real-time data",
+          "algorithms": [
+            "predictive_maintenance",
+            "resource_allocation"
+          ],
+          "update_frequency": "real-time"
+        }
+      ]
+    },
+    "ml_models": {
+      "modules": [
+        {
+          "name": "PredictiveMaintenanceModel",
+          "type": "ml_model",
+          "description": "Predicts equipment failures using historical and real-time data",
+          "algorithm": "random_forest",
+          "update_frequency": "hourly"
+        },
+        {
+          "name": "EnergyEfficiencyModel",
+          "type": "ml_model",
+          "description": "Predicts energy consumption and identifies optimization opportunities",
+          "algorithm": "neural_network",
+          "update_frequency": "daily"
+        }
+      ]
+    },
+    "visualization": {
+      "modules": [
+        {
+          "name": "ProductionDashboard",
+          "type": "visualization",
+          "description": "Real-time dashboard for monitoring production line",
+          "widgets": [
+            {
+              "type": "gauge",
+              "title": "Overall Equipment Effectiveness",
+              "metric": "OEE"
+            },
+            {
+              "type": "line_chart",
+              "title": "Production Rate Over Time",
+              "metric": "production_rate"
+            },
+            {
+              "type": "bar_chart",
+              "title": "Equipment Availability",
+              "metric": "availability"
+            }
+          ],
+          "refresh_rate": "5s",
+          "color_scheme": "blue_orange"
+        }
+      ]
+    }
+  },
+  "data_flows": {
+    "connections": [
+      {
+        "source": "SensorDataCollector",
+        "destination": "data_collection",
+        "protocol": "OPC-UA",
+        "update_frequency": "real-time"
+      },
+      {
+        "source": "EventLogger",
+        "destination": "data_collection",
+        "protocol": "REST",
+        "update_frequency": "real-time"
+      },
+      {
+        "source": "data_collection",
+        "destination": "analytics_engine",
+        "protocol": "WebSocket",
+        "update_frequency": "real-time"
+      },
+      {
+        "source": "analytics_engine",
+        "destination": "ml_models",
+        "protocol": "REST",
+        "update_frequency": "real-time"
+      },
+      {
+        "source": "ml_models",
+        "destination": "visualization",
+        "protocol": "WebSocket",
+        "update_frequency": "real-time"
+      }
+    ]
+  },
+  "visualization_layout": {
+    "dashboard": {
+      "title": "Industrial Production Line Digital Twin",
+      "widgets": [
+        {
+          "type": "gauge",
+          "title": "Overall Equipment Effectiveness",
+          "metric": "OEE",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 1
+          }
+        },
+        {
+          "type": "line_chart",
+          "title": "Production Rate Over Time",
+          "metric": "production_rate",
+          "position": {
+            "x": 1,
+            "y": 0,
+            "width": 2,
+            "height": 1
+          }
+        },
+        {
+          "type": "bar_chart",
+          "title": "Equipment Availability",
+          "metric": "availability",
+          "position": {
+            "x": 0,
+            "y": 1,
+            "width": 1,
+            "height": 1
+          }
+        },
+        {
+          "type": "heatmap",
+          "title": "Equipment Status",
+          "metric": "equipment_status",
+          "position": {
+            "x": 1,
+            "y": 1,
+            "width": 2,
+            "height": 1
+          }
+        }
+      ],
+      "refresh_rate": "5s",
+      "color_scheme": "blue_orange"
+    }
+  },
+  "alerts": {
+    "thresholds": [
+      {
+        "name": "HighTemperatureAlert",
+        "source": "M1_temp",
+        "threshold": 95,
+        "severity": "warning",
+        "message": "Temperature of M1 exceeds 95\u00b0C"
+      },
+      {
+        "name": "LowBufferLevelAlert",
+        "source": "B0_level",
+        "threshold": 3,
+        "severity": "critical",
+        "message": "Buffer B0 level is below 3L"
+      },
+      {
+        "name": "EquipmentFailureAlert",
+        "source": "M2",
+        "threshold": 0,
+        "severity": "emergency",
+        "message": "M2 has failed"
+      }
+    ]
+  },
+  "kpis": {
+    "metrics": [
+      {
+        "name": "Overall Equipment Effectiveness",
+        "target_value": 85,
+        "measurement_method": "OEE = Availability \u00d7 Performance \u00d7 Quality",
+        "unit": "%"
+      },
+      {
+        "name": "Production Rate",
+        "target_value": 500,
+        "measurement_method": "Units per hour",
+        "unit": "units/hour"
+      },
+      {
+        "name": "Energy Consumption",
+        "target_value": 1000,
+        "measurement_method": "kWh per day",
+        "unit": "kWh/day"
+      },
+      {
+        "name": "Equipment Availability",
+        "target_value": 95,
+        "measurement_method": "Percentage of time equipment is operational",
+        "unit": "%"
+      }
+    ]
+  }
+}

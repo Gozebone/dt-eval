@@ -1,0 +1,828 @@
+[
+  {
+    "method": "A",
+    "case": "case_0001_serial_line",
+    "rep": 0,
+    "status": "simulation_error",
+    "error": "model exited 1: Traceback (most recent call last):\n  File \"/ssd/projects/dt-eval/comparison/runs/20260918_043936/case_0001_serial_line/A/rep0/run_model.py\", line 73, in <module>\n    TOP = SystemModel(env, \"TOP\")\n  File \"/ssd/projects/dt-eval/comparison/runs/20260918_043936/case_0001_serial_line/A/rep0/run_model.py\", line 50, in __init__\n    m = Machine(env, id=data[\"name\"], processing_delay=data[\"delay\"], mtbf=mtbf, mttr=data[\"mttr\"])\nTypeError: Machine.__init__() got an unexpected keyword argument 'mtbf'\n",
+    "elapsed_generation_s": 54.141,
+    "elapsed_simulation_s": 0.097,
+    "llm_calls": 2,
+    "llm_tokens_estimate": null,
+    "generated_model_file": null,
+    "kpis": {
+      "throughput_per_hour": null,
+      "utilization": null,
+      "wip_parts": null,
+      "energy_per_part_kwh": null,
+      "native": {}
+    },
+    "assumptions": "1. Assumed IDs for the source and sink are \"src\" and \"sink\" respectively, as they were not specified in the description.\n2. Assumed the logical flow maps the 5 specified buffers (B0 to B4) to the connections between Source to M1, M1 to M2, M2 to M3, M3 to M4, and M4 to M5.\n3. Assumed an additional 6th buffer with default capacity is used to connect the final machine (M5) to the Sink, since 6 connections are needed for the serial line but only 5 buffers were provided in the description.\n4. Assumed the provided Availability percentage and MTTR values are used to calculate the Mean Time Between Failures (MTBF) required to model the failure behavior for each machine.\n5. Used default values for all missing parameters, node types, and edge types for all components.",
+    "notes": [],
+    "adapter_elapsed_s": 54.56
+  },
+  {
+    "method": "A",
+    "case": "case_0001_serial_line",
+    "rep": 1,
+    "status": "simulation_error",
+    "error": "model exited 1: Traceback (most recent call last):\n  File \"/ssd/projects/dt-eval/comparison/runs/20260918_043936/case_0001_serial_line/A/rep1/run_model.py\", line 72, in <module>\n    TOP = SystemModel(env, \"TOP\")\n  File \"/ssd/projects/dt-eval/comparison/runs/20260918_043936/case_0001_serial_line/A/rep1/run_model.py\", line 52, in __init__\n    m = Machine(env, id=d['id'], processing_delay=d['delay'], mtbf=mtbf, mttr=d['mttr'])\nTypeError: Machine.__init__() got an unexpected keyword argument 'mtbf'\n",
+    "elapsed_generation_s": 52.629,
+    "elapsed_simulation_s": 0.096,
+    "llm_calls": 2,
+    "llm_tokens_estimate": null,
+    "generated_model_file": null,
+    "kpis": {
+      "throughput_per_hour": null,
+      "utilization": null,
+      "wip_parts": null,
+      "energy_per_part_kwh": null,
+      "native": {}
+    },
+    "assumptions": "1. Assumed IDs for the source and sink are \"src\" and \"sink\" respectively, as they were not specified in the description.\n2. Assumed the logical flow maps the 5 specified buffers (B0 to B4) to the connections between Source to M1, M1 to M2, M2 to M3, M3 to M4, and M4 to M5.\n3. Assumed an additional 6th buffer with default capacity is used to connect the final machine (M5) to the Sink, since 6 connections are needed for the serial line but only 5 buffers were provided in the description.\n4. Assumed the provided Availability percentage and MTTR values are used to calculate the Mean Time Between Failures (MTBF) required to model the failure behavior for each machine.\n5. Used default values for all missing parameters, node types, and edge types for all components.",
+    "notes": [],
+    "adapter_elapsed_s": 53.06
+  },
+  {
+    "method": "A",
+    "case": "case_0001_serial_line",
+    "rep": 2,
+    "status": "simulation_error",
+    "error": "model exited 1: Traceback (most recent call last):\n  File \"/ssd/projects/dt-eval/comparison/runs/20260918_043936/case_0001_serial_line/A/rep2/run_model.py\", line 73, in <module>\n    TOP = SystemModel(env, \"TOP\")\n  File \"/ssd/projects/dt-eval/comparison/runs/20260918_043936/case_0001_serial_line/A/rep2/run_model.py\", line 50, in __init__\n    m = Machine(env, id=data[\"name\"], processing_delay=data[\"delay\"], mtbf=mtbf, mttr=data[\"mttr\"])\nTypeError: Machine.__init__() got an unexpected keyword argument 'mtbf'\n",
+    "elapsed_generation_s": 52.271,
+    "elapsed_simulation_s": 0.094,
+    "llm_calls": 2,
+    "llm_tokens_estimate": null,
+    "generated_model_file": null,
+    "kpis": {
+      "throughput_per_hour": null,
+      "utilization": null,
+      "wip_parts": null,
+      "energy_per_part_kwh": null,
+      "native": {}
+    },
+    "assumptions": "1. Assumed IDs for the source and sink are \"src\" and \"sink\" respectively, as they were not specified in the description.\n2. Assumed the logical flow maps the 5 specified buffers (B0 to B4) to the connections between Source to M1, M1 to M2, M2 to M3, M3 to M4, and M4 to M5.\n3. Assumed an additional 6th buffer with default capacity is used to connect the final machine (M5) to the Sink, since 6 connections are needed for the serial line but only 5 buffers were provided in the description.\n4. Assumed the provided Availability percentage and MTTR values are used to calculate the Mean Time Between Failures (MTBF) required to model the failure behavior for each machine.\n5. Used default values for all missing parameters, node types, and edge types for all components.",
+    "notes": [],
+    "adapter_elapsed_s": 52.68
+  },
+  {
+    "method": "B",
+    "case": "case_0001_serial_line",
+    "rep": 0,
+    "status": "ok",
+    "error": null,
+    "elapsed_generation_s": 67.189,
+    "elapsed_simulation_s": 29.729,
+    "llm_calls": 2,
+    "llm_tokens_estimate": null,
+    "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260918_043936/case_0001_serial_line/B/rep0/model.py",
+    "kpis": {
+      "throughput_per_hour": 17.92,
+      "utilization": null,
+      "wip_parts": 11.53,
+      "energy_per_part_kwh": 0.7943,
+      "native": {
+        "stdout_head": "\n=== Mean Overall KPIs over 10 runs ===\nThroughput = 17.92 parts/hour\nWIP = 11.53 parts\nMean Energy Consumption per Part = 0.7943 kWh/part\n\n=== Bottleneck Frequency over runs ===\nM1: 10 times\nM5: 10 times\nM2: 10 times\n"
+      }
+    },
+    "assumptions": null,
+    "notes": [],
+    "adapter_elapsed_s": 98.08
+  },
+  {
+    "method": "B",
+    "case": "case_0001_serial_line",
+    "rep": 1,
+    "status": "ok",
+    "error": null,
+    "elapsed_generation_s": 67.545,
+    "elapsed_simulation_s": 32.394,
+    "llm_calls": 2,
+    "llm_tokens_estimate": null,
+    "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260918_043936/case_0001_serial_line/B/rep1/model.py",
+    "kpis": {
+      "throughput_per_hour": 18.18,
+      "utilization": null,
+      "wip_parts": 4.15,
+      "energy_per_part_kwh": 0.6204,
+      "native": {
+        "stdout_head": "\n=== Mean Overall KPIs over 10 runs ===\nThroughput = 18.18 parts/hour\nWIP = 4.15 parts\nMean Energy Consumption per Part = 0.6204 kWh/part\n\n=== Bottleneck Frequency over runs ===\nM1: 10 times\nM4: 10 times\nM3: 10 times\n"
+      }
+    },
+    "assumptions": null,
+    "notes": [],
+    "adapter_elapsed_s": 101.07
+  },
+  {
+    "method": "B",
+    "case": "case_0001_serial_line",
+    "rep": 2,
+    "status": "ok",
+    "error": null,
+    "elapsed_generation_s": 81.929,
+    "elapsed_simulation_s": 0.595,
+    "llm_calls": 2,
+    "llm_tokens_estimate": null,
+    "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260918_043936/case_0001_serial_line/B/rep2/model.py",
+    "kpis": {
+      "throughput_per_hour": 0.0,
+      "utilization": null,
+      "wip_parts": 57.0,
+      "energy_per_part_kwh": 0.0,
+      "native": {
+        "stdout_head": "\n=== Mean Overall KPIs over 10 runs ===\nThroughput = 0.00 parts/hour\nWIP = 57.00 parts\nMean Energy Consumption per Part = 0.0000 kWh/part\n\n=== Bottleneck Frequency over runs ===\nM1: 10 times\nM2: 10 times\nM3: 10 times\n"
+      }
+    },
+    "assumptions": null,
+    "notes": [],
+    "adapter_elapsed_s": 83.65
+  },
+  {
+    "method": "A",
+    "case": "case_0002_saturated_short_line",
+    "rep": 0,
+    "status": "ok",
+    "error": null,
+    "elapsed_generation_s": 45.461,
+    "elapsed_simulation_s": 0.973,
+    "llm_calls": 2,
+    "llm_tokens_estimate": null,
+    "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260918_043936/case_0002_saturated_short_line/A/rep0/model.py",
+    "kpis": {
+      "throughput_per_hour": 32.675,
+      "utilization": {
+        "M1": 0.818,
+        "M2": 0.6352,
+        "M3": 0.9995
+      },
+      "wip_parts": null,
+      "energy_per_part_kwh": null,
+      "native": {
+        "machine_stats": {
+          "M1": {
+            "processed": 3927,
+            "horizon": 432000.0,
+            "utilization": 0.8180215277776429,
+            "throughput_per_unit": 0.009090277777777777
+          },
+          "M2": {
+            "processed": 3921,
+            "horizon": 432000.0,
+            "utilization": 0.6352440277776429,
+            "throughput_per_unit": 0.009076388888888889
+          },
+          "M3": {
+            "processed": 3915,
+            "horizon": 432000.0,
+            "utilization": 0.9994908333333333,
+            "throughput_per_unit": 0.0090625
+          }
+        },
+        "model_horizon_s": 432000.0
+      }
+    },
+    "assumptions": "1. Node names and Types are chosen according to users description, with the source inferred as \"src\" and the sink inferred as \"sink\" since their exact IDs were not specified.\n2. Used a single buffer wherever the number of buffers between nodes was not specified.\n3. Inferred the logical flow of the provided buffers sequentially: B0 connects the Source to M1, B1 connects M1 to M2, and B2 connects M2 to M3.\n4. Assumed an additional fourth buffer with default capacity connects M3 to the Sink, as only 3 buffers were specified in the description for the 4 required connections in the serial line.\n5. Used default values for all missing parameters for all components, including default edge types for all connections.",
+    "notes": [],
+    "adapter_elapsed_s": 46.76
+  },
+  {
+    "method": "A",
+    "case": "case_0002_saturated_short_line",
+    "rep": 1,
+    "status": "simulation_error",
+    "error": "model exited 1: Traceback (most recent call last):\n  File \"/ssd/projects/dt-eval/comparison/runs/20260918_043936/case_0002_saturated_short_line/A/rep1/run_model.py\", line 64, in <module>\n    TOP = SystemModel(env, \"TOP\")\n  File \"/ssd/projects/dt-eval/comparison/runs/20260918_043936/case_0002_saturated_short_line/A/rep1/run_model.py\", line 43, in __init__\n    self.M = [Machine(env, **data) for data in machine_data]\n              ~~~~~~~^^^^^^^^^^^^^\nTypeError: Machine.__init__() got an unexpected keyword argument 'Availability_%'\n",
+    "elapsed_generation_s": 66.112,
+    "elapsed_simulation_s": 0.09,
+    "llm_calls": 2,
+    "llm_tokens_estimate": null,
+    "generated_model_file": null,
+    "kpis": {
+      "throughput_per_hour": null,
+      "utilization": null,
+      "wip_parts": null,
+      "energy_per_part_kwh": null,
+      "native": {}
+    },
+    "assumptions": "1. Node names and Types are chosen according to users description where provided; inferred names \"src\" for the Source and \"sink\" for the Sink as they were not explicitly named.\n2. Assumed the 3 specified buffers (B0, B1, B2) connect the Source to M1, M1 to M2, and M2 to M3 respectively based on the logical serial flow.\n3. Assumed a single default buffer connects the last machine (M3) to the Sink, as its capacity and name were not specified in the description.\n4. Assumed the provided Avg_Time_per_part_s corresponds to the processing_delay parameter for each Machine.\n5. Assumed Availability_%, MTTR_s, EnergyIdling, and EnergyWorking are passed as keyword arguments to the Machine nodes to satisfy the requirement of using the measured failure and energy behavior.\n6. Used default values for all other missing parameters for all components.",
+    "notes": [],
+    "adapter_elapsed_s": 66.52
+  },
+  {
+    "method": "A",
+    "case": "case_0002_saturated_short_line",
+    "rep": 2,
+    "status": "simulation_error",
+    "error": "model exited 1: Traceback (most recent call last):\n  File \"/ssd/projects/dt-eval/comparison/runs/20260918_043936/case_0002_saturated_short_line/A/rep2/run_model.py\", line 77, in <module>\n    TOP = SystemModel(env, \"TOP\")\n  File \"/ssd/projects/dt-eval/comparison/runs/20260918_043936/case_0002_saturated_short_line/A/rep2/run_model.py\", line 47, in __init__\n    m = Machine(env, id=d[\"id\"], processing_delay=d[\"delay\"], mtbf=d[\"mtbf\"], mttr=d[\"mttr\"])\nTypeError: Machine.__init__() got an unexpected keyword argument 'mtbf'\n",
+    "elapsed_generation_s": 62.002,
+    "elapsed_simulation_s": 0.089,
+    "llm_calls": 2,
+    "llm_tokens_estimate": null,
+    "generated_model_file": null,
+    "kpis": {
+      "throughput_per_hour": null,
+      "utilization": null,
+      "wip_parts": null,
+      "energy_per_part_kwh": null,
+      "native": {}
+    },
+    "assumptions": "1. Node names and Types are chosen according to users description.\n2. Assumed Source name as \"src\" and Sink name as \"sink\" since they were not explicitly named in the description.\n3. Used a single buffer where ever number of buffers not specified.\n4. Assumed the three specified buffers B0, B1, and B2 connect the Source to M1, M1 to M2, and M2 to M3 respectively based on the logical flow.\n5. Assumed an additional default buffer connects the last machine M3 to the Sink, as only three buffers were specified in the description.\n6. Assumed the measured Avg_Time_per_part_s maps to the processing_delay parameter for the Machine nodes.\n7. Assumed machine failure parameters (like MTBF) are to be calculated from the provided Availability_% and MTTR_s, and that machines with 100% availability do not fail.\n8. Used default values for all missing parameters for all components.",
+    "notes": [],
+    "adapter_elapsed_s": 62.41
+  },
+  {
+    "method": "B",
+    "case": "case_0002_saturated_short_line",
+    "rep": 0,
+    "status": "ok",
+    "error": null,
+    "elapsed_generation_s": 63.832,
+    "elapsed_simulation_s": 31.32,
+    "llm_calls": 2,
+    "llm_tokens_estimate": null,
+    "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260918_043936/case_0002_saturated_short_line/B/rep0/model.py",
+    "kpis": {
+      "throughput_per_hour": 64.87,
+      "utilization": null,
+      "wip_parts": 9.0,
+      "energy_per_part_kwh": 0.269,
+      "native": {
+        "stdout_head": "\n=== Mean Overall KPIs over 10 runs ===\nThroughput = 64.87 parts/hour\nWIP = 9.00 parts\nMean Energy Consumption per Part = 0.2690 kWh/part\n\n=== Bottleneck Frequency over runs ===\nM3_a: 10 times\nM3_b: 10 times\nM1: 10 times\n"
+      }
+    },
+    "assumptions": null,
+    "notes": [],
+    "adapter_elapsed_s": 96.3
+  },
+  {
+    "method": "B",
+    "case": "case_0002_saturated_short_line",
+    "rep": 1,
+    "status": "ok",
+    "error": null,
+    "elapsed_generation_s": 58.105,
+    "elapsed_simulation_s": 21.591,
+    "llm_calls": 2,
+    "llm_tokens_estimate": null,
+    "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260918_043936/case_0002_saturated_short_line/B/rep1/model.py",
+    "kpis": {
+      "throughput_per_hour": 32.43,
+      "utilization": null,
+      "wip_parts": 24.48,
+      "energy_per_part_kwh": 0.3672,
+      "native": {
+        "stdout_head": "\n=== Mean Overall KPIs over 10 runs ===\nThroughput = 32.43 parts/hour\nWIP = 24.48 parts\nMean Energy Consumption per Part = 0.3672 kWh/part\n\n=== Bottleneck Frequency over runs ===\nM3: 10 times\nM1: 10 times\nM2a: 6 times\nM2b: 4 times\n"
+      }
+    },
+    "assumptions": null,
+    "notes": [],
+    "adapter_elapsed_s": 80.81
+  },
+  {
+    "method": "B",
+    "case": "case_0002_saturated_short_line",
+    "rep": 2,
+    "status": "ok",
+    "error": null,
+    "elapsed_generation_s": 62.77,
+    "elapsed_simulation_s": 23.012,
+    "llm_calls": 2,
+    "llm_tokens_estimate": null,
+    "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260918_043936/case_0002_saturated_short_line/B/rep2/model.py",
+    "kpis": {
+      "throughput_per_hour": 32.43,
+      "utilization": null,
+      "wip_parts": 28.48,
+      "energy_per_part_kwh": 0.3672,
+      "native": {
+        "stdout_head": "\n=== Mean Overall KPIs over 10 runs ===\nThroughput = 32.43 parts/hour\nWIP = 28.48 parts\nMean Energy Consumption per Part = 0.3672 kWh/part\n\n=== Bottleneck Frequency over runs ===\nM3: 10 times\nM1: 10 times\nM2a: 9 times\nM2b: 1 times\n"
+      }
+    },
+    "assumptions": null,
+    "notes": [],
+    "adapter_elapsed_s": 86.91
+  },
+  {
+    "method": "A",
+    "case": "case_0003_starved_six_line",
+    "rep": 0,
+    "status": "simulation_error",
+    "error": "model exited 1: Traceback (most recent call last):\n  File \"/ssd/projects/dt-eval/comparison/runs/20260918_043936/case_0003_starved_six_line/A/rep0/run_model.py\", line 68, in <module>\n    TOP = SystemModel(env, \"TOP\")\n  File \"/ssd/projects/dt-eval/comparison/runs/20260918_043936/case_0003_starved_six_line/A/rep0/run_model.py\", line 52, in __init__\n    m = Machine(env, id=data[\"id\"], processing_delay=data[\"delay\"], mtbf=mtbf, mttr=mttr)\nTypeError: Machine.__init__() got an unexpected keyword argument 'mtbf'\n",
+    "elapsed_generation_s": 62.361,
+    "elapsed_simulation_s": 0.09,
+    "llm_calls": 2,
+    "llm_tokens_estimate": null,
+    "generated_model_file": null,
+    "kpis": {
+      "throughput_per_hour": null,
+      "utilization": null,
+      "wip_parts": null,
+      "energy_per_part_kwh": null,
+      "native": {}
+    },
+    "assumptions": "1. Node names and Types are chosen according to users description.\n2. Assumed IDs src for the Source and sink for the Sink as they were not explicitly named in the description.\n3. Assumed a single buffer is used between every pair of connected nodes in the sequence.\n4. Assumed a 7th buffer is needed to connect M6 to the Sink since 7 connections are required for the full sequence (Source to M1, M1 to M2, ..., M6 to Sink) but only 6 buffers (B0 to B5) were specified, and assumed it has the same capacity of 10.\n5. Assumed the provided Avg_Time_per_part_s maps to the processing_delay parameter for each machine.\n6. Assumed the missing Mean Time Between Failures (MTBF) parameter for each machine is mathematically derived from the provided Availability_% and MTTR_s values.\n7. Used default values for all missing parameters for all components.\n8. Assumed a top-level node class is created to encapsulate the entire serial production line structure.",
+    "notes": [],
+    "adapter_elapsed_s": 62.77
+  },
+  {
+    "method": "A",
+    "case": "case_0003_starved_six_line",
+    "rep": 1,
+    "status": "simulation_error",
+    "error": "model exited 1: Traceback (most recent call last):\n  File \"/ssd/projects/dt-eval/comparison/runs/20260918_043936/case_0003_starved_six_line/A/rep1/run_model.py\", line 67, in <module>\n    TOP = SerialProductionLine(env, \"TOP\")\n  File \"/ssd/projects/dt-eval/comparison/runs/20260918_043936/case_0003_starved_six_line/A/rep1/run_model.py\", line 51, in __init__\n    m = Machine(env, id=data[\"name\"], processing_delay=data[\"delay\"], mtbf=mtbf, mttr=data[\"mttr\"])\nTypeError: Machine.__init__() got an unexpected keyword argument 'mtbf'\n",
+    "elapsed_generation_s": 57.263,
+    "elapsed_simulation_s": 0.095,
+    "llm_calls": 2,
+    "llm_tokens_estimate": null,
+    "generated_model_file": null,
+    "kpis": {
+      "throughput_per_hour": null,
+      "utilization": null,
+      "wip_parts": null,
+      "energy_per_part_kwh": null,
+      "native": {}
+    },
+    "assumptions": "1. Node names and Types are chosen according to users description.\n2. Assumed IDs src for the Source and sink for the Sink as they were not explicitly named in the description.\n3. Assumed a single buffer is used between every pair of connected nodes in the sequence.\n4. Assumed a 7th buffer is needed to connect M6 to the Sink since 7 connections are required for the full sequence (Source to M1, M1 to M2, ..., M6 to Sink) but only 6 buffers (B0 to B5) were specified, and assumed it has the same capacity of 10.\n5. Assumed the provided Avg_Time_per_part_s maps to the processing_delay parameter for each machine.\n6. Assumed the missing Mean Time Between Failures (MTBF) parameter for each machine is mathematically derived from the provided Availability_% and MTTR_s values.\n7. Used default values for all missing parameters for all components.\n8. Assumed a top-level node class is created to encapsulate the entire serial production line structure.",
+    "notes": [],
+    "adapter_elapsed_s": 57.68
+  },
+  {
+    "method": "A",
+    "case": "case_0003_starved_six_line",
+    "rep": 2,
+    "status": "simulation_error",
+    "error": "model exited 1: Traceback (most recent call last):\n  File \"/ssd/projects/dt-eval/comparison/runs/20260918_043936/case_0003_starved_six_line/A/rep2/run_model.py\", line 67, in <module>\n    TOP = SerialProductionLine(env, \"TOP\")\n  File \"/ssd/projects/dt-eval/comparison/runs/20260918_043936/case_0003_starved_six_line/A/rep2/run_model.py\", line 54, in __init__\n    machine = Machine(env, id=data[\"name\"], processing_delay=data[\"delay\"], mtbf=mtbf, mttr=data[\"mttr\"])\nTypeError: Machine.__init__() got an unexpected keyword argument 'mtbf'\n",
+    "elapsed_generation_s": 60.155,
+    "elapsed_simulation_s": 0.094,
+    "llm_calls": 2,
+    "llm_tokens_estimate": null,
+    "generated_model_file": null,
+    "kpis": {
+      "throughput_per_hour": null,
+      "utilization": null,
+      "wip_parts": null,
+      "energy_per_part_kwh": null,
+      "native": {}
+    },
+    "assumptions": "1. Node names and Types are chosen according to users description.\n2. Assumed IDs src for the Source and sink for the Sink as they were not explicitly named in the description.\n3. Assumed a single buffer is used between every pair of connected nodes in the sequence.\n4. Assumed a 7th buffer is needed to connect M6 to the Sink since 7 connections are required for the full sequence (Source to M1, M1 to M2, ..., M6 to Sink) but only 6 buffers (B0 to B5) were specified, and assumed it has the same capacity of 10.\n5. Assumed the provided Avg_Time_per_part_s maps to the processing_delay parameter for each machine.\n6. Assumed the missing Mean Time Between Failures (MTBF) parameter for each machine is mathematically derived from the provided Availability_% and MTTR_s values.\n7. Used default values for all missing parameters for all components.\n8. Assumed a top-level node class is created to encapsulate the entire serial production line structure.",
+    "notes": [],
+    "adapter_elapsed_s": 60.58
+  },
+  {
+    "method": "B",
+    "case": "case_0003_starved_six_line",
+    "rep": 0,
+    "status": "ok",
+    "error": null,
+    "elapsed_generation_s": 61.752,
+    "elapsed_simulation_s": 38.802,
+    "llm_calls": 2,
+    "llm_tokens_estimate": null,
+    "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260918_043936/case_0003_starved_six_line/B/rep0/model.py",
+    "kpis": {
+      "throughput_per_hour": 15.43,
+      "utilization": null,
+      "wip_parts": 53.7,
+      "energy_per_part_kwh": 1.8953,
+      "native": {
+        "stdout_head": "\n=== Mean Overall KPIs over 10 runs ===\nThroughput = 15.43 parts/hour\nWIP = 53.70 parts\nMean Energy Consumption per Part = 1.8953 kWh/part\n\n=== Bottleneck Frequency over runs ===\nM5: 10 times\nM2: 10 times\nM6: 10 times\n"
+      }
+    },
+    "assumptions": null,
+    "notes": [],
+    "adapter_elapsed_s": 101.67
+  },
+  {
+    "method": "B",
+    "case": "case_0003_starved_six_line",
+    "rep": 1,
+    "status": "ok",
+    "error": null,
+    "elapsed_generation_s": 58.889,
+    "elapsed_simulation_s": 1.118,
+    "llm_calls": 2,
+    "llm_tokens_estimate": null,
+    "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260918_043936/case_0003_starved_six_line/B/rep1/model.py",
+    "kpis": {
+      "throughput_per_hour": 0.0,
+      "utilization": null,
+      "wip_parts": 56.0,
+      "energy_per_part_kwh": 0.0,
+      "native": {
+        "stdout_head": "\n=== Mean Overall KPIs over 10 runs ===\nThroughput = 0.00 parts/hour\nWIP = 56.00 parts\nMean Energy Consumption per Part = 0.0000 kWh/part\n\n=== Bottleneck Frequency over runs ===\nM1: 10 times\nM2: 10 times\nM3: 10 times\n"
+      }
+    },
+    "assumptions": null,
+    "notes": [],
+    "adapter_elapsed_s": 61.12
+  },
+  {
+    "method": "B",
+    "case": "case_0003_starved_six_line",
+    "rep": 2,
+    "status": "ok",
+    "error": null,
+    "elapsed_generation_s": 75.297,
+    "elapsed_simulation_s": 20.033,
+    "llm_calls": 2,
+    "llm_tokens_estimate": null,
+    "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260918_043936/case_0003_starved_six_line/B/rep2/model.py",
+    "kpis": {
+      "throughput_per_hour": 0.0,
+      "utilization": null,
+      "wip_parts": 21.0,
+      "energy_per_part_kwh": 0.0,
+      "native": {
+        "stdout_head": "\n=== Mean Overall KPIs over 10 runs ===\nThroughput = 0.00 parts/hour\nWIP = 21.00 parts\nMean Energy Consumption per Part = 0.0000 kWh/part\n\n=== Bottleneck Frequency over runs ===\nM1: 10 times\nM2: 10 times\nM3: 10 times\n"
+      }
+    },
+    "assumptions": null,
+    "notes": [],
+    "adapter_elapsed_s": 96.46
+  },
+  {
+    "method": "A",
+    "case": "case_0004_failure_heavy_line",
+    "rep": 0,
+    "status": "ok",
+    "error": null,
+    "elapsed_generation_s": 42.536,
+    "elapsed_simulation_s": 1.128,
+    "llm_calls": 2,
+    "llm_tokens_estimate": null,
+    "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260918_043936/case_0004_failure_heavy_line/A/rep0/model.py",
+    "kpis": {
+      "throughput_per_hour": 23.975,
+      "utilization": {
+        "M1": 0.6662,
+        "M2": 0.8672,
+        "M3": 0.6005,
+        "M4": 0.9336,
+        "M5": 0.7311
+      },
+      "wip_parts": null,
+      "energy_per_part_kwh": null,
+      "native": {
+        "machine_stats": {
+          "M1": {
+            "processed": 2879,
+            "horizon": 432000.0,
+            "utilization": 0.6661686111111552,
+            "throughput_per_unit": 0.006664351851851852
+          },
+          "M2": {
+            "processed": 2878,
+            "horizon": 432000.0,
+            "utilization": 0.8672465740740192,
+            "throughput_per_unit": 0.006662037037037037
+          },
+          "M3": {
+            "processed": 2877,
+            "horizon": 432000.0,
+            "utilization": 0.6004691203704342,
+            "throughput_per_unit": 0.006659722222222222
+          },
+          "M4": {
+            "processed": 2876,
+            "horizon": 432000.0,
+            "utilization": 0.9336022685185326,
+            "throughput_per_unit": 0.006657407407407407
+          },
+          "M5": {
+            "processed": 2876,
+            "horizon": 432000.0,
+            "utilization": 0.7311164814815208,
+            "throughput_per_unit": 0.006657407407407407
+          }
+        },
+        "model_horizon_s": 432000.0
+      }
+    },
+    "assumptions": "1. Node names and Types are chosen according to users description.\n2. Assumed the ID \"src\" for the Source and \"sink\" for the Sink as they were not explicitly named in the description.\n3. Used a single buffer wherever the number of buffers between nodes was not specified.\n4. Since only 5 buffers (B0 to B4) are specified for the 6 required connections in the sequence (Source -> M1 -> M2 -> M3 -> M4 -> M5 -> Sink), assumed an additional default buffer with default capacity is used to connect M5 to the Sink.\n5. Assumed logical flow of parts is strictly sequential from the Source, through machines M1 to M5, and finally to the Sink.\n6. Used default values for all missing parameters for all components.",
+    "notes": [],
+    "adapter_elapsed_s": 43.99
+  },
+  {
+    "method": "A",
+    "case": "case_0004_failure_heavy_line",
+    "rep": 1,
+    "status": "ok",
+    "error": null,
+    "elapsed_generation_s": 59.357,
+    "elapsed_simulation_s": 1.08,
+    "llm_calls": 2,
+    "llm_tokens_estimate": null,
+    "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260918_043936/case_0004_failure_heavy_line/A/rep1/model.py",
+    "kpis": {
+      "throughput_per_hour": 23.975,
+      "utilization": {
+        "M1": 0.6662,
+        "M2": 0.8672,
+        "M3": 0.6005,
+        "M4": 0.9336,
+        "M5": 0.7311
+      },
+      "wip_parts": null,
+      "energy_per_part_kwh": null,
+      "native": {
+        "machine_stats": {
+          "M1": {
+            "processed": 2879,
+            "horizon": 432000.0,
+            "utilization": 0.6661686111111552,
+            "throughput_per_unit": 0.006664351851851852
+          },
+          "M2": {
+            "processed": 2878,
+            "horizon": 432000.0,
+            "utilization": 0.8672465740740192,
+            "throughput_per_unit": 0.006662037037037037
+          },
+          "M3": {
+            "processed": 2877,
+            "horizon": 432000.0,
+            "utilization": 0.6004691203704342,
+            "throughput_per_unit": 0.006659722222222222
+          },
+          "M4": {
+            "processed": 2876,
+            "horizon": 432000.0,
+            "utilization": 0.9336022685185326,
+            "throughput_per_unit": 0.006657407407407407
+          },
+          "M5": {
+            "processed": 2876,
+            "horizon": 432000.0,
+            "utilization": 0.7311164814815208,
+            "throughput_per_unit": 0.006657407407407407
+          }
+        },
+        "model_horizon_s": 432000.0
+      }
+    },
+    "assumptions": "1. Node names and Types are chosen according to users description.\n2. Assumed names for the Source and Sink nodes as they were not explicitly named in the description.\n3. Used default edge type Buffer for all connections as the edge type was not explicitly specified.\n4. Assumed exactly a single buffer between each connected node pair.\n5. Assumed an additional buffer connects the final machine (M5) to the Sink using default capacity, as only five buffers (B0 to B4) were specified for the six required connections in the sequence.\n6. Used default values for all missing parameters for all components.",
+    "notes": [],
+    "adapter_elapsed_s": 60.75
+  },
+  {
+    "method": "A",
+    "case": "case_0004_failure_heavy_line",
+    "rep": 2,
+    "status": "ok",
+    "error": null,
+    "elapsed_generation_s": 48.617,
+    "elapsed_simulation_s": 1.19,
+    "llm_calls": 2,
+    "llm_tokens_estimate": null,
+    "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260918_043936/case_0004_failure_heavy_line/A/rep2/model.py",
+    "kpis": {
+      "throughput_per_hour": 23.975,
+      "utilization": {
+        "M1": 0.6662,
+        "M2": 0.8672,
+        "M3": 0.6005,
+        "M4": 0.9336,
+        "M5": 0.7311
+      },
+      "wip_parts": null,
+      "energy_per_part_kwh": null,
+      "native": {
+        "machine_stats": {
+          "M1": {
+            "processed": 2879,
+            "horizon": 432000.0,
+            "utilization": 0.6661686111111552,
+            "throughput_per_unit": 0.006664351851851852
+          },
+          "M2": {
+            "processed": 2878,
+            "horizon": 432000.0,
+            "utilization": 0.8672465740740192,
+            "throughput_per_unit": 0.006662037037037037
+          },
+          "M3": {
+            "processed": 2877,
+            "horizon": 432000.0,
+            "utilization": 0.6004691203704342,
+            "throughput_per_unit": 0.006659722222222222
+          },
+          "M4": {
+            "processed": 2876,
+            "horizon": 432000.0,
+            "utilization": 0.9336022685185326,
+            "throughput_per_unit": 0.006657407407407407
+          },
+          "M5": {
+            "processed": 2876,
+            "horizon": 432000.0,
+            "utilization": 0.7311164814815208,
+            "throughput_per_unit": 0.006657407407407407
+          }
+        },
+        "model_horizon_s": 432000.0
+      }
+    },
+    "assumptions": "1. Node names and Types are chosen according to users description.\n2. Assumed names for the Source and Sink nodes as they were not explicitly named in the description.\n3. Used default edge type Buffer for all connections as the edge type was not explicitly specified.\n4. Assumed exactly a single buffer between each connected node pair.\n5. Assumed an additional buffer connects the final machine (M5) to the Sink using default capacity, as only five buffers (B0 to B4) were specified for the six required connections in the sequence.\n6. Used default values for all missing parameters for all components.",
+    "notes": [],
+    "adapter_elapsed_s": 50.13
+  },
+  {
+    "method": "B",
+    "case": "case_0004_failure_heavy_line",
+    "rep": 0,
+    "status": "ok",
+    "error": null,
+    "elapsed_generation_s": 61.336,
+    "elapsed_simulation_s": 0.455,
+    "llm_calls": 2,
+    "llm_tokens_estimate": null,
+    "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260918_043936/case_0004_failure_heavy_line/B/rep0/model.py",
+    "kpis": {
+      "throughput_per_hour": 0.0,
+      "utilization": null,
+      "wip_parts": 14.0,
+      "energy_per_part_kwh": 0.0,
+      "native": {
+        "stdout_head": "\n=== Mean Overall KPIs over 10 runs ===\nThroughput = 0.00 parts/hour\nWIP = 14.00 parts\nMean Energy Consumption per Part = 0.0000 kWh/part\n\n=== Bottleneck Frequency over runs ===\nM1: 10 times\nM2: 10 times\nM3: 10 times\n"
+      }
+    },
+    "assumptions": null,
+    "notes": [],
+    "adapter_elapsed_s": 62.91
+  },
+  {
+    "method": "B",
+    "case": "case_0004_failure_heavy_line",
+    "rep": 1,
+    "status": "generation_error",
+    "error": "APIStatusError: Error code: 402 - {'error': {'message': \"This request requires more credits, or fewer max_tokens. You requested up to 65536 tokens, but can only afford 63923. To increase, visit https://openrouter.ai/workspaces/default/keys/f8844eebff4b9acc1e39bc698f8e718997e02314e809d96cf1a621e3223e4683 and adjust the key's total limit\", 'code': 402, 'metadata': {'limit_source': 'openrouter_key_limit', 'remedy_hint': \"Raise or remove this API key's usage limit at https://openrouter.ai/settings/keys, or use a key without a limit.\", 'provider_name': None, 'previous_errors': [{'code': 402, 'message': \"This request requires more credits, or fewer max_tokens. You requested up to 65536 tokens, but can only afford 63923. To increase, visit https://openrouter.ai/workspaces/default/keys/f8844eebff4b9acc1e39bc698f8e718997e02314e809d96cf1a621e3223e4683 and adjust the key's total limit\"}]}}, 'user_id': 'user_3DhDl1HmNTwdA7CMW4SGqQvb4RJ'}",
+    "elapsed_generation_s": null,
+    "elapsed_simulation_s": null,
+    "llm_calls": 0,
+    "llm_tokens_estimate": null,
+    "generated_model_file": null,
+    "kpis": {
+      "throughput_per_hour": null,
+      "utilization": null,
+      "wip_parts": null,
+      "energy_per_part_kwh": null,
+      "native": {}
+    },
+    "assumptions": null,
+    "notes": [],
+    "adapter_elapsed_s": 28.4
+  },
+  {
+    "method": "B",
+    "case": "case_0004_failure_heavy_line",
+    "rep": 2,
+    "status": "generation_error",
+    "error": "APIStatusError: Error code: 402 - {'error': {'message': \"This request requires more credits, or fewer max_tokens. You requested up to 65536 tokens, but can only afford 63923. To increase, visit https://openrouter.ai/workspaces/default/keys/f8844eebff4b9acc1e39bc698f8e718997e02314e809d96cf1a621e3223e4683 and adjust the key's total limit\", 'code': 402, 'metadata': {'limit_source': 'openrouter_key_limit', 'remedy_hint': \"Raise or remove this API key's usage limit at https://openrouter.ai/settings/keys, or use a key without a limit.\", 'provider_name': None, 'previous_errors': [{'code': 402, 'message': \"This request requires more credits, or fewer max_tokens. You requested up to 65536 tokens, but can only afford 63923. To increase, visit https://openrouter.ai/workspaces/default/keys/f8844eebff4b9acc1e39bc698f8e718997e02314e809d96cf1a621e3223e4683 and adjust the key's total limit\"}]}}, 'user_id': 'user_3DhDl1HmNTwdA7CMW4SGqQvb4RJ'}",
+    "elapsed_generation_s": null,
+    "elapsed_simulation_s": null,
+    "llm_calls": 0,
+    "llm_tokens_estimate": null,
+    "generated_model_file": null,
+    "kpis": {
+      "throughput_per_hour": null,
+      "utilization": null,
+      "wip_parts": null,
+      "energy_per_part_kwh": null,
+      "native": {}
+    },
+    "assumptions": null,
+    "notes": [],
+    "adapter_elapsed_s": 4.47
+  },
+  {
+    "method": "A",
+    "case": "case_0005_high_rate_line",
+    "rep": 0,
+    "status": "generation_error",
+    "error": "APIStatusError: Error code: 402 - {'error': {'message': \"This request requires more credits, or fewer max_tokens. You requested up to 65536 tokens, but can only afford 53269. To increase, visit https://openrouter.ai/workspaces/default/keys/f8844eebff4b9acc1e39bc698f8e718997e02314e809d96cf1a621e3223e4683 and adjust the key's total limit\", 'code': 402, 'metadata': {'limit_source': 'openrouter_key_limit', 'remedy_hint': \"Raise or remove this API key's usage limit at https://openrouter.ai/settings/keys, or use a key without a limit.\", 'provider_name': None, 'previous_errors': [{'code': 402, 'message': \"This request requires more credits, or fewer max_tokens. You requested up to 65536 tokens, but can only afford 53269. To increase, visit https://openrouter.ai/workspaces/default/keys/f8844eebff4b9acc1e39bc698f8e718997e02314e809d96cf1a621e3223e4683 and adjust the key's total limit\"}]}}, 'user_id': 'user_3DhDl1HmNTwdA7CMW4SGqQvb4RJ'}",
+    "elapsed_generation_s": null,
+    "elapsed_simulation_s": null,
+    "llm_calls": 0,
+    "llm_tokens_estimate": null,
+    "generated_model_file": null,
+    "kpis": {
+      "throughput_per_hour": null,
+      "utilization": null,
+      "wip_parts": null,
+      "energy_per_part_kwh": null,
+      "native": {}
+    },
+    "assumptions": null,
+    "notes": [],
+    "adapter_elapsed_s": 2.5
+  },
+  {
+    "method": "A",
+    "case": "case_0005_high_rate_line",
+    "rep": 1,
+    "status": "generation_error",
+    "error": "APIStatusError: Error code: 402 - {'error': {'message': \"This request requires more credits, or fewer max_tokens. You requested up to 65536 tokens, but can only afford 50256. To increase, visit https://openrouter.ai/workspaces/default/keys/f8844eebff4b9acc1e39bc698f8e718997e02314e809d96cf1a621e3223e4683 and adjust the key's total limit\", 'code': 402, 'metadata': {'limit_source': 'openrouter_key_limit', 'remedy_hint': \"Raise or remove this API key's usage limit at https://openrouter.ai/settings/keys, or use a key without a limit.\", 'provider_name': None, 'previous_errors': [{'code': 402, 'message': \"This request requires more credits, or fewer max_tokens. You requested up to 65536 tokens, but can only afford 50256. To increase, visit https://openrouter.ai/workspaces/default/keys/f8844eebff4b9acc1e39bc698f8e718997e02314e809d96cf1a621e3223e4683 and adjust the key's total limit\"}]}}, 'user_id': 'user_3DhDl1HmNTwdA7CMW4SGqQvb4RJ'}",
+    "elapsed_generation_s": null,
+    "elapsed_simulation_s": null,
+    "llm_calls": 0,
+    "llm_tokens_estimate": null,
+    "generated_model_file": null,
+    "kpis": {
+      "throughput_per_hour": null,
+      "utilization": null,
+      "wip_parts": null,
+      "energy_per_part_kwh": null,
+      "native": {}
+    },
+    "assumptions": null,
+    "notes": [],
+    "adapter_elapsed_s": 2.56
+  },
+  {
+    "method": "A",
+    "case": "case_0005_high_rate_line",
+    "rep": 2,
+    "status": "generation_error",
+    "error": "APIStatusError: Error code: 402 - {'error': {'message': \"This request requires more credits, or fewer max_tokens. You requested up to 65536 tokens, but can only afford 50256. To increase, visit https://openrouter.ai/workspaces/default/keys/f8844eebff4b9acc1e39bc698f8e718997e02314e809d96cf1a621e3223e4683 and adjust the key's total limit\", 'code': 402, 'metadata': {'limit_source': 'openrouter_key_limit', 'remedy_hint': \"Raise or remove this API key's usage limit at https://openrouter.ai/settings/keys, or use a key without a limit.\", 'provider_name': None, 'previous_errors': [{'code': 402, 'message': \"This request requires more credits, or fewer max_tokens. You requested up to 65536 tokens, but can only afford 50256. To increase, visit https://openrouter.ai/workspaces/default/keys/f8844eebff4b9acc1e39bc698f8e718997e02314e809d96cf1a621e3223e4683 and adjust the key's total limit\"}]}}, 'user_id': 'user_3DhDl1HmNTwdA7CMW4SGqQvb4RJ'}",
+    "elapsed_generation_s": null,
+    "elapsed_simulation_s": null,
+    "llm_calls": 0,
+    "llm_tokens_estimate": null,
+    "generated_model_file": null,
+    "kpis": {
+      "throughput_per_hour": null,
+      "utilization": null,
+      "wip_parts": null,
+      "energy_per_part_kwh": null,
+      "native": {}
+    },
+    "assumptions": null,
+    "notes": [],
+    "adapter_elapsed_s": 2.71
+  },
+  {
+    "method": "B",
+    "case": "case_0005_high_rate_line",
+    "rep": 0,
+    "status": "generation_error",
+    "error": "APIStatusError: Error code: 402 - {'error': {'message': \"This request requires more credits, or fewer max_tokens. You requested up to 65536 tokens, but can only afford 60307. To increase, visit https://openrouter.ai/workspaces/default/keys/f8844eebff4b9acc1e39bc698f8e718997e02314e809d96cf1a621e3223e4683 and adjust the key's total limit\", 'code': 402, 'metadata': {'limit_source': 'openrouter_key_limit', 'remedy_hint': \"Raise or remove this API key's usage limit at https://openrouter.ai/settings/keys, or use a key without a limit.\", 'provider_name': None, 'previous_errors': [{'code': 402, 'message': \"This request requires more credits, or fewer max_tokens. You requested up to 65536 tokens, but can only afford 60307. To increase, visit https://openrouter.ai/workspaces/default/keys/f8844eebff4b9acc1e39bc698f8e718997e02314e809d96cf1a621e3223e4683 and adjust the key's total limit\"}]}}, 'user_id': 'user_3DhDl1HmNTwdA7CMW4SGqQvb4RJ'}",
+    "elapsed_generation_s": null,
+    "elapsed_simulation_s": null,
+    "llm_calls": 0,
+    "llm_tokens_estimate": null,
+    "generated_model_file": null,
+    "kpis": {
+      "throughput_per_hour": null,
+      "utilization": null,
+      "wip_parts": null,
+      "energy_per_part_kwh": null,
+      "native": {}
+    },
+    "assumptions": null,
+    "notes": [],
+    "adapter_elapsed_s": 3.91
+  },
+  {
+    "method": "B",
+    "case": "case_0005_high_rate_line",
+    "rep": 1,
+    "status": "generation_error",
+    "error": "APIStatusError: Error code: 402 - {'error': {'message': \"This request requires more credits, or fewer max_tokens. You requested up to 65536 tokens, but can only afford 60307. To increase, visit https://openrouter.ai/workspaces/default/keys/f8844eebff4b9acc1e39bc698f8e718997e02314e809d96cf1a621e3223e4683 and adjust the key's total limit\", 'code': 402, 'metadata': {'limit_source': 'openrouter_key_limit', 'remedy_hint': \"Raise or remove this API key's usage limit at https://openrouter.ai/settings/keys, or use a key without a limit.\", 'provider_name': None, 'previous_errors': [{'code': 402, 'message': \"This request requires more credits, or fewer max_tokens. You requested up to 65536 tokens, but can only afford 60307. To increase, visit https://openrouter.ai/workspaces/default/keys/f8844eebff4b9acc1e39bc698f8e718997e02314e809d96cf1a621e3223e4683 and adjust the key's total limit\"}]}}, 'user_id': 'user_3DhDl1HmNTwdA7CMW4SGqQvb4RJ'}",
+    "elapsed_generation_s": null,
+    "elapsed_simulation_s": null,
+    "llm_calls": 0,
+    "llm_tokens_estimate": null,
+    "generated_model_file": null,
+    "kpis": {
+      "throughput_per_hour": null,
+      "utilization": null,
+      "wip_parts": null,
+      "energy_per_part_kwh": null,
+      "native": {}
+    },
+    "assumptions": null,
+    "notes": [],
+    "adapter_elapsed_s": 3.66
+  },
+  {
+    "method": "B",
+    "case": "case_0005_high_rate_line",
+    "rep": 2,
+    "status": "generation_error",
+    "error": "APIStatusError: Error code: 402 - {'error': {'message': \"This request requires more credits, or fewer max_tokens. You requested up to 65536 tokens, but can only afford 60307. To increase, visit https://openrouter.ai/workspaces/default/keys/f8844eebff4b9acc1e39bc698f8e718997e02314e809d96cf1a621e3223e4683 and adjust the key's total limit\", 'code': 402, 'metadata': {'limit_source': 'openrouter_key_limit', 'remedy_hint': \"Raise or remove this API key's usage limit at https://openrouter.ai/settings/keys, or use a key without a limit.\", 'provider_name': None, 'previous_errors': [{'code': 402, 'message': \"This request requires more credits, or fewer max_tokens. You requested up to 65536 tokens, but can only afford 60307. To increase, visit https://openrouter.ai/workspaces/default/keys/f8844eebff4b9acc1e39bc698f8e718997e02314e809d96cf1a621e3223e4683 and adjust the key's total limit\"}]}}, 'user_id': 'user_3DhDl1HmNTwdA7CMW4SGqQvb4RJ'}",
+    "elapsed_generation_s": null,
+    "elapsed_simulation_s": null,
+    "llm_calls": 0,
+    "llm_tokens_estimate": null,
+    "generated_model_file": null,
+    "kpis": {
+      "throughput_per_hour": null,
+      "utilization": null,
+      "wip_parts": null,
+      "energy_per_part_kwh": null,
+      "native": {}
+    },
+    "assumptions": null,
+    "notes": [],
+    "adapter_elapsed_s": 3.63
+  }
+]

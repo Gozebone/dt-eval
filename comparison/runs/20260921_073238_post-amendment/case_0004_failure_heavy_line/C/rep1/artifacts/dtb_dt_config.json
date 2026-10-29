@@ -1,0 +1,284 @@
+{
+  "components": {
+    "data_collection": {
+      "type": "IoT Gateway",
+      "description": "Collects real-time data from sensors on machines and buffers",
+      "modules": [
+        {
+          "id": "sensor_gateway",
+          "protocol": "MQTT",
+          "data_rate": "10Hz",
+          "sensors": [
+            "M1_processing_time_s",
+            "M2_processing_time_s",
+            "M3_processing_time_s",
+            "M4_processing_time_s",
+            "M5_processing_time_s",
+            "B0_capacity",
+            "B1_capacity",
+            "B2_capacity",
+            "B3_capacity",
+            "B4_capacity"
+          ]
+        }
+      ]
+    },
+    "analytics_engine": {
+      "type": "Stream Processing Engine",
+      "description": "Processes real-time data streams to compute KPIs and detect anomalies",
+      "modules": [
+        {
+          "id": "kpi_calculator",
+          "algorithm": "real-time aggregation",
+          "frequency": "every 5 seconds"
+        }
+      ]
+    },
+    "ml_models": {
+      "type": "Predictive Maintenance Engine",
+      "description": "Predicts equipment failures and maintenance needs",
+      "modules": [
+        {
+          "id": "failure_predictor",
+          "algorithm": "Random Forest",
+          "features": [
+            "processing_time_s",
+            "availability",
+            "mttr_s"
+          ],
+          "retrain_frequency": "daily"
+        }
+      ]
+    },
+    "visualization": {
+      "type": "Dashboard Server",
+      "description": "Displays visual representations of the production line",
+      "modules": [
+        {
+          "id": "production_dashboard",
+          "widgets": [
+            "line_chart",
+            "gauge",
+            "heatmap",
+            "alert_panel"
+          ]
+        }
+      ]
+    }
+  },
+  "data_flows": {
+    "sensor_to_gateway": {
+      "source": "sensor_gateway",
+      "destination": "analytics_engine",
+      "protocol": "MQTT",
+      "frequency": "10Hz",
+      "data_type": "sensor_data"
+    },
+    "gateway_to_analytics": {
+      "source": "analytics_engine",
+      "destination": "ml_models",
+      "protocol": "REST",
+      "frequency": "every 5 seconds",
+      "data_type": "processed_data"
+    },
+    "analytics_to_visualization": {
+      "source": "analytics_engine",
+      "destination": "visualization",
+      "protocol": "WebSocket",
+      "frequency": "every 2 seconds",
+      "data_type": "KPIs_and_metrics"
+    },
+    "ml_to_visualization": {
+      "source": "ml_models",
+      "destination": "visualization",
+      "protocol": "REST",
+      "frequency": "every 10 minutes",
+      "data_type": "predictive_maintenance_alerts"
+    }
+  },
+  "visualization": {
+    "dashboard_layout": {
+      "rows": 3,
+      "columns": 3,
+      "widgets": [
+        {
+          "id": "production_line_status",
+          "type": "gauge",
+          "position": {
+            "row": 1,
+            "column": 1
+          },
+          "refresh_rate": "2s",
+          "color_scheme": {
+            "normal": "#4CAF50",
+            "warning": "#FFC107",
+            "critical": "#F44336"
+          }
+        },
+        {
+          "id": "machine_performance",
+          "type": "line_chart",
+          "position": {
+            "row": 1,
+            "column": 2
+          },
+          "refresh_rate": "5s",
+          "color_scheme": {
+            "M1": "#2196F3",
+            "M2": "#FF9800",
+            "M3": "#9C27B0",
+            "M4": "#E91E63",
+            "M5": "#009688"
+          }
+        },
+        {
+          "id": "buffer_levels",
+          "type": "heatmap",
+          "position": {
+            "row": 1,
+            "column": 3
+          },
+          "refresh_rate": "5s",
+          "color_scheme": {
+            "low": "#4CAF50",
+            "medium": "#FFC107",
+            "high": "#F44336"
+          }
+        },
+        {
+          "id": "maintenance_alerts",
+          "type": "alert_panel",
+          "position": {
+            "row": 2,
+            "column": 1
+          },
+          "refresh_rate": "10s"
+        },
+        {
+          "id": "energy_consumption",
+          "type": "line_chart",
+          "position": {
+            "row": 2,
+            "column": 2
+          },
+          "refresh_rate": "5s"
+        },
+        {
+          "id": "production_rate",
+          "type": "gauge",
+          "position": {
+            "row": 2,
+            "column": 3
+          },
+          "refresh_rate": "2s"
+        }
+      ]
+    }
+  },
+  "alerts": {
+    "thresholds": [
+      {
+        "parameter": "processing_time_s",
+        "machine_id": "M1",
+        "threshold": 120,
+        "severity": "warning",
+        "message": "M1 processing time exceeds threshold"
+      },
+      {
+        "parameter": "processing_time_s",
+        "machine_id": "M2",
+        "threshold": 150,
+        "severity": "warning",
+        "message": "M2 processing time exceeds threshold"
+      },
+      {
+        "parameter": "processing_time_s",
+        "machine_id": "M3",
+        "threshold": 110,
+        "severity": "warning",
+        "message": "M3 processing time exceeds threshold"
+      },
+      {
+        "parameter": "processing_time_s",
+        "machine_id": "M4",
+        "threshold": 160,
+        "severity": "warning",
+        "message": "M4 processing time exceeds threshold"
+      },
+      {
+        "parameter": "processing_time_s",
+        "machine_id": "M5",
+        "threshold": 130,
+        "severity": "warning",
+        "message": "M5 processing time exceeds threshold"
+      },
+      {
+        "parameter": "capacity",
+        "buffer_id": "B0",
+        "threshold": 5,
+        "severity": "critical",
+        "message": "B0 buffer capacity exceeds threshold"
+      },
+      {
+        "parameter": "capacity",
+        "buffer_id": "B1",
+        "threshold": 2,
+        "severity": "critical",
+        "message": "B1 buffer capacity exceeds threshold"
+      },
+      {
+        "parameter": "capacity",
+        "buffer_id": "B2",
+        "threshold": 2,
+        "severity": "critical",
+        "message": "B2 buffer capacity exceeds threshold"
+      },
+      {
+        "parameter": "capacity",
+        "buffer_id": "B3",
+        "threshold": 2,
+        "severity": "critical",
+        "message": "B3 buffer capacity exceeds threshold"
+      },
+      {
+        "parameter": "capacity",
+        "buffer_id": "B4",
+        "threshold": 2,
+        "severity": "critical",
+        "message": "B4 buffer capacity exceeds threshold"
+      }
+    ]
+  },
+  "kpis": {
+    "production_rate": {
+      "target": 3600,
+      "unit": "units/hour",
+      "calculation": "sum(units_produced) / (end_time - start_time) * 3600",
+      "measurement_method": "real-time counting"
+    },
+    "machine_utilization": {
+      "target": 0.9,
+      "unit": "ratio",
+      "calculation": "sum(machine_active_time) / sum(total_time)",
+      "measurement_method": "sensor data analysis"
+    },
+    "buffer_occupancy": {
+      "target": 0.5,
+      "unit": "ratio",
+      "calculation": "sum(buffer_occupied) / sum(buffer_capacity)",
+      "measurement_method": "sensor data"
+    },
+    "energy_consumption": {
+      "target": 100,
+      "unit": "kWh/hour",
+      "calculation": "sum(power_consumption_kW) * 3600 / sum(total_time)",
+      "measurement_method": "sensor data analysis"
+    },
+    "machine_efficiency": {
+      "target": 0.85,
+      "unit": "ratio",
+      "calculation": "sum(actual_production_time) / sum(available_time)",
+      "measurement_method": "sensor data"
+    }
+  }
+}

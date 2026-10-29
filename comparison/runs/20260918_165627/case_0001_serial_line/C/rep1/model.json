@@ -1,0 +1,294 @@
+{
+  "requirements": {
+    "production_type": "\u041f\u043e\u0441\u043b\u0435\u0434\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u043d\u0430\u044f (\u043b\u0438\u043d\u0435\u0439\u043d\u0430\u044f) \u043f\u0440\u043e\u0438\u0437\u0432\u043e\u0434\u0441\u0442\u0432\u0435\u043d\u043d\u0430\u044f \u043b\u0438\u043d\u0438\u044f \u0441 5 \u043c\u0430\u0448\u0438\u043d\u0430\u043c\u0438, \u0441\u043e\u0435\u0434\u0438\u043d\u0451\u043d\u043d\u044b\u043c\u0438 \u0432 \u0441\u0435\u0440\u0438\u044e M1\u2192M2\u2192M3\u2192M4\u2192M5.",
+    "processes": [
+      "\u041e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u0434\u0435\u0442\u0430\u043b\u0435\u0439 \u043d\u0430 \u043a\u0430\u0436\u0434\u043e\u0439 \u0441\u0442\u0430\u043d\u0446\u0438\u0438 M1\u2013M5",
+      "\u041e\u0442\u043a\u0430\u0437\u044b \u0438 \u0432\u043e\u0441\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u0435 \u043c\u0430\u0448\u0438\u043d (\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u044c/MTTR)",
+      "\u041f\u0435\u0440\u0435\u043c\u0435\u0449\u0435\u043d\u0438\u0435 \u0438 \u0445\u0440\u0430\u043d\u0435\u043d\u0438\u0435 \u0434\u0435\u0442\u0430\u043b\u0435\u0439 \u0432 \u0431\u0443\u0444\u0435\u0440\u0430\u0445 B0\u2013B4",
+      "\u041f\u043e\u0441\u0442\u0443\u043f\u043b\u0435\u043d\u0438\u0435 \u0438\u0437 \u0438\u0441\u0442\u043e\u0447\u043d\u0438\u043a\u0430 \u0438 \u0432\u044b\u0432\u043e\u0434 \u0432 \u043f\u0440\u0438\u0451\u043c\u043d\u0438\u043a",
+      "\u0423\u0447\u0451\u0442 \u044d\u043d\u0435\u0440\u0433\u043e\u043f\u043e\u0442\u0440\u0435\u0431\u043b\u0435\u043d\u0438\u044f \u0432 \u0440\u0435\u0436\u0438\u043c\u0430\u0445 \u0440\u0430\u0431\u043e\u0442\u044b \u0438 \u043f\u0440\u043e\u0441\u0442\u043e\u044f"
+    ],
+    "equipment": [
+      "\u041c\u0430\u0448\u0438\u043d\u044b M1\u2013M5",
+      "\u0411\u0443\u0444\u0435\u0440\u044b B0\u2013B4"
+    ],
+    "sensors": [
+      "\u0421\u0442\u0430\u0442\u0443\u0441\u043d\u044b\u0435 \u0434\u0430\u0442\u0447\u0438\u043a\u0438 \u0434\u043b\u044f \u043e\u0446\u0435\u043d\u043a\u0438 \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u0438 (M1\u2013M5)",
+      "\u0414\u0430\u0442\u0447\u0438\u043a\u0438 \u0443\u0440\u043e\u0432\u043d\u0435\u0439 \u0431\u0443\u0444\u0435\u0440\u043e\u0432 B0\u2013B4",
+      "\u0421\u0435\u043d\u0441\u043e\u0440\u044b \u044d\u043d\u0435\u0440\u0433\u043e\u043f\u043e\u0442\u0440\u0435\u0431\u043b\u0435\u043d\u0438\u044f (\u0440\u0430\u0431\u043e\u0442\u0430/idle_power_kw)",
+      "\u0421\u0447\u0451\u0442\u0447\u0438\u043a\u0438/\u0441\u044a\u0451\u043c\u043d\u0438\u043a\u0438 \u044d\u043d\u0435\u0440\u0433\u043e\u043f\u043e\u0442\u0440\u0435\u0431\u043b\u0435\u043d\u0438\u044f \u0434\u043b\u044f \u0440\u0430\u0431\u043e\u0447\u0438\u0445 \u0438 \u0445\u043e\u043b\u043e\u0441\u0442\u044b\u0445 \u0440\u0435\u0436\u0438\u043c\u043e\u0432",
+      "\u0421\u0440\u0435\u0434\u043d\u0435\u0435 \u0432\u0440\u0435\u043c\u044f \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0438 (process_time_s)",
+      "\u0418\u043d\u0442\u0435\u0440\u0432\u0430\u043b\u044b \u043f\u043e\u0441\u0442\u0443\u043f\u043b\u0435\u043d\u0438\u044f (inter_arrival_s)"
+    ],
+    "goals": "\u041e\u0446\u0435\u043d\u043a\u0430 \u043f\u0440\u043e\u043f\u0443\u0441\u043a\u043d\u043e\u0439 \u0441\u043f\u043e\u0441\u043e\u0431\u043d\u043e\u0441\u0442\u0438 \u043b\u0438\u043d\u0438\u0438, \u043d\u0435\u0437\u0430\u0432\u0435\u0440\u0448\u0451\u043d\u043d\u043e\u0433\u043e \u043f\u0440\u043e\u0438\u0437\u0432\u043e\u0434\u0441\u0442\u0432\u0430 (WIP) \u0438 \u0443\u0434\u0435\u043b\u044c\u043d\u043e\u0433\u043e \u044d\u043d\u0435\u0440\u0433\u043e\u043f\u043e\u0442\u0440\u0435\u0431\u043b\u0435\u043d\u0438\u044f \u043d\u0430 \u0434\u0435\u0442\u0430\u043b\u044c, \u0430 \u0442\u0430\u043a\u0436\u0435 \u043c\u043e\u043d\u0438\u0442\u043e\u0440\u0438\u043d\u0433 \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u0438 \u043c\u0430\u0448\u0438\u043d M1\u2013M5.",
+    "data_sources": "\u041c\u043e\u043d\u0438\u0442\u043e\u0440\u0438\u043d\u0433 \u0440\u0435\u0430\u043b\u044c\u043d\u043e\u0433\u043e \u0443\u0447\u0430\u0441\u0442\u043a\u0430 (\u0443\u0441\u0440\u0435\u0434\u043d\u0451\u043d\u043d\u044b\u0435 \u0438\u0437\u043c\u0435\u0440\u0435\u043d\u0438\u044f) \u0438 \u0437\u0430\u0434\u0430\u043d\u043d\u044b\u0439 \u0432\u0445\u043e\u0434\u043d\u043e\u0439 \u043f\u043e\u0442\u043e\u043a (\u0438\u043d\u0442\u0435\u0440\u0432\u0430\u043b \u043f\u043e\u0441\u0442\u0443\u043f\u043b\u0435\u043d\u0438\u044f 130 \u0441).",
+    "update_frequency": "\u041f\u0440\u043e\u0434\u043e\u043b\u0436\u0438\u0442\u0435\u043b\u044c\u043d\u0430\u044f (\u0432 \u0440\u0435\u0436\u0438\u043c\u0435 \u0440\u0435\u0430\u043b\u044c\u043d\u043e\u0433\u043e \u0432\u0440\u0435\u043c\u0435\u043d\u0438)",
+    "critical_parameters": {
+      "\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u044c \u043c\u0430\u0448\u0438\u043d M1\u2013M5": "\u0412\u0440\u0435\u043c\u044f \u0432\u043e\u0441\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u044f \u043f\u043e\u0441\u043b\u0435 \u043e\u0442\u043a\u0430\u0437\u0430",
+      "\u0443\u0434\u0435\u043b\u044c\u043d\u043e\u0435 \u044d\u043d\u0435\u0440\u0433\u043e\u043f\u043e\u0442\u0440\u0435\u0431\u043b\u0435\u043d\u0438\u0435": "\u0421\u0443\u043c\u043c\u0430\u0440\u043d\u043e\u0435 \u044d\u043d\u0435\u0440\u0433\u043e\u043f\u043e\u0442\u0440\u0435\u0431\u043b\u0435\u043d\u0438\u0435 \u0437\u0430 \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u0430\u043d\u043d\u0443\u044e \u0434\u0435\u0442\u0430\u043b\u044c",
+      "\u0438\u043d\u0442\u0435\u0440\u0432\u0430\u043b\u044b \u043f\u043e\u0441\u0442\u0443\u043f\u043b\u0435\u043d\u0438\u044f": "130 \u0441"
+    },
+    "additional_info": "\u041d\u0435 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u044b \u043a\u0440\u0438\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u043f\u043e\u0440\u043e\u0433\u0438 \u0438 \u0442\u0440\u0435\u0432\u043e\u0433\u0438. \u041f\u0440\u0435\u0434\u043b\u043e\u0436\u0435\u043d\u043e \u043f\u043e\u0441\u0442\u0440\u043e\u0438\u0442\u044c \u043c\u043e\u0434\u0435\u043b\u044c \u0434\u043b\u044f \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u0438\u044f \u043f\u043e\u0440\u043e\u0433\u043e\u0432\u044b\u0445 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0439."
+  },
+  "schema": {
+    "raw": ""
+  },
+  "dt_config": {
+    "components": {
+      "data_collection": {
+        "modules": [
+          {
+            "name": "SensorDataCollector",
+            "type": "Data Collection Module",
+            "description": "Collects real-time sensor data from machines and buffers",
+            "protocol": "MQTT",
+            "frequency": "10 Hz"
+          },
+          {
+            "name": "ProcessDataCollector",
+            "type": "Data Collection Module",
+            "description": "Captures process data including WIP and throughput",
+            "protocol": "REST",
+            "frequency": "1 Hz"
+          }
+        ]
+      },
+      "analytics_engine": {
+        "modules": [
+          {
+            "name": "AvailabilityAnalyzer",
+            "type": "Analytics Engine",
+            "description": "Analyzes machine availability and MTTR",
+            "algorithm": "Statistical Analysis"
+          },
+          {
+            "name": "EnergyConsumptionAnalyzer",
+            "type": "Analytics Engine",
+            "description": "Calculates energy consumption per part and total usage",
+            "algorithm": "Time-series Forecasting"
+          },
+          {
+            "name": "ThroughputAnalyzer",
+            "type": "Analytics Engine",
+            "description": "Measures line capacity and WIP levels",
+            "algorithm": "Queueing Theory"
+          }
+        ]
+      },
+      "ml_models": {
+        "models": [
+          {
+            "name": "FailurePredictionModel",
+            "type": "ML Model",
+            "description": "Predicts potential machine failures based on historical data",
+            "algorithm": "Random Forest"
+          },
+          {
+            "name": "EnergyOptimizationModel",
+            "type": "ML Model",
+            "description": "Suggests optimal operating conditions to reduce energy use",
+            "algorithm": "Reinforcement Learning"
+          }
+        ]
+      },
+      "visualization": {
+        "dashboard": {
+          "name": "ProductionLineDashboard",
+          "layout": {
+            "rows": 3,
+            "columns": 4,
+            "widgets": [
+              {
+                "id": "machine_status_widget",
+                "type": "StatusCard",
+                "position": [
+                  0,
+                  0
+                ],
+                "size": [
+                  1,
+                  1
+                ],
+                "title": "Machine Status"
+              },
+              {
+                "id": "buffer_levels_widget",
+                "type": "GaugeChart",
+                "position": [
+                  0,
+                  1
+                ],
+                "size": [
+                  1,
+                  1
+                ],
+                "title": "Buffer Levels"
+              },
+              {
+                "id": "energy_consumption_widget",
+                "type": "LineChart",
+                "position": [
+                  1,
+                  0
+                ],
+                "size": [
+                  1,
+                  1
+                ],
+                "title": "Energy Consumption"
+              },
+              {
+                "id": "throughput_widget",
+                "type": "BarChart",
+                "position": [
+                  1,
+                  1
+                ],
+                "size": [
+                  1,
+                  1
+                ],
+                "title": "Throughput"
+              },
+              {
+                "id": "wip_widget",
+                "type": "StackedBarChart",
+                "position": [
+                  2,
+                  0
+                ],
+                "size": [
+                  1,
+                  1
+                ],
+                "title": "Work in Progress"
+              },
+              {
+                "id": "alerts_widget",
+                "type": "AlertList",
+                "position": [
+                  2,
+                  1
+                ],
+                "size": [
+                  1,
+                  1
+                ],
+                "title": "Active Alerts"
+              }
+            ]
+          },
+          "refresh_rate": "5 seconds",
+          "color_scheme": {
+            "primary": "#4CAF50",
+            "secondary": "#FF9800",
+            "warning": "#FF5722",
+            "critical": "#F44336"
+          }
+        }
+      }
+    },
+    "data_flows": {
+      "connections": [
+        {
+          "source": "SensorDataCollector",
+          "destination": "AnalyticsEngine",
+          "protocol": "MQTT",
+          "frequency": "10 Hz"
+        },
+        {
+          "source": "ProcessDataCollector",
+          "destination": "AnalyticsEngine",
+          "protocol": "REST",
+          "frequency": "1 Hz"
+        },
+        {
+          "source": "AnalyticsEngine",
+          "destination": "MLModels",
+          "protocol": "WebSocket",
+          "frequency": "Real-time"
+        },
+        {
+          "source": "MLModels",
+          "destination": "VisualizationDashboard",
+          "protocol": "REST",
+          "frequency": "5 seconds"
+        },
+        {
+          "source": "AnalyticsEngine",
+          "destination": "AlertSystem",
+          "protocol": "WebSocket",
+          "frequency": "Real-time"
+        }
+      ]
+    },
+    "alerts": {
+      "thresholds": [
+        {
+          "parameter": "machine_availability_M1",
+          "threshold": 90,
+          "severity": "warning",
+          "message": "Machine M1 availability below threshold"
+        },
+        {
+          "parameter": "machine_availability_M2",
+          "threshold": 85,
+          "severity": "critical",
+          "message": "Machine M2 availability critically low"
+        },
+        {
+          "parameter": "buffer_level_B0",
+          "threshold": 80,
+          "severity": "warning",
+          "message": "Buffer B0 level high"
+        },
+        {
+          "parameter": "energy_consumption_per_part",
+          "threshold": 1.5,
+          "severity": "emergency",
+          "message": "Energy consumption per part exceeds standard"
+        }
+      ],
+      "notification_channels": [
+        "Email",
+        "SMS",
+        "Slack"
+      ]
+    },
+    "kpis": {
+      "metrics": [
+        {
+          "name": "Overall Equipment Effectiveness",
+          "target_value": 85,
+          "measurement_method": "OEE Calculation",
+          "unit": "%"
+        },
+        {
+          "name": "Work in Progress",
+          "target_value": 50,
+          "measurement_method": "Count of parts in buffers",
+          "unit": "parts"
+        },
+        {
+          "name": "Specific Energy Consumption",
+          "target_value": 1.2,
+          "measurement_method": "Total energy consumed / Total parts processed",
+          "unit": "kWh/part"
+        },
+        {
+          "name": "Line Throughput",
+          "target_value": 200,
+          "measurement_method": "Parts produced per hour",
+          "unit": "parts/hour"
+        },
+        {
+          "name": "Machine Availability",
+          "target_value": 95,
+          "measurement_method": "Uptime / (Uptime + Downtime)",
+          "unit": "%"
+        }
+      ]
+    }
+  },
+  "dt_simulation": null
+}

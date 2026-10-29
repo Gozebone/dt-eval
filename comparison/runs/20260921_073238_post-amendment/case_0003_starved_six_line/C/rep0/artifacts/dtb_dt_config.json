@@ -1,0 +1,263 @@
+{
+  "components": {
+    "data_collection": {
+      "modules": [
+        {
+          "name": "OPC-UA Collector",
+          "type": "data_collector",
+          "description": "Collects real-time data from industrial equipment via OPC-UA protocol",
+          "config": {
+            "protocol": "OPC-UA",
+            "update_frequency_s": 10
+          }
+        },
+        {
+          "name": "MQTT Ingestor",
+          "type": "data_collector",
+          "description": "Ingests sensor data from IoT devices using MQTT protocol",
+          "config": {
+            "protocol": "MQTT",
+            "update_frequency_s": 5
+          }
+        }
+      ]
+    },
+    "analytics": {
+      "engines": [
+        {
+          "name": "Performance Analytics Engine",
+          "type": "analytics_engine",
+          "description": "Analyzes production data to determine bottlenecks and throughput",
+          "config": {
+            "update_frequency_s": 30
+          }
+        },
+        {
+          "name": "Maintenance Prediction Engine",
+          "type": "analytics_engine",
+          "description": "Predicts equipment failures based on historical and real-time data",
+          "config": {
+            "update_frequency_s": 60
+          }
+        }
+      ]
+    },
+    "ml_models": {
+      "models": [
+        {
+          "name": "Failure Prediction Model",
+          "type": "ml_model",
+          "description": "Machine learning model for predicting equipment failures",
+          "config": {
+            "training_frequency_s": 3600,
+            "input_features": [
+              "processing_time_s",
+              "availability",
+              "mttr_s",
+              "work_power_kw",
+              "idle_power_kw"
+            ]
+          }
+        }
+      ]
+    },
+    "visualization": {
+      "dashboard": {
+        "name": "Production Line Dashboard",
+        "type": "visualization",
+        "description": "Real-time dashboard for monitoring production line performance",
+        "config": {
+          "refresh_rate_s": 5,
+          "color_scheme": {
+            "normal": "#00BFFF",
+            "warning": "#FFA500",
+            "critical": "#FF0000",
+            "emergency": "#8B0000"
+          }
+        }
+      }
+    }
+  },
+  "data_flows": {
+    "connections": [
+      {
+        "source": "OPC-UA Collector",
+        "destination": "Performance Analytics Engine",
+        "protocol": "REST",
+        "update_frequency_s": 10
+      },
+      {
+        "source": "MQTT Ingestor",
+        "destination": "Maintenance Prediction Engine",
+        "protocol": "WebSocket",
+        "update_frequency_s": 5
+      },
+      {
+        "source": "Performance Analytics Engine",
+        "destination": "Failure Prediction Model",
+        "protocol": "REST",
+        "update_frequency_s": 30
+      },
+      {
+        "source": "Maintenance Prediction Engine",
+        "destination": "Production Line Dashboard",
+        "protocol": "WebSocket",
+        "update_frequency_s": 60
+      },
+      {
+        "source": "Failure Prediction Model",
+        "destination": "Production Line Dashboard",
+        "protocol": "WebSocket",
+        "update_frequency_s": 60
+      }
+    ]
+  },
+  "visualization": {
+    "layout": {
+      "grid": {
+        "rows": 4,
+        "columns": 4
+      },
+      "widgets": [
+        {
+          "type": "line_chart",
+          "title": "Processing Time per Machine",
+          "position": {
+            "row": 0,
+            "column": 0,
+            "width": 2,
+            "height": 2
+          },
+          "config": {
+            "refresh_rate_s": 5,
+            "metrics": [
+              "processing_time_s"
+            ]
+          }
+        },
+        {
+          "type": "gauge",
+          "title": "Overall Line Availability",
+          "position": {
+            "row": 0,
+            "column": 2,
+            "width": 1,
+            "height": 1
+          },
+          "config": {
+            "refresh_rate_s": 5,
+            "metric": "availability",
+            "target_value": 0.97
+          }
+        },
+        {
+          "type": "bar_chart",
+          "title": "Power Consumption by Machine",
+          "position": {
+            "row": 1,
+            "column": 0,
+            "width": 2,
+            "height": 2
+          },
+          "config": {
+            "refresh_rate_s": 5,
+            "metrics": [
+              "work_power_kw",
+              "idle_power_kw"
+            ]
+          }
+        },
+        {
+          "type": "status_indicator",
+          "title": "Maintenance Status",
+          "position": {
+            "row": 1,
+            "column": 2,
+            "width": 1,
+            "height": 1
+          },
+          "config": {
+            "refresh_rate_s": 5,
+            "metrics": [
+              "mttr_s"
+            ]
+          }
+        },
+        {
+          "type": "alert_log",
+          "title": "Recent Alerts",
+          "position": {
+            "row": 2,
+            "column": 0,
+            "width": 3,
+            "height": 2
+          },
+          "config": {
+            "refresh_rate_s": 5,
+            "limit": 10
+          }
+        }
+      ]
+    }
+  },
+  "alerts": {
+    "thresholds": [
+      {
+        "metric": "processing_time_s",
+        "condition": ">",
+        "threshold": 250,
+        "severity": "warning",
+        "description": "Processing time exceeds normal range"
+      },
+      {
+        "metric": "availability",
+        "condition": "<",
+        "threshold": 0.95,
+        "severity": "critical",
+        "description": "Availability drops below threshold"
+      },
+      {
+        "metric": "mttr_s",
+        "condition": ">",
+        "threshold": 1500,
+        "severity": "emergency",
+        "description": "Mean time to repair exceeds normal range"
+      },
+      {
+        "metric": "work_power_kw",
+        "condition": ">",
+        "threshold": 7.5,
+        "severity": "warning",
+        "description": "Work power consumption exceeds normal range"
+      }
+    ]
+  },
+  "kpis": {
+    "metrics": [
+      {
+        "name": "Throughput",
+        "description": "Number of parts produced per hour",
+        "target_value": 120,
+        "measurement_method": "count(parts) / (window_s / 3600)"
+      },
+      {
+        "name": "Overall Equipment Effectiveness",
+        "description": "Combined measure of availability, performance, and quality",
+        "target_value": 0.85,
+        "measurement_method": "(availability * performance * quality)"
+      },
+      {
+        "name": "Energy Efficiency",
+        "description": "Energy consumption per part produced",
+        "target_value": 0.05,
+        "measurement_method": "sum(energy_kwh) / count(parts)"
+      },
+      {
+        "name": "Maintenance Cost Efficiency",
+        "description": "Cost of maintenance per unit produced",
+        "target_value": 0.01,
+        "measurement_method": "sum(maintenance_cost) / count(parts)"
+      }
+    ]
+  }
+}

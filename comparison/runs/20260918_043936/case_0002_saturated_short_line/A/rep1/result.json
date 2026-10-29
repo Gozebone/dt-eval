@@ -1,0 +1,21 @@
+{
+  "method": "A",
+  "case": "case_0002_saturated_short_line",
+  "rep": 1,
+  "status": "simulation_error",
+  "error": "model exited 1: Traceback (most recent call last):\n  File \"/ssd/projects/dt-eval/comparison/runs/20260918_043936/case_0002_saturated_short_line/A/rep1/run_model.py\", line 64, in <module>\n    TOP = SystemModel(env, \"TOP\")\n  File \"/ssd/projects/dt-eval/comparison/runs/20260918_043936/case_0002_saturated_short_line/A/rep1/run_model.py\", line 43, in __init__\n    self.M = [Machine(env, **data) for data in machine_data]\n              ~~~~~~~^^^^^^^^^^^^^\nTypeError: Machine.__init__() got an unexpected keyword argument 'Availability_%'\n",
+  "elapsed_generation_s": 66.112,
+  "elapsed_simulation_s": 0.09,
+  "llm_calls": 2,
+  "llm_tokens_estimate": null,
+  "generated_model_file": null,
+  "kpis": {
+    "throughput_per_hour": null,
+    "utilization": null,
+    "wip_parts": null,
+    "energy_per_part_kwh": null,
+    "native": {}
+  },
+  "assumptions": "1. Node names and Types are chosen according to users description where provided; inferred names \"src\" for the Source and \"sink\" for the Sink as they were not explicitly named.\n2. Assumed the 3 specified buffers (B0, B1, B2) connect the Source to M1, M1 to M2, and M2 to M3 respectively based on the logical serial flow.\n3. Assumed a single default buffer connects the last machine (M3) to the Sink, as its capacity and name were not specified in the description.\n4. Assumed the provided Avg_Time_per_part_s corresponds to the processing_delay parameter for each Machine.\n5. Assumed Availability_%, MTTR_s, EnergyIdling, and EnergyWorking are passed as keyword arguments to the Machine nodes to satisfy the requirement of using the measured failure and energy behavior.\n6. Used default values for all other missing parameters for all components.",
+  "notes": []
+}

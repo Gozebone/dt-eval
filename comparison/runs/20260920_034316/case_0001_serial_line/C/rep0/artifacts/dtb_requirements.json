@@ -1,0 +1,171 @@
+{
+  "production_type": "serial",
+  "processes": [
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "M5"
+  ],
+  "equipment": [
+    {
+      "name": "M1",
+      "process_time_s": 150,
+      "availability": 0.98,
+      "mttr_s": 600,
+      "work_power_kw": 4.0,
+      "idle_power_kw": 0.4
+    },
+    {
+      "name": "M2",
+      "process_time_s": 120,
+      "availability": 0.97,
+      "mttr_s": 900,
+      "work_power_kw": 5.0,
+      "idle_power_kw": 0.5
+    },
+    {
+      "name": "M3",
+      "process_time_s": 180,
+      "availability": 0.95,
+      "mttr_s": 1200,
+      "work_power_kw": 6.0,
+      "idle_power_kw": 0.6
+    },
+    {
+      "name": "M4",
+      "process_time_s": 120,
+      "availability": 0.97,
+      "mttr_s": 900,
+      "work_power_kw": 5.0,
+      "idle_power_kw": 0.5
+    },
+    {
+      "name": "M5",
+      "process_time_s": 150,
+      "availability": 0.98,
+      "mttr_s": 600,
+      "work_power_kw": 4.0,
+      "idle_power_kw": 0.4
+    }
+  ],
+  "sensors": [
+    "inter_arrival_s",
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "M5",
+    "B0",
+    "B1",
+    "B2",
+    "B3",
+    "B4"
+  ],
+  "goals": "Simulate the production line with measured average processing time, availability, failure behavior, and buffer capacity.",
+  "data_sources": "Raw data from monitoring period, equipment specifications.",
+  "update_frequency": "The data is static and will not change during the simulation.",
+  "critical_parameters": {
+    "M1": "793.67",
+    "M2": "1053.95",
+    "M3": "4200.65",
+    "M4": "1894.81",
+    "M5": "641.17",
+    "B0": "20",
+    "B1": "8",
+    "B2": "8",
+    "B3": "8",
+    "B4": "8"
+  },
+  "line": {
+    "topology": "serial",
+    "source": {
+      "inter_arrival_time_s": 130
+    },
+    "stations": [
+      {
+        "id": "M1",
+        "processing_time_s": 150,
+        "availability_pct": 0.98,
+        "mttr_s": 600,
+        "power_working_kw": 4.0,
+        "power_idle_kw": 0.4
+      },
+      {
+        "id": "M2",
+        "processing_time_s": 120,
+        "availability_pct": 0.97,
+        "mttr_s": 900,
+        "power_working_kw": 5.0,
+        "power_idle_kw": 0.5
+      },
+      {
+        "id": "M3",
+        "processing_time_s": 180,
+        "availability_pct": 0.95,
+        "mttr_s": 1200,
+        "power_working_kw": 6.0,
+        "power_idle_kw": 0.6
+      },
+      {
+        "id": "M4",
+        "processing_time_s": 120,
+        "availability_pct": 0.97,
+        "mttr_s": 900,
+        "power_working_kw": 5.0,
+        "power_idle_kw": 0.5
+      },
+      {
+        "id": "M5",
+        "processing_time_s": 150,
+        "availability_pct": 0.98,
+        "mttr_s": 600,
+        "power_working_kw": 4.0,
+        "power_idle_kw": 0.4
+      }
+    ],
+    "buffers": [
+      {
+        "id": "B0",
+        "capacity": 20,
+        "before": "source",
+        "after": "M1"
+      },
+      {
+        "id": "B1",
+        "capacity": 8,
+        "before": "M1",
+        "after": "M2"
+      },
+      {
+        "id": "B2",
+        "capacity": 8,
+        "before": "M2",
+        "after": "M3"
+      },
+      {
+        "id": "B3",
+        "capacity": 8,
+        "before": "M3",
+        "after": "M4"
+      },
+      {
+        "id": "B4",
+        "capacity": 8,
+        "before": "M4",
+        "after": "M5"
+      }
+    ]
+  },
+  "des_horizon": {
+    "warmup_s": 0,
+    "window_s": 432000,
+    "replications": 1
+  },
+  "units": {
+    "time": "s",
+    "power": "kW",
+    "energy": "kWh"
+  },
+  "additional_info": "The model must simulate the production line for 432000 seconds (about 5 days)."
+}

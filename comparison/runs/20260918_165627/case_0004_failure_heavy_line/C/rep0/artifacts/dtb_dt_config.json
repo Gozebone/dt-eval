@@ -1,0 +1,256 @@
+{
+  "components": {
+    "data_collection": {
+      "modules": [
+        {
+          "name": "SensorDataCollector",
+          "type": "Data Collector",
+          "description": "Collects real-time sensor data from machines",
+          "protocol": "MQTT",
+          "frequency": "Continuous"
+        },
+        {
+          "name": "EventLogger",
+          "type": "Data Logger",
+          "description": "Logs event registration data (in/out/time)",
+          "protocol": "OPC-UA",
+          "frequency": "Continuous"
+        }
+      ]
+    },
+    "analytics_engine": {
+      "engines": [
+        {
+          "name": "ProcessAnalyzer",
+          "type": "Analytics Engine",
+          "description": "Analyzes process throughput and WIP",
+          "algorithm": "Statistical Analysis",
+          "frequency": "Continuous"
+        },
+        {
+          "name": "EnergyMonitor",
+          "type": "Analytics Engine",
+          "description": "Monitors energy consumption per unit",
+          "algorithm": "Time Series Forecasting",
+          "frequency": "Continuous"
+        }
+      ]
+    },
+    "ml_models": {
+      "models": [
+        {
+          "name": "AvailabilityPredictor",
+          "type": "ML Model",
+          "description": "Predicts machine availability using historical data",
+          "algorithm": "Random Forest",
+          "frequency": "Continuous"
+        },
+        {
+          "name": "FailureDetector",
+          "type": "ML Model",
+          "description": "Detects potential machine failures",
+          "algorithm": "Anomaly Detection",
+          "frequency": "Continuous"
+        }
+      ]
+    },
+    "visualization": {
+      "dashboard": {
+        "layout": {
+          "rows": 3,
+          "columns": 4,
+          "widgets": [
+            {
+              "id": "throughput_chart",
+              "type": "LineChart",
+              "position": [
+                0,
+                0
+              ],
+              "size": [
+                2,
+                1
+              ],
+              "title": "Throughput Over Time"
+            },
+            {
+              "id": "wip_chart",
+              "type": "BarChart",
+              "position": [
+                0,
+                2
+              ],
+              "size": [
+                2,
+                1
+              ],
+              "title": "Work-in-Progress by Process"
+            },
+            {
+              "id": "energy_consumption",
+              "type": "Heatmap",
+              "position": [
+                1,
+                0
+              ],
+              "size": [
+                2,
+                1
+              ],
+              "title": "Energy Consumption Per Unit"
+            },
+            {
+              "id": "machine_status",
+              "type": "StatusGrid",
+              "position": [
+                1,
+                2
+              ],
+              "size": [
+                2,
+                1
+              ],
+              "title": "Machine Status Overview"
+            },
+            {
+              "id": "alerts_panel",
+              "type": "AlertPanel",
+              "position": [
+                2,
+                0
+              ],
+              "size": [
+                4,
+                1
+              ],
+              "title": "System Alerts"
+            }
+          ]
+        },
+        "color_scheme": {
+          "normal": "#4CAF50",
+          "warning": "#FF9800",
+          "critical": "#F44336",
+          "emergency": "#9C27B0"
+        },
+        "refresh_rate": "5s"
+      }
+    }
+  },
+  "data_flows": {
+    "connections": [
+      {
+        "source": "SensorDataCollector",
+        "destination": "ProcessAnalyzer",
+        "protocol": "MQTT",
+        "frequency": "Continuous"
+      },
+      {
+        "source": "EventLogger",
+        "destination": "ProcessAnalyzer",
+        "protocol": "OPC-UA",
+        "frequency": "Continuous"
+      },
+      {
+        "source": "ProcessAnalyzer",
+        "destination": "EnergyMonitor",
+        "protocol": "REST",
+        "frequency": "Continuous"
+      },
+      {
+        "source": "EnergyMonitor",
+        "destination": "AvailabilityPredictor",
+        "protocol": "WebSocket",
+        "frequency": "Continuous"
+      },
+      {
+        "source": "AvailabilityPredictor",
+        "destination": "FailureDetector",
+        "protocol": "REST",
+        "frequency": "Continuous"
+      },
+      {
+        "source": "FailureDetector",
+        "destination": "visualization/dashboard",
+        "protocol": "WebSocket",
+        "frequency": "Continuous"
+      },
+      {
+        "source": "ProcessAnalyzer",
+        "destination": "visualization/dashboard",
+        "protocol": "WebSocket",
+        "frequency": "Continuous"
+      },
+      {
+        "source": "EnergyMonitor",
+        "destination": "visualization/dashboard",
+        "protocol": "WebSocket",
+        "frequency": "Continuous"
+      }
+    ]
+  },
+  "alerts": {
+    "thresholds": {
+      "machine_availability": {
+        "threshold": 0.95,
+        "severity": "critical",
+        "description": "Machine availability below threshold"
+      },
+      "mttr_threshold": {
+        "threshold": 30,
+        "severity": "warning",
+        "description": "Mean time to repair exceeds threshold"
+      },
+      "energy_per_unit": {
+        "threshold": 100,
+        "severity": "emergency",
+        "description": "Energy consumption per unit exceeds threshold"
+      }
+    },
+    "alert_levels": {
+      "info": {
+        "color": "#2196F3",
+        "priority": 1
+      },
+      "warning": {
+        "color": "#FF9800",
+        "priority": 2
+      },
+      "critical": {
+        "color": "#F44336",
+        "priority": 3
+      },
+      "emergency": {
+        "color": "#9C27B0",
+        "priority": 4
+      }
+    }
+  },
+  "kpis": {
+    "throughput": {
+      "target_value": "Units/hour",
+      "measurement_method": "Count of completed units per hour",
+      "unit": "units/hour"
+    },
+    "wip": {
+      "target_value": "Units in process",
+      "measurement_method": "Count of units in buffers",
+      "unit": "units"
+    },
+    "energy_per_unit": {
+      "target_value": "100 W",
+      "measurement_method": "Total energy consumed divided by total units produced",
+      "unit": "W"
+    },
+    "machine_availability": {
+      "target_value": "95%",
+      "measurement_method": "Time spent in working state divided by total time",
+      "unit": "%"
+    },
+    "mttr": {
+      "target_value": "30 seconds",
+      "measurement_method": "Average time to repair after failure",
+      "unit": "seconds"
+    }
+  }
+}

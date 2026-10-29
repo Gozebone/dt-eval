@@ -1,0 +1,21 @@
+{
+  "method": "B",
+  "case": "case_0002_saturated_short_line",
+  "rep": 0,
+  "status": "generation_error",
+  "error": "RuntimeError: no mock model shipped for case 'case_0002_saturated_short_line'",
+  "elapsed_generation_s": null,
+  "elapsed_simulation_s": null,
+  "llm_calls": 0,
+  "llm_tokens_estimate": null,
+  "generated_model_file": null,
+  "kpis": {
+    "throughput_per_hour": null,
+    "utilization": null,
+    "wip_parts": null,
+    "energy_per_part_kwh": null,
+    "native": {}
+  },
+  "assumptions": null,
+  "notes": []
+}

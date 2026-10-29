@@ -1,0 +1,2753 @@
+[
+  {
+    "method": "C",
+    "case": "case_0001_serial_line",
+    "rep": 0,
+    "status": "ok",
+    "error": null,
+    "elapsed_generation_s": 1020.356,
+    "elapsed_simulation_s": 0.99,
+    "llm_calls": 5,
+    "llm_tokens_estimate": null,
+    "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260921_073238_post-amendment/case_0001_serial_line/C/rep0/model.json",
+    "kpis": {
+      "throughput_per_hour": 19.695,
+      "utilization": null,
+      "wip_parts": 40.082889346929775,
+      "energy_per_part_kwh": 0.989230137661206,
+      "native": {
+        "machine_stats": {
+          "M1": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 150.0,
+            "availability_found": false,
+            "availability_claimed": 99.45
+          },
+          "M2": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 120.0,
+            "availability_found": false,
+            "availability_claimed": 96.86
+          },
+          "M3": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 180.0,
+            "availability_found": false,
+            "availability_claimed": 99.03
+          },
+          "M4": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 120.0,
+            "availability_found": false,
+            "availability_claimed": 97.39
+          },
+          "M5": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 150.0,
+            "availability_found": false,
+            "availability_claimed": 99.56
+          }
+        },
+        "machines_mentioned": 5,
+        "machines_truth": 5,
+        "buffers": {
+          "B0": true,
+          "B1": true,
+          "B2": true,
+          "B3": true,
+          "B4": true
+        },
+        "arrival_found": true,
+        "arrival_claimed": 130.0,
+        "equipment_count": 10,
+        "artifact_chars": {
+          "config": 5632,
+          "sim": 10998
+        },
+        "machine_ids_in_dt_output": {
+          "M1": true,
+          "M2": true,
+          "M3": true,
+          "M4": true,
+          "M5": true
+        },
+        "machines_mentioned_in_dt": 5,
+        "pychrono_referenced": true,
+        "stage_shapes": {
+          "db_answer": {
+            "chars": 3472,
+            "ids_present": 10,
+            "ids_truth": 10,
+            "ddl_phrases": [
+              "create index",
+              "create table",
+              "insert into",
+              "primary key"
+            ],
+            "sql_types": [
+              "double precision",
+              "jsonb",
+              "timestamptz"
+            ],
+            "looks_like_ddl": true
+          },
+          "db_recorded": {
+            "chars": 3576,
+            "ids_present": 10,
+            "ids_truth": 10,
+            "ddl_phrases": [
+              "create table",
+              "primary key"
+            ],
+            "sql_types": [
+              "double precision",
+              "jsonb",
+              "timestamptz"
+            ],
+            "looks_like_ddl": true
+          },
+          "dt_config": {
+            "chars": 5632,
+            "ids_present": 0,
+            "ids_truth": 10,
+            "looks_like_json": true
+          },
+          "dt_sim": {
+            "chars": 10998,
+            "ids_present": 10,
+            "ids_truth": 10
+          },
+          "dt_des": {
+            "chars": 8103,
+            "ids_present": 5,
+            "ids_truth": 10
+          }
+        },
+        "interview_turns": 1,
+        "agent_tasks": 5,
+        "agent_tasks_attempted": 5,
+        "responder_calls": 0,
+        "llm_calls_split": {
+          "ui_agent": 1,
+          "db_agent": 1,
+          "dt_agent": 3,
+          "harness_responder": 0
+        },
+        "responder_model": "openai/gpt-5-mini",
+        "api_url": "http://176.119.159.227:8000",
+        "agent_status": {
+          "agent0": "active",
+          "agent1": "active",
+          "agent2": "offline"
+        },
+        "db_stage": "unavailable",
+        "db_note": "DB agent (agent 1) output was not JSON; raw text kept in artifacts/dtb_schema.json",
+        "dt_stage": "ok",
+        "dt_note": null,
+        "dt_slots_ok": 3,
+        "dt_slot_errors": {
+          "config": null,
+          "sim": null,
+          "des": null
+        },
+        "dt_slots_total": 3,
+        "des_stage": "ok",
+        "des_exec_status": "ok",
+        "des_exec_error": null,
+        "des_parse_error": null,
+        "des_kpis": {
+          "throughput_per_hour": 19.695,
+          "wip_parts": 40.082889346929775,
+          "energy_per_part_kwh": 0.989230137661206
+        },
+        "des_repair_attempts_allowed": 3,
+        "des_reject_all_zero": true,
+        "des_programs": 1,
+        "des_repairs_used": 0,
+        "des_exec_elapsed_total_s": 0.99,
+        "des_gave_up_reason": null,
+        "status_basis": "KPIs produced from the DES model's stdout",
+        "kpi_source": "des_model_stdout",
+        "des_python": "/ssd/projects/dt-eval/comparison/.venv-des/bin/python",
+        "dt_schema_input": "ok",
+        "capability": "Method C emits a requirements document + PostgreSQL schema and (agent 2) a twin configuration, a PyChrono multi-physics script and a discrete-event SimPy model; the DES model is executed and its KPI contract parsed, so throughput/WIP/energy are populated when that slot succeeds and null when it does not"
+      }
+    },
+    "assumptions": null,
+    "notes": [
+      "structural recovery only: 5/5 machines mentioned in C's requirements",
+      "DB stage (agent 1) not recovered \u2014 DB agent (agent 1) output was not JSON; raw text kept in artifacts/dtb_schema.json",
+      "DT stage (agent 2) ran: 5632 chars of twin config, 10998 chars of PyChrono script; 5/5 machine ids appear in that output. The script is not executed (PyChrono is not installed on the harness host and models rigid bodies, not the case's discrete-event semantics), so no KPI is derived from it",
+      "DT agent (agent 2, PyChrono codegen) status=offline at start; the stage outcome above is what the run actually produced"
+    ],
+    "adapter_elapsed_s": 1020.46
+  },
+  {
+    "method": "C",
+    "case": "case_0001_serial_line",
+    "rep": 1,
+    "status": "ok",
+    "error": null,
+    "elapsed_generation_s": 503.73,
+    "elapsed_simulation_s": 1.026,
+    "llm_calls": 7,
+    "llm_tokens_estimate": null,
+    "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260921_073238_post-amendment/case_0001_serial_line/C/rep1/model.json",
+    "kpis": {
+      "throughput_per_hour": 19.16583333333333,
+      "utilization": null,
+      "wip_parts": 40.07342007175252,
+      "energy_per_part_kwh": 0.9887282899519552,
+      "native": {
+        "machine_stats": {
+          "M1": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 150.0,
+            "availability_found": true,
+            "availability_claimed": 0.98
+          },
+          "M2": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 120.0,
+            "availability_found": true,
+            "availability_claimed": 0.97
+          },
+          "M3": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 180.0,
+            "availability_found": true,
+            "availability_claimed": 0.95
+          },
+          "M4": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 120.0,
+            "availability_found": true,
+            "availability_claimed": 0.97
+          },
+          "M5": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 150.0,
+            "availability_found": true,
+            "availability_claimed": 0.98
+          }
+        },
+        "machines_mentioned": 5,
+        "machines_truth": 5,
+        "buffers": {
+          "B0": true,
+          "B1": true,
+          "B2": true,
+          "B3": true,
+          "B4": true
+        },
+        "arrival_found": true,
+        "arrival_claimed": 130.0,
+        "equipment_count": 2,
+        "artifact_chars": {
+          "config": 5979,
+          "sim": 12720
+        },
+        "machine_ids_in_dt_output": {
+          "M1": true,
+          "M2": true,
+          "M3": true,
+          "M4": true,
+          "M5": true
+        },
+        "machines_mentioned_in_dt": 5,
+        "pychrono_referenced": true,
+        "stage_shapes": {
+          "db_answer": {
+            "chars": 3129,
+            "ids_present": 10,
+            "ids_truth": 10,
+            "ddl_phrases": [
+              "create index",
+              "create table",
+              "insert into",
+              "primary key"
+            ],
+            "sql_types": [
+              "double precision",
+              "jsonb",
+              "timestamptz"
+            ],
+            "looks_like_ddl": true
+          },
+          "db_recorded": {
+            "chars": 3235,
+            "ids_present": 10,
+            "ids_truth": 10,
+            "ddl_phrases": [
+              "create table",
+              "primary key"
+            ],
+            "sql_types": [
+              "double precision",
+              "jsonb",
+              "timestamptz"
+            ],
+            "looks_like_ddl": true
+          },
+          "dt_config": {
+            "chars": 5979,
+            "ids_present": 0,
+            "ids_truth": 10,
+            "looks_like_json": true
+          },
+          "dt_sim": {
+            "chars": 12720,
+            "ids_present": 10,
+            "ids_truth": 10
+          },
+          "dt_des": {
+            "chars": 8091,
+            "ids_present": 5,
+            "ids_truth": 10
+          }
+        },
+        "interview_turns": 1,
+        "agent_tasks": 7,
+        "agent_tasks_attempted": 7,
+        "responder_calls": 0,
+        "llm_calls_split": {
+          "ui_agent": 3,
+          "db_agent": 1,
+          "dt_agent": 3,
+          "harness_responder": 0
+        },
+        "responder_model": "openai/gpt-5-mini",
+        "api_url": "http://176.119.159.227:8000",
+        "agent_status": {
+          "agent0": "active",
+          "agent1": "active",
+          "agent2": "active"
+        },
+        "db_stage": "unavailable",
+        "db_note": "DB agent (agent 1) output was not JSON; raw text kept in artifacts/dtb_schema.json",
+        "dt_stage": "ok",
+        "dt_note": null,
+        "dt_slots_ok": 3,
+        "dt_slot_errors": {
+          "config": null,
+          "sim": null,
+          "des": null
+        },
+        "dt_slots_total": 3,
+        "des_stage": "ok",
+        "des_exec_status": "ok",
+        "des_exec_error": null,
+        "des_parse_error": null,
+        "des_kpis": {
+          "throughput_per_hour": 19.16583333333333,
+          "wip_parts": 40.07342007175252,
+          "energy_per_part_kwh": 0.9887282899519552
+        },
+        "des_repair_attempts_allowed": 3,
+        "des_reject_all_zero": true,
+        "des_programs": 1,
+        "des_repairs_used": 0,
+        "des_exec_elapsed_total_s": 1.026,
+        "des_gave_up_reason": null,
+        "status_basis": "KPIs produced from the DES model's stdout",
+        "kpi_source": "des_model_stdout",
+        "des_python": "/ssd/projects/dt-eval/comparison/.venv-des/bin/python",
+        "dt_schema_input": "ok",
+        "capability": "Method C emits a requirements document + PostgreSQL schema and (agent 2) a twin configuration, a PyChrono multi-physics script and a discrete-event SimPy model; the DES model is executed and its KPI contract parsed, so throughput/WIP/energy are populated when that slot succeeds and null when it does not"
+      }
+    },
+    "assumptions": null,
+    "notes": [
+      "structural recovery only: 5/5 machines mentioned in C's requirements",
+      "DB stage (agent 1) not recovered \u2014 DB agent (agent 1) output was not JSON; raw text kept in artifacts/dtb_schema.json",
+      "DT stage (agent 2) ran: 5979 chars of twin config, 12720 chars of PyChrono script; 5/5 machine ids appear in that output. The script is not executed (PyChrono is not installed on the harness host and models rigid bodies, not the case's discrete-event semantics), so no KPI is derived from it"
+    ],
+    "adapter_elapsed_s": 503.83
+  },
+  {
+    "method": "C",
+    "case": "case_0001_serial_line",
+    "rep": 2,
+    "status": "ok",
+    "error": null,
+    "elapsed_generation_s": 305.617,
+    "elapsed_simulation_s": 0.993,
+    "llm_calls": 5,
+    "llm_tokens_estimate": null,
+    "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260921_073238_post-amendment/case_0001_serial_line/C/rep2/model.json",
+    "kpis": {
+      "throughput_per_hour": 19.16583333333333,
+      "utilization": null,
+      "wip_parts": 40.07342007175252,
+      "energy_per_part_kwh": 0.9887282899519552,
+      "native": {
+        "machine_stats": {
+          "M1": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 150.0,
+            "availability_found": true,
+            "availability_claimed": 0.98
+          },
+          "M2": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 120.0,
+            "availability_found": true,
+            "availability_claimed": 0.97
+          },
+          "M3": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 180.0,
+            "availability_found": true,
+            "availability_claimed": 0.95
+          },
+          "M4": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 120.0,
+            "availability_found": true,
+            "availability_claimed": 0.97
+          },
+          "M5": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 150.0,
+            "availability_found": true,
+            "availability_claimed": 0.98
+          }
+        },
+        "machines_mentioned": 5,
+        "machines_truth": 5,
+        "buffers": {
+          "B0": true,
+          "B1": true,
+          "B2": true,
+          "B3": true,
+          "B4": true
+        },
+        "arrival_found": true,
+        "arrival_claimed": 130.0,
+        "equipment_count": 10,
+        "artifact_chars": {
+          "config": 4785,
+          "sim": 11925
+        },
+        "machine_ids_in_dt_output": {
+          "M1": true,
+          "M2": true,
+          "M3": true,
+          "M4": true,
+          "M5": true
+        },
+        "machines_mentioned_in_dt": 5,
+        "pychrono_referenced": true,
+        "stage_shapes": {
+          "db_answer": {
+            "chars": 4316,
+            "ids_present": 10,
+            "ids_truth": 10,
+            "ddl_phrases": [
+              "create index",
+              "create table",
+              "insert into",
+              "not null",
+              "primary key"
+            ],
+            "sql_types": [
+              "double precision",
+              "jsonb",
+              "timestamptz"
+            ],
+            "looks_like_ddl": true
+          },
+          "db_recorded": {
+            "chars": 4440,
+            "ids_present": 10,
+            "ids_truth": 10,
+            "ddl_phrases": [
+              "create table",
+              "not null",
+              "primary key"
+            ],
+            "sql_types": [
+              "double precision",
+              "jsonb",
+              "timestamptz"
+            ],
+            "looks_like_ddl": true
+          },
+          "dt_config": {
+            "chars": 4785,
+            "ids_present": 10,
+            "ids_truth": 10,
+            "looks_like_json": true
+          },
+          "dt_sim": {
+            "chars": 11925,
+            "ids_present": 10,
+            "ids_truth": 10
+          },
+          "dt_des": {
+            "chars": 8091,
+            "ids_present": 5,
+            "ids_truth": 10
+          }
+        },
+        "interview_turns": 1,
+        "agent_tasks": 5,
+        "agent_tasks_attempted": 5,
+        "responder_calls": 0,
+        "llm_calls_split": {
+          "ui_agent": 1,
+          "db_agent": 1,
+          "dt_agent": 3,
+          "harness_responder": 0
+        },
+        "responder_model": "openai/gpt-5-mini",
+        "api_url": "http://176.119.159.227:8000",
+        "agent_status": {
+          "agent0": "active",
+          "agent1": "active",
+          "agent2": "active"
+        },
+        "db_stage": "unavailable",
+        "db_note": "DB agent (agent 1) output was not JSON; raw text kept in artifacts/dtb_schema.json",
+        "dt_stage": "ok",
+        "dt_note": null,
+        "dt_slots_ok": 3,
+        "dt_slot_errors": {
+          "config": null,
+          "sim": null,
+          "des": null
+        },
+        "dt_slots_total": 3,
+        "des_stage": "ok",
+        "des_exec_status": "ok",
+        "des_exec_error": null,
+        "des_parse_error": null,
+        "des_kpis": {
+          "throughput_per_hour": 19.16583333333333,
+          "wip_parts": 40.07342007175252,
+          "energy_per_part_kwh": 0.9887282899519552
+        },
+        "des_repair_attempts_allowed": 3,
+        "des_reject_all_zero": true,
+        "des_programs": 1,
+        "des_repairs_used": 0,
+        "des_exec_elapsed_total_s": 0.993,
+        "des_gave_up_reason": null,
+        "status_basis": "KPIs produced from the DES model's stdout",
+        "kpi_source": "des_model_stdout",
+        "des_python": "/ssd/projects/dt-eval/comparison/.venv-des/bin/python",
+        "dt_schema_input": "ok",
+        "capability": "Method C emits a requirements document + PostgreSQL schema and (agent 2) a twin configuration, a PyChrono multi-physics script and a discrete-event SimPy model; the DES model is executed and its KPI contract parsed, so throughput/WIP/energy are populated when that slot succeeds and null when it does not"
+      }
+    },
+    "assumptions": null,
+    "notes": [
+      "structural recovery only: 5/5 machines mentioned in C's requirements",
+      "DB stage (agent 1) not recovered \u2014 DB agent (agent 1) output was not JSON; raw text kept in artifacts/dtb_schema.json",
+      "DT stage (agent 2) ran: 4785 chars of twin config, 11925 chars of PyChrono script; 5/5 machine ids appear in that output. The script is not executed (PyChrono is not installed on the harness host and models rigid bodies, not the case's discrete-event semantics), so no KPI is derived from it"
+    ],
+    "adapter_elapsed_s": 305.72
+  },
+  {
+    "method": "C",
+    "case": "case_0002_saturated_short_line",
+    "rep": 0,
+    "status": "ok",
+    "error": null,
+    "elapsed_generation_s": 383.329,
+    "elapsed_simulation_s": 1.028,
+    "llm_calls": 6,
+    "llm_tokens_estimate": null,
+    "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260921_073238_post-amendment/case_0002_saturated_short_line/C/rep0/model.json",
+    "kpis": {
+      "throughput_per_hour": 32.68833333333333,
+      "utilization": null,
+      "wip_parts": 27.40913855147101,
+      "energy_per_part_kwh": 0.35243497520315,
+      "native": {
+        "machine_stats": {
+          "M1": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 90.0,
+            "availability_found": true,
+            "availability_claimed": 0.99
+          },
+          "M2": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 70.0,
+            "availability_found": true,
+            "availability_claimed": 0.98
+          },
+          "M3": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 110.0,
+            "availability_found": true,
+            "availability_claimed": 0.99
+          }
+        },
+        "machines_mentioned": 3,
+        "machines_truth": 3,
+        "buffers": {
+          "B0": true,
+          "B1": true,
+          "B2": true
+        },
+        "arrival_found": true,
+        "arrival_claimed": 60.0,
+        "equipment_count": 3,
+        "artifact_chars": {
+          "config": 5069,
+          "sim": 13382
+        },
+        "machine_ids_in_dt_output": {
+          "M1": true,
+          "M2": true,
+          "M3": true
+        },
+        "machines_mentioned_in_dt": 3,
+        "pychrono_referenced": true,
+        "stage_shapes": {
+          "db_answer": {
+            "chars": 2801,
+            "ids_present": 6,
+            "ids_truth": 6,
+            "ddl_phrases": [
+              "create index",
+              "create table",
+              "insert into",
+              "primary key"
+            ],
+            "sql_types": [
+              "double precision",
+              "jsonb",
+              "timestamptz"
+            ],
+            "looks_like_ddl": true
+          },
+          "db_recorded": {
+            "chars": 2908,
+            "ids_present": 6,
+            "ids_truth": 6,
+            "ddl_phrases": [
+              "create table",
+              "primary key"
+            ],
+            "sql_types": [
+              "double precision",
+              "jsonb",
+              "timestamptz"
+            ],
+            "looks_like_ddl": true
+          },
+          "dt_config": {
+            "chars": 5069,
+            "ids_present": 0,
+            "ids_truth": 6,
+            "looks_like_json": true
+          },
+          "dt_sim": {
+            "chars": 13382,
+            "ids_present": 6,
+            "ids_truth": 6
+          },
+          "dt_des": {
+            "chars": 7804,
+            "ids_present": 3,
+            "ids_truth": 6
+          }
+        },
+        "interview_turns": 1,
+        "agent_tasks": 6,
+        "agent_tasks_attempted": 6,
+        "responder_calls": 0,
+        "llm_calls_split": {
+          "ui_agent": 2,
+          "db_agent": 1,
+          "dt_agent": 3,
+          "harness_responder": 0
+        },
+        "responder_model": "openai/gpt-5-mini",
+        "api_url": "http://176.119.159.227:8000",
+        "agent_status": {
+          "agent0": "active",
+          "agent1": "active",
+          "agent2": "active"
+        },
+        "db_stage": "unavailable",
+        "db_note": "DB agent (agent 1) output was not JSON; raw text kept in artifacts/dtb_schema.json",
+        "dt_stage": "ok",
+        "dt_note": null,
+        "dt_slots_ok": 3,
+        "dt_slot_errors": {
+          "config": null,
+          "sim": null,
+          "des": null
+        },
+        "dt_slots_total": 3,
+        "des_stage": "ok",
+        "des_exec_status": "ok",
+        "des_exec_error": null,
+        "des_parse_error": null,
+        "des_kpis": {
+          "throughput_per_hour": 32.68833333333333,
+          "wip_parts": 27.40913855147101,
+          "energy_per_part_kwh": 0.35243497520315
+        },
+        "des_repair_attempts_allowed": 3,
+        "des_reject_all_zero": true,
+        "des_programs": 1,
+        "des_repairs_used": 0,
+        "des_exec_elapsed_total_s": 1.028,
+        "des_gave_up_reason": null,
+        "status_basis": "KPIs produced from the DES model's stdout",
+        "kpi_source": "des_model_stdout",
+        "des_python": "/ssd/projects/dt-eval/comparison/.venv-des/bin/python",
+        "dt_schema_input": "ok",
+        "capability": "Method C emits a requirements document + PostgreSQL schema and (agent 2) a twin configuration, a PyChrono multi-physics script and a discrete-event SimPy model; the DES model is executed and its KPI contract parsed, so throughput/WIP/energy are populated when that slot succeeds and null when it does not"
+      }
+    },
+    "assumptions": null,
+    "notes": [
+      "structural recovery only: 3/3 machines mentioned in C's requirements",
+      "DB stage (agent 1) not recovered \u2014 DB agent (agent 1) output was not JSON; raw text kept in artifacts/dtb_schema.json",
+      "DT stage (agent 2) ran: 5069 chars of twin config, 13382 chars of PyChrono script; 3/3 machine ids appear in that output. The script is not executed (PyChrono is not installed on the harness host and models rigid bodies, not the case's discrete-event semantics), so no KPI is derived from it"
+    ],
+    "adapter_elapsed_s": 383.43
+  },
+  {
+    "method": "C",
+    "case": "case_0002_saturated_short_line",
+    "rep": 1,
+    "status": "ok",
+    "error": null,
+    "elapsed_generation_s": 280.634,
+    "elapsed_simulation_s": 0.974,
+    "llm_calls": 5,
+    "llm_tokens_estimate": null,
+    "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260921_073238_post-amendment/case_0002_saturated_short_line/C/rep1/model.json",
+    "kpis": {
+      "throughput_per_hour": 32.733333333333334,
+      "utilization": null,
+      "wip_parts": 27.421999593293513,
+      "energy_per_part_kwh": 0.3523423046913845,
+      "native": {
+        "machine_stats": {
+          "M1": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 90.0,
+            "availability_found": false,
+            "availability_claimed": 99.55
+          },
+          "M2": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 70.0,
+            "availability_found": false,
+            "availability_claimed": 100.0
+          },
+          "M3": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 110.0,
+            "availability_found": false,
+            "availability_claimed": 100.0
+          }
+        },
+        "machines_mentioned": 3,
+        "machines_truth": 3,
+        "buffers": {
+          "B0": true,
+          "B1": true,
+          "B2": true
+        },
+        "arrival_found": true,
+        "arrival_claimed": 60.0,
+        "equipment_count": 6,
+        "artifact_chars": {
+          "config": 6099,
+          "sim": 11068
+        },
+        "machine_ids_in_dt_output": {
+          "M1": true,
+          "M2": true,
+          "M3": true
+        },
+        "machines_mentioned_in_dt": 3,
+        "pychrono_referenced": true,
+        "stage_shapes": {
+          "db_answer": {
+            "chars": 3138,
+            "ids_present": 6,
+            "ids_truth": 6,
+            "ddl_phrases": [
+              "create index",
+              "create table",
+              "insert into",
+              "not null",
+              "primary key"
+            ],
+            "sql_types": [
+              "double precision",
+              "jsonb",
+              "timestamptz"
+            ],
+            "looks_like_ddl": true
+          },
+          "db_recorded": {
+            "chars": 3241,
+            "ids_present": 6,
+            "ids_truth": 6,
+            "ddl_phrases": [
+              "create table",
+              "not null",
+              "primary key"
+            ],
+            "sql_types": [
+              "double precision",
+              "jsonb",
+              "timestamptz"
+            ],
+            "looks_like_ddl": true
+          },
+          "dt_config": {
+            "chars": 6099,
+            "ids_present": 3,
+            "ids_truth": 6,
+            "looks_like_json": true
+          },
+          "dt_sim": {
+            "chars": 11068,
+            "ids_present": 6,
+            "ids_truth": 6
+          },
+          "dt_des": {
+            "chars": 7799,
+            "ids_present": 3,
+            "ids_truth": 6
+          }
+        },
+        "interview_turns": 1,
+        "agent_tasks": 5,
+        "agent_tasks_attempted": 5,
+        "responder_calls": 0,
+        "llm_calls_split": {
+          "ui_agent": 1,
+          "db_agent": 1,
+          "dt_agent": 3,
+          "harness_responder": 0
+        },
+        "responder_model": "openai/gpt-5-mini",
+        "api_url": "http://176.119.159.227:8000",
+        "agent_status": {
+          "agent0": "active",
+          "agent1": "active",
+          "agent2": "active"
+        },
+        "db_stage": "unavailable",
+        "db_note": "DB agent (agent 1) output was not JSON; raw text kept in artifacts/dtb_schema.json",
+        "dt_stage": "ok",
+        "dt_note": null,
+        "dt_slots_ok": 3,
+        "dt_slot_errors": {
+          "config": null,
+          "sim": null,
+          "des": null
+        },
+        "dt_slots_total": 3,
+        "des_stage": "ok",
+        "des_exec_status": "ok",
+        "des_exec_error": null,
+        "des_parse_error": null,
+        "des_kpis": {
+          "throughput_per_hour": 32.733333333333334,
+          "wip_parts": 27.421999593293513,
+          "energy_per_part_kwh": 0.3523423046913845
+        },
+        "des_repair_attempts_allowed": 3,
+        "des_reject_all_zero": true,
+        "des_programs": 1,
+        "des_repairs_used": 0,
+        "des_exec_elapsed_total_s": 0.974,
+        "des_gave_up_reason": null,
+        "status_basis": "KPIs produced from the DES model's stdout",
+        "kpi_source": "des_model_stdout",
+        "des_python": "/ssd/projects/dt-eval/comparison/.venv-des/bin/python",
+        "dt_schema_input": "ok",
+        "capability": "Method C emits a requirements document + PostgreSQL schema and (agent 2) a twin configuration, a PyChrono multi-physics script and a discrete-event SimPy model; the DES model is executed and its KPI contract parsed, so throughput/WIP/energy are populated when that slot succeeds and null when it does not"
+      }
+    },
+    "assumptions": null,
+    "notes": [
+      "structural recovery only: 3/3 machines mentioned in C's requirements",
+      "DB stage (agent 1) not recovered \u2014 DB agent (agent 1) output was not JSON; raw text kept in artifacts/dtb_schema.json",
+      "DT stage (agent 2) ran: 6099 chars of twin config, 11068 chars of PyChrono script; 3/3 machine ids appear in that output. The script is not executed (PyChrono is not installed on the harness host and models rigid bodies, not the case's discrete-event semantics), so no KPI is derived from it"
+    ],
+    "adapter_elapsed_s": 280.72
+  },
+  {
+    "method": "C",
+    "case": "case_0002_saturated_short_line",
+    "rep": 2,
+    "status": "ok",
+    "error": null,
+    "elapsed_generation_s": 262.116,
+    "elapsed_simulation_s": 0.977,
+    "llm_calls": 5,
+    "llm_tokens_estimate": null,
+    "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260921_073238_post-amendment/case_0002_saturated_short_line/C/rep2/model.json",
+    "kpis": {
+      "throughput_per_hour": 32.27083333333333,
+      "utilization": null,
+      "wip_parts": 27.11097657114642,
+      "energy_per_part_kwh": 0.352344372004747,
+      "native": {
+        "machine_stats": {
+          "M1": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 90.0,
+            "availability_found": true,
+            "availability_claimed": 0.99
+          },
+          "M2": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 70.0,
+            "availability_found": true,
+            "availability_claimed": 0.98
+          },
+          "M3": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 110.0,
+            "availability_found": true,
+            "availability_claimed": 0.99
+          }
+        },
+        "machines_mentioned": 3,
+        "machines_truth": 3,
+        "buffers": {
+          "B0": true,
+          "B1": true,
+          "B2": true
+        },
+        "arrival_found": true,
+        "arrival_claimed": 60.0,
+        "equipment_count": 6,
+        "artifact_chars": {
+          "config": 6095,
+          "sim": 11420
+        },
+        "machine_ids_in_dt_output": {
+          "M1": true,
+          "M2": true,
+          "M3": true
+        },
+        "machines_mentioned_in_dt": 3,
+        "pychrono_referenced": true,
+        "stage_shapes": {
+          "db_answer": {
+            "chars": 3925,
+            "ids_present": 6,
+            "ids_truth": 6,
+            "ddl_phrases": [
+              "create index",
+              "create table",
+              "insert into",
+              "not null",
+              "primary key"
+            ],
+            "sql_types": [
+              "double precision",
+              "jsonb",
+              "timestamptz"
+            ],
+            "looks_like_ddl": true
+          },
+          "db_recorded": {
+            "chars": 4048,
+            "ids_present": 6,
+            "ids_truth": 6,
+            "ddl_phrases": [
+              "not null",
+              "primary key"
+            ],
+            "sql_types": [
+              "double precision",
+              "jsonb",
+              "timestamptz"
+            ],
+            "looks_like_ddl": true
+          },
+          "dt_config": {
+            "chars": 6095,
+            "ids_present": 6,
+            "ids_truth": 6,
+            "looks_like_json": true
+          },
+          "dt_sim": {
+            "chars": 11420,
+            "ids_present": 6,
+            "ids_truth": 6
+          },
+          "dt_des": {
+            "chars": 7801,
+            "ids_present": 3,
+            "ids_truth": 6
+          }
+        },
+        "interview_turns": 1,
+        "agent_tasks": 5,
+        "agent_tasks_attempted": 5,
+        "responder_calls": 0,
+        "llm_calls_split": {
+          "ui_agent": 1,
+          "db_agent": 1,
+          "dt_agent": 3,
+          "harness_responder": 0
+        },
+        "responder_model": "openai/gpt-5-mini",
+        "api_url": "http://176.119.159.227:8000",
+        "agent_status": {
+          "agent0": "active",
+          "agent1": "active",
+          "agent2": "active"
+        },
+        "db_stage": "unavailable",
+        "db_note": "DB agent (agent 1) output was not JSON; raw text kept in artifacts/dtb_schema.json",
+        "dt_stage": "ok",
+        "dt_note": null,
+        "dt_slots_ok": 3,
+        "dt_slot_errors": {
+          "config": null,
+          "sim": null,
+          "des": null
+        },
+        "dt_slots_total": 3,
+        "des_stage": "ok",
+        "des_exec_status": "ok",
+        "des_exec_error": null,
+        "des_parse_error": null,
+        "des_kpis": {
+          "throughput_per_hour": 32.27083333333333,
+          "wip_parts": 27.11097657114642,
+          "energy_per_part_kwh": 0.352344372004747
+        },
+        "des_repair_attempts_allowed": 3,
+        "des_reject_all_zero": true,
+        "des_programs": 1,
+        "des_repairs_used": 0,
+        "des_exec_elapsed_total_s": 0.977,
+        "des_gave_up_reason": null,
+        "status_basis": "KPIs produced from the DES model's stdout",
+        "kpi_source": "des_model_stdout",
+        "des_python": "/ssd/projects/dt-eval/comparison/.venv-des/bin/python",
+        "dt_schema_input": "ok",
+        "capability": "Method C emits a requirements document + PostgreSQL schema and (agent 2) a twin configuration, a PyChrono multi-physics script and a discrete-event SimPy model; the DES model is executed and its KPI contract parsed, so throughput/WIP/energy are populated when that slot succeeds and null when it does not"
+      }
+    },
+    "assumptions": null,
+    "notes": [
+      "structural recovery only: 3/3 machines mentioned in C's requirements",
+      "DB stage (agent 1) not recovered \u2014 DB agent (agent 1) output was not JSON; raw text kept in artifacts/dtb_schema.json",
+      "DT stage (agent 2) ran: 6095 chars of twin config, 11420 chars of PyChrono script; 3/3 machine ids appear in that output. The script is not executed (PyChrono is not installed on the harness host and models rigid bodies, not the case's discrete-event semantics), so no KPI is derived from it"
+    ],
+    "adapter_elapsed_s": 262.21
+  },
+  {
+    "method": "C",
+    "case": "case_0003_starved_six_line",
+    "rep": 0,
+    "status": "ok",
+    "error": null,
+    "elapsed_generation_s": 487.586,
+    "elapsed_simulation_s": 0.781,
+    "llm_calls": 5,
+    "llm_tokens_estimate": null,
+    "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260921_073238_post-amendment/case_0003_starved_six_line/C/rep0/model.json",
+    "kpis": {
+      "throughput_per_hour": 12.004166666666666,
+      "utilization": null,
+      "wip_parts": 6.709757612184957,
+      "energy_per_part_kwh": 2.338470374633391,
+      "native": {
+        "machine_stats": {
+          "M1": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 200.0,
+            "availability_found": true,
+            "availability_claimed": 0.97
+          },
+          "M2": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 220.0,
+            "availability_found": true,
+            "availability_claimed": 0.97
+          },
+          "M3": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 240.0,
+            "availability_found": true,
+            "availability_claimed": 0.96
+          },
+          "M4": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 260.0,
+            "availability_found": true,
+            "availability_claimed": 0.96
+          },
+          "M5": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 230.0,
+            "availability_found": true,
+            "availability_claimed": 0.97
+          },
+          "M6": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 210.0,
+            "availability_found": true,
+            "availability_claimed": 0.97
+          }
+        },
+        "machines_mentioned": 6,
+        "machines_truth": 6,
+        "buffers": {
+          "B0": true,
+          "B1": true,
+          "B2": true,
+          "B3": true,
+          "B4": true,
+          "B5": true
+        },
+        "arrival_found": true,
+        "arrival_claimed": 300.0,
+        "equipment_count": 6,
+        "artifact_chars": {
+          "config": 6895,
+          "sim": 10119
+        },
+        "machine_ids_in_dt_output": {
+          "M1": true,
+          "M2": true,
+          "M3": true,
+          "M4": true,
+          "M5": true,
+          "M6": true
+        },
+        "machines_mentioned_in_dt": 6,
+        "pychrono_referenced": true,
+        "stage_shapes": {
+          "db_answer": {
+            "chars": 4394,
+            "ids_present": 12,
+            "ids_truth": 12,
+            "ddl_phrases": [
+              "create index",
+              "create table",
+              "insert into",
+              "not null",
+              "primary key"
+            ],
+            "sql_types": [
+              "double precision",
+              "jsonb",
+              "timestamptz"
+            ],
+            "looks_like_ddl": true
+          },
+          "db_recorded": {
+            "chars": 4527,
+            "ids_present": 12,
+            "ids_truth": 12,
+            "ddl_phrases": [
+              "create table",
+              "not null",
+              "primary key"
+            ],
+            "sql_types": [
+              "double precision",
+              "jsonb",
+              "timestamptz"
+            ],
+            "looks_like_ddl": true
+          },
+          "dt_config": {
+            "chars": 6895,
+            "ids_present": 0,
+            "ids_truth": 12,
+            "looks_like_json": true
+          },
+          "dt_sim": {
+            "chars": 10119,
+            "ids_present": 12,
+            "ids_truth": 12
+          },
+          "dt_des": {
+            "chars": 8246,
+            "ids_present": 6,
+            "ids_truth": 12
+          }
+        },
+        "interview_turns": 1,
+        "agent_tasks": 5,
+        "agent_tasks_attempted": 5,
+        "responder_calls": 0,
+        "llm_calls_split": {
+          "ui_agent": 1,
+          "db_agent": 1,
+          "dt_agent": 3,
+          "harness_responder": 0
+        },
+        "responder_model": "openai/gpt-5-mini",
+        "api_url": "http://176.119.159.227:8000",
+        "agent_status": {
+          "agent0": "active",
+          "agent1": "active",
+          "agent2": "active"
+        },
+        "db_stage": "unavailable",
+        "db_note": "DB agent (agent 1) output was not JSON; raw text kept in artifacts/dtb_schema.json",
+        "dt_stage": "ok",
+        "dt_note": null,
+        "dt_slots_ok": 3,
+        "dt_slot_errors": {
+          "config": null,
+          "sim": null,
+          "des": null
+        },
+        "dt_slots_total": 3,
+        "des_stage": "ok",
+        "des_exec_status": "ok",
+        "des_exec_error": null,
+        "des_parse_error": null,
+        "des_kpis": {
+          "throughput_per_hour": 12.004166666666666,
+          "wip_parts": 6.709757612184957,
+          "energy_per_part_kwh": 2.338470374633391
+        },
+        "des_repair_attempts_allowed": 3,
+        "des_reject_all_zero": true,
+        "des_programs": 1,
+        "des_repairs_used": 0,
+        "des_exec_elapsed_total_s": 0.781,
+        "des_gave_up_reason": null,
+        "status_basis": "KPIs produced from the DES model's stdout",
+        "kpi_source": "des_model_stdout",
+        "des_python": "/ssd/projects/dt-eval/comparison/.venv-des/bin/python",
+        "dt_schema_input": "ok",
+        "capability": "Method C emits a requirements document + PostgreSQL schema and (agent 2) a twin configuration, a PyChrono multi-physics script and a discrete-event SimPy model; the DES model is executed and its KPI contract parsed, so throughput/WIP/energy are populated when that slot succeeds and null when it does not"
+      }
+    },
+    "assumptions": null,
+    "notes": [
+      "structural recovery only: 6/6 machines mentioned in C's requirements",
+      "DB stage (agent 1) not recovered \u2014 DB agent (agent 1) output was not JSON; raw text kept in artifacts/dtb_schema.json",
+      "DT stage (agent 2) ran: 6895 chars of twin config, 10119 chars of PyChrono script; 6/6 machine ids appear in that output. The script is not executed (PyChrono is not installed on the harness host and models rigid bodies, not the case's discrete-event semantics), so no KPI is derived from it"
+    ],
+    "adapter_elapsed_s": 487.69
+  },
+  {
+    "method": "C",
+    "case": "case_0003_starved_six_line",
+    "rep": 1,
+    "status": "ok",
+    "error": null,
+    "elapsed_generation_s": 425.896,
+    "elapsed_simulation_s": 0.755,
+    "llm_calls": 5,
+    "llm_tokens_estimate": null,
+    "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260921_073238_post-amendment/case_0003_starved_six_line/C/rep1/model.json",
+    "kpis": {
+      "throughput_per_hour": 12.004166666666666,
+      "utilization": null,
+      "wip_parts": 6.709757612184957,
+      "energy_per_part_kwh": 2.338470374633391,
+      "native": {
+        "machine_stats": {
+          "M1": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 200.0,
+            "availability_found": true,
+            "availability_claimed": 0.97
+          },
+          "M2": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 220.0,
+            "availability_found": true,
+            "availability_claimed": 0.97
+          },
+          "M3": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 240.0,
+            "availability_found": true,
+            "availability_claimed": 0.96
+          },
+          "M4": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 260.0,
+            "availability_found": true,
+            "availability_claimed": 0.96
+          },
+          "M5": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 230.0,
+            "availability_found": true,
+            "availability_claimed": 0.97
+          },
+          "M6": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 210.0,
+            "availability_found": true,
+            "availability_claimed": 0.97
+          }
+        },
+        "machines_mentioned": 6,
+        "machines_truth": 6,
+        "buffers": {
+          "B0": true,
+          "B1": true,
+          "B2": true,
+          "B3": true,
+          "B4": true,
+          "B5": true
+        },
+        "arrival_found": true,
+        "arrival_claimed": 300.0,
+        "equipment_count": 1,
+        "artifact_chars": {
+          "config": 7660,
+          "sim": 12113
+        },
+        "machine_ids_in_dt_output": {
+          "M1": true,
+          "M2": true,
+          "M3": true,
+          "M4": true,
+          "M5": true,
+          "M6": true
+        },
+        "machines_mentioned_in_dt": 6,
+        "pychrono_referenced": true,
+        "stage_shapes": {
+          "db_answer": {
+            "chars": 4129,
+            "ids_present": 12,
+            "ids_truth": 12,
+            "ddl_phrases": [
+              "create index",
+              "create table",
+              "insert into",
+              "primary key"
+            ],
+            "sql_types": [
+              "double precision",
+              "jsonb",
+              "timestamptz"
+            ],
+            "looks_like_ddl": true
+          },
+          "db_recorded": {
+            "chars": 4256,
+            "ids_present": 12,
+            "ids_truth": 12,
+            "ddl_phrases": [
+              "create table",
+              "primary key"
+            ],
+            "sql_types": [
+              "double precision",
+              "jsonb",
+              "timestamptz"
+            ],
+            "looks_like_ddl": true
+          },
+          "dt_config": {
+            "chars": 7660,
+            "ids_present": 5,
+            "ids_truth": 12,
+            "looks_like_json": true
+          },
+          "dt_sim": {
+            "chars": 12113,
+            "ids_present": 6,
+            "ids_truth": 12
+          },
+          "dt_des": {
+            "chars": 8246,
+            "ids_present": 6,
+            "ids_truth": 12
+          }
+        },
+        "interview_turns": 1,
+        "agent_tasks": 5,
+        "agent_tasks_attempted": 5,
+        "responder_calls": 0,
+        "llm_calls_split": {
+          "ui_agent": 1,
+          "db_agent": 1,
+          "dt_agent": 3,
+          "harness_responder": 0
+        },
+        "responder_model": "openai/gpt-5-mini",
+        "api_url": "http://176.119.159.227:8000",
+        "agent_status": {
+          "agent0": "active",
+          "agent1": "active",
+          "agent2": "active"
+        },
+        "db_stage": "unavailable",
+        "db_note": "DB agent (agent 1) output was not JSON; raw text kept in artifacts/dtb_schema.json",
+        "dt_stage": "ok",
+        "dt_note": null,
+        "dt_slots_ok": 3,
+        "dt_slot_errors": {
+          "config": null,
+          "sim": null,
+          "des": null
+        },
+        "dt_slots_total": 3,
+        "des_stage": "ok",
+        "des_exec_status": "ok",
+        "des_exec_error": null,
+        "des_parse_error": null,
+        "des_kpis": {
+          "throughput_per_hour": 12.004166666666666,
+          "wip_parts": 6.709757612184957,
+          "energy_per_part_kwh": 2.338470374633391
+        },
+        "des_repair_attempts_allowed": 3,
+        "des_reject_all_zero": true,
+        "des_programs": 1,
+        "des_repairs_used": 0,
+        "des_exec_elapsed_total_s": 0.755,
+        "des_gave_up_reason": null,
+        "status_basis": "KPIs produced from the DES model's stdout",
+        "kpi_source": "des_model_stdout",
+        "des_python": "/ssd/projects/dt-eval/comparison/.venv-des/bin/python",
+        "dt_schema_input": "ok",
+        "capability": "Method C emits a requirements document + PostgreSQL schema and (agent 2) a twin configuration, a PyChrono multi-physics script and a discrete-event SimPy model; the DES model is executed and its KPI contract parsed, so throughput/WIP/energy are populated when that slot succeeds and null when it does not"
+      }
+    },
+    "assumptions": null,
+    "notes": [
+      "structural recovery only: 6/6 machines mentioned in C's requirements",
+      "DB stage (agent 1) not recovered \u2014 DB agent (agent 1) output was not JSON; raw text kept in artifacts/dtb_schema.json",
+      "DT stage (agent 2) ran: 7660 chars of twin config, 12113 chars of PyChrono script; 6/6 machine ids appear in that output. The script is not executed (PyChrono is not installed on the harness host and models rigid bodies, not the case's discrete-event semantics), so no KPI is derived from it"
+    ],
+    "adapter_elapsed_s": 426.01
+  },
+  {
+    "method": "C",
+    "case": "case_0003_starved_six_line",
+    "rep": 2,
+    "status": "ok",
+    "error": null,
+    "elapsed_generation_s": 651.241,
+    "elapsed_simulation_s": 0.744,
+    "llm_calls": 7,
+    "llm_tokens_estimate": null,
+    "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260921_073238_post-amendment/case_0003_starved_six_line/C/rep2/model.json",
+    "kpis": {
+      "throughput_per_hour": 12.013333333333332,
+      "utilization": null,
+      "wip_parts": 5.2301284562001715,
+      "energy_per_part_kwh": 2.349684846736426,
+      "native": {
+        "machine_stats": {
+          "M1": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 199.86,
+            "availability_found": false,
+            "availability_claimed": 0.9877
+          },
+          "M2": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 220.09,
+            "availability_found": false,
+            "availability_claimed": 0.9863
+          },
+          "M3": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 240.01,
+            "availability_found": false,
+            "availability_claimed": 0.9978
+          },
+          "M4": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 259.99,
+            "availability_found": false,
+            "availability_claimed": 0.9885
+          },
+          "M5": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 230.13,
+            "availability_found": false,
+            "availability_claimed": 0.9951
+          },
+          "M6": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 209.83,
+            "availability_found": false,
+            "availability_claimed": 0.9898
+          }
+        },
+        "machines_mentioned": 6,
+        "machines_truth": 6,
+        "buffers": {
+          "B0": true,
+          "B1": true,
+          "B2": true,
+          "B3": true,
+          "B4": true,
+          "B5": true
+        },
+        "arrival_found": true,
+        "arrival_claimed": 300.0,
+        "equipment_count": 6,
+        "artifact_chars": {
+          "config": 5319,
+          "sim": 8992
+        },
+        "machine_ids_in_dt_output": {
+          "M1": true,
+          "M2": true,
+          "M3": true,
+          "M4": true,
+          "M5": true,
+          "M6": true
+        },
+        "machines_mentioned_in_dt": 6,
+        "pychrono_referenced": true,
+        "stage_shapes": {
+          "db_answer": {
+            "chars": 3117,
+            "ids_present": 12,
+            "ids_truth": 12,
+            "ddl_phrases": [
+              "create index",
+              "create table",
+              "insert into",
+              "not null",
+              "primary key"
+            ],
+            "sql_types": [
+              "double precision",
+              "jsonb",
+              "timestamptz"
+            ],
+            "looks_like_ddl": true
+          },
+          "db_recorded": {
+            "chars": 3226,
+            "ids_present": 12,
+            "ids_truth": 12,
+            "ddl_phrases": [
+              "create table",
+              "not null",
+              "primary key"
+            ],
+            "sql_types": [
+              "double precision",
+              "jsonb",
+              "timestamptz"
+            ],
+            "looks_like_ddl": true
+          },
+          "dt_config": {
+            "chars": 5319,
+            "ids_present": 4,
+            "ids_truth": 12,
+            "looks_like_json": true
+          },
+          "dt_sim": {
+            "chars": 8992,
+            "ids_present": 12,
+            "ids_truth": 12
+          },
+          "dt_des": {
+            "chars": 8264,
+            "ids_present": 6,
+            "ids_truth": 12
+          }
+        },
+        "interview_turns": 1,
+        "agent_tasks": 7,
+        "agent_tasks_attempted": 7,
+        "responder_calls": 0,
+        "llm_calls_split": {
+          "ui_agent": 3,
+          "db_agent": 1,
+          "dt_agent": 3,
+          "harness_responder": 0
+        },
+        "responder_model": "openai/gpt-5-mini",
+        "api_url": "http://176.119.159.227:8000",
+        "agent_status": {
+          "agent0": "active",
+          "agent1": "active",
+          "agent2": "active"
+        },
+        "db_stage": "unavailable",
+        "db_note": "DB agent (agent 1) output was not JSON; raw text kept in artifacts/dtb_schema.json",
+        "dt_stage": "ok",
+        "dt_note": null,
+        "dt_slots_ok": 3,
+        "dt_slot_errors": {
+          "config": null,
+          "sim": null,
+          "des": null
+        },
+        "dt_slots_total": 3,
+        "des_stage": "ok",
+        "des_exec_status": "ok",
+        "des_exec_error": null,
+        "des_parse_error": null,
+        "des_kpis": {
+          "throughput_per_hour": 12.013333333333332,
+          "wip_parts": 5.2301284562001715,
+          "energy_per_part_kwh": 2.349684846736426
+        },
+        "des_repair_attempts_allowed": 3,
+        "des_reject_all_zero": true,
+        "des_programs": 1,
+        "des_repairs_used": 0,
+        "des_exec_elapsed_total_s": 0.744,
+        "des_gave_up_reason": null,
+        "status_basis": "KPIs produced from the DES model's stdout",
+        "kpi_source": "des_model_stdout",
+        "des_python": "/ssd/projects/dt-eval/comparison/.venv-des/bin/python",
+        "dt_schema_input": "ok",
+        "capability": "Method C emits a requirements document + PostgreSQL schema and (agent 2) a twin configuration, a PyChrono multi-physics script and a discrete-event SimPy model; the DES model is executed and its KPI contract parsed, so throughput/WIP/energy are populated when that slot succeeds and null when it does not"
+      }
+    },
+    "assumptions": null,
+    "notes": [
+      "structural recovery only: 6/6 machines mentioned in C's requirements",
+      "DB stage (agent 1) not recovered \u2014 DB agent (agent 1) output was not JSON; raw text kept in artifacts/dtb_schema.json",
+      "DT stage (agent 2) ran: 5319 chars of twin config, 8992 chars of PyChrono script; 6/6 machine ids appear in that output. The script is not executed (PyChrono is not installed on the harness host and models rigid bodies, not the case's discrete-event semantics), so no KPI is derived from it"
+    ],
+    "adapter_elapsed_s": 651.35
+  },
+  {
+    "method": "C",
+    "case": "case_0004_failure_heavy_line",
+    "rep": 0,
+    "status": "ok",
+    "error": null,
+    "elapsed_generation_s": 334.75,
+    "elapsed_simulation_s": 1.143,
+    "llm_calls": 5,
+    "llm_tokens_estimate": null,
+    "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260921_073238_post-amendment/case_0004_failure_heavy_line/C/rep0/model.json",
+    "kpis": {
+      "throughput_per_hour": 21.75,
+      "utilization": null,
+      "wip_parts": 7.9896112613043355,
+      "energy_per_part_kwh": 0.8753506516474602,
+      "native": {
+        "machine_stats": {
+          "M1": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 100.0,
+            "availability_found": false,
+            "availability_claimed": 92.58
+          },
+          "M2": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 130.0,
+            "availability_found": false,
+            "availability_claimed": 97.36
+          },
+          "M3": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 90.0,
+            "availability_found": false,
+            "availability_claimed": 94.69
+          },
+          "M4": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 140.0,
+            "availability_found": false,
+            "availability_claimed": 100.0
+          },
+          "M5": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 110.0,
+            "availability_found": false,
+            "availability_claimed": 98.23
+          }
+        },
+        "machines_mentioned": 5,
+        "machines_truth": 5,
+        "buffers": {
+          "B0": true,
+          "B1": true,
+          "B2": true,
+          "B3": true,
+          "B4": true
+        },
+        "arrival_found": true,
+        "arrival_claimed": 150.0,
+        "equipment_count": 2,
+        "artifact_chars": {
+          "config": 6509,
+          "sim": 13253
+        },
+        "machine_ids_in_dt_output": {
+          "M1": true,
+          "M2": true,
+          "M3": true,
+          "M4": true,
+          "M5": true
+        },
+        "machines_mentioned_in_dt": 5,
+        "pychrono_referenced": true,
+        "stage_shapes": {
+          "db_answer": {
+            "chars": 3483,
+            "ids_present": 10,
+            "ids_truth": 10,
+            "ddl_phrases": [
+              "create index",
+              "create table",
+              "insert into",
+              "not null",
+              "primary key"
+            ],
+            "sql_types": [
+              "double precision",
+              "jsonb",
+              "timestamptz"
+            ],
+            "looks_like_ddl": true
+          },
+          "db_recorded": {
+            "chars": 3593,
+            "ids_present": 10,
+            "ids_truth": 10,
+            "ddl_phrases": [
+              "create table",
+              "not null",
+              "primary key"
+            ],
+            "sql_types": [
+              "double precision",
+              "jsonb",
+              "timestamptz"
+            ],
+            "looks_like_ddl": true
+          },
+          "dt_config": {
+            "chars": 6509,
+            "ids_present": 0,
+            "ids_truth": 10,
+            "looks_like_json": true
+          },
+          "dt_sim": {
+            "chars": 13253,
+            "ids_present": 10,
+            "ids_truth": 10
+          },
+          "dt_des": {
+            "chars": 8100,
+            "ids_present": 5,
+            "ids_truth": 10
+          }
+        },
+        "interview_turns": 1,
+        "agent_tasks": 5,
+        "agent_tasks_attempted": 5,
+        "responder_calls": 0,
+        "llm_calls_split": {
+          "ui_agent": 1,
+          "db_agent": 1,
+          "dt_agent": 3,
+          "harness_responder": 0
+        },
+        "responder_model": "openai/gpt-5-mini",
+        "api_url": "http://176.119.159.227:8000",
+        "agent_status": {
+          "agent0": "active",
+          "agent1": "active",
+          "agent2": "active"
+        },
+        "db_stage": "unavailable",
+        "db_note": "DB agent (agent 1) output was not JSON; raw text kept in artifacts/dtb_schema.json",
+        "dt_stage": "ok",
+        "dt_note": null,
+        "dt_slots_ok": 3,
+        "dt_slot_errors": {
+          "config": null,
+          "sim": null,
+          "des": null
+        },
+        "dt_slots_total": 3,
+        "des_stage": "ok",
+        "des_exec_status": "ok",
+        "des_exec_error": null,
+        "des_parse_error": null,
+        "des_kpis": {
+          "throughput_per_hour": 21.75,
+          "wip_parts": 7.9896112613043355,
+          "energy_per_part_kwh": 0.8753506516474602
+        },
+        "des_repair_attempts_allowed": 3,
+        "des_reject_all_zero": true,
+        "des_programs": 1,
+        "des_repairs_used": 0,
+        "des_exec_elapsed_total_s": 1.143,
+        "des_gave_up_reason": null,
+        "status_basis": "KPIs produced from the DES model's stdout",
+        "kpi_source": "des_model_stdout",
+        "des_python": "/ssd/projects/dt-eval/comparison/.venv-des/bin/python",
+        "dt_schema_input": "ok",
+        "capability": "Method C emits a requirements document + PostgreSQL schema and (agent 2) a twin configuration, a PyChrono multi-physics script and a discrete-event SimPy model; the DES model is executed and its KPI contract parsed, so throughput/WIP/energy are populated when that slot succeeds and null when it does not"
+      }
+    },
+    "assumptions": null,
+    "notes": [
+      "structural recovery only: 5/5 machines mentioned in C's requirements",
+      "DB stage (agent 1) not recovered \u2014 DB agent (agent 1) output was not JSON; raw text kept in artifacts/dtb_schema.json",
+      "DT stage (agent 2) ran: 6509 chars of twin config, 13253 chars of PyChrono script; 5/5 machine ids appear in that output. The script is not executed (PyChrono is not installed on the harness host and models rigid bodies, not the case's discrete-event semantics), so no KPI is derived from it"
+    ],
+    "adapter_elapsed_s": 334.85
+  },
+  {
+    "method": "C",
+    "case": "case_0004_failure_heavy_line",
+    "rep": 1,
+    "status": "ok",
+    "error": null,
+    "elapsed_generation_s": 946.484,
+    "elapsed_simulation_s": 0.897,
+    "llm_calls": 5,
+    "llm_tokens_estimate": null,
+    "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260921_073238_post-amendment/case_0004_failure_heavy_line/C/rep1/model.json",
+    "kpis": {
+      "throughput_per_hour": 17.91583333333333,
+      "utilization": null,
+      "wip_parts": 12.306703652365623,
+      "energy_per_part_kwh": 0.8911240201791706,
+      "native": {
+        "machine_stats": {
+          "M1": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 100.0,
+            "availability_found": true,
+            "availability_claimed": 0.9
+          },
+          "M2": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 130.0,
+            "availability_found": true,
+            "availability_claimed": 0.92
+          },
+          "M3": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 90.0,
+            "availability_found": true,
+            "availability_claimed": 0.88
+          },
+          "M4": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 140.0,
+            "availability_found": true,
+            "availability_claimed": 0.91
+          },
+          "M5": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 110.0,
+            "availability_found": true,
+            "availability_claimed": 0.93
+          }
+        },
+        "machines_mentioned": 5,
+        "machines_truth": 5,
+        "buffers": {
+          "B0": true,
+          "B1": true,
+          "B2": true,
+          "B3": true,
+          "B4": true
+        },
+        "arrival_found": true,
+        "arrival_claimed": 150.0,
+        "equipment_count": 5,
+        "artifact_chars": {
+          "config": 7477,
+          "sim": 10454
+        },
+        "machine_ids_in_dt_output": {
+          "M1": true,
+          "M2": true,
+          "M3": true,
+          "M4": true,
+          "M5": true
+        },
+        "machines_mentioned_in_dt": 5,
+        "pychrono_referenced": true,
+        "stage_shapes": {
+          "db_answer": {
+            "chars": 0,
+            "ids_present": 0,
+            "ids_truth": 10,
+            "ddl_phrases": [],
+            "sql_types": [],
+            "looks_like_ddl": false
+          },
+          "db_recorded": {
+            "chars": 15,
+            "ids_present": 0,
+            "ids_truth": 10,
+            "ddl_phrases": [],
+            "sql_types": [],
+            "looks_like_ddl": false
+          },
+          "dt_config": {
+            "chars": 7477,
+            "ids_present": 10,
+            "ids_truth": 10,
+            "looks_like_json": true
+          },
+          "dt_sim": {
+            "chars": 10454,
+            "ids_present": 10,
+            "ids_truth": 10
+          },
+          "dt_des": {
+            "chars": 8095,
+            "ids_present": 5,
+            "ids_truth": 10
+          }
+        },
+        "interview_turns": 1,
+        "agent_tasks": 5,
+        "agent_tasks_attempted": 6,
+        "responder_calls": 0,
+        "llm_calls_split": {
+          "ui_agent": 2,
+          "db_agent": 0,
+          "dt_agent": 3,
+          "harness_responder": 0
+        },
+        "responder_model": "openai/gpt-5-mini",
+        "api_url": "http://176.119.159.227:8000",
+        "agent_status": {
+          "agent0": "active",
+          "agent1": "active",
+          "agent2": "active"
+        },
+        "db_stage": "unavailable",
+        "db_note": "DB agent (agent 1) failed: poll timeout after 600.0s \u2014 requirements recovered, schema stage unavailable",
+        "dt_stage": "ok",
+        "dt_note": null,
+        "dt_slots_ok": 3,
+        "dt_slot_errors": {
+          "config": null,
+          "sim": null,
+          "des": null
+        },
+        "dt_slots_total": 3,
+        "des_stage": "ok",
+        "des_exec_status": "ok",
+        "des_exec_error": null,
+        "des_parse_error": null,
+        "des_kpis": {
+          "throughput_per_hour": 17.91583333333333,
+          "wip_parts": 12.306703652365623,
+          "energy_per_part_kwh": 0.8911240201791706
+        },
+        "des_repair_attempts_allowed": 3,
+        "des_reject_all_zero": true,
+        "des_programs": 1,
+        "des_repairs_used": 0,
+        "des_exec_elapsed_total_s": 0.897,
+        "des_gave_up_reason": null,
+        "status_basis": "KPIs produced from the DES model's stdout",
+        "kpi_source": "des_model_stdout",
+        "des_python": "/ssd/projects/dt-eval/comparison/.venv-des/bin/python",
+        "dt_schema_input": "unavailable",
+        "capability": "Method C emits a requirements document + PostgreSQL schema and (agent 2) a twin configuration, a PyChrono multi-physics script and a discrete-event SimPy model; the DES model is executed and its KPI contract parsed, so throughput/WIP/energy are populated when that slot succeeds and null when it does not"
+      }
+    },
+    "assumptions": null,
+    "notes": [
+      "structural recovery only: 5/5 machines mentioned in C's requirements",
+      "DB stage (agent 1) not recovered \u2014 DB agent (agent 1) failed: poll timeout after 600.0s \u2014 requirements recovered, schema stage unavailable",
+      "DT stage (agent 2) ran: 7477 chars of twin config, 10454 chars of PyChrono script; 5/5 machine ids appear in that output. The script is not executed (PyChrono is not installed on the harness host and models rigid bodies, not the case's discrete-event semantics), so no KPI is derived from it",
+      "DT stage ran with an unavailable DB schema: the DB stage is one of agent 2's two inputs, so its output here is conditioned on a degraded input (recorded, not substituted with a fabricated schema)"
+    ],
+    "adapter_elapsed_s": 946.58
+  },
+  {
+    "method": "C",
+    "case": "case_0004_failure_heavy_line",
+    "rep": 2,
+    "status": "ok",
+    "error": null,
+    "elapsed_generation_s": 542.656,
+    "elapsed_simulation_s": 1.07,
+    "llm_calls": 7,
+    "llm_tokens_estimate": null,
+    "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260921_073238_post-amendment/case_0004_failure_heavy_line/C/rep2/model.json",
+    "kpis": {
+      "throughput_per_hour": 21.75,
+      "utilization": null,
+      "wip_parts": 7.9896112613043355,
+      "energy_per_part_kwh": 0.8753506516474602,
+      "native": {
+        "machine_stats": {
+          "M1": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 100.0,
+            "availability_found": false,
+            "availability_claimed": 92.58
+          },
+          "M2": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 130.0,
+            "availability_found": false,
+            "availability_claimed": 97.36
+          },
+          "M3": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 90.0,
+            "availability_found": false,
+            "availability_claimed": 94.69
+          },
+          "M4": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 140.0,
+            "availability_found": false,
+            "availability_claimed": 100.0
+          },
+          "M5": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 110.0,
+            "availability_found": false,
+            "availability_claimed": 98.23
+          }
+        },
+        "machines_mentioned": 5,
+        "machines_truth": 5,
+        "buffers": {
+          "B0": true,
+          "B1": true,
+          "B2": true,
+          "B3": true,
+          "B4": true
+        },
+        "arrival_found": true,
+        "arrival_claimed": 150.0,
+        "equipment_count": 10,
+        "artifact_chars": {
+          "config": 5239,
+          "sim": 14316
+        },
+        "machine_ids_in_dt_output": {
+          "M1": true,
+          "M2": true,
+          "M3": true,
+          "M4": true,
+          "M5": true
+        },
+        "machines_mentioned_in_dt": 5,
+        "pychrono_referenced": true,
+        "stage_shapes": {
+          "db_answer": {
+            "chars": 4056,
+            "ids_present": 10,
+            "ids_truth": 10,
+            "ddl_phrases": [
+              "create table",
+              "insert into",
+              "not null",
+              "primary key"
+            ],
+            "sql_types": [
+              "double precision",
+              "jsonb",
+              "timestamptz"
+            ],
+            "looks_like_ddl": true
+          },
+          "db_recorded": {
+            "chars": 4168,
+            "ids_present": 10,
+            "ids_truth": 10,
+            "ddl_phrases": [
+              "create table",
+              "not null",
+              "primary key"
+            ],
+            "sql_types": [
+              "double precision",
+              "jsonb",
+              "timestamptz"
+            ],
+            "looks_like_ddl": true
+          },
+          "dt_config": {
+            "chars": 5239,
+            "ids_present": 4,
+            "ids_truth": 10,
+            "looks_like_json": true
+          },
+          "dt_sim": {
+            "chars": 14316,
+            "ids_present": 10,
+            "ids_truth": 10
+          },
+          "dt_des": {
+            "chars": 8103,
+            "ids_present": 5,
+            "ids_truth": 10
+          }
+        },
+        "interview_turns": 1,
+        "agent_tasks": 7,
+        "agent_tasks_attempted": 7,
+        "responder_calls": 0,
+        "llm_calls_split": {
+          "ui_agent": 3,
+          "db_agent": 1,
+          "dt_agent": 3,
+          "harness_responder": 0
+        },
+        "responder_model": "openai/gpt-5-mini",
+        "api_url": "http://176.119.159.227:8000",
+        "agent_status": {
+          "agent0": "active",
+          "agent1": "active",
+          "agent2": "active"
+        },
+        "db_stage": "unavailable",
+        "db_note": "DB agent (agent 1) output was not JSON; raw text kept in artifacts/dtb_schema.json",
+        "dt_stage": "ok",
+        "dt_note": null,
+        "dt_slots_ok": 3,
+        "dt_slot_errors": {
+          "config": null,
+          "sim": null,
+          "des": null
+        },
+        "dt_slots_total": 3,
+        "des_stage": "ok",
+        "des_exec_status": "ok",
+        "des_exec_error": null,
+        "des_parse_error": null,
+        "des_kpis": {
+          "throughput_per_hour": 21.75,
+          "wip_parts": 7.9896112613043355,
+          "energy_per_part_kwh": 0.8753506516474602
+        },
+        "des_repair_attempts_allowed": 3,
+        "des_reject_all_zero": true,
+        "des_programs": 1,
+        "des_repairs_used": 0,
+        "des_exec_elapsed_total_s": 1.07,
+        "des_gave_up_reason": null,
+        "status_basis": "KPIs produced from the DES model's stdout",
+        "kpi_source": "des_model_stdout",
+        "des_python": "/ssd/projects/dt-eval/comparison/.venv-des/bin/python",
+        "dt_schema_input": "ok",
+        "capability": "Method C emits a requirements document + PostgreSQL schema and (agent 2) a twin configuration, a PyChrono multi-physics script and a discrete-event SimPy model; the DES model is executed and its KPI contract parsed, so throughput/WIP/energy are populated when that slot succeeds and null when it does not"
+      }
+    },
+    "assumptions": null,
+    "notes": [
+      "structural recovery only: 5/5 machines mentioned in C's requirements",
+      "DB stage (agent 1) not recovered \u2014 DB agent (agent 1) output was not JSON; raw text kept in artifacts/dtb_schema.json",
+      "DT stage (agent 2) ran: 5239 chars of twin config, 14316 chars of PyChrono script; 5/5 machine ids appear in that output. The script is not executed (PyChrono is not installed on the harness host and models rigid bodies, not the case's discrete-event semantics), so no KPI is derived from it"
+    ],
+    "adapter_elapsed_s": 542.76
+  },
+  {
+    "method": "C",
+    "case": "case_0005_high_rate_line",
+    "rep": 0,
+    "status": "ok",
+    "error": null,
+    "elapsed_generation_s": 292.053,
+    "elapsed_simulation_s": 1.892,
+    "llm_calls": 5,
+    "llm_tokens_estimate": null,
+    "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260921_073238_post-amendment/case_0005_high_rate_line/C/rep0/model.json",
+    "kpis": {
+      "throughput_per_hour": 45.0,
+      "utilization": null,
+      "wip_parts": 38.6237638531091,
+      "energy_per_part_kwh": 0.3353992601143541,
+      "native": {
+        "machine_stats": {
+          "M1": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 60.0,
+            "availability_found": false,
+            "availability_claimed": 99.99
+          },
+          "M2": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 80.0,
+            "availability_found": false,
+            "availability_claimed": 100.0
+          },
+          "M3": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 70.0,
+            "availability_found": false,
+            "availability_claimed": 99.88
+          },
+          "M4": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 75.0,
+            "availability_found": false,
+            "availability_claimed": 99.995
+          }
+        },
+        "machines_mentioned": 4,
+        "machines_truth": 4,
+        "buffers": {
+          "B0": true,
+          "B1": true,
+          "B2": true,
+          "B3": true
+        },
+        "arrival_found": true,
+        "arrival_claimed": 45.0,
+        "equipment_count": 8,
+        "artifact_chars": {
+          "config": 4548,
+          "sim": 11188
+        },
+        "machine_ids_in_dt_output": {
+          "M1": true,
+          "M2": true,
+          "M3": true,
+          "M4": true
+        },
+        "machines_mentioned_in_dt": 4,
+        "pychrono_referenced": true,
+        "stage_shapes": {
+          "db_answer": {
+            "chars": 2483,
+            "ids_present": 8,
+            "ids_truth": 8,
+            "ddl_phrases": [
+              "create index",
+              "create table",
+              "insert into",
+              "not null",
+              "primary key"
+            ],
+            "sql_types": [
+              "double precision",
+              "jsonb",
+              "timestamptz"
+            ],
+            "looks_like_ddl": true
+          },
+          "db_recorded": {
+            "chars": 2569,
+            "ids_present": 8,
+            "ids_truth": 8,
+            "ddl_phrases": [
+              "create table",
+              "not null",
+              "primary key"
+            ],
+            "sql_types": [
+              "double precision",
+              "jsonb",
+              "timestamptz"
+            ],
+            "looks_like_ddl": true
+          },
+          "dt_config": {
+            "chars": 4548,
+            "ids_present": 3,
+            "ids_truth": 8,
+            "looks_like_json": true
+          },
+          "dt_sim": {
+            "chars": 11188,
+            "ids_present": 8,
+            "ids_truth": 8
+          },
+          "dt_des": {
+            "chars": 7950,
+            "ids_present": 4,
+            "ids_truth": 8
+          }
+        },
+        "interview_turns": 1,
+        "agent_tasks": 5,
+        "agent_tasks_attempted": 5,
+        "responder_calls": 0,
+        "llm_calls_split": {
+          "ui_agent": 1,
+          "db_agent": 1,
+          "dt_agent": 3,
+          "harness_responder": 0
+        },
+        "responder_model": "openai/gpt-5-mini",
+        "api_url": "http://176.119.159.227:8000",
+        "agent_status": {
+          "agent0": "active",
+          "agent1": "active",
+          "agent2": "active"
+        },
+        "db_stage": "unavailable",
+        "db_note": "DB agent (agent 1) output was not JSON; raw text kept in artifacts/dtb_schema.json",
+        "dt_stage": "ok",
+        "dt_note": null,
+        "dt_slots_ok": 3,
+        "dt_slot_errors": {
+          "config": null,
+          "sim": null,
+          "des": null
+        },
+        "dt_slots_total": 3,
+        "des_stage": "ok",
+        "des_exec_status": "ok",
+        "des_exec_error": null,
+        "des_parse_error": null,
+        "des_kpis": {
+          "throughput_per_hour": 45.0,
+          "wip_parts": 38.6237638531091,
+          "energy_per_part_kwh": 0.3353992601143541
+        },
+        "des_repair_attempts_allowed": 3,
+        "des_reject_all_zero": true,
+        "des_programs": 1,
+        "des_repairs_used": 0,
+        "des_exec_elapsed_total_s": 1.892,
+        "des_gave_up_reason": null,
+        "status_basis": "KPIs produced from the DES model's stdout",
+        "kpi_source": "des_model_stdout",
+        "des_python": "/ssd/projects/dt-eval/comparison/.venv-des/bin/python",
+        "dt_schema_input": "ok",
+        "capability": "Method C emits a requirements document + PostgreSQL schema and (agent 2) a twin configuration, a PyChrono multi-physics script and a discrete-event SimPy model; the DES model is executed and its KPI contract parsed, so throughput/WIP/energy are populated when that slot succeeds and null when it does not"
+      }
+    },
+    "assumptions": null,
+    "notes": [
+      "structural recovery only: 4/4 machines mentioned in C's requirements",
+      "DB stage (agent 1) not recovered \u2014 DB agent (agent 1) output was not JSON; raw text kept in artifacts/dtb_schema.json",
+      "DT stage (agent 2) ran: 4548 chars of twin config, 11188 chars of PyChrono script; 4/4 machine ids appear in that output. The script is not executed (PyChrono is not installed on the harness host and models rigid bodies, not the case's discrete-event semantics), so no KPI is derived from it"
+    ],
+    "adapter_elapsed_s": 292.15
+  },
+  {
+    "method": "C",
+    "case": "case_0005_high_rate_line",
+    "rep": 1,
+    "status": "ok",
+    "error": null,
+    "elapsed_generation_s": 373.326,
+    "elapsed_simulation_s": 1.902,
+    "llm_calls": 5,
+    "llm_tokens_estimate": null,
+    "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260921_073238_post-amendment/case_0005_high_rate_line/C/rep1/model.json",
+    "kpis": {
+      "throughput_per_hour": 44.595,
+      "utilization": null,
+      "wip_parts": 39.25552900641868,
+      "energy_per_part_kwh": 0.3352621218202224,
+      "native": {
+        "machine_stats": {
+          "M1": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 60.0,
+            "availability_found": true,
+            "availability_claimed": 0.995
+          },
+          "M2": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 80.0,
+            "availability_found": true,
+            "availability_claimed": 0.99
+          },
+          "M3": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 70.0,
+            "availability_found": true,
+            "availability_claimed": 0.99
+          },
+          "M4": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 75.0,
+            "availability_found": true,
+            "availability_claimed": 0.995
+          }
+        },
+        "machines_mentioned": 4,
+        "machines_truth": 4,
+        "buffers": {
+          "B0": true,
+          "B1": true,
+          "B2": true,
+          "B3": true
+        },
+        "arrival_found": true,
+        "arrival_claimed": 45.0,
+        "equipment_count": 4,
+        "artifact_chars": {
+          "config": 6200,
+          "sim": 10482
+        },
+        "machine_ids_in_dt_output": {
+          "M1": true,
+          "M2": true,
+          "M3": true,
+          "M4": true
+        },
+        "machines_mentioned_in_dt": 4,
+        "pychrono_referenced": true,
+        "stage_shapes": {
+          "db_answer": {
+            "chars": 3488,
+            "ids_present": 8,
+            "ids_truth": 8,
+            "ddl_phrases": [
+              "create index",
+              "create table",
+              "insert into",
+              "not null",
+              "primary key"
+            ],
+            "sql_types": [
+              "double precision",
+              "jsonb",
+              "timestamptz"
+            ],
+            "looks_like_ddl": true
+          },
+          "db_recorded": {
+            "chars": 3609,
+            "ids_present": 8,
+            "ids_truth": 8,
+            "ddl_phrases": [
+              "create table",
+              "not null",
+              "primary key"
+            ],
+            "sql_types": [
+              "double precision",
+              "jsonb",
+              "timestamptz"
+            ],
+            "looks_like_ddl": true
+          },
+          "dt_config": {
+            "chars": 6200,
+            "ids_present": 0,
+            "ids_truth": 8,
+            "looks_like_json": true
+          },
+          "dt_sim": {
+            "chars": 10482,
+            "ids_present": 8,
+            "ids_truth": 8
+          },
+          "dt_des": {
+            "chars": 7945,
+            "ids_present": 4,
+            "ids_truth": 8
+          }
+        },
+        "interview_turns": 1,
+        "agent_tasks": 5,
+        "agent_tasks_attempted": 5,
+        "responder_calls": 0,
+        "llm_calls_split": {
+          "ui_agent": 1,
+          "db_agent": 1,
+          "dt_agent": 3,
+          "harness_responder": 0
+        },
+        "responder_model": "openai/gpt-5-mini",
+        "api_url": "http://176.119.159.227:8000",
+        "agent_status": {
+          "agent0": "active",
+          "agent1": "active",
+          "agent2": "active"
+        },
+        "db_stage": "unavailable",
+        "db_note": "DB agent (agent 1) output was not JSON; raw text kept in artifacts/dtb_schema.json",
+        "dt_stage": "ok",
+        "dt_note": null,
+        "dt_slots_ok": 3,
+        "dt_slot_errors": {
+          "config": null,
+          "sim": null,
+          "des": null
+        },
+        "dt_slots_total": 3,
+        "des_stage": "ok",
+        "des_exec_status": "ok",
+        "des_exec_error": null,
+        "des_parse_error": null,
+        "des_kpis": {
+          "throughput_per_hour": 44.595,
+          "wip_parts": 39.25552900641868,
+          "energy_per_part_kwh": 0.3352621218202224
+        },
+        "des_repair_attempts_allowed": 3,
+        "des_reject_all_zero": true,
+        "des_programs": 1,
+        "des_repairs_used": 0,
+        "des_exec_elapsed_total_s": 1.902,
+        "des_gave_up_reason": null,
+        "status_basis": "KPIs produced from the DES model's stdout",
+        "kpi_source": "des_model_stdout",
+        "des_python": "/ssd/projects/dt-eval/comparison/.venv-des/bin/python",
+        "dt_schema_input": "ok",
+        "capability": "Method C emits a requirements document + PostgreSQL schema and (agent 2) a twin configuration, a PyChrono multi-physics script and a discrete-event SimPy model; the DES model is executed and its KPI contract parsed, so throughput/WIP/energy are populated when that slot succeeds and null when it does not"
+      }
+    },
+    "assumptions": null,
+    "notes": [
+      "structural recovery only: 4/4 machines mentioned in C's requirements",
+      "DB stage (agent 1) not recovered \u2014 DB agent (agent 1) output was not JSON; raw text kept in artifacts/dtb_schema.json",
+      "DT stage (agent 2) ran: 6200 chars of twin config, 10482 chars of PyChrono script; 4/4 machine ids appear in that output. The script is not executed (PyChrono is not installed on the harness host and models rigid bodies, not the case's discrete-event semantics), so no KPI is derived from it"
+    ],
+    "adapter_elapsed_s": 373.43
+  },
+  {
+    "method": "C",
+    "case": "case_0005_high_rate_line",
+    "rep": 2,
+    "status": "timeout",
+    "error": null,
+    "elapsed_generation_s": 1089.543,
+    "elapsed_simulation_s": null,
+    "llm_calls": 4,
+    "llm_tokens_estimate": null,
+    "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260921_073238_post-amendment/case_0005_high_rate_line/C/rep2/model.json",
+    "kpis": {
+      "throughput_per_hour": null,
+      "utilization": null,
+      "wip_parts": null,
+      "energy_per_part_kwh": null,
+      "native": {
+        "machine_stats": {
+          "M1": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 60.0,
+            "availability_found": true,
+            "availability_claimed": 0.995
+          },
+          "M2": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 80.0,
+            "availability_found": true,
+            "availability_claimed": 0.99
+          },
+          "M3": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 70.0,
+            "availability_found": true,
+            "availability_claimed": 0.99
+          },
+          "M4": {
+            "mentioned": true,
+            "process_time_found": true,
+            "process_time_claimed": 75.0,
+            "availability_found": true,
+            "availability_claimed": 0.995
+          }
+        },
+        "machines_mentioned": 4,
+        "machines_truth": 4,
+        "buffers": {
+          "B0": true,
+          "B1": true,
+          "B2": true,
+          "B3": true
+        },
+        "arrival_found": true,
+        "arrival_claimed": 45.0,
+        "equipment_count": 4,
+        "artifact_chars": {
+          "config": 6494,
+          "sim": 11530
+        },
+        "machine_ids_in_dt_output": {
+          "M1": true,
+          "M2": true,
+          "M3": true,
+          "M4": true
+        },
+        "machines_mentioned_in_dt": 4,
+        "pychrono_referenced": true,
+        "stage_shapes": {
+          "db_answer": {
+            "chars": 2338,
+            "ids_present": 8,
+            "ids_truth": 8,
+            "ddl_phrases": [
+              "create index",
+              "create table",
+              "insert into",
+              "primary key"
+            ],
+            "sql_types": [
+              "double precision",
+              "jsonb",
+              "timestamptz"
+            ],
+            "looks_like_ddl": true
+          },
+          "db_recorded": {
+            "chars": 2439,
+            "ids_present": 8,
+            "ids_truth": 8,
+            "ddl_phrases": [
+              "create table",
+              "primary key"
+            ],
+            "sql_types": [
+              "double precision",
+              "jsonb",
+              "timestamptz"
+            ],
+            "looks_like_ddl": true
+          },
+          "dt_config": {
+            "chars": 6494,
+            "ids_present": 0,
+            "ids_truth": 8,
+            "looks_like_json": true
+          },
+          "dt_sim": {
+            "chars": 11530,
+            "ids_present": 8,
+            "ids_truth": 8
+          },
+          "dt_des": {
+            "chars": 0,
+            "ids_present": 0,
+            "ids_truth": 8
+          }
+        },
+        "interview_turns": 1,
+        "agent_tasks": 4,
+        "agent_tasks_attempted": 5,
+        "responder_calls": 0,
+        "llm_calls_split": {
+          "ui_agent": 1,
+          "db_agent": 1,
+          "dt_agent": 2,
+          "harness_responder": 0
+        },
+        "responder_model": "openai/gpt-5-mini",
+        "api_url": "http://176.119.159.227:8000",
+        "agent_status": {
+          "agent0": "active",
+          "agent1": "active",
+          "agent2": "active"
+        },
+        "db_stage": "unavailable",
+        "db_note": "DB agent (agent 1) output was not JSON; raw text kept in artifacts/dtb_schema.json",
+        "dt_stage": "partial",
+        "dt_note": "DT agent (agent 2) partial: des: poll timeout after 900.0s",
+        "dt_slots_ok": 2,
+        "dt_slot_errors": {
+          "config": null,
+          "sim": null,
+          "des": "poll timeout after 900.0s"
+        },
+        "dt_slots_total": 3,
+        "des_stage": "unavailable",
+        "des_exec_status": null,
+        "des_exec_error": null,
+        "des_parse_error": null,
+        "des_kpis": null,
+        "des_repair_attempts_allowed": 3,
+        "des_reject_all_zero": true,
+        "des_programs": null,
+        "des_repairs_used": null,
+        "des_exec_elapsed_total_s": null,
+        "des_gave_up_reason": null,
+        "status_basis": "a stage's task poll timed out",
+        "kpi_source": null,
+        "des_python": "/ssd/projects/dt-eval/comparison/.venv-des/bin/python",
+        "dt_schema_input": "ok",
+        "capability": "Method C emits a requirements document + PostgreSQL schema and (agent 2) a twin configuration, a PyChrono multi-physics script and a discrete-event SimPy model; the DES model is executed and its KPI contract parsed, so throughput/WIP/energy are populated when that slot succeeds and null when it does not"
+      }
+    },
+    "assumptions": null,
+    "notes": [
+      "status `timeout`: a stage's task poll timed out \u2014 the pipeline itself completed, so this is the stage outcome, not an adapter failure",
+      "structural recovery only: 4/4 machines mentioned in C's requirements",
+      "DB stage (agent 1) not recovered \u2014 DB agent (agent 1) output was not JSON; raw text kept in artifacts/dtb_schema.json",
+      "DT stage (agent 2) ran: 6494 chars of twin config, 11530 chars of PyChrono script; 4/4 machine ids appear in that output. The script is not executed (PyChrono is not installed on the harness host and models rigid bodies, not the case's discrete-event semantics), so no KPI is derived from it",
+      "DT stage (agent 2): DT agent (agent 2) partial: des: poll timeout after 900.0s"
+    ],
+    "adapter_elapsed_s": 1089.64
+  }
+]

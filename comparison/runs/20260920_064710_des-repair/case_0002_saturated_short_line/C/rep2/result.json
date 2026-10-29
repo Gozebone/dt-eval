@@ -1,0 +1,167 @@
+{
+  "method": "C",
+  "case": "case_0002_saturated_short_line",
+  "rep": 2,
+  "status": "simulation_error",
+  "error": null,
+  "elapsed_generation_s": 674.632,
+  "elapsed_simulation_s": 0.065,
+  "llm_calls": 8,
+  "llm_tokens_estimate": null,
+  "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260920_064710_des-repair/case_0002_saturated_short_line/C/rep2/model.json",
+  "kpis": {
+    "throughput_per_hour": null,
+    "utilization": null,
+    "wip_parts": null,
+    "energy_per_part_kwh": null,
+    "native": {
+      "machine_stats": {
+        "M1": {
+          "mentioned": true,
+          "process_time_found": true,
+          "process_time_claimed": 90.0,
+          "availability_found": true,
+          "availability_claimed": 0.99
+        },
+        "M2": {
+          "mentioned": true,
+          "process_time_found": true,
+          "process_time_claimed": 70.0,
+          "availability_found": true,
+          "availability_claimed": 0.98
+        },
+        "M3": {
+          "mentioned": true,
+          "process_time_found": true,
+          "process_time_claimed": 110.0,
+          "availability_found": true,
+          "availability_claimed": 0.99
+        }
+      },
+      "machines_mentioned": 3,
+      "machines_truth": 3,
+      "buffers": {
+        "B0": true,
+        "B1": true,
+        "B2": true
+      },
+      "arrival_found": true,
+      "arrival_claimed": 60.0,
+      "equipment_count": 2,
+      "artifact_chars": {
+        "config": 5996,
+        "sim": 11566
+      },
+      "machine_ids_in_dt_output": {
+        "M1": true,
+        "M2": true,
+        "M3": true
+      },
+      "machines_mentioned_in_dt": 3,
+      "pychrono_referenced": true,
+      "stage_shapes": {
+        "db_answer": {
+          "chars": 2940,
+          "ids_present": 6,
+          "ids_truth": 6,
+          "ddl_phrases": [
+            "create index",
+            "create table",
+            "insert into",
+            "not null",
+            "primary key"
+          ],
+          "sql_types": [
+            "double precision",
+            "jsonb",
+            "timestamptz"
+          ],
+          "looks_like_ddl": true
+        },
+        "db_recorded": {
+          "chars": 3057,
+          "ids_present": 6,
+          "ids_truth": 6,
+          "ddl_phrases": [
+            "create table",
+            "not null",
+            "primary key"
+          ],
+          "sql_types": [
+            "double precision",
+            "jsonb",
+            "timestamptz"
+          ],
+          "looks_like_ddl": true
+        },
+        "dt_config": {
+          "chars": 5996,
+          "ids_present": 0,
+          "ids_truth": 6,
+          "looks_like_json": true
+        },
+        "dt_sim": {
+          "chars": 11566,
+          "ids_present": 6,
+          "ids_truth": 6
+        },
+        "dt_des": {
+          "chars": 10335,
+          "ids_present": 6,
+          "ids_truth": 6
+        }
+      },
+      "interview_turns": 1,
+      "agent_tasks": 8,
+      "agent_tasks_attempted": 8,
+      "responder_calls": 0,
+      "llm_calls_split": {
+        "ui_agent": 1,
+        "db_agent": 1,
+        "dt_agent": 6,
+        "harness_responder": 0
+      },
+      "responder_model": "openai/gpt-5-mini",
+      "api_url": "http://176.119.159.227:8000",
+      "agent_status": {
+        "agent0": "active",
+        "agent1": "offline",
+        "agent2": "active"
+      },
+      "db_stage": "unavailable",
+      "db_note": "DB agent (agent 1) output was not JSON; raw text kept in artifacts/dtb_schema.json",
+      "dt_stage": "ok",
+      "dt_note": null,
+      "dt_slots_ok": 3,
+      "dt_slot_errors": {
+        "config": null,
+        "sim": null,
+        "des": null
+      },
+      "dt_slots_total": 3,
+      "des_stage": "simulation_error",
+      "des_exec_status": "simulation_error",
+      "des_exec_error": "DES model exited 1: Traceback (most recent call last):\n  File \"/ssd/projects/dt-eval/comparison/runs/20260920_064710_des-repair/case_0002_saturated_short_line/C/rep2/run_des_model.py\", line 71, in run\n    part = yield self.in_buffer.get()\n                 ^^^^^^^^^^^^^^^^^^\nAttributeError: 'NoneType' object has no attribute 'get'\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/ssd/projects/dt-eval/comparison/runs/20260920_064710_des-repair/case_0002_saturated_short_line/C/rep2/run_des_model.py\", line 318, in <module>\n    main()\n    ~~~~^^\n  File \"/ssd/projects/dt-eval/comparison/runs/20260920_064710_des-repair/case_0002_saturated_short_line/C/rep2/run_des_model.py\", line 301, in main\n    throughput, wip, energy_per_part = run_simulation(i)\n                                       ~~~~~~~~~~~~~~^^^\n  File \"/ssd/projects/dt-eval/comparison/runs/20260920_064710_des-repair/case_0002_saturated_short_line/C/rep2/run_des_model.py\", line 178, in run_simulation\n    env.run(until=WARMUP_S + WINDOW_S)\n    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/ssd/projects/dt-eval/comparison/.venv-des/lib64/python3.14/site-packages/simpy/core.py\", line 254, in run\n    self.step()\n    ~~~~~~~~~^^\n  File \"/ssd/projects/dt-eval/comparison/.venv-des/lib64/python3.14/site-packages/simpy/core.py\", line 212, in step\n    raise exc\nAttributeError: 'NoneType' object has no attribute 'get'\n",
+      "des_parse_error": null,
+      "des_kpis": null,
+      "des_repair_attempts_allowed": 3,
+      "des_reject_all_zero": true,
+      "des_programs": 4,
+      "des_repairs_used": 3,
+      "des_exec_elapsed_total_s": 0.265,
+      "des_gave_up_reason": "The program did not complete: DES model exited 1: Traceback (most recent call last):\n  File \"/ssd/projects/dt-eval/comparison/runs/20260920_064710_des-repair/case_0002_saturated_short_line/C/rep2/run_des_model.py\", line 71, in run\n    part = yield self.in_buffer.get()\n                 ^^^^^^^^^^^^^^^^^^\nAttributeError: 'NoneType' object has no attribute 'get'\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/ssd/projects/dt-eval/comparison/runs/20260920_064710_des-repair/case_0002_saturated_short_line/C/rep2/run_des_model.py\", line 318, in <module>\n    main()\n    ~~~~^^\n  File \"/ssd/projects/dt-eval/comparison/runs/20260920_064710_des-repair/case_0002_saturated_short_line/C/rep2/run_des_model.py\", line 301, in main\n    throughput, wip, energy_per_part = run_simulation(i)\n                                       ~~~~~~~~~~~~~~^^^\n  File \"/ssd/projects/dt-eval/comparison/runs/20260920_064710_des-repair/case_0002_saturated_short_line/C/rep2/run_des_model.py\", line 178, in run_simulation\n    env.run(until=WARMUP_S + WINDOW_S)\n    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/ssd/projects/dt-eval/comparison/.venv-des/lib64/python3.14/site-packages/simpy/core.py\", line 254, in run\n    self.step()\n    ~~~~~~~~~^^\n  File \"/ssd/projects/dt-eval/comparison/.venv-des/lib64/python3.14/site-packages/simpy/core.py\", line 212, in step\n    raise exc\nAttributeError: 'NoneType' object has no attribute 'get'\n.\n\nOutput (last 4000 characters):\n(no output)",
+      "status_basis": "the generated DES model was executed and exited non-zero",
+      "kpi_source": null,
+      "des_python": "/ssd/projects/dt-eval/comparison/.venv-des/bin/python",
+      "dt_schema_input": "ok",
+      "capability": "Method C emits a requirements document + PostgreSQL schema and (agent 2) a twin configuration, a PyChrono multi-physics script and a discrete-event SimPy model; the DES model is executed and its KPI contract parsed, so throughput/WIP/energy are populated when that slot succeeds and null when it does not"
+    }
+  },
+  "assumptions": null,
+  "notes": [
+    "status `simulation_error`: the generated DES model was executed and exited non-zero \u2014 the pipeline itself completed, so this is the stage outcome, not an adapter failure",
+    "structural recovery only: 3/3 machines mentioned in C's requirements",
+    "DB stage (agent 1) not recovered \u2014 DB agent (agent 1) output was not JSON; raw text kept in artifacts/dtb_schema.json",
+    "DT stage (agent 2) ran: 5996 chars of twin config, 11566 chars of PyChrono script; 3/3 machine ids appear in that output. The script is not executed (PyChrono is not installed on the harness host and models rigid bodies, not the case's discrete-event semantics), so no KPI is derived from it"
+  ]
+}

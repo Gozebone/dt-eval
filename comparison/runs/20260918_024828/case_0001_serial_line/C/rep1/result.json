@@ -1,0 +1,121 @@
+{
+  "method": "C",
+  "case": "case_0001_serial_line",
+  "rep": 1,
+  "status": "ok",
+  "error": null,
+  "elapsed_generation_s": 1157.127,
+  "elapsed_simulation_s": null,
+  "llm_calls": 3,
+  "llm_tokens_estimate": null,
+  "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260918_024828/case_0001_serial_line/C/rep1/model.json",
+  "kpis": {
+    "throughput_per_hour": null,
+    "utilization": null,
+    "wip_parts": null,
+    "energy_per_part_kwh": null,
+    "native": {
+      "machine_stats": {},
+      "machines_mentioned": 0,
+      "machines_truth": 5,
+      "buffers": {
+        "B0": false,
+        "B1": false,
+        "B2": false,
+        "B3": false,
+        "B4": false
+      },
+      "arrival_found": false,
+      "equipment_count": 4,
+      "artifact_chars": {
+        "config": 0,
+        "sim": 9761
+      },
+      "machine_ids_in_dt_output": {
+        "M1": false,
+        "M2": false,
+        "M3": false,
+        "M4": false,
+        "M5": false
+      },
+      "machines_mentioned_in_dt": 0,
+      "pychrono_referenced": true,
+      "stage_shapes": {
+        "db_answer": {
+          "chars": 1979,
+          "ids_present": 0,
+          "ids_truth": 10,
+          "ddl_phrases": [
+            "create table",
+            "foreign key",
+            "insert into",
+            "not null",
+            "primary key"
+          ],
+          "sql_types": [
+            "serial",
+            "varchar"
+          ],
+          "looks_like_ddl": true
+        },
+        "db_recorded": {
+          "chars": 2057,
+          "ids_present": 0,
+          "ids_truth": 10,
+          "ddl_phrases": [
+            "create table",
+            "foreign key",
+            "not null",
+            "primary key"
+          ],
+          "sql_types": [
+            "serial",
+            "varchar"
+          ],
+          "looks_like_ddl": true
+        },
+        "dt_config": {
+          "chars": 0,
+          "ids_present": 0,
+          "ids_truth": 10,
+          "looks_like_json": false
+        },
+        "dt_sim": {
+          "chars": 9761,
+          "ids_present": 0,
+          "ids_truth": 10
+        }
+      },
+      "interview_turns": 1,
+      "agent_tasks": 3,
+      "agent_tasks_attempted": 4,
+      "responder_calls": 0,
+      "llm_calls_split": {
+        "ui_agent": 1,
+        "db_agent": 1,
+        "dt_agent": 1,
+        "harness_responder": 0
+      },
+      "responder_model": "openai/gpt-5-mini",
+      "api_url": "http://176.119.159.227:8000",
+      "agent_status": {
+        "agent0": "active",
+        "agent1": "active",
+        "agent2": "active"
+      },
+      "db_stage": "unavailable",
+      "db_note": "DB agent (agent 1) output was not JSON; raw text kept in artifacts/dtb_schema.json",
+      "dt_stage": "partial",
+      "dt_note": "DT agent (agent 2) partial: config: poll timeout after 900.0s",
+      "dt_schema_input": "ok",
+      "capability": "Method C emits a requirements document + PostgreSQL schema and (agent 2) a twin configuration plus a PyChrono multi-physics script; it produces no discrete-event model, so KPI indicators are null by construction"
+    }
+  },
+  "assumptions": null,
+  "notes": [
+    "structural recovery only: 0/5 machines mentioned in C's requirements",
+    "DB stage (agent 1) not recovered \u2014 DB agent (agent 1) output was not JSON; raw text kept in artifacts/dtb_schema.json",
+    "DT stage (agent 2) ran: 0 chars of twin config, 9761 chars of PyChrono script; 0/5 machine ids appear in that output. The script is not executed (PyChrono is not installed on the harness host and models rigid bodies, not the case's discrete-event semantics), so no KPI is derived from it",
+    "DT stage (agent 2): DT agent (agent 2) partial: config: poll timeout after 900.0s"
+  ]
+}

@@ -1,0 +1,238 @@
+{
+  "components": {
+    "data_collection": {
+      "modules": [
+        {
+          "name": "OPC-UA Collector",
+          "type": "data_collector",
+          "description": "Collects real-time data from machines via OPC-UA protocol",
+          "protocol": "OPC-UA",
+          "update_frequency": "10s"
+        },
+        {
+          "name": "MQTT Bridge",
+          "type": "data_collector",
+          "description": "Ingests sensor data from MQTT brokers",
+          "protocol": "MQTT",
+          "update_frequency": "5s"
+        },
+        {
+          "name": "REST API Gateway",
+          "type": "data_collector",
+          "description": "Handles REST API requests and data ingestion",
+          "protocol": "REST",
+          "update_frequency": "15s"
+        }
+      ]
+    },
+    "analytics": {
+      "engines": [
+        {
+          "name": "Simulation Engine",
+          "type": "analytics_engine",
+          "description": "Simulates production line performance",
+          "goal": "simulate production line for 5 days",
+          "update_frequency": "1h"
+        },
+        {
+          "name": "Downtime Predictor",
+          "type": "analytics_engine",
+          "description": "Predicts machine downtime using ML models",
+          "goal": "predict downtime",
+          "update_frequency": "30m"
+        },
+        {
+          "name": "Availability Optimizer",
+          "type": "analytics_engine",
+          "description": "Optimizes machine availability",
+          "goal": "optimize machine availability",
+          "update_frequency": "1h"
+        }
+      ]
+    },
+    "ml_models": {
+      "models": [
+        {
+          "name": "Downtime Prediction Model",
+          "type": "ml_model",
+          "description": "Predicts future machine downtime based on historical data",
+          "algorithm": "Random Forest",
+          "training_data_source": "historical_events"
+        },
+        {
+          "name": "Buffer Optimization Model",
+          "type": "ml_model",
+          "description": "Optimizes buffer capacities for efficient flow",
+          "algorithm": "Reinforcement Learning",
+          "training_data_source": "simulated_data"
+        }
+      ]
+    },
+    "visualization": {
+      "dashboard": {
+        "name": "Production Line Dashboard",
+        "type": "dashboard",
+        "description": "Comprehensive dashboard for monitoring production line performance"
+      }
+    }
+  },
+  "data_flows": {
+    "connections": [
+      {
+        "source": "OPC-UA Collector",
+        "target": "Data Lake",
+        "protocol": "OPC-UA",
+        "update_frequency": "10s"
+      },
+      {
+        "source": "MQTT Bridge",
+        "target": "Data Lake",
+        "protocol": "MQTT",
+        "update_frequency": "5s"
+      },
+      {
+        "source": "REST API Gateway",
+        "target": "Data Lake",
+        "protocol": "REST",
+        "update_frequency": "15s"
+      },
+      {
+        "source": "Data Lake",
+        "target": "Simulation Engine",
+        "protocol": "WebSocket",
+        "update_frequency": "1h"
+      },
+      {
+        "source": "Data Lake",
+        "target": "Downtime Predictor",
+        "protocol": "WebSocket",
+        "update_frequency": "30m"
+      },
+      {
+        "source": "Data Lake",
+        "target": "Availability Optimizer",
+        "protocol": "WebSocket",
+        "update_frequency": "1h"
+      },
+      {
+        "source": "Simulation Engine",
+        "target": "Visualization Dashboard",
+        "protocol": "WebSocket",
+        "update_frequency": "10s"
+      },
+      {
+        "source": "Downtime Predictor",
+        "target": "Visualization Dashboard",
+        "protocol": "WebSocket",
+        "update_frequency": "10s"
+      },
+      {
+        "source": "Availability Optimizer",
+        "target": "Visualization Dashboard",
+        "protocol": "WebSocket",
+        "update_frequency": "10s"
+      }
+    ]
+  },
+  "visualization": {
+    "layout": {
+      "dashboard_name": "Production Line Dashboard",
+      "widgets": [
+        {
+          "type": "real_time_chart",
+          "title": "Machine Availability",
+          "data_source": "availability",
+          "refresh_rate": "10s",
+          "color_scheme": "blue"
+        },
+        {
+          "type": "real_time_chart",
+          "title": "Energy Consumption",
+          "data_source": "power_working_kw",
+          "refresh_rate": "10s",
+          "color_scheme": "green"
+        },
+        {
+          "type": "real_time_chart",
+          "title": "Buffer Capacity",
+          "data_source": "buffer_capacity",
+          "refresh_rate": "10s",
+          "color_scheme": "orange"
+        },
+        {
+          "type": "real_time_chart",
+          "title": "Downtime Prediction",
+          "data_source": "downtime_prediction",
+          "refresh_rate": "10s",
+          "color_scheme": "red"
+        },
+        {
+          "type": "real_time_chart",
+          "title": "Production Rate",
+          "data_source": "production_rate",
+          "refresh_rate": "10s",
+          "color_scheme": "purple"
+        }
+      ]
+    }
+  },
+  "alerts": {
+    "thresholds": [
+      {
+        "name": "Machine Availability Below 90%",
+        "severity": "warning",
+        "threshold": 0.9,
+        "condition": "less than",
+        "trigger": "availability < 0.9"
+      },
+      {
+        "name": "Machine Downtime Exceeds 10 minutes",
+        "severity": "critical",
+        "threshold": 600,
+        "condition": "greater than",
+        "trigger": "downtime_duration > 600"
+      },
+      {
+        "name": "Buffer Capacity Below 10%",
+        "severity": "emergency",
+        "threshold": 0.1,
+        "condition": "less than",
+        "trigger": "buffer_level < 0.1"
+      }
+    ]
+  },
+  "kpis": {
+    "indicators": [
+      {
+        "name": "Overall Equipment Effectiveness (OEE)",
+        "target_value": 0.85,
+        "measurement_method": "calculated from availability, performance, and quality",
+        "unit": "percentage"
+      },
+      {
+        "name": "Machine Availability",
+        "target_value": 0.95,
+        "measurement_method": "total uptime / total time",
+        "unit": "percentage"
+      },
+      {
+        "name": "Production Rate",
+        "target_value": 100,
+        "measurement_method": "number of units produced per hour",
+        "unit": "units/hour"
+      },
+      {
+        "name": "Energy Efficiency",
+        "target_value": 0.9,
+        "measurement_method": "total energy consumed / total production",
+        "unit": "kWh/unit"
+      },
+      {
+        "name": "Buffer Utilization",
+        "target_value": 0.7,
+        "measurement_method": "current buffer level / buffer capacity",
+        "unit": "percentage"
+      }
+    ]
+  }
+}

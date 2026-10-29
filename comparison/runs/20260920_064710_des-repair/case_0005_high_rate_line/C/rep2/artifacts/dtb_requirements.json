@@ -1,0 +1,113 @@
+{
+  "production_type": "serial production line",
+  "processes": [
+    "M1",
+    "M2",
+    "M3",
+    "M4"
+  ],
+  "equipment": [
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "B0",
+    "B1",
+    "B2",
+    "B3"
+  ],
+  "sensors": [
+    "Avg_Time_per_part_s",
+    "Availability_%",
+    "MTTR_s",
+    "EnergyIdling",
+    "EnergyWorking"
+  ],
+  "goals": "\u0441\u043e\u0437\u0434\u0430\u0442\u044c \u0441\u0438\u043c\u0443\u043b\u044f\u0446\u0438\u044e \u043f\u0440\u043e\u0438\u0437\u0432\u043e\u0434\u0441\u0442\u0432\u0435\u043d\u043d\u043e\u0439 \u043b\u0438\u043d\u0438\u0438 \u0441 4 \u043c\u0430\u0448\u0438\u043d\u0430\u043c\u0438 \u0432 \u0441\u0435\u0440\u0438\u0438, \u0438\u0441\u0442\u043e\u0447\u043d\u0438\u043a\u043e\u043c \u0438 \u043f\u0440\u0438\u0435\u043c\u043d\u0438\u043a\u043e\u043c, \u0434\u043b\u044f \u043e\u0446\u0435\u043d\u043a\u0438 \u043f\u0440\u043e\u0438\u0437\u0432\u043e\u0434\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u0438 \u0438 \u044d\u0444\u0444\u0435\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u0438 \u043b\u0438\u043d\u0438\u0438 \u043d\u0430 \u043f\u0440\u043e\u0442\u044f\u0436\u0435\u043d\u0438\u0438 5 \u0434\u043d\u0435\u0439.",
+  "data_sources": "\u043f\u0435\u0440\u0435\u043f\u0438\u0441\u0430\u043d\u043d\u044b\u0435 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u044b \u043e\u0431\u043e\u0440\u0443\u0434\u043e\u0432\u0430\u043d\u0438\u044f \u0438 \u043f\u0440\u043e\u043c\u044b\u0448\u043b\u0435\u043d\u043d\u044b\u0445 \u043f\u0440\u043e\u0446\u0435\u0441\u0441\u043e\u0432 \u0438\u0437 \u0438\u0441\u0445\u043e\u0434\u043d\u044b\u0445 \u0434\u0430\u043d\u043d\u044b\u0445.",
+  "update_frequency": "\u0434\u0438\u043d\u0430\u043c\u0438\u0447\u0435\u0441\u043a\u0430\u044f, \u043e\u0431\u043d\u043e\u0432\u043b\u044f\u0435\u0442\u0441\u044f \u0432 \u0441\u043e\u043e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0438\u0438 \u0441 \u0442\u0435\u043a\u0443\u0449\u0438\u043c\u0438 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u043c\u0438 \u043e\u0431\u043e\u0440\u0443\u0434\u043e\u0432\u0430\u043d\u0438\u044f \u0438 \u043f\u0440\u043e\u0446\u0435\u0441\u0441\u043e\u0432.",
+  "critical_parameters": {
+    "process_time_s": "59.99, 80.28, 70.16, 75.03",
+    "availability": "0.995, 0.99, 0.99, 0.995",
+    "mttr_s": "46.14, 1.00, 272.07, 1.00",
+    "energy_working_kw": "3.00, 4.98, 4.49, 4.00",
+    "energy_idle_kw": "0.30, 0.45, 0.42, 0.4"
+  },
+  "line": {
+    "topology": "serial",
+    "source": {
+      "inter_arrival_time_s": 45
+    },
+    "stations": [
+      {
+        "id": "M1",
+        "processing_time_s": 60,
+        "availability_pct": 0.995,
+        "mttr_s": 300,
+        "power_working_kw": 3.0,
+        "power_idle_kw": 0.3
+      },
+      {
+        "id": "M2",
+        "processing_time_s": 80,
+        "availability_pct": 0.99,
+        "mttr_s": 600,
+        "power_working_kw": 5.0,
+        "power_idle_kw": 0.5
+      },
+      {
+        "id": "M3",
+        "processing_time_s": 70,
+        "availability_pct": 0.99,
+        "mttr_s": 600,
+        "power_working_kw": 4.5,
+        "power_idle_kw": 0.45
+      },
+      {
+        "id": "M4",
+        "processing_time_s": 75,
+        "availability_pct": 0.995,
+        "mttr_s": 300,
+        "power_working_kw": 4.0,
+        "power_idle_kw": 0.4
+      }
+    ],
+    "buffers": [
+      {
+        "id": "B0",
+        "capacity": 25,
+        "before": "source",
+        "after": "M1"
+      },
+      {
+        "id": "B1",
+        "capacity": 10,
+        "before": "M1",
+        "after": "M2"
+      },
+      {
+        "id": "B2",
+        "capacity": 10,
+        "before": "M2",
+        "after": "M3"
+      },
+      {
+        "id": "B3",
+        "capacity": 10,
+        "before": "M3",
+        "after": "M4"
+      }
+    ]
+  },
+  "des_horizon": {
+    "warmup_s": null,
+    "window_s": null,
+    "replications": null
+  },
+  "units": {
+    "time": "s",
+    "power": "kW",
+    "energy": "kWh"
+  },
+  "additional_info": "SimPy Environment \u0434\u043e\u043b\u0436\u0435\u043d \u0431\u044b\u0442\u044c \u0441\u043e\u0437\u0434\u0430\u043d \u0432 \u043c\u043e\u0434\u0443\u043b\u0435, \u0432\u043a\u043b\u044e\u0447\u0430\u0442\u044c 4 \u043c\u0430\u0448\u0438\u043d\u044b \u0432 \u0441\u0435\u0440\u0438\u0438, \u0438\u0441\u0442\u043e\u0447\u043d\u0438\u043a \u0438 \u043f\u0440\u0438\u0435\u043c\u043d\u0438\u043a, \u0438 \u0432\u044b\u043f\u043e\u043b\u043d\u0438\u0442\u044c \u0441\u0438\u043c\u0443\u043b\u044f\u0446\u0438\u044e \u043d\u0430 5 \u0434\u043d\u0435\u0439."
+}

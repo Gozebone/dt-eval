@@ -1,0 +1,161 @@
+{
+  "components": {
+    "data_collection": {
+      "modules": [
+        {
+          "id": "opc_ua_collector",
+          "type": "OPC-UA",
+          "description": "Collects real-time data from machines via OPC-UA protocol",
+          "frequency_s": 5
+        },
+        {
+          "id": "mqtt_collector",
+          "type": "MQTT",
+          "description": "Collects data from sensors and external systems via MQTT",
+          "frequency_s": 10
+        }
+      ]
+    },
+    "analytics": {
+      "engines": [
+        {
+          "id": "production_analytics",
+          "type": "real_time_analytics",
+          "description": "Analyzes production throughput and line efficiency",
+          "frequency_s": 30
+        },
+        {
+          "id": "reliability_analytics",
+          "type": "predictive_analytics",
+          "description": "Predicts machine failures and availability",
+          "frequency_s": 60
+        }
+      ]
+    },
+    "ml_models": [
+      {
+        "id": "capacity_forecast_model",
+        "type": "time_series_forecasting",
+        "description": "Forecasts buffer capacity and machine utilization",
+        "frequency_s": 300
+      },
+      {
+        "id": "energy_consumption_model",
+        "type": "regression_model",
+        "description": "Predicts energy consumption based on machine activity",
+        "frequency_s": 300
+      }
+    ],
+    "visualization": {
+      "dashboard": {
+        "layout": {
+          "rows": [
+            {
+              "widgets": [
+                {
+                  "type": "real_time_chart",
+                  "title": "Production Throughput",
+                  "refresh_rate_s": 10,
+                  "color_scheme": "blue"
+                },
+                {
+                  "type": "gauge",
+                  "title": "Line Utilization",
+                  "refresh_rate_s": 15,
+                  "color_scheme": "green"
+                }
+              ]
+            },
+            {
+              "widgets": [
+                {
+                  "type": "heatmap",
+                  "title": "Machine Availability",
+                  "refresh_rate_s": 30,
+                  "color_scheme": "orange"
+                },
+                {
+                  "type": "line_chart",
+                  "title": "Energy Consumption",
+                  "refresh_rate_s": 15,
+                  "color_scheme": "purple"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
+  "data_flows": {
+    "from_machines": {
+      "protocol": "OPC-UA",
+      "frequency_s": 5,
+      "destination": "opc_ua_collector"
+    },
+    "from_sensors": {
+      "protocol": "MQTT",
+      "frequency_s": 10,
+      "destination": "mqtt_collector"
+    },
+    "analytics_data": {
+      "protocol": "REST",
+      "frequency_s": 30,
+      "destination": "production_analytics"
+    },
+    "ml_model_input": {
+      "protocol": "WebSocket",
+      "frequency_s": 300,
+      "destination": "capacity_forecast_model"
+    },
+    "visualization_data": {
+      "protocol": "WebSocket",
+      "frequency_s": 10,
+      "destination": "dashboard"
+    }
+  },
+  "alerts": {
+    "thresholds": [
+      {
+        "parameter": "availability",
+        "threshold": 0.95,
+        "severity": "warning",
+        "description": "Machine availability below 95%"
+      },
+      {
+        "parameter": "mttr_s",
+        "threshold": 1200,
+        "severity": "critical",
+        "description": "Mean time to repair exceeds 1200 seconds"
+      },
+      {
+        "parameter": "buffer_capacity",
+        "threshold": 0.8,
+        "severity": "info",
+        "description": "Buffer capacity utilization above 80%"
+      }
+    ]
+  },
+  "kpis": {
+    "production_throughput": {
+      "target": 1000,
+      "unit": "units/day",
+      "measurement": "count of finished products per day"
+    },
+    "line_utilization": {
+      "target": 0.9,
+      "unit": "percentage",
+      "measurement": "time spent in production vs total time"
+    },
+    "machine_availability": {
+      "target": 0.97,
+      "unit": "percentage",
+      "measurement": "uptime divided by total time"
+    },
+    "energy_efficiency": {
+      "target": 0.8,
+      "unit": "kWh/unit",
+      "measurement": "total energy consumed divided by units produced"
+    }
+  }
+}

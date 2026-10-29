@@ -1,0 +1,21 @@
+{
+  "method": "A",
+  "case": "case_0003_starved_six_line",
+  "rep": 2,
+  "status": "simulation_error",
+  "error": "model exited 1: Traceback (most recent call last):\n  File \"/ssd/projects/dt-eval/comparison/runs/20260918_043936/case_0003_starved_six_line/A/rep2/run_model.py\", line 67, in <module>\n    TOP = SerialProductionLine(env, \"TOP\")\n  File \"/ssd/projects/dt-eval/comparison/runs/20260918_043936/case_0003_starved_six_line/A/rep2/run_model.py\", line 54, in __init__\n    machine = Machine(env, id=data[\"name\"], processing_delay=data[\"delay\"], mtbf=mtbf, mttr=data[\"mttr\"])\nTypeError: Machine.__init__() got an unexpected keyword argument 'mtbf'\n",
+  "elapsed_generation_s": 60.155,
+  "elapsed_simulation_s": 0.094,
+  "llm_calls": 2,
+  "llm_tokens_estimate": null,
+  "generated_model_file": null,
+  "kpis": {
+    "throughput_per_hour": null,
+    "utilization": null,
+    "wip_parts": null,
+    "energy_per_part_kwh": null,
+    "native": {}
+  },
+  "assumptions": "1. Node names and Types are chosen according to users description.\n2. Assumed IDs src for the Source and sink for the Sink as they were not explicitly named in the description.\n3. Assumed a single buffer is used between every pair of connected nodes in the sequence.\n4. Assumed a 7th buffer is needed to connect M6 to the Sink since 7 connections are required for the full sequence (Source to M1, M1 to M2, ..., M6 to Sink) but only 6 buffers (B0 to B5) were specified, and assumed it has the same capacity of 10.\n5. Assumed the provided Avg_Time_per_part_s maps to the processing_delay parameter for each machine.\n6. Assumed the missing Mean Time Between Failures (MTBF) parameter for each machine is mathematically derived from the provided Availability_% and MTTR_s values.\n7. Used default values for all missing parameters for all components.\n8. Assumed a top-level node class is created to encapsulate the entire serial production line structure.",
+  "notes": []
+}

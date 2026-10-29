@@ -1,0 +1,197 @@
+{
+  "components": {
+    "data_collection": {
+      "module": "DataIngestor",
+      "description": "Collects data from various sources and stores in the database",
+      "protocols": [
+        "REST",
+        "OPC-UA"
+      ],
+      "update_frequency": "static"
+    },
+    "analytics_engine": {
+      "module": "AnalyticsEngine",
+      "description": "Processes and analyzes data to generate insights",
+      "protocols": [
+        "WebSocket"
+      ],
+      "update_frequency": "static"
+    },
+    "ml_models": {
+      "module": "MLModelEngine",
+      "description": "Runs machine learning models for predictive analytics",
+      "protocols": [
+        "REST"
+      ],
+      "update_frequency": "static"
+    },
+    "visualizations": {
+      "module": "Dashboard",
+      "description": "Provides visualization of production metrics and alerts",
+      "protocols": [
+        "WebSocket"
+      ],
+      "update_frequency": "realtime"
+    }
+  },
+  "data_flows": {
+    "from_source_to_db": {
+      "source": "DataIngestor",
+      "destination": "Database",
+      "protocol": "REST",
+      "update_frequency": "static"
+    },
+    "from_db_to_analytics": {
+      "source": "Database",
+      "destination": "AnalyticsEngine",
+      "protocol": "WebSocket",
+      "update_frequency": "realtime"
+    },
+    "from_analytics_to_ml": {
+      "source": "AnalyticsEngine",
+      "destination": "MLModelEngine",
+      "protocol": "REST",
+      "update_frequency": "static"
+    },
+    "from_ml_to_visualization": {
+      "source": "MLModelEngine",
+      "destination": "Dashboard",
+      "protocol": "WebSocket",
+      "update_frequency": "realtime"
+    }
+  },
+  "visualization": {
+    "layout": {
+      "dashboard_type": "grid",
+      "widgets": [
+        {
+          "type": "gauge",
+          "title": "Overall Line Availability",
+          "data_source": "AnalyticsEngine",
+          "metric": "Availability_%",
+          "refresh_rate": "10s",
+          "color_scheme": "green_to_red"
+        },
+        {
+          "type": "line_chart",
+          "title": "Energy Consumption Over Time",
+          "data_source": "AnalyticsEngine",
+          "metric": "EnergyWorking",
+          "refresh_rate": "30s",
+          "color_scheme": "blue_gradient"
+        },
+        {
+          "type": "bar_chart",
+          "title": "MTTR per Machine",
+          "data_source": "AnalyticsEngine",
+          "metric": "MTTR_s",
+          "refresh_rate": "60s",
+          "color_scheme": "orange_gradient"
+        },
+        {
+          "type": "table",
+          "title": "Current Production Stats",
+          "data_source": "AnalyticsEngine",
+          "metric": "Avg_Time_per_part_s",
+          "refresh_rate": "15s",
+          "color_scheme": "default"
+        }
+      ]
+    }
+  },
+  "alerts": {
+    "thresholds": [
+      {
+        "machine_id": "M1",
+        "parameter": "MTTR_s",
+        "threshold": 600,
+        "severity": "critical"
+      },
+      {
+        "machine_id": "M2",
+        "parameter": "MTTR_s",
+        "threshold": 900,
+        "severity": "critical"
+      },
+      {
+        "machine_id": "M3",
+        "parameter": "MTTR_s",
+        "threshold": 1200,
+        "severity": "critical"
+      },
+      {
+        "machine_id": "M4",
+        "parameter": "MTTR_s",
+        "threshold": 900,
+        "severity": "critical"
+      },
+      {
+        "machine_id": "M5",
+        "parameter": "MTTR_s",
+        "threshold": 600,
+        "severity": "critical"
+      },
+      {
+        "machine_id": "B0",
+        "parameter": "capacity",
+        "threshold": 20,
+        "severity": "warning"
+      },
+      {
+        "machine_id": "B1",
+        "parameter": "capacity",
+        "threshold": 8,
+        "severity": "warning"
+      },
+      {
+        "machine_id": "B2",
+        "parameter": "capacity",
+        "threshold": 8,
+        "severity": "warning"
+      },
+      {
+        "machine_id": "B3",
+        "parameter": "capacity",
+        "threshold": 8,
+        "severity": "warning"
+      },
+      {
+        "machine_id": "B4",
+        "parameter": "capacity",
+        "threshold": 8,
+        "severity": "warning"
+      }
+    ],
+    "notification_channels": [
+      "email",
+      "sms",
+      "dashboard_alert"
+    ]
+  },
+  "kpis": {
+    "efficiency": {
+      "name": "Line Efficiency",
+      "target": "95%",
+      "measurement_method": "Availability_%",
+      "unit": "%"
+    },
+    "throughput": {
+      "name": "Production Throughput",
+      "target": "1000 units/day",
+      "measurement_method": "Avg_Time_per_part_s",
+      "unit": "s"
+    },
+    "energy_consumption": {
+      "name": "Energy Consumption",
+      "target": "1000 kWh/day",
+      "measurement_method": "EnergyWorking",
+      "unit": "kWh"
+    },
+    "mttr": {
+      "name": "Mean Time to Repair",
+      "target": "\u2264 1000s",
+      "measurement_method": "MTTR_s",
+      "unit": "s"
+    }
+  }
+}

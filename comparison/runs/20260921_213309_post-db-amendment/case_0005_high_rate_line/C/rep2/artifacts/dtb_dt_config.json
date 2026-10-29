@@ -1,0 +1,243 @@
+{
+  "components": {
+    "data_collection": {
+      "modules": [
+        {
+          "id": "opc_ua_collector",
+          "type": "OPC-UA Client",
+          "description": "Collects real-time data from industrial equipment via OPC-UA protocol",
+          "config": {
+            "endpoint": "opc.tcp://localhost:4840",
+            "scan_interval_s": 10
+          }
+        },
+        {
+          "id": "mqtt_collector",
+          "type": "MQTT Subscriber",
+          "description": "Subscribes to MQTT topics for sensor data",
+          "config": {
+            "broker_url": "mqtt://broker.local",
+            "topic": "sensor/data",
+            "qos": 1
+          }
+        }
+      ]
+    },
+    "analytics_engine": {
+      "modules": [
+        {
+          "id": "des_simulation",
+          "type": "Discrete Event Simulation",
+          "description": "Simulates production line behavior based on provided parameters",
+          "config": {
+            "simulation_duration_s": 432000,
+            "warmup_period_s": 0,
+            "replications": 1
+          }
+        }
+      ]
+    },
+    "ml_models": {
+      "modules": [
+        {
+          "id": "predictive_maintenance",
+          "type": "Predictive Maintenance Model",
+          "description": "Predicts machine failures based on sensor data",
+          "config": {
+            "model_type": "Random Forest",
+            "features": [
+              "availability",
+              "mttr_s",
+              "work_power_kw",
+              "idle_power_kw"
+            ]
+          }
+        }
+      ]
+    },
+    "visualization": {
+      "modules": [
+        {
+          "id": "dashboard",
+          "type": "Web Dashboard",
+          "description": "Interactive dashboard for visualizing production metrics",
+          "config": {
+            "refresh_rate_s": 30,
+            "theme": "dark"
+          }
+        }
+      ]
+    }
+  },
+  "data_flows": {
+    "connections": [
+      {
+        "source": "opc_ua_collector",
+        "target": "des_simulation",
+        "protocol": "REST",
+        "update_frequency_s": 10
+      },
+      {
+        "source": "mqtt_collector",
+        "target": "analytics_engine",
+        "protocol": "WebSocket",
+        "update_frequency_s": 5
+      },
+      {
+        "source": "des_simulation",
+        "target": "dashboard",
+        "protocol": "REST",
+        "update_frequency_s": 30
+      },
+      {
+        "source": "analytics_engine",
+        "target": "ml_models",
+        "protocol": "REST",
+        "update_frequency_s": 60
+      }
+    ]
+  },
+  "visualization": {
+    "layout": {
+      "dashboard": {
+        "widgets": [
+          {
+            "id": "machine_status",
+            "type": "gauge",
+            "title": "Machine Status",
+            "position": {
+              "x": 0,
+              "y": 0,
+              "width": 3,
+              "height": 2
+            },
+            "config": {
+              "machine_id": "M1"
+            }
+          },
+          {
+            "id": "production_rate",
+            "type": "line_chart",
+            "title": "Production Rate Over Time",
+            "position": {
+              "x": 3,
+              "y": 0,
+              "width": 6,
+              "height": 3
+            },
+            "config": {
+              "metrics": [
+                "process_time_s"
+              ]
+            }
+          },
+          {
+            "id": "power_consumption",
+            "type": "bar_chart",
+            "title": "Power Consumption by Machine",
+            "position": {
+              "x": 0,
+              "y": 2,
+              "width": 3,
+              "height": 2
+            },
+            "config": {
+              "metrics": [
+                "work_power_kw",
+                "idle_power_kw"
+              ]
+            }
+          },
+          {
+            "id": "buffer_levels",
+            "type": "heatmap",
+            "title": "Buffer Levels",
+            "position": {
+              "x": 3,
+              "y": 3,
+              "width": 6,
+              "height": 2
+            },
+            "config": {
+              "buffer_ids": [
+                "B0",
+                "B1",
+                "B2",
+                "B3"
+              ]
+            }
+          }
+        ],
+        "refresh_rate_s": 30,
+        "color_scheme": {
+          "primary": "#007bff",
+          "secondary": "#6c757d",
+          "success": "#28a745",
+          "warning": "#ffc107",
+          "danger": "#dc3545"
+        }
+      }
+    }
+  },
+  "alerts": {
+    "thresholds": [
+      {
+        "id": "machine_downtime_alert",
+        "type": "availability",
+        "severity": "warning",
+        "threshold": 95,
+        "description": "Machine availability below threshold"
+      },
+      {
+        "id": "high_power_consumption",
+        "type": "work_power_kw",
+        "severity": "critical",
+        "threshold": 5.0,
+        "description": "Power consumption exceeds normal range"
+      },
+      {
+        "id": "buffer_overflow",
+        "type": "buffer_level",
+        "severity": "emergency",
+        "threshold": 90,
+        "description": "Buffer level exceeds 90% capacity"
+      }
+    ]
+  },
+  "kpis": {
+    "metrics": [
+      {
+        "id": "production_efficiency",
+        "name": "Production Efficiency",
+        "target_value": 95,
+        "unit": "%",
+        "calculation": "actual_output / theoretical_output * 100",
+        "description": "Percentage of time machines are producing value-added work"
+      },
+      {
+        "id": "energy_consumption",
+        "name": "Energy Consumption",
+        "target_value": 100,
+        "unit": "kWh",
+        "calculation": "sum(work_power_kw * time)",
+        "description": "Total energy consumed by the production line"
+      },
+      {
+        "id": "machine_utilization",
+        "name": "Machine Utilization",
+        "target_value": 90,
+        "unit": "%",
+        "calculation": "working_time / total_time * 100",
+        "description": "Percentage of time machines are actively processing"
+      },
+      {
+        "id": "throughput",
+        "name": "Throughput",
+        "target_value": 500,
+        "unit": "units/hour",
+        "calculation": "total_units_produced / (simulation_time_hours)",
+        "description": "Number of units produced per hour"
+      }
+    ]
+  }
+}

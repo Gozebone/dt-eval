@@ -1,0 +1,38 @@
+{
+  "tables": [
+    {
+      "name": "machine_states",
+      "columns": [
+        "id UUID",
+        "machine_name TEXT",
+        "state TEXT",
+        "start_time TIMESTAMP",
+        "end_time TIMESTAMP",
+        "energy_kwh NUMERIC"
+      ],
+      "purpose": "Интервалы состояний Working / Idle / Stopped по каждой машине"
+    },
+    {
+      "name": "production_events",
+      "columns": [
+        "id UUID",
+        "part_id TEXT",
+        "machine_name TEXT",
+        "event_type TEXT",
+        "event_time TIMESTAMP"
+      ],
+      "purpose": "События обработки деталей (поступление / завершение)"
+    },
+    {
+      "name": "kpi_snapshots",
+      "columns": [
+        "id UUID",
+        "ts TIMESTAMP",
+        "throughput_per_hour NUMERIC",
+        "wip_parts NUMERIC",
+        "energy_per_part_kwh NUMERIC"
+      ],
+      "purpose": "Расчётные KPI линии во времени"
+    }
+  ]
+}

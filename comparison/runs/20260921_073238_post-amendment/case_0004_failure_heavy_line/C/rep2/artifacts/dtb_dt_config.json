@@ -1,0 +1,212 @@
+{
+  "components": {
+    "data_collection": {
+      "module": "sensor_data_collector",
+      "description": "Collects real-time data from sensors via OPC-UA and MQTT protocols",
+      "protocols": [
+        "OPC-UA",
+        "MQTT"
+      ],
+      "update_frequency": "real-time"
+    },
+    "analytics_engine": {
+      "module": "production_analytics_engine",
+      "description": "Processes and analyzes production data to compute KPIs and detect anomalies",
+      "protocols": [
+        "REST",
+        "WebSocket"
+      ],
+      "update_frequency": "real-time"
+    },
+    "ml_models": {
+      "module": "predictive_maintenance_model",
+      "description": "Predictive maintenance models for equipment failure prediction",
+      "protocols": [
+        "REST"
+      ],
+      "update_frequency": "periodic"
+    },
+    "visualization": {
+      "module": "digital_twin_dashboard",
+      "description": "Interactive dashboard for visualizing the production line and key metrics",
+      "protocols": [
+        "WebSocket",
+        "REST"
+      ],
+      "update_frequency": "real-time"
+    }
+  },
+  "data_flows": {
+    "sensor_to_collector": {
+      "source": "sensors",
+      "destination": "data_collection",
+      "protocol": "OPC-UA",
+      "frequency": "real-time"
+    },
+    "collector_to_analytics": {
+      "source": "data_collection",
+      "destination": "analytics_engine",
+      "protocol": "REST",
+      "frequency": "real-time"
+    },
+    "analytics_to_visualization": {
+      "source": "analytics_engine",
+      "destination": "visualization",
+      "protocol": "WebSocket",
+      "frequency": "real-time"
+    },
+    "collector_to_ml": {
+      "source": "data_collection",
+      "destination": "ml_models",
+      "protocol": "REST",
+      "frequency": "periodic"
+    }
+  },
+  "visualization": {
+    "dashboard_layout": {
+      "rows": 3,
+      "columns": 4,
+      "widgets": [
+        {
+          "type": "line_chart",
+          "title": "Production Throughput over Time",
+          "position": {
+            "row": 1,
+            "col": 1
+          },
+          "refresh_rate_s": 60,
+          "color_scheme": "blue"
+        },
+        {
+          "type": "bar_chart",
+          "title": "Machine Availability",
+          "position": {
+            "row": 1,
+            "col": 2
+          },
+          "refresh_rate_s": 60,
+          "color_scheme": "green"
+        },
+        {
+          "type": "gauge",
+          "title": "Overall Equipment Effectiveness",
+          "position": {
+            "row": 1,
+            "col": 3
+          },
+          "refresh_rate_s": 60,
+          "color_scheme": "orange"
+        },
+        {
+          "type": "heatmap",
+          "title": "Machine Performance",
+          "position": {
+            "row": 1,
+            "col": 4
+          },
+          "refresh_rate_s": 60,
+          "color_scheme": "purple"
+        },
+        {
+          "type": "table",
+          "title": "Detailed Equipment Metrics",
+          "position": {
+            "row": 2,
+            "col": 1
+          },
+          "refresh_rate_s": 60,
+          "color_scheme": "gray"
+        },
+        {
+          "type": "graph",
+          "title": "Production Line Flow",
+          "position": {
+            "row": 2,
+            "col": 2
+          },
+          "refresh_rate_s": 60,
+          "color_scheme": "red"
+        },
+        {
+          "type": "alert_log",
+          "title": "Recent Alerts",
+          "position": {
+            "row": 2,
+            "col": 3
+          },
+          "refresh_rate_s": 30,
+          "color_scheme": "yellow"
+        },
+        {
+          "type": "status_indicator",
+          "title": "System Health Status",
+          "position": {
+            "row": 2,
+            "col": 4
+          },
+          "refresh_rate_s": 30,
+          "color_scheme": "blue"
+        }
+      ]
+    }
+  },
+  "alerts": {
+    "thresholds": [
+      {
+        "parameter": "availability",
+        "machine_id": "M1",
+        "threshold": 85,
+        "severity": "warning",
+        "message": "Machine M1 availability below threshold"
+      },
+      {
+        "parameter": "mttr_s",
+        "machine_id": "M2",
+        "threshold": 3000,
+        "severity": "critical",
+        "message": "Machine M2 MTTR exceeds threshold"
+      },
+      {
+        "parameter": "process_time_s",
+        "machine_id": "M3",
+        "threshold": 120,
+        "severity": "warning",
+        "message": "Machine M3 process time exceeds threshold"
+      },
+      {
+        "parameter": "capacity",
+        "machine_id": "B0",
+        "threshold": 2,
+        "severity": "info",
+        "message": "Buffer B0 capacity below threshold"
+      }
+    ]
+  },
+  "kpis": {
+    "throughput": {
+      "value": "units per hour",
+      "target": 1000,
+      "method": "count of completed units over time"
+    },
+    "cycle_time": {
+      "value": "seconds",
+      "target": 500,
+      "method": "average time from start to finish of a unit"
+    },
+    "availability": {
+      "value": "percentage",
+      "target": 95,
+      "method": "uptime divided by total time period"
+    },
+    "mttr": {
+      "value": "seconds",
+      "target": 3600,
+      "method": "average time to repair"
+    },
+    "energy_consumption": {
+      "value": "kWh",
+      "target": 5000,
+      "method": "sum of power consumption over time"
+    }
+  }
+}

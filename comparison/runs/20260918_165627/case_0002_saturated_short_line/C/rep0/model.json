@@ -1,0 +1,356 @@
+{
+  "requirements": {
+    "production_type": "\u043f\u043e\u0441\u043b\u0435\u0434\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u043d\u0430\u044f (\u0441\u0435\u0440\u0438\u0439\u043d\u0430\u044f) \u043b\u0438\u043d\u0438\u044f",
+    "processes": [
+      "M1",
+      "M2",
+      "M3"
+    ],
+    "equipment": [
+      "M1",
+      "M2",
+      "M3"
+    ],
+    "sensors": [
+      {
+        "parameter": "inter_arrival_s",
+        "description": "\u0432\u0440\u0435\u043c\u044f \u043c\u0435\u0436\u0434\u0443 \u043f\u043e\u0441\u0442\u0443\u043f\u043b\u0435\u043d\u0438\u044f\u043c\u0438 \u0434\u0435\u0442\u0430\u043b\u0435\u0439"
+      },
+      {
+        "parameter": "process_time_s",
+        "description": "\u0432\u0440\u0435\u043c\u044f \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0438 \u043d\u0430 \u0441\u0442\u0430\u043d\u043a\u0435 M1"
+      },
+      {
+        "parameter": "availability",
+        "description": "\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u044c \u0441\u0442\u0430\u043d\u043a\u0430 M1"
+      },
+      {
+        "parameter": "mttr_s",
+        "description": "\u0441\u0440\u0435\u0434\u043d\u0435\u0435 \u0432\u0440\u0435\u043c\u044f \u043d\u0430 \u0440\u0435\u043c\u043e\u043d\u0442 \u0441\u0442\u0430\u043d\u043a\u0430 M1"
+      },
+      {
+        "parameter": "work_power_kw",
+        "description": "\u044d\u043d\u0435\u0440\u0433\u0438\u044f \u0440\u0430\u0431\u043e\u0442\u044b \u0441\u0442\u0430\u043d\u043a\u0430 M1 \u043f\u0440\u0438 \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0435 \u0434\u0435\u0442\u0430\u043b\u0438"
+      },
+      {
+        "parameter": "idle_power_kw",
+        "description": "\u044d\u043d\u0435\u0440\u0433\u0438\u044f \u0440\u0430\u0431\u043e\u0442\u044b \u0441\u0442\u0430\u043d\u043a\u0430 M1 \u0432 \u043f\u0440\u043e\u0441\u0442\u043e\u0435 \u0432\u0440\u0435\u043c\u044f"
+      }
+    ],
+    "goals": "\u043e\u0446\u0435\u043d\u043a\u0430 \u043f\u0440\u043e\u043f\u0443\u0441\u043a\u043d\u043e\u0439 \u0441\u043f\u043e\u0441\u043e\u0431\u043d\u043e\u0441\u0442\u0438 \u043b\u0438\u043d\u0438\u0438, WIP \u0438 \u0443\u0434\u0435\u043b\u044c\u043d\u043e\u0433\u043e \u044d\u043d\u0435\u0440\u0433\u043e\u043f\u043e\u0442\u0440\u0435\u0431\u043b\u0435\u043d\u0438\u044f \u043d\u0430 \u0434\u0435\u0442\u0430\u043b\u044c",
+    "data_sources": "\u0441\u043e\u0431\u044b\u0442\u0438\u044f \u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u0443\u044e\u0442\u0441\u044f \u043f\u043e \u043a\u0430\u0436\u0434\u043e\u0439 \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u0430\u043d\u043d\u043e\u0439 \u0434\u0435\u0442\u0430\u043b\u0438, \u0438\u043d\u0442\u0435\u0440\u0432\u0430\u043b\u044b \u0441\u043e\u0441\u0442\u043e\u044f\u043d\u0438\u0439 \u0438 \u044d\u043d\u0435\u0440\u0433\u043e\u043f\u043e\u0442\u0440\u0435\u0431\u043b\u0435\u043d\u0438\u0435 \u0437\u0430\u043f\u0438\u0441\u044b\u0432\u0430\u044e\u0442\u0441\u044f \u043d\u0435\u043f\u0440\u0435\u0440\u044b\u0432\u043d\u043e",
+    "update_frequency": "\u0441\u043e\u0431\u044b\u0442\u0438\u044f \u043e\u0431\u043d\u043e\u0432\u043b\u044f\u044e\u0442\u0441\u044f \u043f\u043e \u043a\u0430\u0436\u0434\u043e\u0439 \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u0430\u043d\u043d\u043e\u0439 \u0434\u0435\u0442\u0430\u043b\u0438",
+    "critical_parameters": {},
+    "additional_info": "\u043f\u0440\u0435\u0434\u043b\u0430\u0433\u0430\u0435\u0442\u0441\u044f \u043f\u043e\u0441\u0442\u0440\u043e\u0438\u0442\u044c \u043c\u043e\u0434\u0435\u043b\u044c \u043d\u0430 \u043e\u0441\u043d\u043e\u0432\u0435 \u043f\u0440\u0435\u0434\u043e\u0441\u0442\u0430\u0432\u043b\u0435\u043d\u043d\u044b\u0445 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u043e\u0432"
+  },
+  "schema": {
+    "raw": ""
+  },
+  "dt_config": {
+    "components": {
+      "data_collection": {
+        "modules": [
+          {
+            "name": "SensorDataCollector_M1",
+            "type": "data_collector",
+            "description": "Collects continuous sensor data from M1 station",
+            "protocol": "MQTT",
+            "frequency": "continuous"
+          },
+          {
+            "name": "SensorDataCollector_M2",
+            "type": "data_collector",
+            "description": "Collects continuous sensor data from M2 station",
+            "protocol": "MQTT",
+            "frequency": "continuous"
+          },
+          {
+            "name": "SensorDataCollector_M3",
+            "type": "data_collector",
+            "description": "Collects continuous sensor data from M3 station",
+            "protocol": "MQTT",
+            "frequency": "continuous"
+          },
+          {
+            "name": "EventLogger",
+            "type": "event_logger",
+            "description": "Logs events for each processed part",
+            "protocol": "REST",
+            "frequency": "per_part"
+          }
+        ]
+      },
+      "analytics_engine": {
+        "engines": [
+          {
+            "name": "ProcessAnalyticsEngine",
+            "type": "analytics_engine",
+            "description": "Analyzes process data to compute KPIs",
+            "protocol": "WebSocket",
+            "frequency": "real-time"
+          }
+        ]
+      },
+      "ml_models": {
+        "models": [
+          {
+            "name": "CapacityEstimator",
+            "type": "ml_model",
+            "description": "Predicts line capacity based on historical data",
+            "protocol": "REST",
+            "frequency": "periodic"
+          },
+          {
+            "name": "EnergyConsumptionModel",
+            "type": "ml_model",
+            "description": "Models energy consumption per part",
+            "protocol": "REST",
+            "frequency": "periodic"
+          }
+        ]
+      },
+      "visualization_dashboard": {
+        "dashboard": {
+          "name": "ProductionLineDashboard",
+          "type": "visualization",
+          "description": "Real-time dashboard for monitoring production line",
+          "widgets": [
+            {
+              "name": "KPIWidget",
+              "type": "kpi_card",
+              "description": "Displays key performance indicators"
+            },
+            {
+              "name": "AlertWidget",
+              "type": "alert_list",
+              "description": "Shows active alerts with severity levels"
+            },
+            {
+              "name": "SensorDataWidget",
+              "type": "time_series_chart",
+              "description": "Visualizes continuous sensor data"
+            },
+            {
+              "name": "EventLogWidget",
+              "type": "event_log",
+              "description": "Logs and displays part processing events"
+            }
+          ]
+        }
+      }
+    },
+    "data_flows": {
+      "flows": [
+        {
+          "source": "SensorDataCollector_M1",
+          "destination": "ProcessAnalyticsEngine",
+          "protocol": "MQTT",
+          "frequency": "continuous",
+          "description": "Continuous stream of sensor data from M1"
+        },
+        {
+          "source": "SensorDataCollector_M2",
+          "destination": "ProcessAnalyticsEngine",
+          "protocol": "MQTT",
+          "frequency": "continuous",
+          "description": "Continuous stream of sensor data from M2"
+        },
+        {
+          "source": "SensorDataCollector_M3",
+          "destination": "ProcessAnalyticsEngine",
+          "protocol": "MQTT",
+          "frequency": "continuous",
+          "description": "Continuous stream of sensor data from M3"
+        },
+        {
+          "source": "EventLogger",
+          "destination": "ProcessAnalyticsEngine",
+          "protocol": "REST",
+          "frequency": "per_part",
+          "description": "Events for each processed part"
+        },
+        {
+          "source": "ProcessAnalyticsEngine",
+          "destination": "VisualizationDashboard",
+          "protocol": "WebSocket",
+          "frequency": "real-time",
+          "description": "Real-time updates for dashboard"
+        },
+        {
+          "source": "CapacityEstimator",
+          "destination": "VisualizationDashboard",
+          "protocol": "REST",
+          "frequency": "periodic",
+          "description": "Periodic updates for capacity predictions"
+        },
+        {
+          "source": "EnergyConsumptionModel",
+          "destination": "VisualizationDashboard",
+          "protocol": "REST",
+          "frequency": "periodic",
+          "description": "Periodic updates for energy consumption models"
+        }
+      ]
+    },
+    "visualization": {
+      "layout": {
+        "grid": {
+          "rows": 4,
+          "columns": 4
+        },
+        "widgets": [
+          {
+            "id": "kpi_widget_1",
+            "position": {
+              "row": 0,
+              "column": 0,
+              "width": 2,
+              "height": 1
+            },
+            "widget_type": "kpi_card",
+            "title": "Throughput (parts/hour)"
+          },
+          {
+            "id": "kpi_widget_2",
+            "position": {
+              "row": 0,
+              "column": 2,
+              "width": 2,
+              "height": 1
+            },
+            "widget_type": "kpi_card",
+            "title": "WIP (Work-in-Progress)"
+          },
+          {
+            "id": "kpi_widget_3",
+            "position": {
+              "row": 1,
+              "column": 0,
+              "width": 2,
+              "height": 1
+            },
+            "widget_type": "kpi_card",
+            "title": "Energy Consumption (kWh/part)"
+          },
+          {
+            "id": "alert_widget",
+            "position": {
+              "row": 1,
+              "column": 2,
+              "width": 2,
+              "height": 1
+            },
+            "widget_type": "alert_list",
+            "title": "Active Alerts"
+          },
+          {
+            "id": "sensor_data_widget",
+            "position": {
+              "row": 2,
+              "column": 0,
+              "width": 4,
+              "height": 2
+            },
+            "widget_type": "time_series_chart",
+            "title": "Sensor Data Over Time"
+          },
+          {
+            "id": "event_log_widget",
+            "position": {
+              "row": 4,
+              "column": 0,
+              "width": 4,
+              "height": 2
+            },
+            "widget_type": "event_log",
+            "title": "Event Log"
+          }
+        ]
+      },
+      "color_scheme": {
+        "primary": "#007BFF",
+        "secondary": "#6C757D",
+        "success": "#28A745",
+        "warning": "#FFC107",
+        "danger": "#DC3545",
+        "info": "#17A2B8"
+      },
+      "refresh_rate": "1 second"
+    },
+    "alerts": {
+      "thresholds": [
+        {
+          "parameter": "inter_arrival_s",
+          "threshold": 60,
+          "operator": ">",
+          "severity": "warning",
+          "message": "Inter-arrival time exceeds threshold"
+        },
+        {
+          "parameter": "process_time_s",
+          "threshold": 120,
+          "operator": ">",
+          "severity": "warning",
+          "message": "Processing time exceeds threshold"
+        },
+        {
+          "parameter": "availability",
+          "threshold": 80,
+          "operator": "<",
+          "severity": "critical",
+          "message": "Availability below threshold"
+        },
+        {
+          "parameter": "mttr_s",
+          "threshold": 300,
+          "operator": ">",
+          "severity": "emergency",
+          "message": "MTTR exceeds threshold"
+        },
+        {
+          "parameter": "work_power_kw",
+          "threshold": 50,
+          "operator": ">",
+          "severity": "warning",
+          "message": "Work power exceeds threshold"
+        },
+        {
+          "parameter": "idle_power_kw",
+          "threshold": 10,
+          "operator": ">",
+          "severity": "info",
+          "message": "Idle power exceeds threshold"
+        }
+      ]
+    },
+    "kpis": {
+      "metrics": [
+        {
+          "name": "Throughput",
+          "description": "Number of parts processed per hour",
+          "target_value": 100,
+          "unit": "parts/hour",
+          "calculation_method": "count(processed_parts) / time_period",
+          "source": "EventLogger"
+        },
+        {
+          "name": "WIP",
+          "description": "Work-in-progress parts",
+          "target_value": 20,
+          "unit": "parts",
+          "calculation_method": "sum(parts_in_queue)",
+          "source": "ProcessAnalyticsEngine"
+        },
+        {
+          "name": "Specific Energy Consumption",
+          "description": "Energy consumption per part",
+          "target_value": 1.5,
+          "unit": "kWh/part",
+          "calculation_method": "sum(energy_consumption) / count(processed_parts)",
+          "source": "SensorDataCollector_M1"
+        }
+      ]
+    }
+  },
+  "dt_simulation": "```python\nimport pychrono as chrono\nimport pychrono.irrlicht as chronoirr\nimport numpy as np\nimport math\nimport csv\nimport os\nfrom datetime import datetime\n\n# Simulation constants\nTIME_STEP = 0.01\nSIMULATION_DURATION = 1000.0\nLOG_INTERVAL = 1.0\n\nclass DigitalTwinSimulation:\n    def __init__(self):\n        # Initialize Chrono system\n        self.system = chrono.ChSystemNSC()\n        self.system.SetGravitationalAcceleration(chrono.ChVectorD(0, -9.81, 0))\n        \n        # Create log files\n        timestamp = datetime.now().strftime(\"%Y%m%d_%H%M%S\")\n        self.log_file = f\"simulation_log_{timestamp}.csv\"\n        self.setup_log_files()\n        \n        # Equipment and process variables\n        self.machines = {}\n        self.parts = []\n        self.process_queue = []\n        self.simulation_time = 0.0\n        \n        # Sensor data storage\n        self.sensor_data = []\n        \n        # Create terrain\n        self.create_terrain()\n        \n        # Create machines (M1, M2, M3)\n        self.create_machines()\n        \n        # Create parts generator\n        self.create_parts_generator()\n        \n        # Setup visualization\n        self.visualizer = None\n        self.setup_visualization()\n\n    def setup_log_files(self):\n        \"\"\"Setup CSV log files for different data types\"\"\"\n        # Main part processing log\n        with open(self.log_file, 'w', newline='') as csvfile:\n            fieldnames = [\n                'time', 'part_id', 'process_stage', 'status',\n                'inter_arrival_s', 'process_time_s', 'availability',\n                'mttr_s', 'work_power_kw', 'idle_power_kw'\n            ]\n            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)\n            writer.writeheader()\n\n    def create_terrain(self):\n        \"\"\"Create ground plane\"\"\"\n        ground = chrono.ChBodyEasyBox(20, 1, 20, 1000, True, True)\n        ground.SetPos(chrono.ChVectorD(0, -0.5, 0))\n        ground.SetFixed(True)\n        ground.GetVisualModel().SetTexture(chrono.GetChronoDataFile(\"textures/concrete.jpg\"))\n        self.system.Add(ground)\n\n    def create_machines(self):\n        \"\"\"Create machine models (M1, M2, M3)\"\"\"\n        # Machine dimensions\n        machine_length = 2.0\n        machine_width = 1.0\n        machine_height = 1.5\n        \n        # Create three machines\n        for i, machine_name in enumerate(['M1', 'M2', 'M3']):\n            # Create machine body\n            machine_body = chrono.ChBodyEasyBox(\n                machine_length, machine_height, machine_width,\n                1000, True, True\n            )\n            \n            # Position machines in line\n            machine_body.SetPos(chrono.ChVectorD(i * 3.0, 0.5, 0))\n            machine_body.SetFixed(True)\n            \n            # Add visual model\n            machine_body.GetVisualModel().SetColor(chrono.ChColor(0.8, 0.2, 0.2))\n            \n            # Store machine reference\n            self.machines[machine_name] = {\n                'body': machine_body,\n                'status': 'available',  # available, busy, broken\n                'process_start_time': 0.0,\n                'process_duration': 0.0,\n                'total_operating_time': 0.0,\n                'total_downtime': 0.0,\n                'power_consumption': 0.0,\n                'last_power_update': 0.0\n            }\n            \n            self.system.Add(machine_body)\n\n    def create_parts_generator(self):\n        \"\"\"Create part generator with inter-arrival time\"\"\"\n        self.part_counter = 0\n        self.inter_arrival_time = 5.0  # seconds between parts\n        self.next_part_time = self.inter_arrival_time\n\n    def generate_part(self):\n        \"\"\"Generate a new part at specified intervals\"\"\"\n        if self.simulation_time >= self.next_part_time:\n            self.part_counter += 1\n            \n            # Create part body\n            part = chrono.ChBodyEasyBox(0.5, 0.5, 0.5, 100, True, True)\n            part.SetPos(chrono.ChVectorD(-2.0, 1.0, 0))\n            part.GetVisualModel().SetColor(chrono.ChColor(0.2, 0.2, 0.8))\n            \n            # Add to system\n            self.system.Add(part)\n            self.parts.append({\n                'id': self.part_counter,\n                'body': part,\n                'position': 0,  # 0 = before M1, 1 = between M1-M2, 2 = between M2-M3, 3 = after M3\n                'process_start_time': self.simulation_time,\n                'status': 'waiting'  # waiting, processing, completed\n            })\n            \n            # Schedule next part\n            self.next_part_time += self.inter_arrival_time\n            \n            return True\n        return False\n\n    def update_machine_status(self, machine_name, status):\n        \"\"\"Update machine status\"\"\"\n        if machine_name in self.machines:\n            self.machines[machine_name]['status'] = status\n            if status == 'broken':\n                self.machines[machine_name]['start_broken_time'] = self.simulation_time\n            elif status == 'available':\n                if 'start_broken_time' in self.machines[machine_name]:\n                    self.machines[machine_name]['total_downtime'] += (\n                        self.simulation_time - self.machines[machine_name]['start_broken_time']\n                    )\n\n    def update_sensor_data(self):\n        \"\"\"Collect sensor data from all machines\"\"\"\n        current_data = {\n            'time': self.simulation_time,\n            'part_id': 0,\n            'process_stage': '',\n            'status': ''\n        }\n        \n        # Collect data from each machine\n        for machine_name, machine_data in self.machines.items():\n            # Availability calculation (simplified)\n            total_time = self.simulation_time\n            if total_time > 0:\n                availability = (machine_data['total_operating_time'] / total_time) * 100\n            else:\n                availability = 100.0\n                \n            # Power consumption\n            power_consumption = 0.0\n            if machine_data['status'] == 'busy':\n                power_consumption = 5.0  # kW during operation\n            elif machine_data['status'] == 'available':\n                power_consumption = 1.0  # kW idle\n            \n            # Add to sensor data\n            self.sensor_data.append({\n                'time': self.simulation_time,\n                'machine': machine_name,\n                'availability': availability,\n                'process_time_s': machine_data['process_duration'],\n                'work_power_kw': power_consumption,\n                'idle_power_kw': 1.0 if machine_data['status'] == 'available' else 0.0,\n                'mttr_s': machine_data['total_downtime'] if machine_data['status'] == 'broken' else 0.0,\n                'inter_arrival_s': self.inter_arrival_time\n            })\n\n    def log_data(self):\n        \"\"\"Log data to CSV file\"\"\"\n        with open(self.log_file, 'a', newline='') as csvfile:\n            fieldnames = [\n                'time', 'part_id', 'process_stage', 'status',\n                'inter_arrival_s', 'process_time_s', 'availability',\n                'mttr_s', 'work_power_kw', 'idle_power_kw'\n            ]\n            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)\n            \n            # Write data for each part processed\n            for part in self.parts:\n                if part['status'] == 'completed':\n                    writer.writerow({\n                        'time': part['process_start_time'],\n                        'part_id': part['id'],\n                        'process_stage': 'completed',\n                        'status': 'completed',\n                        'inter_arrival_s': self.inter_arrival_time,\n                        'process_time_s': 2.0,  # Fixed processing time for demonstration\n                        'availability': 95.0,\n                        'mttr_s': 0.0,\n                        'work_power_kw': 5.0,\n                        'idle_power_kw': 1.0\n                    })\n\n    def setup_visualization(self):\n        \"\"\"Setup visualization using Irrlicht\"\"\"\n        try:\n            self.visualizer = chronoirr.ChVisualSystemIrrlicht()\n            self.visualizer.SetWindowSize(1024, 768)\n            self.visualizer.SetWindowTitle('Digital Twin Simulation')\n            self.visualizer.Initialize()\n            self.visualizer.AddLogo()\n            self.visualizer.AddSkyBox()\n            self.visualizer.AddCamera(chrono.ChVectorD(5, 5, 5), chrono.ChVectorD(0, 1, 0))\n            self.visualizer.AddTypicalLights()\n            \n            # Attach visualization to system\n            self.visualizer.AttachSystem(self.system)\n        except Exception as e:\n            print(f\"Warning: Could not initialize visualization: {e}\")\n\n    def run_simulation(self):\n        \"\"\"Run the main simulation loop\"\"\"\n        print(\"Starting Digital Twin Simulation...\")\n        print(f\"Simulation duration: {SIMULATION_DURATION} seconds\")\n        print(f\"Time step: {TIME_STEP} seconds\")\n        \n        step_count = 0\n        last_log_time = 0.0\n        \n        while self.simulation_time < SIMULATION_DURATION:\n            # Generate new parts\n            self.generate_part()\n            \n            # Update machine states\n            self.update_machine_states()\n            \n            # Step the simulation\n            self.system.DoStepDynamics(TIME_STEP)\n            self.simulation_time += TIME_STEP\n            step_count += 1\n            \n            # Log data periodically\n            if self.simulation_time - last_log_time >= LOG_INTERVAL:\n                self.update_sensor_data()\n                self.log_data()\n                last_log_time = self.simulation_time\n                \n                # Print progress\n                if step_count % 100 == 0:\n                    print(f\"Simulated time: {self.simulation_time:.1f}s\")\n        \n        # Final logging\n        self.update_sensor_data()\n        self.log_data()\n        print(f\"Simulation completed. Data logged to {self.log_file}\")\n        \n        # Cleanup\n        self.cleanup()\n\n    def update_machine_states(self):\n        \"\"\"Update machine states based on simulation\"\"\"\n        for machine_name, machine_data in self.machines.items():\n            # Simulate machine behavior\n            if machine_data['status'] == 'available':\n                # Check if there's work to do\n                # In a real implementation, this would check queue or other conditions\n                pass\n            elif machine_data['status'] == 'busy':\n                # Simulate processing time\n                if self.simulation_time - machine_data['process_start_time'] >= 2.0:  # Process time\n                    machine_data['status'] = 'available'\n                    machine_data['total_operating_time'] += 2.0\n                    machine_data['process_duration'] = 2.0\n                    \n            elif machine_data['status'] == 'broken':\n                # Simulate repair time\n                if self.simulation_time - machine_data.get('start_broken_time', 0) >= 10.0:  # MTTR\n                    machine_data['status'] = 'available'\n                    machine_data['total_downtime'] = 0.0\n\n    def cleanup(self):\n        \"\"\"Cleanup resources\"\"\"\n        print(\"Cleaning up simulation resources...\")\n\ndef main():\n    \"\"\"Main function to run the digital twin simulation\"\"\"\n    try:\n        # Create and run simulation\n        sim = DigitalTwinSimulation()\n        sim.run_simulation()\n        \n        print(\"\\nDigital Twin Simulation Completed Successfully!\")\n        print(\"Generated data files:\")\n        print(f\"- {sim.log_file}\")\n        \n    except Exception as e:\n        print(f\"Error running simulation: {e}\")\n        raise\n\nif __name__ == \"__main__\":\n    main()\n```"
+}

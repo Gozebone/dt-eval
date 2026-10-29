@@ -1,0 +1,149 @@
+{
+  "method": "C",
+  "case": "case_0001_serial_line",
+  "rep": 0,
+  "status": "ok",
+  "error": null,
+  "elapsed_generation_s": 0.001,
+  "elapsed_simulation_s": null,
+  "llm_calls": 0,
+  "llm_tokens_estimate": null,
+  "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260922_110432/case_0001_serial_line/C/rep0/model.json",
+  "kpis": {
+    "throughput_per_hour": null,
+    "utilization": null,
+    "wip_parts": null,
+    "energy_per_part_kwh": null,
+    "native": {
+      "machine_stats": {
+        "M1": {
+          "mentioned": true,
+          "process_time_found": false,
+          "availability_found": false
+        },
+        "M2": {
+          "mentioned": true,
+          "process_time_found": false,
+          "availability_found": false
+        },
+        "M3": {
+          "mentioned": true,
+          "process_time_found": false,
+          "availability_found": false
+        },
+        "M4": {
+          "mentioned": true,
+          "process_time_found": false,
+          "availability_found": false
+        },
+        "M5": {
+          "mentioned": true,
+          "process_time_found": false,
+          "availability_found": false
+        }
+      },
+      "machines_mentioned": 5,
+      "machines_truth": 5,
+      "buffers": {
+        "B0": true,
+        "B1": true,
+        "B2": true,
+        "B3": true,
+        "B4": true
+      },
+      "arrival_found": true,
+      "arrival_claimed": 130.0,
+      "equipment_count": 7,
+      "stage_shapes": {
+        "db_answer": {
+          "chars": 640,
+          "ids_present": 0,
+          "ids_truth": 10,
+          "ddl_phrases": [],
+          "sql_types": [
+            "numeric",
+            "uuid"
+          ],
+          "looks_like_ddl": true
+        },
+        "db_recorded": {
+          "chars": 884,
+          "ids_present": 0,
+          "ids_truth": 10,
+          "ddl_phrases": [],
+          "sql_types": [
+            "numeric",
+            "uuid"
+          ],
+          "looks_like_ddl": true
+        },
+        "dt_config": {
+          "chars": 0,
+          "ids_present": 0,
+          "ids_truth": 10,
+          "looks_like_json": false
+        },
+        "dt_sim": {
+          "chars": 0,
+          "ids_present": 0,
+          "ids_truth": 10
+        },
+        "dt_des": {
+          "chars": 0,
+          "ids_present": 0,
+          "ids_truth": 10
+        }
+      },
+      "interview_turns": 0,
+      "agent_tasks": 0,
+      "agent_tasks_attempted": 0,
+      "responder_calls": 0,
+      "llm_calls_split": {
+        "ui_agent": null,
+        "db_agent": null,
+        "dt_agent": null,
+        "harness_responder": 0
+      },
+      "responder_model": null,
+      "api_url": null,
+      "agent_status": {
+        "agent0": "mock",
+        "agent1": "mock",
+        "agent2": "mock"
+      },
+      "db_stage": "not_attempted",
+      "db_note": null,
+      "db_programs": null,
+      "db_repairs_used": null,
+      "db_repair_attempts_allowed": null,
+      "db_gave_up_reason": null,
+      "db_sql_summary": null,
+      "dt_stage": "not_attempted",
+      "dt_note": null,
+      "dt_slots_ok": null,
+      "dt_slot_errors": null,
+      "dt_slots_total": null,
+      "des_stage": "not_attempted",
+      "des_exec_status": null,
+      "des_exec_error": null,
+      "des_parse_error": null,
+      "des_kpis": null,
+      "des_repair_attempts_allowed": null,
+      "des_reject_all_zero": null,
+      "des_programs": null,
+      "des_repairs_used": null,
+      "des_exec_elapsed_total_s": null,
+      "des_gave_up_reason": null,
+      "status_basis": null,
+      "kpi_source": null,
+      "des_python": null,
+      "dt_schema_input": "not_attempted",
+      "capability": "Method C emits a requirements document + PostgreSQL schema and (agent 2) a twin configuration, a PyChrono multi-physics script and a discrete-event SimPy model; the DES model is executed and its KPI contract parsed, so throughput/WIP/energy are populated when that slot succeeds and null when it does not"
+    }
+  },
+  "assumptions": null,
+  "notes": [
+    "structural recovery only: 5/5 machines mentioned in C's requirements",
+    "requirements document names the measured quantities but carries no parameter values (C's requirements stage records sensor kinds only)"
+  ]
+}

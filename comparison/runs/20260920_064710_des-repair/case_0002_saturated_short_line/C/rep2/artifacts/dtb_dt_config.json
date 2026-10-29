@@ -1,0 +1,231 @@
+{
+  "components": {
+    "data_collection": {
+      "modules": [
+        {
+          "id": "opcua_collector",
+          "type": "OPC-UA Client",
+          "description": "Collects real-time data from machines via OPC-UA protocol",
+          "update_frequency": "10s"
+        },
+        {
+          "id": "mqtt_collector",
+          "type": "MQTT Subscriber",
+          "description": "Subscribes to MQTT topics for event and sample data",
+          "update_frequency": "5s"
+        }
+      ]
+    },
+    "analytics_engine": {
+      "id": "analytics_engine",
+      "type": "Event Processing Engine",
+      "description": "Processes incoming data streams to calculate KPIs and trigger alerts",
+      "update_frequency": "1s"
+    },
+    "ml_models": {
+      "models": [
+        {
+          "id": "predictive_maintenance",
+          "type": "Machine Learning Model",
+          "description": "Predicts machine failures based on historical data and sensor inputs",
+          "update_frequency": "300s"
+        }
+      ]
+    },
+    "visualization": {
+      "dashboard": {
+        "id": "line_dashboard",
+        "type": "Interactive Dashboard",
+        "description": "Real-time visualization of production line status and KPIs",
+        "widgets": [
+          {
+            "id": "machine_status",
+            "type": "Status Indicator",
+            "title": "Machine Status",
+            "position": {
+              "x": 0,
+              "y": 0,
+              "width": 4,
+              "height": 2
+            }
+          },
+          {
+            "id": "buffer_levels",
+            "type": "Gauge",
+            "title": "Buffer Levels",
+            "position": {
+              "x": 4,
+              "y": 0,
+              "width": 4,
+              "height": 2
+            }
+          },
+          {
+            "id": "kpi_metrics",
+            "type": "KPI Cards",
+            "title": "KPI Metrics",
+            "position": {
+              "x": 0,
+              "y": 2,
+              "width": 8,
+              "height": 2
+            }
+          },
+          {
+            "id": "alerts_log",
+            "type": "Alert Log",
+            "title": "Recent Alerts",
+            "position": {
+              "x": 0,
+              "y": 4,
+              "width": 8,
+              "height": 2
+            }
+          }
+        ]
+      }
+    }
+  },
+  "data_flows": {
+    "connections": [
+      {
+        "source": "opcua_collector",
+        "target": "analytics_engine",
+        "protocol": "REST",
+        "frequency": "10s"
+      },
+      {
+        "source": "mqtt_collector",
+        "target": "analytics_engine",
+        "protocol": "WebSocket",
+        "frequency": "5s"
+      },
+      {
+        "source": "analytics_engine",
+        "target": "visualization",
+        "protocol": "WebSocket",
+        "frequency": "1s"
+      },
+      {
+        "source": "analytics_engine",
+        "target": "ml_models",
+        "protocol": "REST",
+        "frequency": "300s"
+      }
+    ]
+  },
+  "visualization_layout": {
+    "dashboard": {
+      "title": "Production Line Digital Twin",
+      "refresh_rate": "1s",
+      "color_scheme": {
+        "primary": "#007BFF",
+        "secondary": "#6C757D",
+        "success": "#28A745",
+        "warning": "#FFC107",
+        "danger": "#DC3545"
+      }
+    },
+    "widgets": {
+      "machine_status": {
+        "type": "Status Indicator",
+        "refresh_rate": "1s",
+        "color_map": {
+          "running": "#28A745",
+          "idle": "#FFC107",
+          "maintenance": "#DC3545"
+        }
+      },
+      "buffer_levels": {
+        "type": "Gauge",
+        "refresh_rate": "1s",
+        "thresholds": {
+          "warning": 80,
+          "critical": 90
+        }
+      },
+      "kpi_metrics": {
+        "type": "KPI Cards",
+        "refresh_rate": "1s"
+      },
+      "alerts_log": {
+        "type": "Alert Log",
+        "refresh_rate": "1s",
+        "max_entries": 10
+      }
+    }
+  },
+  "alerts": {
+    "thresholds": [
+      {
+        "id": "high_buffer_level",
+        "parameter": "buffer_capacity",
+        "threshold": 90,
+        "severity": "warning",
+        "description": "Buffer level exceeds 90% capacity",
+        "actions": [
+          "log_alert",
+          "send_notification"
+        ]
+      },
+      {
+        "id": "low_buffer_level",
+        "parameter": "buffer_capacity",
+        "threshold": 10,
+        "severity": "critical",
+        "description": "Buffer level falls below 10% capacity",
+        "actions": [
+          "log_alert",
+          "send_notification"
+        ]
+      },
+      {
+        "id": "machine_downtime",
+        "parameter": "availability",
+        "threshold": 0.95,
+        "severity": "warning",
+        "description": "Machine availability drops below 95%",
+        "actions": [
+          "log_alert",
+          "send_notification"
+        ]
+      }
+    ]
+  },
+  "kpis": {
+    "metrics": [
+      {
+        "id": "throughput",
+        "name": "Throughput",
+        "description": "Number of units produced per hour",
+        "target": 1200,
+        "unit": "units/hour",
+        "calculation": "total_units_produced / simulation_time_hours"
+      },
+      {
+        "id": "availability",
+        "name": "Availability",
+        "description": "Percentage of time machines are operational",
+        "target": 0.99,
+        "unit": "percentage",
+        "calculation": "(total_operational_time / total_simulation_time) * 100"
+      },
+      {
+        "id": "energy_consumption",
+        "name": "Energy Consumption",
+        "description": "Total energy consumed by the production line",
+        "target": 1000,
+        "unit": "kWh",
+        "calculation": "sum(work_power_kw * operational_time)"
+      },
+      {
+        "id": "buffer_utilization",
+        "name": "Buffer Utilization",
+        "description": "Average buffer utilization percentage",
+        "target": 70,
+        "unit": "percentage",
+        "calculation": "sum(buffer_capacity) / (total_buffer_capacity * simulation_time)"
+      }
+    ]
+  }
+}

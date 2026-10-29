@@ -1,0 +1,150 @@
+{
+  "method": "C",
+  "case": "case_0004_failure_heavy_line",
+  "rep": 2,
+  "status": "ok",
+  "error": null,
+  "elapsed_generation_s": 271.024,
+  "elapsed_simulation_s": 0.068,
+  "llm_calls": 6,
+  "llm_tokens_estimate": null,
+  "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260919_052152/case_0004_failure_heavy_line/C/rep2/model.json",
+  "kpis": {
+    "throughput_per_hour": null,
+    "utilization": null,
+    "wip_parts": null,
+    "energy_per_part_kwh": null,
+    "native": {
+      "machine_stats": {
+        "M1": {
+          "mentioned": true,
+          "process_time_found": true,
+          "availability_found": false
+        },
+        "M2": {
+          "mentioned": true,
+          "process_time_found": false,
+          "availability_found": false
+        },
+        "M3": {
+          "mentioned": true,
+          "process_time_found": true,
+          "availability_found": false
+        }
+      },
+      "machines_mentioned": 3,
+      "machines_truth": 5,
+      "buffers": {
+        "B0": true,
+        "B1": false,
+        "B2": false,
+        "B3": false,
+        "B4": false
+      },
+      "arrival_found": true,
+      "equipment_count": 5,
+      "artifact_chars": {
+        "config": 5050,
+        "sim": 8085
+      },
+      "machine_ids_in_dt_output": {
+        "M1": true,
+        "M2": true,
+        "M3": true,
+        "M4": false,
+        "M5": false
+      },
+      "machines_mentioned_in_dt": 3,
+      "pychrono_referenced": true,
+      "stage_shapes": {
+        "db_answer": {
+          "chars": 2867,
+          "ids_present": 4,
+          "ids_truth": 10,
+          "ddl_phrases": [
+            "create table",
+            "insert into",
+            "not null",
+            "primary key"
+          ],
+          "sql_types": [
+            "double precision",
+            "jsonb",
+            "timestamptz"
+          ],
+          "looks_like_ddl": true
+        },
+        "db_recorded": {
+          "chars": 2970,
+          "ids_present": 4,
+          "ids_truth": 10,
+          "ddl_phrases": [
+            "create table",
+            "not null",
+            "primary key"
+          ],
+          "sql_types": [
+            "double precision",
+            "jsonb",
+            "timestamptz"
+          ],
+          "looks_like_ddl": true
+        },
+        "dt_config": {
+          "chars": 5050,
+          "ids_present": 0,
+          "ids_truth": 10,
+          "looks_like_json": true
+        },
+        "dt_sim": {
+          "chars": 8085,
+          "ids_present": 4,
+          "ids_truth": 10
+        },
+        "dt_des": {
+          "chars": 8821,
+          "ids_present": 4,
+          "ids_truth": 10
+        }
+      },
+      "interview_turns": 1,
+      "agent_tasks": 6,
+      "agent_tasks_attempted": 6,
+      "responder_calls": 0,
+      "llm_calls_split": {
+        "ui_agent": 2,
+        "db_agent": 1,
+        "dt_agent": 3,
+        "harness_responder": 0
+      },
+      "responder_model": "openai/gpt-5-mini",
+      "api_url": "http://176.119.159.227:8000",
+      "agent_status": {
+        "agent0": "active",
+        "agent1": "active",
+        "agent2": "active"
+      },
+      "db_stage": "unavailable",
+      "db_note": "DB agent (agent 1) output was not JSON; raw text kept in artifacts/dtb_schema.json",
+      "dt_stage": "ok",
+      "dt_note": null,
+      "dt_slots_ok": 3,
+      "dt_slots_total": 3,
+      "des_stage": "simulation_error",
+      "des_exec_status": "simulation_error",
+      "des_exec_error": "DES model exited 1: Traceback (most recent call last):\n  File \"/ssd/projects/dt-eval/comparison/runs/20260919_052152/case_0004_failure_heavy_line/C/rep2/run_des_model.py\", line 266, in <module>\n    main()\n    ~~~~^^\n  File \"/ssd/projects/dt-eval/comparison/runs/20260919_052152/case_0004_failure_heavy_line/C/rep2/run_des_model.py\", line 250, in main\n    throughput, wip, energy_pp = run_simulation(seed)\n                                 ~~~~~~~~~~~~~~^^^^^^\n  File \"/ssd/projects/dt-eval/comparison/runs/20260919_052152/case_0004_failure_heavy_line/C/rep2/run_des_model.py\", line 238, in run_simulation\n    model = LineModel(env)\n  File \"/ssd/projects/dt-eval/comparison/runs/20260919_052152/case_0004_failure_heavy_line/C/rep2/run_des_model.py\", line 125, in __init__\n    self._initialize_components()\n    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^\n  File \"/ssd/projects/dt-eval/comparison/runs/20260919_052152/case_0004_failure_heavy_line/C/rep2/run_des_model.py\", line 154, in _initialize_components\n    self.env.process(self._connect_buffers_to_stations())\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/ssd/projects/dt-eval/comparison/.venv-des/lib64/python3.14/site-packages/simpy/events.py\", line 342, in __init__\n    raise ValueError(f'{generator} is not a generator.')\nValueError: None is not a generator.\n",
+      "des_parse_error": null,
+      "des_kpis": null,
+      "kpi_source": null,
+      "des_python": "/ssd/projects/dt-eval/comparison/.venv-des/bin/python",
+      "dt_schema_input": "ok",
+      "capability": "Method C emits a requirements document + PostgreSQL schema and (agent 2) a twin configuration, a PyChrono multi-physics script and a discrete-event SimPy model; the DES model is executed and its KPI contract parsed, so throughput/WIP/energy are populated when that slot succeeds and null when it does not"
+    }
+  },
+  "assumptions": null,
+  "notes": [
+    "structural recovery only: 3/5 machines mentioned in C's requirements",
+    "DB stage (agent 1) not recovered \u2014 DB agent (agent 1) output was not JSON; raw text kept in artifacts/dtb_schema.json",
+    "DT stage (agent 2) ran: 5050 chars of twin config, 8085 chars of PyChrono script; 3/5 machine ids appear in that output. The script is not executed (PyChrono is not installed on the harness host and models rigid bodies, not the case's discrete-event semantics), so no KPI is derived from it"
+  ]
+}

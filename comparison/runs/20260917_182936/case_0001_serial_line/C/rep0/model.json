@@ -1,0 +1,326 @@
+{
+  "requirements": {
+    "production_type": "\u043f\u043e\u0441\u043b\u0435\u0434\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u043d\u0430\u044f \u043b\u0438\u043d\u0438\u044f \u0441 \u0431\u0443\u0444\u0435\u0440\u0430\u043c\u0438 B0 (20), B1 (8), B2 (8), B3 (8), B4 (8); \u043f\u043e\u0441\u0442\u0443\u043f\u043b\u0435\u043d\u0438\u0435 \u0434\u0435\u0442\u0430\u043b\u0435\u0439 \u0440\u0430\u0432\u043d\u043e\u043c\u0435\u0440\u043d\u043e \u0441 \u0438\u043d\u0442\u0435\u0440\u0432\u0430\u043b\u043e\u043c 130 \u0441 \u043c\u0435\u0436\u0434\u0443 \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0430\u043c\u0438",
+    "processes": [
+      {
+        "machine": "M1",
+        "process_time_s": 150,
+        "availability": 0.98,
+        "mttr_s": 600,
+        "work_power_kw": 4.0,
+        "idle_power_kw": 0.4
+      },
+      {
+        "machine": "M2",
+        "process_time_s": 120,
+        "availability": 0.97,
+        "mttr_s": 900,
+        "work_power_kw": 5.0,
+        "idle_power_kw": 0.5
+      },
+      {
+        "machine": "M3",
+        "process_time_s": 180,
+        "availability": 0.95,
+        "mttr_s": 1200,
+        "work_power_kw": 6.0,
+        "idle_power_kw": 0.6
+      },
+      {
+        "machine": "M4",
+        "process_time_s": 120,
+        "availability": 0.97,
+        "mttr_s": 900,
+        "work_power_kw": 5.0,
+        "idle_power_kw": 0.5
+      },
+      {
+        "machine": "M5",
+        "process_time_s": 150,
+        "availability": 0.98,
+        "mttr_s": 600,
+        "work_power_kw": 4.0,
+        "idle_power_kw": 0.4
+      }
+    ],
+    "sensors": [
+      {
+        "machine": "M1",
+        "parameters": [
+          "avg_processing_time_s",
+          "availability",
+          "mttr_s",
+          "work_power_kw",
+          "idle_power_kw"
+        ]
+      },
+      {
+        "machine": "M2",
+        "parameters": [
+          "avg_processing_time_s",
+          "availability",
+          "mttr_s",
+          "work_power_kw",
+          "idle_power_kw"
+        ]
+      },
+      {
+        "machine": "M3",
+        "parameters": [
+          "avg_processing_time_s",
+          "availability",
+          "mttr_s",
+          "work_power_kw",
+          "idle_power_kw"
+        ]
+      },
+      {
+        "machine": "M4",
+        "parameters": [
+          "avg_processing_time_s",
+          "availability",
+          "mttr_s",
+          "work_power_kw",
+          "idle_power_kw"
+        ]
+      },
+      {
+        "machine": "M5",
+        "parameters": [
+          "avg_processing_time_s",
+          "availability",
+          "mttr_s",
+          "work_power_kw",
+          "idle_power_kw"
+        ]
+      }
+    ],
+    "goals": "\u043e\u0446\u0435\u043d\u043a\u0430 \u043f\u0440\u043e\u043f\u0443\u0441\u043a\u043d\u043e\u0439 \u0441\u043f\u043e\u0441\u043e\u0431\u043d\u043e\u0441\u0442\u0438 \u043b\u0438\u043d\u0438\u0438, \u043d\u0435\u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u043d\u043e\u0433\u043e \u043f\u0440\u043e\u0438\u0437\u0432\u043e\u0434\u0441\u0442\u0432\u0430 (WIP), \u0443\u0434\u0435\u043b\u044c\u043d\u043e\u0433\u043e \u044d\u043d\u0435\u0440\u0433\u043e\u043f\u043e\u0442\u0440\u0435\u0431\u043b\u0435\u043d\u0438\u044f \u043d\u0430 \u0434\u0435\u0442\u0430\u043b\u044c; \u043e\u0442\u0441\u043b\u0435\u0436\u0438\u0432\u0430\u043d\u0438\u0435 \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u0438 \u043c\u0430\u0448\u0438\u043d M1-M5",
+    "data_sources": "\u0440\u0435\u0430\u043b\u044c\u043d\u044b\u0435 \u0438\u0437\u043c\u0435\u0440\u0435\u043d\u0438\u044f \u0438\u0437 \u043f\u0435\u0440\u0438\u043e\u0434\u0430 \u043c\u043e\u043d\u0438\u0442\u043e\u0440\u0438\u043d\u0433\u0430 \u0438 \u0437\u0430\u0434\u0430\u043d\u043d\u044b\u0439 \u0438\u043d\u0442\u0435\u0440\u0432\u0430\u043b \u043f\u043e\u0441\u0442\u0443\u043f\u043b\u0435\u043d\u0438\u044f \u0434\u0435\u0442\u0430\u043b\u0435\u0439 (130 \u0441)",
+    "update_frequency": {
+      "events": "\u043f\u043e \u043a\u0430\u0436\u0434\u043e\u0439 \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u0430\u043d\u043d\u043e\u0439 \u0434\u0435\u0442\u0430\u043b\u0438 (\u0441\u043e\u0431\u044b\u0442\u0438\u044f \u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u0443\u044e\u0442\u0441\u044f \u043d\u0435\u043f\u0440\u0435\u0440\u044b\u0432\u043d\u043e)",
+      "state_intervals": "\u043d\u0435\u043f\u0440\u0435\u0440\u044b\u0432\u043d\u043e \u0437\u0430\u043f\u0438\u0441\u044b\u0432\u0430\u044e\u0442\u0441\u044f \u0438\u043d\u0442\u0435\u0440\u0432\u0430\u043b\u044b \u0441\u043e\u0441\u0442\u043e\u044f\u043d\u0438\u0439",
+      "energy_consumption": "\u043d\u0435\u043f\u0440\u0435\u0440\u044b\u0432\u043d\u043e \u0437\u0430\u043f\u0438\u0441\u044b\u0432\u0430\u0435\u0442\u0441\u044f \u044d\u043d\u0435\u0440\u0433\u043e\u043f\u043e\u0442\u0440\u0435\u0431\u043b\u0435\u043d\u0438\u0435"
+    },
+    "critical_parameters": {
+      "throughput": "\u043a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u0430\u043d\u043d\u044b\u0445 \u0434\u0435\u0442\u0430\u043b\u0435\u0439 \u0437\u0430 \u0435\u0434\u0438\u043d\u0438\u0446\u0443 \u0432\u0440\u0435\u043c\u0435\u043d\u0438",
+      "wip": "\u043a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u0434\u0435\u0442\u0430\u043b\u0435\u0439 \u0432 \u0431\u0443\u0444\u0435\u0440\u0430\u0445 M1-M5",
+      "energy_per_part": "\u0443\u0434\u0435\u043b\u044c\u043d\u043e\u0435 \u044d\u043d\u0435\u0440\u0433\u043e\u043f\u043e\u0442\u0440\u0435\u0431\u043b\u0435\u043d\u0438\u0435 \u043d\u0430 \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u0430\u043d\u043d\u0443\u044e \u0434\u0435\u0442\u0430\u043b\u044c",
+      "machine_availability": "\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u044c \u043c\u0430\u0448\u0438\u043d M1-M5"
+    },
+    "additional_info": "\u043a\u0440\u0438\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u044b \u043d\u0435 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u044b; \u043f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u0443\u0442\u043e\u0447\u043d\u0438\u0442\u0435 \u043f\u043e\u0440\u043e\u0433\u043e\u0432\u044b\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u044f \u0434\u043b\u044f \u043a\u0430\u0436\u0434\u043e\u0439 \u043c\u0435\u0442\u0440\u0438\u043a\u0438"
+  },
+  "schema": {
+    "raw": ""
+  },
+  "dt_config": {
+    "components": {
+      "data_collection_modules": [
+        {
+          "name": "sensor_data_collector",
+          "type": "IoT Gateway",
+          "description": "Collects real-time sensor data from machines M1-M5",
+          "protocol": "MQTT",
+          "frequency": "continuous"
+        },
+        {
+          "name": "event_logger",
+          "type": "Event Recorder",
+          "description": "Logs each part processing event with timestamps",
+          "protocol": "REST",
+          "frequency": "per part processed"
+        },
+        {
+          "name": "energy_monitor",
+          "type": "Power Meter Interface",
+          "description": "Monitors and records energy consumption per machine",
+          "protocol": "OPC-UA",
+          "frequency": "continuous"
+        }
+      ],
+      "analytics_engines": [
+        {
+          "name": "realtime_analytics_engine",
+          "type": "Stream Processing Engine",
+          "description": "Processes continuous streams of data for real-time insights",
+          "protocol": "WebSocket",
+          "frequency": "continuous"
+        },
+        {
+          "name": "historical_analytics_engine",
+          "type": "Batch Analytics Engine",
+          "description": "Analyzes historical data for trends and optimization",
+          "protocol": "REST",
+          "frequency": "hourly"
+        }
+      ],
+      "ml_models": [
+        {
+          "name": "machine_health_predictor",
+          "type": "Predictive Maintenance Model",
+          "description": "Predicts potential failures based on MTTR and availability",
+          "protocol": "REST",
+          "frequency": "daily"
+        },
+        {
+          "name": "efficiency_optimizer",
+          "type": "Optimization Algorithm",
+          "description": "Optimizes throughput and WIP by adjusting buffer levels",
+          "protocol": "WebSocket",
+          "frequency": "continuous"
+        }
+      ],
+      "visualization_dashboards": [
+        {
+          "name": "line_performance_dashboard",
+          "type": "Interactive Dashboard",
+          "description": "Displays real-time line performance metrics and alerts",
+          "protocol": "WebSocket",
+          "frequency": "real-time"
+        }
+      ]
+    },
+    "data_flows": {
+      "sensor_to_collector": {
+        "source": "sensor_data_collector",
+        "destination": "realtime_analytics_engine",
+        "protocol": "MQTT",
+        "frequency": "continuous"
+      },
+      "events_to_analytics": {
+        "source": "event_logger",
+        "destination": "realtime_analytics_engine",
+        "protocol": "REST",
+        "frequency": "per part processed"
+      },
+      "energy_to_analytics": {
+        "source": "energy_monitor",
+        "destination": "realtime_analytics_engine",
+        "protocol": "OPC-UA",
+        "frequency": "continuous"
+      },
+      "analytics_to_ml": {
+        "source": "realtime_analytics_engine",
+        "destination": "machine_health_predictor",
+        "protocol": "REST",
+        "frequency": "daily"
+      },
+      "ml_to_visualization": {
+        "source": "machine_health_predictor",
+        "destination": "line_performance_dashboard",
+        "protocol": "WebSocket",
+        "frequency": "real-time"
+      }
+    },
+    "visualization": {
+      "dashboard_layout": {
+        "title": "Industrial Line Performance Dashboard",
+        "widgets": [
+          {
+            "type": "KPI Widget",
+            "title": "Throughput",
+            "value": "current_throughput",
+            "target": "target_throughput",
+            "unit": "parts/hour",
+            "color_scheme": "green"
+          },
+          {
+            "type": "KPI Widget",
+            "title": "WIP",
+            "value": "current_wip",
+            "target": "target_wip",
+            "unit": "parts",
+            "color_scheme": "blue"
+          },
+          {
+            "type": "KPI Widget",
+            "title": "Energy per Part",
+            "value": "current_energy_per_part",
+            "target": "target_energy_per_part",
+            "unit": "kWh/part",
+            "color_scheme": "orange"
+          },
+          {
+            "type": "Bar Chart",
+            "title": "Machine Availability",
+            "data_source": "machine_availability",
+            "unit": "%",
+            "color_scheme": "purple"
+          },
+          {
+            "type": "Timeline Chart",
+            "title": "Processing Time Distribution",
+            "data_source": "processing_times",
+            "unit": "seconds",
+            "color_scheme": "red"
+          },
+          {
+            "type": "Heatmap",
+            "title": "Buffer Levels",
+            "data_source": "buffer_levels",
+            "unit": "parts",
+            "color_scheme": "teal"
+          }
+        ],
+        "refresh_rate": "real-time"
+      }
+    },
+    "alerts": [
+      {
+        "name": "high_wip_alert",
+        "severity": "warning",
+        "threshold": 20,
+        "trigger_condition": "current_wip > threshold",
+        "message": "High WIP detected - consider reducing buffer levels or increasing throughput."
+      },
+      {
+        "name": "low_machine_availability_alert",
+        "severity": "critical",
+        "threshold": 90,
+        "trigger_condition": "machine_availability < threshold",
+        "message": "Low machine availability detected - investigate potential issues."
+      },
+      {
+        "name": "high_energy_consumption_alert",
+        "severity": "emergency",
+        "threshold": 10,
+        "trigger_condition": "current_energy_per_part > threshold",
+        "message": "Unusually high energy consumption per part - review efficiency."
+      },
+      {
+        "name": "throughput_degradation_alert",
+        "severity": "warning",
+        "threshold": 0.8,
+        "trigger_condition": "current_throughput < threshold * target_throughput",
+        "message": "Degradation in throughput - check for bottlenecks."
+      }
+    ],
+    "kpis": [
+      {
+        "name": "throughput",
+        "target_value": 180,
+        "measurement_method": "count of parts processed per hour",
+        "unit": "parts/hour"
+      },
+      {
+        "name": "wip",
+        "target_value": 15,
+        "measurement_method": "total parts in buffers B0-B4",
+        "unit": "parts"
+      },
+      {
+        "name": "energy_per_part",
+        "target_value": 5,
+        "measurement_method": "total energy consumed / number of parts processed",
+        "unit": "kWh/part"
+      },
+      {
+        "name": "machine_availability",
+        "target_value": 97,
+        "measurement_method": "sum of uptime / total time",
+        "unit": "%"
+      }
+    ]
+  },
+  "dt_simulation": "```python\nimport pychrono as chrono\nimport pychrono.irrlicht as chronoirr\nimport numpy as np\nimport math\nimport time\nfrom datetime import datetime\nimport threading\nimport queue\n\n# Initialize PyChrono system\nchrono.SetChronoDataPath('path_to_chrono_data')  # Replace with actual path\nsystem = chrono.ChSystemNSC()\nsystem.SetGravitationalAcceleration(chrono.ChVectorD(0, 0, 0))  # No gravity for this application\n\n# Simulation parameters\nTIME_STEP = 0.01\nSIMULATION_DURATION = 3600 * 24  # 24 hours simulation\nPART_ARRIVAL_INTERVAL = 130.0  # seconds\nLOGGING_INTERVAL = 1.0  # seconds\n\n# Data structures for logging\nclass MachineState:\n    def __init__(self, machine_id):\n        self.machine_id = machine_id\n        self.status = \"IDLE\"  # IDLE, PROCESSING, MAINTENANCE\n        self.processing_time = 0.0\n        self.mttr = 0.0\n        self.power_consumption = 0.0\n        self.last_state_change = 0.0\n        self.total_processing_time = 0.0\n        self.total_maintenance_time = 0.0\n        self.total_energy_consumption = 0.0\n        self.processed_parts = 0\n        self.availability = 0.0\n        self.avg_processing_time = 0.0\n\nclass BufferState:\n    def __init__(self, buffer_id, capacity):\n        self.buffer_id = buffer_id\n        self.capacity = capacity\n        self.current_parts = 0\n        self.parts_in_buffer = []\n        self.total_parts = 0\n\n# Global state tracking\nmachines = {}\nbuffers = {}\npart_counter = 0\nlast_arrival_time = 0.0\nsimulation_start_time = time.time()\nenergy_consumption_log = []\nwip_log = []\nthroughput_log = []\nmachine_availability_log = []\n\n# Create machines with their specifications\ndef create_machine(machine_id, process_time, availability, mttr, work_power, idle_power):\n    machine = MachineState(machine_id)\n    machine.process_time = process_time\n    machine.availability = availability\n    machine.mttr = mttr\n    machine.work_power = work_power\n    machine.idle_power = idle_power\n    machines[machine_id] = machine\n    return machine\n\n# Create buffers\ndef create_buffer(buffer_id, capacity):\n    buffer = BufferState(buffer_id, capacity)\n    buffers[buffer_id] = buffer\n    return buffer\n\n# Initialize machines\nfor i, process in enumerate([\n    {\"machine\": \"M1\", \"process_time_s\": 150, \"availability\": 0.98, \"mttr_s\": 600, \"work_power_kw\": 4.0, \"idle_power_kw\": 0.4},\n    {\"machine\": \"M2\", \"process_time_s\": 120, \"availability\": 0.97, \"mttr_s\": 900, \"work_power_kw\": 5.0, \"idle_power_kw\": 0.5},\n    {\"machine\": \"M3\", \"process_time_s\": 180, \"availability\": 0.95, \"mttr_s\": 1200, \"work_power_kw\": 6.0, \"idle_power_kw\": 0.6},\n    {\"machine\": \"M4\", \"process_time_s\": 120, \"availability\": 0.97, \"mttr_s\": 900, \"work_power_kw\": 5.0, \"idle_power_kw\": 0.5},\n    {\"machine\": \"M5\", \"process_time_s\": 150, \"availability\": 0.98, \"mttr_s\": 600, \"work_power_kw\": 4.0, \"idle_power_kw\": 0.4}\n]):\n    create_machine(process[\"machine\"], process[\"process_time_s\"], process[\"availability\"],\n                   process[\"mttr_s\"], process[\"work_power_kw\"], process[\"idle_power_kw\"])\n\n# Create buffers\ncreate_buffer(\"B0\", 20)\ncreate_buffer(\"B1\", 8)\ncreate_buffer(\"B2\", 8)\ncreate_buffer(\"B3\", 8)\ncreate_buffer(\"B4\", 8)\n\n# Part class representing workpieces\nclass Workpiece:\n    def __init__(self, part_id):\n        self.id = part_id\n        self.created_at = time.time()\n        self.processing_start_time = None\n        self.processing_end_time = None\n        self.current_machine = None\n        self.path = []  # Track the processing path through machines\n\n# Part generation function\ndef generate_part():\n    global part_counter, last_arrival_time\n    current_time = time.time() - simulation_start_time\n    \n    if current_time - last_arrival_time >= PART_ARRIVAL_INTERVAL:\n        part_counter += 1\n        part = Workpiece(part_counter)\n        buffers[\"B0\"].current_parts += 1\n        buffers[\"B0\"].parts_in_buffer.append(part)\n        buffers[\"B0\"].total_parts += 1\n        last_arrival_time = current_time\n        print(f\"Part {part_counter} generated at {current_time:.2f}s\")\n        return part\n    return None\n\n# Simulate machine processing\ndef simulate_machine_processing(machine_id, part):\n    machine = machines[machine_id]\n    \n    # Check if machine is available\n    if machine.status != \"IDLE\":\n        return False\n    \n    # Simulate machine availability\n    if np.random.rand() > machine.availability:\n        # Machine fails - go into maintenance\n        machine.status = \"MAINTENANCE\"\n        machine.mttr = machine.mttr\n        machine.last_state_change = time.time() - simulation_start_time\n        return False\n    \n    # Start processing\n    machine.status = \"PROCESSING\"\n    machine.processing_start_time = time.time() - simulation_start_time\n    machine.processed_parts += 1\n    part.current_machine = machine_id\n    part.processing_start_time = time.time() - simulation_start_time\n    part.path.append(machine_id)\n    \n    # Simulate processing duration\n    processing_duration = machine.process_time\n    \n    # Simulate energy consumption during processing\n    machine.power_consumption = machine.work_power\n    machine.total_energy_consumption += machine.work_power * (processing_duration / 3600)  # kWh\n    \n    return True\n\n# Update machine status based on processing completion\ndef update_machine_status():\n    current_time = time.time() - simulation_start_time\n    \n    for machine_id, machine in machines.items():\n        if machine.status == \"PROCESSING\":\n            if current_time - machine.processing_start_time >= machine.process_time:\n                # Processing completed\n                machine.status = \"IDLE\"\n                machine.total_processing_time += machine.process_time\n                machine.avg_processing_time = machine.total_processing_time / machine.processed_parts\n                \n                # Calculate availability\n                total_time = current_time - machine.last_state_change\n                machine.availability = machine.total_processing_time / total_time if total_time > 0 else 0.0\n                \n                # Reset power consumption\n                machine.power_consumption = machine.idle_power\n                machine.total_energy_consumption += machine.idle_power * (0.1 / 3600)  # Assume small idle consumption\n                \n                # Move part to next buffer\n                if machine_id == \"M1\":\n                    if buffers[\"B1\"].current_parts < buffers[\"B1\"].capacity:\n                        buffers[\"B1\"].current_parts += 1\n                        print(f\"Part moved from M1 to B1\")\n                    else:\n                        print(\"Buffer B1 full, part remains in M1\")\n                elif machine_id == \"M2\":\n                    if buffers[\"B2\"].current_parts < buffers[\"B2\"].capacity:\n                        buffers[\"B2\"].current_parts += 1\n                        print(f\"Part moved from M2 to B2\")\n                    else:\n                        print(\"Buffer B2 full, part remains in M2\")\n                elif machine_id == \"M3\":\n                    if buffers[\"B3\"].current_parts < buffers[\"B3\"].capacity:\n                        buffers[\"B3\"].current_parts += 1\n                        print(f\"Part moved from M3 to B3\")\n                    else:\n                        print(\"Buffer B3 full, part remains in M3\")\n                elif machine_id == \"M4\":\n                    if buffers[\"B4\"].current_parts < buffers[\"B4\"].capacity:\n                        buffers[\"B4\"].current_parts += 1\n                        print(f\"Part moved from M4 to B4\")\n                    else:\n                        print(\"Buffer B4 full, part remains in M4\")\n                elif machine_id == \"M5\":\n                    # Final stage - part finished\n                    part = buffers[\"B4\"].parts_in_buffer.pop(0) if buffers[\"B4\"].parts_in_buffer else None\n                    if part:\n                        part.processing_end_time = time.time() - simulation_start_time\n                        print(f\"Part {part.id} completed at {part.processing_end_time:.2f}s\")\n                        \n                        # Log throughput\n                        throughput_log.append({\n                            'timestamp': part.processing_end_time,\n                            'processed_parts': part_counter,\n                            'throughput_per_hour': part_counter / (part.processing_end_time / 3600)\n                        })\n\n# Log simulation data\ndef log_simulation_data(current_time):\n    # Log WIP (Work In Progress)\n    wip_total = sum(buf.current_parts for buf in buffers.values())\n    wip_log.append({\n        'timestamp': current_time,\n        'wip_total': wip_total,\n        'b0_count': buffers['B0'].current_parts,\n        'b1_count': buffers['B1'].current_parts,\n        'b2_count': buffers['B2'].current_parts,\n        'b3_count': buffers['B3'].current_parts,\n        'b4_count': buffers['B4'].current_parts\n    })\n    \n    # Log machine availability\n    for machine_id, machine in machines.items():\n        machine_availability_log.append({\n            'timestamp': current_time,\n            'machine_id': machine_id,\n            'availability': machine.availability,\n            'status': machine.status\n        })\n    \n    # Log energy consumption\n    total_energy = sum(machine.total_energy_consumption for machine in machines.values())\n    energy_consumption_log.append({\n        'timestamp': current_time,\n        'total_energy_kwh': total_energy,\n        'energy_per_part': total_energy / part_counter if part_counter > 0 else 0.0\n    })\n\n# Main simulation loop\ndef run_simulation():\n    print(\"Starting simulation...\")\n    start_time = time.time()\n    \n    # Initial part generation\n    generate_part()\n    \n    step = 0\n    while True:\n        current_time = time.time() - start_time\n        \n        # Generate new parts periodically\n        generate_part()\n        \n        # Update machine statuses\n        update_machine_status()\n        \n        # Process parts through machines\n        for machine_id, machine in machines.items():\n            if machine.status == \"IDLE\":\n                # Try to move part from buffer to machine\n                if machine_id == \"M1\" and buffers[\"B1\"].current_parts > 0:\n                    # Try to move part from B1 to M1\n                    if buffers[\"B1\"].current_parts > 0:\n                        part = buffers[\"B1\"].parts_in_buffer.pop(0)\n                        buffers[\"B1\"].current_parts -= 1\n                        simulate_machine_processing(machine_id, part)\n                elif machine_id == \"M2\" and buffers[\"B2\"].current_parts > 0:\n                    # Try to move part from B2 to M2\n                    if buffers[\"B2\"].current_parts > 0:\n                        part = buffers[\"B2\"].parts_in_buffer.pop(0)\n                        buffers[\"B2\"].current_parts -= 1\n                        simulate_machine_processing(machine_id, part)\n                elif machine_id == \"M3\" and buffers[\"B3\"].current_parts > 0:\n                    # Try to move part from B3 to M3\n                    if buffers[\"B3\"].current_parts > 0:\n                        part = buffers[\"B3\"].parts_in_buffer.pop(0)\n                        buffers[\"B3\"].current_parts -= 1\n                        simulate_machine_processing(machine_id, part)\n                elif machine_id == \"M4\" and buffers[\"B4\"].current_parts > 0:\n                    # Try to move part from B4 to M4\n                    if buffers[\"B4\"].current_parts > 0:\n                        part = buffers[\"B4\"].parts_in_buffer.pop(0)\n                        buffers[\"B4\"].current_parts -= 1\n                        simulate_machine_processing(machine_id, part)\n                elif machine_id == \"M5\":\n                    # Check if we can start processing from B4\n                    if buffers[\"B4\"].current_parts > 0:\n                        part = buffers[\"B4\"].parts_in_buffer.pop(0)\n                        buffers[\"B4\"].current_parts -= 1\n                        simulate_machine_processing(machine_id, part)\n        \n        # Log data periodically\n        if int(current_time) % int(LOGGING_INTERVAL) == 0:\n            log_simulation_data(current_time)\n            \n        # Break condition\n        if current_time >= SIMULATION_DURATION:\n            break\n            \n        step += 1\n        time.sleep(TIME_STEP)\n    \n    # Final logging\n    final_time = time.time() - start_time\n    log_simulation_data(final_time)\n    \n    # Print summary statistics\n    print(\"\\n--- Simulation Summary ---\")\n    print(f\"Total parts processed: {part_counter}\")\n    print(f\"Simulation time: {final_time:.2f} seconds\")\n    print(f\"Final WIP: {sum(buf.current_parts for buf in buffers.values())}\")\n    print(f\"Total energy consumed: {sum(log['total_energy_kwh'] for log in energy_consumption_log):.2f} kWh\")\n    \n    # Save logs to files\n    with open('wip_log.csv', 'w') as f:\n        f.write('timestamp,wip_total,b0_count,b1_count,b2_count,b3_count"
+}

@@ -1,0 +1,136 @@
+{
+  "production_type": "serial production line with 3 machines (M1, M2, M3) in series, connected by buffers (B0, B1, B2) and a source, sink",
+  "processes": [
+    "M1",
+    "M2",
+    "M3",
+    "B0",
+    "B1",
+    "B2",
+    "sink"
+  ],
+  "equipment": [
+    "M1",
+    "M2",
+    "M3",
+    "B0",
+    "B1",
+    "B2"
+  ],
+  "sensors": {
+    "machines": [
+      {
+        "id": "M1",
+        "process_time_s": 90,
+        "availability": 0.99,
+        "mttr_s": 600,
+        "work_power_kw": 3.0,
+        "idle_power_kw": 0.3
+      },
+      {
+        "id": "M2",
+        "process_time_s": 70,
+        "availability": 0.98,
+        "mttr_s": 900,
+        "work_power_kw": 4.5,
+        "idle_power_kw": 0.45
+      },
+      {
+        "id": "M3",
+        "process_time_s": 110,
+        "availability": 0.99,
+        "mttr_s": 1200,
+        "work_power_kw": 6.0,
+        "idle_power_kw": 0.6
+      }
+    ],
+    "buffers": [
+      {
+        "id": "B0",
+        "capacity": 15
+      },
+      {
+        "id": "B1",
+        "capacity": 5
+      },
+      {
+        "id": "B2",
+        "capacity": 5
+      }
+    ]
+  },
+  "goals": "simulate system performance over 432,000 seconds (5 days), analyze availability, throughput, and buffer utilization",
+  "data_sources": "provided JSON with machine, buffer, and arrival data",
+  "update_frequency": "static (once when model is created)",
+  "critical_parameters": {
+    "M1": "process_time_s: 90 s",
+    "M2": "process_time_s: 70 s",
+    "M3": "process_time_s: 110 s",
+    "B0": "capacity: 15",
+    "B1": "capacity: 5",
+    "B2": "capacity: 5"
+  },
+  "line": {
+    "topology": "serial",
+    "source": {
+      "inter_arrival_time_s": 60
+    },
+    "stations": [
+      {
+        "id": "M1",
+        "processing_time_s": 90,
+        "availability_pct": 99.0,
+        "mttr_s": 600,
+        "power_working_kw": 3.0,
+        "power_idle_kw": 0.3
+      },
+      {
+        "id": "M2",
+        "processing_time_s": 70,
+        "availability_pct": 98.0,
+        "mttr_s": 900,
+        "power_working_kw": 4.5,
+        "power_idle_kw": 0.45
+      },
+      {
+        "id": "M3",
+        "processing_time_s": 110,
+        "availability_pct": 99.0,
+        "mttr_s": 1200,
+        "power_working_kw": 6.0,
+        "power_idle_kw": 0.6
+      }
+    ],
+    "buffers": [
+      {
+        "id": "B0",
+        "capacity": 15,
+        "before": "source",
+        "after": "M1"
+      },
+      {
+        "id": "B1",
+        "capacity": 5,
+        "before": "M1",
+        "after": "M2"
+      },
+      {
+        "id": "B2",
+        "capacity": 5,
+        "before": "M2",
+        "after": "M3"
+      }
+    ]
+  },
+  "des_horizon": {
+    "warmup_s": null,
+    "window_s": null,
+    "replications": null
+  },
+  "units": {
+    "time": "s",
+    "power": "kW",
+    "energy": "kWh"
+  },
+  "additional_info": "simulation runs for 432,000 seconds; no power consumption analysis required"
+}

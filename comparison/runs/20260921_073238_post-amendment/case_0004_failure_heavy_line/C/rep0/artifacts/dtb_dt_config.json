@@ -1,0 +1,270 @@
+{
+  "components": {
+    "data_collection": {
+      "modules": [
+        {
+          "name": "OPC-UA Collector",
+          "type": "data_collector",
+          "description": "Collects real-time data from machines via OPC-UA protocol",
+          "protocol": "OPC-UA",
+          "frequency": "10s"
+        },
+        {
+          "name": "MQTT Ingestor",
+          "type": "data_collector",
+          "description": "Ingests event data from sensors and devices via MQTT",
+          "protocol": "MQTT",
+          "frequency": "5s"
+        }
+      ]
+    },
+    "analytics": {
+      "engines": [
+        {
+          "name": "SimPy Simulator",
+          "type": "simulation_engine",
+          "description": "Simulates production line behavior using SimPy library",
+          "inputs": [
+            "raw_ingest",
+            "machines",
+            "buffers",
+            "stations"
+          ],
+          "outputs": [
+            "simulation_results"
+          ]
+        },
+        {
+          "name": "KPI Analyzer",
+          "type": "analytics_engine",
+          "description": "Analyzes KPIs for performance optimization",
+          "inputs": [
+            "samples",
+            "events"
+          ],
+          "outputs": [
+            "kpis",
+            "alerts"
+          ]
+        }
+      ]
+    },
+    "ml_models": {
+      "models": [
+        {
+          "name": "Bottleneck Predictor",
+          "type": "predictive_model",
+          "description": "Predicts potential bottlenecks in the production line",
+          "input_data": [
+            "samples",
+            "events"
+          ],
+          "output": [
+            "bottleneck_alerts"
+          ]
+        }
+      ]
+    },
+    "visualization": {
+      "dashboards": [
+        {
+          "name": "Production Line Dashboard",
+          "type": "dashboard",
+          "widgets": [
+            {
+              "type": "realtime_chart",
+              "title": "Machine Processing Times",
+              "data_source": "samples",
+              "refresh_rate": "5s",
+              "color_scheme": "blue"
+            },
+            {
+              "type": "gauge",
+              "title": "Line Utilization",
+              "data_source": "kpis",
+              "metric": "utilization_percentage",
+              "refresh_rate": "10s",
+              "color_scheme": "green"
+            },
+            {
+              "type": "heatmap",
+              "title": "Machine Downtime",
+              "data_source": "events",
+              "refresh_rate": "30s",
+              "color_scheme": "red"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "data_flows": {
+    "connections": [
+      {
+        "source": "OPC-UA Collector",
+        "destination": "raw_ingest",
+        "protocol": "OPC-UA",
+        "frequency": "10s"
+      },
+      {
+        "source": "MQTT Ingestor",
+        "destination": "raw_ingest",
+        "protocol": "MQTT",
+        "frequency": "5s"
+      },
+      {
+        "source": "SimPy Simulator",
+        "destination": "samples",
+        "protocol": "REST",
+        "frequency": "10s"
+      },
+      {
+        "source": "KPI Analyzer",
+        "destination": "kpis",
+        "protocol": "WebSocket",
+        "frequency": "5s"
+      },
+      {
+        "source": "Bottleneck Predictor",
+        "destination": "alerts",
+        "protocol": "WebSocket",
+        "frequency": "10s"
+      }
+    ]
+  },
+  "visualization": {
+    "dashboard_layout": {
+      "rows": 3,
+      "columns": 3,
+      "widgets": [
+        {
+          "position": {
+            "row": 1,
+            "col": 1
+          },
+          "widget_type": "realtime_chart",
+          "title": "Machine Processing Times",
+          "refresh_rate": "5s",
+          "color_scheme": "blue"
+        },
+        {
+          "position": {
+            "row": 1,
+            "col": 2
+          },
+          "widget_type": "gauge",
+          "title": "Line Utilization",
+          "refresh_rate": "10s",
+          "color_scheme": "green"
+        },
+        {
+          "position": {
+            "row": 1,
+            "col": 3
+          },
+          "widget_type": "heatmap",
+          "title": "Machine Downtime",
+          "refresh_rate": "30s",
+          "color_scheme": "red"
+        },
+        {
+          "position": {
+            "row": 2,
+            "col": 1
+          },
+          "widget_type": "bar_chart",
+          "title": "Buffer Capacities",
+          "refresh_rate": "10s",
+          "color_scheme": "orange"
+        },
+        {
+          "position": {
+            "row": 2,
+            "col": 2
+          },
+          "widget_type": "line_chart",
+          "title": "Production Output",
+          "refresh_rate": "15s",
+          "color_scheme": "purple"
+        },
+        {
+          "position": {
+            "row": 2,
+            "col": 3
+          },
+          "widget_type": "table",
+          "title": "Current Alerts",
+          "refresh_rate": "5s",
+          "color_scheme": "yellow"
+        },
+        {
+          "position": {
+            "row": 3,
+            "col": 1
+          },
+          "widget_type": "map",
+          "title": "Real-time Production Status",
+          "refresh_rate": "10s",
+          "color_scheme": "teal"
+        }
+      ]
+    }
+  },
+  "alerts": {
+    "thresholds": [
+      {
+        "metric": "machine_availability",
+        "severity": "warning",
+        "threshold": 90,
+        "operator": "<",
+        "description": "Machine availability below 90%"
+      },
+      {
+        "metric": "buffer_capacity",
+        "severity": "critical",
+        "threshold": 90,
+        "operator": ">",
+        "description": "Buffer capacity exceeded 90%"
+      },
+      {
+        "metric": "machine_downtime",
+        "severity": "emergency",
+        "threshold": 3600,
+        "operator": ">",
+        "description": "Machine downtime exceeds 1 hour"
+      }
+    ]
+  },
+  "kpis": {
+    "metrics": [
+      {
+        "name": "line_utilization",
+        "target": 95,
+        "unit": "%",
+        "description": "Percentage of time the production line is active",
+        "method": "calculate_utilization"
+      },
+      {
+        "name": "overall_equipment_effectiveness",
+        "target": 85,
+        "unit": "%",
+        "description": "Overall equipment effectiveness using OEE formula",
+        "method": "calculate_oee"
+      },
+      {
+        "name": "production_throughput",
+        "target": 1000,
+        "unit": "units/day",
+        "description": "Number of units produced per day",
+        "method": "count_units"
+      },
+      {
+        "name": "average_downtime",
+        "target": 100,
+        "unit": "seconds/day",
+        "description": "Average machine downtime per day",
+        "method": "calculate_avg_downtime"
+      }
+    ]
+  }
+}

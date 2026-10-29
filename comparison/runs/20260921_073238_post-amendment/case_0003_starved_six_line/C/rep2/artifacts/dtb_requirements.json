@@ -1,0 +1,263 @@
+{
+  "production_type": "serial",
+  "processes": [
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "M5",
+    "M6"
+  ],
+  "equipment": [
+    {
+      "id": "M1",
+      "process_time_s": 199.86,
+      "availability": 0.9877,
+      "mttr_s": 1062.58,
+      "work_power_kw": 5.0,
+      "idle_power_kw": 0.5
+    },
+    {
+      "id": "M2",
+      "process_time_s": 220.09,
+      "availability": 0.9863,
+      "mttr_s": 1184.73,
+      "work_power_kw": 5.5,
+      "idle_power_kw": 0.55
+    },
+    {
+      "id": "M3",
+      "process_time_s": 240.01,
+      "availability": 0.9978,
+      "mttr_s": 314.75,
+      "work_power_kw": 6.0,
+      "idle_power_kw": 0.6
+    },
+    {
+      "id": "M4",
+      "process_time_s": 259.99,
+      "availability": 0.9885,
+      "mttr_s": 1246.71,
+      "work_power_kw": 7.0,
+      "idle_power_kw": 0.7
+    },
+    {
+      "id": "M5",
+      "process_time_s": 230.13,
+      "availability": 0.9951,
+      "mttr_s": 2129.84,
+      "work_power_kw": 6.5,
+      "idle_power_kw": 0.65
+    },
+    {
+      "id": "M6",
+      "process_time_s": 209.83,
+      "availability": 0.9898,
+      "mttr_s": 2200.89,
+      "work_power_kw": 6.0,
+      "idle_power_kw": 0.6
+    }
+  ],
+  "sensors": [
+    {
+      "id": "M1",
+      "parameters": [
+        "process_time_s",
+        "availability",
+        "mttr_s",
+        "work_power_kw",
+        "idle_power_kw"
+      ]
+    },
+    {
+      "id": "M2",
+      "parameters": [
+        "process_time_s",
+        "availability",
+        "mttr_s",
+        "work_power_kw",
+        "idle_power_kw"
+      ]
+    },
+    {
+      "id": "M3",
+      "parameters": [
+        "process_time_s",
+        "availability",
+        "mttr_s",
+        "work_power_kw",
+        "idle_power_kw"
+      ]
+    },
+    {
+      "id": "M4",
+      "parameters": [
+        "process_time_s",
+        "availability",
+        "mttr_s",
+        "work_power_kw",
+        "idle_power_kw"
+      ]
+    },
+    {
+      "id": "M5",
+      "parameters": [
+        "process_time_s",
+        "availability",
+        "mttr_s",
+        "work_power_kw",
+        "idle_power_kw"
+      ]
+    },
+    {
+      "id": "M6",
+      "parameters": [
+        "process_time_s",
+        "availability",
+        "mttr_s",
+        "work_power_kw",
+        "idle_power_kw"
+      ]
+    }
+  ],
+  "goals": "Simulate the production line's behavior over 5 days (432,000 seconds), validate availability and throughput, manage buffers, and optimize energy usage.",
+  "data_sources": "Machine parameters, buffer capacities, arrival rate, and equipment specifications from the provided JSON.",
+  "update_frequency": "Manual updates (user-defined changes to parameters).",
+  "critical_parameters": {
+    "M1": {
+      "process_time_s": 199.86,
+      "availability": 0.9877,
+      "mttr_s": 1062.58,
+      "work_power_kw": 5.0,
+      "idle_power_kw": 0.5
+    },
+    "M2": {
+      "process_time_s": 220.09,
+      "availability": 0.9863,
+      "mttr_s": 1184.73,
+      "work_power_kw": 5.5,
+      "idle_power_kw": 0.55
+    },
+    "M3": {
+      "process_time_s": 240.01,
+      "availability": 0.9978,
+      "mttr_s": 314.75,
+      "work_power_kw": 6.0,
+      "idle_power_kw": 0.6
+    },
+    "M4": {
+      "process_time_s": 259.99,
+      "availability": 0.9885,
+      "mttr_s": 1246.71,
+      "work_power_kw": 7.0,
+      "idle_power_kw": 0.7
+    },
+    "M5": {
+      "process_time_s": 230.13,
+      "availability": 0.9951,
+      "mttr_s": 2129.84,
+      "work_power_kw": 6.5,
+      "idle_power_kw": 0.65
+    },
+    "M6": {
+      "process_time_s": 209.83,
+      "availability": 0.9898,
+      "mttr_s": 2200.89,
+      "work_power_kw": 6.0,
+      "idle_power_kw": 0.6
+    }
+  },
+  "line": {
+    "topology": "serial",
+    "source": {
+      "inter_arrival_time_s": 300
+    },
+    "stations": [
+      {
+        "id": "M1",
+        "processing_time_s": 199.86,
+        "availability": 0.9877,
+        "mttr_s": 1062.58,
+        "work_power_kw": 5.0,
+        "idle_power_kw": 0.5
+      },
+      {
+        "id": "M2",
+        "processing_time_s": 220.09,
+        "availability": 0.9863,
+        "mttr_s": 1184.73,
+        "work_power_kw": 5.5,
+        "idle_power_kw": 0.55
+      },
+      {
+        "id": "M3",
+        "processing_time_s": 240.01,
+        "availability": 0.9978,
+        "mttr_s": 314.75,
+        "work_power_kw": 6.0,
+        "idle_power_kw": 0.6
+      },
+      {
+        "id": "M4",
+        "processing_time_s": 259.99,
+        "availability": 0.9885,
+        "mttr_s": 1246.71,
+        "work_power_kw": 7.0,
+        "idle_power_kw": 0.7
+      },
+      {
+        "id": "M5",
+        "processing_time_s": 230.13,
+        "availability": 0.9951,
+        "mttr_s": 2129.84,
+        "work_power_kw": 6.5,
+        "idle_power_kw": 0.65
+      },
+      {
+        "id": "M6",
+        "processing_time_s": 209.83,
+        "availability": 0.9898,
+        "mttr_s": 2200.89,
+        "work_power_kw": 6.0,
+        "idle_power_kw": 0.6
+      }
+    ],
+    "buffers": [
+      {
+        "id": "B0",
+        "capacity": 10
+      },
+      {
+        "id": "B1",
+        "capacity": 10
+      },
+      {
+        "id": "B2",
+        "capacity": 10
+      },
+      {
+        "id": "B3",
+        "capacity": 10
+      },
+      {
+        "id": "B4",
+        "capacity": 10
+      },
+      {
+        "id": "B5",
+        "capacity": 10
+      }
+    ]
+  },
+  "des_horizon": {
+    "warmup_s": null,
+    "window_s": null,
+    "replications": null
+  },
+  "units": {
+    "time": "s",
+    "power": "kW",
+    "energy": "kWh"
+  },
+  "additional_info": "Simulation uses a single source, 6 machines in series, and a single sink. Runs for 432,000 seconds (5 days) using SimPy. Structure and run code are generated at module level with no extra commentary."
+}

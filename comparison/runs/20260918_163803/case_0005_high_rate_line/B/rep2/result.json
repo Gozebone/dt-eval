@@ -1,0 +1,23 @@
+{
+  "method": "B",
+  "case": "case_0005_high_rate_line",
+  "rep": 2,
+  "status": "ok",
+  "error": null,
+  "elapsed_generation_s": 56.458,
+  "elapsed_simulation_s": 22.198,
+  "llm_calls": 2,
+  "llm_tokens_estimate": null,
+  "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260918_163803/case_0005_high_rate_line/B/rep2/model.py",
+  "kpis": {
+    "throughput_per_hour": 44.44,
+    "utilization": null,
+    "wip_parts": 12.93,
+    "energy_per_part_kwh": 0.2597,
+    "native": {
+      "stdout_head": "\n=== Mean Overall KPIs over 10 runs ===\nThroughput = 44.44 parts/hour\nWIP = 12.93 parts\nMean Energy Consumption per Part = 0.2597 kWh/part\n\n=== Bottleneck Frequency over runs ===\nM2: 10 times\nM1: 10 times\nM4: 10 times\n"
+    }
+  },
+  "assumptions": null,
+  "notes": []
+}

@@ -1,0 +1,21 @@
+{
+  "method": "A",
+  "case": "case_0002_saturated_short_line",
+  "rep": 2,
+  "status": "simulation_error",
+  "error": "model exited 1: Traceback (most recent call last):\n  File \"/ssd/projects/dt-eval/comparison/runs/20260918_043936/case_0002_saturated_short_line/A/rep2/run_model.py\", line 77, in <module>\n    TOP = SystemModel(env, \"TOP\")\n  File \"/ssd/projects/dt-eval/comparison/runs/20260918_043936/case_0002_saturated_short_line/A/rep2/run_model.py\", line 47, in __init__\n    m = Machine(env, id=d[\"id\"], processing_delay=d[\"delay\"], mtbf=d[\"mtbf\"], mttr=d[\"mttr\"])\nTypeError: Machine.__init__() got an unexpected keyword argument 'mtbf'\n",
+  "elapsed_generation_s": 62.002,
+  "elapsed_simulation_s": 0.089,
+  "llm_calls": 2,
+  "llm_tokens_estimate": null,
+  "generated_model_file": null,
+  "kpis": {
+    "throughput_per_hour": null,
+    "utilization": null,
+    "wip_parts": null,
+    "energy_per_part_kwh": null,
+    "native": {}
+  },
+  "assumptions": "1. Node names and Types are chosen according to users description.\n2. Assumed Source name as \"src\" and Sink name as \"sink\" since they were not explicitly named in the description.\n3. Used a single buffer where ever number of buffers not specified.\n4. Assumed the three specified buffers B0, B1, and B2 connect the Source to M1, M1 to M2, and M2 to M3 respectively based on the logical flow.\n5. Assumed an additional default buffer connects the last machine M3 to the Sink, as only three buffers were specified in the description.\n6. Assumed the measured Avg_Time_per_part_s maps to the processing_delay parameter for the Machine nodes.\n7. Assumed machine failure parameters (like MTBF) are to be calculated from the provided Availability_% and MTTR_s, and that machines with 100% availability do not fail.\n8. Used default values for all missing parameters for all components.",
+  "notes": []
+}

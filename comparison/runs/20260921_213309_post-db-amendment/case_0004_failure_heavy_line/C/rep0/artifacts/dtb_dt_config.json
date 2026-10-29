@@ -1,0 +1,202 @@
+{
+  "components": {
+    "data_collection": {
+      "modules": [
+        {
+          "name": "OPC-UA Gateway",
+          "type": "gateway",
+          "description": "Collects real-time data from industrial equipment via OPC-UA protocol",
+          "protocol": "OPC-UA",
+          "update_frequency_s": 5
+        },
+        {
+          "name": "MQTT Collector",
+          "type": "collector",
+          "description": "Handles data from IoT sensors and devices using MQTT protocol",
+          "protocol": "MQTT",
+          "update_frequency_s": 10
+        }
+      ]
+    },
+    "analytics": {
+      "engines": [
+        {
+          "name": "Process Analytics Engine",
+          "type": "analytics",
+          "description": "Analyzes production data to compute KPIs and detect anomalies",
+          "algorithm": "statistical_analysis"
+        },
+        {
+          "name": "Predictive Maintenance Engine",
+          "type": "ml_model",
+          "description": "Predicts equipment failures using historical and real-time data",
+          "algorithm": "machine_learning"
+        }
+      ]
+    },
+    "visualization": {
+      "dashboard": {
+        "layout": {
+          "rows": 3,
+          "columns": 4,
+          "widgets": [
+            {
+              "id": "line_overview",
+              "type": "gauge",
+              "title": "Overall Line Efficiency",
+              "position": {
+                "row": 0,
+                "col": 0
+              },
+              "refresh_rate_s": 30
+            },
+            {
+              "id": "equipment_status",
+              "type": "status_grid",
+              "title": "Machine Status",
+              "position": {
+                "row": 0,
+                "col": 1
+              },
+              "refresh_rate_s": 30
+            },
+            {
+              "id": "buffer_levels",
+              "type": "chart",
+              "title": "Buffer Levels Over Time",
+              "position": {
+                "row": 0,
+                "col": 2
+              },
+              "refresh_rate_s": 30
+            },
+            {
+              "id": "kpi_performance",
+              "type": "kpi_cards",
+              "title": "Key Performance Indicators",
+              "position": {
+                "row": 1,
+                "col": 0
+              },
+              "refresh_rate_s": 60
+            },
+            {
+              "id": "alerts_summary",
+              "type": "alert_list",
+              "title": "Recent Alerts",
+              "position": {
+                "row": 1,
+                "col": 1
+              },
+              "refresh_rate_s": 30
+            },
+            {
+              "id": "production_timeline",
+              "type": "timeline",
+              "title": "Production Timeline",
+              "position": {
+                "row": 1,
+                "col": 2
+              },
+              "refresh_rate_s": 30
+            }
+          ]
+        },
+        "color_scheme": {
+          "normal": "#4CAF50",
+          "warning": "#FFC107",
+          "critical": "#F44336",
+          "emergency": "#9C27B0"
+        }
+      }
+    }
+  },
+  "data_flows": {
+    "connections": [
+      {
+        "source": "OPC-UA Gateway",
+        "destination": "Analytics Engine",
+        "protocol": "REST",
+        "update_frequency_s": 5
+      },
+      {
+        "source": "MQTT Collector",
+        "destination": "Analytics Engine",
+        "protocol": "WebSocket",
+        "update_frequency_s": 10
+      },
+      {
+        "source": "Analytics Engine",
+        "destination": "Visualization Dashboard",
+        "protocol": "WebSocket",
+        "update_frequency_s": 30
+      },
+      {
+        "source": "Analytics Engine",
+        "destination": "Alerts Engine",
+        "protocol": "REST",
+        "update_frequency_s": 30
+      }
+    ]
+  },
+  "alerts": {
+    "thresholds": [
+      {
+        "name": "High Equipment Downtime",
+        "severity": "warning",
+        "condition": "downtime_s > 3600",
+        "description": "Equipment has been down for more than an hour"
+      },
+      {
+        "name": "Buffer Capacity Exceeded",
+        "severity": "critical",
+        "condition": "buffer_level > 0.9 * capacity",
+        "description": "Buffer level exceeds 90% capacity"
+      },
+      {
+        "name": "Unexpected Machine Stop",
+        "severity": "emergency",
+        "condition": "machine_status = 'stopped' AND reason_code IS NOT NULL",
+        "description": "Machine stopped unexpectedly"
+      },
+      {
+        "name": "Peak Energy Consumption",
+        "severity": "warning",
+        "condition": "energy_kwh > 1000",
+        "description": "Energy consumption exceeds 1000 kWh"
+      }
+    ]
+  },
+  "kpis": {
+    "indicators": [
+      {
+        "name": "Overall Equipment Effectiveness",
+        "target": 85,
+        "unit": "%",
+        "calculation": "availability * performance * quality",
+        "description": "Combined measure of equipment efficiency"
+      },
+      {
+        "name": "Production Rate",
+        "target": 100,
+        "unit": "units/hour",
+        "calculation": "total_units / (total_time / 3600)",
+        "description": "Number of units produced per hour"
+      },
+      {
+        "name": "Equipment Availability",
+        "target": 90,
+        "unit": "%",
+        "calculation": "uptime_s / (uptime_s + downtime_s)",
+        "description": "Percentage of time equipment is operational"
+      },
+      {
+        "name": "Energy Consumption",
+        "target": 1000,
+        "unit": "kWh",
+        "calculation": "SUM(power_working_kw * duration_s) / 3600",
+        "description": "Total energy consumed by the production line"
+      }
+    ]
+  }
+}

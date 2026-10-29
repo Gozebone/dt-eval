@@ -1,0 +1,225 @@
+{
+  "components": {
+    "data_collection": {
+      "modules": [
+        {
+          "name": "opcua_collector",
+          "type": "OPC-UA Client",
+          "description": "Collects real-time data from machines via OPC-UA protocol",
+          "frequency": "10s"
+        },
+        {
+          "name": "mqtt_collector",
+          "type": "MQTT Client",
+          "description": "Receives data from sensors and external systems via MQTT",
+          "frequency": "5s"
+        }
+      ]
+    },
+    "analytics_engine": {
+      "name": "analytics_engine",
+      "type": "Stream Processing Engine",
+      "description": "Processes incoming data streams for real-time analytics and anomaly detection",
+      "frequency": "1s"
+    },
+    "ml_models": {
+      "models": [
+        {
+          "name": "predictive_maintenance",
+          "type": "Machine Learning Model",
+          "description": "Predicts equipment failures based on historical and real-time data",
+          "frequency": "10s"
+        },
+        {
+          "name": "performance_optimization",
+          "type": "Machine Learning Model",
+          "description": "Optimizes production line performance based on current efficiency metrics",
+          "frequency": "30s"
+        }
+      ]
+    },
+    "visualization": {
+      "dashboard": {
+        "name": "production_dashboard",
+        "type": "Web Dashboard",
+        "description": "Real-time visualization of production line status and KPIs",
+        "widgets": [
+          {
+            "type": "gauge",
+            "title": "Line Efficiency",
+            "data_source": "analytics_engine",
+            "target": "efficiency_pct"
+          },
+          {
+            "type": "chart",
+            "title": "Power Consumption",
+            "data_source": "analytics_engine",
+            "target": "power_consumption_kwh"
+          },
+          {
+            "type": "map",
+            "title": "Machine Status",
+            "data_source": "opcua_collector",
+            "target": "machine_status"
+          }
+        ]
+      }
+    }
+  },
+  "data_flows": {
+    "connections": [
+      {
+        "from": "opcua_collector",
+        "to": "analytics_engine",
+        "protocol": "REST",
+        "frequency": "10s"
+      },
+      {
+        "from": "mqtt_collector",
+        "to": "analytics_engine",
+        "protocol": "MQTT",
+        "frequency": "5s"
+      },
+      {
+        "from": "analytics_engine",
+        "to": "predictive_maintenance",
+        "protocol": "WebSocket",
+        "frequency": "10s"
+      },
+      {
+        "from": "analytics_engine",
+        "to": "performance_optimization",
+        "protocol": "WebSocket",
+        "frequency": "30s"
+      },
+      {
+        "from": "analytics_engine",
+        "to": "production_dashboard",
+        "protocol": "WebSocket",
+        "frequency": "1s"
+      }
+    ]
+  },
+  "visualization_layout": {
+    "dashboard": {
+      "layout": "grid",
+      "columns": 3,
+      "widgets": [
+        {
+          "position": "0,0",
+          "type": "gauge",
+          "title": "Line Efficiency",
+          "color_scheme": "green_to_red"
+        },
+        {
+          "position": "1,0",
+          "type": "chart",
+          "title": "Power Consumption",
+          "color_scheme": "blue_to_orange"
+        },
+        {
+          "position": "2,0",
+          "type": "map",
+          "title": "Machine Status",
+          "color_scheme": "status_colors"
+        },
+        {
+          "position": "0,1",
+          "type": "table",
+          "title": "Production Metrics",
+          "color_scheme": "default"
+        },
+        {
+          "position": "1,1",
+          "type": "timeline",
+          "title": "Event Timeline",
+          "color_scheme": "default"
+        },
+        {
+          "position": "2,1",
+          "type": "alert_list",
+          "title": "Active Alerts",
+          "color_scheme": "alert_colors"
+        }
+      ]
+    }
+  },
+  "alerts": [
+    {
+      "id": "low_efficiency",
+      "name": "Low Line Efficiency",
+      "description": "Efficiency drops below 80%",
+      "severity": "warning",
+      "threshold": {
+        "operator": "<",
+        "value": 80
+      },
+      "trigger": "analytics_engine",
+      "actions": [
+        "send_notification",
+        "log_event"
+      ]
+    },
+    {
+      "id": "high_power",
+      "name": "High Power Consumption",
+      "description": "Power consumption exceeds 50kW",
+      "severity": "critical",
+      "threshold": {
+        "operator": ">",
+        "value": 50
+      },
+      "trigger": "analytics_engine",
+      "actions": [
+        "send_notification",
+        "log_event"
+      ]
+    },
+    {
+      "id": "machine_down",
+      "name": "Machine Down",
+      "description": "Machine is offline",
+      "severity": "emergency",
+      "threshold": {
+        "operator": "==",
+        "value": "offline"
+      },
+      "trigger": "opcua_collector",
+      "actions": [
+        "send_notification",
+        "log_event",
+        "activate_maintenance"
+      ]
+    }
+  ],
+  "kpis": [
+    {
+      "name": "line_efficiency",
+      "description": "Percentage of time the production line is actively producing",
+      "target": 95,
+      "measurement": "analytics_engine",
+      "formula": "(production_time / total_time) * 100"
+    },
+    {
+      "name": "power_consumption",
+      "description": "Total energy consumed by the production line",
+      "target": 45,
+      "measurement": "analytics_engine",
+      "formula": "SUM(power_working_kw)"
+    },
+    {
+      "name": "machine_utilization",
+      "description": "Percentage of time machines are in operation",
+      "target": 90,
+      "measurement": "analytics_engine",
+      "formula": "(active_time / total_time) * 100"
+    },
+    {
+      "name": "production_rate",
+      "description": "Number of units produced per hour",
+      "target": 100,
+      "measurement": "analytics_engine",
+      "formula": "units_produced / (total_time / 3600)"
+    }
+  ]
+}

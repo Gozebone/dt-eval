@@ -1,0 +1,92 @@
+{
+  "production_type": "serial production line with 3 machines connected in series",
+  "processes": [
+    "machine processing in series"
+  ],
+  "equipment": [
+    "M1",
+    "M2",
+    "M3",
+    "buffers B0, B1, B2"
+  ],
+  "sensors": [
+    "machine processing time (90, 70, 110 s)",
+    "machine availability (99%, 98%, 99%)",
+    "machine MTTR (600, 900, 1200 s)",
+    "machine power (3.0 kW, 4.5 kW, 6.0 kW)"
+  ],
+  "goals": "simulate the production line's behavior over 5 days",
+  "data_sources": "provided JSON with machine and buffer parameters, arrival rate",
+  "update_frequency": "static (not updating)",
+  "critical_parameters": {
+    "M1": "Work_power_kw: 3.0 kW",
+    "M2": "Work_power_kw: 4.5 kW",
+    "M3": "Work_power_kw: 6.0 kW",
+    "B0": "Capacity: 15",
+    "B1": "Capacity: 5",
+    "B2": "Capacity: 5"
+  },
+  "line": {
+    "topology": "serial",
+    "source": {
+      "inter_arrival_time_s": 60
+    },
+    "stations": [
+      {
+        "id": "M1",
+        "processing_time_s": 90,
+        "availability_pct": 99,
+        "mttr_s": 600,
+        "power_working_kw": 3.0,
+        "power_idle_kw": 0.3
+      },
+      {
+        "id": "M2",
+        "processing_time_s": 70,
+        "availability_pct": 98,
+        "mttr_s": 900,
+        "power_working_kw": 4.5,
+        "power_idle_kw": 0.45
+      },
+      {
+        "id": "M3",
+        "processing_time_s": 110,
+        "availability_pct": 99,
+        "mttr_s": 1200,
+        "power_working_kw": 6.0,
+        "power_idle_kw": 0.6
+      }
+    ],
+    "buffers": [
+      {
+        "id": "B0",
+        "capacity": 15,
+        "before": "source",
+        "after": "M1"
+      },
+      {
+        "id": "B1",
+        "capacity": 5,
+        "before": "M1",
+        "after": "M2"
+      },
+      {
+        "id": "B2",
+        "capacity": 5,
+        "before": "M2",
+        "after": "M3"
+      }
+    ]
+  },
+  "des_horizon": {
+    "warmup_s": null,
+    "window_s": null,
+    "replications": null
+  },
+  "units": {
+    "time": "s",
+    "power": "kW",
+    "energy": "kWh"
+  },
+  "additional_info": "No additional critical parameters beyond those in the provided JSON"
+}

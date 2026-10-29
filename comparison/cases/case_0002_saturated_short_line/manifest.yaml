@@ -1,0 +1,37 @@
+case_id: case_0002_saturated_short_line
+title: 3-machine short line, arrival rate above the bottleneck (buffers saturate)
+time_units: s
+reference:
+  log_rep: 0
+  replications: 10
+  warmup_s: 21600
+  window_s: 432000
+  seed: 20260909
+arrival:
+  inter_arrival_s: 60
+machines:
+  - id: M1
+    process_time_s: 90
+    availability: 0.99
+    mttr_s: 600
+    work_power_kw: 3.0
+    idle_power_kw: 0.3
+  - id: M2
+    process_time_s: 70
+    availability: 0.98
+    mttr_s: 900
+    work_power_kw: 4.5
+    idle_power_kw: 0.45
+  - id: M3
+    process_time_s: 110
+    availability: 0.99
+    mttr_s: 1200
+    work_power_kw: 6.0
+    idle_power_kw: 0.6
+buffers:
+  - id: B0
+    capacity: 15
+  - id: B1
+    capacity: 5
+  - id: B2
+    capacity: 5

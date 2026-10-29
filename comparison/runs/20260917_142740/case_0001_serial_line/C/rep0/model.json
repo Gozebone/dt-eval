@@ -1,0 +1,32 @@
+{
+  "requirements": {
+    "production_type": "Not specified",
+    "processes": [
+      "Average processing times for M1\u2013M5 (not detailed)"
+    ],
+    "equipment": [
+      "Machines M1\u2013M5",
+      "Source",
+      "Sink",
+      "Buffers B0\u2013B4 (B0:20, B1\u2013B4:8)"
+    ],
+    "sensors": "Not specified",
+    "goals": "Assess throughput, WIP, energy consumption per unit, machine availability, MTTR, buffer levels, processing times, energy multipliers.",
+    "data_sources": "Real-time monitoring from an existing factory (periodic data provided).",
+    "update_frequency": "Continuous updates based on each processed unit.",
+    "critical_parameters": {
+      "throughput": "Not defined",
+      "WIP": "Not defined",
+      "energy_consumption_per_unit": "Not defined",
+      "machine_availability": "Not defined",
+      "MTTR": "Not defined",
+      "buffer_levels": "Not defined",
+      "processing_time_s": "Defined for M1\u2013M5",
+      "energy_multipliers": "Defined for work/idle power"
+    },
+    "additional_info": "Inter_arrival time: 130 s. Machine parameters (availability, MTTR, work/idle power) provided in JSON. Buffer capacities given. Simulation requirement: Create simpy.Environment, build structure, simulate 432000 s in modular level. No specific sensors or production type defined. Need clarification on thresholds or sensors."
+  },
+  "schema": {
+    "raw": ""
+  }
+}

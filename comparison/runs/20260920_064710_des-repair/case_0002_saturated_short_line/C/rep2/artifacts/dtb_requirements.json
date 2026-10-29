@@ -1,0 +1,129 @@
+{
+  "production_type": "serial production line with 3 machines in series",
+  "processes": [
+    "M1",
+    "M2",
+    "M3"
+  ],
+  "equipment": {
+    "machines": [
+      {
+        "id": "M1",
+        "processing_time_s": 90,
+        "availability": 0.99,
+        "mttr_s": 600,
+        "work_power_kw": 3.0,
+        "idle_power_kw": 0.3
+      },
+      {
+        "id": "M2",
+        "processing_time_s": 70,
+        "availability": 0.98,
+        "mttr_s": 900,
+        "work_power_kw": 4.5,
+        "idle_power_kw": 0.45
+      },
+      {
+        "id": "M3",
+        "processing_time_s": 110,
+        "availability": 0.99,
+        "mttr_s": 1200,
+        "work_power_kw": 6.0,
+        "idle_power_kw": 0.6
+      }
+    ],
+    "buffers": [
+      {
+        "id": "B0",
+        "capacity": 15
+      },
+      {
+        "id": "B1",
+        "capacity": 5
+      },
+      {
+        "id": "B2",
+        "capacity": 5
+      }
+    ]
+  },
+  "sensors": [
+    "processing_time_s",
+    "availability",
+    "mttr_s",
+    "work_power_kw",
+    "idle_power_kw",
+    "buffer_capacity"
+  ],
+  "goals": "simulate the system for at least 432000 seconds",
+  "data_sources": "the provided JSON data",
+  "update_frequency": "static data, no updates during simulation",
+  "critical_parameters": {
+    "processing_time_s": "90 s",
+    "availability": "0.99",
+    "mttr_s": "600 s",
+    "work_power_kw": "3.0 kW",
+    "idle_power_kw": "0.3 kW",
+    "buffer_capacity": "15 units"
+  },
+  "line": {
+    "topology": "serial",
+    "source": {
+      "inter_arrival_time_s": 60
+    },
+    "stations": [
+      {
+        "id": "M1",
+        "processing_time_s": 90,
+        "availability": 0.99,
+        "mttr_s": 600,
+        "work_power_kw": 3.0,
+        "idle_power_kw": 0.3
+      },
+      {
+        "id": "M2",
+        "processing_time_s": 70,
+        "availability": 0.98,
+        "mttr_s": 900,
+        "work_power_kw": 4.5,
+        "idle_power_kw": 0.45
+      },
+      {
+        "id": "M3",
+        "processing_time_s": 110,
+        "availability": 0.99,
+        "mttr_s": 1200,
+        "work_power_kw": 6.0,
+        "idle_power_kw": 0.6
+      }
+    ],
+    "buffers": [
+      {
+        "id": "B0",
+        "capacity": 15
+      },
+      {
+        "id": "B1",
+        "capacity": 5
+      },
+      {
+        "id": "B2",
+        "capacity": 5
+      }
+    ],
+    "defects": {
+      "rate": null
+    }
+  },
+  "des_horizon": {
+    "warmup_s": null,
+    "window_s": null,
+    "replications": null
+  },
+  "units": {
+    "time": "s",
+    "power": "kW",
+    "energy": "kWh"
+  },
+  "additional_info": "No additional information provided"
+}

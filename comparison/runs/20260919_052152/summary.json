@@ -1,0 +1,725 @@
+[
+  {
+    "method": "C",
+    "case": "case_0001_serial_line",
+    "rep": 0,
+    "status": "generation_error",
+    "error": "URLError: <urlopen error timed out>",
+    "elapsed_generation_s": null,
+    "elapsed_simulation_s": null,
+    "llm_calls": 0,
+    "llm_tokens_estimate": null,
+    "generated_model_file": null,
+    "kpis": {
+      "throughput_per_hour": null,
+      "utilization": null,
+      "wip_parts": null,
+      "energy_per_part_kwh": null,
+      "native": {}
+    },
+    "assumptions": null,
+    "notes": [
+      "Method C could not be driven; no structure recovered"
+    ],
+    "adapter_elapsed_s": 129.07
+  },
+  {
+    "method": "C",
+    "case": "case_0001_serial_line",
+    "rep": 1,
+    "status": "generation_error",
+    "error": "URLError: <urlopen error timed out>",
+    "elapsed_generation_s": null,
+    "elapsed_simulation_s": null,
+    "llm_calls": 0,
+    "llm_tokens_estimate": null,
+    "generated_model_file": null,
+    "kpis": {
+      "throughput_per_hour": null,
+      "utilization": null,
+      "wip_parts": null,
+      "energy_per_part_kwh": null,
+      "native": {}
+    },
+    "assumptions": null,
+    "notes": [
+      "Method C could not be driven; no structure recovered"
+    ],
+    "adapter_elapsed_s": 38.1
+  },
+  {
+    "method": "C",
+    "case": "case_0001_serial_line",
+    "rep": 2,
+    "status": "generation_error",
+    "error": "RuntimeError: interview failed: agent returned non-JSON after 3 attempts: <think>\n\n</think>\ncompleted: false, \nmessage: \"Could you please tell me more about the production type and the specific sensors you are using to monitor the processes? Additionally, could you clarify the goals of creating the digital twin and the sources of the available data?\"",
+    "elapsed_generation_s": null,
+    "elapsed_simulation_s": null,
+    "llm_calls": 0,
+    "llm_tokens_estimate": null,
+    "generated_model_file": null,
+    "kpis": {
+      "throughput_per_hour": null,
+      "utilization": null,
+      "wip_parts": null,
+      "energy_per_part_kwh": null,
+      "native": {}
+    },
+    "assumptions": null,
+    "notes": [
+      "Method C could not be driven; no structure recovered"
+    ],
+    "adapter_elapsed_s": 28.7
+  },
+  {
+    "method": "C",
+    "case": "case_0002_saturated_short_line",
+    "rep": 0,
+    "status": "generation_error",
+    "error": "URLError: <urlopen error timed out>",
+    "elapsed_generation_s": null,
+    "elapsed_simulation_s": null,
+    "llm_calls": 0,
+    "llm_tokens_estimate": null,
+    "generated_model_file": null,
+    "kpis": {
+      "throughput_per_hour": null,
+      "utilization": null,
+      "wip_parts": null,
+      "energy_per_part_kwh": null,
+      "native": {}
+    },
+    "assumptions": null,
+    "notes": [
+      "Method C could not be driven; no structure recovered"
+    ],
+    "adapter_elapsed_s": 214.71
+  },
+  {
+    "method": "C",
+    "case": "case_0002_saturated_short_line",
+    "rep": 1,
+    "status": "generation_error",
+    "error": "URLError: <urlopen error timed out>",
+    "elapsed_generation_s": null,
+    "elapsed_simulation_s": null,
+    "llm_calls": 0,
+    "llm_tokens_estimate": null,
+    "generated_model_file": null,
+    "kpis": {
+      "throughput_per_hour": null,
+      "utilization": null,
+      "wip_parts": null,
+      "energy_per_part_kwh": null,
+      "native": {}
+    },
+    "assumptions": null,
+    "notes": [
+      "Method C could not be driven; no structure recovered"
+    ],
+    "adapter_elapsed_s": 74.61
+  },
+  {
+    "method": "C",
+    "case": "case_0002_saturated_short_line",
+    "rep": 2,
+    "status": "generation_error",
+    "error": "RuntimeError: interview failed: agent returned non-JSON after 3 attempts: <think>\n\n</think>\ncompleted: false\nmessage: \u041d\u0430\u043c \u043d\u0443\u0436\u043d\u043e \u0431\u043e\u043b\u044c\u0448\u0435 \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u0438 \u043e \u0442\u0438\u043f\u0435 \u043f\u0440\u043e\u0438\u0437\u0432\u043e\u0434\u0441\u0442\u0432\u0430, \u043f\u0440\u043e\u0446\u0435\u0441\u0441\u0430\u0445 \u0438 \u043e\u0431\u043e\u0440\u0443\u0434\u043e\u0432\u0430\u043d\u0438\u0438. \u0422\u0430\u043a\u0436\u0435 \u0432\u0430\u0436\u043d\u043e \u0437\u043d\u0430\u0442\u044c \u0446\u0435\u043b\u0438 \u0441\u043e\u0437\u0434\u0430\u043d\u0438\u044f \u0446\u0438\u0444\u0440\u043e\u0432\u043e\u0433\u043e \u0434\u0432\u043e\u0439\u043d\u0438\u043a\u0430, \u0438\u0441\u0442\u043e\u0447\u043d\u0438\u043a\u0438 \u0434\u0430\u043d\u043d\u044b\u0445, \u0447\u0430\u0441\u0442\u043e\u0442\u0443 \u043e\u0431\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u044f \u0434\u0430\u043d\u043d\u044b\u0445 \u0438 \u043a\u0440\u0438\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u044b. \u0412 \u0447\u0430\u0441\u0442\u043d\u043e\u0441\u0442\u0438, \u043d\u0443\u0436\u043d\u043e \u0443\u0442\u043e\u0447\u043d\u0438\u0442\u044c \u0434\u0435\u0442\u0430\u043b\u0438 \u043e \u0434\u0430\u0442\u0447\u0438\u043a\u0430\u0445, \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u0445, \u043a",
+    "elapsed_generation_s": null,
+    "elapsed_simulation_s": null,
+    "llm_calls": 0,
+    "llm_tokens_estimate": null,
+    "generated_model_file": null,
+    "kpis": {
+      "throughput_per_hour": null,
+      "utilization": null,
+      "wip_parts": null,
+      "energy_per_part_kwh": null,
+      "native": {}
+    },
+    "assumptions": null,
+    "notes": [
+      "Method C could not be driven; no structure recovered"
+    ],
+    "adapter_elapsed_s": 21.57
+  },
+  {
+    "method": "C",
+    "case": "case_0003_starved_six_line",
+    "rep": 0,
+    "status": "generation_error",
+    "error": "URLError: <urlopen error timed out>",
+    "elapsed_generation_s": null,
+    "elapsed_simulation_s": null,
+    "llm_calls": 0,
+    "llm_tokens_estimate": null,
+    "generated_model_file": null,
+    "kpis": {
+      "throughput_per_hour": null,
+      "utilization": null,
+      "wip_parts": null,
+      "energy_per_part_kwh": null,
+      "native": {}
+    },
+    "assumptions": null,
+    "notes": [
+      "Method C could not be driven; no structure recovered"
+    ],
+    "adapter_elapsed_s": 31.1
+  },
+  {
+    "method": "C",
+    "case": "case_0003_starved_six_line",
+    "rep": 1,
+    "status": "generation_error",
+    "error": "RuntimeError: interview failed: responder LLM failed: URLError: <urlopen error [Errno 101] Network is unreachable>",
+    "elapsed_generation_s": null,
+    "elapsed_simulation_s": null,
+    "llm_calls": 0,
+    "llm_tokens_estimate": null,
+    "generated_model_file": null,
+    "kpis": {
+      "throughput_per_hour": null,
+      "utilization": null,
+      "wip_parts": null,
+      "energy_per_part_kwh": null,
+      "native": {}
+    },
+    "assumptions": null,
+    "notes": [
+      "Method C could not be driven; no structure recovered"
+    ],
+    "adapter_elapsed_s": 51.26
+  },
+  {
+    "method": "C",
+    "case": "case_0003_starved_six_line",
+    "rep": 2,
+    "status": "ok",
+    "error": null,
+    "elapsed_generation_s": 528.946,
+    "elapsed_simulation_s": null,
+    "llm_calls": 3,
+    "llm_tokens_estimate": null,
+    "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260919_052152/case_0003_starved_six_line/C/rep2/model.json",
+    "kpis": {
+      "throughput_per_hour": null,
+      "utilization": null,
+      "wip_parts": null,
+      "energy_per_part_kwh": null,
+      "native": {
+        "machine_stats": {
+          "M1": {
+            "mentioned": true,
+            "process_time_found": true,
+            "availability_found": false
+          }
+        },
+        "machines_mentioned": 1,
+        "machines_truth": 6,
+        "buffers": {
+          "B0": true,
+          "B1": false,
+          "B2": false,
+          "B3": false,
+          "B4": false,
+          "B5": false
+        },
+        "arrival_found": false,
+        "equipment_count": 3,
+        "artifact_chars": {
+          "config": 0,
+          "sim": 0
+        },
+        "machine_ids_in_dt_output": {
+          "M1": false,
+          "M2": false,
+          "M3": false,
+          "M4": false,
+          "M5": false,
+          "M6": false
+        },
+        "machines_mentioned_in_dt": 0,
+        "pychrono_referenced": false,
+        "stage_shapes": {
+          "db_answer": {
+            "chars": 2844,
+            "ids_present": 2,
+            "ids_truth": 12,
+            "ddl_phrases": [
+              "create index",
+              "create table",
+              "insert into",
+              "not null",
+              "primary key"
+            ],
+            "sql_types": [
+              "double precision",
+              "jsonb",
+              "timestamptz"
+            ],
+            "looks_like_ddl": true
+          },
+          "db_recorded": {
+            "chars": 2940,
+            "ids_present": 2,
+            "ids_truth": 12,
+            "ddl_phrases": [
+              "not null",
+              "primary key"
+            ],
+            "sql_types": [
+              "double precision",
+              "jsonb",
+              "timestamptz"
+            ],
+            "looks_like_ddl": true
+          },
+          "dt_config": {
+            "chars": 0,
+            "ids_present": 0,
+            "ids_truth": 12,
+            "looks_like_json": false
+          },
+          "dt_sim": {
+            "chars": 0,
+            "ids_present": 0,
+            "ids_truth": 12
+          },
+          "dt_des": {
+            "chars": 0,
+            "ids_present": 0,
+            "ids_truth": 12
+          }
+        },
+        "interview_turns": 1,
+        "agent_tasks": 3,
+        "agent_tasks_attempted": 3,
+        "responder_calls": 0,
+        "llm_calls_split": {
+          "ui_agent": 2,
+          "db_agent": 1,
+          "dt_agent": 0,
+          "harness_responder": 0
+        },
+        "responder_model": "openai/gpt-5-mini",
+        "api_url": "http://176.119.159.227:8000",
+        "agent_status": {
+          "agent0": "active",
+          "agent1": "active",
+          "agent2": "active"
+        },
+        "db_stage": "unavailable",
+        "db_note": "DB agent (agent 1) output was not JSON; raw text kept in artifacts/dtb_schema.json",
+        "dt_stage": "unavailable",
+        "dt_note": "DT agent (agent 2) produced no output for any slot: config: URLError: <urlopen error timed out>; sim: URLError: <urlopen error timed out>; des: URLError: <urlopen error timed out>",
+        "dt_slots_ok": 0,
+        "dt_slots_total": 3,
+        "des_stage": "unavailable",
+        "des_exec_status": null,
+        "des_exec_error": null,
+        "des_parse_error": null,
+        "des_kpis": null,
+        "kpi_source": null,
+        "des_python": "/ssd/projects/dt-eval/comparison/.venv-des/bin/python",
+        "dt_schema_input": "ok",
+        "capability": "Method C emits a requirements document + PostgreSQL schema and (agent 2) a twin configuration, a PyChrono multi-physics script and a discrete-event SimPy model; the DES model is executed and its KPI contract parsed, so throughput/WIP/energy are populated when that slot succeeds and null when it does not"
+      }
+    },
+    "assumptions": null,
+    "notes": [
+      "structural recovery only: 1/6 machines mentioned in C's requirements",
+      "DB stage (agent 1) not recovered \u2014 DB agent (agent 1) output was not JSON; raw text kept in artifacts/dtb_schema.json",
+      "DT stage (agent 2) ran: 0 chars of twin config, 0 chars of PyChrono script; 0/6 machine ids appear in that output. The script is not executed (PyChrono is not installed on the harness host and models rigid bodies, not the case's discrete-event semantics), so no KPI is derived from it",
+      "DT stage (agent 2): DT agent (agent 2) produced no output for any slot: config: URLError: <urlopen error timed out>; sim: URLError: <urlopen error timed out>; des: URLError: <urlopen error timed out>"
+    ],
+    "adapter_elapsed_s": 529.04
+  },
+  {
+    "method": "C",
+    "case": "case_0004_failure_heavy_line",
+    "rep": 0,
+    "status": "generation_error",
+    "error": "URLError: <urlopen error timed out>",
+    "elapsed_generation_s": null,
+    "elapsed_simulation_s": null,
+    "llm_calls": 0,
+    "llm_tokens_estimate": null,
+    "generated_model_file": null,
+    "kpis": {
+      "throughput_per_hour": null,
+      "utilization": null,
+      "wip_parts": null,
+      "energy_per_part_kwh": null,
+      "native": {}
+    },
+    "assumptions": null,
+    "notes": [
+      "Method C could not be driven; no structure recovered"
+    ],
+    "adapter_elapsed_s": 248.88
+  },
+  {
+    "method": "C",
+    "case": "case_0004_failure_heavy_line",
+    "rep": 1,
+    "status": "generation_error",
+    "error": "URLError: <urlopen error timed out>",
+    "elapsed_generation_s": null,
+    "elapsed_simulation_s": null,
+    "llm_calls": 0,
+    "llm_tokens_estimate": null,
+    "generated_model_file": null,
+    "kpis": {
+      "throughput_per_hour": null,
+      "utilization": null,
+      "wip_parts": null,
+      "energy_per_part_kwh": null,
+      "native": {}
+    },
+    "assumptions": null,
+    "notes": [
+      "Method C could not be driven; no structure recovered"
+    ],
+    "adapter_elapsed_s": 80.98
+  },
+  {
+    "method": "C",
+    "case": "case_0004_failure_heavy_line",
+    "rep": 2,
+    "status": "ok",
+    "error": null,
+    "elapsed_generation_s": 271.024,
+    "elapsed_simulation_s": 0.068,
+    "llm_calls": 6,
+    "llm_tokens_estimate": null,
+    "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260919_052152/case_0004_failure_heavy_line/C/rep2/model.json",
+    "kpis": {
+      "throughput_per_hour": null,
+      "utilization": null,
+      "wip_parts": null,
+      "energy_per_part_kwh": null,
+      "native": {
+        "machine_stats": {
+          "M1": {
+            "mentioned": true,
+            "process_time_found": true,
+            "availability_found": false
+          },
+          "M2": {
+            "mentioned": true,
+            "process_time_found": false,
+            "availability_found": false
+          },
+          "M3": {
+            "mentioned": true,
+            "process_time_found": true,
+            "availability_found": false
+          }
+        },
+        "machines_mentioned": 3,
+        "machines_truth": 5,
+        "buffers": {
+          "B0": true,
+          "B1": false,
+          "B2": false,
+          "B3": false,
+          "B4": false
+        },
+        "arrival_found": true,
+        "equipment_count": 5,
+        "artifact_chars": {
+          "config": 5050,
+          "sim": 8085
+        },
+        "machine_ids_in_dt_output": {
+          "M1": true,
+          "M2": true,
+          "M3": true,
+          "M4": false,
+          "M5": false
+        },
+        "machines_mentioned_in_dt": 3,
+        "pychrono_referenced": true,
+        "stage_shapes": {
+          "db_answer": {
+            "chars": 2867,
+            "ids_present": 4,
+            "ids_truth": 10,
+            "ddl_phrases": [
+              "create table",
+              "insert into",
+              "not null",
+              "primary key"
+            ],
+            "sql_types": [
+              "double precision",
+              "jsonb",
+              "timestamptz"
+            ],
+            "looks_like_ddl": true
+          },
+          "db_recorded": {
+            "chars": 2970,
+            "ids_present": 4,
+            "ids_truth": 10,
+            "ddl_phrases": [
+              "create table",
+              "not null",
+              "primary key"
+            ],
+            "sql_types": [
+              "double precision",
+              "jsonb",
+              "timestamptz"
+            ],
+            "looks_like_ddl": true
+          },
+          "dt_config": {
+            "chars": 5050,
+            "ids_present": 0,
+            "ids_truth": 10,
+            "looks_like_json": true
+          },
+          "dt_sim": {
+            "chars": 8085,
+            "ids_present": 4,
+            "ids_truth": 10
+          },
+          "dt_des": {
+            "chars": 8821,
+            "ids_present": 4,
+            "ids_truth": 10
+          }
+        },
+        "interview_turns": 1,
+        "agent_tasks": 6,
+        "agent_tasks_attempted": 6,
+        "responder_calls": 0,
+        "llm_calls_split": {
+          "ui_agent": 2,
+          "db_agent": 1,
+          "dt_agent": 3,
+          "harness_responder": 0
+        },
+        "responder_model": "openai/gpt-5-mini",
+        "api_url": "http://176.119.159.227:8000",
+        "agent_status": {
+          "agent0": "active",
+          "agent1": "active",
+          "agent2": "active"
+        },
+        "db_stage": "unavailable",
+        "db_note": "DB agent (agent 1) output was not JSON; raw text kept in artifacts/dtb_schema.json",
+        "dt_stage": "ok",
+        "dt_note": null,
+        "dt_slots_ok": 3,
+        "dt_slots_total": 3,
+        "des_stage": "simulation_error",
+        "des_exec_status": "simulation_error",
+        "des_exec_error": "DES model exited 1: Traceback (most recent call last):\n  File \"/ssd/projects/dt-eval/comparison/runs/20260919_052152/case_0004_failure_heavy_line/C/rep2/run_des_model.py\", line 266, in <module>\n    main()\n    ~~~~^^\n  File \"/ssd/projects/dt-eval/comparison/runs/20260919_052152/case_0004_failure_heavy_line/C/rep2/run_des_model.py\", line 250, in main\n    throughput, wip, energy_pp = run_simulation(seed)\n                                 ~~~~~~~~~~~~~~^^^^^^\n  File \"/ssd/projects/dt-eval/comparison/runs/20260919_052152/case_0004_failure_heavy_line/C/rep2/run_des_model.py\", line 238, in run_simulation\n    model = LineModel(env)\n  File \"/ssd/projects/dt-eval/comparison/runs/20260919_052152/case_0004_failure_heavy_line/C/rep2/run_des_model.py\", line 125, in __init__\n    self._initialize_components()\n    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^\n  File \"/ssd/projects/dt-eval/comparison/runs/20260919_052152/case_0004_failure_heavy_line/C/rep2/run_des_model.py\", line 154, in _initialize_components\n    self.env.process(self._connect_buffers_to_stations())\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/ssd/projects/dt-eval/comparison/.venv-des/lib64/python3.14/site-packages/simpy/events.py\", line 342, in __init__\n    raise ValueError(f'{generator} is not a generator.')\nValueError: None is not a generator.\n",
+        "des_parse_error": null,
+        "des_kpis": null,
+        "kpi_source": null,
+        "des_python": "/ssd/projects/dt-eval/comparison/.venv-des/bin/python",
+        "dt_schema_input": "ok",
+        "capability": "Method C emits a requirements document + PostgreSQL schema and (agent 2) a twin configuration, a PyChrono multi-physics script and a discrete-event SimPy model; the DES model is executed and its KPI contract parsed, so throughput/WIP/energy are populated when that slot succeeds and null when it does not"
+      }
+    },
+    "assumptions": null,
+    "notes": [
+      "structural recovery only: 3/5 machines mentioned in C's requirements",
+      "DB stage (agent 1) not recovered \u2014 DB agent (agent 1) output was not JSON; raw text kept in artifacts/dtb_schema.json",
+      "DT stage (agent 2) ran: 5050 chars of twin config, 8085 chars of PyChrono script; 3/5 machine ids appear in that output. The script is not executed (PyChrono is not installed on the harness host and models rigid bodies, not the case's discrete-event semantics), so no KPI is derived from it"
+    ],
+    "adapter_elapsed_s": 271.2
+  },
+  {
+    "method": "C",
+    "case": "case_0005_high_rate_line",
+    "rep": 0,
+    "status": "ok",
+    "error": null,
+    "elapsed_generation_s": 294.713,
+    "elapsed_simulation_s": 0.066,
+    "llm_calls": 5,
+    "llm_tokens_estimate": null,
+    "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260919_052152/case_0005_high_rate_line/C/rep0/model.json",
+    "kpis": {
+      "throughput_per_hour": null,
+      "utilization": null,
+      "wip_parts": null,
+      "energy_per_part_kwh": null,
+      "native": {
+        "machine_stats": {
+          "M1": {
+            "mentioned": true,
+            "process_time_found": false,
+            "availability_found": false
+          }
+        },
+        "machines_mentioned": 1,
+        "machines_truth": 4,
+        "buffers": {
+          "B0": true,
+          "B1": false,
+          "B2": false,
+          "B3": false
+        },
+        "arrival_found": false,
+        "equipment_count": 3,
+        "artifact_chars": {
+          "config": 3745,
+          "sim": 12820
+        },
+        "machine_ids_in_dt_output": {
+          "M1": true,
+          "M2": false,
+          "M3": false,
+          "M4": false
+        },
+        "machines_mentioned_in_dt": 1,
+        "pychrono_referenced": true,
+        "stage_shapes": {
+          "db_answer": {
+            "chars": 2442,
+            "ids_present": 2,
+            "ids_truth": 8,
+            "ddl_phrases": [
+              "create table",
+              "insert into",
+              "not null",
+              "primary key"
+            ],
+            "sql_types": [
+              "double precision",
+              "jsonb",
+              "timestamptz"
+            ],
+            "looks_like_ddl": true
+          },
+          "db_recorded": {
+            "chars": 2539,
+            "ids_present": 2,
+            "ids_truth": 8,
+            "ddl_phrases": [
+              "create table",
+              "not null",
+              "primary key"
+            ],
+            "sql_types": [
+              "double precision",
+              "jsonb",
+              "timestamptz"
+            ],
+            "looks_like_ddl": true
+          },
+          "dt_config": {
+            "chars": 3745,
+            "ids_present": 0,
+            "ids_truth": 8,
+            "looks_like_json": true
+          },
+          "dt_sim": {
+            "chars": 12820,
+            "ids_present": 2,
+            "ids_truth": 8
+          },
+          "dt_des": {
+            "chars": 7910,
+            "ids_present": 2,
+            "ids_truth": 8
+          }
+        },
+        "interview_turns": 1,
+        "agent_tasks": 5,
+        "agent_tasks_attempted": 5,
+        "responder_calls": 0,
+        "llm_calls_split": {
+          "ui_agent": 1,
+          "db_agent": 1,
+          "dt_agent": 3,
+          "harness_responder": 0
+        },
+        "responder_model": "openai/gpt-5-mini",
+        "api_url": "http://176.119.159.227:8000",
+        "agent_status": {
+          "agent0": "active",
+          "agent1": "active",
+          "agent2": "active"
+        },
+        "db_stage": "unavailable",
+        "db_note": "DB agent (agent 1) output was not JSON; raw text kept in artifacts/dtb_schema.json",
+        "dt_stage": "ok",
+        "dt_note": null,
+        "dt_slots_ok": 3,
+        "dt_slots_total": 3,
+        "des_stage": "simulation_error",
+        "des_exec_status": "simulation_error",
+        "des_exec_error": "DES model exited 1: Traceback (most recent call last):\n  File \"/ssd/projects/dt-eval/comparison/runs/20260919_052152/case_0005_high_rate_line/C/rep0/run_des_model.py\", line 127, in generate_parts\n    yield self.env.timeout(self.inter_arrival_time_s)\n          ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/ssd/projects/dt-eval/comparison/.venv-des/lib64/python3.14/site-packages/simpy/events.py\", line 236, in __init__\n    if delay < 0:\n       ^^^^^^^^^\nTypeError: '<' not supported between instances of 'NoneType' and 'int'\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/ssd/projects/dt-eval/comparison/runs/20260919_052152/case_0005_high_rate_line/C/rep0/run_des_model.py\", line 230, in <module>\n    throughput, wip, energy_per_part = run_simulation(seed)\n                                       ~~~~~~~~~~~~~~^^^^^^\n  File \"/ssd/projects/dt-eval/comparison/runs/20260919_052152/case_0005_high_rate_line/C/rep0/run_des_model.py\", line 180, in run_simulation\n    env.run(until=WARMUP_S + WINDOW_S)\n    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/ssd/projects/dt-eval/comparison/.venv-des/lib64/python3.14/site-packages/simpy/core.py\", line 254, in run\n    self.step()\n    ~~~~~~~~~^^\n  File \"/ssd/projects/dt-eval/comparison/.venv-des/lib64/python3.14/site-packages/simpy/core.py\", line 212, in step\n    raise exc\nTypeError: '<' not supported between instances of 'NoneType' and 'int'\n",
+        "des_parse_error": null,
+        "des_kpis": null,
+        "kpi_source": null,
+        "des_python": "/ssd/projects/dt-eval/comparison/.venv-des/bin/python",
+        "dt_schema_input": "ok",
+        "capability": "Method C emits a requirements document + PostgreSQL schema and (agent 2) a twin configuration, a PyChrono multi-physics script and a discrete-event SimPy model; the DES model is executed and its KPI contract parsed, so throughput/WIP/energy are populated when that slot succeeds and null when it does not"
+      }
+    },
+    "assumptions": null,
+    "notes": [
+      "structural recovery only: 1/4 machines mentioned in C's requirements",
+      "requirements document names the measured quantities but carries no parameter values (C's requirements stage records sensor kinds only)",
+      "DB stage (agent 1) not recovered \u2014 DB agent (agent 1) output was not JSON; raw text kept in artifacts/dtb_schema.json",
+      "DT stage (agent 2) ran: 3745 chars of twin config, 12820 chars of PyChrono script; 1/4 machine ids appear in that output. The script is not executed (PyChrono is not installed on the harness host and models rigid bodies, not the case's discrete-event semantics), so no KPI is derived from it"
+    ],
+    "adapter_elapsed_s": 294.87
+  },
+  {
+    "method": "C",
+    "case": "case_0005_high_rate_line",
+    "rep": 1,
+    "status": "generation_error",
+    "error": "RuntimeError: interview failed: agent returned non-JSON after 3 attempts: <think>\n\n</think>\ncompleted: false\nmessage: \u0423\u0442\u043e\u0447\u043d\u0438\u0442\u0435, \u043a\u0430\u043a\u043e\u0439 \u0442\u0438\u043f \u043f\u0440\u043e\u0438\u0437\u0432\u043e\u0434\u0441\u0442\u0432\u0430 \u0432\u044b \u043f\u0440\u043e\u0438\u0437\u0432\u043e\u0434\u0438\u0442\u0435? \u0422\u0430\u043a\u0436\u0435, \u043a\u0430\u043a\u0438\u0435 \u043f\u0440\u043e\u0446\u0435\u0441\u0441\u044b \u0438 \u043e\u0431\u043e\u0440\u0443\u0434\u043e\u0432\u0430\u043d\u0438\u0435 \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u044e\u0442\u0441\u044f \u0432 \u0432\u0430\u0448\u0435\u043c \u043f\u0440\u043e\u0438\u0437\u0432\u043e\u0434\u0441\u0442\u0432\u0435? \u0423\u0442\u043e\u0447\u043d\u0438\u0442\u0435, \u043a\u0430\u043a\u0438\u0435 \u0434\u0430\u0442\u0447\u0438\u043a\u0438 \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u044e\u0442\u0441\u044f \u0434\u043b\u044f \u043e\u0442\u0441\u043b\u0435\u0436\u0438\u0432\u0430\u043d\u0438\u044f \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u043e\u0432? \u0426\u0435\u043b\u0438 \u0441\u043e\u0437\u0434\u0430\u043d\u0438\u044f \u0446\u0438\u0444\u0440\u043e\u0432\u043e\u0433\u043e \u0434\u0432\u043e\u0439\u043d\u0438\u043a\u0430, \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u044b\u0435 \u0434\u0430\u043d\u043d\u044b\u0435 \u0438 \u0447\u0430\u0441\u0442\u043e\u0442\u0430 \u043e\u0431\u043d\u043e\u0432\u043b\u0435\u043d",
+    "elapsed_generation_s": null,
+    "elapsed_simulation_s": null,
+    "llm_calls": 0,
+    "llm_tokens_estimate": null,
+    "generated_model_file": null,
+    "kpis": {
+      "throughput_per_hour": null,
+      "utilization": null,
+      "wip_parts": null,
+      "energy_per_part_kwh": null,
+      "native": {}
+    },
+    "assumptions": null,
+    "notes": [
+      "Method C could not be driven; no structure recovered"
+    ],
+    "adapter_elapsed_s": 15.18
+  },
+  {
+    "method": "C",
+    "case": "case_0005_high_rate_line",
+    "rep": 2,
+    "status": "generation_error",
+    "error": "URLError: <urlopen error timed out>",
+    "elapsed_generation_s": null,
+    "elapsed_simulation_s": null,
+    "llm_calls": 0,
+    "llm_tokens_estimate": null,
+    "generated_model_file": null,
+    "kpis": {
+      "throughput_per_hour": null,
+      "utilization": null,
+      "wip_parts": null,
+      "energy_per_part_kwh": null,
+      "native": {}
+    },
+    "assumptions": null,
+    "notes": [
+      "Method C could not be driven; no structure recovered"
+    ],
+    "adapter_elapsed_s": 95.54
+  }
+]

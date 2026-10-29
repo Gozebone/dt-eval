@@ -1,0 +1,207 @@
+{
+  "components": {
+    "data_collection_modules": {
+      "sensor_data_collectors": {
+        "type": "IoT Edge Gateways",
+        "description": "Collects real-time sensor data from machines and buffers",
+        "protocols": [
+          "MQTT",
+          "OPC-UA"
+        ],
+        "update_frequency": "real-time"
+      },
+      "event_loggers": {
+        "type": "Event Stream Processors",
+        "description": "Logs detailed events for each part processed",
+        "protocols": [
+          "WebSocket",
+          "REST"
+        ],
+        "update_frequency": "continuous"
+      }
+    },
+    "analytics_engines": {
+      "statistical_analyzer": {
+        "type": "Statistical Analysis Engine",
+        "description": "Processes periodic statistical measurements for KPIs",
+        "protocols": [
+          "REST"
+        ],
+        "update_frequency": "periodic"
+      },
+      "real_time_analyzer": {
+        "type": "Real-Time Analytics Engine",
+        "description": "Analyzes continuous event streams",
+        "protocols": [
+          "WebSocket"
+        ],
+        "update_frequency": "continuous"
+      }
+    },
+    "ml_models": {
+      "predictive_maintenance": {
+        "type": "ML Predictive Maintenance Model",
+        "description": "Predicts machine failures based on MTTR and sensor data",
+        "protocols": [
+          "REST"
+        ],
+        "update_frequency": "periodic"
+      },
+      "energy_efficiency": {
+        "type": "ML Energy Efficiency Model",
+        "description": "Optimizes energy consumption based on real-time data",
+        "protocols": [
+          "REST"
+        ],
+        "update_frequency": "continuous"
+      }
+    },
+    "visualization_dashboards": {
+      "production_dashboard": {
+        "type": "Production Monitoring Dashboard",
+        "description": "Main dashboard for visualizing line performance",
+        "widgets": [
+          "KPI Cards",
+          "Line Charts",
+          "Heatmaps",
+          "Alert Banners"
+        ],
+        "protocols": [
+          "WebSocket"
+        ],
+        "refresh_rate": "1s"
+      },
+      "equipment_status": {
+        "type": "Equipment Status Dashboard",
+        "description": "Detailed view of individual machine status",
+        "widgets": [
+          "Status Indicators",
+          "MTTR Timelines",
+          "Energy Consumption Graphs"
+        ],
+        "protocols": [
+          "WebSocket"
+        ],
+        "refresh_rate": "500ms"
+      }
+    }
+  },
+  "data_flows": {
+    "sensor_to_collector": {
+      "source": "sensor_data_collectors",
+      "destination": "event_loggers",
+      "protocol": "MQTT",
+      "frequency": "real-time"
+    },
+    "collector_to_analytics": {
+      "source": "sensor_data_collectors",
+      "destination": "statistical_analyzer",
+      "protocol": "REST",
+      "frequency": "periodic"
+    },
+    "event_to_analytics": {
+      "source": "event_loggers",
+      "destination": "real_time_analyzer",
+      "protocol": "WebSocket",
+      "frequency": "continuous"
+    },
+    "analyzer_to_ml": {
+      "source": "statistical_analyzer",
+      "destination": "predictive_maintenance",
+      "protocol": "REST",
+      "frequency": "periodic"
+    },
+    "analyzer_to_visualization": {
+      "source": "real_time_analyzer",
+      "destination": "production_dashboard",
+      "protocol": "WebSocket",
+      "frequency": "continuous"
+    },
+    "ml_to_visualization": {
+      "source": "predictive_maintenance",
+      "destination": "equipment_status",
+      "protocol": "REST",
+      "frequency": "periodic"
+    }
+  },
+  "visualization": {
+    "layout": {
+      "dashboard_structure": {
+        "top_row": [
+          "KPI Cards",
+          "Line Chart"
+        ],
+        "middle_row": [
+          "Heatmap",
+          "Alert Banner"
+        ],
+        "bottom_row": [
+          "Equipment Status",
+          "Energy Consumption"
+        ]
+      },
+      "color_scheme": {
+        "normal": "#00FF00",
+        "warning": "#FFFF00",
+        "critical": "#FF0000",
+        "emergency": "#8B0000"
+      },
+      "refresh_rates": {
+        "kpi_cards": "1s",
+        "line_charts": "1s",
+        "heatmaps": "500ms",
+        "alerts": "100ms"
+      }
+    }
+  },
+  "alerts": {
+    "thresholds": [
+      {
+        "parameter": "WIP Level",
+        "threshold": 10,
+        "severity": "warning",
+        "message": "Work in Progress level is high"
+      },
+      {
+        "parameter": "Buffer Level",
+        "threshold": 95,
+        "severity": "warning",
+        "message": "Buffer level is approaching maximum capacity"
+      },
+      {
+        "parameter": "Energy Consumption",
+        "threshold": 200,
+        "severity": "critical",
+        "message": "Energy consumption exceeds normal limits"
+      },
+      {
+        "parameter": "Machine Availability",
+        "threshold": 80,
+        "severity": "emergency",
+        "message": "Machine availability is below acceptable threshold"
+      }
+    ]
+  },
+  "kpis": {
+    "capacity": {
+      "description": "Line throughput capacity",
+      "target_value": "100 parts/hour",
+      "measurement_method": "average throughput over time"
+    },
+    "wip": {
+      "description": "Work in Progress level",
+      "target_value": "5 parts",
+      "measurement_method": "continuous monitoring of buffer levels"
+    },
+    "energy_efficiency": {
+      "description": "Energy consumption per part",
+      "target_value": "5 kWh/part",
+      "measurement_method": "real-time energy monitoring and part tracking"
+    },
+    "machine_availability": {
+      "description": "Machine uptime percentage",
+      "target_value": "95%",
+      "measurement_method": "MTTR and MTBF calculations"
+    }
+  }
+}

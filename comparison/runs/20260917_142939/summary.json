@@ -1,0 +1,80 @@
+[
+  {
+    "method": "C",
+    "case": "case_0001_serial_line",
+    "rep": 0,
+    "status": "ok",
+    "error": null,
+    "elapsed_generation_s": 71.717,
+    "elapsed_simulation_s": null,
+    "llm_calls": 5,
+    "llm_tokens_estimate": null,
+    "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260917_142939/case_0001_serial_line/C/rep0/model.json",
+    "kpis": {
+      "throughput_per_hour": null,
+      "utilization": null,
+      "wip_parts": null,
+      "energy_per_part_kwh": null,
+      "native": {
+        "machine_stats": {
+          "M1": {
+            "mentioned": true,
+            "process_time_found": false,
+            "availability_found": false
+          },
+          "M2": {
+            "mentioned": true,
+            "process_time_found": false,
+            "availability_found": false
+          },
+          "M3": {
+            "mentioned": true,
+            "process_time_found": false,
+            "availability_found": false
+          },
+          "M4": {
+            "mentioned": true,
+            "process_time_found": false,
+            "availability_found": false
+          },
+          "M5": {
+            "mentioned": true,
+            "process_time_found": false,
+            "availability_found": false
+          }
+        },
+        "machines_mentioned": 5,
+        "machines_truth": 5,
+        "buffers": {
+          "B0": true,
+          "B1": true,
+          "B2": true,
+          "B3": true,
+          "B4": true
+        },
+        "arrival_found": true,
+        "equipment_count": 4,
+        "interview_turns": 2,
+        "agent_tasks": 4,
+        "responder_calls": 1,
+        "responder_model": "openai/gpt-5-mini",
+        "api_url": "http://176.119.159.227:8000",
+        "agent_status": {
+          "agent0": "active",
+          "agent1": "active",
+          "agent2": "offline"
+        },
+        "db_stage": "unavailable",
+        "db_note": "DB agent (agent 1) failed: agent task failed: Processing error: CUDA error: no kernel image is available for execution on the device\nSearch for `cudaErrorNoKernelImageForDevice' in https://docs.nvidia.com/cuda/cuda-runtime-api/ \u2014 requirements recovered, schema stage unavailable",
+        "capability": "Method C emits a requirements document + PostgreSQL schema (PyChrono DT code via agent 2); it produces no discrete-event model, so KPI indicators are null by construction"
+      }
+    },
+    "assumptions": null,
+    "notes": [
+      "structural recovery only: 5/5 machines mentioned in C's requirements",
+      "DB stage (agent 1) not recovered \u2014 DB agent (agent 1) failed: agent task failed: Processing error: CUDA error: no kernel image is available for execution on the device",
+      "DT agent (agent 2, PyChrono codegen) status=offline; not exercised"
+    ],
+    "adapter_elapsed_s": 71.8
+  }
+]

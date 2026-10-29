@@ -1,0 +1,198 @@
+{
+  "components": {
+    "data_collection": {
+      "modules": [
+        {
+          "name": "OPC-UA Gateway",
+          "type": "gateway",
+          "description": "Collects real-time data from machines via OPC-UA protocol",
+          "protocol": "OPC-UA",
+          "frequency": "10s"
+        },
+        {
+          "name": "MQTT Ingestor",
+          "type": "ingestor",
+          "description": "Receives sensor data through MQTT protocol",
+          "protocol": "MQTT",
+          "frequency": "5s"
+        },
+        {
+          "name": "REST API Collector",
+          "type": "collector",
+          "description": "Fetches historical data via REST API calls",
+          "protocol": "REST",
+          "frequency": "Manual"
+        }
+      ]
+    },
+    "analytics": {
+      "engines": [
+        {
+          "name": "SimPy Simulation Engine",
+          "type": "simulation",
+          "description": "Simulates production line behavior over 5 days",
+          "frequency": "Manual"
+        },
+        {
+          "name": "Real-Time Analytics Engine",
+          "type": "analytics",
+          "description": "Processes incoming data for performance metrics",
+          "frequency": "10s"
+        }
+      ]
+    },
+    "ml_models": [
+      {
+        "name": "Predictive Maintenance Model",
+        "type": "predictive_maintenance",
+        "description": "Predicts machine failures based on historical and real-time data",
+        "input_data": [
+          "availability",
+          "mttr_s"
+        ],
+        "output": "failure_probability"
+      }
+    ],
+    "visualization": {
+      "dashboard": {
+        "name": "Production Line Dashboard",
+        "description": "Real-time visualization of production line performance",
+        "widgets": [
+          {
+            "type": "gauge",
+            "title": "Overall Equipment Effectiveness",
+            "metric": "OEE",
+            "unit": "%",
+            "color": "#4CAF50"
+          },
+          {
+            "type": "line_chart",
+            "title": "Throughput Over Time",
+            "metric": "throughput",
+            "unit": "units/hour",
+            "color": "#2196F3"
+          },
+          {
+            "type": "bar_chart",
+            "title": "Energy Consumption by Machine",
+            "metric": "energy_consumption",
+            "unit": "kWh",
+            "color": "#FF9800"
+          },
+          {
+            "type": "table",
+            "title": "Machine Status",
+            "metric": "machine_status",
+            "unit": "status",
+            "color": "#9E9E9E"
+          }
+        ],
+        "refresh_rate": "10s",
+        "layout": {
+          "grid": {
+            "columns": 3,
+            "rows": 2
+          }
+        }
+      }
+    }
+  },
+  "data_flows": {
+    "connections": [
+      {
+        "source": "OPC-UA Gateway",
+        "destination": "Real-Time Analytics Engine",
+        "protocol": "OPC-UA",
+        "frequency": "10s"
+      },
+      {
+        "source": "MQTT Ingestor",
+        "destination": "Real-Time Analytics Engine",
+        "protocol": "MQTT",
+        "frequency": "5s"
+      },
+      {
+        "source": "REST API Collector",
+        "destination": "SimPy Simulation Engine",
+        "protocol": "REST",
+        "frequency": "Manual"
+      },
+      {
+        "source": "Real-Time Analytics Engine",
+        "destination": "Production Line Dashboard",
+        "protocol": "WebSocket",
+        "frequency": "10s"
+      },
+      {
+        "source": "SimPy Simulation Engine",
+        "destination": "Production Line Dashboard",
+        "protocol": "REST",
+        "frequency": "Manual"
+      }
+    ]
+  },
+  "alerts": {
+    "thresholds": [
+      {
+        "parameter": "availability",
+        "machine": "M1",
+        "threshold": 0.95,
+        "severity": "warning",
+        "message": "Availability of M1 below threshold"
+      },
+      {
+        "parameter": "mttr_s",
+        "machine": "M2",
+        "threshold": 1500,
+        "severity": "critical",
+        "message": "MTTR of M2 exceeds threshold"
+      },
+      {
+        "parameter": "work_power_kw",
+        "machine": "M3",
+        "threshold": 6.5,
+        "severity": "emergency",
+        "message": "Power consumption of M3 exceeds threshold"
+      },
+      {
+        "parameter": "throughput",
+        "machine": "M4",
+        "threshold": 40,
+        "severity": "info",
+        "message": "Throughput of M4 is low"
+      }
+    ]
+  },
+  "kpis": {
+    "metrics": [
+      {
+        "name": "Overall Equipment Effectiveness",
+        "target": 85,
+        "unit": "%",
+        "method": "OEE = Availability \u00d7 Performance \u00d7 Quality",
+        "description": "Measures the overall efficiency of the production line"
+      },
+      {
+        "name": "Throughput",
+        "target": 100,
+        "unit": "units/hour",
+        "method": "Total units produced / Total time",
+        "description": "Number of units produced per hour"
+      },
+      {
+        "name": "Energy Consumption",
+        "target": 700,
+        "unit": "kWh",
+        "method": "Sum of all power consumption",
+        "description": "Total energy used by the production line"
+      },
+      {
+        "name": "Machine Availability",
+        "target": 98,
+        "unit": "%",
+        "method": "Time available / Total time",
+        "description": "Percentage of time machines are operational"
+      }
+    ]
+  }
+}

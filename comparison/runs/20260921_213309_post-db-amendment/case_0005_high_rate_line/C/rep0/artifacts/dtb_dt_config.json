@@ -1,0 +1,310 @@
+{
+  "components": {
+    "data_collection": [
+      {
+        "id": "opc_ua_collector",
+        "type": "OPC-UA Client",
+        "description": "Collects real-time data from industrial equipment via OPC-UA protocol",
+        "config": {
+          "endpoint": "opc.tcp://localhost:4840",
+          "update_frequency_s": 1
+        }
+      },
+      {
+        "id": "mqtt_collector",
+        "type": "MQTT Client",
+        "description": "Subscribes to MQTT topics for sensor data and events",
+        "config": {
+          "broker_url": "mqtt://localhost:1883",
+          "topics": [
+            "sensor/data",
+            "events"
+          ],
+          "update_frequency_s": 1
+        }
+      }
+    ],
+    "analytics": [
+      {
+        "id": "real_time_analytics",
+        "type": "Stream Processing Engine",
+        "description": "Processes incoming data streams for real-time analytics",
+        "config": {
+          "window_size_s": 60,
+          "aggregation_functions": [
+            "avg",
+            "sum",
+            "count"
+          ]
+        }
+      },
+      {
+        "id": "historical_analytics",
+        "type": "Batch Processing Engine",
+        "description": "Performs deep analysis on historical data for trend identification",
+        "config": {
+          "schedule": "daily",
+          "analysis_types": [
+            "forecasting",
+            "trend_analysis"
+          ]
+        }
+      }
+    ],
+    "ml_models": [
+      {
+        "id": "predictive_maintenance",
+        "type": "Machine Learning Model",
+        "description": "Predicts equipment failures based on sensor data",
+        "config": {
+          "model_type": "RandomForest",
+          "features": [
+            "process_time_s",
+            "availability",
+            "mttr_s"
+          ],
+          "target": "failure_probability"
+        }
+      },
+      {
+        "id": "production_optimization",
+        "type": "Machine Learning Model",
+        "description": "Optimizes production line parameters for efficiency",
+        "config": {
+          "model_type": "Genetic Algorithm",
+          "parameters": [
+            "process_time_s",
+            "availability",
+            "capacity"
+          ]
+        }
+      }
+    ],
+    "visualization": [
+      {
+        "id": "dashboard",
+        "type": "Web Dashboard",
+        "description": "Interactive dashboard for monitoring and control",
+        "config": {
+          "layout": "grid",
+          "widgets": [
+            {
+              "type": "gauge",
+              "title": "Line Utilization",
+              "data_source": "real_time_analytics",
+              "metric": "utilization_pct",
+              "color": "#4CAF50"
+            },
+            {
+              "type": "chart",
+              "title": "Production Rate Over Time",
+              "data_source": "real_time_analytics",
+              "metric": "production_rate",
+              "color": "#FF5722"
+            },
+            {
+              "type": "table",
+              "title": "Equipment Status",
+              "data_source": "real_time_analytics",
+              "columns": [
+                "machine_id",
+                "status",
+                "last_update"
+              ]
+            }
+          ],
+          "refresh_rate_s": 5
+        }
+      }
+    ]
+  },
+  "data_flows": {
+    "from_sensors_to_collector": {
+      "source": "sensors",
+      "destination": "opc_ua_collector",
+      "protocol": "OPC-UA",
+      "update_frequency_s": 1
+    },
+    "from_collector_to_analytics": {
+      "source": "opc_ua_collector",
+      "destination": "real_time_analytics",
+      "protocol": "WebSocket",
+      "update_frequency_s": 1
+    },
+    "from_analytics_to_ml": {
+      "source": "real_time_analytics",
+      "destination": "predictive_maintenance",
+      "protocol": "REST",
+      "update_frequency_s": 30
+    },
+    "from_ml_to_dashboard": {
+      "source": "predictive_maintenance",
+      "destination": "dashboard",
+      "protocol": "WebSocket",
+      "update_frequency_s": 5
+    },
+    "from_historical_data_to_analytics": {
+      "source": "historical_data",
+      "destination": "historical_analytics",
+      "protocol": "REST",
+      "update_frequency_s": 86400
+    }
+  },
+  "visualization": {
+    "dashboard_layout": {
+      "rows": 3,
+      "columns": 4,
+      "widgets": [
+        {
+          "id": "gauge_utilization",
+          "position": {
+            "row": 1,
+            "col": 1
+          },
+          "type": "gauge",
+          "title": "Line Utilization",
+          "metric": "utilization_pct",
+          "color": "#4CAF50",
+          "max_value": 100
+        },
+        {
+          "id": "chart_production_rate",
+          "position": {
+            "row": 1,
+            "col": 2
+          },
+          "type": "chart",
+          "title": "Production Rate",
+          "metric": "production_rate",
+          "color": "#FF5722"
+        },
+        {
+          "id": "table_equipment_status",
+          "position": {
+            "row": 2,
+            "col": 1
+          },
+          "type": "table",
+          "title": "Equipment Status",
+          "columns": [
+            "machine_id",
+            "status",
+            "last_update"
+          ]
+        },
+        {
+          "id": "chart_capacity_utilization",
+          "position": {
+            "row": 2,
+            "col": 2
+          },
+          "type": "chart",
+          "title": "Buffer Capacity Utilization",
+          "metric": "buffer_utilization",
+          "color": "#2196F3"
+        },
+        {
+          "id": "alert_panel",
+          "position": {
+            "row": 3,
+            "col": 1
+          },
+          "type": "alert_panel",
+          "title": "Alerts",
+          "severity_levels": [
+            "info",
+            "warning",
+            "critical",
+            "emergency"
+          ]
+        }
+      ]
+    },
+    "refresh_rate_s": 5,
+    "color_scheme": {
+      "info": "#2196F3",
+      "warning": "#FF9800",
+      "critical": "#F44336",
+      "emergency": "#9C27B0"
+    }
+  },
+  "alerts": [
+    {
+      "id": "low_utilization",
+      "name": "Low Line Utilization",
+      "description": "Line utilization is below 80%",
+      "threshold": 80,
+      "severity": "warning",
+      "trigger_condition": "<",
+      "data_source": "real_time_analytics",
+      "metric": "utilization_pct"
+    },
+    {
+      "id": "high_buffer_level",
+      "name": "High Buffer Level",
+      "description": "Buffer level exceeds 90% capacity",
+      "threshold": 90,
+      "severity": "warning",
+      "trigger_condition": ">",
+      "data_source": "real_time_analytics",
+      "metric": "buffer_utilization"
+    },
+    {
+      "id": "critical_failure",
+      "name": "Critical Equipment Failure",
+      "description": "Equipment failure predicted with high probability",
+      "threshold": 0.95,
+      "severity": "emergency",
+      "trigger_condition": ">",
+      "data_source": "predictive_maintenance",
+      "metric": "failure_probability"
+    }
+  ],
+  "kpis": [
+    {
+      "id": "line_utilization",
+      "name": "Line Utilization",
+      "description": "Percentage of time the production line is actively producing",
+      "target_value": 90,
+      "unit": "%",
+      "measurement_method": "real_time_analytics",
+      "metric": "utilization_pct"
+    },
+    {
+      "id": "production_rate",
+      "name": "Production Rate",
+      "description": "Number of parts produced per hour",
+      "target_value": 80,
+      "unit": "parts/hour",
+      "measurement_method": "real_time_analytics",
+      "metric": "production_rate"
+    },
+    {
+      "id": "equipment_availability",
+      "name": "Equipment Availability",
+      "description": "Percentage of time equipment is available for use",
+      "target_value": 95,
+      "unit": "%",
+      "measurement_method": "real_time_analytics",
+      "metric": "availability_pct"
+    },
+    {
+      "id": "buffer_utilization",
+      "name": "Buffer Utilization",
+      "description": "Percentage of buffer capacity currently used",
+      "target_value": 80,
+      "unit": "%",
+      "measurement_method": "real_time_analytics",
+      "metric": "buffer_utilization"
+    },
+    {
+      "id": "energy_consumption",
+      "name": "Energy Consumption",
+      "description": "Total energy consumed by the production line",
+      "target_value": 50,
+      "unit": "kWh",
+      "measurement_method": "real_time_analytics",
+      "metric": "energy_kwh"
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "production_type": "serial",
+  "processes": [
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "M5"
+  ],
+  "equipment": [
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "M5",
+    "B0",
+    "B1",
+    "B2",
+    "B3",
+    "B4"
+  ],
+  "sensors": [
+    "process_time_s",
+    "availability",
+    "mttr_s",
+    "work_power_kw",
+    "idle_power_kw"
+  ],
+  "goals": "simulate the production line for analysis over 5 days",
+  "data_sources": "provided JSON data",
+  "update_frequency": null,
+  "critical_parameters": {
+    "process_time_s": "100",
+    "availability": "92.58%",
+    "mttr_s": "3206.25",
+    "work_power_kw": "4.0",
+    "idle_power_kw": "0.4"
+  },
+  "line": {
+    "topology": "serial",
+    "source": {
+      "inter_arrival_s": 150
+    },
+    "stations": [
+      {
+        "id": "M1",
+        "processing_time_s": 100,
+        "availability_pct": 92.58,
+        "mttr_s": 3206.25,
+        "power_working_kw": 4.0,
+        "power_idle_kw": 0.4
+      },
+      {
+        "id": "M2",
+        "processing_time_s": 130,
+        "availability_pct": 97.36,
+        "mttr_s": 2859.26,
+        "power_working_kw": 5.0,
+        "power_idle_kw": 0.5
+      },
+      {
+        "id": "M3",
+        "processing_time_s": 90,
+        "availability_pct": 94.69,
+        "mttr_s": 2882.82,
+        "power_working_kw": 4.5,
+        "power_idle_kw": 0.45
+      },
+      {
+        "id": "M4",
+        "processing_time_s": 140,
+        "availability_pct": 100.0,
+        "mttr_s": 1.0,
+        "power_working_kw": 7.0,
+        "power_idle_kw": 0.7
+      },
+      {
+        "id": "M5",
+        "processing_time_s": 110,
+        "availability_pct": 98.23,
+        "mttr_s": 1099.8,
+        "power_working_kw": 5.5,
+        "power_idle_kw": 0.55
+      }
+    ],
+    "buffers": [
+      {
+        "id": "B0",
+        "capacity": 6
+      },
+      {
+        "id": "B1",
+        "capacity": 3
+      },
+      {
+        "id": "B2",
+        "capacity": 3
+      },
+      {
+        "id": "B3",
+        "capacity": 3
+      },
+      {
+        "id": "B4",
+        "capacity": 3
+      }
+    ],
+    "des_horizon": {
+      "warmup_s": null,
+      "window_s": null,
+      "replications": null
+    }
+  },
+  "units": {
+    "time": "s",
+    "power": "kW",
+    "energy": "kWh"
+  },
+  "additional_info": "production line with 5 machines in series, buffers with specified capacities, and a source/sink setup."
+}

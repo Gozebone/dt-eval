@@ -1,0 +1,47 @@
+{
+  "method": "A",
+  "case": "case_0002_saturated_short_line",
+  "rep": 0,
+  "status": "ok",
+  "error": null,
+  "elapsed_generation_s": 45.461,
+  "elapsed_simulation_s": 0.973,
+  "llm_calls": 2,
+  "llm_tokens_estimate": null,
+  "generated_model_file": "/ssd/projects/dt-eval/comparison/runs/20260918_043936/case_0002_saturated_short_line/A/rep0/model.py",
+  "kpis": {
+    "throughput_per_hour": 32.675,
+    "utilization": {
+      "M1": 0.818,
+      "M2": 0.6352,
+      "M3": 0.9995
+    },
+    "wip_parts": null,
+    "energy_per_part_kwh": null,
+    "native": {
+      "machine_stats": {
+        "M1": {
+          "processed": 3927,
+          "horizon": 432000.0,
+          "utilization": 0.8180215277776429,
+          "throughput_per_unit": 0.009090277777777777
+        },
+        "M2": {
+          "processed": 3921,
+          "horizon": 432000.0,
+          "utilization": 0.6352440277776429,
+          "throughput_per_unit": 0.009076388888888889
+        },
+        "M3": {
+          "processed": 3915,
+          "horizon": 432000.0,
+          "utilization": 0.9994908333333333,
+          "throughput_per_unit": 0.0090625
+        }
+      },
+      "model_horizon_s": 432000.0
+    }
+  },
+  "assumptions": "1. Node names and Types are chosen according to users description, with the source inferred as \"src\" and the sink inferred as \"sink\" since their exact IDs were not specified.\n2. Used a single buffer wherever the number of buffers between nodes was not specified.\n3. Inferred the logical flow of the provided buffers sequentially: B0 connects the Source to M1, B1 connects M1 to M2, and B2 connects M2 to M3.\n4. Assumed an additional fourth buffer with default capacity connects M3 to the Sink, as only 3 buffers were specified in the description for the 4 required connections in the serial line.\n5. Used default values for all missing parameters for all components, including default edge types for all connections.",
+  "notes": []
+}

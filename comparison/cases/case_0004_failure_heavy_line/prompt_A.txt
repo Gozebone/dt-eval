@@ -1,0 +1,23 @@
+A manufacturing system is arranged as a serial production line with 5 machines connected in series: M1 -> M2 -> M3 -> M4 -> M5.
+
+A source feeds the line and a sink collects finished parts. Every buffer has the specified capacity.
+
+Per-station measured facts (obtained from a monitoring period of the real plant):
+
+MachineName  Avg_Time_per_part_s  Availability_%  MTTR_s  EnergyIdling  EnergyWorking
+         M1                99.96           92.58 3206.25          0.40           4.00
+         M2               130.16           97.36 2859.26          0.50           4.99
+         M3                90.14           94.69 2882.82          0.45           4.49
+         M4               140.19          100.00    1.00          0.69           6.97
+         M5               109.82           98.23 1099.80          0.54           5.50
+
+Buffer list with their capacity:
+B0(Capacity = 6), B1(Capacity = 3), B2(Capacity = 3), B3(Capacity = 3), B4(Capacity = 3)
+
+New parts arrive at the line at a constant rate: one part every 150 seconds.
+
+Simulation requirements:
+- Time is measured in seconds throughout the model.
+- Use a single source, the 5 machines in series (each with the measured average processing time and measured availability/failure behaviour), and a single sink.
+- The model must create its own simpy.Environment, build the structure, validate it, and run the simulation for at least 432000 seconds (about 5 days) in one go at module level.
+- Only structure and the run code; no extra commentary.

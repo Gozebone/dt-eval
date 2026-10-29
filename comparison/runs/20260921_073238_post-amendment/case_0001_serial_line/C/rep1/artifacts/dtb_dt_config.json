@@ -1,0 +1,230 @@
+{
+  "components": {
+    "data_collection": [
+      {
+        "id": "opc_ua_collector",
+        "type": "data_collector",
+        "description": "Collects real-time data from machines using OPC-UA protocol",
+        "protocol": "OPC-UA",
+        "update_frequency_s": 10
+      },
+      {
+        "id": "mqtt_collector",
+        "type": "data_collector",
+        "description": "Collects data from sensors via MQTT protocol",
+        "protocol": "MQTT",
+        "update_frequency_s": 5
+      }
+    ],
+    "analytics_engines": [
+      {
+        "id": "production_analytics",
+        "type": "analytics_engine",
+        "description": "Analyzes production throughput and efficiency metrics",
+        "algorithm": "statistical_analysis"
+      },
+      {
+        "id": "maintenance_analytics",
+        "type": "analytics_engine",
+        "description": "Predicts maintenance needs based on MTTR and availability data",
+        "algorithm": "predictive_maintenance"
+      }
+    ],
+    "ml_models": [
+      {
+        "id": "availability_model",
+        "type": "ml_model",
+        "description": "Predicts machine availability using historical data",
+        "model_type": "regression"
+      },
+      {
+        "id": "energy_consumption_model",
+        "type": "ml_model",
+        "description": "Predicts energy consumption based on power usage patterns",
+        "model_type": "time_series_forecasting"
+      }
+    ],
+    "visualization": [
+      {
+        "id": "dashboard",
+        "type": "visualization_dashboard",
+        "description": "Main dashboard for monitoring production line",
+        "widgets": [
+          {
+            "type": "gauge",
+            "title": "Overall Equipment Effectiveness",
+            "metric": "oee"
+          },
+          {
+            "type": "line_chart",
+            "title": "Production Throughput Over Time",
+            "metric": "throughput"
+          },
+          {
+            "type": "bar_chart",
+            "title": "Machine Availability",
+            "metric": "availability"
+          },
+          {
+            "type": "pie_chart",
+            "title": "Energy Consumption by Machine",
+            "metric": "energy_consumption"
+          }
+        ],
+        "refresh_rate_s": 30,
+        "color_scheme": "blue_green"
+      }
+    ]
+  },
+  "data_flows": {
+    "from_machines": {
+      "source": "opc_ua_collector",
+      "destination": "production_analytics",
+      "protocol": "OPC-UA",
+      "update_frequency_s": 10
+    },
+    "from_sensors": {
+      "source": "mqtt_collector",
+      "destination": "maintenance_analytics",
+      "protocol": "MQTT",
+      "update_frequency_s": 5
+    },
+    "to_visualization": {
+      "source": "production_analytics",
+      "destination": "dashboard",
+      "protocol": "REST",
+      "update_frequency_s": 30
+    },
+    "model_inference": {
+      "source": "production_analytics",
+      "destination": "availability_model",
+      "protocol": "WebSocket",
+      "update_frequency_s": 60
+    }
+  },
+  "visualization_layout": {
+    "dashboard": {
+      "title": "Production Line Digital Twin",
+      "widgets": [
+        {
+          "id": "oee_gauge",
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "size": {
+            "width": 200,
+            "height": 200
+          }
+        },
+        {
+          "id": "throughput_chart",
+          "position": {
+            "x": 220,
+            "y": 0
+          },
+          "size": {
+            "width": 400,
+            "height": 200
+          }
+        },
+        {
+          "id": "availability_chart",
+          "position": {
+            "x": 0,
+            "y": 220
+          },
+          "size": {
+            "width": 400,
+            "height": 200
+          }
+        },
+        {
+          "id": "energy_pie",
+          "position": {
+            "x": 420,
+            "y": 220
+          },
+          "size": {
+            "width": 200,
+            "height": 200
+          }
+        }
+      ],
+      "refresh_rate_s": 30,
+      "color_scheme": "blue_green"
+    }
+  },
+  "alerts": [
+    {
+      "id": "low_availability_alert",
+      "description": "Alert when machine availability drops below threshold",
+      "condition": "availability < 0.9",
+      "severity": "warning",
+      "threshold": 0.9,
+      "actions": [
+        "notify_operators",
+        "log_event"
+      ]
+    },
+    {
+      "id": "high_energy_alert",
+      "description": "Alert when energy consumption exceeds normal range",
+      "condition": "energy_kwh > 1000",
+      "severity": "critical",
+      "threshold": 1000,
+      "actions": [
+        "notify_operators",
+        "log_event"
+      ]
+    },
+    {
+      "id": "mttr_alert",
+      "description": "Alert when MTTR exceeds expected duration",
+      "condition": "mttr_s > 1000",
+      "severity": "emergency",
+      "threshold": 1000,
+      "actions": [
+        "notify_maintenance",
+        "log_event"
+      ]
+    }
+  ],
+  "kpis": [
+    {
+      "id": "throughput",
+      "description": "Number of units produced per hour",
+      "target_value": 100,
+      "measurement_method": "count(units)",
+      "unit": "units/hour"
+    },
+    {
+      "id": "availability",
+      "description": "Percentage of time machines are operational",
+      "target_value": 0.95,
+      "measurement_method": "sum(uptime) / sum(total_time)",
+      "unit": "percent"
+    },
+    {
+      "id": "mttr",
+      "description": "Average time to repair machine",
+      "target_value": 600,
+      "measurement_method": "sum(downtime) / count(failures)",
+      "unit": "seconds"
+    },
+    {
+      "id": "oee",
+      "description": "Overall Equipment Effectiveness",
+      "target_value": 0.85,
+      "measurement_method": "availability * performance * quality",
+      "unit": "percent"
+    },
+    {
+      "id": "energy_consumption",
+      "description": "Total energy consumed by production line",
+      "target_value": 5000,
+      "measurement_method": "sum(power_kw * time)",
+      "unit": "kWh"
+    }
+  ]
+}

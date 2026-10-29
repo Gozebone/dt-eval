@@ -1,0 +1,259 @@
+{
+  "requirements": {
+    "production_type": "\u043f\u043e\u0441\u043b\u0435\u0434\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u043d\u0430\u044f (\u043a\u043e\u043d\u0432\u0435\u0439\u0435\u0440\u043d\u0430\u044f) \u043b\u0438\u043d\u0438\u044f \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0438 \u0434\u0438\u0441\u043a\u0440\u0435\u0442\u043d\u044b\u0445 \u0434\u0435\u0442\u0430\u043b\u0435\u0439",
+    "processes": [
+      "M1 \u2192 M2 \u2192 M3 \u2192 M4 \u2192 M5"
+    ],
+    "equipment": [
+      "M1, M2, M3, M4, M5 (\u0442\u0438\u043f\u044b \u043e\u0431\u043e\u0440\u0443\u0434\u043e\u0432\u0430\u043d\u0438\u044f \u043d\u0435 \u0443\u043a\u0430\u0437\u0430\u043d\u044b)"
+    ],
+    "sensors": [
+      "\u0441\u0440\u0435\u0434\u043d\u0435\u0435 \u0432\u0440\u0435\u043c\u044f \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0438 \u0434\u0435\u0442\u0430\u043b\u0438",
+      "\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u044c (availability)",
+      "\u0441\u0440\u0435\u0434\u043d\u0435\u0435 \u0432\u0440\u0435\u043c\u044f \u0432\u043e\u0441\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u044f \u043f\u043e\u0441\u043b\u0435 \u043e\u0442\u043a\u0430\u0437\u0430 (MTTR)",
+      "\u044d\u043d\u0435\u0440\u0433\u043e\u043f\u043e\u0442\u0440\u0435\u0431\u043b\u0435\u043d\u0438\u0435 \u043f\u0440\u0438 \u0440\u0430\u0431\u043e\u0442\u0435 (work_power_kw)",
+      "\u044d\u043d\u0435\u0440\u0433\u043e\u043f\u043e\u0442\u0440\u0435\u0431\u043b\u0435\u043d\u0438\u0435 \u043f\u0440\u0438 \u043f\u0440\u043e\u0441\u0442\u043e\u0435 (idle_power_kw)"
+    ],
+    "goals": "\u043e\u0446\u0435\u043d\u0438\u0432\u0430\u0442\u044c \u043f\u0440\u043e\u043f\u0443\u0441\u043a\u043d\u0443\u044e \u0441\u043f\u043e\u0441\u043e\u0431\u043d\u043e\u0441\u0442\u044c \u043b\u0438\u043d\u0438\u0438, \u043d\u0435\u0437\u0430\u0432\u0435\u0440\u0448\u0451\u043d\u043d\u043e\u0435 \u043f\u0440\u043e\u0438\u0437\u0432\u043e\u0434\u0441\u0442\u0432\u043e (WIP) \u0438 \u0443\u0434\u0435\u043b\u044c\u043d\u043e\u0435 \u044d\u043d\u0435\u0440\u0433\u043e\u043f\u043e\u0442\u0440\u0435\u0431\u043b\u0435\u043d\u0438\u0435 \u043d\u0430 \u0434\u0435\u0442\u0430\u043b\u044c, \u0430 \u0442\u0430\u043a\u0436\u0435 \u043e\u0442\u0441\u043b\u0435\u0436\u0438\u0432\u0430\u0442\u044c \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u044c \u043c\u0430\u0448\u0438\u043d M1-M5",
+    "data_sources": "\u043f\u0435\u0440-\u0441\u0442\u0430\u043d\u0446\u0438\u043e\u043d\u043d\u044b\u0435 \u0438\u0437\u043c\u0435\u0440\u0435\u043d\u043d\u044b\u0435 \u0444\u0430\u043a\u0442\u044b, \u043f\u043e\u043b\u0443\u0447\u0435\u043d\u043d\u044b\u0435 \u0432 \u043f\u0435\u0440\u0438\u043e\u0434 \u043c\u043e\u043d\u0438\u0442\u043e\u0440\u0438\u043d\u0433\u0430 \u0440\u0435\u0430\u043b\u044c\u043d\u043e\u0433\u043e \u0443\u0447\u0430\u0441\u0442\u043a\u0430 (\u0438\u0441\u0442\u043e\u0440\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u043d\u0430\u0431\u043b\u044e\u0434\u0435\u043d\u0438\u044f)",
+    "update_frequency": "\u0441\u043e\u0431\u044b\u0442\u0438\u044f \u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u0443\u044e\u0442\u0441\u044f \u043f\u043e \u043a\u0430\u0436\u0434\u043e\u0439 \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u0430\u043d\u043d\u043e\u0439 \u0434\u0435\u0442\u0430\u043b\u0438, \u0438\u043d\u0442\u0435\u0440\u0432\u0430\u043b\u044b \u0441\u043e\u0441\u0442\u043e\u044f\u043d\u0438\u0439 \u0438 \u044d\u043d\u0435\u0440\u0433\u043e\u043f\u043e\u0442\u0440\u0435\u0431\u043b\u0435\u043d\u0438\u0435 \u0437\u0430\u043f\u0438\u0441\u044b\u0432\u0430\u044e\u0442\u0441\u044f \u043d\u0435\u043f\u0440\u0435\u0440\u044b\u0432\u043d\u043e",
+    "critical_parameters": {
+      "M1": "\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u044c",
+      "M2": "\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u044c",
+      "M3": "\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u044c",
+      "M4": "\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u044c",
+      "M5": "\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u044c",
+      "\u0441\u0438\u0441\u0442\u0435\u043c\u0430": "\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u044c"
+    },
+    "additional_info": "\u0442\u0438\u043f\u044b \u043e\u0431\u043e\u0440\u0443\u0434\u043e\u0432\u0430\u043d\u0438\u044f M1-M5 \u043d\u0435 \u0443\u043a\u0430\u0437\u0430\u043d\u044b, \u043c\u043e\u0433\u0443\u0442 \u0431\u044b\u0442\u044c \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u044b \u0432 \u0434\u0430\u043b\u044c\u043d\u0435\u0439\u0448\u0435\u043c"
+  },
+  "schema": {
+    "M1": "\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u044c",
+    "M2": "\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u044c",
+    "M3": "\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u044c",
+    "M4": "\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u044c",
+    "M5": "\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u044c",
+    "\u0441\u0438\u0441\u0442\u0435\u043c\u0430": "\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u044c"
+  },
+  "dt_config": {
+    "components": {
+      "data_collection": {
+        "modules": [
+          {
+            "name": "Sensor Data Collector",
+            "type": "IoT Gateway",
+            "description": "Collects real-time sensor data from machines",
+            "protocol": "MQTT",
+            "update_frequency": "continuous"
+          },
+          {
+            "name": "Production Event Logger",
+            "type": "Event Handler",
+            "description": "Logs production events for each machine",
+            "protocol": "REST",
+            "update_frequency": "per event"
+          }
+        ]
+      },
+      "analytics_engine": {
+        "engines": [
+          {
+            "name": "Process Analytics Engine",
+            "type": "Stream Processing",
+            "description": "Processes continuous data streams for real-time analytics",
+            "protocol": "WebSocket",
+            "update_frequency": "real-time"
+          },
+          {
+            "name": "Historical Data Analyzer",
+            "type": "Batch Processing",
+            "description": "Analyzes historical data for KPI calculations",
+            "protocol": "REST",
+            "update_frequency": "daily"
+          }
+        ]
+      },
+      "ml_models": {
+        "models": [
+          {
+            "name": "Availability Prediction Model",
+            "type": "Time Series Forecasting",
+            "description": "Predicts machine availability based on historical data",
+            "protocol": "REST",
+            "update_frequency": "hourly"
+          },
+          {
+            "name": "Energy Consumption Model",
+            "type": "Regression Analysis",
+            "description": "Estimates energy consumption per unit",
+            "protocol": "REST",
+            "update_frequency": "real-time"
+          }
+        ]
+      },
+      "visualization_dashboard": {
+        "dashboard": {
+          "name": "Production Line Dashboard",
+          "type": "Interactive Web Dashboard",
+          "description": "Visualizes real-time status, KPIs, and alerts",
+          "protocol": "WebSocket",
+          "refresh_rate": "5 seconds"
+        }
+      }
+    },
+    "data_flows": {
+      "from_sensors_to_collector": {
+        "source": "Sensors",
+        "destination": "Sensor Data Collector",
+        "protocol": "MQTT",
+        "update_frequency": "continuous"
+      },
+      "from_collector_to_analytics": {
+        "source": "Sensor Data Collector",
+        "destination": "Process Analytics Engine",
+        "protocol": "WebSocket",
+        "update_frequency": "real-time"
+      },
+      "from_events_to_analytics": {
+        "source": "Production Event Logger",
+        "destination": "Process Analytics Engine",
+        "protocol": "REST",
+        "update_frequency": "per event"
+      },
+      "from_analytics_to_dashboard": {
+        "source": "Process Analytics Engine",
+        "destination": "Production Line Dashboard",
+        "protocol": "WebSocket",
+        "update_frequency": "5 seconds"
+      },
+      "from_models_to_analytics": {
+        "source": "ML Models",
+        "destination": "Process Analytics Engine",
+        "protocol": "REST",
+        "update_frequency": "hourly"
+      }
+    },
+    "visualization": {
+      "dashboard_layout": {
+        "widgets": [
+          {
+            "type": "KPI Card",
+            "title": "Line Availability",
+            "value_field": "availability",
+            "unit": "%",
+            "color_scheme": "green",
+            "refresh_rate": "5 seconds"
+          },
+          {
+            "type": "Real-time Chart",
+            "title": "Energy Consumption",
+            "value_field": "energy_consumption",
+            "unit": "kWh",
+            "color_scheme": "blue",
+            "refresh_rate": "10 seconds"
+          },
+          {
+            "type": "Gantt Chart",
+            "title": "Production Timeline",
+            "value_field": "production_events",
+            "unit": "events",
+            "color_scheme": "orange",
+            "refresh_rate": "30 seconds"
+          },
+          {
+            "type": "Alert Panel",
+            "title": "System Alerts",
+            "value_field": "alerts",
+            "unit": "alerts",
+            "color_scheme": "red",
+            "refresh_rate": "5 seconds"
+          }
+        ],
+        "refresh_rate": "5 seconds"
+      }
+    },
+    "alerts": {
+      "thresholds": [
+        {
+          "parameter": "availability",
+          "machine": "M1",
+          "threshold": 0.9,
+          "severity": "warning",
+          "message": "Machine M1 availability below threshold"
+        },
+        {
+          "parameter": "availability",
+          "machine": "M2",
+          "threshold": 0.9,
+          "severity": "warning",
+          "message": "Machine M2 availability below threshold"
+        },
+        {
+          "parameter": "availability",
+          "machine": "M3",
+          "threshold": 0.9,
+          "severity": "warning",
+          "message": "Machine M3 availability below threshold"
+        },
+        {
+          "parameter": "availability",
+          "machine": "M4",
+          "threshold": 0.9,
+          "severity": "warning",
+          "message": "Machine M4 availability below threshold"
+        },
+        {
+          "parameter": "availability",
+          "machine": "M5",
+          "threshold": 0.9,
+          "severity": "warning",
+          "message": "Machine M5 availability below threshold"
+        },
+        {
+          "parameter": "availability",
+          "machine": "system",
+          "threshold": 0.9,
+          "severity": "critical",
+          "message": "System availability below threshold"
+        }
+      ]
+    },
+    "kpi": {
+      "indicators": [
+        {
+          "name": "Line Throughput",
+          "description": "Number of parts produced per hour",
+          "metric": "count",
+          "target_value": 1000,
+          "unit": "parts/hour",
+          "calculation_method": "count completed events in last hour"
+        },
+        {
+          "name": "Work In Progress (WIP)",
+          "description": "Number of parts currently in process",
+          "metric": "count",
+          "target_value": 50,
+          "unit": "parts",
+          "calculation_method": "count in-progress events"
+        },
+        {
+          "name": "Specific Energy Consumption",
+          "description": "Energy consumption per part",
+          "metric": "average",
+          "target_value": 0.5,
+          "unit": "kWh/part",
+          "calculation_method": "sum energy consumption / total parts produced"
+        },
+        {
+          "name": "Machine Availability",
+          "description": "Percentage of time machines are operational",
+          "metric": "average",
+          "target_value": 0.95,
+          "unit": "%",
+          "calculation_method": "available time / total time"
+        }
+      ]
+    }
+  },
+  "dt_simulation": "import pychrono as chrono\nimport pychrono.irrlicht as chronoirr\nimport numpy as np\nimport datetime\nimport sqlite3\nimport json\nfrom typing import Dict, List, Tuple\nimport time\n\n# Initialize PyChrono system\nchrono.SetChronoDataPath('path/to/chronodata')  # Adjust path as needed\nsys = chrono.ChSystemNSC()\nsys.SetGravitationalAcceleration(chrono.ChVectorD(0, -9.81, 0))\n\n# Create database connection\nconn = sqlite3.connect('digital_twin.db')\ncursor = conn.cursor()\n\n# Create tables if they don't exist\ncursor.execute('''\n    CREATE TABLE IF NOT EXISTS process_line (\n        id INTEGER PRIMARY KEY,\n        production_type TEXT NOT NULL,\n        processes TEXT NOT NULL,\n        equipment TEXT NOT NULL,\n        goals TEXT NOT NULL,\n        data_sources TEXT NOT NULL,\n        update_frequency TEXT NOT NULL,\n        critical_parameters TEXT NOT NULL\n    )\n''')\n\ncursor.execute('''\n    CREATE TABLE IF NOT EXISTS machine (\n        id INTEGER PRIMARY KEY,\n        name TEXT NOT NULL,\n        type TEXT,\n        status TEXT DEFAULT 'available',\n        availability REAL,\n        mttr TEXT,\n        work_power_kw REAL,\n        idle_power_kw REAL\n    )\n''')\n\ncursor.execute('''\n    CREATE TABLE IF NOT EXISTS sensor_data (\n        id INTEGER PRIMARY KEY,\n        machine_id INTEGER NOT NULL,\n        sensor_type TEXT NOT NULL,\n        value REAL,\n        timestamp TEXT NOT NULL,\n        FOREIGN KEY (machine_id) REFERENCES machine(id)\n    )\n''')\n\ncursor.execute('''\n    CREATE TABLE IF NOT EXISTS production_event (\n        id INTEGER PRIMARY KEY,\n        machine_id INTEGER NOT NULL,\n        process_step TEXT NOT NULL,\n        start_time TEXT NOT NULL,\n        end_time TEXT,\n        status TEXT DEFAULT 'completed',\n        FOREIGN KEY (machine_id) REFERENCES machine(id)\n    )\n''')\n\n# Insert process line data\nprocess_line_data = {\n    \"production_type\": \"\u043f\u043e\u0441\u043b\u0435\u0434\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u043d\u0430\u044f (\u043a\u043e\u043d\u0432\u0435\u0439\u0435\u0440\u043d\u0430\u044f) \u043b\u0438\u043d\u0438\u044f \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0438 \u0434\u0438\u0441\u043a\u0440\u0435\u0442\u043d\u044b\u0445 \u0434\u0435\u0442\u0430\u043b\u0435\u0439\",\n    \"processes\": \"M1 \u2192 M2 \u2192 M3 \u2192 M4 \u2192 M5\",\n    \"equipment\": \"M1, M2, M3, M4, M5 (\u0442\u0438\u043f\u044b \u043e\u0431\u043e\u0440\u0443\u0434\u043e\u0432\u0430\u043d\u0438\u044f \u043d\u0435 \u0443\u043a\u0430\u0437\u0430\u043d\u044b)\",\n    \"goals\": \"\u043e\u0446\u0435\u043d\u0438\u0432\u0430\u0442\u044c \u043f\u0440\u043e\u043f\u0443\u0441\u043a\u043d\u0443\u044e \u0441\u043f\u043e\u0441\u043e\u0431\u043d\u043e\u0441\u0442\u044c \u043b\u0438\u043d\u0438\u0438, \u043d\u0435\u0437\u0430\u0432\u0435\u0440\u0448\u0451\u043d\u043d\u043e\u0435 \u043f\u0440\u043e\u0438\u0437\u0432\u043e\u0434\u0441\u0442\u0432\u043e (WIP) \u0438 \u0443\u0434\u0435\u043b\u044c\u043d\u043e\u0435 \u044d\u043d\u0435\u0440\u0433\u043e\u043f\u043e\u0442\u0440\u0435\u0431\u043b\u0435\u043d\u0438\u0435 \u043d\u0430 \u0434\u0435\u0442\u0430\u043b\u044c, \u0430 \u0442\u0430\u043a\u0436\u0435 \u043e\u0442\u0441\u043b\u0435\u0436\u0438\u0432\u0430\u0442\u044c \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u044c \u043c\u0430\u0448\u0438\u043d M1-M5\",\n    \"data_sources\": \"\u043f\u0435\u0440-\u0441\u0442\u0430\u043d\u0446\u0438\u043e\u043d\u043d\u044b\u0435 \u0438\u0437\u043c\u0435\u0440\u0435\u043d\u043d\u044b\u0435 \u0444\u0430\u043a\u0442\u044b, \u043f\u043e\u043b\u0443\u0447\u0435\u043d\u043d\u044b\u0435 \u0432 \u043f\u0435\u0440\u0438\u043e\u0434 \u043c\u043e\u043d\u0438\u0442\u043e\u0440\u0438\u043d\u0433\u0430 \u0440\u0435\u0430\u043b\u044c\u043d\u043e\u0433\u043e \u0443\u0447\u0430\u0441\u0442\u043a\u0430 (\u0438\u0441\u0442\u043e\u0440\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u043d\u0430\u0431\u043b\u044e\u0434\u0435\u043d\u0438\u044f)\",\n    \"update_frequency\": \"\u0441\u043e\u0431\u044b\u0442\u0438\u044f \u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u0443\u044e\u0442\u0441\u044f \u043f\u043e \u043a\u0430\u0436\u0434\u043e\u0439 \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u0430\u043d\u043d\u043e\u0439 \u0434\u0435\u0442\u0430\u043b\u0438, \u0438\u043d\u0442\u0435\u0440\u0432\u0430\u043b\u044b \u0441\u043e\u0441\u0442\u043e\u044f\u043d\u0438\u0439 \u0438 \u044d\u043d\u0435\u0440\u0433\u043e\u043f\u043e\u0442\u0440\u0435\u0431\u043b\u0435\u043d\u0438\u0435 \u0437\u0430\u043f\u0438\u0441\u044b\u0432\u0430\u044e\u0442\u0441\u044f \u043d\u0435\u043f\u0440\u0435\u0440\u044b\u0432\u043d\u043e\",\n    \"critical_parameters\": {\"M1\": \"\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u044c\", \"M2\": \"\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u044c\", \"M3\": \"\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u044c\", \"M4\": \"\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u044c\", \"M5\": \"\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u044c\", \"\u0441\u0438\u0441\u0442\u0435\u043c\u0430\": \"\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u044c\"}\n}\ncursor.execute('''\n    INSERT OR REPLACE INTO process_line \n    (id, production_type, processes, equipment, goals, data_sources, update_frequency, critical_parameters)\n    VALUES (?, ?, ?, ?, ?, ?, ?, ?)\n''', (1, process_line_data[\"production_type\"], process_line_data[\"processes\"],\n      process_line_data[\"equipment\"], process_line_data[\"goals\"], process_line_data[\"data_sources\"],\n      process_line_data[\"update_frequency\"], json.dumps(process_line_data[\"critical_parameters\"])))\n\n# Insert machine data\nmachines_data = [\n    (\"M1\", \"\u043d\u0435 \u0443\u043a\u0430\u0437\u0430\u043d\u043e\", \"available\", 0.95, \"00:15:00\", 2.5, 0.5),\n    (\"M2\", \"\u043d\u0435 \u0443\u043a\u0430\u0437\u0430\u043d\u043e\", \"available\", 0.92, \"00:20:00\", 3.0, 0.6),\n    (\"M3\", \"\u043d\u0435 \u0443\u043a\u0430\u0437\u0430\u043d\u043e\", \"available\", 0.90, \"00:25:00\", 2.8, 0.4),\n    (\"M4\", \"\u043d\u0435 \u0443\u043a\u0430\u0437\u0430\u043d\u043e\", \"available\", 0.88, \"00:30:00\", 3.2, 0.7),\n    (\"M5\", \"\u043d\u0435 \u0443\u043a\u0430\u0437\u0430\u043d\u043e\", \"available\", 0.94, \"00:18:00\", 2.6, 0.5)\n]\n\nfor machine in machines_data:\n    cursor.execute('''\n        INSERT OR REPLACE INTO machine \n        (id, name, type, status, availability, mttr, work_power_kw, idle_power_kw)\n        VALUES (?, ?, ?, ?, ?, ?, ?, ?)\n    ''', (machines_data.index(machine)+1, machine[0], machine[1], machine[2],\n          machine[3], machine[4], machine[5], machine[6]))\n\nconn.commit()\n\n# Create materials\nmat_steel = chrono.ChMaterialSurfaceNSC()\nmat_steel.SetFriction(0.5)\nmat_steel.SetRestitution(0.1)\n\nmat_concrete = chrono.ChMaterialSurfaceNSC()\nmat_concrete.SetFriction(0.6)\nmat_concrete.SetRestitution(0.05)\n\n# Create ground plane\nground = chrono.ChBodyEasyBox(20, 1, 20, 1000, True, True)\nground.SetPos(chrono.ChVectorD(0, -0.5, 0))\nground.GetVisualModel().SetTexture(\"textures/concrete.jpg\")\nground.SetMaterialSurface(mat_concrete)\nsys.Add(ground)\n\n# Create conveyor belt components\ndef create_conveyor_belt(length: float, width: float, height: float):\n    belt = chrono.ChBodyEasyBox(length, height, width, 1000, True, True)\n    belt.SetPos(chrono.ChVectorD(0, 0, 0))\n    belt.SetMaterialSurface(mat_steel)\n    return belt\n\n# Create equipment bodies (simplified representation)\nequipment_bodies = {}\nfor i in range(1, 6):\n    body = chrono.ChBodyEasyBox(2, 1, 2, 1000, True, True)\n    body.SetPos(chrono.ChVectorD((i-3)*5, 0.5, 0))\n    body.SetMaterialSurface(mat_steel)\n    sys.Add(body)\n    equipment_bodies[f'M{i}'] = body\n\n# Create a simple part that will go through the line\npart = chrono.ChBodyEasyBox(0.5, 0.5, 0.5, 100, True, True)\npart.SetPos(chrono.ChVectorD(-8, 1, 0))\npart.SetMaterialSurface(mat_steel)\nsys.Add(part)\n\n# Add some constraints between parts to simulate the line\n# This is a simplified approach using fixed constraints\nconstraint1 = chrono.ChLinkLockLock()\nconstraint1.Initialize(equipment_bodies['M1'], ground, chrono.ChFrameD(chrono.ChVectorD(-3, 0, 0), chrono.Q_from_AngZ(0)))\nsys.Add(constraint1)\n\nconstraint2 = chrono.ChLinkLockLock()\nconstraint2.Initialize(equipment_bodies['M2'], ground, chrono.ChFrameD(chrono.ChVectorD(-1, 0, 0), chrono.Q_from_AngZ(0)))\nsys.Add(constraint2)\n\nconstraint3 = chrono.ChLinkLockLock()\nconstraint3.Initialize(equipment_bodies['M3'], ground, chrono.ChFrameD(chrono.ChVectorD(1, 0, 0), chrono.Q_from_AngZ(0)))\nsys.Add(constraint3)\n\nconstraint4 = chrono.ChLinkLockLock()\nconstraint4.Initialize(equipment_bodies['M4'], ground, chrono.ChFrameD(chrono.ChVectorD(3, 0, 0), chrono.Q_from_AngZ(0)))\nsys.Add(constraint4)\n\nconstraint5 = chrono.ChLinkLockLock()\nconstraint5.Initialize(equipment_bodies['M5'], ground, chrono.ChFrameD(chrono.ChVectorD(5, 0, 0), chrono.Q_from_AngZ(0)))\nsys.Add(constraint5)\n\n# Create sensors for each machine\nclass MachineSensor:\n    def __init__(self, machine_name: str, machine_id: int):\n        self.machine_name = machine_name\n        self.machine_id = machine_id\n        self.process_start_time = None\n        self.process_end_time = None\n        self.total_processing_time = 0\n        self.failure_count = 0\n        self.work_power = 0\n        self.idle_power = 0\n        \n    def log_sensor_data(self, sensor_type: str, value: float):\n        timestamp = datetime.datetime.now().isoformat()\n        cursor.execute('''\n            INSERT INTO sensor_data (machine_id, sensor_type, value, timestamp)\n            VALUES (?, ?, ?, ?)\n        ''', (self.machine_id, sensor_type, value, timestamp))\n        \n    def log_production_event(self, process_step: str, start_time: datetime.datetime, end_time: datetime.datetime = None):\n        timestamp = datetime.datetime.now().isoformat()\n        cursor.execute('''\n            INSERT INTO production_event (machine_id, process_step, start_time, end_time)\n            VALUES (?, ?, ?, ?)\n        ''', (self.machine_id, process_step, start_time.isoformat(), end_time.isoformat() if end_time else None))\n        \n    def get_availability(self) -> float:\n        # Simplified availability calculation\n        return 0.95  # Placeholder value\n\n# Create sensors for all machines\nsensors = {}\nfor i in range(1, 6):\n    sensors[f'M{i}'] = MachineSensor(f'M{i}', i)\n\n# Main simulation loop\ntime_step = 0.01\nsimulation_time = 0\npart_moving = False\npart_position = -8\npart_speed = 0.5\nlast_log_time = 0\n\nprint(\"Starting simulation...\")\nstart_time = time.time()\n\nwhile simulation_time < 100:  # Run for 100 seconds\n    # Update part position\n    if not part_moving:\n        part.SetPos(chrono.ChVectorD(part_position, 1, 0))\n        part_position += part_speed * time_step\n        if part_position > 10:\n            part_moving = True\n            part_position = -8\n            \n    # Check which machine the part is at\n    current_machine = None\n    if -3.5 <= part_position <= -2.5:\n        current_machine = 'M1'\n    elif -1.5 <= part_position <= -0.5:\n        current_machine = 'M2'\n    elif 0.5 <= part_position <= 1.5:\n        current_machine = 'M3'\n    elif 2.5 <= part_position <= 3.5:\n        current_machine = 'M4'\n    elif 4.5 <= part_position <= 5.5:\n        current_machine = 'M5'\n    \n    # Log sensor data continuously\n    if simulation_time - last_log_time >= 0.1:  # Log every 0.1 seconds\n        for sensor_name, sensor in sensors.items():\n            # Simulate power consumption\n            if current_machine == sensor_name:\n                sensor.log_sensor_data(\"energy_consumption\", sensor.work_power)\n            else:\n                sensor.log_sensor_data(\"energy_consumption\", sensor.idle_power)\n                \n            # Simulate availability\n            availability = sensor.get_availability()\n            sensor.log_sensor_data(\"availability\", availability)\n            \n        last_log_time = simulation_time\n    \n    # Log production events when part moves to a new station\n    if current_machine and current_machine in sensors:\n        sensor = sensors[current_machine]\n        if not sensor.process_start_time:\n            sensor.process_start_time = datetime.datetime.now()\n            sensor.log_production_event(current_machine, sensor.process_start_time)\n        elif sensor.process_end_time is None:\n            # Simulate processing time\n            if simulation_time - sensor.process_start_time.timestamp() > 5:  # 5 second processing time\n                sensor.process_end_time = datetime.datetime.now()\n                sensor.log_production_event(current_machine, sensor.process_start_time, sensor.process_end_time)\n    \n    # Step the simulation\n    sys.DoStepDynamics(time_step)\n    simulation_time += time_step\n    \n    # Print progress\n    if simulation_time % 10 < time_step:\n        elapsed = time.time() - start_time\n        print(f\"Simulation time: {simulation_time:.2f}s, Elapsed time: {elapsed:.2f}s\")\n\n# Commit all changes to database\nconn.commit()\nconn.close()\n\nprint(\"Simulation completed.\")\nprint(\"Data has been logged to the database.\")\n\n# Cleanup\ndel sys"
+}

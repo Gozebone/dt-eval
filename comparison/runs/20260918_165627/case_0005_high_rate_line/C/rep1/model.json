@@ -1,0 +1,275 @@
+{
+  "requirements": {
+    "production_type": "\u0441\u0435\u0440\u0438\u0439\u043d\u043e\u0435 \u043f\u0440\u043e\u0438\u0437\u0432\u043e\u0434\u0441\u0442\u0432\u043e \u0441 \u0447\u0435\u0442\u044b\u0440\u044c\u043c\u044f \u043c\u0430\u0448\u0438\u043d\u0430\u043c\u0438 M1-M4 \u0432 \u043f\u043e\u0441\u043b\u0435\u0434\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u043d\u043e\u0439 \u043b\u0438\u043d\u0438\u0438 \u0438 \u0431\u0443\u0444\u0435\u0440\u0430\u043c\u0438 B0-B3",
+    "processes": [
+      "\u043c\u0430\u0448\u0438\u043d\u044b M1-M4 \u043e\u0431\u0440\u0430\u0431\u0430\u0442\u044b\u0432\u0430\u044e\u0442 \u0434\u0435\u0442\u0430\u043b\u0438 \u043f\u043e\u0441\u043b\u0435\u0434\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u043d\u043e",
+      "\u0432\u0445\u043e\u0434\u043d\u043e\u0439 \u043f\u043e\u0442\u043e\u043a \u0434\u0435\u0442\u0430\u043b\u0435\u0439 \u0441 \u0438\u043d\u0442\u0435\u0440\u0432\u0430\u043b\u043e\u043c 45 \u0441\u0435\u043a\u0443\u043d\u0434",
+      "\u0431\u0443\u0444\u0435\u0440\u044b B0-B3 \u0441 \u0435\u043c\u043a\u043e\u0441\u0442\u044f\u043c\u0438 25, 10, 10, 10"
+    ],
+    "equipment": {
+      "M1": {
+        "process_time_s": "\u043d\u0435 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043e",
+        "availability": "\u043d\u0435 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043e",
+        "mttr_s": "\u043d\u0435 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043e",
+        "work_power_kw": "\u043d\u0435 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043e",
+        "idle_power_kw": "\u043d\u0435 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043e"
+      },
+      "M2": {
+        "process_time_s": "\u043d\u0435 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043e",
+        "availability": "\u043d\u0435 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043e",
+        "mttr_s": "\u043d\u0435 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043e",
+        "work_power_kw": "\u043d\u0435 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043e",
+        "idle_power_kw": "\u043d\u0435 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043e"
+      },
+      "M3": {
+        "process_time_s": "\u043d\u0435 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043e",
+        "availability": "\u043d\u0435 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043e",
+        "mttr_s": "\u043d\u0435 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043e",
+        "work_power_kw": "\u043d\u0435 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043e",
+        "idle_power_kw": "\u043d\u0435 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043e"
+      },
+      "M4": {
+        "process_time_s": "\u043d\u0435 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043e",
+        "availability": "\u043d\u0435 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043e",
+        "mttr_s": "\u043d\u0435 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043e",
+        "work_power_kw": "\u043d\u0435 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043e",
+        "idle_power_kw": "\u043d\u0435 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043e"
+      },
+      "B0": {
+        "capacity": 25
+      },
+      "B1": {
+        "capacity": 10
+      },
+      "B2": {
+        "capacity": 10
+      },
+      "B3": {
+        "capacity": 10
+      }
+    },
+    "sensors": [
+      "\u043d\u0435 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u044b",
+      "\u043f\u0435\u0440-\u0441\u0442\u0430\u043d\u0446\u0438\u043e\u043d\u043d\u044b\u0435 \u0438\u0437\u043c\u0435\u0440\u0435\u043d\u043d\u044b\u0435 \u0444\u0430\u043a\u0442\u044b",
+      "\u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u044b \u043c\u043e\u0434\u0435\u043b\u0438"
+    ],
+    "goals": "\u043e\u0446\u0435\u043d\u0438\u0432\u0430\u0442\u044c \u043f\u0440\u043e\u043f\u0443\u0441\u043a\u043d\u0443\u044e \u0441\u043f\u043e\u0441\u043e\u0431\u043d\u043e\u0441\u0442\u044c \u043b\u0438\u043d\u0438\u0438, WIP \u0438 \u0443\u0434\u0435\u043b\u044c\u043d\u043e\u0435 \u044d\u043d\u0435\u0440\u0433\u043e\u043f\u043e\u0442\u0440\u0435\u0431\u043b\u0435\u043d\u0438\u0435 \u043d\u0430 \u0434\u0435\u0442\u0430\u043b\u044c, \u0430 \u0442\u0430\u043a\u0436\u0435 \u043e\u0442\u0441\u043b\u0435\u0436\u0438\u0432\u0430\u0442\u044c \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u044c \u043c\u0430\u0448\u0438\u043d M1-M4",
+    "data_sources": "\u043f\u0435\u0440-\u0441\u0442\u0430\u043d\u043e\u0447\u043d\u044b\u0435 \u0438\u0437\u043c\u0435\u0440\u0435\u043d\u043d\u044b\u0435 \u0444\u0430\u043a\u0442\u044b \u0438\u0437 \u043c\u043e\u043d\u0438\u0442\u043e\u0440\u0438\u043d\u0433\u043e\u0432\u043e\u0433\u043e \u043f\u0435\u0440\u0438\u043e\u0434\u0430 \u0438 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u044b \u043c\u043e\u0434\u0435\u043b\u0438 (\u0438\u043d\u0442\u0435\u0440\u0432\u0430\u043b \u043f\u0440\u0438\u0431\u044b\u0442\u0438\u044f, \u0435\u043c\u043a\u043e\u0441\u0442\u0438 \u0431\u0443\u0444\u0435\u0440\u043e\u0432, \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u044b \u043c\u0430\u0448\u0438\u043d)",
+    "update_frequency": "\u0441\u043e\u0431\u044b\u0442\u0438\u044f \u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u0443\u044e\u0442\u0441\u044f \u043f\u043e \u043a\u0430\u0436\u0434\u043e\u0439 \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u0430\u043d\u043d\u043e\u0439 \u0434\u0435\u0442\u0430\u043b\u0438, \u0438\u043d\u0442\u0435\u0440\u0432\u0430\u043b\u044b \u0441\u043e\u0441\u0442\u043e\u044f\u043d\u0438\u044f \u0438 \u044d\u043d\u0435\u0440\u0433\u043e\u043f\u043e\u0442\u0440\u0435\u0431\u043b\u0435\u043d\u0438\u0435 \u0437\u0430\u043f\u0438\u0441\u044b\u0432\u0430\u044e\u0442\u0441\u044f \u043d\u0435\u043f\u0440\u0435\u0440\u044b\u0432\u043d\u043e",
+    "critical_parameters": {
+      "throughput": "\u043d\u0435 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043e",
+      "WIP": "\u043d\u0435 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043e",
+      "specific_energy_per_part": "\u043d\u0435 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043e",
+      "machine_availability": "\u043d\u0435 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043e"
+    },
+    "additional_info": ""
+  },
+  "schema": {
+    "raw": ""
+  },
+  "dt_config": {
+    "components": {
+      "data_collection_modules": {
+        "opcua_server": {
+          "type": "OPC-UA Server",
+          "description": "Collects real-time data from industrial equipment",
+          "protocol": "OPC-UA",
+          "frequency": "continuous"
+        },
+        "mqtt_collector": {
+          "type": "MQTT Client",
+          "description": "Collects sensor data via MQTT protocol",
+          "protocol": "MQTT",
+          "frequency": "real-time"
+        },
+        "historical_data_loader": {
+          "type": "Historical Data Loader",
+          "description": "Loads historical data for analysis",
+          "protocol": "REST",
+          "frequency": "periodic"
+        }
+      },
+      "analytics_engines": {
+        "kpi_calculator": {
+          "type": "KPI Calculator",
+          "description": "Calculates key performance indicators",
+          "protocol": "WebSocket",
+          "frequency": "real-time"
+        },
+        "wip_analyzer": {
+          "type": "WIP Analyzer",
+          "description": "Analyzes work-in-progress metrics",
+          "protocol": "WebSocket",
+          "frequency": "real-time"
+        },
+        "energy_analyzer": {
+          "type": "Energy Analyzer",
+          "description": "Analyzes energy consumption per part",
+          "protocol": "WebSocket",
+          "frequency": "real-time"
+        }
+      },
+      "ml_models": {
+        "machine_failure_predictor": {
+          "type": "Predictive Maintenance Model",
+          "description": "Predicts machine failures based on historical data",
+          "protocol": "REST",
+          "frequency": "periodic"
+        },
+        "throughput_forecaster": {
+          "type": "Throughput Forecasting Model",
+          "description": "Forecasts throughput using time-series analysis",
+          "protocol": "REST",
+          "frequency": "periodic"
+        }
+      },
+      "visualization_dashboards": {
+        "production_dashboard": {
+          "type": "Production Dashboard",
+          "description": "Main dashboard for monitoring production status",
+          "protocol": "WebSocket",
+          "frequency": "real-time"
+        },
+        "maintenance_dashboard": {
+          "type": "Maintenance Dashboard",
+          "description": "Dashboard for maintenance and availability tracking",
+          "protocol": "WebSocket",
+          "frequency": "real-time"
+        }
+      }
+    },
+    "data_flows": {
+      "opcua_to_kpi_calculator": {
+        "source": "opcua_server",
+        "target": "kpi_calculator",
+        "protocol": "OPC-UA",
+        "frequency": "real-time"
+      },
+      "mqtt_to_kpi_calculator": {
+        "source": "mqtt_collector",
+        "target": "kpi_calculator",
+        "protocol": "MQTT",
+        "frequency": "real-time"
+      },
+      "historical_data_to_ml_models": {
+        "source": "historical_data_loader",
+        "target": "machine_failure_predictor",
+        "protocol": "REST",
+        "frequency": "daily"
+      },
+      "kpi_calculator_to_visualization": {
+        "source": "kpi_calculator",
+        "target": "production_dashboard",
+        "protocol": "WebSocket",
+        "frequency": "real-time"
+      },
+      "wip_analyzer_to_visualization": {
+        "source": "wip_analyzer",
+        "target": "production_dashboard",
+        "protocol": "WebSocket",
+        "frequency": "real-time"
+      },
+      "energy_analyzer_to_visualization": {
+        "source": "energy_analyzer",
+        "target": "production_dashboard",
+        "protocol": "WebSocket",
+        "frequency": "real-time"
+      }
+    },
+    "visualization_layout": {
+      "dashboard": {
+        "widgets": [
+          {
+            "type": "gauge",
+            "title": "Throughput",
+            "value_field": "throughput",
+            "unit": "parts/hour",
+            "min_value": 0,
+            "max_value": 100,
+            "color_scheme": "green-to-red"
+          },
+          {
+            "type": "bar_chart",
+            "title": "Work-in-Progress by Buffer",
+            "value_field": "wip_by_buffer",
+            "unit": "parts",
+            "color_scheme": "blue-to-orange"
+          },
+          {
+            "type": "line_chart",
+            "title": "Energy Consumption Over Time",
+            "value_field": "energy_consumption",
+            "unit": "kWh/part",
+            "color_scheme": "purple-to-yellow"
+          },
+          {
+            "type": "status_indicator",
+            "title": "Machine Availability",
+            "value_field": "machine_availability",
+            "unit": "%",
+            "color_scheme": "red-to-green"
+          }
+        ],
+        "refresh_rate": "1 second",
+        "theme": "dark"
+      }
+    },
+    "alerts": [
+      {
+        "name": "High WIP Alert",
+        "condition": "wip > 30",
+        "severity": "warning",
+        "message": "Work-in-progress exceeds threshold of 30 parts",
+        "triggered_by": "wip_analyzer"
+      },
+      {
+        "name": "Low Throughput Alert",
+        "condition": "throughput < 60",
+        "severity": "critical",
+        "message": "Throughput below target of 60 parts/hour",
+        "triggered_by": "kpi_calculator"
+      },
+      {
+        "name": "High Energy Consumption",
+        "condition": "specific_energy_per_part > 2.5",
+        "severity": "emergency",
+        "message": "Specific energy consumption exceeds 2.5 kWh/part",
+        "triggered_by": "energy_analyzer"
+      },
+      {
+        "name": "Machine Down Alert",
+        "condition": "machine_availability < 80",
+        "severity": "critical",
+        "message": "Machine availability below 80%",
+        "triggered_by": "kpi_calculator"
+      }
+    ],
+    "kpis": [
+      {
+        "name": "Throughput",
+        "target_value": 80,
+        "measurement_method": "count of parts processed per hour",
+        "unit": "parts/hour"
+      },
+      {
+        "name": "Work-in-Progress (WIP)",
+        "target_value": 20,
+        "measurement_method": "average number of parts in buffers",
+        "unit": "parts"
+      },
+      {
+        "name": "Specific Energy Per Part",
+        "target_value": 2.0,
+        "measurement_method": "total energy consumed divided by number of parts",
+        "unit": "kWh/part"
+      },
+      {
+        "name": "Machine Availability",
+        "target_value": 95,
+        "measurement_method": "time available for operation divided by total time",
+        "unit": "%"
+      }
+    ]
+  },
+  "dt_simulation": "```python\nimport pychrono as chrono\nimport pychrono.irrlicht as irr\nimport pychrono.fsi as fsi\nimport numpy as np\nimport time\nimport math\nimport csv\nimport os\n\n# Initialize PyChrono system\nchrono.SetChronoDataPath(os.path.join(os.path.dirname(__file__), \"chrono_data\"))\n\n# Create the physical system\nsys = chrono.ChSystemNSC()\n\n# Set gravity\nsys.Set_G_acc(chrono.ChVectorD(0, -9.81, 0))\n\n# Create materials\nsteel_mat = chrono.ChMaterialSurfaceNSC()\nsteel_mat.SetFriction(0.5)\nsteel_mat.SetRestitution(0.1)\n\n# Create terrain\nterrain = chrono.ChBody()\nterrain.SetFixed(True)\nterrain.SetBodyFixed(True)\nterrain.SetCollide(True)\nterrain.AddAsset(chrono.ChVisualShapeBox(20, 0.1, 20))\nterrain.GetVisualShape(0).SetColor(chrono.ChColor(0.3, 0.3, 0.3))\nsys.Add(terrain)\n\n# Create input buffer B0\nbuffer_B0 = chrono.ChBody()\nbuffer_B0.SetPos(chrono.ChVectorD(0, 0, 0))\nbuffer_B0.SetFixed(True)\nbuffer_B0.SetCollide(True)\nbuffer_B0.AddAsset(chrono.ChVisualShapeBox(5, 2, 5))\nbuffer_B0.GetVisualShape(0).SetColor(chrono.ChColor(0.8, 0.8, 0.8))\nsys.Add(buffer_B0)\n\n# Create machines M1, M2, M3, M4\nmachine_positions = [\n    chrono.ChVectorD(10, 0, 0),\n    chrono.ChVectorD(20, 0, 0),\n    chrono.ChVectorD(30, 0, 0),\n    chrono.ChVectorD(40, 0, 0)\n]\n\nmachines = []\nfor i, pos in enumerate(machine_positions):\n    machine = chrono.ChBody()\n    machine.SetPos(pos)\n    machine.SetFixed(True)\n    machine.SetCollide(True)\n    machine.AddAsset(chrono.ChVisualShapeBox(3, 3, 3))\n    machine.GetVisualShape(0).SetColor(chrono.ChColor(0.5, 0.5, 1.0))\n    sys.Add(machine)\n    machines.append(machine)\n\n# Create buffers B1, B2, B3\nbuffer_positions = [\n    chrono.ChVectorD(15, 0, 0),\n    chrono.ChVectorD(25, 0, 0),\n    chrono.ChVectorD(35, 0, 0)\n]\n\nbuffers = []\nfor i, pos in enumerate(buffer_positions):\n    buffer = chrono.ChBody()\n    buffer.SetPos(pos)\n    buffer.SetFixed(True)\n    buffer.SetCollide(True)\n    buffer.AddAsset(chrono.ChVisualShapeBox(3, 2, 3))\n    buffer.GetVisualShape(0).SetColor(chrono.ChColor(0.5, 0.5, 0.5))\n    sys.Add(buffer)\n    buffers.append(buffer)\n\n# Create parts\nparts = []\npart_counter = 0\npart_interval = 45.0  # seconds\nlast_part_time = 0.0\n\n# Create output file for logging\nlog_filename = \"digital_twin_simulation.csv\"\nwith open(log_filename, 'w', newline='') as csvfile:\n    fieldnames = [\n        'timestamp', 'part_id', 'machine_id', 'buffer_id', 'status', \n        'wip', 'throughput', 'energy_consumption', 'availability'\n    ]\n    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)\n    writer.writeheader()\n\n# Simulation parameters\ndt = 0.01\nsimulation_time = 0.0\nend_time = 1000.0  # seconds\n\n# For tracking WIP\nwip_count = 0\nthroughput = 0\ntotal_energy_consumption = 0.0\nmachine_states = [True] * 4  # True means available\nmachine_working_time = [0.0] * 4\nmachine_total_time = [0.0] * 4\n\ndef log_data(timestamp, part_id, machine_id, buffer_id, status, wip, throughput, energy, availability):\n    with open(log_filename, 'a', newline='') as csvfile:\n        writer = csv.DictWriter(csvfile, fieldnames=[\n            'timestamp', 'part_id', 'machine_id', 'buffer_id', 'status', \n            'wip', 'throughput', 'energy_consumption', 'availability'\n        ])\n        writer.writerow({\n            'timestamp': timestamp,\n            'part_id': part_id,\n            'machine_id': machine_id,\n            'buffer_id': buffer_id,\n            'status': status,\n            'wip': wip,\n            'throughput': throughput,\n            'energy_consumption': energy,\n            'availability': availability\n        })\n\n# Main simulation loop\nwhile simulation_time < end_time:\n    # Add new parts at regular intervals\n    if simulation_time - last_part_time >= part_interval:\n        part = chrono.ChBody()\n        part.SetPos(chrono.ChVectorD(0, 2, 0))\n        part.SetFixed(False)\n        part.SetCollide(True)\n        part.AddAsset(chrono.ChVisualShapeBox(0.5, 0.5, 0.5))\n        part.GetVisualShape(0).SetColor(chrono.ChColor(1.0, 0.0, 0.0))\n        sys.Add(part)\n        parts.append(part)\n        part_counter += 1\n        wip_count += 1\n        last_part_time = simulation_time\n        log_data(\n            simulation_time, \n            part_counter, \n            -1, \n            0, \n            \"entered_line\", \n            wip_count, \n            throughput, \n            total_energy_consumption, \n            sum(machine_states)/len(machine_states)\n        )\n\n    # Advance the simulation\n    sys.DoStepDynamics(dt)\n    simulation_time += dt\n\n    # Update machine states and energy consumption\n    for i in range(len(machines)):\n        machine_total_time[i] += dt\n        if machine_states[i]:  # Machine is currently working\n            machine_working_time[i] += dt\n            total_energy_consumption += 1.0  # Arbitrary energy consumption value\n\n    # Update WIP and throughput\n    wip_count = len(parts)\n    if simulation_time % 10.0 < dt:  # Log every 10 seconds\n        throughput = len(parts) / simulation_time * 60 if simulation_time > 0 else 0\n        log_data(\n            simulation_time, \n            -1, \n            -1, \n            -1, \n            \"state_update\", \n            wip_count, \n            throughput, \n            total_energy_consumption, \n            sum(machine_states)/len(machine_states)\n        )\n\n    # Check part processing through machines\n    for i, part in enumerate(parts):\n        if part.GetPos().x > 45:  # Part has passed through all machines\n            sys.RemoveBody(part)\n            parts.pop(i)\n            throughput += 1\n            wip_count -= 1\n            log_data(\n                simulation_time, \n                i+1, \n                -1, \n                -1, \n                \"completed\", \n                wip_count, \n                throughput, \n                total_energy_consumption, \n                sum(machine_states)/len(machine_states)\n            )\n            break\n\n# Calculate final availability\nfinal_availability = []\nfor i in range(len(machine_states)):\n    if machine_total_time[i] > 0:\n        availability = machine_working_time[i] / machine_total_time[i]\n        final_availability.append(availability)\n    else:\n        final_availability.append(0.0)\n\nprint(\"Simulation completed.\")\nprint(f\"Total throughput: {throughput} parts\")\nprint(f\"Final WIP: {wip_count} parts\")\nprint(f\"Total energy consumption: {total_energy_consumption} kWh\")\nprint(f\"Machine availability: {final_availability}\")\n\n# Cleanup\nfor part in parts:\n    sys.RemoveBody(part)\n```"
+}

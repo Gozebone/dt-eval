@@ -1,0 +1,244 @@
+{
+  "components": {
+    "data_collection": {
+      "modules": [
+        {
+          "name": "SensorDataCollector",
+          "type": "IoT Agent",
+          "description": "Collects real-time data from sensors via OPC-UA and MQTT protocols",
+          "protocol": [
+            "OPC-UA",
+            "MQTT"
+          ],
+          "update_frequency_s": 1
+        },
+        {
+          "name": "HistoricalDataLoader",
+          "type": "Batch Processor",
+          "description": "Loads historical data from the database for simulation and analysis",
+          "protocol": [
+            "REST"
+          ],
+          "update_frequency_s": 3600
+        }
+      ]
+    },
+    "analytics": {
+      "engines": [
+        {
+          "name": "ProductionAnalyticsEngine",
+          "type": "Stream Processing",
+          "description": "Processes live data streams to calculate KPIs and detect anomalies",
+          "protocol": [
+            "WebSocket"
+          ],
+          "update_frequency_s": 1
+        },
+        {
+          "name": "PredictiveMaintenanceEngine",
+          "type": "ML Model",
+          "description": "Analyzes equipment data to predict failures and maintenance needs",
+          "protocol": [
+            "REST"
+          ],
+          "update_frequency_s": 60
+        }
+      ]
+    },
+    "visualization": {
+      "dashboards": [
+        {
+          "name": "ProductionDashboard",
+          "type": "Interactive Web Dashboard",
+          "widgets": [
+            {
+              "type": "Gauge",
+              "title": "Overall Equipment Effectiveness",
+              "metric": "OEE",
+              "unit": "%"
+            },
+            {
+              "type": "LineChart",
+              "title": "Production Rate Over Time",
+              "metric": "production_rate",
+              "unit": "units/min"
+            },
+            {
+              "type": "HeatMap",
+              "title": "Machine Utilization",
+              "metric": "machine_utilization",
+              "unit": "%"
+            },
+            {
+              "type": "BarChart",
+              "title": "Energy Consumption",
+              "metric": "energy_consumption",
+              "unit": "kWh"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "data_flows": {
+    "from_sensors": {
+      "source": "SensorDataCollector",
+      "destination": "ProductionAnalyticsEngine",
+      "protocol": "MQTT",
+      "update_frequency_s": 1
+    },
+    "from_database": {
+      "source": "HistoricalDataLoader",
+      "destination": "ProductionAnalyticsEngine",
+      "protocol": "REST",
+      "update_frequency_s": 3600
+    },
+    "from_analytics_to_visualization": {
+      "source": "ProductionAnalyticsEngine",
+      "destination": "ProductionDashboard",
+      "protocol": "WebSocket",
+      "update_frequency_s": 1
+    },
+    "from_analytics_to_maintenance": {
+      "source": "PredictiveMaintenanceEngine",
+      "destination": "MaintenanceAlerts",
+      "protocol": "REST",
+      "update_frequency_s": 60
+    }
+  },
+  "visualization_layout": {
+    "dashboard": {
+      "title": "Production Dashboard",
+      "widgets": [
+        {
+          "type": "Gauge",
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 2,
+            "height": 1
+          },
+          "title": "Overall Equipment Effectiveness",
+          "metric": "OEE",
+          "unit": "%",
+          "color_scheme": "green-to-red"
+        },
+        {
+          "type": "LineChart",
+          "position": {
+            "x": 2,
+            "y": 0,
+            "width": 4,
+            "height": 2
+          },
+          "title": "Production Rate Over Time",
+          "metric": "production_rate",
+          "unit": "units/min",
+          "color_scheme": "blue"
+        },
+        {
+          "type": "HeatMap",
+          "position": {
+            "x": 0,
+            "y": 1,
+            "width": 2,
+            "height": 2
+          },
+          "title": "Machine Utilization",
+          "metric": "machine_utilization",
+          "unit": "%",
+          "color_scheme": "blue-to-yellow"
+        },
+        {
+          "type": "BarChart",
+          "position": {
+            "x": 2,
+            "y": 2,
+            "width": 4,
+            "height": 2
+          },
+          "title": "Energy Consumption",
+          "metric": "energy_consumption",
+          "unit": "kWh",
+          "color_scheme": "orange"
+        }
+      ],
+      "refresh_rate_s": 5
+    }
+  },
+  "alerts": {
+    "thresholds": [
+      {
+        "name": "Machine Down Alert",
+        "parameter": "machine_status",
+        "threshold": "down",
+        "severity": "critical",
+        "actions": [
+          "email",
+          "SMS"
+        ]
+      },
+      {
+        "name": "High Energy Consumption",
+        "parameter": "energy_consumption",
+        "threshold": 1000,
+        "unit": "kWh",
+        "severity": "warning",
+        "actions": [
+          "email"
+        ]
+      },
+      {
+        "name": "Low Production Rate",
+        "parameter": "production_rate",
+        "threshold": 50,
+        "unit": "units/min",
+        "severity": "warning",
+        "actions": [
+          "email"
+        ]
+      },
+      {
+        "name": "Maintenance Due",
+        "parameter": "maintenance_due",
+        "threshold": "true",
+        "severity": "info",
+        "actions": [
+          "dashboard_notification"
+        ]
+      }
+    ]
+  },
+  "kpis": {
+    "metrics": [
+      {
+        "name": "Overall Equipment Effectiveness",
+        "description": "Combined measure of availability, performance, and quality",
+        "target": 85,
+        "unit": "%",
+        "calculation": "OEE = Availability * Performance * Quality"
+      },
+      {
+        "name": "Production Rate",
+        "description": "Number of units produced per minute",
+        "target": 100,
+        "unit": "units/min",
+        "calculation": "Total units produced / Total time in minutes"
+      },
+      {
+        "name": "Energy Consumption",
+        "description": "Total energy consumed in kilowatt-hours",
+        "target": 500,
+        "unit": "kWh",
+        "calculation": "Sum of power consumption over time"
+      },
+      {
+        "name": "Machine Utilization",
+        "description": "Percentage of time machines are actively processing",
+        "target": 90,
+        "unit": "%",
+        "calculation": "(Total processing time / Total time) * 100"
+      }
+    ]
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "production_type": "serial production line",
+  "processes": [
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "M5",
+    "M6"
+  ],
+  "equipment": [
+    "source",
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "M5",
+    "M6",
+    "sink",
+    "B0",
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5"
+  ],
+  "sensors": [
+    "Avg_Time_per_part_s",
+    "Availability_%",
+    "MTTR_s",
+    "EnergyIdling",
+    "EnergyWorking"
+  ],
+  "goals": "simulate the production line for at least 432000 seconds (about 5 days) with accurate processing times, availability, and energy consumption.",
+  "data_sources": "per-station measured facts from a monitoring period of the real plant.",
+  "update_frequency": "not applicable (fixed)",
+  "critical_parameters": {
+    "Avg_Time_per_part_s": 199.86,
+    "Availability_%": 98.77,
+    "MTTR_s": 1062.58,
+    "EnergyIdling": 0.5,
+    "EnergyWorking": 5.0
+  },
+  "line": {
+    "topology": "serial",
+    "source": {
+      "inter_arrival_time_s": 300
+    },
+    "stations": [
+      {
+        "id": "M1",
+        "processing_time_s": 199.86,
+        "availability_pct": 98.77,
+        "mttr_s": 1062.58,
+        "power_working_kw": 5.0,
+        "power_idle_kw": 0.5
+      },
+      {
+        "id": "M2",
+        "processing_time_s": 220.09,
+        "availability_pct": 98.63,
+        "mttr_s": 1184.73,
+        "power_working_kw": 5.49,
+        "power_idle_kw": 0.55
+      },
+      {
+        "id": "M3",
+        "processing_time_s": 240.01,
+        "availability_pct": 99.78,
+        "mttr_s": 314.75,
+        "power_working_kw": 5.99,
+        "power_idle_kw": 0.59
+      },
+      {
+        "id": "M4",
+        "processing_time_s": 259.99,
+        "availability_pct": 98.85,
+        "mttr_s": 1246.71,
+        "power_working_kw": 6.99,
+        "power_idle_kw": 0.69
+      },
+      {
+        "id": "M5",
+        "processing_time_s": 230.13,
+        "availability_pct": 99.51,
+        "mttr_s": 2129.84,
+        "power_working_kw": 6.49,
+        "power_idle_kw": 0.64
+      },
+      {
+        "id": "M6",
+        "processing_time_s": 209.83,
+        "availability_pct": 98.98,
+        "mttr_s": 2200.89,
+        "power_working_kw": 6.0,
+        "power_idle_kw": 0.6
+      }
+    ],
+    "buffers": [
+      {
+        "id": "B0",
+        "capacity": 10,
+        "before": "source",
+        "after": "M1"
+      },
+      {
+        "id": "B1",
+        "capacity": 10,
+        "before": "M1",
+        "after": "M2"
+      },
+      {
+        "id": "B2",
+        "capacity": 10,
+        "before": "M2",
+        "after": "M3"
+      },
+      {
+        "id": "B3",
+        "capacity": 10,
+        "before": "M3",
+        "after": "M4"
+      },
+      {
+        "id": "B4",
+        "capacity": 10,
+        "before": "M4",
+        "after": "M5"
+      },
+      {
+        "id": "B5",
+        "capacity": 10,
+        "before": "M5",
+        "after": "M6"
+      }
+    ],
+    "defects": {
+      "rate": null
+    }
+  },
+  "des_horizon": {
+    "warmup_s": null,
+    "window_s": null,
+    "replications": null
+  },
+  "units": {
+    "time": "s",
+    "power": "kW",
+    "energy": "kWh"
+  },
+  "additional_info": "The line is designed to process parts at a constant rate of one part every 300 seconds."
+}

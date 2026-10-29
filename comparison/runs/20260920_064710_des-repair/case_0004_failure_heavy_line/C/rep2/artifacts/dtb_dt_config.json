@@ -1,0 +1,209 @@
+{
+  "components": {
+    "data_collection": {
+      "modules": [
+        {
+          "name": "SensorDataCollector",
+          "type": "data_collector",
+          "description": "Collects real-time sensor data from machines via OPC-UA",
+          "protocol": "OPC-UA",
+          "frequency_s": 10
+        },
+        {
+          "name": "EventLogger",
+          "type": "event_logger",
+          "description": "Logs machine events and anomalies",
+          "protocol": "REST",
+          "frequency_s": 5
+        }
+      ]
+    },
+    "analytics_engine": {
+      "engine": {
+        "name": "ProductionAnalyticsEngine",
+        "type": "analytics",
+        "description": "Analyzes production data and calculates KPIs",
+        "protocol": "WebSocket",
+        "frequency_s": 15
+      }
+    },
+    "ml_models": {
+      "models": [
+        {
+          "name": "FailurePredictionModel",
+          "type": "predictive_maintenance",
+          "description": "Predicts machine failures based on historical data",
+          "protocol": "MQTT",
+          "frequency_s": 60
+        },
+        {
+          "name": "PerformanceOptimizer",
+          "type": "optimization",
+          "description": "Optimizes machine parameters for better throughput",
+          "protocol": "REST",
+          "frequency_s": 300
+        }
+      ]
+    },
+    "visualization": {
+      "dashboard": {
+        "name": "ProductionLineDashboard",
+        "type": "visualization",
+        "description": "Real-time dashboard for monitoring production line",
+        "protocol": "WebSocket",
+        "refresh_rate_s": 5
+      }
+    }
+  },
+  "data_flows": {
+    "flows": [
+      {
+        "from": "SensorDataCollector",
+        "to": "ProductionAnalyticsEngine",
+        "protocol": "WebSocket",
+        "frequency_s": 10
+      },
+      {
+        "from": "EventLogger",
+        "to": "ProductionAnalyticsEngine",
+        "protocol": "REST",
+        "frequency_s": 5
+      },
+      {
+        "from": "ProductionAnalyticsEngine",
+        "to": "FailurePredictionModel",
+        "protocol": "MQTT",
+        "frequency_s": 60
+      },
+      {
+        "from": "ProductionAnalyticsEngine",
+        "to": "PerformanceOptimizer",
+        "protocol": "REST",
+        "frequency_s": 300
+      },
+      {
+        "from": "ProductionAnalyticsEngine",
+        "to": "ProductionLineDashboard",
+        "protocol": "WebSocket",
+        "frequency_s": 5
+      },
+      {
+        "from": "FailurePredictionModel",
+        "to": "ProductionLineDashboard",
+        "protocol": "WebSocket",
+        "frequency_s": 60
+      }
+    ]
+  },
+  "visualization": {
+    "layout": {
+      "rows": [
+        {
+          "widgets": [
+            {
+              "type": "gauge",
+              "title": "Line Overall Availability",
+              "metric": "availability",
+              "unit": "%",
+              "color_scheme": "green_to_red"
+            },
+            {
+              "type": "chart",
+              "title": "Machine Processing Times",
+              "metric": "processing_time_s",
+              "unit": "s",
+              "color_scheme": "blue_to_orange"
+            }
+          ]
+        },
+        {
+          "widgets": [
+            {
+              "type": "table",
+              "title": "Machine Status",
+              "metrics": [
+                "machine_id",
+                "status",
+                "mttr_s"
+              ],
+              "color_scheme": "light_gray"
+            },
+            {
+              "type": "heatmap",
+              "title": "Buffer Utilization",
+              "metric": "buffer_utilization",
+              "unit": "%",
+              "color_scheme": "purple_to_yellow"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "alerts": {
+    "thresholds": [
+      {
+        "parameter": "MTTR_s",
+        "severity": "warning",
+        "threshold": 3600,
+        "operator": ">",
+        "message": "MTTR exceeds 1 hour"
+      },
+      {
+        "parameter": "MTTR_s",
+        "severity": "critical",
+        "threshold": 7200,
+        "operator": ">",
+        "message": "MTTR exceeds 2 hours"
+      },
+      {
+        "parameter": "availability",
+        "severity": "warning",
+        "threshold": 0.85,
+        "operator": "<",
+        "message": "Availability below 85%"
+      },
+      {
+        "parameter": "availability",
+        "severity": "critical",
+        "threshold": 0.8,
+        "operator": "<",
+        "message": "Availability below 80%"
+      }
+    ]
+  },
+  "kpis": {
+    "metrics": [
+      {
+        "name": "Overall Equipment Effectiveness",
+        "target_value": 0.85,
+        "measurement_method": "calculated from availability, performance, and quality",
+        "unit": "%"
+      },
+      {
+        "name": "Throughput",
+        "target_value": 1000,
+        "measurement_method": "count of parts produced per day",
+        "unit": "parts/day"
+      },
+      {
+        "name": "Energy Consumption",
+        "target_value": 5000,
+        "measurement_method": "sum of power consumption over time",
+        "unit": "kWh/day"
+      },
+      {
+        "name": "Machine Uptime",
+        "target_value": 0.9,
+        "measurement_method": "total uptime divided by total time",
+        "unit": "%"
+      },
+      {
+        "name": "Buffer Fill Level",
+        "target_value": 0.5,
+        "measurement_method": "average buffer fill level across all buffers",
+        "unit": "%"
+      }
+    ]
+  }
+}

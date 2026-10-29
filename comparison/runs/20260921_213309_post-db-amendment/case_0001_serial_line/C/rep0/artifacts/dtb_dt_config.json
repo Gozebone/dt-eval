@@ -1,0 +1,230 @@
+{
+  "components": {
+    "data_collection": {
+      "modules": [
+        {
+          "name": "sensor_data_collector",
+          "type": "data_collector",
+          "description": "Collects real-time sensor data from machines and buffers",
+          "protocol": "OPC-UA",
+          "frequency_s": 5
+        },
+        {
+          "name": "historical_data_loader",
+          "type": "data_loader",
+          "description": "Loads historical data from database for analysis",
+          "protocol": "REST",
+          "frequency_s": 3600
+        }
+      ]
+    },
+    "analytics_engine": {
+      "modules": [
+        {
+          "name": "production_analytics",
+          "type": "analytics_engine",
+          "description": "Analyzes production line performance and predicts downtime",
+          "algorithm": "predictive_maintenance",
+          "data_sources": [
+            "sensor_data_collector",
+            "historical_data_loader"
+          ]
+        }
+      ]
+    },
+    "ml_models": {
+      "models": [
+        {
+          "name": "downtime_prediction_model",
+          "type": "ml_model",
+          "description": "Predicts potential downtime based on historical data",
+          "algorithm": "random_forest",
+          "input_features": [
+            "process_time",
+            "availability",
+            "mttr"
+          ],
+          "target": "downtime_probability"
+        },
+        {
+          "name": "buffer_optimization_model",
+          "type": "ml_model",
+          "description": "Optimizes buffer capacities to minimize bottlenecks",
+          "algorithm": "genetic_algorithm",
+          "input_features": [
+            "buffer_capacity",
+            "production_rate"
+          ],
+          "target": "optimized_buffer_level"
+        }
+      ]
+    },
+    "visualization": {
+      "dashboard": {
+        "name": "production_line_dashboard",
+        "type": "web_dashboard",
+        "description": "Real-time visualization of production line status",
+        "widgets": [
+          {
+            "type": "real_time_chart",
+            "title": "Production Rate Over Time",
+            "refresh_rate_s": 10,
+            "color_scheme": "blue_green"
+          },
+          {
+            "type": "gauge",
+            "title": "Overall Equipment Effectiveness",
+            "refresh_rate_s": 15,
+            "color_scheme": "red_yellow_green"
+          },
+          {
+            "type": "heat_map",
+            "title": "Machine Utilization",
+            "refresh_rate_s": 30,
+            "color_scheme": "temperature_gradient"
+          },
+          {
+            "type": "alert_panel",
+            "title": "Active Alerts",
+            "refresh_rate_s": 5,
+            "color_scheme": "alert_colors"
+          }
+        ]
+      }
+    }
+  },
+  "data_flows": {
+    "connections": [
+      {
+        "source": "sensor_data_collector",
+        "destination": "production_analytics",
+        "protocol": "MQTT",
+        "frequency_s": 5
+      },
+      {
+        "source": "historical_data_loader",
+        "destination": "production_analytics",
+        "protocol": "REST",
+        "frequency_s": 3600
+      },
+      {
+        "source": "production_analytics",
+        "destination": "downtime_prediction_model",
+        "protocol": "WebSocket",
+        "frequency_s": 10
+      },
+      {
+        "source": "production_analytics",
+        "destination": "buffer_optimization_model",
+        "protocol": "WebSocket",
+        "frequency_s": 10
+      },
+      {
+        "source": "downtime_prediction_model",
+        "destination": "visualization",
+        "protocol": "REST",
+        "frequency_s": 15
+      },
+      {
+        "source": "buffer_optimization_model",
+        "destination": "visualization",
+        "protocol": "REST",
+        "frequency_s": 15
+      }
+    ]
+  },
+  "visualization_layout": {
+    "dashboard": {
+      "layout": {
+        "rows": 3,
+        "columns": 4
+      },
+      "widgets": {
+        "row_1": [
+          {
+            "widget": "real_time_chart",
+            "position": "col_1"
+          },
+          {
+            "widget": "gauge",
+            "position": "col_2"
+          },
+          {
+            "widget": "heat_map",
+            "position": "col_3"
+          },
+          {
+            "widget": "alert_panel",
+            "position": "col_4"
+          }
+        ]
+      }
+    }
+  },
+  "alerts": {
+    "thresholds": [
+      {
+        "name": "high_downtime_probability",
+        "description": "Alerts when downtime probability exceeds 0.8",
+        "severity": "critical",
+        "trigger_condition": "downtime_probability > 0.8",
+        "notification_channels": [
+          "email",
+          "sms"
+        ]
+      },
+      {
+        "name": "low_buffer_capacity",
+        "description": "Alerts when buffer capacity drops below 20%",
+        "severity": "warning",
+        "trigger_condition": "current_capacity / capacity < 0.2",
+        "notification_channels": [
+          "email"
+        ]
+      },
+      {
+        "name": "machine_overheat",
+        "description": "Alerts when machine temperature exceeds 80\u00b0C",
+        "severity": "emergency",
+        "trigger_condition": "temperature > 80",
+        "notification_channels": [
+          "email",
+          "sms",
+          "push_notification"
+        ]
+      }
+    ]
+  },
+  "kpis": {
+    "indicators": [
+      {
+        "name": "throughput_rate",
+        "description": "Number of products produced per hour",
+        "target_value": 300,
+        "measurement_method": "count_products / time_period",
+        "unit": "units/hour"
+      },
+      {
+        "name": "equipment_utilization",
+        "description": "Percentage of time equipment is actively producing",
+        "target_value": 90,
+        "measurement_method": "total_operating_time / total_time",
+        "unit": "%"
+      },
+      {
+        "name": "buffer_fill_level",
+        "description": "Average fill level of all buffers",
+        "target_value": 50,
+        "measurement_method": "sum(current_capacity) / sum(capacity)",
+        "unit": "%"
+      },
+      {
+        "name": "mean_time_to_repair",
+        "description": "Average time to repair failed machines",
+        "target_value": 10,
+        "measurement_method": "sum(downtime_duration) / number_of_repairs",
+        "unit": "minutes"
+      }
+    ]
+  }
+}

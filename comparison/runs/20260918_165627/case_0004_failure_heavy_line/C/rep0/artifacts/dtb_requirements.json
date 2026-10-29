@@ -1,0 +1,32 @@
+{
+  "production_type": "Manufacturing Line with Sequential Process",
+  "processes": [
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "M5"
+  ],
+  "equipment": [
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "M5"
+  ],
+  "sensors": [
+    "Event Registration (in/out/time)",
+    "Machine State (work/idle/failed)",
+    "Interval States",
+    "Energy Consumption (work/idle)"
+  ],
+  "goals": "Evaluate throughput, WIP, energy per unit, and track machine availability and energy consumption",
+  "data_sources": "Inter-arrival_s=150s, machine-specific parameters (process_time_s, availability, mttr_s), buffer capacities, continuous energy consumption",
+  "update_frequency": "Continuous",
+  "critical_parameters": {
+    "Machine Availability": "Threshold for machine availability (e.g., 0.95)",
+    "MTTR Threshold": "Threshold for MTTR (e.g., 30s)",
+    "Energy Usage per Unit": "Threshold for energy consumption per unit (e.g., 100W)"
+  },
+  "additional_info": "Thresholds for critical parameters not yet specified; need to define based on operational goals"
+}

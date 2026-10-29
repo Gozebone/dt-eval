@@ -1,0 +1,253 @@
+{
+  "components": {
+    "data_collection_modules": [
+      {
+        "name": "sensor_data_collector_M1-M5",
+        "type": "IoT Gateway",
+        "description": "Collects real-time sensor data from machines M1-M5",
+        "protocol": "OPC-UA",
+        "frequency": "continuous"
+      },
+      {
+        "name": "sensor_data_collector_B0-B3",
+        "type": "IoT Gateway",
+        "description": "Collects real-time sensor data from buffers B0-B3",
+        "protocol": "MQTT",
+        "frequency": "continuous"
+      },
+      {
+        "name": "energy_monitoring_module",
+        "type": "Energy Meter",
+        "description": "Monitors continuous energy consumption",
+        "protocol": "REST",
+        "frequency": "continuous"
+      }
+    ],
+    "analytics_engines": [
+      {
+        "name": "real_time_analytics_engine",
+        "type": "Stream Processing Engine",
+        "description": "Processes real-time data streams for immediate insights",
+        "protocol": "WebSocket",
+        "frequency": "continuous"
+      },
+      {
+        "name": "historical_analysis_engine",
+        "type": "Batch Processing Engine",
+        "description": "Performs historical analysis of production data",
+        "protocol": "REST",
+        "frequency": "daily"
+      }
+    ],
+    "ml_models": [
+      {
+        "name": "predictive_maintenance_model",
+        "type": "Machine Learning Model",
+        "description": "Predicts machine failures based on MTTR and availability data",
+        "protocol": "REST",
+        "frequency": "hourly"
+      },
+      {
+        "name": "energy_efficiency_model",
+        "type": "Machine Learning Model",
+        "description": "Calculates specific energy consumption per part",
+        "protocol": "REST",
+        "frequency": "real-time"
+      }
+    ],
+    "visualization_dashboards": [
+      {
+        "name": "production_dashboard",
+        "type": "Web Dashboard",
+        "description": "Displays overall production status and KPIs",
+        "protocol": "WebSocket",
+        "refresh_rate": "10 seconds"
+      },
+      {
+        "name": "machine_status_dashboard",
+        "type": "Web Dashboard",
+        "description": "Shows detailed status of each machine and buffer",
+        "protocol": "WebSocket",
+        "refresh_rate": "5 seconds"
+      }
+    ]
+  },
+  "data_flows": [
+    {
+      "source": "sensor_data_collector_M1-M5",
+      "destination": "real_time_analytics_engine",
+      "protocol": "OPC-UA",
+      "frequency": "continuous"
+    },
+    {
+      "source": "sensor_data_collector_B0-B3",
+      "destination": "real_time_analytics_engine",
+      "protocol": "MQTT",
+      "frequency": "continuous"
+    },
+    {
+      "source": "energy_monitoring_module",
+      "destination": "real_time_analytics_engine",
+      "protocol": "REST",
+      "frequency": "continuous"
+    },
+    {
+      "source": "real_time_analytics_engine",
+      "destination": "production_dashboard",
+      "protocol": "WebSocket",
+      "frequency": "continuous"
+    },
+    {
+      "source": "real_time_analytics_engine",
+      "destination": "machine_status_dashboard",
+      "protocol": "WebSocket",
+      "frequency": "continuous"
+    },
+    {
+      "source": "historical_analysis_engine",
+      "destination": "production_dashboard",
+      "protocol": "REST",
+      "frequency": "daily"
+    },
+    {
+      "source": "predictive_maintenance_model",
+      "destination": "alerts_system",
+      "protocol": "REST",
+      "frequency": "hourly"
+    },
+    {
+      "source": "energy_efficiency_model",
+      "destination": "production_dashboard",
+      "protocol": "REST",
+      "frequency": "real-time"
+    }
+  ],
+  "visualization": {
+    "dashboard_layout": {
+      "layout_type": "grid",
+      "widgets": [
+        {
+          "type": "gauge",
+          "title": "Overall Line Utilization",
+          "position": "top-left",
+          "refresh_rate": "10 seconds"
+        },
+        {
+          "type": "chart",
+          "title": "WIP Over Time",
+          "position": "top-right",
+          "refresh_rate": "10 seconds"
+        },
+        {
+          "type": "table",
+          "title": "Machine Status",
+          "position": "middle-left",
+          "refresh_rate": "5 seconds"
+        },
+        {
+          "type": "map",
+          "title": "Buffer Fill Levels",
+          "position": "middle-right",
+          "refresh_rate": "5 seconds"
+        },
+        {
+          "type": "line_chart",
+          "title": "Energy Consumption Trend",
+          "position": "bottom-left",
+          "refresh_rate": "1 minute"
+        },
+        {
+          "type": "alert_panel",
+          "title": "Active Alerts",
+          "position": "bottom-right",
+          "refresh_rate": "1 second"
+        }
+      ],
+      "color_scheme": {
+        "normal": "#00FF00",
+        "warning": "#FFFF00",
+        "critical": "#FF0000",
+        "emergency": "#8B0000"
+      }
+    }
+  },
+  "alerts": [
+    {
+      "name": "high_buffer_level_alert",
+      "parameter": "\u0437\u0430\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u0435 \u0431\u0443\u0444\u0435\u0440\u043e\u0432",
+      "threshold": 90,
+      "severity": "warning",
+      "message": "Buffer level exceeds 90% capacity",
+      "triggered_by": "sensor_data_collector_B0-B3"
+    },
+    {
+      "name": "low_machine_availability_alert",
+      "parameter": "\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u044c",
+      "threshold": 85,
+      "severity": "warning",
+      "message": "Machine availability below 85%",
+      "triggered_by": "sensor_data_collector_M1-M5"
+    },
+    {
+      "name": "critical_energy_consumption_alert",
+      "parameter": "\u044d\u043d\u0435\u0440\u0433\u043e\u043f\u043e\u0442\u0440\u0435\u0431\u043b\u0435\u043d\u0438\u0435 \u0432 \u043f\u0440\u043e\u0441\u0442\u043e\u0435 \u0438 \u043f\u0440\u0438 \u0440\u0430\u0431\u043e\u0442\u0435",
+      "threshold": 1000,
+      "severity": "critical",
+      "message": "Energy consumption exceeds 1000 kW",
+      "triggered_by": "energy_monitoring_module"
+    },
+    {
+      "name": "high_mttr_alert",
+      "parameter": "MTTR",
+      "threshold": 60,
+      "severity": "critical",
+      "message": "Mean Time To Repair exceeds 60 minutes",
+      "triggered_by": "sensor_data_collector_M1-M5"
+    },
+    {
+      "name": "low_production_rate_alert",
+      "parameter": "\u043f\u043e\u0441\u0442\u0443\u043f\u043b\u0435\u043d\u0438\u044f \u0438 \u0432\u044b\u043f\u0443\u0441\u043a \u0434\u0435\u0442\u0430\u043b\u0435\u0439",
+      "threshold": 50,
+      "severity": "emergency",
+      "message": "Production rate below 50 units/hour",
+      "triggered_by": "sensor_data_collector_M1-M5"
+    }
+  ],
+  "kpis": [
+    {
+      "name": "throughput",
+      "description": "Number of parts produced per hour",
+      "target_value": 100,
+      "measurement_method": "count of parts processed by M1-M5",
+      "unit": "parts/hour"
+    },
+    {
+      "name": "wip",
+      "description": "Work-in-progress inventory",
+      "target_value": 50,
+      "measurement_method": "sum of parts in buffers B0-B3",
+      "unit": "parts"
+    },
+    {
+      "name": "specific_energy_consumption",
+      "description": "Energy consumed per part",
+      "target_value": 1.5,
+      "measurement_method": "total energy / total parts produced",
+      "unit": "kWh/part"
+    },
+    {
+      "name": "machine_availability",
+      "description": "Percentage of time machines are operational",
+      "target_value": 95,
+      "measurement_method": "availability = (total_time - downtime) / total_time * 100",
+      "unit": "%"
+    },
+    {
+      "name": "average_processing_time",
+      "description": "Average processing time per station",
+      "target_value": 10,
+      "measurement_method": "sum of processing times / number of parts",
+      "unit": "minutes"
+    }
+  ]
+}

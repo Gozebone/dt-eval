@@ -1,0 +1,261 @@
+{
+  "requirements": {
+    "production_type": "\u043f\u043e\u0441\u043b\u0435\u0434\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u043d\u0430\u044f (serial) \u043b\u0438\u043d\u0438\u044f \u043f\u0440\u043e\u0438\u0437\u0432\u043e\u0434\u0441\u0442\u0432\u0430",
+    "processes": [
+      "\u043f\u0440\u043e\u043f\u0443\u0441\u043a \u0434\u0435\u0442\u0430\u043b\u0435\u0439 \u0447\u0435\u0440\u0435\u0437 \u043c\u0430\u0448\u0438\u043d\u044b M1-M5 \u043f\u043e \u043f\u043e\u0441\u043b\u0435\u0434\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u0438",
+      "\u043e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u0434\u0435\u0442\u0430\u043b\u0435\u0439 \u043d\u0430 \u043a\u0430\u0436\u0434\u043e\u043c \u0441\u0442\u0430\u043d\u043a\u0435 \u0441 \u0437\u0430\u0434\u0430\u043d\u043d\u044b\u043c \u0441\u0440\u0435\u0434\u043d\u0438\u043c \u0432\u0440\u0435\u043c\u0435\u043d\u0435\u043c \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0438",
+      "\u0443\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u0431\u0443\u0444\u0435\u0440\u0430\u043c\u0438 B0-B4 \u0434\u043b\u044f \u0431\u0430\u043b\u0430\u043d\u0441\u0438\u0440\u043e\u0432\u043a\u0438 \u043f\u043e\u0442\u043e\u043a\u0430 \u0438 \u043f\u0440\u0435\u0434\u043e\u0442\u0432\u0440\u0430\u0449\u0435\u043d\u0438\u044f \u043f\u0435\u0440\u0435\u0433\u0440\u0443\u0437\u043e\u043a/\u0434\u0435\u0444\u0438\u0446\u0438\u0442\u043e\u0432"
+    ],
+    "equipment": {
+      "machines": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "buffer_zones": [
+        "B0",
+        "B1",
+        "B2",
+        "B3",
+        "B4"
+      ]
+    },
+    "sensors": [
+      "\u0441\u0440\u0435\u0434\u043d\u0435\u0435 \u0432\u0440\u0435\u043c\u044f \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0438 \u043d\u0430 \u0441\u0442\u0430\u043d\u0446\u0438\u0438",
+      "\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u044c (\u043e\u0442\u043a\u0430\u0437\u044b/\u0432\u0440\u0435\u043c\u044f \u0432\u043e\u0441\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u044f \u2014 MTTR)",
+      "\u043f\u043e\u0442\u0440\u0435\u0431\u043b\u0435\u043d\u0438\u0435 \u044d\u043d\u0435\u0440\u0433\u0438\u0438 \u0432 \u0440\u0435\u0436\u0438\u043c\u0435 \u0440\u0430\u0431\u043e\u0442\u044b \u0438 \u043f\u0440\u043e\u0441\u0442\u043e\u044f",
+      "\u0443\u0440\u043e\u0432\u043d\u0438 \u0437\u0430\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u044f \u0431\u0443\u0444\u0435\u0440\u043e\u0432",
+      "\u0432\u0440\u0435\u043c\u0435\u043d\u0430 \u043f\u0440\u0438\u0445\u043e\u0434\u0430/\u0432\u044b\u0445\u043e\u0434\u0430 \u0434\u0435\u0442\u0430\u043b\u0435\u0439",
+      "\u043f\u0440\u043e\u043f\u0443\u0441\u043a\u043d\u0430\u044f \u0441\u043f\u043e\u0441\u043e\u0431\u043d\u043e\u0441\u0442\u044c \u043b\u0438\u043d\u0438\u0438",
+      "\u0443\u0440\u043e\u0432\u043d\u0438 WIP",
+      "\u0437\u0430\u043f\u0438\u0441\u044c \u0441\u043e\u0431\u044b\u0442\u0438\u0439 \u043f\u043e \u043a\u0430\u0436\u0434\u043e\u0439 \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u0430\u043d\u043d\u043e\u0439 \u0434\u0435\u0442\u0430\u043b\u0438",
+      "\u0438\u043d\u0442\u0435\u0440\u0432\u0430\u043b\u044b \u0441\u043e\u0441\u0442\u043e\u044f\u043d\u0438\u0439 \u0438 \u044d\u043d\u0435\u0440\u0433\u043e\u043f\u043e\u0442\u0440\u0435\u0431\u043b\u0435\u043d\u0438\u0435 \u0437\u0430\u043f\u0438\u0441\u044b\u0432\u0430\u044e\u0442\u0441\u044f \u043d\u0435\u043f\u0440\u0435\u0440\u044b\u0432\u043d\u043e"
+    ],
+    "goals": "\u043e\u0446\u0435\u043d\u0438\u0432\u0430\u0442\u044c \u043f\u0440\u043e\u043f\u0443\u0441\u043a\u043d\u0443\u044e \u0441\u043f\u043e\u0441\u043e\u0431\u043d\u043e\u0441\u0442\u044c \u043b\u0438\u043d\u0438\u0438, WIP \u0438 \u0443\u0434\u0435\u043b\u044c\u043d\u043e\u0435 \u044d\u043d\u0435\u0440\u0433\u043e\u043f\u043e\u0442\u0440\u0435\u0431\u043b\u0435\u043d\u0438\u0435 \u043d\u0430 \u0434\u0435\u0442\u0430\u043b\u044c, \u0430 \u0442\u0430\u043a\u0436\u0435 \u043e\u0442\u0441\u043b\u0435\u0436\u0438\u0432\u0430\u0442\u044c \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u044c \u043c\u0430\u0448\u0438\u043d M1-M5",
+    "data_sources": "\u043f\u0435\u0440-\u0441\u0442\u0430\u043d\u0446\u0438\u043e\u043d\u043d\u044b\u0435 \u0438\u0437\u043c\u0435\u0440\u0435\u043d\u0438\u044f (\u0441\u0440\u0435\u0434\u043d\u0438\u0435 \u0432\u0440\u0435\u043c\u0435\u043d\u0430, \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u044c, MTTR, \u043c\u043e\u0449\u043d\u043e\u0441\u0442\u0438) \u0438 \u043d\u0435\u043f\u0440\u0435\u0440\u044b\u0432\u043d\u0430\u044f \u0437\u0430\u043f\u0438\u0441\u044c \u0441\u043e\u0431\u044b\u0442\u0438\u0439/\u0438\u043d\u0442\u0435\u0440\u0432\u0430\u043b\u043e\u0432",
+    "update_frequency": "\u043d\u0435\u043f\u0440\u0435\u0440\u044b\u0432\u043d\u0430\u044f \u0437\u0430\u043f\u0438\u0441\u044c \u0441\u043e\u0431\u044b\u0442\u0438\u0439 \u0438 \u0438\u043d\u0442\u0435\u0440\u0432\u0430\u043b\u043e\u0432, \u043f\u0435\u0440\u0438\u043e\u0434\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u0438\u0437\u043c\u0435\u0440\u0435\u043d\u0438\u044f \u0434\u043b\u044f \u043e\u0431\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u044f \u0441\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0445 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u043e\u0432",
+    "critical_parameters": {
+      "\u0441\u0440\u0435\u0434\u043d\u0435\u0435 \u0432\u0440\u0435\u043c\u044f \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0438 \u043d\u0430 \u0441\u0442\u0430\u043d\u0446\u0438\u0438": "\u0437\u0430\u0434\u0430\u043d\u043d\u043e\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435",
+      "\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u044c (MTTR)": "\u0437\u0430\u0434\u0430\u043d\u043d\u043e\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435",
+      "\u043f\u043e\u0442\u0440\u0435\u0431\u043b\u0435\u043d\u0438\u0435 \u044d\u043d\u0435\u0440\u0433\u0438\u0438": "\u0437\u0430\u0434\u0430\u043d\u043d\u043e\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435",
+      "\u0443\u0440\u043e\u0432\u043d\u0438 \u0431\u0443\u0444\u0435\u0440\u043e\u0432": "\u0437\u0430\u0434\u0430\u043d\u043d\u043e\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435",
+      "\u0432\u0440\u0435\u043c\u0435\u043d\u0430 \u043f\u0440\u0438\u0445\u043e\u0434\u0430/\u0432\u044b\u0445\u043e\u0434\u0430 \u0434\u0435\u0442\u0430\u043b\u0435\u0439": "\u043d\u0435\u043f\u0440\u0435\u0440\u044b\u0432\u043d\u043e \u0437\u0430\u043f\u0438\u0441\u044b\u0432\u0430\u044e\u0442\u0441\u044f",
+      "\u043f\u0440\u043e\u043f\u0443\u0441\u043a\u043d\u0430\u044f \u0441\u043f\u043e\u0441\u043e\u0431\u043d\u043e\u0441\u0442\u044c \u043b\u0438\u043d\u0438\u0438": "\u0437\u0430\u0434\u0430\u043d\u043d\u043e\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435",
+      "\u0443\u0440\u043e\u0432\u043d\u0438 WIP": "\u043d\u0435\u043f\u0440\u0435\u0440\u044b\u0432\u043d\u043e \u0437\u0430\u043f\u0438\u0441\u044b\u0432\u0430\u044e\u0442\u0441\u044f"
+    },
+    "additional_info": "\u0437\u0430\u043f\u0438\u0441\u044c \u0441\u043e\u0431\u044b\u0442\u0438\u0439 \u043f\u043e \u043a\u0430\u0436\u0434\u043e\u0439 \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u0430\u043d\u043d\u043e\u0439 \u0434\u0435\u0442\u0430\u043b\u0438, \u0438\u043d\u0442\u0435\u0440\u0432\u0430\u043b\u044b \u0441\u043e\u0441\u0442\u043e\u044f\u043d\u0438\u0439 \u0438 \u044d\u043d\u0435\u0440\u0433\u043e\u043f\u043e\u0442\u0440\u0435\u0431\u043b\u0435\u043d\u0438\u0435 \u0437\u0430\u043f\u0438\u0441\u044b\u0432\u0430\u044e\u0442\u0441\u044f \u043d\u0435\u043f\u0440\u0435\u0440\u044b\u0432\u043d\u043e"
+  },
+  "schema": {
+    "raw": ""
+  },
+  "dt_config": {
+    "components": {
+      "data_collection_modules": {
+        "sensor_data_collectors": {
+          "type": "IoT Edge Gateways",
+          "description": "Collects real-time sensor data from machines and buffers",
+          "protocols": [
+            "MQTT",
+            "OPC-UA"
+          ],
+          "update_frequency": "real-time"
+        },
+        "event_loggers": {
+          "type": "Event Stream Processors",
+          "description": "Logs detailed events for each part processed",
+          "protocols": [
+            "WebSocket",
+            "REST"
+          ],
+          "update_frequency": "continuous"
+        }
+      },
+      "analytics_engines": {
+        "statistical_analyzer": {
+          "type": "Statistical Analysis Engine",
+          "description": "Processes periodic statistical measurements for KPIs",
+          "protocols": [
+            "REST"
+          ],
+          "update_frequency": "periodic"
+        },
+        "real_time_analyzer": {
+          "type": "Real-Time Analytics Engine",
+          "description": "Analyzes continuous event streams",
+          "protocols": [
+            "WebSocket"
+          ],
+          "update_frequency": "continuous"
+        }
+      },
+      "ml_models": {
+        "predictive_maintenance": {
+          "type": "ML Predictive Maintenance Model",
+          "description": "Predicts machine failures based on MTTR and sensor data",
+          "protocols": [
+            "REST"
+          ],
+          "update_frequency": "periodic"
+        },
+        "energy_efficiency": {
+          "type": "ML Energy Efficiency Model",
+          "description": "Optimizes energy consumption based on real-time data",
+          "protocols": [
+            "REST"
+          ],
+          "update_frequency": "continuous"
+        }
+      },
+      "visualization_dashboards": {
+        "production_dashboard": {
+          "type": "Production Monitoring Dashboard",
+          "description": "Main dashboard for visualizing line performance",
+          "widgets": [
+            "KPI Cards",
+            "Line Charts",
+            "Heatmaps",
+            "Alert Banners"
+          ],
+          "protocols": [
+            "WebSocket"
+          ],
+          "refresh_rate": "1s"
+        },
+        "equipment_status": {
+          "type": "Equipment Status Dashboard",
+          "description": "Detailed view of individual machine status",
+          "widgets": [
+            "Status Indicators",
+            "MTTR Timelines",
+            "Energy Consumption Graphs"
+          ],
+          "protocols": [
+            "WebSocket"
+          ],
+          "refresh_rate": "500ms"
+        }
+      }
+    },
+    "data_flows": {
+      "sensor_to_collector": {
+        "source": "sensor_data_collectors",
+        "destination": "event_loggers",
+        "protocol": "MQTT",
+        "frequency": "real-time"
+      },
+      "collector_to_analytics": {
+        "source": "sensor_data_collectors",
+        "destination": "statistical_analyzer",
+        "protocol": "REST",
+        "frequency": "periodic"
+      },
+      "event_to_analytics": {
+        "source": "event_loggers",
+        "destination": "real_time_analyzer",
+        "protocol": "WebSocket",
+        "frequency": "continuous"
+      },
+      "analyzer_to_ml": {
+        "source": "statistical_analyzer",
+        "destination": "predictive_maintenance",
+        "protocol": "REST",
+        "frequency": "periodic"
+      },
+      "analyzer_to_visualization": {
+        "source": "real_time_analyzer",
+        "destination": "production_dashboard",
+        "protocol": "WebSocket",
+        "frequency": "continuous"
+      },
+      "ml_to_visualization": {
+        "source": "predictive_maintenance",
+        "destination": "equipment_status",
+        "protocol": "REST",
+        "frequency": "periodic"
+      }
+    },
+    "visualization": {
+      "layout": {
+        "dashboard_structure": {
+          "top_row": [
+            "KPI Cards",
+            "Line Chart"
+          ],
+          "middle_row": [
+            "Heatmap",
+            "Alert Banner"
+          ],
+          "bottom_row": [
+            "Equipment Status",
+            "Energy Consumption"
+          ]
+        },
+        "color_scheme": {
+          "normal": "#00FF00",
+          "warning": "#FFFF00",
+          "critical": "#FF0000",
+          "emergency": "#8B0000"
+        },
+        "refresh_rates": {
+          "kpi_cards": "1s",
+          "line_charts": "1s",
+          "heatmaps": "500ms",
+          "alerts": "100ms"
+        }
+      }
+    },
+    "alerts": {
+      "thresholds": [
+        {
+          "parameter": "WIP Level",
+          "threshold": 10,
+          "severity": "warning",
+          "message": "Work in Progress level is high"
+        },
+        {
+          "parameter": "Buffer Level",
+          "threshold": 95,
+          "severity": "warning",
+          "message": "Buffer level is approaching maximum capacity"
+        },
+        {
+          "parameter": "Energy Consumption",
+          "threshold": 200,
+          "severity": "critical",
+          "message": "Energy consumption exceeds normal limits"
+        },
+        {
+          "parameter": "Machine Availability",
+          "threshold": 80,
+          "severity": "emergency",
+          "message": "Machine availability is below acceptable threshold"
+        }
+      ]
+    },
+    "kpis": {
+      "capacity": {
+        "description": "Line throughput capacity",
+        "target_value": "100 parts/hour",
+        "measurement_method": "average throughput over time"
+      },
+      "wip": {
+        "description": "Work in Progress level",
+        "target_value": "5 parts",
+        "measurement_method": "continuous monitoring of buffer levels"
+      },
+      "energy_efficiency": {
+        "description": "Energy consumption per part",
+        "target_value": "5 kWh/part",
+        "measurement_method": "real-time energy monitoring and part tracking"
+      },
+      "machine_availability": {
+        "description": "Machine uptime percentage",
+        "target_value": "95%",
+        "measurement_method": "MTTR and MTBF calculations"
+      }
+    }
+  },
+  "dt_simulation": "```python\nimport pychrono as chrono\nimport pychrono.irrlicht as chronoirr\nimport numpy as np\nimport time\nimport threading\nimport queue\nimport json\nimport csv\nfrom datetime import datetime\nfrom collections import defaultdict, deque\n\nclass ProductionLineDigitalTwin:\n    def __init__(self):\n        # Initialize PyChrono system\n        self.system = chrono.ChSystemNSC()\n        self.system.SetGravitationalAcceleration(chrono.ChVectorD(0, 0, 0))\n        \n        # Simulation parameters\n        self.time_step = 0.01\n        self.sim_time = 0.0\n        self.max_time = 1000.0\n        \n        # Equipment simulation objects\n        self.machines = {}\n        self.buffers = {}\n        \n        # Data collection\n        self.production_log = []\n        self.energy_log = []\n        self.buffer_level_log = []\n        self.event_log = []\n        self.machine_status_log = []\n        \n        # Machine parameters\n        self.machine_params = {\n            \"M1\": {\"avg_processing_time\": 5.0, \"mttr\": 2.0, \"power_active\": 1000.0, \"power_idle\": 100.0},\n            \"M2\": {\"avg_processing_time\": 4.0, \"mttr\": 1.5, \"power_active\": 1200.0, \"power_idle\": 120.0},\n            \"M3\": {\"avg_processing_time\": 6.0, \"mttr\": 2.5, \"power_active\": 1100.0, \"power_idle\": 110.0},\n            \"M4\": {\"avg_processing_time\": 5.5, \"mttr\": 1.8, \"power_active\": 1300.0, \"power_idle\": 130.0},\n            \"M5\": {\"avg_processing_time\": 4.5, \"mttr\": 2.2, \"power_active\": 900.0, \"power_idle\": 90.0}\n        }\n        \n        # Buffer parameters\n        self.buffer_capacity = 10\n        \n        # Initialize simulation components\n        self.init_simulation()\n        \n    def init_simulation(self):\n        \"\"\"Initialize all simulation components\"\"\"\n        # Create ground\n        ground = chrono.ChBody()\n        ground.SetBodyFixed(True)\n        ground.SetPos(chrono.ChVectorD(0, -1, 0))\n        self.system.Add(ground)\n        \n        # Create machines and buffers\n        self.create_machines()\n        self.create_buffers()\n        \n        # Create conveyor belts\n        self.create_conveyor_belts()\n        \n    def create_machines(self):\n        \"\"\"Create machine bodies with sensors\"\"\"\n        positions = [chrono.ChVectorD(-10, 0, 0), chrono.ChVectorD(-5, 0, 0), \n                     chrono.ChVectorD(0, 0, 0), chrono.ChVectorD(5, 0, 0), \n                     chrono.ChVectorD(10, 0, 0)]\n        \n        for i, (machine_id, params) in enumerate(self.machine_params.items()):\n            # Create machine body\n            machine = chrono.ChBody()\n            machine.SetPos(positions[i])\n            machine.SetBodyFixed(True)\n            machine.SetMass(1000)\n            machine.SetInertiaXX(chrono.ChVectorD(100, 100, 100))\n            \n            # Create visual shape\n            machine_shape = chrono.ChVisualShapeBox(2.0, 1.0, 1.0)\n            machine_shape.SetColor(chrono.ChColor(0.8, 0.2, 0.2))\n            machine.AddVisualShape(machine_shape, chrono.ChFrameD())\n            \n            self.system.Add(machine)\n            self.machines[machine_id] = {\n                \"body\": machine,\n                \"params\": params,\n                \"status\": \"idle\",\n                \"processing_start_time\": 0.0,\n                \"process_time\": 0.0,\n                \"energy_consumption\": 0.0,\n                \"last_failure_time\": 0.0,\n                \"failure_duration\": 0.0\n            }\n    \n    def create_buffers(self):\n        \"\"\"Create buffer zones for material flow\"\"\"\n        positions = [chrono.ChVectorD(-7.5, 0, 0), chrono.ChVectorD(-2.5, 0, 0), \n                     chrono.ChVectorD(2.5, 0, 0), chrono.ChVectorD(7.5, 0, 0)]\n        \n        for i in range(4):\n            buffer_id = f\"B{i}\"\n            buffer_body = chrono.ChBody()\n            buffer_body.SetPos(positions[i])\n            buffer_body.SetBodyFixed(True)\n            buffer_body.SetMass(500)\n            buffer_body.SetInertiaXX(chrono.ChVectorD(50, 50, 50))\n            \n            # Create visual shape\n            buffer_shape = chrono.ChVisualShapeBox(1.0, 0.5, 1.0)\n            buffer_shape.SetColor(chrono.ChColor(0.2, 0.5, 0.8))\n            buffer_body.AddVisualShape(buffer_shape, chrono.ChFrameD())\n            \n            self.system.Add(buffer_body)\n            self.buffers[buffer_id] = {\n                \"body\": buffer_body,\n                \"items\": deque(),\n                \"capacity\": self.buffer_capacity\n            }\n    \n    def create_conveyor_belts(self):\n        \"\"\"Create conveyor belts to connect machines and buffers\"\"\"\n        # This would use PyChrono constraints to model conveyor belts\n        # For simplicity, we simulate conveyor movement through time-based logic\n        pass\n    \n    def generate_part(self):\n        \"\"\"Generate new parts at input buffer\"\"\"\n        part_id = f\"part_{len(self.production_log) + 1}\"\n        part_data = {\n            \"id\": part_id,\n            \"process_start_time\": self.sim_time,\n            \"current_station\": \"B0\",\n            \"status\": \"in_buffer\",\n            \"buffer_level\": 1\n        }\n        self.production_log.append(part_data)\n        self.event_log.append({\n            \"timestamp\": self.sim_time,\n            \"event_type\": \"part_generated\",\n            \"part_id\": part_id,\n            \"station\": \"B0\"\n        })\n        return part_id\n    \n    def process_part(self, part_id, machine_id):\n        \"\"\"Process a part at a specific machine\"\"\"\n        # Update part status\n        for part in self.production_log:\n            if part[\"id\"] == part_id:\n                part[\"current_station\"] = machine_id\n                part[\"status\"] = \"processing\"\n                part[\"processing_start_time\"] = self.sim_time\n                break\n        \n        # Update machine status\n        machine = self.machines[machine_id]\n        machine[\"status\"] = \"processing\"\n        machine[\"processing_start_time\"] = self.sim_time\n        machine[\"process_time\"] = machine[\"params\"][\"avg_processing_time\"]\n        \n        # Log event\n        self.event_log.append({\n            \"timestamp\": self.sim_time,\n            \"event_type\": \"part_processed\",\n            \"part_id\": part_id,\n            \"station\": machine_id\n        })\n    \n    def complete_processing(self, part_id, machine_id):\n        \"\"\"Complete processing and move part to next buffer\"\"\"\n        # Update part status\n        for part in self.production_log:\n            if part[\"id\"] == part_id:\n                part[\"status\"] = \"completed\" if machine_id == \"M5\" else \"in_buffer\"\n                part[\"processing_end_time\"] = self.sim_time\n                part[\"total_process_time\"] = self.sim_time - part[\"processing_start_time\"]\n                break\n        \n        # Update machine status\n        machine = self.machines[machine_id]\n        machine[\"status\"] = \"idle\"\n        \n        # Log event\n        self.event_log.append({\n            \"timestamp\": self.sim_time,\n            \"event_type\": \"processing_complete\",\n            \"part_id\": part_id,\n            \"station\": machine_id\n        })\n    \n    def update_machine_status(self):\n        \"\"\"Update machine status based on processing state\"\"\"\n        for machine_id, machine_data in self.machines.items():\n            if machine_data[\"status\"] == \"processing\":\n                elapsed_time = self.sim_time - machine_data[\"processing_start_time\"]\n                if elapsed_time > machine_data[\"process_time\"]:\n                    # Processing complete\n                    # In a full implementation, we would find the part being processed\n                    self.complete_processing(\"temp_part\", machine_id)\n    \n    def collect_energy_data(self):\n        \"\"\"Collect energy consumption data\"\"\"\n        total_energy = 0.0\n        for machine_id, machine_data in self.machines.items():\n            if machine_data[\"status\"] == \"processing\":\n                power = machine_data[\"params\"][\"power_active\"]\n            else:\n                power = machine_data[\"params\"][\"power_idle\"]\n            total_energy += power * self.time_step\n            machine_data[\"energy_consumption\"] += power * self.time_step\n        \n        self.energy_log.append({\n            \"timestamp\": self.sim_time,\n            \"total_energy_kwh\": total_energy / 3600000.0,  # Convert to kWh\n            \"machine_energy\": {mid: data[\"energy_consumption\"] / 3600000.0 \n                              for mid, data in self.machines.items()}\n        })\n    \n    def collect_buffer_data(self):\n        \"\"\"Collect buffer level data\"\"\"\n        buffer_levels = {}\n        for buffer_id, buffer_data in self.buffers.items():\n            buffer_levels[buffer_id] = len(buffer_data[\"items\"])\n        \n        self.buffer_level_log.append({\n            \"timestamp\": self.sim_time,\n            \"buffer_levels\": buffer_levels\n        })\n    \n    def collect_machine_status(self):\n        \"\"\"Collect detailed machine status\"\"\"\n        machine_status = {}\n        for machine_id, machine_data in self.machines.items():\n            machine_status[machine_id] = {\n                \"status\": machine_data[\"status\"],\n                \"energy_consumption\": machine_data[\"energy_consumption\"],\n                \"processing_time\": machine_data[\"process_time\"]\n            }\n        \n        self.machine_status_log.append({\n            \"timestamp\": self.sim_time,\n            \"machine_status\": machine_status\n        })\n    \n    def run_simulation(self):\n        \"\"\"Run the complete simulation\"\"\"\n        print(\"Starting simulation...\")\n        \n        # Generate initial parts\n        for i in range(5):\n            self.generate_part()\n        \n        # Main simulation loop\n        while self.sim_time < self.max_time:\n            # Update machine status\n            self.update_machine_status()\n            \n            # Collect data at regular intervals\n            if int(self.sim_time) % 5 == 0:  # Every 5 time units\n                self.collect_energy_data()\n                self.collect_buffer_data()\n                self.collect_machine_status()\n            \n            # Advance simulation\n            self.system.DoStepDynamics(self.time_step)\n            self.sim_time += self.time_step\n            \n            # Generate new parts periodically\n            if int(self.sim_time) % 10 == 0:\n                self.generate_part()\n            \n            # Display progress\n            if int(self.sim_time) % 100 == 0:\n                print(f\"Simulation time: {self.sim_time:.2f}\")\n        \n        print(\"Simulation completed.\")\n        self.save_logs()\n    \n    def save_logs(self):\n        \"\"\"Save all collected data to CSV files\"\"\"\n        # Save production log\n        with open('production_log.csv', 'w', newline='') as csvfile:\n            fieldnames = ['id', 'process_start_time', 'current_station', 'status', 'buffer_level']\n            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)\n            writer.writeheader()\n            for row in self.production_log:\n                writer.writerow(row)\n        \n        # Save energy log\n        with open('energy_log.csv', 'w', newline='') as csvfile:\n            fieldnames = ['timestamp', 'total_energy_kwh']\n            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)\n            writer.writeheader()\n            for row in self.energy_log:\n                writer.writerow(row)\n        \n        # Save buffer level log\n        with open('buffer_log.csv', 'w', newline='') as csvfile:\n            fieldnames = ['timestamp']\n            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)\n            writer.writeheader()\n            for row in self.buffer_level_log:\n                writer.writerow(row)\n        \n        # Save event log\n        with open('event_log.csv', 'w', newline='') as csvfile:\n            fieldnames = ['timestamp', 'event_type', 'part_id', 'station']\n            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)\n            writer.writeheader()\n            for row in self.event_log:\n                writer.writerow(row)\n        \n        # Save machine status log\n        with open('machine_status_log.csv', 'w', newline='') as csvfile:\n            fieldnames = ['timestamp']\n            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)\n            writer.writeheader()\n            for row in self.machine_status_log:\n                writer.writerow(row)\n\n# Main execution\nif __name__ == \"__main__\":\n    # Create and run simulation\n    digital_twin = ProductionLineDigitalTwin()\n    digital_twin.run_simulation()\n```"
+}

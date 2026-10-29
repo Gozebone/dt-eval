@@ -1,0 +1,348 @@
+{
+  "requirements": {
+    "production_type": "\u043f\u043e\u0441\u043b\u0435\u0434\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u043d\u0430\u044f \u043b\u0438\u043d\u0438\u044f (serial)",
+    "processes": [
+      "\u043e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u0434\u0435\u0442\u0430\u043b\u0435\u0439 \u043d\u0430 \u043c\u0430\u0448\u0438\u043d\u0430\u0445 M1, M2, M3",
+      "\u043f\u0440\u043e\u043c\u0435\u0436\u0443\u0442\u043e\u0447\u043d\u044b\u0435 \u0431\u0443\u0444\u0435\u0440\u044b B0, B1, B2"
+    ],
+    "equipment": [
+      "\u043c\u0430\u0448\u0438\u043d\u044b M1, M2, M3",
+      "\u0431\u0443\u0444\u0435\u0440\u044b B0, B1, B2",
+      "\u0438\u0441\u0442\u043e\u0447\u043d\u0438\u043a \u043f\u043e\u0441\u0442\u0443\u043f\u043b\u0435\u043d\u0438\u044f \u0434\u0435\u0442\u0430\u043b\u0435\u0439",
+      "\u0441\u0442\u043e\u043a"
+    ],
+    "sensors": [
+      "\u0441\u043e\u0431\u044b\u0442\u0438\u044f \u043f\u043e \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u0430\u043d\u043d\u044b\u043c \u0434\u0435\u0442\u043b\u044f\u043c",
+      "\u0438\u043d\u0442\u0435\u0440\u0432\u0430\u043b\u044b \u0441\u043e\u0441\u0442\u043e\u044f\u043d\u0438\u0439 \u043c\u0430\u0448\u0438\u043d",
+      "\u044d\u043d\u0435\u0440\u0433\u043e\u043f\u043e\u0442\u0440\u0435\u0431\u043b\u0435\u043d\u0438\u0435 \u0437\u0430\u043f\u0438\u0441\u044b\u0432\u0430\u0435\u0442\u0441\u044f \u043d\u0435\u043f\u0440\u0435\u0440\u044b\u0432\u043d\u043e"
+    ],
+    "goals": "\u043e\u0446\u0435\u043d\u0438\u0432\u0430\u0442\u044c \u043f\u0440\u043e\u043f\u0443\u0441\u043a\u043d\u0443\u044e \u0441\u043f\u043e\u0441\u043e\u0431\u043d\u043e\u0441\u0442\u044c \u043b\u0438\u043d\u0438\u0438, WIP, \u0443\u0434\u0435\u043b\u044c\u043d\u043e\u0435 \u044d\u043d\u0435\u0440\u0433\u043e\u043f\u043e\u0442\u0440\u0435\u0431\u043b\u0435\u043d\u0438\u0435 \u043d\u0430 \u0434\u0435\u0442\u0430\u043b\u044c, \u043e\u0442\u0441\u043b\u0435\u0436\u0438\u0432\u0430\u0442\u044c \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u044c \u043c\u0430\u0448\u0438\u043d M1-M5",
+    "data_sources": "\u0441\u0440\u0435\u0434\u043d\u0435\u0435 \u0432\u0440\u0435\u043c\u044f \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0438, \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u044c, MTTR, \u043c\u043e\u0449\u043d\u043e\u0441\u0442\u044c \u043d\u0430 \u0445\u043e\u043b\u043e\u0441\u0442\u043e\u043c \u0445\u043e\u0434\u0443 (\u043c\u0430\u0448\u0438\u043d M1-M5), \u0451\u043c\u043a\u043e\u0441\u0442\u0438 \u0431\u0443\u0444\u0435\u0440\u043e\u0432 B0, B1, B2, \u0438\u043d\u0442\u0435\u0440\u0432\u0430\u043b \u043f\u0440\u0438\u0431\u044b\u0442\u0438\u044f (60 \u0441), \u043c\u043e\u0434\u0435\u043b\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0432\u043e \u0432\u0440\u0435\u043c\u0435\u043d\u0438 (432000 \u0441)",
+    "update_frequency": "\u043d\u0435\u043f\u0440\u0435\u0440\u044b\u0432\u043d\u043e\u0435 \u043e\u0431\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u0435 \u0434\u0430\u043d\u043d\u044b\u0445",
+    "critical_parameters": {},
+    "additional_info": "\u043c\u043e\u0434\u0435\u043b\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0432\u043e \u0432\u0440\u0435\u043c\u0435\u043d\u0438, \u043f\u0440\u0435\u0434\u043e\u0441\u0442\u0430\u0432\u043b\u0435\u043d\u043d\u044b\u0435 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u044b \u0434\u043b\u044f \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u043e\u0432 \u043c\u0430\u0448\u0438\u043d \u0438 \u0431\u0443\u0444\u0435\u0440\u043e\u0432, \u0446\u0435\u043b\u044c\u044e \u044f\u0432\u043b\u044f\u0435\u0442\u0441\u044f \u043c\u043e\u043d\u0438\u0442\u043e\u0440\u0438\u043d\u0433 \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u0438 \u0438 \u044d\u043d\u0435\u0440\u0433\u043e\u043f\u043e\u0442\u0440\u0435\u0431\u043b\u0435\u043d\u0438\u044f"
+  },
+  "schema": {
+    "raw": ""
+  },
+  "dt_config": {
+    "components": {
+      "data_collection": [
+        {
+          "id": "dc_001",
+          "name": "Sensor Data Collector",
+          "type": "Data Collection Module",
+          "description": "Collects real-time data from sensors on machines and buffers",
+          "protocol": "OPC-UA",
+          "update_frequency": "100ms"
+        },
+        {
+          "id": "dc_002",
+          "name": "Energy Monitoring System",
+          "type": "Data Collection Module",
+          "description": "Monitors continuous energy consumption from machines",
+          "protocol": "MQTT",
+          "update_frequency": "50ms"
+        }
+      ],
+      "analytics": [
+        {
+          "id": "an_001",
+          "name": "Process Analytics Engine",
+          "type": "Analytics Engine",
+          "description": "Analyzes production data to evaluate throughput and WIP",
+          "algorithm": "Time-series Analysis"
+        },
+        {
+          "id": "an_002",
+          "name": "Availability Monitor",
+          "type": "Analytics Engine",
+          "description": "Tracks machine availability and calculates MTTR",
+          "algorithm": "Statistical Analysis"
+        }
+      ],
+      "ml_models": [
+        {
+          "id": "ml_001",
+          "name": "Energy Consumption Predictor",
+          "type": "ML Model",
+          "description": "Predicts energy consumption based on machine usage and load",
+          "algorithm": "Regression Analysis"
+        },
+        {
+          "id": "ml_002",
+          "name": "Failure Prediction Model",
+          "type": "ML Model",
+          "description": "Predicts potential failures based on historical data and sensor inputs",
+          "algorithm": "Classification"
+        }
+      ],
+      "visualization": [
+        {
+          "id": "vis_001",
+          "name": "Line Monitoring Dashboard",
+          "type": "Visualization Dashboard",
+          "description": "Real-time dashboard for monitoring the entire production line",
+          "widgets": [
+            {
+              "type": "Gauge",
+              "title": "Line Throughput",
+              "data_source": "Process Analytics Engine"
+            },
+            {
+              "type": "Chart",
+              "title": "WIP Over Time",
+              "data_source": "Process Analytics Engine"
+            },
+            {
+              "type": "Map",
+              "title": "Machine Availability",
+              "data_source": "Availability Monitor"
+            },
+            {
+              "type": "Table",
+              "title": "Energy Consumption",
+              "data_source": "Energy Monitoring System"
+            }
+          ]
+        }
+      ]
+    },
+    "data_flows": [
+      {
+        "source": "dc_001",
+        "destination": "an_001",
+        "protocol": "REST",
+        "update_frequency": "100ms",
+        "description": "Flow of sensor data to process analytics engine"
+      },
+      {
+        "source": "dc_002",
+        "destination": "an_001",
+        "protocol": "WebSocket",
+        "update_frequency": "50ms",
+        "description": "Flow of continuous energy data to analytics engine"
+      },
+      {
+        "source": "an_001",
+        "destination": "vis_001",
+        "protocol": "REST",
+        "update_frequency": "100ms",
+        "description": "Flow of processed analytics data to dashboard"
+      },
+      {
+        "source": "an_002",
+        "destination": "vis_001",
+        "protocol": "REST",
+        "update_frequency": "500ms",
+        "description": "Flow of availability metrics to dashboard"
+      },
+      {
+        "source": "ml_001",
+        "destination": "an_001",
+        "protocol": "REST",
+        "update_frequency": "1s",
+        "description": "Flow of energy consumption predictions to analytics engine"
+      },
+      {
+        "source": "ml_002",
+        "destination": "an_002",
+        "protocol": "REST",
+        "update_frequency": "1s",
+        "description": "Flow of failure predictions to availability monitor"
+      }
+    ],
+    "visualization": {
+      "dashboard_layout": {
+        "rows": 3,
+        "columns": 3,
+        "widgets": [
+          {
+            "id": "w_001",
+            "position": {
+              "row": 1,
+              "column": 1
+            },
+            "type": "Gauge",
+            "title": "Line Throughput",
+            "refresh_rate": "100ms",
+            "color_scheme": "green_to_red"
+          },
+          {
+            "id": "w_002",
+            "position": {
+              "row": 1,
+              "column": 2
+            },
+            "type": "Chart",
+            "title": "WIP Over Time",
+            "refresh_rate": "100ms",
+            "color_scheme": "blue_to_yellow"
+          },
+          {
+            "id": "w_003",
+            "position": {
+              "row": 1,
+              "column": 3
+            },
+            "type": "Map",
+            "title": "Machine Availability",
+            "refresh_rate": "500ms",
+            "color_scheme": "green_to_red"
+          },
+          {
+            "id": "w_004",
+            "position": {
+              "row": 2,
+              "column": 1
+            },
+            "type": "Table",
+            "title": "Energy Consumption",
+            "refresh_rate": "50ms",
+            "color_scheme": "gray"
+          },
+          {
+            "id": "w_005",
+            "position": {
+              "row": 2,
+              "column": 2
+            },
+            "type": "Chart",
+            "title": "Processing Time Distribution",
+            "refresh_rate": "100ms",
+            "color_scheme": "purple_to_pink"
+          },
+          {
+            "id": "w_006",
+            "position": {
+              "row": 2,
+              "column": 3
+            },
+            "type": "Status Light",
+            "title": "System Status",
+            "refresh_rate": "1s",
+            "color_scheme": "green_to_red"
+          },
+          {
+            "id": "w_007",
+            "position": {
+              "row": 3,
+              "column": 1
+            },
+            "type": "Bar Chart",
+            "title": "Buffer Levels",
+            "refresh_rate": "100ms",
+            "color_scheme": "blue"
+          },
+          {
+            "id": "w_008",
+            "position": {
+              "row": 3,
+              "column": 2
+            },
+            "type": "Heatmap",
+            "title": "Energy Consumption Heatmap",
+            "refresh_rate": "50ms",
+            "color_scheme": "red_to_blue"
+          },
+          {
+            "id": "w_009",
+            "position": {
+              "row": 3,
+              "column": 3
+            },
+            "type": "Timeline",
+            "title": "Machine Activity Timeline",
+            "refresh_rate": "100ms",
+            "color_scheme": "blue_to_green"
+          }
+        ]
+      }
+    },
+    "alerts": [
+      {
+        "id": "alert_001",
+        "name": "High WIP Level",
+        "description": "Alert when WIP exceeds predefined threshold",
+        "trigger": "WIP > 50 units",
+        "severity": "warning",
+        "action": "Send notification to operator"
+      },
+      {
+        "id": "alert_002",
+        "name": "Machine Downtime",
+        "description": "Alert when machine is down for more than 5 minutes",
+        "trigger": "Machine status = offline for 5+ minutes",
+        "severity": "critical",
+        "action": "Generate maintenance ticket and notify maintenance team"
+      },
+      {
+        "id": "alert_003",
+        "name": "High Energy Consumption",
+        "description": "Alert when energy consumption exceeds normal range",
+        "trigger": "Energy > 200 kW",
+        "severity": "emergency",
+        "action": "Switch to energy-saving mode and notify supervisor"
+      },
+      {
+        "id": "alert_004",
+        "name": "Buffer Overflow",
+        "description": "Alert when buffer capacity exceeds threshold",
+        "trigger": "Buffer level > 90%",
+        "severity": "warning",
+        "action": "Pause downstream process and notify operator"
+      },
+      {
+        "id": "alert_005",
+        "name": "Low Throughput",
+        "description": "Alert when throughput drops below target",
+        "trigger": "Throughput < 50 units/hour",
+        "severity": "info",
+        "action": "Log and notify process engineer"
+      }
+    ],
+    "kpis": [
+      {
+        "id": "kpi_001",
+        "name": "Line Throughput",
+        "description": "Number of parts processed per hour",
+        "target_value": "100 units/hour",
+        "measurement_method": "Count of processed parts over time",
+        "unit": "units/hour"
+      },
+      {
+        "id": "kpi_002",
+        "name": "WIP",
+        "description": "Work in Progress - number of items in the system",
+        "target_value": "30 units",
+        "measurement_method": "Inventory count of parts in buffers and machines",
+        "unit": "units"
+      },
+      {
+        "id": "kpi_003",
+        "name": "Energy Consumption per Part",
+        "description": "Average energy used per part processed",
+        "target_value": "0.5 kWh/part",
+        "measurement_method": "Total energy consumed / Total parts processed",
+        "unit": "kWh/part"
+      },
+      {
+        "id": "kpi_004",
+        "name": "Machine Availability",
+        "description": "Percentage of time machines are operational",
+        "target_value": "95%",
+        "measurement_method": "(Total Operational Time / Total Time) * 100",
+        "unit": "%"
+      },
+      {
+        "id": "kpi_005",
+        "name": "MTTR",
+        "description": "Mean Time to Repair",
+        "target_value": "30 minutes",
+        "measurement_method": "Total downtime / Number of breakdowns",
+        "unit": "minutes"
+      }
+    ]
+  },
+  "dt_simulation": "```python\nimport pychrono as chrono\nimport pychrono.irrlicht as chronoirr\nimport numpy as np\nimport time\nimport csv\nimport os\n\n# Define constants for the simulation\nSIMULATION_TIME = 432000  # 5 days in seconds\nTIME_STEP = 0.01\nLOG_INTERVAL = 1.0  # Log every second\nSOURCE_INTERVAL = 60.0  # New parts every 60 seconds\n\n# Create the Chrono system\nsystem = chrono.ChSystemNSC()\nsystem.Set_G_acc(chrono.ChVectorD(0, 0, 0))  # No gravity for this line\n\n# Create materials\nsteel_mat = chrono.ChMaterialSurfaceNSC()\nsteel_mat.SetFriction(0.5)\nsteel_mat.SetRestitution(0.1)\n\n# Create the ground\nground = chrono.ChBody()\nground.SetFixed(True)\nground.GetCollisionModel().ClearModel()\nground.GetCollisionModel().AddBox(100, 1, 100)\nground.SetPos(chrono.ChVectorD(0, -1, 0))\nground.SetMaterialSurface(steel_mat)\nsystem.Add(ground)\n\n# Create part source\nclass PartSource:\n    def __init__(self, system, pos, part_id):\n        self.system = system\n        self.pos = pos\n        self.part_id = part_id\n        self.next_spawn_time = 0.0\n        self.spawned_count = 0\n        \n    def update(self, current_time):\n        if current_time >= self.next_spawn_time:\n            self.spawn_part(current_time)\n            self.next_spawn_time = current_time + SOURCE_INTERVAL\n            \n    def spawn_part(self, current_time):\n        part = chrono.ChBody()\n        part.SetPos(self.pos)\n        part.GetCollisionModel().ClearModel()\n        part.GetCollisionModel().AddBox(0.5, 0.5, 0.5)\n        part.SetMaterialSurface(steel_mat)\n        part.SetMass(1.0)\n        part.SetInertiaXX(chrono.ChVectorD(0.1, 0.1, 0.1))\n        part.SetBodyFixed(False)\n        self.system.Add(part)\n        \n        # Create a sensor to track this part\n        part_sensor = PartSensor(part, self.part_id, current_time)\n        self.part_id += 1\n        self.spawned_count += 1\n        \n        return part, part_sensor\n\n# Create machine M1\nclass MachineM1:\n    def __init__(self, system, pos):\n        self.system = system\n        self.pos = pos\n        self.is_operational = True\n        self.processing_time = 120.0  # 2 minutes to process\n        self.power_consumption = 1000.0  # 1 kW\n        self.energy_consumed = 0.0\n        self.processing_started = 0.0\n        self.processing_part = None\n        self.in_queue = []\n        self.status = \"IDLE\"\n        \n        # Machine body\n        self.machine_body = chrono.ChBody()\n        self.machine_body.SetPos(pos)\n        self.machine_body.GetCollisionModel().ClearModel()\n        self.machine_body.GetCollisionModel().AddBox(2, 1, 1)\n        self.machine_body.SetMaterialSurface(steel_mat)\n        self.machine_body.SetMass(100.0)\n        self.machine_body.SetBodyFixed(True)\n        self.system.Add(self.machine_body)\n        \n        # Machine motor (simple representation)\n        self.motor = chrono.ChBody()\n        self.motor.SetPos(pos + chrono.ChVectorD(0, 0.5, 0))\n        self.motor.GetCollisionModel().ClearModel()\n        self.motor.GetCollisionModel().AddBox(0.5, 0.2, 0.2)\n        self.motor.SetMaterialSurface(steel_mat)\n        self.motor.SetMass(10.0)\n        self.motor.SetBodyFixed(True)\n        self.system.Add(self.motor)\n        \n    def update(self, current_time):\n        # Update power consumption\n        if self.status == \"PROCESSING\":\n            self.energy_consumed += self.power_consumption * TIME_STEP\n            \n        # Check if processing is complete\n        if self.status == \"PROCESSING\" and current_time - self.processing_started >= self.processing_time:\n            self.status = \"IDLE\"\n            self.processing_part = None\n            \n    def start_processing(self, part):\n        self.processing_part = part\n        self.processing_started = time.time()\n        self.status = \"PROCESSING\"\n\n# Create buffer B0\nclass BufferB0:\n    def __init__(self, system, pos, capacity):\n        self.system = system\n        self.pos = pos\n        self.capacity = capacity\n        self.parts = []\n        self.current_count = 0\n        \n        # Buffer structure\n        self.buffer_body = chrono.ChBody()\n        self.buffer_body.SetPos(pos)\n        self.buffer_body.GetCollisionModel().ClearModel()\n        self.buffer_body.GetCollisionModel().AddBox(3, 0.5, 2)\n        self.buffer_body.SetMaterialSurface(steel_mat)\n        self.buffer_body.SetMass(50.0)\n        self.buffer_body.SetBodyFixed(True)\n        self.system.Add(self.buffer_body)\n        \n    def add_part(self, part):\n        if self.current_count < self.capacity:\n            self.parts.append(part)\n            self.current_count += 1\n            return True\n        return False\n        \n    def remove_part(self):\n        if self.current_count > 0:\n            part = self.parts.pop(0)\n            self.current_count -= 1\n            return part\n        return None\n\n# Part sensor to track details\nclass PartSensor:\n    def __init__(self, part, part_id, start_time):\n        self.part_id = part_id\n        self.part = part\n        self.start_time = start_time\n        self.processing_start_times = []\n        self.processing_end_times = []\n        self.positions = []\n        self.recorded = False\n        \n    def update(self, current_time):\n        self.positions.append((current_time, self.part.GetPos()))\n        \n    def mark_processed(self, process_time):\n        self.processing_end_times.append(process_time)\n\n# Logging system to record data to CSV files\nclass DataLogger:\n    def __init__(self, base_path=\"simulation_data\"):\n        self.base_path = base_path\n        os.makedirs(base_path, exist_ok=True)\n        \n        # Create log files\n        self.machine_log = open(os.path.join(base_path, \"machine_status.csv\"), \"w\", newline=\"\")\n        self.energy_log = open(os.path.join(base_path, \"energy_consumption.csv\"), \"w\", newline=\"\")\n        self.buffer_log = open(os.path.join(base_path, \"buffer_status.csv\"), \"w\", newline=\"\")\n        self.part_log = open(os.path.join(base_path, \"part_events.csv\"), \"w\", newline=\"\")\n        \n        # Write headers\n        self.machine_writer = csv.writer(self.machine_log)\n        self.machine_writer.writerow([\"timestamp\", \"machine\", \"status\", \"energy_consumed\"])\n        \n        self.energy_writer = csv.writer(self.energy_log)\n        self.energy_writer.writerow([\"timestamp\", \"machine\", \"power_consumption\"])\n        \n        self.buffer_writer = csv.writer(self.buffer_log)\n        self.buffer_writer.writerow([\"timestamp\", \"buffer\", \"part_count\", \"capacity\"])\n        \n        self.part_writer = csv.writer(self.part_log)\n        self.part_writer.writerow([\"timestamp\", \"part_id\", \"event_type\", \"location\"])\n        \n    def log_machine_status(self, timestamp, machine, status, energy_consumed):\n        self.machine_writer.writerow([timestamp, machine, status, energy_consumed])\n        \n    def log_energy_consumption(self, timestamp, machine, power_consumption):\n        self.energy_writer.writerow([timestamp, machine, power_consumption])\n        \n    def log_buffer_status(self, timestamp, buffer, part_count, capacity):\n        self.buffer_writer.writerow([timestamp, buffer, part_count, capacity])\n        \n    def log_part_event(self, timestamp, part_id, event_type, location):\n        self.part_writer.writerow([timestamp, part_id, event_type, location])\n        \n    def close(self):\n        self.machine_log.close()\n        self.energy_log.close()\n        self.buffer_log.close()\n        self.part_log.close()\n\n# Initialize simulation components\npart_id_counter = 0\nsource = PartSource(system, chrono.ChVectorD(-40, 0, 0), part_id_counter)\nmachine_m1 = MachineM1(system, chrono.ChVectorD(-20, 0, 0))\nbuffer_b0 = BufferB0(system, chrono.ChVectorD(0, 0, 0), 10)\nmachine_m2 = MachineM2(system, chrono.ChVectorD(20, 0, 0))\nbuffer_b1 = BufferB0(system, chrono.ChVectorD(40, 0, 0), 10)\nmachine_m3 = MachineM3(system, chrono.ChVectorD(60, 0, 0))\nbuffer_b2 = BufferB0(system, chrono.ChVectorD(80, 0, 0), 10)\n\n# Create additional machines and buffers as needed\nclass MachineM2:\n    def __init__(self, system, pos):\n        self.system = system\n        self.pos = pos\n        self.is_operational = True\n        self.processing_time = 180.0  # 3 minutes to process\n        self.power_consumption = 1200.0  # 1.2 kW\n        self.energy_consumed = 0.0\n        self.processing_started = 0.0\n        self.processing_part = None\n        self.status = \"IDLE\"\n        \n        # Machine body\n        self.machine_body = chrono.ChBody()\n        self.machine_body.SetPos(pos)\n        self.machine_body.GetCollisionModel().ClearModel()\n        self.machine_body.GetCollisionModel().AddBox(2, 1, 1)\n        self.machine_body.SetMaterialSurface(steel_mat)\n        self.machine_body.SetMass(100.0)\n        self.machine_body.SetBodyFixed(True)\n        self.system.Add(self.machine_body)\n        \n    def update(self, current_time):\n        # Update power consumption\n        if self.status == \"PROCESSING\":\n            self.energy_consumed += self.power_consumption * TIME_STEP\n            \n        # Check if processing is complete\n        if self.status == \"PROCESSING\" and current_time - self.processing_started >= self.processing_time:\n            self.status = \"IDLE\"\n            self.processing_part = None\n            \n    def start_processing(self, part):\n        self.processing_part = part\n        self.processing_started = time.time()\n        self.status = \"PROCESSING\"\n\nclass MachineM3:\n    def __init__(self, system, pos):\n        self.system = system\n        self.pos = pos\n        self.is_operational = True\n        self.processing_time = 150.0  # 2.5 minutes to process\n        self.power_consumption = 1100.0  # 1.1 kW\n        self.energy_consumed = 0.0\n        self.processing_started = 0.0\n        self.processing_part = None\n        self.status = \"IDLE\"\n        \n        # Machine body\n        self.machine_body = chrono.ChBody()\n        self.machine_body.SetPos(pos)\n        self.machine_body.GetCollisionModel().ClearModel()\n        self.machine_body.GetCollisionModel().AddBox(2, 1, 1)\n        self.machine_body.SetMaterialSurface(steel_mat)\n        self.machine_body.SetMass(100.0)\n        self.machine_body.SetBodyFixed(True)\n        self.system.Add(self.machine_body)\n        \n    def update(self, current_time):\n        # Update power consumption\n        if self.status == \"PROCESSING\":\n            self.energy_consumed += self.power_consumption * TIME_STEP\n            \n        # Check if processing is complete\n        if self.status == \"PROCESSING\" and current_time - self.processing_started >= self.processing_time:\n            self.status = \"IDLE\"\n            self.processing_part = None\n            \n    def start_processing(self, part):\n        self.processing_part = part\n        self.processing_started = time.time()\n        self.status = \"PROCESSING\"\n\n# Initialize data logger\nlogger = DataLogger()\n\n# Simulation time tracking\ncurrent_time = 0.0\nlast_log_time = 0.0\nlast_part_source_time = 0.0\n\n# Main simulation loop\nwhile current_time < SIMULATION_TIME:\n    # Step the system\n    system.DoStepDynamics(TIME_STEP)\n    \n    # Update the source\n    source.update(current_time)\n    \n    # Update machines and buffers\n    machine_m1.update(current_time)\n    machine_m2.update(current_time)\n    machine_m3.update(current_time)\n    \n    # Log data periodically\n    if current_time - last_log_time >= LOG_INTERVAL:\n        logger.log_machine_status(current_time, \"M1\", machine_m1.status, machine_m1.energy_consumed)\n        logger.log_energy_consumption(current_time, \"M1\", machine_m1.power_consumption)\n        logger.log_buffer_status(current_time, \"B0\", buffer_b0.current_count, buffer_b0.capacity)\n        logger.log_machine_status(current_time, \"M2\", machine_m2.status, machine_m2.energy_consumed)\n        logger.log_energy_consumption(current_time, \"M2\", machine_m2.power_consumption)\n        logger.log_buffer_status(current_time, \"B1\", buffer_b1.current_count, buffer_b1.capacity)\n        logger.log_machine_status(current_time, \"M3\", machine_m3.status, machine_m3.energy_consumed)\n        logger.log_energy_consumption(current_time, \"M3\", machine_m3.power_consumption)\n        logger.log_buffer_status(current_time, \"B2\", buffer_b2.current_count, buffer_b2.capacity)\n        \n        last_log_time = current_time\n    \n    current_time += TIME_STEP\n\n# Close log files\nlogger.close()\nprint(\"Simulation completed successfully.\")\n```"
+}

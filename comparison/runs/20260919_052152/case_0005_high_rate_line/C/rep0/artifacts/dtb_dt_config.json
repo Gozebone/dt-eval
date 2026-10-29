@@ -1,0 +1,141 @@
+{
+  "components": {
+    "data_collection": {
+      "modules": [
+        {
+          "name": "sensor_data_collector",
+          "type": "IoT Gateway",
+          "protocol": "MQTT",
+          "frequency": "every_5_seconds"
+        },
+        {
+          "name": "process_data_collector",
+          "type": "API Gateway",
+          "protocol": "REST",
+          "frequency": "every_hour"
+        },
+        {
+          "name": "maintenance_data_collector",
+          "type": "Database Connector",
+          "protocol": "JDBC",
+          "frequency": "every_day"
+        }
+      ]
+    },
+    "analytics_engine": {
+      "engine": "Apache Spark",
+      "type": "Stream Processing",
+      "models": [
+        {
+          "name": "predictive_maintenance_model",
+          "type": "ML Model",
+          "description": "Predicts equipment failure based on sensor data"
+        },
+        {
+          "name": "efficiency_analytics_model",
+          "type": "ML Model",
+          "description": "Analyzes production efficiency and bottlenecks"
+        }
+      ]
+    },
+    "visualization": {
+      "dashboard": {
+        "name": "production_digital_twin_dashboard",
+        "widgets": [
+          {
+            "type": "real_time_chart",
+            "title": "Production Line Efficiency",
+            "refresh_rate": "every_10_seconds"
+          },
+          {
+            "type": "heatmap",
+            "title": "Equipment Availability",
+            "refresh_rate": "every_30_seconds"
+          },
+          {
+            "type": "gauge",
+            "title": "Quality Rate",
+            "refresh_rate": "every_minute"
+          },
+          {
+            "type": "alert_panel",
+            "title": "System Alerts",
+            "refresh_rate": "every_5_seconds"
+          }
+        ],
+        "color_scheme": {
+          "primary": "#007bff",
+          "secondary": "#6c757d",
+          "success": "#28a745",
+          "warning": "#ffc107",
+          "danger": "#dc3545"
+        }
+      }
+    }
+  },
+  "data_flows": {
+    "sensor_data_flow": {
+      "source": "sensor_data_collector",
+      "destination": "analytics_engine",
+      "protocol": "MQTT",
+      "frequency": "every_5_seconds"
+    },
+    "process_data_flow": {
+      "source": "process_data_collector",
+      "destination": "analytics_engine",
+      "protocol": "REST",
+      "frequency": "every_hour"
+    },
+    "maintenance_data_flow": {
+      "source": "maintenance_data_collector",
+      "destination": "analytics_engine",
+      "protocol": "JDBC",
+      "frequency": "every_day"
+    },
+    "analytics_to_visualization": {
+      "source": "analytics_engine",
+      "destination": "visualization",
+      "protocol": "WebSocket",
+      "frequency": "real_time"
+    }
+  },
+  "alerts": {
+    "thresholds": [
+      {
+        "parameter": "mttr_s",
+        "threshold": 1800,
+        "severity": "warning",
+        "description": "MTTR exceeds threshold of 1800 seconds"
+      },
+      {
+        "parameter": "quality",
+        "threshold": 0.95,
+        "severity": "critical",
+        "description": "Quality rate drops below 95%"
+      },
+      {
+        "parameter": "time_processing",
+        "threshold": 30,
+        "severity": "emergency",
+        "description": "Processing time exceeds 30 seconds"
+      }
+    ]
+  },
+  "kpis": {
+    "efficiency": {
+      "target_value": 0.95,
+      "measurement_method": "ratio of actual output to potential output",
+      "unit": "percentage"
+    },
+    "quality": {
+      "target_value": 0.99,
+      "measurement_method": "ratio of defect-free products to total products",
+      "unit": "percentage"
+    },
+    "mttr": {
+      "target_value": 1800,
+      "measurement_method": "average time to repair equipment",
+      "unit": "seconds"
+    }
+  }
+}

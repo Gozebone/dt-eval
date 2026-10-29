@@ -1,0 +1,333 @@
+{
+  "requirements": {
+    "production_type": "\u043f\u043e\u0441\u043b\u0435\u0434\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u043d\u0430\u044f (serial) \u043f\u0440\u043e\u0438\u0437\u0432\u043e\u0434\u0441\u0442\u0432\u0435\u043d\u043d\u0430\u044f \u043b\u0438\u043d\u0438\u044f",
+    "processes": [
+      "\u043e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u0434\u0435\u0442\u0430\u043b\u0435\u0439 \u043d\u0430 \u043c\u0430\u0448\u0438\u043d\u0430\u0445 M1-M5",
+      "\u0443\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u0431\u0443\u0444\u0435\u0440\u0430\u043c\u0438 B0-B4",
+      "\u0441\u0431\u043e\u0440 \u0433\u043e\u0442\u043e\u0432\u044b\u0445 \u0434\u0435\u0442\u0430\u043b\u0435\u0439 \u043d\u0430 sink"
+    ],
+    "equipment": [
+      "\u043c\u0430\u0448\u0438\u043d\u044b M1-M5 \u0441 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u0430\u043c\u0438 (process_time, availability, MTTR, power) \u0438 \u0431\u0443\u0444\u0435\u0440\u044b B0-B4"
+    ],
+    "sensors": [
+      "\u0434\u0430\u043d\u043d\u044b\u0435 \u043e \u043f\u0440\u043e\u0446\u0435\u0441\u0441\u0430\u0445 \u043c\u0430\u0448\u0438\u043d (process_time, availability, MTTR, power) \u0438 \u0431\u0443\u0444\u0435\u0440\u043d\u044b\u0445 \u0435\u043c\u043a\u043e\u0441\u0442\u044f\u0445"
+    ],
+    "goals": "\u043e\u0446\u0435\u043d\u043a\u0430 \u043f\u0440\u043e\u043f\u0443\u0441\u043a\u043d\u043e\u0439 \u0441\u043f\u043e\u0441\u043e\u0431\u043d\u043e\u0441\u0442\u0438 \u043b\u0438\u043d\u0438\u0438, \u0443\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u044f WIP, \u044d\u043d\u0435\u0440\u0433\u043e\u043f\u043e\u0442\u0440\u0435\u0431\u043b\u0435\u043d\u0438\u044f \u0438 \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u0438 \u043c\u0430\u0448\u0438\u043d M1-M5",
+    "data_sources": "\u043d\u0435\u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u044b, \u0434\u0430\u043d\u043d\u044b\u0435 \u0431\u0443\u0434\u0443\u0442 \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u044c\u0441\u044f \u043d\u0430 \u043e\u0441\u043d\u043e\u0432\u0435 \u043f\u0440\u0435\u0434\u043e\u0441\u0442\u0430\u0432\u043b\u0435\u043d\u043d\u044b\u0445 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u043e\u0432",
+    "update_frequency": "\u043d\u0435\u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043e, \u0434\u0430\u043d\u043d\u044b\u0435 \u0431\u0443\u0434\u0443\u0442 \u043e\u0431\u043d\u043e\u0432\u043b\u044f\u0442\u044c\u0441\u044f \u0432 \u0440\u0435\u0436\u0438\u043c\u0435 \u0440\u0435\u0430\u043b\u044c\u043d\u043e\u0433\u043e \u0432\u0440\u0435\u043c\u0435\u043d\u0438 \u043f\u0440\u0438 \u043f\u043e\u0441\u0442\u0443\u043f\u043b\u0435\u043d\u0438\u0438",
+    "critical_parameters": {},
+    "additional_info": "\u0441\u0435\u0437\u043e\u043d\u043d\u044b\u0435 \u0438\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u044f, \u0441\u043f\u0435\u0446\u0438\u0444\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u0443\u0441\u043b\u043e\u0432\u0438\u044f \u043d\u0435 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u044b"
+  },
+  "schema": {
+    "raw": ""
+  },
+  "dt_config": {
+    "components": {
+      "data_collection_modules": [
+        {
+          "name": "sensor_data_collector_M1",
+          "type": "sensor",
+          "description": "Collects data from machine M1 sensors",
+          "protocol": "MQTT",
+          "update_frequency": "real-time"
+        },
+        {
+          "name": "sensor_data_collector_M2",
+          "type": "sensor",
+          "description": "Collects data from machine M2 sensors",
+          "protocol": "MQTT",
+          "update_frequency": "real-time"
+        },
+        {
+          "name": "sensor_data_collector_M3",
+          "type": "sensor",
+          "description": "Collects data from machine M3 sensors",
+          "protocol": "MQTT",
+          "update_frequency": "real-time"
+        },
+        {
+          "name": "sensor_data_collector_M4",
+          "type": "sensor",
+          "description": "Collects data from machine M4 sensors",
+          "protocol": "MQTT",
+          "update_frequency": "real-time"
+        },
+        {
+          "name": "sensor_data_collector_M5",
+          "type": "sensor",
+          "description": "Collects data from machine M5 sensors",
+          "protocol": "MQTT",
+          "update_frequency": "real-time"
+        },
+        {
+          "name": "buffer_sensor_collector_B0",
+          "type": "sensor",
+          "description": "Collects data from buffer B0 sensors",
+          "protocol": "MQTT",
+          "update_frequency": "real-time"
+        },
+        {
+          "name": "buffer_sensor_collector_B1",
+          "type": "sensor",
+          "description": "Collects data from buffer B1 sensors",
+          "protocol": "MQTT",
+          "update_frequency": "real-time"
+        },
+        {
+          "name": "buffer_sensor_collector_B2",
+          "type": "sensor",
+          "description": "Collects data from buffer B2 sensors",
+          "protocol": "MQTT",
+          "update_frequency": "real-time"
+        },
+        {
+          "name": "buffer_sensor_collector_B3",
+          "type": "sensor",
+          "description": "Collects data from buffer B3 sensors",
+          "protocol": "MQTT",
+          "update_frequency": "real-time"
+        },
+        {
+          "name": "buffer_sensor_collector_B4",
+          "type": "sensor",
+          "description": "Collects data from buffer B4 sensors",
+          "protocol": "MQTT",
+          "update_frequency": "real-time"
+        }
+      ],
+      "analytics_engines": [
+        {
+          "name": "line_performance_analyzer",
+          "type": "analytics_engine",
+          "description": "Analyzes production line performance including capacity, WIP, energy consumption, and machine availability",
+          "protocol": "REST",
+          "update_frequency": "real-time"
+        }
+      ],
+      "ml_models": [
+        {
+          "name": "predictive_maintenance_model",
+          "type": "ml_model",
+          "description": "Predicts machine failures based on historical data and real-time sensor readings",
+          "protocol": "WebSocket",
+          "update_frequency": "real-time"
+        },
+        {
+          "name": "energy_consumption_optimizer",
+          "type": "ml_model",
+          "description": "Optimizes energy consumption by predicting and adjusting usage patterns",
+          "protocol": "WebSocket",
+          "update_frequency": "real-time"
+        }
+      ],
+      "visualization_dashboards": [
+        {
+          "name": "production_line_dashboard",
+          "type": "dashboard",
+          "description": "Main dashboard for monitoring the entire production line",
+          "protocol": "WebSocket",
+          "update_frequency": "real-time"
+        }
+      ]
+    },
+    "data_flows": {
+      "connections": [
+        {
+          "source": "sensor_data_collector_M1",
+          "target": "line_performance_analyzer",
+          "protocol": "MQTT",
+          "update_frequency": "real-time"
+        },
+        {
+          "source": "sensor_data_collector_M2",
+          "target": "line_performance_analyzer",
+          "protocol": "MQTT",
+          "update_frequency": "real-time"
+        },
+        {
+          "source": "sensor_data_collector_M3",
+          "target": "line_performance_analyzer",
+          "protocol": "MQTT",
+          "update_frequency": "real-time"
+        },
+        {
+          "source": "sensor_data_collector_M4",
+          "target": "line_performance_analyzer",
+          "protocol": "MQTT",
+          "update_frequency": "real-time"
+        },
+        {
+          "source": "sensor_data_collector_M5",
+          "target": "line_performance_analyzer",
+          "protocol": "MQTT",
+          "update_frequency": "real-time"
+        },
+        {
+          "source": "buffer_sensor_collector_B0",
+          "target": "line_performance_analyzer",
+          "protocol": "MQTT",
+          "update_frequency": "real-time"
+        },
+        {
+          "source": "buffer_sensor_collector_B1",
+          "target": "line_performance_analyzer",
+          "protocol": "MQTT",
+          "update_frequency": "real-time"
+        },
+        {
+          "source": "buffer_sensor_collector_B2",
+          "target": "line_performance_analyzer",
+          "protocol": "MQTT",
+          "update_frequency": "real-time"
+        },
+        {
+          "source": "buffer_sensor_collector_B3",
+          "target": "line_performance_analyzer",
+          "protocol": "MQTT",
+          "update_frequency": "real-time"
+        },
+        {
+          "source": "buffer_sensor_collector_B4",
+          "target": "line_performance_analyzer",
+          "protocol": "MQTT",
+          "update_frequency": "real-time"
+        },
+        {
+          "source": "line_performance_analyzer",
+          "target": "predictive_maintenance_model",
+          "protocol": "REST",
+          "update_frequency": "real-time"
+        },
+        {
+          "source": "line_performance_analyzer",
+          "target": "energy_consumption_optimizer",
+          "protocol": "REST",
+          "update_frequency": "real-time"
+        },
+        {
+          "source": "line_performance_analyzer",
+          "target": "production_line_dashboard",
+          "protocol": "WebSocket",
+          "update_frequency": "real-time"
+        }
+      ]
+    },
+    "visualization": {
+      "layout": {
+        "main_dashboard": {
+          "widgets": [
+            {
+              "type": "gauge",
+              "title": "Line Capacity Utilization",
+              "position": "top-left",
+              "refresh_rate": "5s",
+              "color_scheme": "green-to-red"
+            },
+            {
+              "type": "bar_chart",
+              "title": "WIP by Buffer",
+              "position": "top-right",
+              "refresh_rate": "10s",
+              "color_scheme": "blue"
+            },
+            {
+              "type": "line_chart",
+              "title": "Energy Consumption Over Time",
+              "position": "middle-left",
+              "refresh_rate": "30s",
+              "color_scheme": "orange"
+            },
+            {
+              "type": "pie_chart",
+              "title": "Machine Availability Distribution",
+              "position": "middle-right",
+              "refresh_rate": "15s",
+              "color_scheme": "purple"
+            },
+            {
+              "type": "table",
+              "title": "Real-Time Machine Status",
+              "position": "bottom-left",
+              "refresh_rate": "10s",
+              "color_scheme": "gray"
+            },
+            {
+              "type": "map",
+              "title": "Production Line Layout",
+              "position": "bottom-right",
+              "refresh_rate": "60s",
+              "color_scheme": "default"
+            }
+          ]
+        }
+      }
+    },
+    "alerts": {
+      "thresholds": [
+        {
+          "name": "machine_failure_prediction",
+          "severity": "emergency",
+          "threshold": "probability > 0.95",
+          "message": "High probability of machine failure detected",
+          "action": "Immediate maintenance required"
+        },
+        {
+          "name": "high_energy_consumption",
+          "severity": "warning",
+          "threshold": "consumption > 120% of average",
+          "message": "Energy consumption exceeds normal range",
+          "action": "Investigate and optimize usage"
+        },
+        {
+          "name": "wip_overflow",
+          "severity": "critical",
+          "threshold": "buffer_level > 90%",
+          "message": "Buffer overflow detected",
+          "action": "Adjust production rate or clear buffers"
+        },
+        {
+          "name": "low_machine_availability",
+          "severity": "warning",
+          "threshold": "availability < 80%",
+          "message": "Machine availability below threshold",
+          "action": "Check for maintenance needs"
+        }
+      ]
+    },
+    "kpis": {
+      "metrics": [
+        {
+          "name": "line_capacity_utilization",
+          "description": "Percentage of maximum possible capacity being utilized",
+          "target_value": "90%",
+          "measurement_method": "calculated from process times and available time"
+        },
+        {
+          "name": "work_in_progress",
+          "description": "Number of items currently in the production line",
+          "target_value": "< 50 units",
+          "measurement_method": "count of items in buffers B0-B4"
+        },
+        {
+          "name": "total_energy_consumption",
+          "description": "Total energy consumed by all machines in the line",
+          "target_value": "< 500 kWh/day",
+          "measurement_method": "sum of power consumption over time"
+        },
+        {
+          "name": "machine_availability",
+          "description": "Percentage of time machines are operational",
+          "target_value": "> 95%",
+          "measurement_method": "operational_time / total_time"
+        },
+        {
+          "name": "production_efficiency",
+          "description": "Ratio of actual output to theoretical maximum output",
+          "target_value": "> 85%",
+          "measurement_method": "actual_output / theoretical_max_output"
+        }
+      ]
+    }
+  },
+  "dt_simulation": "import pychrono as chrono\nimport pychrono.irrlicht as irr\nimport numpy as np\nimport time\nimport threading\nimport sqlite3\nfrom datetime import datetime\n\n# Initialize PyChrono system\nchrono.SetChronoDataPath('/usr/local/share/chrono/data/')\nchrono.SetChronoDataPath('/opt/chrono/data/')\n\n# Create the simulation system\nsystem = chrono.ChSystemNSC()\nsystem.Set_G_acc(chrono.ChVectorD(0, -9.81, 0))  # Set gravity\n\n# Create ground body\nground = chrono.ChBody()\nground.SetFixed(True)\nground.SetBodyFixed(True)\nsystem.Add(ground)\n\n# Create visualization\nvis = irr.ChVisualSystemIrrlicht()\nvis.SetWindowSize(1024, 768)\nvis.SetWindowTitle('Production Line Digital Twin')\nvis.Initialize()\nvis.AddLogo()\nvis.AddSkyBox()\nvis.AddCamera(chrono.ChVectorD(10, 10, 10), chrono.ChVectorD(0, 0, 0))\nvis.AddTypicalLights()\n\n# Create materials\nsteel_mat = chrono.ChMaterialSurfaceNSC()\nsteel_mat.SetFriction(0.5)\nsteel_mat.SetRestitution(0.1)\n\nrefractory_mat = chrono.ChMaterialSurfaceNSC()\nrefractory_mat.SetFriction(0.3)\nrefractory_mat.SetRestitution(0.05)\n\n# Create machines (M1-M5)\nmachines = []\nmachine_positions = [\n    chrono.ChVectorD(0, 0, 0),\n    chrono.ChVectorD(5, 0, 0),\n    chrono.ChVectorD(10, 0, 0),\n    chrono.ChVectorD(15, 0, 0),\n    chrono.ChVectorD(20, 0, 0)\n]\n\nfor i in range(5):\n    machine = chrono.ChBody()\n    machine.SetPos(machine_positions[i])\n    machine.SetMass(1000)\n    machine.SetInertiaXX(chrono.ChVectorD(100, 100, 100))\n    machine.GetCollisionModel().ClearModel()\n    machine.GetCollisionModel().AddBox(1, 1, 1)\n    machine.GetCollisionModel().BuildModel()\n    machine.SetMaterialSurface(steel_mat)\n    system.Add(machine)\n    machines.append(machine)\n\n# Create buffers (B0-B4)\nbuffers = []\nbuffer_positions = [\n    chrono.ChVectorD(2.5, 0, 0),\n    chrono.ChVectorD(7.5, 0, 0),\n    chrono.ChVectorD(12.5, 0, 0),\n    chrono.ChVectorD(17.5, 0, 0),\n    chrono.ChVectorD(22.5, 0, 0)\n]\n\nfor i in range(5):\n    buffer = chrono.ChBody()\n    buffer.SetPos(buffer_positions[i])\n    buffer.SetMass(500)\n    buffer.SetInertiaXX(chrono.ChVectorD(50, 50, 50))\n    buffer.GetCollisionModel().ClearModel()\n    buffer.GetCollisionModel().AddBox(1.5, 0.5, 1.5)\n    buffer.GetCollisionModel().BuildModel()\n    buffer.SetMaterialSurface(steel_mat)\n    system.Add(buffer)\n    buffers.append(buffer)\n\n# Create sink (final product)\nsink = chrono.ChBody()\nsink.SetPos(chrono.ChVectorD(25, 0, 0))\nsink.SetMass(1000)\nsink.SetInertiaXX(chrono.ChVectorD(100, 100, 100))\nsink.GetCollisionModel().ClearModel()\nsink.GetCollisionModel().AddBox(1.5, 1.5, 1.5)\nsink.GetCollisionModel().BuildModel()\nsink.SetMaterialSurface(steel_mat)\nsystem.Add(sink)\n\n# Create pipeline connections between machines and buffers\nconnections = []\nfor i in range(4):\n    # Create constraints between machines and buffers\n    constraint = chrono.ChLinkLockRevolute()\n    constraint.Initialize(machines[i], buffers[i], chrono.ChVectorD(0, 0, 0))\n    system.Add(constraint)\n    connections.append(constraint)\n    \n    # Create constraints between buffers and next machine\n    constraint2 = chrono.ChLinkLockRevolute()\n    constraint2.Initialize(buffers[i], machines[i+1], chrono.ChVectorD(0, 0, 0))\n    system.Add(constraint2)\n    connections.append(constraint2)\n\n# Create product parts\nproduct_parts = []\npart_positions = [\n    chrono.ChVectorD(0.5, 1, 0),\n    chrono.ChVectorD(1.5, 1, 0),\n    chrono.ChVectorD(2.5, 1, 0),\n    chrono.ChVectorD(3.5, 1, 0),\n    chrono.ChVectorD(4.5, 1, 0)\n]\n\nfor i, pos in enumerate(part_positions):\n    part = chrono.ChBody()\n    part.SetPos(pos)\n    part.SetMass(10)\n    part.SetInertiaXX(chrono.ChVectorD(0.1, 0.1, 0.1))\n    part.GetCollisionModel().ClearModel()\n    part.GetCollisionModel().AddSphere(0.1)\n    part.GetCollisionModel().BuildModel()\n    part.SetMaterialSurface(steel_mat)\n    system.Add(part)\n    product_parts.append(part)\n\n# Create sensors to monitor machines\nmachine_sensors = []\nfor i in range(5):\n    sensor = {\n        'machine_id': f'M{i+1}',\n        'process_time': 0,\n        'availability': 1.0,\n        'mttr': 0,\n        'power': 0,\n        'last_update': datetime.now(),\n        'status': 'active',\n        'wip': 0\n    }\n    machine_sensors.append(sensor)\n\n# Create buffer sensors\nbuffer_sensors = []\nfor i in range(5):\n    sensor = {\n        'buffer_id': f'B{i}',\n        'capacity': 10,\n        'current_level': 0,\n        'max_level': 10,\n        'last_update': datetime.now(),\n        'status': 'empty'\n    }\n    buffer_sensors.append(sensor)\n\n# Create sink sensor\nsink_sensor = {\n    'sink_id': 'SINK',\n    'products_count': 0,\n    'last_update': datetime.now(),\n    'status': 'ready'\n}\n\n# Database setup\ndef setup_database():\n    conn = sqlite3.connect('production_line.db')\n    cursor = conn.cursor()\n    \n    # Create machine status table\n    cursor.execute('''\n        CREATE TABLE IF NOT EXISTS machine_status (\n            id INTEGER PRIMARY KEY AUTOINCREMENT,\n            machine_id TEXT,\n            process_time REAL,\n            availability REAL,\n            mttr REAL,\n            power REAL,\n            status TEXT,\n            wip INTEGER,\n            timestamp DATETIME\n        )\n    ''')\n    \n    # Create buffer status table\n    cursor.execute('''\n        CREATE TABLE IF NOT EXISTS buffer_status (\n            id INTEGER PRIMARY KEY AUTOINCREMENT,\n            buffer_id TEXT,\n            capacity INTEGER,\n            current_level INTEGER,\n            max_level INTEGER,\n            status TEXT,\n            timestamp DATETIME\n        )\n    ''')\n    \n    # Create sink status table\n    cursor.execute('''\n        CREATE TABLE IF NOT EXISTS sink_status (\n            id INTEGER PRIMARY KEY AUTOINCREMENT,\n            sink_id TEXT,\n            products_count INTEGER,\n            status TEXT,\n            timestamp DATETIME\n        )\n    ''')\n    \n    # Create production statistics table\n    cursor.execute('''\n        CREATE TABLE IF NOT EXISTS production_stats (\n            id INTEGER PRIMARY KEY AUTOINCREMENT,\n            timestamp DATETIME,\n            throughput INTEGER,\n            wip INTEGER,\n            energy_consumption REAL,\n            machine_utilization REAL\n        )\n    ''')\n    \n    conn.commit()\n    conn.close()\n\n# Insert data into database\ndef insert_machine_status(sensor_data):\n    conn = sqlite3.connect('production_line.db')\n    cursor = conn.cursor()\n    \n    cursor.execute('''\n        INSERT INTO machine_status \n        (machine_id, process_time, availability, mttr, power, status, wip, timestamp)\n        VALUES (?, ?, ?, ?, ?, ?, ?, ?)\n    ''', (\n        sensor_data['machine_id'],\n        sensor_data['process_time'],\n        sensor_data['availability'],\n        sensor_data['mttr'],\n        sensor_data['power'],\n        sensor_data['status'],\n        sensor_data['wip'],\n        sensor_data['last_update']\n    ))\n    \n    conn.commit()\n    conn.close()\n\ndef insert_buffer_status(sensor_data):\n    conn = sqlite3.connect('production_line.db')\n    cursor = conn.cursor()\n    \n    cursor.execute('''\n        INSERT INTO buffer_status \n        (buffer_id, capacity, current_level, max_level, status, timestamp)\n        VALUES (?, ?, ?, ?, ?, ?)\n    ''', (\n        sensor_data['buffer_id'],\n        sensor_data['capacity'],\n        sensor_data['current_level'],\n        sensor_data['max_level'],\n        sensor_data['status'],\n        sensor_data['last_update']\n    ))\n    \n    conn.commit()\n    conn.close()\n\ndef insert_sink_status(sensor_data):\n    conn = sqlite3.connect('production_line.db')\n    cursor = conn.cursor()\n    \n    cursor.execute('''\n        INSERT INTO sink_status \n        (sink_id, products_count, status, timestamp)\n        VALUES (?, ?, ?, ?)\n    ''', (\n        sensor_data['sink_id'],\n        sensor_data['products_count'],\n        sensor_data['status'],\n        sensor_data['last_update']\n    ))\n    \n    conn.commit()\n    conn.close()\n\ndef insert_production_stats(throughput, wip, energy_consumption, machine_utilization):\n    conn = sqlite3.connect('production_line.db')\n    cursor = conn.cursor()\n    \n    cursor.execute('''\n        INSERT INTO production_stats \n        (timestamp, throughput, wip, energy_consumption, machine_utilization)\n        VALUES (?, ?, ?, ?, ?)\n    ''', (\n        datetime.now(),\n        throughput,\n        wip,\n        energy_consumption,\n        machine_utilization\n    ))\n    \n    conn.commit()\n    conn.close()\n\n# Simulate machine operation\ndef simulate_machine_operation(machine_index, process_time, availability, mttr):\n    # Simulate machine behavior\n    time.sleep(process_time)\n    \n    # Simulate breakdowns\n    if np.random.rand() > availability:\n        # Simulate machine breakdown\n        time.sleep(mttr)\n        return False\n    return True\n\n# Main simulation loop\ndef run_simulation():\n    print(\"Starting production line simulation...\")\n    \n    # Setup database\n    setup_database()\n    \n    # Simulation parameters\n    sim_time = 0\n    dt = 0.01\n    max_time = 1000\n    \n    try:\n        while sim_time < max_time:\n            # Update simulation\n            system.DoStepDynamics(dt)\n            \n            # Update sensors\n            for i, machine in enumerate(machines):\n                # Update machine status\n                machine_sensors[i]['process_time'] = np.random.uniform(1, 3)\n                machine_sensors[i]['availability'] = np.random.uniform(0.9, 1.0)\n                machine_sensors[i]['mttr'] = np.random.uniform(0.5, 2.0)\n                machine_sensors[i]['power'] = np.random.uniform(50, 100)\n                machine_sensors[i]['wip'] = np.random.randint(0, 5)\n                machine_sensors[i]['last_update'] = datetime.now()\n                \n                # Log machine data\n                insert_machine_status(machine_sensors[i])\n            \n            # Update buffer sensors\n            for i, buffer in enumerate(buffers):\n                buffer_sensors[i]['current_level'] = np.random.randint(0, 10)\n                buffer_sensors[i]['status'] = 'full' if buffer_sensors[i]['current_level'] >= 8 else 'normal' if buffer_sensors[i]['current_level'] >= 2 else 'empty'\n                buffer_sensors[i]['last_update'] = datetime.now()\n                \n                # Log buffer data\n                insert_buffer_status(buffer_sensors[i])\n            \n            # Update sink sensor\n            sink_sensor['products_count'] = np.random.randint(0, 100)\n            sink_sensor['status'] = 'ready'\n            sink_sensor['last_update'] = datetime.now()\n            \n            # Log sink data\n            insert_sink_status(sink_sensor)\n            \n            # Calculate statistics\n            throughput = np.random.randint(1, 10)\n            wip = sum([s['wip'] for s in machine_sensors])\n            energy_consumption = sum([s['power'] for s in machine_sensors])\n            machine_utilization = np.mean([s['availability'] for s in machine_sensors])\n            \n            # Log production statistics\n            insert_production_stats(throughput, wip, energy_consumption, machine_utilization)\n            \n            # Update visualization\n            if vis.Run():\n                vis.Render()\n            \n            sim_time += dt\n            \n            # Add delay for visualization\n            time.sleep(0.01)\n            \n    except KeyboardInterrupt:\n        print(\"Simulation interrupted by user\")\n    except Exception as e:\n        print(f\"Simulation error: {e}\")\n    finally:\n        # Cleanup\n        print(\"Simulation finished\")\n        print(\"Data saved to database: production_line.db\")\n\n# Run the simulation\nif __name__ == \"__main__\":\n    run_simulation()"
+}
